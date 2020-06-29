@@ -1,0 +1,26 @@
+@mixin cutoff($position: "left", $width: $cutoff-width, $height: $cutoff-height ) {
+    position: relative;
+
+    &:after {
+        content: "";
+        position: absolute;
+        border: solid $component-border-color;
+        background: $sheet-background;
+        width: $width;
+        height: $height;
+
+        @if $position == "left" {
+            border-width: $component-border-size $component-border-size 0 0;
+            bottom: -$component-border-size;
+            left: -$component-border-size;
+        }
+
+        @if $position != "left" {
+            border-width: $component-border-size 0 0 $component-border-size;
+            position: absolute;
+            bottom: -$component-border-size;
+            right: -$component-border-size;
+        }
+    }
+
+}

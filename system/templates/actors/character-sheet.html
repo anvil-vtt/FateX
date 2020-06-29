@@ -1,4 +1,11 @@
 <form autocomplete="off" class="{{cssClass}}">
-    Sheet
-    {{> "systems/fatex/templates/actors/parts/general_information.html"}}
+    <div class="desk">
+        <div class="desk__information">
+            {{> "systems/fatex/templates/actors/parts/information.html"}}
+        </div>
+
+        <div class="desk__artwork">
+            {{> "systems/fatex/templates/actors/parts/artwork.html"}}
+        </div>
+    </div>
 </form>

@@ -1,0 +1,19 @@
+.sheet.fatex {
+    .window-content {
+        padding: 0;
+        background: $sheet-background;
+    }
+
+    img {
+        border: 0
+    }
+
+    input {
+        border: 0 !important;
+        background: transparent !important;
+        font-size: 23px !important;
+        height: auto !important;
+    }
+}
+
+

@@ -1,0 +1,15 @@
+.desk {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 1px 1px;
+    grid-template-areas: "header-left header-right" "left right" "footer-left footer-right";
+}
+
+.desk__artwork {
+    grid-area: header-left;
+}
+
+.desk__artwork {
+    grid-area: header-right;
+}

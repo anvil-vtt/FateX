@@ -1,6 +1,7 @@
 {
     "FATEx": {
         "Sheet": {
+            "Name": "Name",
             "Description": "Beschreibung"
         }
     }
