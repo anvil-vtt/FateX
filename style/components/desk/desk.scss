@@ -1,15 +1,45 @@
 .desk {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    gap: 1px 1px;
-    grid-template-areas: "header-left header-right" "left right" "footer-left footer-right";
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content minmax(100px, 100%) min-content;
+    grid-template-areas: "header" "main" "footer";
+
+    height: 100%;
+    max-height: 100%;
 }
 
-.desk__artwork {
-    grid-area: header-left;
+.desk__header {
+    grid-area: header;
+    box-shadow: 0 2px 15px 0 $header-background;
+    background: $header-background;
+
+    > .desk__header--content {
+        display: flex;
+    }
+
+    .desk__header__left {
+        flex-grow: 1;
+    }
 }
 
-.desk__artwork {
-    grid-area: header-right;
+.desk__main {
+    grid-area: main;
+    overflow-y: auto;
+
+    > .desk__main--content {
+        display: flex;
+        height: 100%;
+    }
+
+    .desk__left {
+        flex: 2;
+    }
+
+    .desk__right {
+        flex: 1;
+    }
+}
+
+.desk__footer {
+    grid-area: footer;
 }

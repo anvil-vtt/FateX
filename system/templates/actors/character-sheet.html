@@ -1,11 +1,31 @@
 <form autocomplete="off" class="{{cssClass}}">
     <div class="desk">
-        <div class="desk__information">
-            {{> "systems/fatex/templates/actors/parts/information.html"}}
+
+        <div class="desk__header">
+            <div class="desk__header--content">
+                <div class="desk__header__left">
+                    {{> "systems/fatex/templates/actors/parts/header.html"}}
+                </div>
+
+                <div class="desk__header__right">
+                </div>
+            </div>
         </div>
 
-        <div class="desk__artwork">
-            {{> "systems/fatex/templates/actors/parts/artwork.html"}}
+        <div class="desk__main">
+            <div class="desk__main--content">
+                <div class="desk__left">
+                    {{> "systems/fatex/templates/actors/parts/skills.html"}}
+                </div>
+                <div class="desk__right">
+                    {{> "systems/fatex/templates/actors/parts/artwork.html"}}
+                </div>
+            </div>
         </div>
+
+        <div class="desk__footer">
+            {{> "systems/fatex/templates/actors/parts/footer.html"}}
+        </div>
+
     </div>
 </form>

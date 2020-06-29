@@ -2,18 +2,15 @@
     height: 100%;
     position: relative;
     padding: $component-padding;
-    display: flex;
-    flex-direction: column;
 }
 
 .fatex-information__name {
     padding: 5px;
     margin-bottom: 20px;
-    border: $component-border-size $component-border-color $component-border-style;
-    @include cutoff("right", 20px, 20px);
 }
 
 .fatex-information__name__input {
+    color: white !important;
     font-size: 23px !important;
 }
 
@@ -21,7 +18,6 @@
     flex-grow: 1;
     padding: 5px;
     border: $component-border-size $component-border-color $component-border-style;
-    @include cutoff("right", 20px, 20px);
 }
 
 .fatex-information__description__input {
