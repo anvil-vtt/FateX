@@ -4,7 +4,7 @@
  */
 export const preloadHandlebarsTemplates = async function () {
     const templatePaths = [
-        'systems/fate_extended/templates/parts/general_information.html',
+        'systems/fatex/templates/actors/parts/general_information.html',
     ];
 
     return loadTemplates(templatePaths);

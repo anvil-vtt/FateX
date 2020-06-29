@@ -1,4 +1,4 @@
-export class ActorSheetFATEx extends ActorSheet {
+export class ActorSheetFate extends ActorSheet {
     static get defaultOptions() {
         const options = super.defaultOptions;
 
@@ -6,7 +6,7 @@ export class ActorSheetFATEx extends ActorSheet {
             classes: options.classes.concat([
                 'fatex',
             ]),
-            template: "templates/actors/character-sheet.html",
+            template: "systems/fatex/templates/actors/character-sheet.html",
         });
 
         return options;

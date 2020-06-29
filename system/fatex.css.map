@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAAA,CAAE;EACE,OAAO,EAAE,gBAAgB",
-"sources": ["../style/fatex.scss"],
-"names": [],
-"file": "fatex.css"
-}

@@ -1,29 +1,33 @@
 {
-	"name": "fatex",
-	"title": "FATEx",
-	"description": "An extended implementation of FATE and its derivative systems",
-	"version": "0.0.1",
-	"author": "Patrick Bauer (Daddi#2333)",
-	"scripts": [],
-	"esmodules": ["fatex.js"],
-	"styles": ["fatex.css"],
-	"packs": [],
-	"languages": [
-		{
-			"lang": "en",
-			"name": "English",
-			"path": "lang/en.json"
-		},
-		{
-			"lang": "de",
-			"name": "German",
-			"path": "lang/de.json"
-		}
-	],
-	"minimumCoreVersion": "0.5.2",
-	"compatibleCoreVersion": "0.6.5",
-	"socket": true,
-	"url": "https://github.com/anvil-vtt/fate",
-	"manifest": "https://github.com/anvil-vtt/FATEx/releases/download/latest/system.json",
-	"download": "https://github.com/anvil-vtt/FATEx/releases/download/latest/fatex.zip"
+    "name": "fatex",
+    "title": "FATEx",
+    "description": "An extended implementation of FATE and its derivative systems",
+    "version": "0.0.2",
+    "author": "Patrick Bauer (Daddi#2333)",
+    "scripts": [],
+    "esmodules": [
+        "fatex.js"
+    ],
+    "styles": [
+        "fatex.css"
+    ],
+    "packs": [],
+    "languages": [
+        {
+            "lang": "en",
+            "name": "English",
+            "path": "lang/en.json"
+        },
+        {
+            "lang": "de",
+            "name": "German",
+            "path": "lang/de.json"
+        }
+    ],
+    "minimumCoreVersion": "0.5.2",
+    "compatibleCoreVersion": "0.6.5",
+    "socket": true,
+    "url": "https://github.com/anvil-vtt/fate",
+    "manifest": "https://github.com/anvil-vtt/FATEx/releases/download/latest/system.json",
+    "download": "https://github.com/anvil-vtt/FATEx/releases/download/latest/fatex.zip"
 }

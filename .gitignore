@@ -4,3 +4,6 @@
 # Reference files
 node_modules
 foundry.js
+
+# Generated files
+system/fatex.css.map

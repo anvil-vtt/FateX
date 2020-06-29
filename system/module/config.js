@@ -1,3 +1,1 @@
-export const FATEx = {
-
-};
+export const FATEx = {};

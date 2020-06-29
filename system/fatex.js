@@ -12,23 +12,36 @@
  *      (http://creativecommons.org/licenses/by/3.0/).
  */
 
+import { CharacterSheetFate } from "./module/actor/character.js";
+import ActorFate from "./module/actor/entity.js";
+import { NPCSheetFate } from "./module/actor/npc.js";
 import { FATEx } from "./module/config.js";
 import { preloadHandlebarsTemplates } from "./module/templates.js";
-import { ActorSheetFATEx } from "./module/actor/CharacterSheet.js";
 
 /* -------------------------------- */
 /*	System initialization			*/
 /* -------------------------------- */
 Hooks.once('init', async function () {
     console.log(`FATEx | Initializing FATE extended game system`);
-    CONFIG.FATEx = FATEx;
 
+    // Initialise config
+    CONFIG.FATEx = FATEx;
+    CONFIG.Actor.entityClass = ActorFate;
+
+    // Preload all needed templates
     await preloadHandlebarsTemplates();
-    // Register Actor sheets
+
+    // Unregister Core sheets
     Actors.unregisterSheet('core', ActorSheet);
 
-    Actors.registerSheet('FATEx', ActorSheetFATEx, {
+    // Register FATEx actor sheets
+    Actors.registerSheet('FATEx', CharacterSheetFate, {
         types: ['character'],
+        makeDefault: true,
+    });
+
+    Actors.registerSheet('FATEx', NPCSheetFate, {
+        types: ['npc'],
         makeDefault: true,
     });
 });
