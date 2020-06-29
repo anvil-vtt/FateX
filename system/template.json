@@ -1,0 +1,19 @@
+{
+	"Actor": {
+		"types": ["Character"],
+		"templates": {
+			"common": {
+				"general": {
+					"description": {
+						"value": ""
+					}
+				}
+			}
+		},
+		"Character": {
+			"templates": [
+				"common"
+			]
+		}
+	}
+}
