@@ -1,3 +1,0 @@
-@mixin cutoff($size: 10px) {
-  clip-path: polygon(0 $size, $size 0%, 100% 0%, 100% 0%, 100% calc(100% - #{$size}), calc(100% - #{$size}) 100%, 0 100%, 0 100%);
-}

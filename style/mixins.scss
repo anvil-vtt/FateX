@@ -1,1 +1,18 @@
-@import "mixins/cutoff.scss";
+@mixin cutoff($size: 10px) {
+    clip-path: polygon(0 $size, $size 0%, 100% 0%, 100% 0%, 100% calc(100% - #{$size}), calc(100% - #{$size}) 100%, 0 100%, 0 100%);
+}
+
+@mixin fa-icon($icon_name) {
+    &:before {
+        content: fa-content(#{$icon_name});
+    }
+
+    font-weight: 900;
+    font-family: "Font Awesome 5 Free";
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+}

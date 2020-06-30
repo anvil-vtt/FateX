@@ -134,12 +134,23 @@
   padding: 5px 30px 5px 20px;
   clip-path: polygon(0 15px, 15px 0%, 100% 0%, 100% 0%, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 100%);
   position: relative;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 17px;
 }
 .fatex__stress__track__headline:hover .fatex__stress__track__headline__settings {
   opacity: 1;
 }
 
 .fatex__stress__track__headline__settings {
+  font-weight: 900;
+  font-family: "Font Awesome 5 Free";
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -148,17 +159,74 @@
   transition: opacity 0.3s;
   cursor: pointer;
 }
+.fatex__stress__track__headline__settings:before {
+  content: "\f013";
+}
 
 .fatex__stress__track__item__checkbox {
   position: absolute;
   opacity: 0;
-  right: -5000px;
+  left: -5000px;
+}
+.fatex__stress__track__item__checkbox:checked + .fatex__stress__track__item__icon {
+  opacity: 1;
+}
+
+.fatex__stress__track__items {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 15px;
+}
+
+.fatex__stress__track__items__break {
+  flex-wrap: wrap;
 }
 
 .fatex__stress__track__item__box {
+  position: relative;
   width: 30px;
   height: 30px;
-  border: 5px solid #2f3542;
+  border: 2px solid #2f3542;
+  margin: 0 8px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.fatex__stress__track__item {
+  position: relative;
+}
+
+.fatex__stress__track__break {
+  width: 100%;
+}
+
+.fatex__stress__track__item__label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-60%, -40%);
+  font-weight: 900;
+  font-size: 24px;
+  color: #2f3542;
+}
+
+.fatex__stress__track__item__icon {
+  width: 100%;
+  text-align: center;
+  font-size: 25px;
+  opacity: 0;
+  font-weight: 900;
+  font-family: "Font Awesome 5 Free";
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+.fatex__stress__track__item__icon:before {
+  content: "\f00d";
 }
 
 .fatex__header {
