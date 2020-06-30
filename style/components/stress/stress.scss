@@ -1,0 +1,43 @@
+.fatex__stress {
+    padding: $component-padding;
+}
+
+.fatex__stress__track + .fatex__stress__track {
+    margin-top: 20px;
+}
+
+.fatex__stress__track__headline {
+    background: $headline-background;
+    color: $headline-color;
+    padding: 5px 30px 5px 20px;
+    @include cutoff(15px);
+    position: relative;
+
+    &:hover {
+        .fatex__stress__track__headline__settings {
+            opacity: 1;
+        }
+    }
+}
+
+.fatex__stress__track__headline__settings {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    cursor: pointer;
+}
+
+.fatex__stress__track__item__checkbox {
+    position: absolute;
+    opacity: 0;
+    right: -5000px;
+}
+
+.fatex__stress__track__item__box {
+    width: 30px;
+    height: 30px;
+    border: 5px solid $headline-background;
+}

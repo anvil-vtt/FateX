@@ -9,6 +9,7 @@ export const preloadHandlebarsTemplates = async function () {
         'systems/fatex/templates/actors/parts/header.html',
         'systems/fatex/templates/actors/parts/footer.html',
         'systems/fatex/templates/actors/parts/skills.html',
+        'systems/fatex/templates/actors/parts/stress.html',
     ];
 
     return loadTemplates(templatePaths);

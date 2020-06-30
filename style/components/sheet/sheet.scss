@@ -1,4 +1,6 @@
 .sheet.fatex {
+    font-family: $primary-font;
+
     form {
         max-height: 100%;
     }
@@ -12,11 +14,10 @@
         border: 0
     }
 
-    input {
-        border: 0 !important;
-        background: transparent !important;
-        font-size: 23px !important;
-        height: auto !important;
+    input[type="text"] {
+        border: 0;
+        background: transparent;
+        height: auto;
     }
 }
 

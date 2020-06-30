@@ -1,9 +1,9 @@
-.fatex-artwork {
+.fatex__artwork {
     position: relative;
     padding: $component-padding;
 }
 
-.fatex-artwork--image {
+.fatex__artwork--image {
     width: 100%;
     height: 200px;
     background-size: cover;
@@ -12,7 +12,7 @@
     @include cutoff(25px);
 }
 
-.fatex-artwork--handler {
+.fatex__artwork--handler {
     position: absolute;
     width: 100%;
     height: 100%;

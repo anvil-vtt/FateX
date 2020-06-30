@@ -12,14 +12,6 @@
     grid-area: header;
     box-shadow: 0 2px 15px 0 $header-background;
     background: $header-background;
-
-    > .desk__header--content {
-        display: flex;
-    }
-
-    .desk__header__left {
-        flex-grow: 1;
-    }
 }
 
 .desk__main {

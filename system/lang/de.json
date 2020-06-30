@@ -2,7 +2,8 @@
     "FATEx": {
         "Sheet": {
             "Name": "Name",
-            "Description": "Beschreibung"
+            "Description": "Beschreibung",
+            "FatePoints": "Fate Punkte"
         }
     }
 }

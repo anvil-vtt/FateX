@@ -1,0 +1,71 @@
+.fatex__header {
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+
+    input[type="text"].fatex__header__name__input,
+    input[type="text"].fatex__header__fp__input,
+    input[type="text"].fatex__header__refresh__input{
+        color: $header-font-color;
+        height: 32px;
+        font-size: 24px;
+    }
+
+    input[type="text"].fatex__header__fp__input,
+    input[type="text"].fatex__header__refresh__input{
+        width: 40px;
+        text-align: center;
+    }
+}
+
+.fatex__header__name {
+    padding: $component-padding;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.fatex__header__fate-points {
+    display: flex;
+    padding: 10px;
+    flex-direction: column-reverse;
+}
+
+.fatex__header__label {
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    color: $header-font-color;
+    padding-left: $component-padding / 2;
+    padding-top: 3px;
+}
+
+.fatex__header__label--center {
+    padding-left: 0;
+}
+
+.fatex__header__fate-points__wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.fatex__header__fatepoint_divider {
+    font-size: 32px;
+    color: $header-font-color;
+    line-height: 32px;
+}
+
+.fatex__header__logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: calc(#{$component-padding} - 2px);
+    text-align: right;
+}
+.fatex__header__logo__image {
+    display: inline;
+    height: 40px;
+}
+

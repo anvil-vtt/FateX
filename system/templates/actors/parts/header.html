@@ -1,5 +1,20 @@
-<div class="fatex-information">
-    <div class="fatex-information__name">
-        <input class="fatex-information__name__input" name="name" type="text" value="{{actor.name}}">
+<div class="fatex__header">
+    <div class="fatex__header__name">
+        <label class="fatex__header__label" for="name">{{localize "FATEx.Sheet.Name"}}</label>
+        <input class="fatex__header__name__input" name="name" type="text" value="{{actor.name}}">
+    </div>
+
+    <div class="fatex__header__fate-points">
+        <label class="fatex__header__label fatex__header__label--center" for="name">{{localize "FATEx.Sheet.FatePoints"}}</label>
+
+        <div class="fatex__header__fate-points__wrapper">
+            <input class="fatex__header__fp__input fatex__input" name="data.information.fp.current" type="text" value="{{data.information.fp.current}}">
+            <span class="fatex__header__fatepoint_divider"> / </span>
+            <input class="fatex__header__refresh__input fatex__input" name="data.information.fp.refresh" type="text" value="{{data.information.fp.refresh}}">
+        </div>
+    </div>
+
+    <div class="fatex__header__logo">
+        <img class="fatex__header__logo__image" src="systems/fatex/assets/logos/powered_by_fate.svg">
     </div>
 </div>

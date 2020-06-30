@@ -1,8 +1,16 @@
-$sheet-background: #F5F5F5;
-
+// Components
 $component-padding: 10px;
 $component-border-size: 0px;
 $component-border-color: rgb(31, 31, 31);
 $component-border-style: solid;
 
-$header-background: rgba(60, 60, 60, 1);
+// Colors
+$sheet-background: #f1f2f6;
+$header-background: #2f3542;
+$header-font-color: #ffffff;
+
+$headline-background: #2f3542;
+$headline-color: #ffffff;
+
+// Fonts
+$primary-font: 'Montserrat', sans-serif;
