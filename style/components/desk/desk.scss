@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: min-content minmax(100px, 100%) min-content;
-    grid-template-areas: "header" "main" "footer";
+    grid-template-areas: "header" "content" "footer";
 
     height: 100%;
     max-height: 100%;
@@ -14,21 +14,42 @@
     background: $header-background;
 }
 
-.desk__main {
-    grid-area: main;
+.desk__content {
+    grid-area: content;
     overflow-y: auto;
 
-    > .desk__main--content {
+    .desk__content__inner {
         display: flex;
-        height: 100%;
+        height: auto;
+        min-height: 100%;
     }
 
-    .desk__left {
-        flex: 2;
+    .desk__tabloid {
+        flex: 4;
+        min-width: 500px;
+        display: grid;
+        grid-template-columns: 55% 1fr;
+        grid-template-rows: min-content 1fr;
+        gap: 1px 1px;
+        grid-template-areas: "aspects consequences" "tabs tabs";
+
+        .desk__aspects {
+            grid-area: aspects;
+        }
+
+        .desk__consequences {
+            grid-area: consequences;
+        }
+
+        .desk__tabs {
+            grid-area: tabs;
+        }
     }
 
-    .desk__right {
+    .desk__sidebar {
         flex: 1;
+        min-width: 240px;
+        box-shadow: 10px 0 15px 0 $header-background;
     }
 }
 

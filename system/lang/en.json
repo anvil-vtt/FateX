@@ -3,7 +3,16 @@
         "Sheet": {
             "Name": "Name",
             "Description": "Description",
-            "FatePoints": "Fate Points"
+            "FatePoints": "Fate Points",
+            "Aspects": "Aspects",
+            "Consequences": "Consequences",
+            "Artwork": "Artwork",
+            "Tabs": {
+                "Skills": "Skills",
+                "Stunts": "Stunts",
+                "Extras": "Extras",
+                "Bio": "Bio"
+            }
         }
     }
 }

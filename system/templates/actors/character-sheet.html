@@ -1,22 +1,68 @@
 <form autocomplete="off" class="{{cssClass}}">
     <div class="desk">
 
+        {{!--HEADER--}}
         <div class="desk__header">
-                {{> "systems/fatex/templates/actors/parts/header.html"}}
+            {{> "systems/fatex/templates/actors/parts/header.html"}}
         </div>
 
-        <div class="desk__main">
-            <div class="desk__main--content">
-                <div class="desk__left">
-                    {{> "systems/fatex/templates/actors/parts/skills.html"}}
+        <div class="desk__content">
+            <div class="desk__content__inner">
+
+                <div class="desk__tabloid">
+                    {{!--Aspects--}}
+                    <div class="desk__aspects">
+                        {{> "systems/fatex/templates/actors/parts/tabloid/aspects.html"}}
+                    </div>
+
+                    {{!--Consequences--}}
+                    <div class="desk__consequences">
+                        {{> "systems/fatex/templates/actors/parts/tabloid/consequences.html"}}
+                        {{> "systems/fatex/templates/actors/parts/tabloid/conditions.html"}}
+                    </div>
+
+                    {{!--Tabs--}}
+                    <div class="desk__tabs fatex__tabs">
+                        <nav class="fatex_tabs__navigation" data-group="primary">
+                            <a class="fatex_tabs__navigation__item item active" data-tab="skills">{{localize "FATEx.Sheet.Tabs.Skills"}}</a>
+                            <a class="fatex_tabs__navigation__item item" data-tab="stunts">{{localize "FATEx.Sheet.Tabs.Stunts"}}</a>
+                            <a class="fatex_tabs__navigation__item item" data-tab="extras">{{localize "FATEx.Sheet.Tabs.Extras"}}</a>
+                            <a class="fatex_tabs__navigation__item item" data-tab="bio">{{localize "FATEx.Sheet.Tabs.Bio"}}</a>
+                        </nav>
+
+                        <div class="fatex__tabs__content">
+                            {{!--Skills--}}
+                            <div class="fatex__tabs__tab fatex__tabs__tab--skills tab" data-group="skills" data-tab="skills">
+                                {{> "systems/fatex/templates/actors/parts/tabs/skills.html"}}
+                            </div>
+
+                            {{!--Stunts--}}
+                            <div class="fatex__tabs__tab fatex__tabs__tab--stunts tab" data-group="stunts" data-tab="stunts">
+                                {{> "systems/fatex/templates/actors/parts/tabs/stunts.html"}}
+                            </div>
+
+                            {{!--Extras--}}
+                            <div class="fatex__tabs__tab fatex__tabs__tab--extras tab" data-group="extras" data-tab="extras">
+                                {{> "systems/fatex/templates/actors/parts/tabs/stunts.html"}}
+                            </div>
+
+                            {{!--Bio--}}
+                            <div class="fatex__tabs__tab fatex__tabs__tab--bio tab" data-group="bio" data-tab="bio">
+                                {{> "systems/fatex/templates/actors/parts/tabs/stunts.html"}}
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="desk__right">
-                    {{> "systems/fatex/templates/actors/parts/artwork.html"}}
-                    {{> "systems/fatex/templates/actors/parts/stress.html"}}
+
+                {{!--Sidebar--}}
+                <div class="desk__sidebar">
+                    {{> "systems/fatex/templates/actors/parts/sidebar/artwork.html"}}
+                    {{> "systems/fatex/templates/actors/parts/sidebar/stress.html"}}
                 </div>
             </div>
         </div>
 
+        {{!--Footer--}}
         <div class="desk__footer">
             {{> "systems/fatex/templates/actors/parts/footer.html"}}
         </div>

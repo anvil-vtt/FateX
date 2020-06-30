@@ -10,6 +10,10 @@
         background: $sheet-background;
     }
 
+    a:hover {
+        text-shadow: none;
+    }
+
     img {
         border: 0
     }

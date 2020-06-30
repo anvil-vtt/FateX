@@ -9,7 +9,8 @@ $sheet-background: #f1f2f6;
 $header-background: #2f3542;
 $header-font-color: #ffffff;
 
-$headline-background: #2f3542;
+$primary-color: #2f3542;
+$headline-background: $primary-color;
 $headline-color: #ffffff;
 
 // Fonts

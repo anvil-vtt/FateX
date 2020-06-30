@@ -7,6 +7,7 @@ export class ActorSheetFate extends ActorSheet {
                 'fatex',
             ]),
             template: "systems/fatex/templates/actors/character-sheet.html",
+            tabs: [{navSelector: ".fatex_tabs__navigation", contentSelector: ".fatex__tabs__content", initial: "skills"}]
         });
 
         return options;

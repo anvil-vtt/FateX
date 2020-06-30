@@ -2,8 +2,17 @@
     "FATEx": {
         "Sheet": {
             "Name": "Name",
-            "Description": "Beschreibung",
-            "FatePoints": "Fate Punkte"
+            "Description": "Description",
+            "FatePoints": "Fatepunkte",
+            "Aspects": "Aspekte",
+            "Consequences": "Konsequenzen",
+            "Artwork": "Artwork",
+            "Tabs": {
+                "Skills": "Skills",
+                "Stunts": "Stunts",
+                "Extras": "Extras",
+                "Bio": "Bio"
+            }
         }
     }
 }

@@ -6,35 +6,6 @@
     margin-top: 20px;
 }
 
-.fatex__stress__track__headline {
-    background: $headline-background;
-    color: $headline-color;
-    padding: 5px 30px 5px 20px;
-    @include cutoff(15px);
-    position: relative;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 17px;
-
-    &:hover {
-        .fatex__stress__track__headline__settings {
-            opacity: 1;
-        }
-    }
-}
-
-.fatex__stress__track__headline__settings {
-    @include fa-icon($fa-var-cog);
-
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 10px;
-    opacity: 0;
-    transition: opacity 0.3s;
-    cursor: pointer;
-}
-
 .fatex__stress__track__item__checkbox {
     position: absolute;
     opacity: 0;
@@ -59,7 +30,7 @@
     position: relative;
     width: 30px;
     height: 30px;
-    border: 2px solid $headline-background;
+    border: 2px solid $primary-color;
     margin: 0 8px 15px;
 
     display: flex;
@@ -83,7 +54,9 @@
     transform: translate(-60%, -40%);
     font-weight: 900;
     font-size: 24px;
-    color: $headline-background;
+    color: $primary-color;
+
+    -webkit-text-stroke: 1px $sheet-background;
 }
 
 .fatex__stress__track__item__icon {
