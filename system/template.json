@@ -23,5 +23,24 @@
                 "common"
             ]
         }
+    },
+    "Item": {
+        "types": [
+            "stress"
+        ],
+        "templates": {
+            "base": {
+                "description": ""
+            }
+        },
+        "stress": {
+            "templates": [
+                "base"
+            ],
+            "size": 1,
+            "value": 0,
+            "labelType": 0,
+            "customLabel": ""
+        }
     }
 }

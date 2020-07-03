@@ -151,4 +151,36 @@
             </div>
         </div>
     </div>
+
+    {{#each actor.stress as |stress stressIndex|}}
+        <div class="fatex__stress__track fatex__stress__track--index-{{stressIndex}}">
+            <h2 class="fatex__headline">
+                <span>{{stress.name}}</span>
+                <span class="fatex__stress__settings fatex__headline__settings" data-item="{{stress._id}}"></span>
+            </h2>
+
+            <div class="fatex__stress__track__items fatex__stress__track__items__break">
+                {{#each stress.boxes as |box boxIndex|}}
+                    <div class="fatex__stress__track__item">
+                        <label class="fatex__stress__track__item__box" data-item="{{stress._id}}">
+                            <span class="fatex__stress__track__item__label">{{box.label}}</span>
+                            <input class="fatex__stress__track__item__checkbox" type="checkbox"{{#if box.isChecked}}
+                                   checked="checked"{{/if}}>
+                            <span class="fatex__stress__track__item__icon"></span>
+                        </label>
+                    </div>
+
+                    {{#ifnth nth=4}}
+                        <div class="fatex__stress__track__break"></div>
+                    {{/ifnth}}
+                {{/each}}
+            </div>
+        </div>
+    {{/each}}
+
+
+    <button class="fatex__stress__button--add">
+        Add stress track
+    </button>
+
 </div>
