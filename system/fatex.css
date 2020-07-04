@@ -333,7 +333,6 @@
 
 .fatex__input input[type="text"].fatex__input__input {
   padding-left: calc(10px / 2);
-  background: transparent;
   height: auto;
   border: 0;
   border-bottom: 1px solid #2f3542; }
@@ -359,6 +358,8 @@
     text-shadow: none; }
   .sheet.fatex.fatex__sheet img {
     border: 0; }
+  .sheet.fatex.fatex__sheet input[type="text"] {
+    background: transparent; }
 
 .fatex__item_sheet {
   font-family: "Montserrat", sans-serif; }
@@ -371,6 +372,8 @@
     text-shadow: none; }
   .fatex__item_sheet img {
     border: 0; }
+  .fatex__item_sheet input[type="text"] {
+    background: transparent; }
 
 .fatex__dialog {
   font-family: "Montserrat", sans-serif; }
