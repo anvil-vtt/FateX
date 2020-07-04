@@ -11,10 +11,39 @@
     display: flex;
 }
 
+.fatex__setting__radio__group {
+    display: flex;
+    justify-content: space-around;
+}
+
 .fatex__setting__radio {
+    text-align: center;
     cursor: pointer;
+    border: 1px solid $primary-color;
+    opacity: 0.3;
+    border-radius: $component-padding / 2;
+
+    padding: $component-padding / 2;
+}
+
+.fatex__setting__radio--active {
+    opacity: 1;
+}
+
+.fatex__setting__radio__label {
+    display: block;
+    font-size: 12px;
+}
+
+.fatex__setting__radio__image {
+    height: 24px;
+    margin: 8px;
 }
 
 .fatex__setting__radio--active {
     background: rgba(0,0,0,0.1);
+}
+
+.fatex__setting__help {
+    font-size: 10px;
 }

@@ -22,9 +22,14 @@
                 "Name": "Label",
                 "Size": "Number of boxes",
                 "Boxes": {
-                    "Label": "Box labels",
-                    "Custom": "Custom Labels",
+                    "Label": "Box label style",
+                    "Custom": "Custom box labels",
                     "CustomHelp": "Enter space-seperated list of unicode characters. E.g. \"2 4 6 ☀\"."
+                },
+                "Type": {
+                    "Core": "Core",
+                    "Condensed": "Condensed",
+                    "Custom": "Blank / Custom"
                 }
             }
         },

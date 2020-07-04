@@ -1,4 +1,4 @@
-.fatex__sheet {
+.sheet.fatex.fatex__sheet {
     font-family: $primary-font;
 
     form {
@@ -16,12 +16,6 @@
 
     img {
         border: 0
-    }
-
-    input[type="text"] {
-        border: 0;
-        background: transparent;
-        height: auto;
     }
 }
 

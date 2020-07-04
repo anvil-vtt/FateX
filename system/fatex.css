@@ -170,7 +170,8 @@
   .fatex__header input[type="text"].fatex__header__refresh__input {
     color: white;
     height: 32px;
-    font-size: 24px; }
+    font-size: 24px;
+    border: 0; }
   .fatex__header input[type="text"].fatex__header__fp__input,
   .fatex__header input[type="text"].fatex__header__refresh__input {
     width: 40px;
@@ -276,9 +277,6 @@
 .fatex__aspects {
   padding: 10px; }
 
-.fatex__aspects input[type="text"].fatex__aspect__input {
-  border-bottom: 1px solid #2f3542; }
-
 .fatex__aspect {
   margin-top: 10px; }
 
@@ -333,8 +331,12 @@
   padding-top: 3px;
   white-space: nowrap; }
 
-input[type="text"].fatex__input__input {
-  padding-left: calc(10px / 2); }
+.fatex__input input[type="text"].fatex__input__input {
+  padding-left: calc(10px / 2);
+  background: transparent;
+  height: auto;
+  border: 0;
+  border-bottom: 1px solid #2f3542; }
 
 .fatex__input__icon {
   position: absolute;
@@ -346,21 +348,17 @@ input[type="text"].fatex__input__input {
   color: #2f3542;
   -webkit-text-stroke: 1px #f1f2f6; }
 
-.fatex__sheet {
+.sheet.fatex.fatex__sheet {
   font-family: "Montserrat", sans-serif; }
-  .fatex__sheet form {
+  .sheet.fatex.fatex__sheet form {
     max-height: 100%; }
-  .fatex__sheet .window-content {
+  .sheet.fatex.fatex__sheet .window-content {
     padding: 0;
     background: #f1f2f6; }
-  .fatex__sheet a:hover {
+  .sheet.fatex.fatex__sheet a:hover {
     text-shadow: none; }
-  .fatex__sheet img {
+  .sheet.fatex.fatex__sheet img {
     border: 0; }
-  .fatex__sheet input[type="text"] {
-    border: 0;
-    background: transparent;
-    height: auto; }
 
 .fatex__item_sheet {
   font-family: "Montserrat", sans-serif; }
@@ -373,10 +371,6 @@ input[type="text"].fatex__input__input {
     text-shadow: none; }
   .fatex__item_sheet img {
     border: 0; }
-  .fatex__item_sheet input[type="text"] {
-    border: 0;
-    background: transparent;
-    height: auto; }
 
 .fatex__dialog {
   font-family: "Montserrat", sans-serif; }
@@ -402,10 +396,33 @@ input[type="text"].fatex__input__input {
 .fatex__setting__pair {
   display: flex; }
 
+.fatex__setting__radio__group {
+  display: flex;
+  justify-content: space-around; }
+
 .fatex__setting__radio {
-  cursor: pointer; }
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #2f3542;
+  opacity: 0.3;
+  border-radius: 5px;
+  padding: 5px; }
+
+.fatex__setting__radio--active {
+  opacity: 1; }
+
+.fatex__setting__radio__label {
+  display: block;
+  font-size: 12px; }
+
+.fatex__setting__radio__image {
+  height: 24px;
+  margin: 8px; }
 
 .fatex__setting__radio--active {
   background: rgba(0, 0, 0, 0.1); }
+
+.fatex__setting__help {
+  font-size: 10px; }
 
 /*# sourceMappingURL=fatex.css.map */
