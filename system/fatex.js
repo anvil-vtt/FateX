@@ -17,7 +17,7 @@ import { CharacterSheet } from "./module/actor/character/CharacterSheet.js";
 import { NPCSheet } from "./module/actor/npc/NPCSheet.js";
 import { FATEx } from "./module/helper/Config.js";
 import { HandlebarsHelpers } from "./module/helper/HandlebarsHelpers.js";
-import { preloadHandlebarsTemplates } from "./module/helper/TemplatePreloader.js";
+import { TemplatePreloader } from "./module/helper/TemplatePreloader.js";
 import { ItemFate } from "./module/item/ItemFate.js";
 import { StressSheet } from "./module/item/stress/StressSheet.js";
 
@@ -34,7 +34,7 @@ Hooks.once('init', async function () {
 
 
     // Preload all needed templates
-    await preloadHandlebarsTemplates();
+    await TemplatePreloader.preloadHandlebarsTemplates();
 
     // Register HandlebarsHelpers
     HandlebarsHelpers.registerHelpers();
@@ -58,6 +58,4 @@ Hooks.once('init', async function () {
         types: ['stress'],
         makeDefault: true
     });
-
-    game.actors.get("sKaBIHohNNCccZuM").sheet.render(true)
 });
