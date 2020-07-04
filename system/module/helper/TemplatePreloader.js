@@ -13,6 +13,9 @@ export const preloadHandlebarsTemplates = async function () {
         'systems/fatex/templates/actor/parts/tabloid/conditions.html',
         'systems/fatex/templates/actor/parts/header.html',
         'systems/fatex/templates/actor/parts/footer.html',
+
+        'systems/fatex/templates/item/parts/layout/item-header.html',
+        'systems/fatex/templates/item/parts/layout/item-footer.html',
     ];
 
     return loadTemplates(templatePaths);

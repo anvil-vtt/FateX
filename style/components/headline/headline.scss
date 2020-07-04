@@ -9,20 +9,40 @@
     font-size: 17px;
 
     &:hover {
-        .fatex__headline__settings {
+        .fatex__headline__actions {
             opacity: 1;
         }
     }
 }
 
-.fatex__headline__settings {
-    @include fa-icon($fa-var-cog);
+.fatex__headline__actions {
+    display: flex;
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, transparentize($headline-background, 1) 0%, $headline-background 33%, $headline-background 100%);
 
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 15px;
+    right: 10px;
     opacity: 0;
     transition: opacity 0.3s;
-    cursor: pointer;
+    padding-left: 50px;
+
+    > * {
+        margin-right: $component-padding;
+        cursor: pointer;
+    }
+}
+
+.fatex__headline__settings {
+    @include fa-icon($fa-var-cog);
+}
+
+.fatex__headline__delete {
+    @include fa-icon($fa-var-trash);
+    transition: color 0.3s;
+
+    &:hover {
+        color: $color-caution;
+    }
 }

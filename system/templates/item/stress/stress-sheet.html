@@ -1,6 +1,70 @@
-<form autocomplete="off" class="{{cssClass}}">
-    <label>
-        <span>Size</span>
-        <input name="data.size" value="{{data.size}}" />
-    </label>
-</form>
+{{> "systems/fatex/templates/item/parts/layout/item-header.html" label="FATEx.Item.Stress.Name" item=item}}
+
+{{log "data" data "item" item}}
+
+<div class="fatex__settings">
+    <div class="fatex__setting">
+        <h2 class="fatex__headline fatex__setting__headline">
+            <span>{{localize "FATEx.Item.Stress.Size"}}</span>
+        </h2>
+
+        <input type="range" name="data.size" value="{{data.size}}" min="1" max="30"/>
+    </div>
+
+    <div class="fatex__setting">
+        <h2 class="fatex__headline fatex__setting__headline">
+            <span>{{localize "FATEx.Item.Stress.Boxes.Label"}}</span>
+        </h2>
+
+        <div class="fatex__setting__radio_group">
+            <div
+                    class="fatex__setting__radio{{#ifEquals 0
+                                                            data.labelType}} fatex__setting__radio--active{{/ifEquals}}"
+                    data-value="0"
+                    data-name="labelType"
+                    data-type="number"
+            >
+                A
+            </div>
+
+            <div
+                    class="fatex__setting__radio{{#ifEquals 1
+                                                            data.labelType}} fatex__setting__radio--active{{/ifEquals}}"
+                    data-value="1"
+                    data-name="labelType"
+                    data-type="number"
+            >
+                B
+            </div>
+
+            <div
+                    class="fatex__setting__radio{{#ifEquals 2 data.labelType}} fatex__setting__radio--active{{/ifEquals}}"
+                    data-value="2"
+                    data-name="labelType"
+                    data-type="number"
+            >
+                C
+            </div>
+        </div>
+    </div>
+
+    {{#ifEquals 2 data.labelType}}
+        <div class="fatex__setting">
+            <h2 class="fatex__headline fatex__setting__headline">
+                <span>{{localize "FATEx.Item.Stress.Boxes.Custom"}}</span>
+            </h2>
+
+
+            <label for="data.customLabel">
+                <span class="fatex__setting__label">{{localize "FATEx.Item.Stress.Boxes.Custom"}}</span>
+                <input type="text" class="fatex__setting__input fatex__setting__input--text" name="data.customLabel"
+                       value="{{data.customLabel}}"/>
+                <span class="fatex__setting__help">{{localize "FATEx.Item.Stress.Boxes.CustomHelp"}}</span>
+            </label>
+        </div>
+    {{/ifEquals}}
+
+</div>
+
+{{> "systems/fatex/templates/item/parts/layout/item-footer.html"}}
+

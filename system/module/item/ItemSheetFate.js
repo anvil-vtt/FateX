@@ -6,11 +6,20 @@ export class ItemSheetFate extends ItemSheet {
 
         mergeObject(options, {
             classes: options.classes.concat([
-                'fatex',
+                'fatex fatex__item_sheet',
             ]),
         });
 
         return options;
+    }
+
+    getData() {
+        let data = super.getData();
+        const type = data.item.type;
+
+        data = CONFIG.FATEx.itemTypes[type].getSheetData(data);
+
+        return data;
     }
 
     /** @override */
@@ -18,4 +27,29 @@ export class ItemSheetFate extends ItemSheet {
         return `systems/fatex/templates/item/${this.item.data.type}/${this.item.data.type}-sheet.html`;
     }
 
+    /** @override */
+    activateListeners(html) {
+        super.activateListeners(html);
+
+        html.find('.fatex__setting__radio').click(this._onSettingsRadio.bind(this));
+    }
+
+    _onSettingsRadio(e) {
+        e.preventDefault();
+
+        const data = e.currentTarget.dataset;
+        const item = this.entity;
+
+        let value  = data.value;
+
+        if(data.type === "number") {
+            value = parseInt(value);
+        }
+
+        if(item && this.actor) {
+            let updatedItem = duplicate(item);
+            updatedItem.data[data.name] = value;
+            this.actor.updateOwnedItem(updatedItem);
+        }
+    }
 }

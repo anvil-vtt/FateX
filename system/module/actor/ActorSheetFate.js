@@ -4,7 +4,7 @@ export class ActorSheetFate extends ActorSheet {
 
         mergeObject(options, {
             classes: options.classes.concat([
-                'fatex',
+                'fatex fatex__sheet',
             ]),
             template: "systems/fatex/templates/actor/character.html",
             tabs: [{navSelector: ".fatex_tabs__navigation", contentSelector: ".fatex__tabs__content", initial: "skills"}],
@@ -18,44 +18,32 @@ export class ActorSheetFate extends ActorSheet {
     activateListeners(html) {
         super.activateListeners(html);
 
-        // Add new stress track
-        html.find('.fatex__stress__button--add').click(this._onStressCreate.bind(this));
-
-        // Configure single stress track
-        html.find('.fatex__stress__settings').click(this._onStressSettings.bind(this));
+        for (let itemType in CONFIG.FATEx.itemTypes) {
+            CONFIG.FATEx.itemTypes[itemType].activateListeners(html, this);
+        }
     }
 
     /** @override */
-    async getData() {
-        const sheet = super.getData();
+    getData() {
+        let isOwner = this.actor.owner;
 
-        // Add filtered item lists
-        sheet.actor.stress = this._getItemsByType(sheet.actor, 'stress');
-
-        return sheet;
-    }
-
-    _getItemsByType(actor, type) {
-        return actor.items.filter(item => item.type === type);
-    }
-
-    _onStressCreate(e) {
-        e.preventDefault();
-
-        const itemData = {
-            name: 'Stress',
-            type: 'stress',
+        const data = {
+            owner: isOwner,
+            options: this.options,
+            editable: this.isEditable,
+            cssClass: isOwner ? "editable" : "locked",
+            isCharacter: this.entity.data.type === "character",
+            isNPC: this.entity.data.type === "npc",
+            config: CONFIG.FATEx,
         };
 
-        this.actor.createOwnedItem(itemData);
-    }
+        data.actor = duplicate(this.actor.data);
+        data.data = data.actor.data;
+        data.items = this.actor.items;
 
-    _onStressSettings(e) {
-        e.preventDefault();
+        // Add filtered item lists
+        data.stress = data.items.filter(item => item.type === 'stress');
 
-        const data = e.currentTarget.dataset;
-        const item = this.actor.getOwnedItem(data.item);
-
-        item.sheet.render(true);
+        return data;
     }
 }

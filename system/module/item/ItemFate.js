@@ -1,16 +1,11 @@
-import { StressItem } from "./stress/StressItem.js";
-
 export class ItemFate extends Item {
 
     /** @override */
     prepareData() {
         super.prepareData();
-
         let item = this.data;
-        console.log(item);
 
-        if (item.type === 'stress') {
-            item = StressItem.prepareItem(item);
-        }
+        // Let every itemType prepare itselt
+        CONFIG.FATEx.itemTypes[item.type].prepareItem(item);
     }
 }

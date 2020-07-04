@@ -1,0 +1,20 @@
+.fatex__settings {
+    flex: 1;
+}
+
+.fatex__setting {
+    padding: $component-padding;
+    display: block
+}
+
+.fatex__setting__pair {
+    display: flex;
+}
+
+.fatex__setting__radio {
+    cursor: pointer;
+}
+
+.fatex__setting__radio--active {
+    background: rgba(0,0,0,0.1);
+}

@@ -15,9 +15,9 @@
 import { ActorFate } from "./module/actor/ActorFate.js";
 import { CharacterSheet } from "./module/actor/character/CharacterSheet.js";
 import { NPCSheet } from "./module/actor/npc/NPCSheet.js";
-import { FATEx } from "./module/helper/config.js";
-import { HandlebarsHelpers } from "./module/helper/handlebars.js";
-import { preloadHandlebarsTemplates } from "./module/helper/templates.js";
+import { FATEx } from "./module/helper/Config.js";
+import { HandlebarsHelpers } from "./module/helper/HandlebarsHelpers.js";
+import { preloadHandlebarsTemplates } from "./module/helper/TemplatePreloader.js";
 import { ItemFate } from "./module/item/ItemFate.js";
 import { StressSheet } from "./module/item/stress/StressSheet.js";
 
@@ -41,19 +41,23 @@ Hooks.once('init', async function () {
 
     // Unregister Core sheets
     Actors.unregisterSheet('core', ActorSheet);
+    Items.unregisterSheet('core', ItemSheet);
 
     // Register FATEx actor sheets
     Actors.registerSheet('FATEx', CharacterSheet, {
         types: ['character'],
-        makeDefault: true,
+        makeDefault: true
     });
 
     Actors.registerSheet('FATEx', NPCSheet, {
-        types: ['npc'],
+        types: ['npc']
     });
 
     // Register FATEx item sheets
     Items.registerSheet('FATEx', StressSheet, {
         types: ['stress'],
+        makeDefault: true
     });
+
+    game.actors.get("sKaBIHohNNCccZuM").sheet.render(true)
 });

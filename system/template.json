@@ -26,7 +26,8 @@
     },
     "Item": {
         "types": [
-            "stress"
+            "stress",
+            "aspect"
         ],
         "templates": {
             "base": {
@@ -41,6 +42,13 @@
             "value": 0,
             "labelType": 0,
             "customLabel": ""
+        },
+        "aspect": {
+            "templates": [
+                "base"
+            ],
+            "label": "",
+            "corrupted": false
         }
     }
 }
