@@ -12,11 +12,14 @@
  *      (http://creativecommons.org/licenses/by/3.0/).
  */
 
-import { CharacterSheetFate } from "./module/actor/character.js";
-import ActorFate from "./module/actor/entity.js";
-import { NPCSheetFate } from "./module/actor/npc.js";
-import { FATEx } from "./module/config.js";
-import { preloadHandlebarsTemplates } from "./module/templates.js";
+import { ActorFate } from "./module/actor/ActorFate.js";
+import { CharacterSheet } from "./module/actor/character/CharacterSheet.js";
+import { NPCSheet } from "./module/actor/npc/NPCSheet.js";
+import { FATEx } from "./module/helper/Config.js";
+import { HandlebarsHelpers } from "./module/helper/HandlebarsHelpers.js";
+import { preloadHandlebarsTemplates } from "./module/helper/TemplatePreloader.js";
+import { ItemFate } from "./module/item/ItemFate.js";
+import { StressSheet } from "./module/item/stress/StressSheet.js";
 
 /* -------------------------------- */
 /*	System initialization			*/
@@ -27,21 +30,34 @@ Hooks.once('init', async function () {
     // Initialise config
     CONFIG.FATEx = FATEx;
     CONFIG.Actor.entityClass = ActorFate;
+    CONFIG.Item.entityClass = ItemFate;
+
 
     // Preload all needed templates
     await preloadHandlebarsTemplates();
 
+    // Register HandlebarsHelpers
+    HandlebarsHelpers.registerHelpers();
+
     // Unregister Core sheets
     Actors.unregisterSheet('core', ActorSheet);
+    Items.unregisterSheet('core', ItemSheet);
 
     // Register FATEx actor sheets
-    Actors.registerSheet('FATEx', CharacterSheetFate, {
+    Actors.registerSheet('FATEx', CharacterSheet, {
         types: ['character'],
-        makeDefault: true,
+        makeDefault: true
     });
 
-    Actors.registerSheet('FATEx', NPCSheetFate, {
-        types: ['npc'],
-        makeDefault: true,
+    Actors.registerSheet('FATEx', NPCSheet, {
+        types: ['npc']
     });
+
+    // Register FATEx item sheets
+    Items.registerSheet('FATEx', StressSheet, {
+        types: ['stress'],
+        makeDefault: true
+    });
+
+    game.actors.get("sKaBIHohNNCccZuM").sheet.render(true)
 });

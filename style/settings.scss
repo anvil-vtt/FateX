@@ -5,13 +5,15 @@ $component-border-color: rgb(31, 31, 31);
 $component-border-style: solid;
 
 // Colors
-$sheet-background: #f1f2f6;
-$header-background: #2f3542;
-$header-font-color: #ffffff;
+$sheet-background: rgba(241, 242, 246, 1);
+$header-background: rgba(47, 53, 66, 1);
+$header-font-color: rgba(255, 255, 255, 1);
 
-$primary-color: #2f3542;
+$primary-color: rgba(47, 53, 66, 1);
 $headline-background: $primary-color;
-$headline-color: #ffffff;
+$headline-color: rgba(255, 255, 255, 1);
+
+$color-caution: rgba(255, 71, 87, 1);
 
 // Fonts
 $primary-font: 'Montserrat', sans-serif;

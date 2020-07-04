@@ -13,6 +13,11 @@
                 "Extras": "Extras",
                 "Bio": "Bio"
             }
+        },
+        "Item": {
+            "Stress": {
+                "Name": "Bezeichner"
+            }
         }
     }
 }

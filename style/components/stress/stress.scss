@@ -46,6 +46,7 @@
     width: 100%;
 }
 
+
 .fatex__stress__track__item__label {
     position: absolute;
     left: 0;
@@ -56,7 +57,7 @@
     font-size: 24px;
     color: $primary-color;
 
-    -webkit-text-stroke: 1px $sheet-background;
+    text-shadow: 1px 1px 1px $sheet-background;
 }
 
 .fatex__stress__track__item__icon {

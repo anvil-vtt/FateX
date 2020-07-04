@@ -1,7 +1,7 @@
-export default class ActorFate extends Actor {
+export class ActorFate extends Actor {
 
     /**
-     * Provide basic configuration for newly created actors of type "character"
+     * Provide basic configuration for newly created actor of type "character"
      *
      * @override
      * */

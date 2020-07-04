@@ -12,7 +12,31 @@
                 "Stunts": "Stunts",
                 "Extras": "Extras",
                 "Bio": "Bio"
+            },
+            "Stress": {
+                "Add": "Add stress track"
             }
+        },
+        "Item": {
+            "Stress": {
+                "Name": "Label",
+                "Size": "Number of boxes",
+                "Boxes": {
+                    "Label": "Box label style",
+                    "Custom": "Custom box labels",
+                    "CustomHelp": "Enter space-seperated list of unicode characters. E.g. \"2 4 6 ☀\"."
+                },
+                "Type": {
+                    "Core": "Core",
+                    "Condensed": "Condensed",
+                    "Custom": "Blank / Custom"
+                }
+            }
+        },
+        "Dialog": {
+            "EntityDelete": "Do you really want to <strong>permanently</strong> delete this entity?",
+            "Confirm": "Confirm",
+            "Cancel": "Cancel"
         }
     }
 }

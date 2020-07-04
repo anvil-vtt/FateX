@@ -23,5 +23,32 @@
                 "common"
             ]
         }
+    },
+    "Item": {
+        "types": [
+            "stress",
+            "aspect"
+        ],
+        "templates": {
+            "base": {
+                "description": ""
+            }
+        },
+        "stress": {
+            "templates": [
+                "base"
+            ],
+            "size": 1,
+            "value": 0,
+            "labelType": 0,
+            "customLabel": ""
+        },
+        "aspect": {
+            "templates": [
+                "base"
+            ],
+            "label": "",
+            "corrupted": false
+        }
     }
 }

@@ -19,8 +19,13 @@
     white-space: nowrap;
 }
 
-input[type="text"].fatex__input__input {
+.fatex__input input[type="text"].fatex__input__input {
     padding-left: calc(#{$component-padding} / 2);
+    background: transparent;
+    height: auto;
+
+    border: 0;
+    border-bottom: 1px solid $primary-color;
 }
 
 .fatex__input__icon {
