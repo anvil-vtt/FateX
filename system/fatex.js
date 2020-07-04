@@ -32,7 +32,6 @@ Hooks.once('init', async function () {
     CONFIG.Actor.entityClass = ActorFate;
     CONFIG.Item.entityClass = ItemFate;
 
-
     // Preload all needed templates
     await TemplatePreloader.preloadHandlebarsTemplates();
 
