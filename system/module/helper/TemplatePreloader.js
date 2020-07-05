@@ -1,10 +1,9 @@
 export class TemplatePreloader {
 
     /**
-     * Preload a set of templates to compile and cache them for
-     * fast access during rendering
+     * Preload a set of templates to compile and cache them for fast access during rendering
      */
-    static preloadHandlebarsTemplates = async function () {
+    static async preloadHandlebarsTemplates () {
         const templatePaths = [
             'systems/fatex/templates/actor/parts/sidebar/artwork.html',
             'systems/fatex/templates/actor/parts/sidebar/stress.html',

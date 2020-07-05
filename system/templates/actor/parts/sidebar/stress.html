@@ -12,14 +12,9 @@
             <div class="fatex__stress__track__items fatex__stress__track__items__break">
                 {{#each stress.data.boxes as |box boxIndex|}}
                     <div class="fatex__stress__track__item">
-                        <label
-                                class="fatex__stress__track__item__box"
-                                data-index="{{boxIndex}}"
-                                data-item="{{stress._id}}"
-                        >
+                        <label class="fatex__stress__track__item__box" data-index="{{boxIndex}}" data-item="{{stress._id}}">
                             <span class="fatex__stress__track__item__label">{{box.label}}</span>
-                            <input class="fatex__stress__track__item__checkbox" type="checkbox"{{#if box.isChecked}}
-                                   checked="checked"{{/if}}>
+                            <input class="fatex__stress__track__item__checkbox" type="checkbox"{{#if box.isChecked}} checked="checked"{{/if}}>
                             <span class="fatex__stress__track__item__icon"></span>
                         </label>
                     </div>
