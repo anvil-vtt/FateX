@@ -7,9 +7,7 @@ export class ItemSheetFate extends ItemSheet {
         mergeObject(options, {
             classes: options.classes.concat([
                 'fatex fatex__item_sheet',
-            ]),
-            width: 500,
-            height: 450
+            ])
         });
 
         return options;

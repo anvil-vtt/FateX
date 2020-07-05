@@ -28,5 +28,12 @@ export class HandlebarsHelpers {
             return (arg1 !== arg2) ? options.fn(this) : options.inverse(this);
         });
 
+        /**
+         * Checks if two values are different
+         */
+        Handlebars.registerHelper('ifNotEmpty', function(arg1, options) {
+            return (arg1 !== "") ? options.fn(this) : options.inverse(this);
+        });
+
     }
 }

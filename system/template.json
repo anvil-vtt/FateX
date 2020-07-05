@@ -13,12 +13,12 @@
                 }
             }
         },
-        "Character": {
+        "character": {
             "templates": [
                 "common"
             ]
         },
-        "NPC": {
+        "npc": {
             "templates": [
                 "common"
             ]

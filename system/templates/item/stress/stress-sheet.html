@@ -60,6 +60,17 @@
             <input type="text" class="fatex__setting__input fatex__input__input" name="data.customLabel" value="{{data.customLabel}}"/>
         </label>
     </div>
+
+    <div class="fatex__setting">
+        <h2 class="fatex__headline fatex__setting__headline">
+            <span>{{localize "FATEx.Item.Stress.Description"}}</span>
+        </h2>
+
+        <label class="fatex__input" for="data.description">
+            <span class="fatex__setting__help">{{localize "FATEx.Item.Stress.DescriptionHelp"}}</span>
+            <input type="text" name="data.description" class="fatex__setting__input fatex__input__input" value="{{data.description}}" />
+        </label>
+    </div>
 </div>
 
 {{> "systems/fatex/templates/item/parts/layout/item-footer.html"}}

@@ -22,9 +22,14 @@
 .fatex__input input[type="text"].fatex__input__input {
     padding-left: calc(#{$component-padding} / 2);
     height: auto;
-
     border: 0;
     border-bottom: 1px solid $primary-color;
+}
+
+.fatex__input__textarea {
+    height: auto;
+    border-bottom: 1px solid $primary-color;
+    border-radius: 3px;
 }
 
 .fatex__input__icon {

@@ -9,6 +9,12 @@
                 </div>
             </h2>
 
+            {{#ifNotEmpty stress.data.data.description}}
+                <span class="fatex__stress__track__description">
+                    {{stress.data.data.description}}
+                </span>
+            {{/ifNotEmpty}}
+
             <div class="fatex__stress__track__items fatex__stress__track__items__break">
                 {{#each stress.data.boxes as |box boxIndex|}}
                     <div class="fatex__stress__track__item">

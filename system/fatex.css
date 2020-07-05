@@ -168,6 +168,12 @@
 .fatex__stress__add {
   cursor: pointer; }
 
+.fatex__stress__track__description {
+  font-size: 13px;
+  display: inline-block;
+  padding: 0 10px;
+  width: 100%; }
+
 .fatex__header {
   height: 100%;
   position: relative;
@@ -349,6 +355,11 @@
   border: 0;
   border-bottom: 1px solid #2f3542; }
 
+.fatex__input__textarea {
+  height: auto;
+  border-bottom: 1px solid #2f3542;
+  border-radius: 3px; }
+
 .fatex__input__icon {
   position: absolute;
   left: 0;
@@ -385,6 +396,12 @@
   .fatex__item_sheet img {
     border: 0; }
   .fatex__item_sheet input[type="text"] {
+    background: transparent;
+    border: 0;
+    width: auto;
+    height: auto;
+    padding: 0; }
+  .fatex__item_sheet textarea {
     background: transparent;
     border: 0;
     width: auto;

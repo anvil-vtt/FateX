@@ -21,6 +21,8 @@
             "Stress": {
                 "Name": "Label",
                 "Size": "Number of boxes",
+                "Description": "Description",
+                "DescriptionHelp": "The description will be shown inside the stress track area.",
                 "Boxes": {
                     "Label": "Box label style",
                     "Custom": "Custom box labels",
