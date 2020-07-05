@@ -33,25 +33,8 @@ export class ItemSheetFate extends ItemSheet {
     activateListeners(html) {
         super.activateListeners(html);
 
-        html.find('.fatex__setting__radio').click(this._onSettingsRadio.bind(this));
-    }
-
-    _onSettingsRadio(e) {
-        e.preventDefault();
-
-        const data = e.currentTarget.dataset;
-        const item = this.entity;
-
-        let value  = data.value;
-
-        if(data.type === "number") {
-            value = parseInt(value);
-        }
-
-        if(item && this.actor) {
-            let updatedItem = duplicate(item);
-            updatedItem.data[data.name] = value;
-            this.actor.updateOwnedItem(updatedItem);
+        for (let sheetComponent in CONFIG.FATEx.sheetComponents) {
+            CONFIG.FATEx.sheetComponents[sheetComponent].activateListeners(html, this);
         }
     }
 }

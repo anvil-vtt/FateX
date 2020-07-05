@@ -1,0 +1,35 @@
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: 0 0 1px #999 inset;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    outline: none;
+    border-radius: 3px;
+    background: $primary-color !important;
+    border: 0;
+}
+
+:root {
+    scrollbar-width: thin !important;
+    scrollbar-color: $primary-color $sheet-background !important;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    background: $primary-color;
+    height: 30px;
+    width: 18px;
+    cursor: pointer;
+    margin-top: -12px;
+}
+
+input[type=range]::-moz-range-thumb {
+    background: $primary-color;
+    height: 30px;
+    width: 18px;
+    cursor: pointer;
+}

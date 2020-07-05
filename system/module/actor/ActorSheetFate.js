@@ -19,7 +19,11 @@ export class ActorSheetFate extends ActorSheet {
         super.activateListeners(html);
 
         for (let itemType in CONFIG.FATEx.itemTypes) {
-            CONFIG.FATEx.itemTypes[itemType].activateListeners(html, this);
+            CONFIG.FATEx.itemTypes[itemType].activateActorSheetListeners(html, this);
+        }
+
+        for (let sheetComponent in CONFIG.FATEx.sheetComponents) {
+            CONFIG.FATEx.sheetComponents[sheetComponent].activateListeners(html, this);
         }
     }
 
@@ -45,5 +49,32 @@ export class ActorSheetFate extends ActorSheet {
         data.stress = data.items.filter(item => item.type === 'stress');
 
         return data;
+    }
+
+    /** @override */
+    _getHeaderButtons() {
+        let buttons = super._getHeaderButtons();
+
+        // Token Configuration
+        const canConfigure = game.user.isGM || (this.actor.owner && game.user.can("TOKEN_CONFIGURE"));
+        if (this.options.editable && canConfigure) {
+            buttons = [
+                {
+                    label: "Edit mode",
+                    class: "fatex-toggle-edit-mode",
+                    icon: "fas fa-edit",
+                    onclick: ev => this._onToggleEditMode(ev)
+                }
+            ].concat(buttons);
+        }
+
+        return buttons
+    }
+
+    _onToggleEditMode(e) {
+        e.preventDefault();
+
+        // This will break with future updates
+        e.currentTarget.parentElement.parentElement.classList.toggle("fatex__helper--enable-edit-mode")
     }
 }

@@ -4,7 +4,12 @@
 
 .fatex__setting {
     padding: $component-padding;
-    display: block
+    display: block;
+    transition: opacity 0.3s;
+}
+
+.fatex__setting--disabled {
+    opacity: 0.3;
 }
 
 .fatex__setting__pair {
@@ -22,8 +27,13 @@
     border: 1px solid $primary-color;
     opacity: 0.3;
     border-radius: $component-padding / 2;
+    flex-shrink: 0;
 
     padding: $component-padding / 2;
+}
+
+.fatex__setting__radio + .fatex__setting__radio {
+    margin-left: $component-padding;
 }
 
 .fatex__setting__radio--active {
@@ -41,9 +51,23 @@
 }
 
 .fatex__setting__radio--active {
-    background: rgba(0,0,0,0.1);
+    background: rgba(0,0,0,0.05);
 }
 
 .fatex__setting__help {
     font-size: 10px;
+}
+
+.fatex__setting__range {
+    display: flex;
+}
+
+
+input[type="text"].fatex__setting__range__value {
+    font-weight: 900;
+    font-size: 24px;
+    color: $primary-color;
+    text-shadow: 1px 1px 1px $sheet-background;
+    width: 50px;
+    text-align: center;
 }

@@ -1,7 +1,9 @@
 export class BaseItem {
-    static prepareItem(item) {
+    static prepareItemForActorSheet(item) {
         return item;
     }
+
+    static activateActorSheetListeners(html, sheet) {}
 
     static getSheetData(sheetData) {
         return sheetData;

@@ -23,13 +23,16 @@
                         <div class="fatex__stress__track__break"></div>
                     {{/ifnth}}
                 {{/each}}
+
+                {{#each stress.data.fillers}}
+                    <div class="fatex__stress__track__filler"><div class="fatex__stress__track__item__box"></div></div>
+                {{/each}}
             </div>
         </div>
     {{/each}}
 
-
-    <button class="fatex__stress__add">
-        Add stress track
-    </button>
+    <div class="fatex__stress__track fatex__helper__edit">
+        <h2 class="fatex__headline fatex__headline--center fatex__stress__add">+</h2>
+    </div>
 
 </div>

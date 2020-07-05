@@ -3,7 +3,7 @@
 }
 
 .fatex__stress__track + .fatex__stress__track {
-    margin-top: 20px;
+    margin-top: $component-padding;
 }
 
 .fatex__stress__track__item__checkbox {
@@ -67,4 +67,13 @@
     opacity: 0;
 
     @include fa-icon($fa-var-times);
+}
+
+.fatex__stress__track__filler {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.fatex__stress__add {
+    cursor: pointer;
 }

@@ -1,54 +1,65 @@
 import { BaseItem } from "../BaseItem.js";
 
 export class StressItem extends BaseItem {
-    static prepareItem(item) {
+    static LABEL_TYPE_CORE = 0;
+    static LABEL_TYPE_CONDENSED = 1;
+    static LABEL_TYPE_CUSTOM = 2;
+
+    static activateActorSheetListeners(html, sheet) {
+        // Add new stress track
+        html.find('.fatex__stress__add').click(this._onStressTrackAdd.bind(sheet));
+
+        // Configure single stress track
+        html.find('.fatex__stress__settings').click(this._onStressTrackSettings.bind(sheet));
+
+        // Check or uncheck a single box
+        html.find('.fatex__stress__track__item__box').click(this._onStressBoxToggle.bind(sheet));
+
+        // Delete a stress track
+        html.find('.fatex__stress__delete').click(this._onStressTrackDelete.bind(sheet));
+    }
+
+    static prepareItemForActorSheet(item) {
         // Add renderable boxes
         item.boxes = [];
+        item.fillers = [];
 
         // Add boxes with prepared data
         for (let i = 0; i < item.data.size; i++) {
             let box = [];
 
             box.isChecked = item.data.value & Math.pow(2, i);
-            box.label = this.getBoxLabel(item,i);
+            box.label = this._getBoxLabel(item,i);
 
             item.boxes[i] = box;
+        }
+
+        if(item.data.size % 4 !== 0) {
+            for (let i = (4 - (item.data.size % 4)); i > 0; i--) {
+                item.fillers[i] = i;
+            }
         }
 
         return item;
     }
 
-    static getBoxLabel(item, i) {
-        if(item.data.labelType === 1) {
+     static _getBoxLabel(item, i) {
+        if(item.data.labelType === StressItem.LABEL_TYPE_CONDENSED) {
             return 1;
         }
 
-        if(item.data.labelType === 2) {
+        if(item.data.labelType === StressItem.LABEL_TYPE_CUSTOM) {
             return (item.data.customLabel).split(" ")[i];
         }
 
         return i+1;
     }
 
-    static toggleStressValue(stressValue, boxIndex) {
-        return stressValue ^= Math.pow(2, boxIndex);
+    static _getToggledStressValue(currentStressTrackValue, boxIndexToToggle) {
+        return currentStressTrackValue ^ Math.pow(2, boxIndexToToggle);
     }
 
-    static activateListeners(html, sheet) {
-        // Add new stress track
-        html.find('.fatex__stress__add').click(this.onStressCreate.bind(sheet));
-
-        // Configure single stress track
-        html.find('.fatex__stress__settings').click(this.onStressSettings.bind(sheet));
-
-        // Check or uncheck a single box
-        html.find('.fatex__stress__track__item__box').click(this.onStressToggle.bind(sheet));
-
-        // Delete a stress track
-        html.find('.fatex__stress__delete').click(this.onStressDelete.bind(sheet));
-    }
-
-    static onStressCreate(e) {
+    static _onStressTrackAdd(e) {
         e.preventDefault();
 
         const itemData = {
@@ -59,10 +70,15 @@ export class StressItem extends BaseItem {
             }
         };
 
-        this.actor.createOwnedItem(itemData);
+        // Create item and render sheet afterwards
+        this.actor.createOwnedItem(itemData).then((item) => {
+            // We have to reload the item for it to have a sheet
+            const createdItem = this.actor.getOwnedItem(item._id);
+            createdItem.sheet.render(true);
+        });
     }
 
-    static onStressDelete(e) {
+    static _onStressTrackDelete(e) {
         e.preventDefault();
 
         const data = e.currentTarget.dataset;
@@ -90,7 +106,7 @@ export class StressItem extends BaseItem {
         })).render(true);
     }
 
-    static onStressSettings(e) {
+    static _onStressTrackSettings(e) {
         e.preventDefault();
 
         const data = e.currentTarget.dataset;
@@ -99,7 +115,7 @@ export class StressItem extends BaseItem {
         item.sheet.render(true);
     }
 
-    static onStressToggle(e) {
+    static _onStressBoxToggle(e) {
         e.preventDefault();
 
         const data = e.currentTarget.dataset;
@@ -108,7 +124,7 @@ export class StressItem extends BaseItem {
 
         if(item) {
             let updatedItem = duplicate(item);
-            updatedItem.data.value = StressItem.toggleStressValue(updatedItem.data.value, index);
+            updatedItem.data.value = StressItem._getToggledStressValue(updatedItem.data.value, index);
 
             this.actor.updateOwnedItem(updatedItem);
         }

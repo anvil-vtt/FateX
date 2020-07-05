@@ -12,10 +12,10 @@
  *      (http://creativecommons.org/licenses/by/3.0/).
  */
 
+import { FATEx } from "./config.js";
 import { ActorFate } from "./module/actor/ActorFate.js";
 import { CharacterSheet } from "./module/actor/character/CharacterSheet.js";
 import { NPCSheet } from "./module/actor/npc/NPCSheet.js";
-import { FATEx } from "./module/helper/Config.js";
 import { HandlebarsHelpers } from "./module/helper/HandlebarsHelpers.js";
 import { TemplatePreloader } from "./module/helper/TemplatePreloader.js";
 import { ItemFate } from "./module/item/ItemFate.js";

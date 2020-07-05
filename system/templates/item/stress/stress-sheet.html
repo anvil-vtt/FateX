@@ -2,11 +2,14 @@
 
 <div class="fatex__settings">
     <div class="fatex__setting">
-        <h2 class="fatex__headline fatex__setting__headline">
+        <h2 class="fatex__headline">
             <span>{{localize "FATEx.Item.Stress.Size"}}</span>
         </h2>
 
-        <input type="range" name="data.size" value="{{data.size}}" min="1" max="28"/>
+        <div class="fatex__setting__range">
+            <input type="text" class="fatex__setting__range__value" value="{{data.size}}" />
+            <input type="range" class="fatex__setting__range__slider" name="data.size" value="{{data.size}}" min="1" max="28"/>
+        </div>
     </div>
 
     <div class="fatex__setting">
@@ -47,19 +50,16 @@
         </div>
     </div>
 
-    {{#ifEquals 2 data.labelType}}
-        <div class="fatex__setting">
-            <h2 class="fatex__headline fatex__setting__headline">
-                <span>{{localize "FATEx.Item.Stress.Boxes.Custom"}}</span>
-            </h2>
+    <div class="fatex__setting{{#ifNotEquals 2 data.labelType}} fatex__setting--disabled{{/ifNotEquals}}">
+        <h2 class="fatex__headline fatex__setting__headline">
+            <span>{{localize "FATEx.Item.Stress.Boxes.Custom"}}</span>
+        </h2>
 
-            <label class="fatex__input" for="data.customLabel">
-                <span class="fatex__setting__help">{{localize "FATEx.Item.Stress.Boxes.CustomHelp"}}</span>
-                <input type="text" class="fatex__setting__input fatex__input__input" name="data.customLabel" value="{{data.customLabel}}"/>
-            </label>
-        </div>
-    {{/ifEquals}}
-
+        <label class="fatex__input" for="data.customLabel">
+            <span class="fatex__setting__help">{{localize "FATEx.Item.Stress.Boxes.CustomHelp"}}</span>
+            <input type="text" class="fatex__setting__input fatex__input__input" name="data.customLabel" value="{{data.customLabel}}"/>
+        </label>
+    </div>
 </div>
 
 {{> "systems/fatex/templates/item/parts/layout/item-footer.html"}}

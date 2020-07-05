@@ -17,6 +17,7 @@
 .desk__content {
     grid-area: content;
     overflow-y: auto;
+    scrollbar-width: thin;
 
     .desk__content__inner {
         display: flex;
