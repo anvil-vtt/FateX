@@ -1,33 +1,20 @@
 <div class="fatex__aspects">
     <h2 class="fatex__aspects__headline fatex__headline">
         <span>{{localize "FATEx.Sheet.Aspects"}}</span>
-        <div class="fatex__headline__actions">
-            <span class="fatex__headline__add fatex__aspect__add"></span>
+        <div class="fatex__headline__actions fatex__item__actions">
+            <span class="fatex__item__add fatex__aspect__add"></span>
         </div>
     </h2>
 
-    <div class="fatex__aspect fatex__input">
-        <label class="fatex__aspect__label fatex__input__label" for="data.aspect.1">High Concept</label>
-        <input class="fatex__aspect__input fatex__input__input" name="data.aspect.1" type="text" value="Crazy veteran of the old world" />
-    </div>
+    {{#each aspects as |aspect aspectIndex|}}
+        <div class="fatex__aspect fatex__input">
+            <label class="fatex__aspect__label fatex__input__label">{{default aspect.data.data.label "&nbsp;"}}</label>
+            <div class="fatex__aspect__input fatex__input__input">{{default aspect.data.data.value "&nbsp;"}}</div>
 
-    <div class="fatex__aspect fatex__input">
-        <label class="fatex__aspect__label fatex__input__label" for="data.aspect.1">Trouble</label>
-        <input class="fatex__aspect__input fatex__input__input" name="data.aspect.1" type="text" value="Everyone hates my guts and I hate theirs" />
-    </div>
-
-    <div class="fatex__aspect fatex__input">
-        <label class="fatex__aspect__label fatex__input__label" for="data.aspect.1">Relationship</label>
-        <input class="fatex__aspect__input fatex__input__input" name="data.aspect.1" type="text" value="I hate AND love you Silvia!" />
-    </div>
-
-    <div class="fatex__aspect fatex__input">
-        <label class="fatex__aspect__label fatex__input__label" for="data.aspect.1">&nbsp;</label>
-        <input class="fatex__aspect__input fatex__input__input" name="data.aspect.1" type="text" value="Flaming Sword of Power" />
-    </div>
-
-    <div class="fatex__aspect fatex__input">
-        <label class="fatex__aspect__label fatex__input__label" for="data.aspect.1">&nbsp;</label>
-        <input class="fatex__aspect__input fatex__input__input" name="data.aspect.1" type="text" value="Where am I and who are you?" />
-    </div>
+            <div class="fatex__item__actions">
+                <span class="fatex__aspect__settings fatex__item__settings" data-item="{{aspect._id}}"></span>
+                <span class="fatex__aspect__delete fatex__item__delete" data-item="{{aspect._id}}"></span>
+            </div>
+        </div>
+    {{/each}}
 </div>

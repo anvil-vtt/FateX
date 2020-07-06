@@ -110,12 +110,12 @@ export class ActorSheetFate extends ActorSheet {
 
     /**
      * OnClick handler for the previously declaried "Edit mode" button.
-     * Toggles the 'fatex__helper--enable-edit-mode' class for the sheet container.
+     * Toggles the 'fatex__helper--enable-editmode' class for the sheet container.
      */
     _onToggleEditMode(e) {
         e.preventDefault();
 
         // This will break with future updates
-        e.currentTarget.parentElement.parentElement.classList.toggle("fatex__helper--enable-edit-mode")
+        e.currentTarget.parentElement.parentElement.classList.toggle("fatex__helper--enable-editmode")
     }
 }

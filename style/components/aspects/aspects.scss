@@ -2,9 +2,17 @@
     padding: $component-padding;
 }
 
-.fatex__aspects {
-}
-
 .fatex__aspect {
     margin-top: 10px;
+
+    &:hover {
+        .fatex__item__actions {
+            opacity: 1;
+        }
+    }
+}
+
+.fatex__aspect__input {
+    border-radius: 3px;
+    border-bottom: 1px solid $primary-color;
 }

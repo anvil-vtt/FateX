@@ -24,3 +24,24 @@
     line-height: 1;
     -webkit-font-smoothing: antialiased;
 }
+
+@mixin edit-settings($background-color) {
+    display: flex;
+    align-items: center;
+
+    background: $background-color;
+    background: linear-gradient(90deg, transparentize($background-color, 1) 0%, $background-color 33%, $background-color 100%);
+
+    position: absolute;
+    height: 100%;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+    padding-left: 50px;
+
+    > * {
+        margin-right: $component-padding;
+        cursor: pointer;
+    }
+}

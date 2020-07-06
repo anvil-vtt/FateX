@@ -12,6 +12,7 @@
     grid-area: header;
     box-shadow: 0 2px 15px 0 $header-background;
     background: $header-background;
+    z-index: 5;
 }
 
 .desk__content {

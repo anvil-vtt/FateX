@@ -1,12 +1,9 @@
-.fatex__helper__edit {
+.fatex__helper__editmode {
     transition: all 0.3s;
     opacity: 0;
-    pointer-events: none;
-}
 
-.fatex__helper--enable-edit-mode {
-    .fatex__helper__edit {
+    &:hover,
+    .fatex__helper--enable-editmode & {
         opacity: 1;
-        pointer-events: all;
     }
 }

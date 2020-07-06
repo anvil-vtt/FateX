@@ -33,6 +33,13 @@
                     "Condensed": "Condensed",
                     "Custom": "Blank / Custom"
                 }
+            },
+            "Aspect": {
+                "Name": "Name",
+                "Value": "Text",
+                "Description": "Description",
+                "DescriptionHelp": "Is only displayed when sending to chat",
+                "Label": "Label"
             }
         },
         "Dialog": {

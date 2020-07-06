@@ -1,0 +1,24 @@
+.fatex__item__actions {
+    @include edit-settings($sheet-background);
+
+    .fatex__helper--enable-editmode & {
+        opacity: 1;
+    }
+}
+
+.fatex__item__add {
+    @include fa-icon($fa-var-plus);
+}
+
+.fatex__item__settings {
+    @include fa-icon($fa-var-cog);
+}
+
+.fatex__item__delete {
+    @include fa-icon($fa-var-trash);
+    transition: color 0.3s;
+
+    &:hover {
+        color: $caution-color;
+    }
+}

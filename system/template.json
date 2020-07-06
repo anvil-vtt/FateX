@@ -38,7 +38,7 @@
             "templates": [
                 "base"
             ],
-            "size": 1,
+            "size": 4,
             "value": 0,
             "labelType": 0,
             "customLabel": ""
@@ -48,8 +48,8 @@
                 "base"
             ],
             "label": "",
-            "corrupted": false,
-            "value": ""
+            "value": "",
+            "corrupted": false
         }
     }
 }

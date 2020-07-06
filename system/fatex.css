@@ -46,7 +46,8 @@
 .desk__header {
   grid-area: header;
   box-shadow: 0 2px 15px 0 #2f3542;
-  background: #2f3542; }
+  background: #2f3542;
+  z-index: 5; }
 
 .desk__content {
   grid-area: content;
@@ -77,6 +78,63 @@
 
 .desk__footer {
   grid-area: footer; }
+
+.fatex__item__actions {
+  display: flex;
+  align-items: center;
+  background: #f1f2f6;
+  background: linear-gradient(90deg, rgba(241, 242, 246, 0) 0%, #f1f2f6 33%, #f1f2f6 100%);
+  position: absolute;
+  height: 100%;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  transition: opacity 0.3s;
+  padding-left: 50px; }
+  .fatex__item__actions > * {
+    margin-right: 10px;
+    cursor: pointer; }
+  .fatex__helper--enable-editmode .fatex__item__actions {
+    opacity: 1; }
+
+.fatex__item__add {
+  font-weight: 900;
+  font-family: "Font Awesome 5 Free";
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased; }
+  .fatex__item__add:before {
+    content: "\f067"; }
+
+.fatex__item__settings {
+  font-weight: 900;
+  font-family: "Font Awesome 5 Free";
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased; }
+  .fatex__item__settings:before {
+    content: "\f013"; }
+
+.fatex__item__delete {
+  font-weight: 900;
+  font-family: "Font Awesome 5 Free";
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  transition: color 0.3s; }
+  .fatex__item__delete:before {
+    content: "\f1f8"; }
+  .fatex__item__delete:hover {
+    color: #ff4757; }
 
 .fatex__artwork {
   position: relative;
@@ -252,63 +310,32 @@
 
 .fatex__headline__actions {
   display: flex;
-  background: black;
+  align-items: center;
+  background: #2f3542;
   background: linear-gradient(90deg, rgba(47, 53, 66, 0) 0%, #2f3542 33%, #2f3542 100%);
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 10px;
+  height: 100%;
+  top: 0;
+  right: 0;
   opacity: 0;
   transition: opacity 0.3s;
-  padding-left: 50px; }
+  padding-left: 50px;
+  right: 10px; }
   .fatex__headline__actions > * {
     margin-right: 10px;
     cursor: pointer; }
-
-.fatex__headline__settings {
-  font-weight: 900;
-  font-family: "Font Awesome 5 Free";
-  display: inline-block;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased; }
-  .fatex__headline__settings:before {
-    content: "\f013"; }
-
-.fatex__headline__delete {
-  font-weight: 900;
-  font-family: "Font Awesome 5 Free";
-  display: inline-block;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  transition: color 0.3s; }
-  .fatex__headline__delete:before {
-    content: "\f1f8"; }
-  .fatex__headline__delete:hover {
-    color: #ff4757; }
-
-.fatex__headline__add {
-  font-weight: 900;
-  font-family: "Font Awesome 5 Free";
-  display: inline-block;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased; }
-  .fatex__headline__add:before {
-    content: "\f067"; }
 
 .fatex__aspects {
   padding: 10px; }
 
 .fatex__aspect {
   margin-top: 10px; }
+  .fatex__aspect:hover .fatex__item__actions {
+    opacity: 1; }
+
+.fatex__aspect__input {
+  border-radius: 3px;
+  border-bottom: 1px solid #2f3542; }
 
 .fatex__consequences {
   padding: 10px; }
@@ -361,11 +388,13 @@
   padding-top: 3px;
   white-space: nowrap; }
 
-.fatex__input input[type="text"].fatex__input__input {
+.fatex__input input[type="text"].fatex__input__input,
+.fatex__input__input {
   padding-left: calc(10px / 2);
   height: auto;
   border: 0;
-  border-bottom: 1px solid #2f3542; }
+  border-bottom: 1px solid #2f3542;
+  border-radius: 3px; }
 
 .fatex__input__textarea {
   height: auto;
@@ -522,13 +551,10 @@ input[type=range]::-moz-range-thumb {
   width: 18px;
   cursor: pointer; }
 
-.fatex__helper__edit {
+.fatex__helper__editmode {
   transition: all 0.3s;
-  opacity: 0;
-  pointer-events: none; }
-
-.fatex__helper--enable-edit-mode .fatex__helper__edit {
-  opacity: 1;
-  pointer-events: all; }
+  opacity: 0; }
+  .fatex__helper__editmode:hover, .fatex__helper--enable-editmode .fatex__helper__editmode {
+    opacity: 1; }
 
 /*# sourceMappingURL=fatex.css.map */

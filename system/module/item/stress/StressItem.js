@@ -1,22 +1,18 @@
 import { BaseItem } from "../BaseItem.js";
 
 export class StressItem extends BaseItem {
+    static defaultName = 'Stress';
+    static entityName = 'stress';
+
     static LABEL_TYPE_CORE = 0;
     static LABEL_TYPE_CONDENSED = 1;
     static LABEL_TYPE_CUSTOM = 2;
 
     static activateActorSheetListeners(html, sheet) {
-        // Add new stress track
-        html.find('.fatex__stress__add').click((e) => this._onStressTrackAdd.call(this, e, sheet));
-
-        // Configure single stress track
-        html.find('.fatex__stress__settings').click((e) => this._onStressTrackSettings.call(this, e, sheet));
+        super.activateActorSheetListeners(html, sheet);
 
         // Check or uncheck a single box
         html.find('.fatex__stress__track__item__box').click((e) => this._onStressBoxToggle.call(this, e, sheet));
-
-        // Delete a stress track
-        html.find('.fatex__stress__delete').click((e) => this._onStressTrackDelete.call(this, e, sheet));
     }
 
     static prepareItemForActorSheet(item) {
@@ -63,57 +59,6 @@ export class StressItem extends BaseItem {
      * EVENT HANDLER
      *************************/
 
-    static _onStressTrackAdd(e, sheet) {
-        e.preventDefault();
-
-        const itemData = {
-            name: 'Stress',
-            type: 'stress',
-            data: {
-                size: 4
-            }
-        };
-
-        this._createNewItem(itemData, sheet);
-    }
-
-    static _onStressTrackDelete(e, sheet) {
-        e.preventDefault();
-
-        const data = e.currentTarget.dataset;
-        const item = sheet.actor.getOwnedItem(data.item);
-
-        (new Dialog({
-            title: `Delete ${item.name}`,
-            content: game.i18n.format('FATEx.Dialog.EntityDelete'),
-            buttons: {
-                cancel: {
-                    icon: '<i class="fas fa-times"></i>',
-                    label: game.i18n.localize("FATEx.Dialog.Cancel"),
-                    callback: () => null
-                },
-                submit: {
-                    icon: '<i class="fas fa-check"></i>',
-                    label: game.i18n.localize("FATEx.Dialog.Confirm"),
-                    callback: () => {
-                        sheet.actor.deleteOwnedItem(data.item);
-                    }
-                }
-            }
-        }, {
-            classes: ['fatex', 'fatex__dialog'],
-        })).render(true);
-    }
-
-    static _onStressTrackSettings(e, sheet) {
-        e.preventDefault();
-
-        const data = e.currentTarget.dataset;
-        const item = sheet.actor.getOwnedItem(data.item);
-
-        item.sheet.render(true);
-    }
-
     static _onStressBoxToggle(e, sheet) {
         e.preventDefault();
 
@@ -129,4 +74,5 @@ export class StressItem extends BaseItem {
             });
         }
     }
+
 }

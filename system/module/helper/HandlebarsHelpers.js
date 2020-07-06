@@ -35,5 +35,15 @@ export class HandlebarsHelpers {
             return (arg1 !== "") ? options.fn(this) : options.inverse(this);
         });
 
+        /**
+         * Helper which prints an argument or a default if it the argument is an empty string
+         */
+        Handlebars.registerHelper('default', function (value, defaultValue) {
+            if (!value || value === '') {
+                return new Handlebars.SafeString(defaultValue);
+            }
+
+            return value;
+        });
     }
 }
