@@ -5,22 +5,22 @@
             "npc"
         ],
         "templates": {
-            "common": {
-                "general": {
-                    "description": {
-                        "value": ""
-                    }
+            "default": {
+                "description": "",
+                "fatepoints": {
+                    "current": 3,
+                    "refresh": 3
                 }
             }
         },
         "character": {
             "templates": [
-                "common"
+                "default"
             ]
         },
         "npc": {
             "templates": [
-                "common"
+                "default"
             ]
         }
     },
@@ -48,7 +48,8 @@
                 "base"
             ],
             "label": "",
-            "corrupted": false
+            "corrupted": false,
+            "value": ""
         }
     }
 }

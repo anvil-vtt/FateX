@@ -24,7 +24,7 @@ export class ItemSheetFate extends ItemSheet {
 
     /** @override */
     get template() {
-        return `systems/fatex/templates/item/${this.item.data.type}/${this.item.data.type}-sheet.html`;
+        return `systems/fatex/templates/item/${this.item.data.type}-sheet.html`;
     }
 
     /** @override */

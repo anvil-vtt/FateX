@@ -1,4 +1,15 @@
+/**
+ * FATEx base class for all actor sheets.
+ * Defines what information on the actorsheet may be rendered.
+ */
 export class ActorSheetFate extends ActorSheet {
+
+    /**
+     * Defines the default options for all FATEx actor sheets.
+     * This consists of things like css classes, the template to load and the tab configuration.
+     *
+     * @returns {Object}
+     */
     static get defaultOptions() {
         const options = super.defaultOptions;
 
@@ -14,49 +25,75 @@ export class ActorSheetFate extends ActorSheet {
         return options;
     }
 
-    /** @override */
+    /**
+     * Activates DOM-listeners on elements to react to different events like "click" or "change".
+     * ItemTypes and sheet components can activate their own listeners and receive the sheet as a reference.
+     *
+     * @param html
+     *  The rendered html content of the created actor sheet.
+     */
     activateListeners(html) {
         super.activateListeners(html);
 
+        // Custom sheet listeners for every ItemType
         for (let itemType in CONFIG.FATEx.itemTypes) {
             CONFIG.FATEx.itemTypes[itemType].activateActorSheetListeners(html, this);
         }
 
+        // Custom sheet listeners for every SheetComponent
         for (let sheetComponent in CONFIG.FATEx.sheetComponents) {
             CONFIG.FATEx.sheetComponents[sheetComponent].activateListeners(html, this);
         }
     }
 
-    /** @override */
+    /**
+     * Returns all data that is needed to render the sheet.
+     * All variables are available inside the handelbar templates.
+     *
+     * Items are split into their categories for easier access.
+     *
+     * returns {Object}
+     */
     getData() {
         let isOwner = this.actor.owner;
 
+        // Basic fields and flags
         const data = {
             owner: isOwner,
             options: this.options,
             editable: this.isEditable,
-            cssClass: isOwner ? "editable" : "locked",
             isCharacter: this.entity.data.type === "character",
             isNPC: this.entity.data.type === "npc",
             config: CONFIG.FATEx,
         };
 
+        // Add actor, actor fields and items
         data.actor = duplicate(this.actor.data);
         data.data = data.actor.data;
         data.items = this.actor.items;
 
-        // Add filtered item lists
+        // Add filtered item lists for easier access
         data.stress = data.items.filter(item => item.type === 'stress');
+        data.aspects = data.items.filter(item => item.type === 'aspect');
+        data.skills = data.items.filter(item => item.type === 'skill');
+        data.stunts = data.items.filter(item => item.type === 'stunt');
+        data.extras = data.items.filter(item => item.type === 'extra');
+        data.consequences = data.items.filter(item => item.type === 'consequence');
 
         return data;
     }
 
-    /** @override */
+    /**
+     * Adds FATEx specific buttons to the sheets header bar.
+     *
+     * @returns {*}
+     *   A list of buttons to be rendered.
+     */
     _getHeaderButtons() {
         let buttons = super._getHeaderButtons();
 
-        // Token Configuration
-        const canConfigure = game.user.isGM || (this.actor.owner && game.user.can("TOKEN_CONFIGURE"));
+        // Edit mode button to toggle which interactive elements are visible on the sheet.
+        const canConfigure = game.user.isGM || this.actor.owner;
         if (this.options.editable && canConfigure) {
             buttons = [
                 {
@@ -71,6 +108,10 @@ export class ActorSheetFate extends ActorSheet {
         return buttons
     }
 
+    /**
+     * OnClick handler for the previously declaried "Edit mode" button.
+     * Toggles the 'fatex__helper--enable-edit-mode' class for the sheet container.
+     */
     _onToggleEditMode(e) {
         e.preventDefault();
 

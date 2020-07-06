@@ -1,33 +1,19 @@
 <div class="fatex-skills">
-    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, ab aliquid architecto consectetur eligendi error
-         exercitationem expedita possimus reprehenderit temporibus? Culpa facere molestiae nam provident quisquam
-         ratione reprehenderit sequi vero.
-    </div>
-    <div>Accusamus accusantium at aut consectetur cum distinctio fugit incidunt labore magni odit sit unde, voluptas?
-         Aspernatur consectetur culpa nesciunt quas quod! Deleniti eius facere illo nemo repellat. Laudantium sunt,
-         unde!
-    </div>
-    <div>Aperiam blanditiis deserunt dicta distinctio error eum molestias nemo odio officiis possimus quibusdam,
-         repellendus, sapiente sed similique sunt suscipit ut voluptate. Consectetur eligendi illum ipsa minus
-         praesentium, qui veritatis voluptatum!
-    </div>
+    <div class="fatex__setting__radio__group">
+        <div
+                class="fatex__setting__radio{{#ifEquals 1 data.fatepoints.current}} fatex__setting__radio--active{{/ifEquals}}"
+                data-value="1"
+                data-name="data.fatepoints.current"
+        >
+            <span class="fatex__setting__radio__label">1</span>
+        </div>
 
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aut eos error exercitationem fugit hic impedit,
-       ipsum iste magni molestiae nemo, nobis odio officiis quis ratione rerum tempore totam, vero.</p>
-    <p>Alias architecto assumenda, blanditiis eaque explicabo ipsam iure molestias, omnis, rem repellat unde voluptate
-       voluptatem voluptatibus. Enim, esse iste modi nisi nulla provident voluptas. Aperiam aut explicabo labore
-       necessitatibus sint.</p>
-    <p>Adipisci culpa deleniti deserunt doloribus enim et explicabo harum iste laboriosam magni molestias mollitia
-       nobis, non quae quaerat quia quos, reiciendis repudiandae soluta vel! Aliquam dolor maiores molestiae neque
-       officiis?</p>
-
-
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aut eos error exercitationem fugit hic impedit,
-       ipsum iste magni molestiae nemo, nobis odio officiis quis ratione rerum tempore totam, vero.</p>
-    <p>Alias architecto assumenda, blanditiis eaque explicabo ipsam iure molestias, omnis, rem repellat unde voluptate
-       voluptatem voluptatibus. Enim, esse iste modi nisi nulla provident voluptas. Aperiam aut explicabo labore
-       necessitatibus sint.</p>
-    <p>Adipisci culpa deleniti deserunt doloribus enim et explicabo harum iste laboriosam magni molestias mollitia
-       nobis, non quae quaerat quia quos, reiciendis repudiandae soluta vel! Aliquam dolor maiores molestiae neque
-       officiis?</p>
+        <div
+                class="fatex__setting__radio{{#ifEquals 2 data.fatepoints.current}} fatex__setting__radio--active{{/ifEquals}}"
+                data-value="2"
+                data-name="data.fatepoints.current"
+        >
+            <span class="fatex__setting__radio__label">2</span>
+        </div>
+    </div>
 </div>

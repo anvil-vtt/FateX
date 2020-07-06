@@ -18,6 +18,7 @@ import { CharacterSheet } from "./module/actor/character/CharacterSheet.js";
 import { NPCSheet } from "./module/actor/npc/NPCSheet.js";
 import { HandlebarsHelpers } from "./module/helper/HandlebarsHelpers.js";
 import { TemplatePreloader } from "./module/helper/TemplatePreloader.js";
+import { AspectSheet } from "./module/item/aspect/AspectSheet.js";
 import { ItemFate } from "./module/item/ItemFate.js";
 import { StressSheet } from "./module/item/stress/StressSheet.js";
 
@@ -55,6 +56,11 @@ Hooks.once('init', async function () {
     // Register FATEx item sheets
     Items.registerSheet('FATEx', StressSheet, {
         types: ['stress'],
+        makeDefault: true
+    });
+
+    Items.registerSheet('FATEx', AspectSheet, {
+        types: ['aspect'],
         makeDefault: true
     });
 });

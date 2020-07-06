@@ -1,28 +1,55 @@
 import { BaseComponent } from "../BaseComponent.js";
 
+/**
+ * Radio component for actor- and itemsheets.
+ * Allows the user to change between multiple choices.
+ */
 export class Radio extends BaseComponent {
 
+    /**
+     * Adds a click listener to every .fatex__setting__radio element.
+     * The name of the field, the value of the field and more a loaded via datasets.
+     *
+     * @param html
+     *   The html of the inner part of the rendered sheet.
+     *
+     * @param sheet
+     *   The actor- or itemsheet to be referenced inside the handler.
+     */
     static activateListeners(html, sheet) {
-        html.find('.fatex__setting__radio').click(this._onSettingsRadio.bind(sheet));
+        html.find('.fatex__setting__radio').click((e) => this._onSettingsRadio.call(this, e, sheet));
     }
 
-    static _onSettingsRadio(e) {
-        e.preventDefault();
+    /**
+     * OnClick-Handler for radio setting components.
+     * Updates the sheets referenced entity with a given name and value (via dataset).
+     *
+     * @param event
+     *   The event that was fired on the sheet.
+     *
+     * @param sheet
+     *   The sheet on which the event was fired.
+     */
+    static _onSettingsRadio(event, sheet) {
+        event.preventDefault();
 
-        const data = e.currentTarget.dataset;
-        const item = this.entity;
+        const dataset = event.currentTarget.dataset;
+        const dataKey = dataset.name;
+        const sheetEntity = sheet.entity;
 
-        let value  = data.value;
+        // Sane default
+        let value = "";
 
-        if(data.type === "number") {
-            value = parseInt(value);
+        // Check for numbers as only strings are passed in datasets
+        if(dataset.type === "number") {
+            value = parseInt(dataset.value);
+        } else {
+            value = dataset.value;
         }
 
-        if(item && this.actor) {
-            let updatedItem = duplicate(item);
-            updatedItem.data[data.name] = value;
-            this.actor.updateOwnedItem(updatedItem);
-        }
+        sheetEntity.update({
+            [dataKey]: value
+        });
     }
 
 }

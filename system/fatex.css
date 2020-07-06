@@ -292,6 +292,18 @@
   .fatex__headline__delete:hover {
     color: #ff4757; }
 
+.fatex__headline__add {
+  font-weight: 900;
+  font-family: "Font Awesome 5 Free";
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased; }
+  .fatex__headline__add:before {
+    content: "\f067"; }
+
 .fatex__aspects {
   padding: 10px; }
 

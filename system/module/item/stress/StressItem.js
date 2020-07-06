@@ -7,16 +7,16 @@ export class StressItem extends BaseItem {
 
     static activateActorSheetListeners(html, sheet) {
         // Add new stress track
-        html.find('.fatex__stress__add').click(this._onStressTrackAdd.bind(sheet));
+        html.find('.fatex__stress__add').click((e) => this._onStressTrackAdd.call(this, e, sheet));
 
         // Configure single stress track
-        html.find('.fatex__stress__settings').click(this._onStressTrackSettings.bind(sheet));
+        html.find('.fatex__stress__settings').click((e) => this._onStressTrackSettings.call(this, e, sheet));
 
         // Check or uncheck a single box
-        html.find('.fatex__stress__track__item__box').click(this._onStressBoxToggle.bind(sheet));
+        html.find('.fatex__stress__track__item__box').click((e) => this._onStressBoxToggle.call(this, e, sheet));
 
         // Delete a stress track
-        html.find('.fatex__stress__delete').click(this._onStressTrackDelete.bind(sheet));
+        html.find('.fatex__stress__delete').click((e) => this._onStressTrackDelete.call(this, e, sheet));
     }
 
     static prepareItemForActorSheet(item) {
@@ -59,7 +59,11 @@ export class StressItem extends BaseItem {
         return currentStressTrackValue ^ Math.pow(2, boxIndexToToggle);
     }
 
-    static _onStressTrackAdd(e) {
+    /*************************
+     * EVENT HANDLER
+     *************************/
+
+    static _onStressTrackAdd(e, sheet) {
         e.preventDefault();
 
         const itemData = {
@@ -70,19 +74,14 @@ export class StressItem extends BaseItem {
             }
         };
 
-        // Create item and render sheet afterwards
-        this.actor.createOwnedItem(itemData).then((item) => {
-            // We have to reload the item for it to have a sheet
-            const createdItem = this.actor.getOwnedItem(item._id);
-            createdItem.sheet.render(true);
-        });
+        this._createNewItem(itemData, sheet);
     }
 
-    static _onStressTrackDelete(e) {
+    static _onStressTrackDelete(e, sheet) {
         e.preventDefault();
 
         const data = e.currentTarget.dataset;
-        const item = this.actor.getOwnedItem(data.item);
+        const item = sheet.actor.getOwnedItem(data.item);
 
         (new Dialog({
             title: `Delete ${item.name}`,
@@ -97,7 +96,7 @@ export class StressItem extends BaseItem {
                     icon: '<i class="fas fa-check"></i>',
                     label: game.i18n.localize("FATEx.Dialog.Confirm"),
                     callback: () => {
-                        this.actor.deleteOwnedItem(data.item);
+                        sheet.actor.deleteOwnedItem(data.item);
                     }
                 }
             }
@@ -106,27 +105,28 @@ export class StressItem extends BaseItem {
         })).render(true);
     }
 
-    static _onStressTrackSettings(e) {
+    static _onStressTrackSettings(e, sheet) {
         e.preventDefault();
 
         const data = e.currentTarget.dataset;
-        const item = this.actor.getOwnedItem(data.item);
+        const item = sheet.actor.getOwnedItem(data.item);
 
         item.sheet.render(true);
     }
 
-    static _onStressBoxToggle(e) {
+    static _onStressBoxToggle(e, sheet) {
         e.preventDefault();
 
-        const data = e.currentTarget.dataset;
-        const item = this.actor.getOwnedItem(data.item);
-        const index = data.index;
+        const dataset = e.currentTarget.dataset;
+        const item = sheet.actor.getOwnedItem(dataset.item);
+        const index = dataset.index;
 
         if(item) {
-            let updatedItem = duplicate(item);
-            updatedItem.data.value = StressItem._getToggledStressValue(updatedItem.data.value, index);
+            const newValue = StressItem._getToggledStressValue(item.data.data.value, index);
 
-            this.actor.updateOwnedItem(updatedItem);
+            item.update({
+                "data.value": newValue
+            });
         }
     }
 }

@@ -52,3 +52,7 @@
         color: $caution-color;
     }
 }
+
+.fatex__headline__add {
+    @include fa-icon($fa-var-plus);
+}
