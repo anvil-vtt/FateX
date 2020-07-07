@@ -28,6 +28,6 @@
     "compatibleCoreVersion": "0.6.5",
     "socket": true,
     "url": "https://github.com/anvil-vtt/fate",
-    "manifest": "https://github.com/anvil-vtt/FATEx/releases/download/latest/system.json",
-    "download": "https://github.com/anvil-vtt/FATEx/releases/download/latest/fatex.zip"
+    "manifest": "https://github.com/anvil-vtt/FATEx/releases/latest/download/system.json",
+    "download": "https://github.com/anvil-vtt/FATEx/releases/latest/download/fatex.zip"
 }
