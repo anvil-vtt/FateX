@@ -1,5 +1,4 @@
 name: FATEx CI
-
 on: [push]
 
 jobs:
@@ -7,15 +6,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Get Version
+        shell: bash
+        id: get-version
+        run: echo "::set-output name=version::$(node ./.github/workflows/get-version.js)"
       - run: cd system && zip -r ../fatex.zip *
       - name: Create Release
-        id: create_latest_release
+        id: create_versioned_release
         uses: ncipollo/release-action@v1
         with:
           allowUpdates: true
-          name: Latest
+          name: ${{ steps.get-version.outputs.version }}
           draft: false
           prerelease: false
           token: ${{ secrets.GITHUB_TOKEN }}
           artifacts: './system/system.json,./fatex.zip'
-          tag: latest
+          tag: ${{ steps.get-version.outputs.version }}
