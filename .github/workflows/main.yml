@@ -10,7 +10,7 @@ jobs:
         shell: bash
         id: get-version
         run: echo "::set-output name=version::$(node ./.github/workflows/get-version.js)"
-      - run: cd system && zip -r ../fatex-${{ steps.get-version.outputs.version }}.zip *
+      - run: cd system && zip -r ../fatex.zip *
       - name: Create Release
         id: create_versioned_release
         uses: ncipollo/release-action@v1
@@ -20,5 +20,5 @@ jobs:
           draft: false
           prerelease: false
           token: ${{ secrets.GITHUB_TOKEN }}
-          artifacts: './system/system.json,./fatex-${{ steps.get-version.outputs.version }}.zip'
+          artifacts: './system/system.json,./fatex.zip'
           tag: ${{ steps.get-version.outputs.version }}
