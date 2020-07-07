@@ -12,7 +12,16 @@
     }
 }
 
+.fatex__aspect__actions_wrapper {
+    position: relative;
+}
+
+.fatex__aspect__actions {
+    font-size: 18px;
+}
+
 .fatex__aspect__input {
     border-radius: 3px;
     border-bottom: 1px solid $primary-color;
+    padding: 3px 0;
 }

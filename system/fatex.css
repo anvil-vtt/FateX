@@ -90,7 +90,8 @@
   right: 0;
   opacity: 0;
   transition: opacity 0.3s;
-  padding-left: 50px; }
+  padding-left: 50px;
+  text-shadow: 1px 1px 2px #a0a0a0; }
   .fatex__item__actions > * {
     margin-right: 10px;
     cursor: pointer; }
@@ -300,8 +301,8 @@
   position: relative;
   font-weight: bold;
   text-transform: uppercase;
-  font-size: 17px;
-  box-shadow: 1px 1px 1px black; }
+  font-size: 13px;
+  box-shadow: 1px 1px 1px #a0a0a0; }
   .fatex__headline:hover .fatex__headline__actions {
     opacity: 1; }
 
@@ -320,6 +321,7 @@
   opacity: 0;
   transition: opacity 0.3s;
   padding-left: 50px;
+  text-shadow: 1px 1px 2px #a0a0a0;
   right: 10px; }
   .fatex__headline__actions > * {
     margin-right: 10px;
@@ -333,9 +335,16 @@
   .fatex__aspect:hover .fatex__item__actions {
     opacity: 1; }
 
+.fatex__aspect__actions_wrapper {
+  position: relative; }
+
+.fatex__aspect__actions {
+  font-size: 18px; }
+
 .fatex__aspect__input {
   border-radius: 3px;
-  border-bottom: 1px solid #2f3542; }
+  border-bottom: 1px solid #2f3542;
+  padding: 3px 0; }
 
 .fatex__consequences {
   padding: 10px; }

@@ -9,11 +9,14 @@
     {{#each aspects as |aspect aspectIndex|}}
         <div class="fatex__aspect fatex__input">
             <label class="fatex__aspect__label fatex__input__label">{{default aspect.data.data.label "&nbsp;"}}</label>
-            <div class="fatex__aspect__input fatex__input__input">{{default aspect.data.data.value "&nbsp;"}}</div>
 
-            <div class="fatex__item__actions">
-                <span class="fatex__aspect__settings fatex__item__settings" data-item="{{aspect._id}}"></span>
-                <span class="fatex__aspect__delete fatex__item__delete" data-item="{{aspect._id}}"></span>
+            <div class="fatex__aspect__actions_wrapper">
+                <div class="fatex__aspect__input fatex__input__input">{{default aspect.data.data.value "&nbsp;"}}</div>
+
+                <div class="fatex__aspect__actions fatex__item__actions">
+                    <span class="fatex__aspect__settings fatex__item__settings" data-item="{{aspect._id}}"></span>
+                    <span class="fatex__aspect__delete fatex__item__delete" data-item="{{aspect._id}}"></span>
+                </div>
             </div>
         </div>
     {{/each}}

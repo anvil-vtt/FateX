@@ -5,16 +5,16 @@ $component-border-color: rgb(31, 31, 31);
 $component-border-style: solid;
 
 // Colors
-$sheet-background: rgba(241, 242, 246, 1);
-$header-background: rgba(47, 53, 66, 1);
-$header-font-color: rgba(255, 255, 255, 1);
+$sheet-background: rgb(241, 242, 246);
+$header-background: rgb(47, 53, 66);
+$header-font-color: rgb(255, 255, 255);
 
-$primary-color: rgba(47, 53, 66, 1);
+$primary-color: rgb(47, 53, 66);
 $headline-background: $primary-color;
-$headline-color: rgba(255, 255, 255, 1);
+$headline-color: rgb(255, 255, 255);
 
-$caution-color: rgba(255, 71, 87, 1);
-$shadow-color: rgba(0,0,0,1);
+$caution-color: rgb(255, 71, 87);
+$shadow-color: rgb(160, 160, 160);
 
 // Fonts
 $primary-font: 'Montserrat', sans-serif;
