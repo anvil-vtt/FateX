@@ -62,15 +62,17 @@
     min-width: 500px;
     display: grid;
     grid-template-columns: 55% 1fr;
-    grid-template-rows: min-content 1fr;
+    grid-template-rows: min-content 1fr min-content;
     gap: 1px 1px;
-    grid-template-areas: "aspects consequences" "tabs tabs"; }
+    grid-template-areas: "aspects consequences" "tabs tabs" "copyright copyright"; }
     .desk__content .desk__tabloid .desk__aspects {
       grid-area: aspects; }
     .desk__content .desk__tabloid .desk__consequences {
       grid-area: consequences; }
     .desk__content .desk__tabloid .desk__tabs {
       grid-area: tabs; }
+    .desk__content .desk__tabloid .desk__copyright {
+      grid-area: copyright; }
   .desk__content .desk__sidebar {
     flex: 1;
     min-width: 240px;
@@ -93,8 +95,7 @@
   padding-left: 50px;
   text-shadow: 1px 1px 2px #a0a0a0; }
   .fatex__item__actions > * {
-    margin-right: 10px;
-    cursor: pointer; }
+    margin-right: 10px; }
   .fatex__helper--enable-editmode .fatex__item__actions {
     opacity: 1; }
 
@@ -106,7 +107,8 @@
   font-variant: normal;
   text-rendering: auto;
   line-height: 1;
-  -webkit-font-smoothing: antialiased; }
+  -webkit-font-smoothing: antialiased;
+  cursor: pointer; }
   .fatex__item__add:before {
     content: "\f067"; }
 
@@ -118,9 +120,23 @@
   font-variant: normal;
   text-rendering: auto;
   line-height: 1;
-  -webkit-font-smoothing: antialiased; }
+  -webkit-font-smoothing: antialiased;
+  cursor: pointer; }
   .fatex__item__settings:before {
     content: "\f013"; }
+
+.fatex__item__sort {
+  font-weight: 900;
+  font-family: "Font Awesome 5 Free";
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  cursor: move; }
+  .fatex__item__sort:before {
+    content: "\f0dc"; }
 
 .fatex__item__delete {
   font-weight: 900;
@@ -131,7 +147,8 @@
   text-rendering: auto;
   line-height: 1;
   -webkit-font-smoothing: antialiased;
-  transition: color 0.3s; }
+  transition: color 0.3s;
+  cursor: pointer; }
   .fatex__item__delete:before {
     content: "\f1f8"; }
   .fatex__item__delete:hover {
@@ -242,8 +259,8 @@
   .fatex__header input[type="text"].fatex__header__fp__input,
   .fatex__header input[type="text"].fatex__header__refresh__input {
     color: white;
-    height: 32px;
-    font-size: 24px;
+    height: 25px;
+    font-size: 23px;
     border: 0; }
   .fatex__header input[type="text"].fatex__header__fp__input,
   .fatex__header input[type="text"].fatex__header__refresh__input {
@@ -266,7 +283,7 @@
   font-weight: 300;
   letter-spacing: 3px;
   color: white;
-  padding-left: 5px;
+  padding-left: 2px;
   padding-top: 3px;
   white-space: nowrap; }
 
@@ -278,9 +295,9 @@
   justify-content: center; }
 
 .fatex__header__fatepoint_divider {
-  font-size: 32px;
-  color: white;
-  line-height: 32px; }
+  font-size: 25px;
+  line-height: 25px;
+  color: white; }
 
 .fatex__header__logo {
   display: flex;
@@ -324,16 +341,15 @@
   text-shadow: 1px 1px 2px #a0a0a0;
   right: 10px; }
   .fatex__headline__actions > * {
-    margin-right: 10px;
-    cursor: pointer; }
+    margin-right: 10px; }
 
 .fatex__aspects {
   padding: 10px; }
 
-.fatex__aspect {
-  margin-top: 10px; }
-  .fatex__aspect:hover .fatex__item__actions {
-    opacity: 1; }
+.fatex__aspect + .fatex__aspect {
+  padding-top: 10px; }
+.fatex__aspect:hover .fatex__item__actions {
+  opacity: 1; }
 
 .fatex__aspect__actions_wrapper {
   position: relative; }
@@ -350,7 +366,7 @@
   padding: 10px; }
 
 .fatex__consequences input[type="text"].fatex__consequence__input {
-  border-bottom: 1px solid #2f3542; }
+  padding-left: 5px; }
 
 .fatex__consequence {
   margin-top: 10px; }
@@ -420,19 +436,20 @@
   color: #2f3542;
   -webkit-text-stroke: 1px #f1f2f6; }
 
-.sheet.fatex.fatex__sheet {
+.fatex__sheet {
   font-family: "Montserrat", sans-serif; }
-  .sheet.fatex.fatex__sheet form {
+  .fatex__sheet form {
     max-height: 100%; }
-  .sheet.fatex.fatex__sheet .window-content {
+  .fatex__sheet .window-content {
     padding: 0;
     background: #f1f2f6; }
-  .sheet.fatex.fatex__sheet a:hover {
+  .fatex__sheet a:hover {
     text-shadow: none; }
-  .sheet.fatex.fatex__sheet img {
+  .fatex__sheet img {
     border: 0; }
-  .sheet.fatex.fatex__sheet input[type="text"] {
-    background: transparent; }
+  .fatex__sheet input[type="text"] {
+    background: transparent;
+    padding: 0; }
 
 .fatex__item_sheet {
   font-family: "Montserrat", sans-serif; }
@@ -565,5 +582,11 @@ input[type=range]::-moz-range-thumb {
   opacity: 0; }
   .fatex__helper__editmode:hover, .fatex__helper--enable-editmode .fatex__helper__editmode {
     opacity: 1; }
+
+.fatex__copyright {
+  padding: 10px;
+  font-size: 10px;
+  text-align: center;
+  color: #2f3542; }
 
 /*# sourceMappingURL=fatex.css.map */

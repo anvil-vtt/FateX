@@ -8,15 +8,23 @@
 
 .fatex__item__add {
     @include fa-icon($fa-var-plus);
+    cursor: pointer;
 }
 
 .fatex__item__settings {
     @include fa-icon($fa-var-cog);
+    cursor: pointer;
+}
+
+.fatex__item__sort {
+    @include fa-icon($fa-var-sort);
+    cursor: move;
 }
 
 .fatex__item__delete {
     @include fa-icon($fa-var-trash);
     transition: color 0.3s;
+    cursor: pointer;
 
     &:hover {
         color: $caution-color;

@@ -7,6 +7,7 @@ export class TemplatePreloader {
         const templatePaths = [
             'systems/fatex/templates/actor/parts/header.html',
             'systems/fatex/templates/actor/parts/footer.html',
+            'systems/fatex/templates/actor/parts/copyright.html',
 
             'systems/fatex/templates/actor/parts/sidebar/artwork.html',
             'systems/fatex/templates/actor/parts/sidebar/stress.html',

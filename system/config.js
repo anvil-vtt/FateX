@@ -1,5 +1,6 @@
 import { Radio } from "./module/components/Radio/Radio.js";
 import { RangeSlider } from "./module/components/RangeSlider/RangeSlider.js";
+import { Sortable } from "./module/components/Sortable/Sortable.js";
 import { AspectItem } from "./module/item/aspect/AspectItem.js";
 import { StressItem } from "./module/item/stress/StressItem.js";
 
@@ -10,6 +11,7 @@ export const FATEx = {
     },
     "sheetComponents": {
         "radio": Radio,
-        "rangeSlider": RangeSlider
+        "rangeSlider": RangeSlider,
+        "sortable": Sortable
     }
 };

@@ -8,8 +8,8 @@
     input[type="text"].fatex__header__fp__input,
     input[type="text"].fatex__header__refresh__input{
         color: $header-font-color;
-        height: 32px;
-        font-size: 24px;
+        height: 25px;
+        font-size: 23px;
         border: 0;
     }
 
@@ -38,7 +38,7 @@
     font-weight: 300;
     letter-spacing: 3px;
     color: $header-font-color;
-    padding-left: $component-padding / 2;
+    padding-left: 2px;
     padding-top: 3px;
     white-space: nowrap;
 }
@@ -53,9 +53,9 @@
 }
 
 .fatex__header__fatepoint_divider {
-    font-size: 32px;
+    font-size: 25px;
+    line-height: 25px;
     color: $header-font-color;
-    line-height: 32px;
 }
 
 .fatex__header__logo {

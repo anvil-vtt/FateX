@@ -3,7 +3,9 @@
 }
 
 .fatex__aspect {
-    margin-top: 10px;
+    & + .fatex__aspect {
+        padding-top: $component-padding;
+    }
 
     &:hover {
         .fatex__item__actions {
