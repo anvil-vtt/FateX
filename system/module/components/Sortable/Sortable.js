@@ -2,7 +2,7 @@ import { BaseComponent } from "../BaseComponent.js";
 
 /**
  * Allows all items on the sheet to be sorted.
- * Implements a simple drag-handler to be implemented.
+ * Implements a simple drag-handler to allow dragging to start.
  */
 export class Sortable extends BaseComponent{
 
