@@ -1,4 +1,9 @@
 export class BaseItem {
+
+    /**
+     * Allows each item to prepare its data before its rendered.
+     * This can be used to add additional information right before rendering.
+     */
     static prepareItemForActorSheet(item) {
         return item;
     }
@@ -21,10 +26,24 @@ export class BaseItem {
         html.find(`.fatex__${this.entityName}__delete`).click((e) => this._onItemDelete.call(this, e, sheet));
     }
 
+    /**
+     * Allows each item to add data to its own sheet.
+     */
     static getSheetData(sheetData) {
         return sheetData;
     }
 
+    /**
+     * Allows each item to add data to its owners actorsheet.
+     */
+    static getActorSheetData(sheetData) {
+        return sheetData;
+    }
+
+    /**
+     * Helper function to create a new item.
+     * Render parameter determines if the items sheet should be rendered.
+     */
     static _createNewItem(itemData, sheet, render = true) {
         // Create item and render sheet afterwards
         sheet.actor.createOwnedItem(itemData).then((item) => {
@@ -41,6 +60,9 @@ export class BaseItem {
      * EVENT HANDLER
      *************************/
 
+    /**
+     * Itemtype agnostic handler for creating new items via event.
+     */
     static _onItemAdd(e, sheet) {
         e.preventDefault();
 
@@ -56,6 +78,9 @@ export class BaseItem {
         this._createNewItem(itemData, sheet);
     }
 
+    /**
+     * Itemtype agnostic handler for opening an items sheet via event.
+     */
     static _onItemSettings(e, sheet) {
         e.preventDefault();
 
@@ -67,6 +92,9 @@ export class BaseItem {
         }
     }
 
+    /**
+     * Itemtype agnostic handler for deleting an item via event.
+     */
     static _onItemDelete(e, sheet) {
         e.preventDefault();
 
@@ -96,6 +124,10 @@ export class BaseItem {
         })).render(true);
     }
 
+    /**
+     * Helper function to determine a new items name.
+     * Defaults to the entityName with the first letter capitalized.
+     */
     static getDefaultName() {
         return this.entityName.charAt(0).toUpperCase() + this.entityName.slice(1);
     }

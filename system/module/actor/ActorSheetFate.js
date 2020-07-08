@@ -58,7 +58,7 @@ export class ActorSheetFate extends ActorSheet {
         let isOwner = this.actor.owner;
 
         // Basic fields and flags
-        const data = {
+        let data = {
             owner: isOwner,
             options: this.options,
             editable: this.isEditable,
@@ -79,6 +79,11 @@ export class ActorSheetFate extends ActorSheet {
         data.stunts = data.items.filter(item => item.type === 'stunt');
         data.extras = data.items.filter(item => item.type === 'extra');
         data.consequences = data.items.filter(item => item.type === 'consequence');
+
+        // Allow every itemtype to add data to the actorsheet
+        for (let itemType in CONFIG.FATEx.itemTypes) {
+            data = CONFIG.FATEx.itemTypes[itemType].getActorSheetData(data, this);
+        }
 
         return data;
     }

@@ -97,7 +97,8 @@
   .fatex__item__actions > * {
     margin-right: 10px; }
   .fatex__helper--enable-editmode .fatex__item__actions {
-    opacity: 1; }
+    opacity: 1;
+    pointer-events: all; }
 
 .fatex__item__add {
   font-weight: 900;
@@ -594,6 +595,11 @@ input[type=range]::-moz-range-thumb {
   .fatex__helper__editmode:hover, .fatex__helper--enable-editmode .fatex__helper__editmode {
     opacity: 1; }
 
+.fatex__helper__editmode--vanish {
+  display: none; }
+  .fatex__helper--enable-editmode .fatex__helper__editmode--vanish {
+    display: inherit; }
+
 .fatex__copyright {
   padding: 10px;
   font-size: 10px;
@@ -602,19 +608,49 @@ input[type=range]::-moz-range-thumb {
   .fatex__copyright p {
     margin: 0; }
 
-.fatex__skill + .fatex__skill {
-  padding-top: 20px; }
-.fatex__skill:hover .fatex__item__actions {
-  opacity: 1; }
+.fatex__skills {
+  width: 60%; }
 
-.fatex__skill__actions_wrapper {
+.fatex__skills__columns {
+  column-count: 2; }
+
+.fatex__skills__headline {
   position: relative; }
-
-.fatex__skill__actions {
-  font-size: 18px; }
+  .fatex__skills__headline:hover .fatex__item__actions {
+    opacity: 1; }
 
 .fatex__skill {
-  padding: 20px; }
+  width: 100%;
+  padding: 10px 5px;
+  cursor: pointer; }
+  .fatex__skill:hover .fatex__item__actions {
+    opacity: 1; }
+
+.fatex__skill--filler {
+  opacity: 0; }
+
+.fatex__skill__icon {
+  transform: translate(12px, -7px); }
+
+.fatex__skill__actions {
+  display: flex;
+  align-items: center;
+  background: #2f3542;
+  background: linear-gradient(90deg, rgba(47, 53, 66, 0) 0%, #2f3542 33%, #2f3542 100%);
+  position: absolute;
+  height: 100%;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  transition: opacity 0.3s;
+  padding-left: 50px;
+  text-shadow: 1px 1px 2px #a0a0a0; }
+  .fatex__skill__actions > * {
+    margin-right: 10px; }
+
+.fatex__skill__actions_wrapper {
+  position: relative;
+  color: white; }
 
 .fatex__skill__add {
   margin-bottom: 0;

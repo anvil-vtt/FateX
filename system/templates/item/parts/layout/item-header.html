@@ -6,7 +6,11 @@
             <div class="fatex__header">
                 <div class="fatex__header__name">
                     <label class="fatex__header__label fatex__item__header__label" for="name">{{localize label}}</label>
-                    <input class="fatex__header__name__input fatex__item__name__input" name="name" type="text" value="{{item.name}}">
+                    <input
+                        class="fatex__header__name__input fatex__item__name__input"
+                        name="name"
+                        type="text"
+                        value="{{#ifNotEquals item.name ' '}}{{item.name}}{{/ifNotEquals}}">
                 </div>
 
                 <div class="fatex__header__logo">

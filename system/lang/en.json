@@ -6,8 +6,10 @@
             "FatePoints": "Fate Points",
             "Aspects": "Aspects",
             "Consequences": "Consequences",
+            "Skills": "Skills",
             "Artwork": "Artwork",
             "Tabs": {
+                "SkillsStunts": "Skills & Stunts",
                 "Skills": "Skills",
                 "Stunts": "Stunts",
                 "Extras": "Extras",

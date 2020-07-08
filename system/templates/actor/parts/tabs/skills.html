@@ -1,24 +1,37 @@
 <div class="fatex__skills">
-    {{#each skills as |skill skillIndex|}}
-        <div class="fatex__skill fatex__input fatex__input--icon fatex__sortable item" data-item-id="{{skill._id}}">
+    <h2 class="fatex__skills__headline">
+        <span>{{localize "FATEx.Sheet.Skills"}}</span>
 
-            <div class="fatex__skill__actions_wrapper">
-                <div class="fatex__skill__input fatex__input__input">{{default skill.name "&nbsp;"}}</div>
+        <div class="fatex__item__actions">
+            <span class="fatex__item__add fatex__skill__add"></span>
+        </div>
+    </h2>
 
-                {{#ifNotEmpty skill.data.level}}
-                    <label class="fatex__skill__icon fatex__input__icon">+{{skill.data.level}}</label>
-                {{/ifNotEmpty}}
+    <div class="fatex__skills__columns">
+        {{#each skills as |skill skillIndex|}}
+            <div class="fatex__skill fatex__input fatex__input--icon fatex__sortable item" data-item-id="{{skill._id}}">
 
-                <div class="fatex__skill__actions fatex__item__actions">
-                    <span class="fatex__skill__sort fatex__item__sort"></span>
-                    <span class="fatex__skill__settings fatex__item__settings" data-item="{{skill._id}}"></span>
-                    <span class="fatex__skill__delete fatex__item__delete" data-item="{{skill._id}}"></span>
+                <div class="fatex__skill__actions_wrapper">
+                    <div class="fatex__skill__input fatex__headline">{{default skill.name "&nbsp;"}}</div>
+
+                    {{#ifNotEquals skill.data.level "0"}}
+                        <label class="fatex__skill__icon fatex__input__icon">+{{skill.data.level}}</label>
+                    {{/ifNotEquals}}
+
+                    <div class="fatex__skill__actions fatex__item__actions">
+                        <span class="fatex__skill__sort fatex__item__sort fatex__helper__editmode--vanish"></span>
+                        <span class="fatex__skill__settings fatex__item__settings" data-item="{{skill._id}}"></span>
+                        <span class="fatex__skill__delete fatex__item__delete fatex__helper__editmode--vanish" data-item="{{skill._id}}"></span>
+                    </div>
                 </div>
             </div>
-        </div>
-    {{/each}}
+        {{/each}}
 
-    <div class="fatex__skill__track fatex__helper__editmode">
-        <h2 class="fatex__headline fatex__headline--center fatex__skill__add">+</h2>
+
+        {{#if options.addSkillFiller}}
+            <div class="fatex__skill fatex__skill--filler">
+                <div class="fatex__skill__input fatex__headline">&nbsp;</div>
+            </div>
+        {{/if}}
     </div>
 </div>

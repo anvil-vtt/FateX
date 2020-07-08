@@ -1,7 +1,13 @@
-.fatex__skill {
-    & + .fatex__skill {
-        padding-top: $component-padding * 2;
-    }
+.fatex__skills {
+    width: 60%;
+}
+
+.fatex__skills__columns {
+    column-count: 2;
+}
+
+.fatex__skills__headline {
+    position: relative;
 
     &:hover {
         .fatex__item__actions {
@@ -10,16 +16,33 @@
     }
 }
 
-.fatex__skill__actions_wrapper {
-    position: relative;
+.fatex__skill {
+    width: 100%;
+    padding: $component-padding $component-padding / 2;
+    cursor: pointer;
+
+    &:hover {
+        .fatex__item__actions {
+            opacity: 1;
+        }
+    }
+}
+
+.fatex__skill--filler {
+    opacity: 0;
+}
+
+.fatex__skill__icon {
+    transform: translate(12px, -7px);
 }
 
 .fatex__skill__actions {
-    font-size: 18px;
+    @include edit-settings($headline-background);
 }
 
-.fatex__skill {
-    padding: $component-padding * 2;
+.fatex__skill__actions_wrapper {
+    position: relative;
+    color: $headline-color;
 }
 
 .fatex__skill__add {
