@@ -49,7 +49,7 @@ export class BaseItem {
         }
 
         const itemData = {
-            name: this.defaultName ?? '',
+            name: this.defaultName ?? this.getDefaultName(),
             type: this.entityName,
         };
 
@@ -93,5 +93,9 @@ export class BaseItem {
         if(item) {
             item.sheet.render(true);
         }
+    }
+
+    static getDefaultName() {
+        return this.entityName.charAt(0).toUpperCase() + this.entityName.slice(1);
     }
 }

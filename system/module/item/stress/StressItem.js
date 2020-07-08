@@ -1,7 +1,6 @@
 import { BaseItem } from "../BaseItem.js";
 
 export class StressItem extends BaseItem {
-    static defaultName = 'Stress';
     static entityName = 'stress';
 
     static LABEL_TYPE_CORE = 0;

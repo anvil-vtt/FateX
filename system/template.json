@@ -11,23 +11,31 @@
                     "current": 3,
                     "refresh": 3
                 }
+            },
+            "sheetSettings": {
+                "useConditions": false
             }
         },
         "character": {
             "templates": [
-                "default"
+                "default",
+                "sheetSettings"
             ]
         },
         "npc": {
             "templates": [
-                "default"
+                "default",
+                "sheetSettings"
             ]
         }
     },
     "Item": {
         "types": [
             "stress",
-            "aspect"
+            "aspect",
+            "consequence",
+            "condition",
+            "skill"
         ],
         "templates": {
             "base": {
@@ -50,6 +58,30 @@
             "label": "",
             "value": "",
             "corrupted": false
+        },
+        "consequence": {
+            "templates": [
+                "base"
+            ],
+            "label": "",
+            "value": "",
+            "icon": ""
+        },
+        "condition": {
+            "templates": [
+                "base"
+            ],
+            "label": "",
+            "value": "",
+            "icon": "",
+            "isActive": false
+        },
+        "skill": {
+            "templates": [
+                "base"
+            ],
+            "label": "",
+            "value": ""
         }
     }
 }

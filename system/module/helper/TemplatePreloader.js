@@ -23,6 +23,8 @@ export class TemplatePreloader {
 
             'systems/fatex/templates/item/parts/layout/item-header.html',
             'systems/fatex/templates/item/parts/layout/item-footer.html',
+
+            'systems/fatex/templates/item/parts/settings/setting-input.html',
         ];
 
         return loadTemplates(templatePaths);

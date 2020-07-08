@@ -1,29 +1,32 @@
 <div class="fatex__consequences">
     <h2 class="fatex__consequences__headline fatex__headline">
-        {{localize "FATEx.Sheet.Consequences"}}
+        <span>{{localize "FATEx.Sheet.Consequences"}}</span>
+        <div class="fatex__headline__actions fatex__item__actions">
+            <span class="fatex__item__add fatex__consequences__add"></span>
+        </div>
     </h2>
 
-    <div class="fatex__consequence fatex__input fatex__input--icon">
-        <label class="fatex__consequence__icon fatex__input__icon" for="data.consequence.1">2</label>
-        <label class="fatex__consequence__label fatex__input__label" for="data.consequence.1">Mild</label>
-        <input class="fatex__consequence__input fatex__input__input" name="data.consequence.1" type="text" value="Black eye" />
-    </div>
+    {{#each consequences as |consequence consequenceIndex|}}
+        <div class="fatex__consequence fatex__input fatex__sortable item" data-item-id="{{consequence._id}}">
+            <label class="fatex__consequence__label fatex__input__label">{{consequence.data.label}}</label>
 
-    <div class="fatex__consequence fatex__input fatex__input--icon">
-        <label class="fatex__consequence__icon fatex__input__icon" for="data.consequence.1">2</label>
-        <label class="fatex__consequence__label fatex__input__label" for="data.consequence.1">Mild</label>
-        <input class="fatex__consequence__input fatex__input__input" name="data.consequence.1" type="text" value="" />
-    </div>
+            <div class="fatex__consequence__actions_wrapper">
+                <div class="fatex__consequence__input fatex__input__input">{{default consequence.data.value "&nbsp;"}}</div>
 
-    <div class="fatex__consequence fatex__input fatex__input--icon">
-        <label class="fatex__consequence__icon fatex__input__icon" for="data.consequence.1">4</label>
-        <label class="fatex__consequence__label fatex__input__label" for="data.consequence.1">Moderate</label>
-        <input class="fatex__consequence__input fatex__input__input" name="data.consequence.1" type="text" value="" />
-    </div>
+                <div class="fatex__consequence fatex__input fatex__input--icon">
+                    <label class="fatex__consequence__icon fatex__input__icon">{{consequence.data.icon}}</label>
+                    <label class="fatex__consequence__label fatex__input__label">{{consequence.data.label}}</label>
+                    <div class="fatex__consequence__input fatex__input__input">
+                        {{default consequence.data.value "&nbsp;"}}
+                    </div>
+                </div>
 
-    <div class="fatex__consequence fatex__input fatex__input--icon">
-        <label class="fatex__consequence__icon fatex__input__icon" for="data.consequence.1">6</label>
-        <label class="fatex__consequence__label fatex__input__label" for="data.consequence.1">Severe</label>
-        <input class="fatex__consequence__input fatex__input__input" name="data.consequence.1" type="text" value="" />
-    </div>
+                <div class="fatex__consequence__actions fatex__item__actions">
+                    <span class="fatex__item__sort fatex__consequence__sort"></span>
+                    <span class="fatex__consequence__settings fatex__item__settings" data-item="{{consequence._id}}"></span>
+                    <span class="fatex__consequence__delete fatex__item__delete" data-item="{{consequence._id}}"></span>
+                </div>
+            </div>
+        </div>
+    {{/each}}
 </div>
