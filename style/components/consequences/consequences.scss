@@ -2,12 +2,28 @@
     padding: $component-padding;
 }
 
-.fatex__consequences {
-    input[type="text"].fatex__consequence__input {
-        padding-left: 5px;
+.fatex__consequence {
+    & + .fatex__consequence {
+        padding-top: $component-padding;
+    }
+
+    &:hover {
+        .fatex__item__actions {
+            opacity: 1;
+        }
     }
 }
 
-.fatex__consequence {
-    margin-top: 10px;
+.fatex__consequence__actions_wrapper {
+    position: relative;
+}
+
+.fatex__consequence__actions {
+    font-size: 18px;
+}
+
+.fatex__consequence__input {
+    border-radius: 3px;
+    border-bottom: 1px solid $primary-color;
+    padding: 3px 0;
 }

@@ -40,6 +40,15 @@
                 "Description": "Description",
                 "DescriptionHelp": "Is only displayed when sending to chat",
                 "Label": "Label"
+            },
+            "Consequence": {
+                "Name": "Name",
+                "Value": "Text",
+                "Description": "Description",
+                "DescriptionHelp": "Is only displayed when sending to chat",
+                "Label": "Label",
+                "Icon": "Icon",
+                "IconHelp": "Normally a number like 2, 4, 6 or 8. Displayed on the left."
             }
         },
         "Dialog": {

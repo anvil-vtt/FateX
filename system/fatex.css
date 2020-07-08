@@ -365,11 +365,21 @@
 .fatex__consequences {
   padding: 10px; }
 
-.fatex__consequences input[type="text"].fatex__consequence__input {
-  padding-left: 5px; }
+.fatex__consequence + .fatex__consequence {
+  padding-top: 10px; }
+.fatex__consequence:hover .fatex__item__actions {
+  opacity: 1; }
 
-.fatex__consequence {
-  margin-top: 10px; }
+.fatex__consequence__actions_wrapper {
+  position: relative; }
+
+.fatex__consequence__actions {
+  font-size: 18px; }
+
+.fatex__consequence__input {
+  border-radius: 3px;
+  border-bottom: 1px solid #2f3542;
+  padding: 3px 0; }
 
 .fatex__tabs {
   padding: 10px; }
@@ -428,9 +438,9 @@
 
 .fatex__input__icon {
   position: absolute;
-  left: 0;
   top: 0;
-  transform: translate(-25%, -30%);
+  right: 100%;
+  transform: translate(2px, -7px);
   font-weight: 900;
   font-size: 24px;
   color: #2f3542;

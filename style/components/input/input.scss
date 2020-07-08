@@ -36,9 +36,9 @@
 
 .fatex__input__icon {
     position: absolute;
-    left: 0;
     top: 0;
-    transform: translate(-25%, -30%);
+    right: 100%;
+    transform: translate(2px, -7px);
     font-weight: 900;
     font-size: 24px;
     color: #2f3542;
