@@ -1,0 +1,28 @@
+.fatex__skill {
+    & + .fatex__skill {
+        padding-top: $component-padding * 2;
+    }
+
+    &:hover {
+        .fatex__item__actions {
+            opacity: 1;
+        }
+    }
+}
+
+.fatex__skill__actions_wrapper {
+    position: relative;
+}
+
+.fatex__skill__actions {
+    font-size: 18px;
+}
+
+.fatex__skill {
+    padding: $component-padding * 2;
+}
+
+.fatex__skill__add {
+    margin-bottom: 0;
+    cursor: pointer;
+}

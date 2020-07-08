@@ -49,6 +49,13 @@
                 "Label": "Label",
                 "Icon": "Icon",
                 "IconHelp": "Normally a number like 2, 4, 6 or 8. Displayed on the left."
+            },
+            "Skill": {
+                "Name": "Skill",
+                "Level": "Level",
+                "LevelHelp": "Normally a skill level between 0 and 5",
+                "Description": "Description",
+                "DescriptionHelp": "Is only displayed when sending to chat"
             }
         },
         "Dialog": {

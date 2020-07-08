@@ -21,6 +21,7 @@ import { TemplatePreloader } from "./module/helper/TemplatePreloader.js";
 import { AspectSheet } from "./module/item/aspect/AspectSheet.js";
 import { ConsequenceSheet } from "./module/item/consequence/ConsequenceSheet.js";
 import { ItemFate } from "./module/item/ItemFate.js";
+import { SkillSheet } from "./module/item/skill/SkillSheet.js";
 import { StressSheet } from "./module/item/stress/StressSheet.js";
 
 /* -------------------------------- */
@@ -67,6 +68,11 @@ Hooks.once('init', async function () {
 
     Items.registerSheet('FATEx', ConsequenceSheet, {
         types: ['consequence'],
+        makeDefault: true
+    });
+
+    Items.registerSheet('FATEx', SkillSheet, {
+        types: ['skill'],
         makeDefault: true
     });
 });

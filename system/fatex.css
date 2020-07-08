@@ -385,7 +385,8 @@
   padding: 10px; }
 
 .fatex__tabs__tab {
-  padding: 10px; }
+  padding: 10px;
+  padding-bottom: 0; }
 
 .fatex_tabs__navigation {
   border-bottom: 2px solid #2f3542;
@@ -598,5 +599,25 @@ input[type=range]::-moz-range-thumb {
   font-size: 10px;
   text-align: center;
   color: #2f3542; }
+  .fatex__copyright p {
+    margin: 0; }
+
+.fatex__skill + .fatex__skill {
+  padding-top: 20px; }
+.fatex__skill:hover .fatex__item__actions {
+  opacity: 1; }
+
+.fatex__skill__actions_wrapper {
+  position: relative; }
+
+.fatex__skill__actions {
+  font-size: 18px; }
+
+.fatex__skill {
+  padding: 20px; }
+
+.fatex__skill__add {
+  margin-bottom: 0;
+  cursor: pointer; }
 
 /*# sourceMappingURL=fatex.css.map */

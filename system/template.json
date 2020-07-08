@@ -80,8 +80,7 @@
             "templates": [
                 "base"
             ],
-            "label": "",
-            "value": ""
+            "level": 0
         }
     }
 }

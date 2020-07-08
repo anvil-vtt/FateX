@@ -56,6 +56,17 @@ export class BaseItem {
         this._createNewItem(itemData, sheet);
     }
 
+    static _onItemSettings(e, sheet) {
+        e.preventDefault();
+
+        const data = e.currentTarget.dataset;
+        const item = sheet.actor.getOwnedItem(data.item);
+
+        if(item) {
+            item.sheet.render(true);
+        }
+    }
+
     static _onItemDelete(e, sheet) {
         e.preventDefault();
 
@@ -65,6 +76,7 @@ export class BaseItem {
         (new Dialog({
             title: `Delete ${item.name}`,
             content: game.i18n.format('FATEx.Dialog.EntityDelete'),
+            default: 'submit',
             buttons: {
                 cancel: {
                     icon: '<i class="fas fa-times"></i>',
@@ -82,17 +94,6 @@ export class BaseItem {
         }, {
             classes: ['fatex', 'fatex__dialog'],
         })).render(true);
-    }
-
-    static _onItemSettings(e, sheet) {
-        e.preventDefault();
-
-        const data = e.currentTarget.dataset;
-        const item = sheet.actor.getOwnedItem(data.item);
-
-        if(item) {
-            item.sheet.render(true);
-        }
     }
 
     static getDefaultName() {
