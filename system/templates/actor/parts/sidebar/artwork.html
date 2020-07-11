@@ -1,6 +1,6 @@
 <div class="fatex__artwork">
     <style>
-        .fatex__artwork--image {
+        .fatex__artwork--image--{{actor._id}} {
             background-image: url("{{actor.img}}");
         }
     </style>
@@ -9,6 +9,6 @@
         <span>{{localize "FATEx.Sheet.Artwork"}}</span>
     </h2>
 
-    <div class="fatex__artwork--image" title="{{actor.name}}"></div>
+    <div class="fatex__artwork--image fatex__artwork--image--{{actor._id}}" title="{{actor.name}}"></div>
     <img class="fatex__artwork--handler" alt="{{actor.name}}" data-edit="img" src="{{actor.img}}"/>
 </div>
