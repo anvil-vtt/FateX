@@ -1,7 +1,9 @@
 .fatex__skills {}
 
-.fatex__skills__columns {
-    column-count: 2;
+.fatex__skills--columns {
+    .fatex__skills__columns {
+        column-count: 2;
+    }
 }
 
 .fatex__skills__headline {

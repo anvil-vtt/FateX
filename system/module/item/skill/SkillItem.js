@@ -18,8 +18,11 @@ export class SkillItem extends BaseItem {
      * Determines if a filler-skill should be rendered.
      */
     static getActorSheetData(sheetData) {
-        // Skills are rendered in columns and need to be of even number
-        sheetData.options.addSkillFiller = !!(sheetData.skills.length % 2)
+        // Render skill in two columns if necessary
+        sheetData.options.enableColumns = sheetData.skills.length >= 8;
+
+        // If Skills are rendered in columns and need to be of even number
+        sheetData.options.addSkillFiller = sheetData.options.enableColumns && !!(sheetData.skills.length % 2);
 
         return sheetData;
     }
@@ -46,9 +49,28 @@ export class SkillItem extends BaseItem {
 
         const dataset = e.currentTarget.dataset;
         const skill = sheet.actor.getOwnedItem(dataset.itemId);
-        const rank = parseInt(skill.data.data.rank) || 0;
 
-        let r = new Roll("4dF4 + " + rank).roll();
-        r.toMessage();
+        this.rollSkill(sheet, skill);
+    }
+
+    static rollSkill(sheet, skill) {
+        const template = 'systems/fatex/templates/chat/roll-skill.html';
+        const rank = parseInt(skill.data.data.rank) || 0;
+        const actor = sheet.actor;
+
+        let chatData = {
+            user: game.user._id,
+            speaker: ChatMessage.getSpeaker({ actor: actor })
+        };
+
+        let templateData = {};
+
+        renderTemplate(template, templateData).then(content => {
+            chatData.content = content;
+            ChatMessage.create(chatData);
+        });
+
+        // let r = new Roll("4dF4 + " + rank).roll();
+        // r.toMessage();
     }
 }

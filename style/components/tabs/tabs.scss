@@ -37,12 +37,17 @@
         display: flex;
 
         .fatex__skills {
+            width: 40%;
+        }
+
+        .fatex__skills--columns {
             width: 60%;
-            padding-right: $component-padding;
         }
 
         .fatex__stunts {
-            width: 40%;
+            flex-grow: 1;
+            padding-left: $component-padding;
         }
+
     }
 }

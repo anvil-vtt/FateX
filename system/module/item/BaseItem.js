@@ -106,17 +106,17 @@ export class BaseItem {
 
         (new Dialog({
             title: `Delete ${item.name}`,
-            content: game.i18n.format('FATEx.Dialog.EntityDelete'),
+            content: game.i18n.format('FAx.Dialog.EntityDelete'),
             default: 'submit',
             buttons: {
                 cancel: {
                     icon: '<i class="fas fa-times"></i>',
-                    label: game.i18n.localize("FATEx.Dialog.Cancel"),
+                    label: game.i18n.localize("FAx.Dialog.Cancel"),
                     callback: () => null
                 },
                 submit: {
                     icon: '<i class="fas fa-check"></i>',
-                    label: game.i18n.localize("FATEx.Dialog.Confirm"),
+                    label: game.i18n.localize("FAx.Dialog.Confirm"),
                     callback: () => {
                         sheet.actor.deleteOwnedItem(data.item);
                     }

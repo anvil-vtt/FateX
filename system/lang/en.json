@@ -1,5 +1,7 @@
 {
-    "FATEx": {
+    "FATEx": "FATEx",
+    "FAx": {
+        "name": "FATEx",
         "Sheet": {
             "Name": "Name",
             "Description": "Description",

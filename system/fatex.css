@@ -411,10 +411,12 @@
 .fatex__tabs__tab--skills .fatex__tabs__tab__content {
   display: flex; }
   .fatex__tabs__tab--skills .fatex__tabs__tab__content .fatex__skills {
-    width: 60%;
-    padding-right: 10px; }
-  .fatex__tabs__tab--skills .fatex__tabs__tab__content .fatex__stunts {
     width: 40%; }
+  .fatex__tabs__tab--skills .fatex__tabs__tab__content .fatex__skills--columns {
+    width: 60%; }
+  .fatex__tabs__tab--skills .fatex__tabs__tab__content .fatex__stunts {
+    flex-grow: 1;
+    padding-left: 10px; }
 
 .fatex__input {
   display: flex;
@@ -634,7 +636,7 @@ input[type=range]::-moz-range-thumb {
   .fatex__copyright p {
     margin: 0; }
 
-.fatex__skills__columns {
+.fatex__skills--columns .fatex__skills__columns {
   column-count: 2; }
 
 .fatex__skills__headline {

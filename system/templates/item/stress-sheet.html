@@ -1,16 +1,16 @@
-{{> "systems/fatex/templates/item/parts/layout/item-header.html" title="FATEx.Item.Stress.EditItem" item=item}}
+{{> "systems/fatex/templates/item/parts/layout/item-header.html" title="FAx.Item.Stress.EditItem" item=item}}
 
 <div class="fatex__settings">
     {{> "systems/fatex/templates/item/parts/settings/setting-input.html"
-        headline = "FATEx.Item.Stress.Name"
+        headline = "FAx.Item.Stress.Name"
         field = item.name
         fieldName = "name"
-        placeholder = "FATEx.Item.Stress.Name"
+        placeholder = "FAx.Item.Stress.Name"
     }}
 
     <div class="fatex__setting">
         <h2 class="fatex__headline">
-            <span>{{localize "FATEx.Item.Stress.Size"}}</span>
+            <span>{{localize "FAx.Item.Stress.Size"}}</span>
         </h2>
 
         <div class="fatex__setting__range">
@@ -21,7 +21,7 @@
 
     <div class="fatex__setting">
         <h2 class="fatex__headline fatex__setting__headline">
-            <span>{{localize "FATEx.Item.Stress.Boxes.Label"}}</span>
+            <span>{{localize "FAx.Item.Stress.Boxes.Label"}}</span>
         </h2>
 
         <div class="fatex__setting__radio__group">
@@ -32,7 +32,7 @@
                     data-dtype="Number"
             >
                 <img class="fatex__setting__radio__image" alt="ascending" src="systems/fatex/assets/ui/stress/label_preview_0.png">
-                <span class="fatex__setting__radio__label">{{localize "FATEx.Item.Stress.Type.Core"}}</span>
+                <span class="fatex__setting__radio__label">{{localize "FAx.Item.Stress.Type.Core"}}</span>
             </div>
 
             <div
@@ -42,7 +42,7 @@
                     data-dtype="Number"
             >
                 <img class="fatex__setting__radio__image" alt="condensed" src="systems/fatex/assets/ui/stress/label_preview_1.png">
-                <span class="fatex__setting__radio__label">{{localize "FATEx.Item.Stress.Type.Condensed"}}</span>
+                <span class="fatex__setting__radio__label">{{localize "FAx.Item.Stress.Type.Condensed"}}</span>
             </div>
 
             <div
@@ -52,25 +52,25 @@
                     data-dtype="Number"
             >
                 <img class="fatex__setting__radio__image" alt="custom" src="systems/fatex/assets/ui/stress/label_preview_2.png">
-                <span class="fatex__setting__radio__label">{{localize "FATEx.Item.Stress.Type.Custom"}}</span>
+                <span class="fatex__setting__radio__label">{{localize "FAx.Item.Stress.Type.Custom"}}</span>
             </div>
         </div>
     </div>
 
     <div class="fatex__setting{{#ifNotEquals 2 data.labelType}} fatex__setting--disabled{{/ifNotEquals}}">
         <h2 class="fatex__headline fatex__setting__headline">
-            <span>{{localize "FATEx.Item.Stress.Boxes.Custom"}}</span>
+            <span>{{localize "FAx.Item.Stress.Boxes.Custom"}}</span>
         </h2>
 
         <label class="fatex__input" for="data.customLabel">
-            <span class="fatex__setting__help">{{localize "FATEx.Item.Stress.Boxes.CustomHelp"}}</span>
+            <span class="fatex__setting__help">{{localize "FAx.Item.Stress.Boxes.CustomHelp"}}</span>
             <input type="text" class="fatex__setting__input fatex__input__input" name="data.customLabel" value="{{data.customLabel}}"/>
         </label>
     </div>
 
     {{> "systems/fatex/templates/item/parts/settings/setting-input.html"
-        headline = "FATEx.Item.Stress.Description"
-        help = "FATEx.Item.Stress.DescriptionHelp"
+        headline = "FAx.Item.Stress.Description"
+        help = "FAx.Item.Stress.DescriptionHelp"
         fieldName = "data.description"
         field = data.description
     }}

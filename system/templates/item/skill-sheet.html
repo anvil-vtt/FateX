@@ -1,15 +1,15 @@
-{{> "systems/fatex/templates/item/parts/layout/item-header.html" title="FATEx.Item.Skill.EditItem" item=item}}
+{{> "systems/fatex/templates/item/parts/layout/item-header.html" title="FAx.Item.Skill.EditItem" item=item}}
 
 <div class="fatex__settings">
     {{> "systems/fatex/templates/item/parts/settings/setting-input.html"
-        headline = "FATEx.Item.Skill.Name"
+        headline = "FAx.Item.Skill.Name"
         field = item.name
         fieldName = "name"
-        placeholder = "FATEx.Item.Skill.Name"
+        placeholder = "FAx.Item.Skill.Name"
     }}
 
     {{> "systems/fatex/templates/item/parts/settings/setting-rank.html"
-        headline = "FATEx.Item.Skill.Rank"
+        headline = "FAx.Item.Skill.Rank"
         fieldName = "data.rank"
         field = data.rank
         dtype = "Number"
@@ -17,8 +17,8 @@
     }}
 
     {{> "systems/fatex/templates/item/parts/settings/setting-input.html"
-        headline = "FATEx.Item.Skill.Description"
-        help = "FATEx.Item.Skill.DescriptionHelp"
+        headline = "FAx.Item.Skill.Description"
+        help = "FAx.Item.Skill.DescriptionHelp"
         fieldName = "data.description"
         field = data.description
     }}
