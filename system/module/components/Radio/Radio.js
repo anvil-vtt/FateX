@@ -41,7 +41,7 @@ export class Radio extends BaseComponent {
         let value = "";
 
         // Check for numbers as only strings are passed in datasets
-        if(dataset.type === "number") {
+        if(dataset.dtype === "Number") {
             value = parseInt(dataset.value);
         } else {
             value = dataset.value;

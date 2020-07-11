@@ -32,6 +32,27 @@
     padding: $component-padding / 2;
 }
 
+
+.fatex__setting__radio__group--ranks {
+    padding: 0 $component-padding;
+
+    .fatex__setting__radio {
+        border: 0;
+        color: $primary-color;
+        font-weight: 900;
+        font-size: 24px;
+        text-shadow: 1px 1px 1px $sheet-background;
+    }
+
+    .fatex__setting__radio + .fatex__setting__radio {
+        margin-left: $component-padding / 2;
+    }
+
+    .fatex__setting__radio--active {
+        background: none;
+    }
+}
+
 .fatex__setting__radio + .fatex__setting__radio {
     margin-left: $component-padding;
 }

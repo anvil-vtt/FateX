@@ -31,3 +31,18 @@
         @include cutoff(15px, 1);
     }
 }
+
+.fatex__tabs__tab--skills {
+    .fatex__tabs__tab__content {
+        display: flex;
+
+        .fatex__skills {
+            width: 60%;
+            padding-right: $component-padding;
+        }
+
+        .fatex__stunts {
+            width: 40%;
+        }
+    }
+}

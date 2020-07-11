@@ -83,6 +83,7 @@ export class BaseItem {
      */
     static _onItemSettings(e, sheet) {
         e.preventDefault();
+        e.stopPropagation();
 
         const data = e.currentTarget.dataset;
         const item = sheet.actor.getOwnedItem(data.item);

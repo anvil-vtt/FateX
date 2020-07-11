@@ -3,9 +3,6 @@ import { BaseItem } from "../BaseItem.js";
 export class SkillItem extends BaseItem {
     static entityName = 'skill';
 
-    // Force people to choose a name.
-    static defaultName = ' ';
-
     /**
      * Adds skill specifig actorsheet listeners.
      */
@@ -27,6 +24,19 @@ export class SkillItem extends BaseItem {
         return sheetData;
     }
 
+    /**
+     * Add a list of available ranks to the sheet
+     */
+    static getSheetData(sheetData) {
+        sheetData.availableRanks = [];
+
+        for(let i = 0; i <= 9; i++) {
+            sheetData.availableRanks.push(i);
+        }
+
+        return sheetData;
+    }
+
     /*************************
      * EVENT HANDLER
      *************************/
@@ -36,9 +46,9 @@ export class SkillItem extends BaseItem {
 
         const dataset = e.currentTarget.dataset;
         const skill = sheet.actor.getOwnedItem(dataset.itemId);
-        const level = parseInt(skill.data.data.level);
+        const rank = parseInt(skill.data.data.rank) || 0;
 
-        let r = new Roll("4dF4 + " + level).roll();
+        let r = new Roll("4dF4 + " + rank).roll();
         r.toMessage();
     }
 }

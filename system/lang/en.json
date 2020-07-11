@@ -7,6 +7,9 @@
             "Aspects": "Aspects",
             "Consequences": "Consequences",
             "Skills": "Skills",
+            "Stunts": "Stunts",
+            "Extras": "Extras",
+            "Bio": "Bio",
             "Artwork": "Artwork",
             "Tabs": {
                 "SkillsStunts": "Skills & Stunts",
@@ -21,7 +24,8 @@
         },
         "Item": {
             "Stress": {
-                "Name": "Label",
+                "Name": "Stress track label",
+                "EditItem": "Edit Stress Track",
                 "Size": "Number of boxes",
                 "Description": "Description",
                 "DescriptionHelp": "The description will be shown inside the stress track area.",
@@ -37,25 +41,26 @@
                 }
             },
             "Aspect": {
-                "Name": "Name",
+                "EditItem": "Edit Aspect",
                 "Value": "Text",
                 "Description": "Description",
                 "DescriptionHelp": "Is only displayed when sending to chat",
                 "Label": "Label"
             },
             "Consequence": {
-                "Name": "Name",
+                "EditItem": "Edit Consequence",
                 "Value": "Text",
                 "Description": "Description",
                 "DescriptionHelp": "Is only displayed when sending to chat",
                 "Label": "Label",
+                "LabelHelp": "A label to describe the severity, like \"Mild\" or \"Severe\".",
                 "Icon": "Icon",
                 "IconHelp": "Normally a number like 2, 4, 6 or 8. Displayed on the left."
             },
             "Skill": {
-                "Name": "Skill",
-                "Level": "Level",
-                "LevelHelp": "Normally a skill level between 0 and 5",
+                "Name": "Skill name",
+                "EditItem": "Edit Skill",
+                "Rank": "Rank",
                 "Description": "Description",
                 "DescriptionHelp": "Is only displayed when sending to chat"
             }

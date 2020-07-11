@@ -1,6 +1,4 @@
-.fatex__skills {
-    width: 60%;
-}
+.fatex__skills {}
 
 .fatex__skills__columns {
     column-count: 2;
@@ -8,24 +6,12 @@
 
 .fatex__skills__headline {
     position: relative;
-
-    &:hover {
-        .fatex__item__actions {
-            opacity: 1;
-        }
-    }
 }
 
 .fatex__skill {
     width: 100%;
     padding: $component-padding $component-padding / 2;
     cursor: pointer;
-
-    &:hover {
-        .fatex__item__actions {
-            opacity: 1;
-        }
-    }
 }
 
 .fatex__skill--filler {
@@ -33,11 +19,15 @@
 }
 
 .fatex__skill__icon {
-    transform: translate(12px, -7px);
+    transform: translate(15px, -7px);
+    color: $sheet-background;
+    -webkit-text-stroke: 2px $primary-color;
+    text-shadow: initial;
 }
 
 .fatex__skill__actions {
     @include edit-settings($headline-background);
+    pointer-events: none;
 }
 
 .fatex__skill__actions_wrapper {
@@ -49,3 +39,4 @@
     margin-bottom: 0;
     cursor: pointer;
 }
+

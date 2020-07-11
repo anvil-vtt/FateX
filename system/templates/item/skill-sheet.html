@@ -1,11 +1,19 @@
-{{> "systems/fatex/templates/item/parts/layout/item-header.html" label="FATEx.Item.Skill.Name" item=item}}
+{{> "systems/fatex/templates/item/parts/layout/item-header.html" title="FATEx.Item.Skill.EditItem" item=item}}
 
 <div class="fatex__settings">
     {{> "systems/fatex/templates/item/parts/settings/setting-input.html"
-        headline = "FATEx.Item.Skill.Level"
-        headline = "FATEx.Item.Skill.LevelHelp"
-        fieldName = "data.level"
-        field = data.level
+        headline = "FATEx.Item.Skill.Name"
+        field = item.name
+        fieldName = "name"
+        placeholder = "FATEx.Item.Skill.Name"
+    }}
+
+    {{> "systems/fatex/templates/item/parts/settings/setting-rank.html"
+        headline = "FATEx.Item.Skill.Rank"
+        fieldName = "data.rank"
+        field = data.rank
+        dtype = "Number"
+        radioItems = availableRanks
     }}
 
     {{> "systems/fatex/templates/item/parts/settings/setting-input.html"

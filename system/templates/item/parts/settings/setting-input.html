@@ -5,6 +5,14 @@
 
     <label class="fatex__input" for="{{ fieldName }}">
         {{#if help}}<span class="fatex__setting__help">{{localize help}}</span>{{/if}}
-        <input type="text" name="{{ fieldName }}" class="fatex__setting__input fatex__input__input" value="{{ field }}" />
+
+        <input
+            type="text"
+            class="fatex__setting__input fatex__input__input"
+            name="{{ fieldName }}"
+            value="{{#ifNotEquals field ' '}}{{ field }}{{/ifNotEquals}}"
+            {{#if placeholder }}placeholder="{{ localize placeholder}}"{{/if}}
+            {{#if dtype }}data-dtype="{{ dtype }}"{{/if}}
+        />
     </label>
 </div>

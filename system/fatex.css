@@ -81,6 +81,11 @@
 .desk__footer {
   grid-area: footer; }
 
+.fatex__item__header__title {
+  color: white;
+  height: 25px;
+  font-size: 23px; }
+
 .fatex__item__actions {
   display: flex;
   align-items: center;
@@ -93,7 +98,8 @@
   opacity: 0;
   transition: opacity 0.3s;
   padding-left: 50px;
-  text-shadow: 1px 1px 2px #a0a0a0; }
+  text-shadow: 1px 1px 2px #a0a0a0;
+  pointer-events: none; }
   .fatex__item__actions > * {
     margin-right: 10px; }
   .fatex__helper--enable-editmode .fatex__item__actions {
@@ -321,8 +327,6 @@
   text-transform: uppercase;
   font-size: 13px;
   box-shadow: 1px 1px 1px #a0a0a0; }
-  .fatex__headline:hover .fatex__headline__actions {
-    opacity: 1; }
 
 .fatex__headline--center {
   text-align: center; }
@@ -340,6 +344,7 @@
   transition: opacity 0.3s;
   padding-left: 50px;
   text-shadow: 1px 1px 2px #a0a0a0;
+  pointer-events: none;
   right: 10px; }
   .fatex__headline__actions > * {
     margin-right: 10px; }
@@ -349,8 +354,6 @@
 
 .fatex__aspect + .fatex__aspect {
   padding-top: 10px; }
-.fatex__aspect:hover .fatex__item__actions {
-  opacity: 1; }
 
 .fatex__aspect__actions_wrapper {
   position: relative; }
@@ -368,8 +371,6 @@
 
 .fatex__consequence + .fatex__consequence {
   padding-top: 10px; }
-.fatex__consequence:hover .fatex__item__actions {
-  opacity: 1; }
 
 .fatex__consequence__actions_wrapper {
   position: relative; }
@@ -407,6 +408,14 @@
     color: white;
     clip-path: polygon(0 0, calc(100% - 15px) 0, 100% calc(100% - 15px), 100% 100%, 0 100%); }
 
+.fatex__tabs__tab--skills .fatex__tabs__tab__content {
+  display: flex; }
+  .fatex__tabs__tab--skills .fatex__tabs__tab__content .fatex__skills {
+    width: 60%;
+    padding-right: 10px; }
+  .fatex__tabs__tab--skills .fatex__tabs__tab__content .fatex__stunts {
+    width: 40%; }
+
 .fatex__input {
   display: flex;
   flex-direction: column-reverse;
@@ -432,6 +441,10 @@
   border: 0;
   border-bottom: 1px solid #2f3542;
   border-radius: 3px; }
+  .fatex__input input[type="text"].fatex__input__input::placeholder,
+  .fatex__input__input::placeholder {
+    color: #2f3542;
+    opacity: 0.3; }
 
 .fatex__input__textarea {
   height: auto;
@@ -446,7 +459,7 @@
   font-weight: 900;
   font-size: 24px;
   color: #2f3542;
-  -webkit-text-stroke: 1px #f1f2f6; }
+  text-shadow: 1px 1px 1px #f1f2f6; }
 
 .fatex__sheet {
   font-family: "Montserrat", sans-serif; }
@@ -528,6 +541,19 @@
   flex-shrink: 0;
   padding: 5px; }
 
+.fatex__setting__radio__group--ranks {
+  padding: 0 10px; }
+  .fatex__setting__radio__group--ranks .fatex__setting__radio {
+    border: 0;
+    color: #2f3542;
+    font-weight: 900;
+    font-size: 24px;
+    text-shadow: 1px 1px 1px #f1f2f6; }
+  .fatex__setting__radio__group--ranks .fatex__setting__radio + .fatex__setting__radio {
+    margin-left: 5px; }
+  .fatex__setting__radio__group--ranks .fatex__setting__radio--active {
+    background: none; }
+
 .fatex__setting__radio + .fatex__setting__radio {
   margin-left: 10px; }
 
@@ -608,29 +634,25 @@ input[type=range]::-moz-range-thumb {
   .fatex__copyright p {
     margin: 0; }
 
-.fatex__skills {
-  width: 60%; }
-
 .fatex__skills__columns {
   column-count: 2; }
 
 .fatex__skills__headline {
   position: relative; }
-  .fatex__skills__headline:hover .fatex__item__actions {
-    opacity: 1; }
 
 .fatex__skill {
   width: 100%;
   padding: 10px 5px;
   cursor: pointer; }
-  .fatex__skill:hover .fatex__item__actions {
-    opacity: 1; }
 
 .fatex__skill--filler {
   opacity: 0; }
 
 .fatex__skill__icon {
-  transform: translate(12px, -7px); }
+  transform: translate(15px, -7px);
+  color: #f1f2f6;
+  -webkit-text-stroke: 2px #2f3542;
+  text-shadow: initial; }
 
 .fatex__skill__actions {
   display: flex;
@@ -644,7 +666,8 @@ input[type=range]::-moz-range-thumb {
   opacity: 0;
   transition: opacity 0.3s;
   padding-left: 50px;
-  text-shadow: 1px 1px 2px #a0a0a0; }
+  text-shadow: 1px 1px 2px #a0a0a0;
+  pointer-events: none; }
   .fatex__skill__actions > * {
     margin-right: 10px; }
 
@@ -655,5 +678,3 @@ input[type=range]::-moz-range-thumb {
 .fatex__skill__add {
   margin-bottom: 0;
   cursor: pointer; }
-
-/*# sourceMappingURL=fatex.css.map */

@@ -15,9 +15,12 @@ export class ItemSheetFate extends ItemSheet {
 
     getData() {
         let data = super.getData();
-        const type = data.item.type;
 
-        data = CONFIG.FATEx.itemTypes[type].getSheetData(data);
+        // Set owner name if possible
+        data.isOwnedBy = this.actor ? this.actor.name : false;
+
+        // Let every item type manipulate its own sheet data
+        data = CONFIG.FATEx.itemTypes[data.item.type].getSheetData(data);
 
         return data;
     }

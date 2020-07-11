@@ -26,6 +26,11 @@
     border: 0;
     border-bottom: 1px solid $primary-color;
     border-radius: 3px;
+
+    &::placeholder {
+        color: $primary-color;
+        opacity: 0.3;
+    }
 }
 
 .fatex__input__textarea {
@@ -42,6 +47,5 @@
     font-weight: 900;
     font-size: 24px;
     color: #2f3542;
-    -webkit-text-stroke: 1px #f1f2f6;
+    text-shadow: 1px 1px 1px $sheet-background;
 }
-

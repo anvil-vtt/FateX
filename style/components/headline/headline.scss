@@ -8,12 +8,6 @@
     text-transform: uppercase;
     font-size: 13px;
     box-shadow: 1px 1px 1px $shadow-color;
-
-    &:hover {
-        .fatex__headline__actions {
-            opacity: 1;
-        }
-    }
 }
 
 .fatex__headline--center {
@@ -22,5 +16,6 @@
 
 .fatex__headline__actions {
     @include edit-settings($headline-background);
+    pointer-events: none;
     right: 10px;
 }

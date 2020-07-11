@@ -12,11 +12,11 @@
             <div class="fatex__skill fatex__input fatex__input--icon fatex__sortable item" data-item-id="{{skill._id}}">
 
                 <div class="fatex__skill__actions_wrapper">
-                    <div class="fatex__skill__input fatex__headline">{{default skill.name "&nbsp;"}}</div>
+                    <div class="fatex__skill__input fatex__headline">{{skill.name}}</div>
 
-                    {{#ifNotEquals skill.data.level "0"}}
-                        <label class="fatex__skill__icon fatex__input__icon">+{{skill.data.level}}</label>
-                    {{/ifNotEquals}}
+                    {{#ifBiggerNull skill.data.rank}}
+                        <label class="fatex__skill__icon fatex__input__icon">+{{skill.data.rank}}</label>
+                    {{/ifBiggerNull}}
 
                     <div class="fatex__skill__actions fatex__item__actions">
                         <span class="fatex__skill__sort fatex__item__sort fatex__helper__editmode--vanish"></span>

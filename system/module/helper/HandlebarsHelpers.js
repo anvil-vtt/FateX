@@ -22,6 +22,13 @@ export class HandlebarsHelpers {
         });
 
         /**
+         * If-Helper which checks if a number value is bigger than zero
+         */
+        Handlebars.registerHelper('ifBiggerNull', function (arg1, options) {
+            return (parseInt(arg1) > 0) ? options.fn(this) : options.inverse(this);
+        });
+
+        /**
          * If-Helper which checks if two values are different
          */
         Handlebars.registerHelper('ifNotEquals', function (arg1, arg2, options) {

@@ -1,0 +1,19 @@
+<div class="fatex__setting">
+    <h2 class="fatex__headline fatex__setting__headline">
+        <span>{{localize headline}}</span>
+    </h2>
+
+    <div class="fatex__setting__radio__group fatex__setting__radio__group--ranks">
+        {{#each radioItems as |radioItem radioItemIndex|}}
+            <div
+                class="fatex__setting__radio{{#ifEquals radioItem ../field}} fatex__setting__radio--active{{/ifEquals}}"
+                data-value="{{ radioItem }}"
+                data-name="{{ ../fieldName }}"
+                data-dtype="Number"
+            >
+                <span class="fatex__setting__radio__value">+{{ radioItem }}</span>
+            </div>
+        {{/each}}
+
+    </div>
+</div>

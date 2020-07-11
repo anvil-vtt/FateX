@@ -1,5 +1,12 @@
+.fatex__item__header__title {
+    color: $header-font-color;
+    height: 25px;
+    font-size: 23px;
+}
+
 .fatex__item__actions {
     @include edit-settings($sheet-background);
+    pointer-events: none;
 
     .fatex__helper--enable-editmode & {
         opacity: 1;

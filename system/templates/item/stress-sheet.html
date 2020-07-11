@@ -1,6 +1,13 @@
-{{> "systems/fatex/templates/item/parts/layout/item-header.html" label="FATEx.Item.Stress.Name" item=item}}
+{{> "systems/fatex/templates/item/parts/layout/item-header.html" title="FATEx.Item.Stress.EditItem" item=item}}
 
 <div class="fatex__settings">
+    {{> "systems/fatex/templates/item/parts/settings/setting-input.html"
+        headline = "FATEx.Item.Stress.Name"
+        field = item.name
+        fieldName = "name"
+        placeholder = "FATEx.Item.Stress.Name"
+    }}
+
     <div class="fatex__setting">
         <h2 class="fatex__headline">
             <span>{{localize "FATEx.Item.Stress.Size"}}</span>
@@ -22,7 +29,7 @@
                     class="fatex__setting__radio{{#ifEquals 0 data.labelType}} fatex__setting__radio--active{{/ifEquals}}"
                     data-value="0"
                     data-name="data.labelType"
-                    data-type="number"
+                    data-dtype="Number"
             >
                 <img class="fatex__setting__radio__image" alt="ascending" src="systems/fatex/assets/ui/stress/label_preview_0.png">
                 <span class="fatex__setting__radio__label">{{localize "FATEx.Item.Stress.Type.Core"}}</span>
@@ -32,7 +39,7 @@
                     class="fatex__setting__radio{{#ifEquals 1 data.labelType}} fatex__setting__radio--active{{/ifEquals}}"
                     data-value="1"
                     data-name="data.labelType"
-                    data-type="number"
+                    data-dtype="Number"
             >
                 <img class="fatex__setting__radio__image" alt="condensed" src="systems/fatex/assets/ui/stress/label_preview_1.png">
                 <span class="fatex__setting__radio__label">{{localize "FATEx.Item.Stress.Type.Condensed"}}</span>
@@ -42,7 +49,7 @@
                     class="fatex__setting__radio{{#ifEquals 2 data.labelType}} fatex__setting__radio--active{{/ifEquals}}"
                     data-value="2"
                     data-name="data.labelType"
-                    data-type="number"
+                    data-dtype="Number"
             >
                 <img class="fatex__setting__radio__image" alt="custom" src="systems/fatex/assets/ui/stress/label_preview_2.png">
                 <span class="fatex__setting__radio__label">{{localize "FATEx.Item.Stress.Type.Custom"}}</span>

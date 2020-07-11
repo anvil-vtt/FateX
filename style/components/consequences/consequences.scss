@@ -6,12 +6,6 @@
     & + .fatex__consequence {
         padding-top: $component-padding;
     }
-
-    &:hover {
-        .fatex__item__actions {
-            opacity: 1;
-        }
-    }
 }
 
 .fatex__consequence__actions_wrapper {

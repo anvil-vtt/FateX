@@ -1,4 +1,4 @@
-{{> "systems/fatex/templates/item/parts/layout/item-header.html" label="FATEx.Item.Consequence.Name" item=item}}
+{{> "systems/fatex/templates/item/parts/layout/item-header.html" title="FATEx.Item.Consequence.EditItem" item=item}}
 
 <div class="fatex__settings">
     {{> "systems/fatex/templates/item/parts/settings/setting-input.html"
@@ -11,6 +11,7 @@
         headline = "FATEx.Item.Consequence.Label"
         fieldName = "data.label"
         field = data.label
+        help = "FATEx.Item.Consequence.LabelHelp"
     }}
 
     {{> "systems/fatex/templates/item/parts/settings/setting-input.html"

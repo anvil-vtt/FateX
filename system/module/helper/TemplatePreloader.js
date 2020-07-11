@@ -25,6 +25,7 @@ export class TemplatePreloader {
             'systems/fatex/templates/item/parts/layout/item-footer.html',
 
             'systems/fatex/templates/item/parts/settings/setting-input.html',
+            'systems/fatex/templates/item/parts/settings/setting-rank.html',
         ];
 
         return loadTemplates(templatePaths);

@@ -21,7 +21,7 @@ export class StressItem extends BaseItem {
 
         // Add boxes with prepared data
         for (let i = 0; i < item.data.size; i++) {
-            let box = [];
+            let box = {};
 
             box.isChecked = item.data.value & Math.pow(2, i);
             box.label = this._getBoxLabel(item,i);

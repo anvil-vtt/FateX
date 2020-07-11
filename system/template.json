@@ -13,7 +13,9 @@
                 }
             },
             "sheetSettings": {
-                "useConditions": false
+                "artwork": {
+                    "showHeadline": true
+                }
             }
         },
         "character": {
@@ -80,7 +82,7 @@
             "templates": [
                 "base"
             ],
-            "level": 0
+            "rank": 0
         }
     }
 }

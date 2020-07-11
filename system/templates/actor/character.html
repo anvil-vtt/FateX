@@ -25,30 +25,31 @@
                     <div class="desk__tabs fatex__tabs">
                         <nav class="fatex_tabs__navigation" data-group="primary">
                             <a class="fatex_tabs__navigation__item item active" data-tab="skills">{{localize "FATEx.Sheet.Tabs.SkillsStunts"}}</a>
-                            {{!--<a class="fatex_tabs__navigation__item item" data-tab="stunts">{{localize "FATEx.Sheet.Tabs.Stunts"}}</a>--}}
                             <a class="fatex_tabs__navigation__item item" data-tab="extras">{{localize "FATEx.Sheet.Tabs.Extras"}}</a>
                             <a class="fatex_tabs__navigation__item item" data-tab="bio">{{localize "FATEx.Sheet.Tabs.Bio"}}</a>
                         </nav>
 
                         <div class="fatex__tabs__content">
-                            {{!--Skills--}}
+                            {{!--Skills & Stunts--}}
                             <div class="fatex__tabs__tab fatex__tabs__tab--skills tab" data-group="skills" data-tab="skills">
-                                {{> "systems/fatex/templates/actor/parts/tabs/skills.html"}}
-                            </div>
-
-                            {{!--Stunts--}}
-                            <div class="fatex__tabs__tab fatex__tabs__tab--stunts tab" data-group="stunts" data-tab="stunts">
-                                {{> "systems/fatex/templates/actor/parts/tabs/stunts.html"}}
+                                <div class="fatex__tabs__tab__content">
+                                    {{> "systems/fatex/templates/actor/parts/tabs/skills.html"}}
+                                    {{> "systems/fatex/templates/actor/parts/tabs/stunts.html"}}
+                                </div>
                             </div>
 
                             {{!--Extras--}}
                             <div class="fatex__tabs__tab fatex__tabs__tab--extras tab" data-group="extras" data-tab="extras">
-                                {{> "systems/fatex/templates/actor/parts/tabs/extras.html"}}
+                                <div class="fatex__tabs__tab__content">
+                                    {{> "systems/fatex/templates/actor/parts/tabs/extras.html"}}
+                                </div>
                             </div>
 
                             {{!--Bio--}}
                             <div class="fatex__tabs__tab fatex__tabs__tab--bio tab" data-group="bio" data-tab="bio">
-                                {{> "systems/fatex/templates/actor/parts/tabs/bio.html"}}
+                                <div class="fatex__tabs__tab__content">
+                                    {{> "systems/fatex/templates/actor/parts/tabs/bio.html"}}
+                                </div>
                             </div>
                         </div>
                     </div>
