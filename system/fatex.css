@@ -320,7 +320,7 @@
 .fatex__headline {
   background: #2f3542;
   color: white;
-  padding: 5px 30px 5px 20px;
+  padding: 5px 20px 5px 20px;
   clip-path: polygon(0 15px, 15px 0%, 100% 0%, 100% 0%, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 100%);
   position: relative;
   font-weight: bold;

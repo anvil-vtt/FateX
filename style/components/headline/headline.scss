@@ -1,7 +1,7 @@
 .fatex__headline {
     background: $headline-background;
     color: $headline-color;
-    padding: 5px 30px 5px 20px;
+    padding: $component-padding/2 $component-padding*2 $component-padding/2 $component-padding*2;
     @include cutoff(15px);
     position: relative;
     font-weight: bold;

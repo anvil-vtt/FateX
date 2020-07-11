@@ -65,6 +65,7 @@ export class BaseItem {
      */
     static _onItemAdd(e, sheet) {
         e.preventDefault();
+        e.stopPropagation();
 
         if(!this.entityName) {
             throw new Error("A subclass of the BaseItem must provide an entityName field or implement their own _onItemAdd() method.");
@@ -98,6 +99,7 @@ export class BaseItem {
      */
     static _onItemDelete(e, sheet) {
         e.preventDefault();
+        e.stopPropagation();
 
         const data = e.currentTarget.dataset;
         const item = sheet.actor.getOwnedItem(data.item);
