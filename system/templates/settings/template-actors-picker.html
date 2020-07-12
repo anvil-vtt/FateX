@@ -1,0 +1,30 @@
+{{#*inline "centerPartial"}}
+    <div class="fatex__header__center fatex__template__header__settings">
+        <span class="fatex__header__label">{{localize "FAx.Template.Picker.Configuration"}}</span>
+        <i class="fas fa-cogs fatex__item__header__title"></i>
+    </div>
+{{/inline}}
+
+{{> "systems/fatex/templates/settings/parts/layout/settings-header.html"
+    title="FAx.Template.Picker.Title"
+    label="FAx.Template.Picker.Label"
+    centerPartial="centerPartial"
+}}
+
+<div class="fatex__templates">
+    {{#each templateActors as |template templateIndex|}}
+        <div class="fatex__template fatex__template__choose" data-template="{{template._id}}">
+            <div class="fatex__headline">
+                <span>{{ template.name }}</span>
+            </div>
+        </div>
+    {{/each}}
+
+    <div class="fatex__template fatex__template__empty">
+        <div class="fatex__headline">
+            <span>{{localize "FAx.Template.Picker.Empty"}}</span>
+        </div>
+    </div>
+</div>
+
+{{> "systems/fatex/templates/settings/parts/layout/settings-footer.html"}}

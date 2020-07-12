@@ -93,7 +93,21 @@
             "Templates": {
                 "Title": "Character sheet templates",
                 "Hint": "Allows you to choose how character sheets will look like for new characters.",
-                "Button": "Configure"
+                "Button": "Configure Templates",
+                "New": "New template",
+                "App": {
+                    "Title": "Configure Templates",
+                    "Label": "Settings",
+                    "CreateNew": "Create new template"
+                }
+            }
+        },
+        "Template": {
+            "Picker": {
+                "Title": "Choose Template",
+                "Label": "Templates",
+                "Configuration": "Configuration",
+                "Empty": "Empty actor"
             }
         }
     }

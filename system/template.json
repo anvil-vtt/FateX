@@ -5,28 +5,21 @@
         ],
         "templates": {
             "default": {
-                "description": "",
+                "biography": "",
                 "fatepoints": {
                     "current": 3,
                     "refresh": 3
-                }
-            },
-            "sheetSettings": {
-                "artwork": {
-                    "showHeadline": true
                 }
             }
         },
         "character": {
             "templates": [
-                "default",
-                "sheetSettings"
+                "default"
             ]
         },
         "npc": {
             "templates": [
-                "default",
-                "sheetSettings"
+                "default"
             ]
         }
     },

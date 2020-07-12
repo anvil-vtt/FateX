@@ -291,10 +291,14 @@ div[data-tab="system"] p.notes {
     width: 40px;
     text-align: center; }
 
+.fatex__header__center,
 .fatex__header__name {
   padding: 10px;
   display: flex;
   flex-direction: column-reverse; }
+
+.fatex__header__center {
+  align-items: center; }
 
 .fatex__header__fate-points {
   display: flex;
@@ -499,7 +503,8 @@ div[data-tab="system"] p.notes {
     padding: 0; }
 
 .fatex__item_sheet {
-  font-family: "Montserrat", sans-serif; }
+  font-family: "Montserrat", sans-serif;
+  min-width: 300px; }
   .fatex__item_sheet form {
     max-height: 100%; }
   .fatex__item_sheet .window-content {
@@ -606,6 +611,31 @@ input[type="text"].fatex__setting__range__value {
   text-shadow: 1px 1px 1px #f1f2f6;
   width: 50px;
   text-align: center; }
+
+.fatex__settings_sheet {
+  font-family: "Montserrat", sans-serif;
+  min-width: 500px; }
+  .fatex__settings_sheet form {
+    max-height: 100%; }
+  .fatex__settings_sheet .window-content {
+    padding: 0;
+    background: #f1f2f6; }
+  .fatex__settings_sheet a:hover {
+    text-shadow: none; }
+  .fatex__settings_sheet img {
+    border: 0; }
+  .fatex__settings_sheet input[type="text"] {
+    background: transparent;
+    border: 0;
+    width: auto;
+    height: auto;
+    padding: 0; }
+  .fatex__settings_sheet textarea {
+    background: transparent;
+    border: 0;
+    width: auto;
+    height: auto;
+    padding: 0; }
 
 ::-webkit-scrollbar {
   width: 6px; }
@@ -741,3 +771,16 @@ input[type=range]::-moz-range-thumb {
   font-weight: 300;
   font-size: 12px;
   display: block; }
+
+.fatex__templates {
+  padding: 10px; }
+
+.fatex__template__actions {
+  opacity: 1;
+  pointer-events: all; }
+
+.fatex__template__create {
+  cursor: pointer; }
+
+.fatex__template__header__settings {
+  cursor: pointer; }

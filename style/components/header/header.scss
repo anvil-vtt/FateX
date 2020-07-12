@@ -20,10 +20,15 @@
     }
 }
 
+.fatex__header__center,
 .fatex__header__name {
     padding: $component-padding;
     display: flex;
     flex-direction: column-reverse;
+}
+
+.fatex__header__center {
+    align-items: center;
 }
 
 .fatex__header__fate-points {

@@ -22,7 +22,7 @@ import { ConsequenceSheet } from "./module/item/consequence/ConsequenceSheet.js"
 import { ItemFate } from "./module/item/ItemFate.js";
 import { SkillSheet } from "./module/item/skill/SkillSheet.js";
 import { StressSheet } from "./module/item/stress/StressSheet.js";
-import { TemplateActors } from "./module/settings/template-actors.js";
+import { TemplateActors } from "./module/settings/TemplateActors.js";
 
 /* -------------------------------- */
 /*	System initialization			*/
@@ -40,6 +40,9 @@ Hooks.once('init', async function () {
 
     // Register HandlebarsHelpers
     HandlebarsHelpers.registerHelpers();
+
+    // Initialize TemplateActors
+    TemplateActors.init();
 
     // Unregister Core sheets
     Actors.unregisterSheet('core', ActorSheet);
@@ -71,20 +74,6 @@ Hooks.once('init', async function () {
         types: ['skill'],
         makeDefault: true
     });
-
-    // Register FATEx system settings
-    game.settings.registerMenu("fatex", "templateActors", {
-        name: game.i18n.localize("FAx.Settings.Templates.Title"),
-        hint: game.i18n.localize("FAx.Settings.Templates.Hint"),
-        label: game.i18n.localize("FAx.Settings.Templates.Button"),
-        scope: "world",
-        config: true,
-        type: TemplateActors,
-        restricted: true
-    });
-
-    game.settings.register("fatex", "templateActors", {
-       scope: "world",
-       config: false,
-    });
 });
+
+TemplateActors.hooks();

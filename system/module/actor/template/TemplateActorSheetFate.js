@@ -1,14 +1,17 @@
 import { ActorSheetFate } from "../ActorSheetFate.js";
 
-
 export class TemplateActorSheetFate extends ActorSheetFate {
 
-    /*async _updateObject(event, formData) {
-        console.log("Actor wäre jetzt geupdated worden");
-        console.log(event);
-        console.log(formData);
+    static get defaultOptions() {
+        const options = super.defaultOptions;
 
-        return formData;
-    }*/
+        mergeObject(options, {
+            classes: options.classes.concat([
+                'fatex__helper--enable-editmode',
+            ]),
+        });
+
+        return options;
+    }
 
 }
