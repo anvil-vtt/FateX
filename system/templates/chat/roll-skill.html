@@ -1,8 +1,26 @@
-<div>
-    Hi, ich bin ein Roll!
-    <ul>
-        <li>Lorem ipsum dolor sit amet</li>
-        <li>Ad alias eius enim</li>
-        <li>Ad architecto</li>
-    </ul>
+<div class="fatex__chat">
+    <div class="fatex__chat__headline__wrapper">
+        <div class="fatex__chat__headline fatex__headline fatex__headline--icon fatex__headline--center">
+            {{ skill.name }}
+        </div>
+
+        <label class="fatex__chat__headline__icon fatex__headline__icon">+{{ rank }}</label>
+    </div>
+
+
+    <div class="fatex__chat__dice">
+        {{#each dice as |die dieIndex|}}
+            <div class="fatex__chat__die fatex__chat__die" title="{{ die.value }}">
+                {{ die.face }}
+            </div>
+        {{/each}}
+    </div>
+
+    <div class="fatex__chat__total">
+        {{ total }}
+
+        <span class="fatex__chat__ladder">
+            {{ladder}}
+        </span>
+    </div>
 </div>

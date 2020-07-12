@@ -15,7 +15,6 @@
 import { FATEx } from "./config.js";
 import { ActorFate } from "./module/actor/ActorFate.js";
 import { CharacterSheet } from "./module/actor/character/CharacterSheet.js";
-import { NPCSheet } from "./module/actor/npc/NPCSheet.js";
 import { HandlebarsHelpers } from "./module/helper/HandlebarsHelpers.js";
 import { TemplatePreloader } from "./module/helper/TemplatePreloader.js";
 import { AspectSheet } from "./module/item/aspect/AspectSheet.js";
@@ -23,6 +22,7 @@ import { ConsequenceSheet } from "./module/item/consequence/ConsequenceSheet.js"
 import { ItemFate } from "./module/item/ItemFate.js";
 import { SkillSheet } from "./module/item/skill/SkillSheet.js";
 import { StressSheet } from "./module/item/stress/StressSheet.js";
+import { TemplateActors } from "./module/settings/template-actors.js";
 
 /* -------------------------------- */
 /*	System initialization			*/
@@ -51,10 +51,6 @@ Hooks.once('init', async function () {
         makeDefault: true
     });
 
-    Actors.registerSheet('FATEx', NPCSheet, {
-        types: ['npc']
-    });
-
     // Register FATEx item sheets
     Items.registerSheet('FATEx', StressSheet, {
         types: ['stress'],
@@ -74,5 +70,21 @@ Hooks.once('init', async function () {
     Items.registerSheet('FATEx', SkillSheet, {
         types: ['skill'],
         makeDefault: true
+    });
+
+    // Register FATEx system settings
+    game.settings.registerMenu("fatex", "templateActors", {
+        name: game.i18n.localize("FAx.Settings.Templates.Title"),
+        hint: game.i18n.localize("FAx.Settings.Templates.Hint"),
+        label: game.i18n.localize("FAx.Settings.Templates.Button"),
+        scope: "world",
+        config: true,
+        type: TemplateActors,
+        restricted: true
+    });
+
+    game.settings.register("fatex", "templateActors", {
+       scope: "world",
+       config: false,
     });
 });

@@ -2,6 +2,23 @@
     "FATEx": "FATEx",
     "FAx": {
         "name": "FATEx",
+        "Global": {
+            "Ladder": {
+                "+8": "Legendary",
+                "+7": "Epic",
+                "+6": "Fantastic",
+                "+5": "Superb",
+                "+4": "Great",
+                "+3": "Good",
+                "+2": "Fair",
+                "+1": "Average",
+                "+0": "Mediocre",
+                "-1": "Poor",
+                "-2": "Terrible",
+                "-3": "Catastrophic",
+                "-4": "Horrifying"
+            }
+        },
         "Sheet": {
             "Name": "Name",
             "Description": "Description",
@@ -71,6 +88,13 @@
             "EntityDelete": "Do you really want to <strong>permanently</strong> delete this entity?",
             "Confirm": "Confirm",
             "Cancel": "Cancel"
+        },
+        "Settings": {
+            "Templates": {
+                "Title": "Character sheet templates",
+                "Hint": "Allows you to choose how character sheets will look like for new characters.",
+                "Button": "Configure"
+            }
         }
     }
 }

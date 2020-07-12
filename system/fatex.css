@@ -33,8 +33,25 @@
   font-style: italic;
   font-weight: 900; }
 @font-face {
-  font-family: 'Fate Core';
-  src: url("assets/fonts/fate_core.ttf"); }
+  font-family: 'Fate Icons';
+  src: url("assets/fonts/fate_icons.ttf"); }
+.app {
+  color: #fff; }
+
+.window-app .window-content,
+#chat-log .message,
+#chat-form textarea,
+#chat-controls div.roll-type-select select,
+.sidebar-tab .directory-header .header-search input,
+.sidebar-tab button {
+  background: #f1f2f6; }
+
+#chat-log {
+  font-family: "Montserrat", sans-serif, sans-serif; }
+
+div[data-tab="system"] p.notes {
+  opacity: 0; }
+
 .desk {
   display: grid;
   grid-template-columns: 1fr;
@@ -328,6 +345,9 @@
   font-size: 13px;
   box-shadow: 1px 1px 1px #a0a0a0; }
 
+.fatex__headline--icon {
+  position: relative; }
+
 .fatex__headline--center {
   text-align: center; }
 
@@ -606,14 +626,14 @@ input[type="text"].fatex__setting__range__value {
 
 input[type=range]::-webkit-slider-thumb {
   background: #2f3542;
-  height: 30px;
   width: 18px;
   cursor: pointer;
-  margin-top: -12px; }
+  height: 25px;
+  margin-top: -10px; }
 
 input[type=range]::-moz-range-thumb {
   background: #2f3542;
-  height: 30px;
+  height: 25px;
   width: 18px;
   cursor: pointer; }
 
@@ -680,3 +700,44 @@ input[type=range]::-moz-range-thumb {
 .fatex__skill__add {
   margin-bottom: 0;
   cursor: pointer; }
+
+.fatex__chat__headline__wrapper {
+  width: 70%;
+  margin: auto;
+  position: relative;
+  margin-bottom: 10px;
+  margin-top: 10px; }
+
+.fatex__chat__headline__icon {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  transform: translate(-25px, 0px);
+  font-weight: 900;
+  font-size: 24px;
+  color: #f1f2f6;
+  -webkit-text-stroke: 2px #2f3542;
+  text-shadow: initial; }
+
+.fatex__chat__dice {
+  width: 50%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px; }
+
+.fatex__chat__die {
+  font-family: "Fate Icons", sans-serif;
+  font-size: 24px;
+  color: #2f3542; }
+
+.fatex__chat__total {
+  text-align: center;
+  font-weight: 700;
+  font-size: 26px; }
+
+.fatex__chat__ladder {
+  color: #2f3542;
+  font-weight: 300;
+  font-size: 12px;
+  display: block; }

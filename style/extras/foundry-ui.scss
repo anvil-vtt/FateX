@@ -1,0 +1,22 @@
+.app {
+    color: #fff;
+}
+
+.window-app .window-content,
+#chat-log .message,
+#chat-form textarea,
+#chat-controls div.roll-type-select select,
+.sidebar-tab .directory-header .header-search input,
+.sidebar-tab button {
+    background: $sheet-background;
+}
+
+#chat-log {
+    font-family: $primary-font, sans-serif;
+}
+
+div[data-tab="system"] {
+    p.notes {
+        opacity: 0;
+    }
+}

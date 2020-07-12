@@ -1,8 +1,7 @@
 {
     "Actor": {
         "types": [
-            "character",
-            "npc"
+            "character"
         ],
         "templates": {
             "default": {
