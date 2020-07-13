@@ -77,12 +77,10 @@ export class TemplateActorSettings extends FormApplication {
                     label: game.i18n.localize("FAx.Dialog.Confirm"),
                     callback: async () => {
                         await template.delete();
-                        this.render(true);
 
-                        // Update picker if its open
-                        // TODO: Only open if already there
-                        /*let picker = new TemplateActorPicker();
-                        picker.render(true);*/
+                        // Re-render this settings window and the picker if open
+                        this.render(true);
+                        CONFIG.FATEx.applications.templatePicker.render();
                     }
                 }
             }
@@ -105,12 +103,10 @@ export class TemplateActorSettings extends FormApplication {
         };
 
         await Actor.create(createData, {renderSheet: false});
-        this.render(true);
 
-        // Update picker if its open
-        // TODO: Only open if already there
-        /*let picker = new TemplateActorPicker();
-        picker.render(true);*/
+        // Re-render this settings window and the picker if open
+        this.render(true);
+        CONFIG.FATEx.applications.templatePicker.render();
     }
 
     async _updateObject(event, formData) {

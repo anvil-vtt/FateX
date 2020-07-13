@@ -5,6 +5,8 @@ import { AspectItem } from "./module/item/aspect/AspectItem.js";
 import { ConsequenceItem } from "./module/item/consequence/ConsequenceItem.js";
 import { SkillItem } from "./module/item/skill/SkillItem.js";
 import { StressItem } from "./module/item/stress/StressItem.js";
+import { TemplateActorPicker } from "./module/settings/TemplateActorPicker.js";
+import { TemplateActorSettings } from "./module/settings/TemplateActorSettings.js";
 
 export const FATEx = {
     "itemTypes": {
@@ -17,5 +19,9 @@ export const FATEx = {
         "radio": Radio,
         "rangeSlider": RangeSlider,
         "sortable": Sortable
+    },
+    "applications": {
+        'templateSettings': null,
+        'templatePicker': null,
     }
 };

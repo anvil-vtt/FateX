@@ -39,8 +39,7 @@ export class TemplateActorPicker extends FormApplication {
     }
 
     async _openSettings() {
-        let app = new TemplateActorSettings();
-        app.render(true);
+        CONFIG.FATEx.applications.templateSettings.render(true);
     }
 
     async _emptyTemplate(e) {

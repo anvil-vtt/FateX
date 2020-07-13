@@ -1,17 +1,11 @@
+import { TemplateActorPicker } from "./TemplateActorPicker.js";
 import { TemplateActorSettings } from "./TemplateActorSettings.js";
 
 export class TemplateActors {
     static init() {
-        // Register FATEx system settings
-        game.settings.registerMenu("fatex", "templateActors", {
-            name: game.i18n.localize("FAx.Settings.Templates.Title"),
-            hint: game.i18n.localize("FAx.Settings.Templates.Hint"),
-            label: game.i18n.localize("FAx.Settings.Templates.Button"),
-            scope: "world",
-            config: true,
-            type: TemplateActorSettings,
-            restricted: true
-        });
+        // Initialize instances in config
+        CONFIG.FATEx.applications.templateSettings = new TemplateActorSettings();
+        CONFIG.FATEx.applications.templatePicker = new TemplateActorPicker();
     }
 
     static hooks() {
@@ -30,10 +24,8 @@ export class TemplateActors {
             `);
 
             html.on('click', 'button[data-fatex="templates"]', () => {
-                const app = new TemplateActorSettings();
-                return app.render(true);
+                return CONFIG.FATEx.applications.templateSettings.render(true);
             });
-
         });
     }
 }

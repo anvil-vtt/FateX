@@ -16,8 +16,7 @@ export class ActorFate extends Actor {
             return super.create(data, options);
         }
 
-        let templatePicker = new TemplateActorPicker();
-        templatePicker.render(true);
+        CONFIG.FATEx.applications.templatePicker.render(true);
     }
 
     /**
@@ -41,6 +40,14 @@ export class ActorFate extends Actor {
         }, {overwrite: false});
 
         return super.create(data, options);
+    }
+
+    render(force=false, options={}) {
+        super.render(force, options);
+
+        for (let app in CONFIG.FATEx.applications) {
+            CONFIG.FATEx.applications[app].render();
+        }
     }
 
     get _sheetClass() {

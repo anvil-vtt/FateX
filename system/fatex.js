@@ -22,7 +22,9 @@ import { ConsequenceSheet } from "./module/item/consequence/ConsequenceSheet.js"
 import { ItemFate } from "./module/item/ItemFate.js";
 import { SkillSheet } from "./module/item/skill/SkillSheet.js";
 import { StressSheet } from "./module/item/stress/StressSheet.js";
+import { TemplateActorPicker } from "./module/settings/TemplateActorPicker.js";
 import { TemplateActors } from "./module/settings/TemplateActors.js";
+import { TemplateActorSettings } from "./module/settings/TemplateActorSettings.js";
 
 /* -------------------------------- */
 /*	System initialization			*/

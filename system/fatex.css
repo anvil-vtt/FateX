@@ -49,9 +49,6 @@
 #chat-log {
   font-family: "Montserrat", sans-serif, sans-serif; }
 
-div[data-tab="system"] p.notes {
-  opacity: 0; }
-
 .desk {
   display: grid;
   grid-template-columns: 1fr;
