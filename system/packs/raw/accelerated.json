@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Careful",
+        "type": "skill",
+        "data": {}
+    },
+    {
+        "name": "Clever",
+        "type": "skill",
+        "data": {}
+    },
+    {
+        "name": "Flashy",
+        "type": "skill",
+        "data": {}
+    },
+    {
+        "name": "Forceful",
+        "type": "skill",
+        "data": {}
+    },
+    {
+        "name": "Quick",
+        "type": "skill",
+        "data": {}
+    },
+    {
+        "name": "Sneaky",
+        "type": "skill",
+        "data": {}
+    }
+]

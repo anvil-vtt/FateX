@@ -2,7 +2,7 @@
     "name": "fatex",
     "title": "FATEx",
     "description": "An extended implementation of FATE and its derivative systems",
-    "version": "0.0.8",
+    "version": "0.1.0",
     "author": "Patrick Bauer (Daddi#2333)",
     "scripts": [],
     "esmodules": [
@@ -11,7 +11,29 @@
     "styles": [
         "fatex.css"
     ],
-    "packs": [],
+    "packs": [
+        {
+            "name": "fate-core",
+            "label": "FATE Core",
+            "system": "fatex",
+            "path": "./packs/fate-core.db",
+            "entity": "Item"
+        },
+        {
+            "name": "fate-accelerated",
+            "label": "FATE Accelerated",
+            "system": "fatex",
+            "path": "./packs/fate-accelerated.db",
+            "entity": "Item"
+        },
+        {
+            "name": "fate-condensed",
+            "label": "FATE Condensed",
+            "system": "fatex",
+            "path": "./packs/fate-condensed.db",
+            "entity": "Item"
+        }
+    ],
     "languages": [
         {
             "lang": "en",
