@@ -31,9 +31,9 @@
         min-width: 500px;
         display: grid;
         grid-template-columns: 55% 1fr;
-        grid-template-rows: min-content 1fr min-content;
+        grid-template-rows: min-content min-content 1fr min-content;
         gap: 1px 1px;
-        grid-template-areas: "aspects consequences" "tabs tabs" "copyright copyright";
+        grid-template-areas: "messages messages" "aspects consequences" "tabs tabs" "copyright copyright";
 
         .desk__aspects {
             grid-area: aspects;
@@ -49,6 +49,10 @@
 
         .desk__copyright {
             grid-area: copyright;
+        }
+
+        .desk__messages {
+            grid-area: messages;
         }
     }
 

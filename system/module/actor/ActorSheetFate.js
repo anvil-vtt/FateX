@@ -20,6 +20,7 @@ export class ActorSheetFate extends ActorSheet {
             template: "systems/fatex/templates/actor/character.html",
             tabs: [{navSelector: ".fatex_tabs__navigation", contentSelector: ".fatex__tabs__content", initial: "skills"}],
             scrollY: [".desk__content"],
+            width: 860,
         });
 
         return options;
@@ -55,15 +56,13 @@ export class ActorSheetFate extends ActorSheet {
      * returns {Object}
      */
     getData() {
-        let isOwner = this.actor.owner;
-
         // Basic fields and flags
         let data = {
-            owner: isOwner,
+            owner: this.actor.owner,
             options: this.options,
             editable: this.isEditable,
-            isCharacter: this.entity.data.type === "character",
-            isNPC: this.entity.data.type === "npc",
+            isTemplateActor: this.actor.isTemplateActor,
+            isEmptyActor: !this.actor.items.size,
             config: CONFIG.FATEx,
         };
 

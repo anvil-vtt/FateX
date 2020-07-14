@@ -10,6 +10,11 @@
             <div class="desk__content__inner">
 
                 <div class="desk__tabloid">
+                    {{!--Messages--}}
+                    <div class="desk__messages">
+                        {{> "systems/fatex/templates/actor/parts/tabloid/messages.html"}}
+                    </div>
+
                     {{!--Aspects--}}
                     <div class="desk__aspects">
                         {{> "systems/fatex/templates/actor/parts/tabloid/aspects.html"}}
@@ -69,7 +74,7 @@
 
         {{!--Footer--}}
         <div class="desk__footer">
-            {{> "systems/fatex/templates/actor/parts/footer.html"}}
+            {{> "systems/fatex/templates/actor/parts/config.html"}}
         </div>
     </div>
 </form>

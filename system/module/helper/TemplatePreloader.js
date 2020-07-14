@@ -6,12 +6,13 @@ export class TemplatePreloader {
     static async preloadHandlebarsTemplates () {
         const templatePaths = [
             'systems/fatex/templates/actor/parts/header.html',
-            'systems/fatex/templates/actor/parts/footer.html',
+            'systems/fatex/templates/actor/parts/config.html',
             'systems/fatex/templates/actor/parts/copyright.html',
 
             'systems/fatex/templates/actor/parts/sidebar/artwork.html',
             'systems/fatex/templates/actor/parts/sidebar/stress.html',
 
+            'systems/fatex/templates/actor/parts/tabloid/messages.html',
             'systems/fatex/templates/actor/parts/tabloid/aspects.html',
             'systems/fatex/templates/actor/parts/tabloid/consequences.html',
             'systems/fatex/templates/actor/parts/tabloid/conditions.html',

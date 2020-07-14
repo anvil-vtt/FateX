@@ -76,9 +76,9 @@
     min-width: 500px;
     display: grid;
     grid-template-columns: 55% 1fr;
-    grid-template-rows: min-content 1fr min-content;
+    grid-template-rows: min-content min-content 1fr min-content;
     gap: 1px 1px;
-    grid-template-areas: "aspects consequences" "tabs tabs" "copyright copyright"; }
+    grid-template-areas: "messages messages" "aspects consequences" "tabs tabs" "copyright copyright"; }
     .desk__content .desk__tabloid .desk__aspects {
       grid-area: aspects; }
     .desk__content .desk__tabloid .desk__consequences {
@@ -87,6 +87,8 @@
       grid-area: tabs; }
     .desk__content .desk__tabloid .desk__copyright {
       grid-area: copyright; }
+    .desk__content .desk__tabloid .desk__messages {
+      grid-area: messages; }
   .desk__content .desk__sidebar {
     flex: 1;
     min-width: 240px;
@@ -293,6 +295,9 @@
   padding: 10px;
   display: flex;
   flex-direction: column-reverse; }
+
+.fatex__header__name {
+  width: 50%; }
 
 .fatex__header__center {
   align-items: center; }
@@ -523,6 +528,25 @@
     width: auto;
     height: auto;
     padding: 0; }
+
+.fatex__sheet_config {
+  padding: 10px;
+  display: none;
+  box-shadow: 0 -2px 15px 0 #2f3542;
+  background: #2f3542;
+  z-index: 5;
+  color: white; }
+  .fatex__helper--enable-editmode .fatex__sheet_config {
+    display: block; }
+  .fatex__sheet_config h2 {
+    font-size: 16px;
+    text-transform: uppercase;
+    border: 0;
+    font-weight: bold; }
+
+.fatex__sheet__action {
+  display: block;
+  cursor: pointer; }
 
 .fatex__dialog {
   font-family: "Montserrat", sans-serif; }
@@ -781,3 +805,10 @@ input[type=range]::-moz-range-thumb {
 
 .fatex__template__header__settings {
   cursor: pointer; }
+
+.fatex__message {
+  margin: 10px;
+  padding: 5px;
+  border: 1px solid #2f3542;
+  background: rgba(47, 53, 66, 0.3);
+  border-radius: 5px; }

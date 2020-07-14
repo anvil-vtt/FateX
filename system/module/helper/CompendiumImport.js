@@ -4,10 +4,10 @@ export class CompendiumImport {
         const pack = game.packs.find(p => p.collection === `fatex.fate-${name}`);
         const response = await fetch("systems/fatex/packs/raw/" + name + ".json");
         const content = await response.json();
-        const packItem = await pack.getContent();
+        const packItems = await pack.getContent();
 
         // Delete all current compendium entires
-        for (let item of packItem) {
+        for (let item of packItems) {
             pack.deleteEntity(item.id);
         }
 
