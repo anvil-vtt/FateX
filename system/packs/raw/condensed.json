@@ -131,5 +131,102 @@
         "data": {
             "description": "Mental fortitude, the ability to overcome temptation and to withstand trauma. Will stunts let you ignore mental consequences, withstand the mental agony of strange powers, and hold steady against enemies who provoke you. In addition, a high Will rating gives you more mental stress or consequence slots."
         }
+    },
+
+
+
+
+
+    {
+        "name": "High Concept",
+        "type": "aspect",
+        "data": {
+            "label": "High Concept"
+        }
+    },
+    {
+        "name": "Trouble",
+        "type": "aspect",
+        "data": {
+            "label": "Trouble"
+        }
+    },
+    {
+        "name": "Relationship",
+        "type": "aspect",
+        "data": {
+            "label": "Relationship"
+        }
+    },
+    {
+        "name": "Other Aspect",
+        "type": "aspect",
+        "data": {
+            "label": "Other Aspect"
+        }
+    },
+    {
+        "name": "Other Aspect",
+        "type": "aspect",
+        "data": {
+            "label": "Other Aspect"
+        }
+    },
+
+
+
+
+
+    {
+        "name": "Mild consequence",
+        "type": "consequence",
+        "data": {
+            "label": "Mild",
+            "icon": "2"
+        }
+    },
+    {
+        "name": "Mild consequence",
+        "type": "consequence",
+        "data": {
+            "label": "Mild",
+            "icon": "2"
+        }
+    },
+    {
+        "name": "Moderate consequence",
+        "type": "consequence",
+        "data": {
+            "label": "Moderate",
+            "icon": "4"
+        }
+    },
+    {
+        "name": "Severe consequence",
+        "type": "consequence",
+        "data": {
+            "label": "Severe",
+            "icon": "6"
+        }
+    },
+
+
+
+
+    {
+        "name": "Physical stress",
+        "type": "stress",
+        "data": {
+            "size": 6,
+            "labelType": 1
+        }
+    },
+    {
+        "name": "Mental stress",
+        "type": "stress",
+        "data": {
+            "size": 6,
+            "labelType": 1
+        }
     }
 ]

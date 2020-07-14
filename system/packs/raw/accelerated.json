@@ -28,5 +28,77 @@
         "name": "Sneaky",
         "type": "skill",
         "data": {}
+    },
+
+
+
+
+
+    {
+        "name": "High Concept",
+        "type": "aspect",
+        "data": {
+            "label": "High Concept"
+        }
+    },
+    {
+        "name": "Trouble",
+        "type": "aspect",
+        "data": {
+            "label": "Trouble"
+        }
+    },
+    {
+        "name": "Empty aspect",
+        "type": "aspect"
+    },
+    {
+        "name": "Empty aspect",
+        "type": "aspect"
+    },
+    {
+        "name": "Empty aspect",
+        "type": "aspect"
+    },
+
+
+
+
+
+    {
+        "name": "Mild consequence",
+        "type": "consequence",
+        "data": {
+            "label": "Mild",
+            "icon": "2"
+        }
+    },
+    {
+        "name": "Moderate consequence",
+        "type": "consequence",
+        "data": {
+            "label": "Moderate",
+            "icon": "4"
+        }
+    },
+    {
+        "name": "Severe consequence",
+        "type": "consequence",
+        "data": {
+            "label": "Severe",
+            "icon": "6"
+        }
+    },
+
+
+
+
+    {
+        "name": "Stress",
+        "type": "stress",
+        "data": {
+            "size": 3,
+            "labelType": 0
+        }
     }
 ]
