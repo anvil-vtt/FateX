@@ -416,7 +416,7 @@
   padding: 10px;
   padding-bottom: 0; }
 
-.fatex_tabs__navigation {
+.fatex__tabs__navigation {
   border-bottom: 2px solid #2f3542;
   display: flex;
   flex-wrap: nowrap;
