@@ -29,6 +29,15 @@ export class SkillItem extends BaseItem {
         return sheetData;
     }
 
+
+    static prepareItemForActorSheet(item) {
+        item.data.isNegative = item.data.rank < 0;
+        item.data.isPositive = item.data.rank > 0;
+        item.data.isNeutral = item.data.rank === 0;
+
+        return item;
+    }
+
     /**
      * Add a list of available ranks to the sheet
      */
@@ -60,7 +69,7 @@ export class SkillItem extends BaseItem {
             if(doIncrement) {
                 newRank = (rank >= 9 ) ? 9 : rank + 1;
             } else {
-                newRank = (rank <= 0 ) ? 0 : rank - 1;
+                newRank = (rank <= -9 ) ? -9 : rank - 1;
             }
 
             skill.update({

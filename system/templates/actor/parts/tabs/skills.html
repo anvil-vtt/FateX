@@ -14,9 +14,13 @@
                 <div class="fatex__skill__actions_wrapper">
                     <div class="fatex__skill__input fatex__headline">{{skill.name}}</div>
 
-                    {{#ifBiggerNull skill.data.rank}}
-                        <label class="fatex__skill__icon fatex__input__icon">+{{skill.data.rank}}</label>
-                    {{/ifBiggerNull}}
+                    {{log skill.data}}
+                    {{#unless skill.data.isNeutral}}
+                        <label
+                            class="fatex__skill__icon fatex__input__icon{{#if skill.data.isNegative}} fatex__skill__icon--negative{{/if}}">
+                            {{#if skill.data.isPositive}}+{{/if}}{{skill.data.rank}}
+                        </label>
+                    {{/unless}}
 
                     <div class="fatex__skill__actions fatex__item__actions">
                         <span class="fatex__skill__sort fatex__item__sort"></span>

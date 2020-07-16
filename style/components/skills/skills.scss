@@ -27,6 +27,10 @@
     text-shadow: initial;
 }
 
+.fatex__skill__icon--negative {
+    color: $caution-color;
+}
+
 .fatex__skill__actions {
     @include edit-settings($headline-background);
     pointer-events: none;

@@ -175,7 +175,7 @@
   .fatex__item__delete:before {
     content: "\f1f8"; }
   .fatex__item__delete:hover {
-    color: #ff4757; }
+    color: #f21628; }
 
 .fatex__artwork {
   position: relative;
@@ -726,6 +726,9 @@ input[type=range]::-moz-range-thumb {
   color: #f1f2f6;
   -webkit-text-stroke: 2px #2f3542;
   text-shadow: initial; }
+
+.fatex__skill__icon--negative {
+  color: #f21628; }
 
 .fatex__skill__actions {
   display: flex;
