@@ -797,6 +797,9 @@ input[type=range]::-moz-range-thumb {
   -webkit-text-stroke: 2px #2f3542;
   text-shadow: initial; }
 
+.fatex__chat__headline__icon--negative {
+  color: #f21628; }
+
 .fatex__chat__dice {
   width: 50%;
   margin: auto;
