@@ -11,6 +11,8 @@ export class SkillItem extends BaseItem {
 
         // Check or uncheck a single box
         html.find('.fatex__skill').click((e) => this._onRollSkill.call(this, e, sheet));
+        html.find('.fatex__skill__increment').click((e) => this._onSkillChangeRank.call(this, e, sheet, true));
+        html.find('.fatex__skill__decrement').click((e) => this._onSkillChangeRank.call(this, e, sheet, false));
     }
 
     /**
@@ -44,6 +46,29 @@ export class SkillItem extends BaseItem {
      * EVENT HANDLER
      *************************/
 
+    static _onSkillChangeRank(e, sheet, doIncrement) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const dataset = e.currentTarget.dataset;
+        const skill = sheet.actor.getOwnedItem(dataset.item);
+
+        if(skill) {
+            const rank = skill.data.data.rank;
+            let newRank = 0;
+
+            if(doIncrement) {
+                newRank = (rank >= 9 ) ? 9 : rank + 1;
+            } else {
+                newRank = (rank <= 0 ) ? 0 : rank - 1;
+            }
+
+            skill.update({
+                "data.rank": newRank
+            });
+        }
+    }
+
     static _onRollSkill(e, sheet) {
         e.preventDefault();
 
@@ -74,19 +99,16 @@ export class SkillItem extends BaseItem {
         };
 
         chatData.content = await renderTemplate(template, templateData);
-
-        const chatMessage = await ChatMessage.create(chatData);
-       /*console.log(chatMessage)
-        chatMessage.update({"content": "Hallo"});*/
+        await ChatMessage.create(chatData);
     }
 
     static getDice(roll) {
         const dice = [];
 
-        roll.parts[0].rolls.forEach(rolledDie => {
+        roll.terms[0].results.forEach(rolledDie => {
             const die = {};
-            die.value = rolledDie.roll;
-            die.face = this.getDieFace(rolledDie.roll)
+            die.value = rolledDie.result;
+            die.face = this.getDieFace(rolledDie.result)
 
             dice.push(die);
         })

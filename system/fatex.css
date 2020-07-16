@@ -744,6 +744,30 @@ input[type=range]::-moz-range-thumb {
   .fatex__skill__actions > * {
     margin-right: 10px; }
 
+.fatex__skill__secondary__actions {
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-15px, 20px);
+  opacity: 0;
+  color: #2f3542;
+  font-size: 16px;
+  text-shadow: 1px -1px 1px #f1f2f6; }
+  .fatex__helper--enable-editmode .fatex__skill__secondary__actions {
+    opacity: 1;
+    pointer-events: all; }
+
+.fatex__skill__increment {
+  font-family: "Fate Icons", sans-serif;
+  cursor: pointer; }
+
+.fatex__skill__decrement {
+  font-family: "Fate Icons", sans-serif;
+  cursor: pointer; }
+
 .fatex__skill__actions_wrapper {
   position: relative;
   color: white; }

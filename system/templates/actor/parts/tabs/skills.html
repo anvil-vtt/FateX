@@ -19,9 +19,14 @@
                     {{/ifBiggerNull}}
 
                     <div class="fatex__skill__actions fatex__item__actions">
-                        <span class="fatex__skill__sort fatex__item__sort fatex__helper__editmode--vanish"></span>
+                        <span class="fatex__skill__sort fatex__item__sort"></span>
                         <span class="fatex__skill__settings fatex__item__settings" data-item="{{skill._id}}"></span>
-                        <span class="fatex__skill__delete fatex__item__delete fatex__helper__editmode--vanish" data-item="{{skill._id}}"></span>
+                        <span class="fatex__skill__delete fatex__item__delete" data-item="{{skill._id}}"></span>
+                    </div>
+
+                    <div class="fatex__skill__secondary__actions">
+                        <span class="fatex__skill__increment" data-item="{{skill._id}}">+</span>
+                        <span class="fatex__skill__decrement" data-item="{{skill._id}}">-</span>
                     </div>
                 </div>
             </div>
