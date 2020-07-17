@@ -1,0 +1,11 @@
+<div class="fatex__setting">
+    <h2 class="fatex__headline fatex__setting__headline">
+        <span>{{localize headline}}</span>
+    </h2>
+
+    <label class="fatex__input fatex__setting__editor" for="{{ fieldName }}">
+        {{#if help}}<span class="fatex__setting__help">{{localize help}}</span>{{/if}}
+
+        {{editor content=field target=fieldName button=true owner=owner editable=editable}}
+    </label>
+</div>

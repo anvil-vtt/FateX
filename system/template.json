@@ -31,7 +31,9 @@
             "aspect",
             "consequence",
             "condition",
-            "skill"
+            "skill",
+            "stunt",
+            "extra"
         ],
         "templates": {
             "base": {
@@ -82,13 +84,13 @@
             "templates": [
                 "base"
             ],
-            "shortDescription": 0
+            "shortDescription": ""
         },
         "extra": {
             "templates": [
                 "base"
             ],
-            "shortDescription": 0
+            "shortDescription": ""
         }
     }
 }

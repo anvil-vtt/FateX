@@ -85,6 +85,22 @@
                 "Rank": "Rank",
                 "Description": "Description",
                 "DescriptionHelp": "Is only displayed when sending to chat"
+            },
+            "Stunt": {
+                "Name": "Stunt title",
+                "EditItem": "Edit Stunt",
+                "Description": "Description",
+                "DescriptionHelp": "Long description for this stunt",
+                "ShortDescription": "Short Description",
+                "ShortDescriptionHelp": "Short description for this stunt"
+            },
+            "Extra": {
+                "Name": "Extra title",
+                "EditItem": "Edit Extra",
+                "Description": "Description",
+                "DescriptionHelp": "Long description for this extra",
+                "ShortDescription": "Short Description",
+                "ShortDescriptionHelp": "Short description for this extra"
             }
         },
         "Dialog": {

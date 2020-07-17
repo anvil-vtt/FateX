@@ -437,9 +437,10 @@
 .fatex__tabs__tab--skills .fatex__tabs__tab__content {
   display: flex; }
   .fatex__tabs__tab--skills .fatex__tabs__tab__content .fatex__skills {
+    min-width: 220px;
     width: 40%; }
   .fatex__tabs__tab--skills .fatex__tabs__tab__content .fatex__skills--columns {
-    width: 60%; }
+    min-width: 300px; }
   .fatex__tabs__tab--skills .fatex__tabs__tab__content .fatex__stunts {
     flex-grow: 1;
     padding-left: 10px; }
@@ -632,6 +633,18 @@ input[type="text"].fatex__setting__range__value {
   text-shadow: 1px 1px 1px #f1f2f6;
   width: 50px;
   text-align: center; }
+
+.fatex__setting__text div {
+  min-height: 200px; }
+
+.fatex__setting__editor {
+  min-height: 200px;
+  display: flex; }
+  .fatex__setting__editor > .editor {
+    width: 100%;
+    min-height: 200px;
+    border-bottom: 1px solid #2f3542;
+    border-radius: 3px; }
 
 .fatex__settings_sheet {
   font-family: "Montserrat", sans-serif;
@@ -850,3 +863,19 @@ input[type=range]::-moz-range-thumb {
   .fatex__biography > .editor {
     width: 100%;
     min-height: 200px; }
+
+.fatex__stunts__headline {
+  position: relative; }
+
+.fatex__stunt {
+  padding: 10px 0; }
+
+.fatex__extras__wrapper {
+  display: flex; }
+
+.fatex__extra {
+  width: 50%;
+  padding: 10px; }
+
+.fatex__extra__description {
+  font-size: 12px; }

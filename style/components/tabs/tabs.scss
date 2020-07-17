@@ -37,11 +37,12 @@
         display: flex;
 
         .fatex__skills {
+            min-width: 220px;
             width: 40%;
         }
 
         .fatex__skills--columns {
-            width: 60%;
+            min-width: 300px;
         }
 
         .fatex__stunts {

@@ -91,3 +91,22 @@ input[type="text"].fatex__setting__range__value {
     width: 50px;
     text-align: center;
 }
+
+.fatex__setting__text {
+    div {
+        min-height: 200px;
+    }
+}
+
+.fatex__setting__editor {
+    min-height: 200px;
+    display: flex;
+
+    > .editor {
+        width: 100%;
+        min-height: 200px;
+
+        border-bottom: 1px solid $primary-color;
+        border-radius: 3px;
+    }
+}

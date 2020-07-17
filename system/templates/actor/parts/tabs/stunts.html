@@ -1,9 +1,29 @@
 <div class="fatex__stunts">
-    <h2 class="fatex__skills__headline">
+    <h2 class="fatex__stunts__headline">
         <span>{{localize "FAx.Sheet.Stunts"}}</span>
 
         <div class="fatex__item__actions">
             <span class="fatex__item__add fatex__stunt__add"></span>
         </div>
     </h2>
+
+    {{#each stunts as |stunt stuntIndex|}}
+        <div class="fatex__stunt item" data-item-id="{{stunt._id}}">
+            <h2 class="fatex__headline fatex__sortable" data-item-id="{{stunt._id}}">
+                <span>{{stunt.name}}</span>
+
+                <div class="fatex__headline__actions fatex__item__actions">
+                    <span class="fatex__item__sort fatex__stunt__sort"></span>
+                    <span class="fatex__item__settings fatex__stunt__settings" data-item="{{stunt._id}}"></span>
+                    <span class="fatex__item__delete fatex__stunt__delete" data-item="{{stunt._id}}"></span>
+                </div>
+            </h2>
+
+            {{#ifNotEmpty stunt.data.description}}
+                <div class="fatex__stunt__description">
+                    {{{stunt.data.description}}}
+                </div>
+            {{/ifNotEmpty}}
+        </div>
+    {{/each}}
 </div>
