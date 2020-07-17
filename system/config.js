@@ -7,7 +7,7 @@ import { ConsequenceItem } from "./module/item/consequence/ConsequenceItem.js";
 import { SkillItem } from "./module/item/skill/SkillItem.js";
 import { StressItem } from "./module/item/stress/StressItem.js";
 
-export const FATEx = {
+export const FateX = {
     "itemTypes": {
         "stress": StressItem,
         "aspect": AspectItem,

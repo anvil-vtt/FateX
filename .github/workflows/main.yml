@@ -1,4 +1,4 @@
-name: FATEx CI
+name: FateX CI
 on: [push]
 
 jobs:

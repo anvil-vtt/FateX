@@ -80,7 +80,7 @@ export class TemplateActorSettings extends FormApplication {
 
                         // Re-render this settings window and the picker if open
                         this.render(true);
-                        CONFIG.FATEx.applications.templatePicker.render();
+                        CONFIG.FateX.applications.templatePicker.render();
                     }
                 }
             }
@@ -106,7 +106,7 @@ export class TemplateActorSettings extends FormApplication {
 
         // Re-render this settings window and the picker if open
         this.render(true);
-        CONFIG.FATEx.applications.templatePicker.render();
+        CONFIG.FateX.applications.templatePicker.render();
     }
 
     async _updateObject(event, formData) {

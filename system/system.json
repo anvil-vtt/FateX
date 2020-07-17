@@ -1,6 +1,6 @@
 {
     "name": "fatex",
-    "title": "FATEx",
+    "title": "FateX",
     "description": "An extended implementation of FATE and its derivative systems",
     "version": "0.1.0",
     "author": "Patrick Bauer (Daddi#2333)",
@@ -50,6 +50,6 @@
     "compatibleCoreVersion": "0.6.5",
     "socket": true,
     "url": "https://github.com/anvil-vtt/fate",
-    "manifest": "https://github.com/anvil-vtt/FATEx/releases/latest/download/system.json",
-    "download": "https://github.com/anvil-vtt/FATEx/releases/latest/download/fatex.zip"
+    "manifest": "https://github.com/anvil-vtt/FateX/releases/latest/download/system.json",
+    "download": "https://github.com/anvil-vtt/FateX/releases/latest/download/fatex.zip"
 }

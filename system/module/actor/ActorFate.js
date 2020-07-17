@@ -1,5 +1,5 @@
 /**
- * ActorFate is the default entity class for actors inside the FATEx system.
+ * ActorFate is the default entity class for actors inside the FateX system.
  * Adds custom features based on the system.
  */
 import { TemplateActorPicker } from "../settings/TemplateActorPicker.js";
@@ -16,7 +16,7 @@ export class ActorFate extends Actor {
             return super.create(data, options);
         }
 
-        CONFIG.FATEx.applications.templatePicker.render(true);
+        CONFIG.FateX.applications.templatePicker.render(true);
     }
 
     /**
@@ -45,8 +45,8 @@ export class ActorFate extends Actor {
     render(force=false, options={}) {
         super.render(force, options);
 
-        for (let app in CONFIG.FATEx.applications) {
-            CONFIG.FATEx.applications[app].render();
+        for (let app in CONFIG.FateX.applications) {
+            CONFIG.FateX.applications[app].render();
         }
     }
 

@@ -2,7 +2,7 @@
  * The FATE extended game system for FoundryVTT
  *
  * Author: Patrick Bauer (Daddi#2333)
- * Repository: https://github.com/anvil-vtt/FATEx
+ * Repository: https://github.com/anvil-vtt/FateX
  * Software License: GNU GPLv3
  * Content License:
  *      This work is based on Fate Core System and Fate Accelerated Edition (found at http://www.faterpg.com/),
@@ -12,7 +12,7 @@
  *      (http://creativecommons.org/licenses/by/3.0/).
  */
 
-import { FATEx } from "./config.js";
+import { FateX } from "./config.js";
 import { ActorFate } from "./module/actor/ActorFate.js";
 import { CharacterSheet } from "./module/actor/character/CharacterSheet.js";
 import { HandlebarsHelpers } from "./module/helper/HandlebarsHelpers.js";
@@ -30,10 +30,10 @@ import { TemplateActorSettings } from "./module/settings/TemplateActorSettings.j
 /*	System initialization			*/
 /* -------------------------------- */
 Hooks.once('init', async function () {
-    console.log(`FATEx | Initializing FATE extended game system`);
+    console.log(`FateX | Initializing FATE extended game system`);
 
     // Initialise config
-    CONFIG.FATEx = FATEx;
+    CONFIG.FateX = FateX;
     CONFIG.Actor.entityClass = ActorFate;
     CONFIG.Item.entityClass = ItemFate;
 
@@ -50,29 +50,29 @@ Hooks.once('init', async function () {
     Actors.unregisterSheet('core', ActorSheet);
     Items.unregisterSheet('core', ItemSheet);
 
-    // Register FATEx actor sheets
-    Actors.registerSheet('FATEx', CharacterSheet, {
+    // Register FateX actor sheets
+    Actors.registerSheet('FateX', CharacterSheet, {
         types: ['character'],
         makeDefault: true
     });
 
-    // Register FATEx item sheets
-    Items.registerSheet('FATEx', StressSheet, {
+    // Register FateX item sheets
+    Items.registerSheet('FateX', StressSheet, {
         types: ['stress'],
         makeDefault: true
     });
 
-    Items.registerSheet('FATEx', AspectSheet, {
+    Items.registerSheet('FateX', AspectSheet, {
         types: ['aspect'],
         makeDefault: true
     });
 
-    Items.registerSheet('FATEx', ConsequenceSheet, {
+    Items.registerSheet('FateX', ConsequenceSheet, {
         types: ['consequence'],
         makeDefault: true
     });
 
-    Items.registerSheet('FATEx', SkillSheet, {
+    Items.registerSheet('FateX', SkillSheet, {
         types: ['skill'],
         makeDefault: true
     });

@@ -4,8 +4,8 @@ import { TemplateActorSettings } from "./TemplateActorSettings.js";
 export class TemplateActors {
     static init() {
         // Initialize instances in config
-        CONFIG.FATEx.applications.templateSettings = new TemplateActorSettings();
-        CONFIG.FATEx.applications.templatePicker = new TemplateActorPicker();
+        CONFIG.FateX.applications.templateSettings = new TemplateActorSettings();
+        CONFIG.FateX.applications.templatePicker = new TemplateActorPicker();
     }
 
     static hooks() {
@@ -24,7 +24,7 @@ export class TemplateActors {
             `);
 
             html.on('click', 'button[data-fatex="templates"]', () => {
-                return CONFIG.FATEx.applications.templateSettings.render(true);
+                return CONFIG.FateX.applications.templateSettings.render(true);
             });
         });
     }

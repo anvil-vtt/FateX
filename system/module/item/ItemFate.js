@@ -6,6 +6,6 @@ export class ItemFate extends Item {
         let item = this.data;
 
         // Let every itemType prepare itselt
-        CONFIG.FATEx.itemTypes[item.type].prepareItemForActorSheet(item);
+        CONFIG.FateX.itemTypes[item.type].prepareItemForActorSheet(item);
     }
 }

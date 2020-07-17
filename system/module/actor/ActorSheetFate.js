@@ -1,11 +1,11 @@
 /**
- * FATEx base class for all actor sheets.
+ * FateX base class for all actor sheets.
  * Defines what information on the actorsheet may be rendered.
  */
 export class ActorSheetFate extends ActorSheet {
 
     /**
-     * Defines the default options for all FATEx actor sheets.
+     * Defines the default options for all FateX actor sheets.
      * This consists of things like css classes, the template to load and the tab configuration.
      *
      * @returns {Object}
@@ -37,13 +37,13 @@ export class ActorSheetFate extends ActorSheet {
         super.activateListeners(html);
 
         // Custom sheet listeners for every ItemType
-        for (let itemType in CONFIG.FATEx.itemTypes) {
-            CONFIG.FATEx.itemTypes[itemType].activateActorSheetListeners(html, this);
+        for (let itemType in CONFIG.FateX.itemTypes) {
+            CONFIG.FateX.itemTypes[itemType].activateActorSheetListeners(html, this);
         }
 
         // Custom sheet listeners for every SheetComponent
-        for (let sheetComponent in CONFIG.FATEx.sheetComponents) {
-            CONFIG.FATEx.sheetComponents[sheetComponent].activateListeners(html, this);
+        for (let sheetComponent in CONFIG.FateX.sheetComponents) {
+            CONFIG.FateX.sheetComponents[sheetComponent].activateListeners(html, this);
         }
     }
 
@@ -63,7 +63,7 @@ export class ActorSheetFate extends ActorSheet {
             editable: this.isEditable,
             isTemplateActor: this.actor.isTemplateActor,
             isEmptyActor: !this.actor.items.size,
-            config: CONFIG.FATEx,
+            config: CONFIG.FateX,
         };
 
         // Add actor, actor data and item
@@ -80,15 +80,15 @@ export class ActorSheetFate extends ActorSheet {
         data.consequences = data.items.filter(item => item.type === 'consequence');
 
         // Allow every itemtype to add data to the actorsheet
-        for (let itemType in CONFIG.FATEx.itemTypes) {
-            data = CONFIG.FATEx.itemTypes[itemType].getActorSheetData(data, this);
+        for (let itemType in CONFIG.FateX.itemTypes) {
+            data = CONFIG.FateX.itemTypes[itemType].getActorSheetData(data, this);
         }
 
         return data;
     }
 
     /**
-     * Adds FATEx specific buttons to the sheets header bar.
+     * Adds FateX specific buttons to the sheets header bar.
      *
      * @returns {*}
      *   A list of buttons to be rendered.
