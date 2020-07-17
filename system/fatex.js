@@ -1,5 +1,5 @@
 /**
- * The FATE extended game system for FoundryVTT
+ * The Fate extended game system for FoundryVTT
  *
  * Author: Patrick Bauer (Daddi#2333)
  * Repository: https://github.com/anvil-vtt/FateX
@@ -30,7 +30,7 @@ import { TemplateActorSettings } from "./module/settings/TemplateActorSettings.j
 /*	System initialization			*/
 /* -------------------------------- */
 Hooks.once('init', async function () {
-    console.log(`FateX | Initializing FATE extended game system`);
+    console.log(`FateX | Initializing Fate extended game system`);
 
     // Initialise config
     CONFIG.FateX = FateX;

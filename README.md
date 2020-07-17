@@ -1,5 +1,5 @@
 # The FateX game system for FoundryVTT
-FateX is the extended FATE game system for FoundryVTT.
+FateX is the extended Fate game system for FoundryVTT.
 
 ## Installation
 **Manifest URL**: https://github.com/anvil-vtt/FateX/releases/latest/download/system.json
