@@ -842,3 +842,11 @@ input[type=range]::-moz-range-thumb {
   border: 1px solid #2f3542;
   background: rgba(47, 53, 66, 0.3);
   border-radius: 5px; }
+
+.fatex__biography {
+  width: 100%;
+  min-height: 200px;
+  display: flex; }
+  .fatex__biography > .editor {
+    width: 100%;
+    min-height: 200px; }

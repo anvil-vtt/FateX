@@ -5,7 +5,9 @@
         ],
         "templates": {
             "default": {
-                "biography": "",
+                "biography": {
+                    "value": ""
+                },
                 "fatepoints": {
                     "current": 3,
                     "refresh": 3
@@ -75,6 +77,18 @@
                 "base"
             ],
             "rank": 0
+        },
+        "stunt": {
+            "templates": [
+                "base"
+            ],
+            "shortDescription": 0
+        },
+        "extra": {
+            "templates": [
+                "base"
+            ],
+            "shortDescription": 0
         }
     }
 }

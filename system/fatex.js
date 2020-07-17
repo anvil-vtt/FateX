@@ -19,9 +19,11 @@ import { HandlebarsHelpers } from "./module/helper/HandlebarsHelpers.js";
 import { TemplatePreloader } from "./module/helper/TemplatePreloader.js";
 import { AspectSheet } from "./module/item/aspect/AspectSheet.js";
 import { ConsequenceSheet } from "./module/item/consequence/ConsequenceSheet.js";
+import { ExtraSheet } from "./module/item/extra/ExtraSheet.js";
 import { ItemFate } from "./module/item/ItemFate.js";
 import { SkillSheet } from "./module/item/skill/SkillSheet.js";
 import { StressSheet } from "./module/item/stress/StressSheet.js";
+import { StuntSheet } from "./module/item/stunt/StuntSheet.js";
 import { TemplateActors } from "./module/settings/TemplateActors.js";
 
 /* -------------------------------- */
@@ -72,6 +74,16 @@ Hooks.once('init', async function () {
 
     Items.registerSheet('FateX', SkillSheet, {
         types: ['skill'],
+        makeDefault: true
+    });
+
+    Items.registerSheet('FateX', StuntSheet, {
+        types: ['stunt'],
+        makeDefault: true
+    });
+
+    Items.registerSheet('FateX', ExtraSheet, {
+        types: ['extra'],
         makeDefault: true
     });
 });
