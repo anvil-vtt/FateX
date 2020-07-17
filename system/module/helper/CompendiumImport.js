@@ -6,9 +6,9 @@ export class CompendiumImport {
         const content = await response.json();
         const packItems = await pack.getContent();
 
-        // Delete all current compendium entires
+        // Delete all current compendium entries
         for (let item of packItems) {
-            pack.deleteEntity(item.id);
+            await pack.deleteEntity(item.id);
         }
 
         // Create temporary items from JSON
@@ -22,10 +22,10 @@ export class CompendiumImport {
 
         for (let item of newItems) {
             // Add importSort Flag
-            i.data.flags = {fatex: {importSort: importSortIndex}};
+            item.data.flags = {fatex: {importSort: importSortIndex}};
 
             // Import into compendium
-            await pack.importEntity(i);
+            await pack.importEntity(item);
 
             // Increment sorting index
             importSortIndex++;
