@@ -46,7 +46,7 @@
             "path": "lang/de.json"
         }
     ],
-    "minimumCoreVersion": "0.5.2",
+    "minimumCoreVersion": "0.7.0",
     "compatibleCoreVersion": "0.7.0",
     "socket": true,
     "url": "https://github.com/anvil-vtt/fate",
