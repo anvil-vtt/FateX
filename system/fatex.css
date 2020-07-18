@@ -185,6 +185,9 @@
   position: relative;
   padding: 10px; }
 
+.fatex__artwork--hidden {
+  display: none; }
+
 .fatex__artwork--image {
   width: 100%;
   height: 200px;
