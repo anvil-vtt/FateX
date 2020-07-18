@@ -10,7 +10,7 @@
 
 .desk__header {
     grid-area: header;
-    box-shadow: 0 2px 15px 0 $header-background;
+    box-shadow: 0 2px 15px 0 $header-shadow-color;
     background: $header-background;
     z-index: 5;
 }
@@ -60,6 +60,15 @@
         flex: 1;
         min-width: 240px;
         box-shadow: 10px 0 15px 0 $header-background;
+    }
+
+
+    .desk__content__inner--flipped {
+        flex-direction: row-reverse;
+
+        .desk__sidebar {
+            box-shadow: -10px 0 15px 0 $header-background;
+        }
     }
 }
 

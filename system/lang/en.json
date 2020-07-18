@@ -112,7 +112,7 @@
             "Templates": {
                 "Title": "Character sheet templates",
                 "Hint": "Allows you to choose how character sheets will look like for new characters.",
-                "Button": "Configure Templates",
+                "Button": "FateX Templates",
                 "New": "New template",
                 "App": {
                     "Title": "Configure Templates",

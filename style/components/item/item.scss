@@ -31,7 +31,7 @@
 
 .fatex__item__delete {
     @include fa-icon($fa-var-trash);
-    transition: color 0.3s;
+    transition: color 0.2s;
     cursor: pointer;
 
     &:hover {

@@ -6,11 +6,15 @@ $component-border-style: solid;
 
 // Colors
 $sheet-background: rgb(241, 242, 246);
-$header-background: rgb(47, 53, 66);
-$header-font-color: rgb(255, 255, 255);
 
 $primary-color: rgba(47, 53, 66, 1);
-$primary-color-transparent: rgba(47, 53, 66, 0.3);
+$primary-color-transparent: transparentize($primary-color, 0.7);
+
+$header-background: $primary-color;
+$header-font-color: rgb(255, 255, 255);
+$header-shadow-color: rgba(47, 53, 66, 1);
+
+
 $headline-background: $primary-color;
 $headline-color: rgb(255, 255, 255);
 

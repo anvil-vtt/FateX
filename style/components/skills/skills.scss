@@ -34,21 +34,23 @@
 .fatex__skill__actions {
     @include edit-settings($headline-background);
     pointer-events: none;
+
+    .fatex__helper--enable-editmode & {
+        opacity: 1;
+        pointer-events: all;
+    }
 }
 
 .fatex__skill__secondary__actions {
     display: flex;
     align-items: center;
     pointer-events: none;
-
-
     position: absolute;
     left: 0;
     top: 0;
     transform: translate(-15px, 20px);
 
     opacity: 0;
-
     color: $primary-color;
     font-size: 16px;
     text-shadow: 1px -1px 1px $sheet-background;

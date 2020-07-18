@@ -93,6 +93,10 @@
     flex: 1;
     min-width: 240px;
     box-shadow: 10px 0 15px 0 #2f3542; }
+  .desk__content .desk__content__inner--flipped {
+    flex-direction: row-reverse; }
+    .desk__content .desk__content__inner--flipped .desk__sidebar {
+      box-shadow: -10px 0 15px 0 #2f3542; }
 
 .desk__footer {
   grid-area: footer; }
@@ -112,7 +116,7 @@
   top: 0;
   right: 0;
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity 0.2s;
   padding-left: 50px;
   text-shadow: 1px 1px 2px #a0a0a0;
   pointer-events: none; }
@@ -170,7 +174,7 @@
   text-rendering: auto;
   line-height: 1;
   -webkit-font-smoothing: antialiased;
-  transition: color 0.3s;
+  transition: color 0.2s;
   cursor: pointer; }
   .fatex__item__delete:before {
     content: "\f1f8"; }
@@ -367,7 +371,7 @@
   top: 0;
   right: 0;
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity 0.2s;
   padding-left: 50px;
   text-shadow: 1px 1px 2px #a0a0a0;
   pointer-events: none;
@@ -504,6 +508,8 @@
   .fatex__sheet input[type="text"] {
     background: transparent;
     padding: 0; }
+  .fatex__sheet h2 {
+    border-color: #2f3542; }
 
 .fatex__item_sheet {
   font-family: "Montserrat", sans-serif;
@@ -702,7 +708,7 @@ input[type=range]::-moz-range-thumb {
   cursor: pointer; }
 
 .fatex__helper__editmode {
-  transition: all 0.3s;
+  transition: all 0.2s;
   opacity: 0; }
   .fatex__helper__editmode:hover, .fatex__helper--enable-editmode .fatex__helper__editmode {
     opacity: 1; }
@@ -753,12 +759,15 @@ input[type=range]::-moz-range-thumb {
   top: 0;
   right: 0;
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity 0.2s;
   padding-left: 50px;
   text-shadow: 1px 1px 2px #a0a0a0;
   pointer-events: none; }
   .fatex__skill__actions > * {
     margin-right: 10px; }
+  .fatex__helper--enable-editmode .fatex__skill__actions {
+    opacity: 1;
+    pointer-events: all; }
 
 .fatex__skill__secondary__actions {
   display: flex;
