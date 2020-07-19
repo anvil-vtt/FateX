@@ -7,7 +7,7 @@ You're able to define your own aspects, skill lists, stress tracks, consequences
 Using the **"Actor template system"**, you're able to create and manage multiple templates which new actors may be based on.
 This allows you to have different base-sheets for PCs, NPCs, monsters, and any other type of character you can imagine.
 
-It's possible to use different mechanics for different character types. While PCs may have core-style stress tracks (1,2,3,4), NPCs could have condensed style stress tracks (1,1,1,1). You're fully flexible to play the Fate game **you** want.
+It's possible to use **different mechanics** for different character types. For example: while PCs may have core-style stress tracks **(1,2,3,4)**, NPCs could have condensed style stress tracks **(1,1,1,1)**. You're fully flexible to play the Fate game **you** want.
 
 
 ## Installation
