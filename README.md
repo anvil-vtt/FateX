@@ -15,7 +15,9 @@ It's possible to use different mechanics for different character types. While PC
 
 For manual installation, use the provided manifest URL in the "*Install System*" popup window while managing game systems.
 
----
+## Screenshots
+![fateX_base_screenshot](https://user-images.githubusercontent.com/1428943/87879320-34960a80-c9ea-11ea-8a56-60a073d28953.jpg)
+
 
 ## MIT License
 
