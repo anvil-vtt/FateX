@@ -18,11 +18,6 @@
             "templates": [
                 "default"
             ]
-        },
-        "npc": {
-            "templates": [
-                "default"
-            ]
         }
     },
     "Item": {
