@@ -405,6 +405,9 @@
 .fatex__consequence + .fatex__consequence {
   padding-top: 10px; }
 
+div.fatex__consequence--condition {
+  padding-left: 36px; }
+
 .fatex__consequence__actions_wrapper {
   position: relative; }
 
@@ -415,6 +418,51 @@
   border-radius: 3px;
   border-bottom: 1px solid #2f3542;
   padding: 3px 0; }
+
+.fatex__consequence__box {
+  position: absolute;
+  top: 0;
+  right: 100%;
+  width: 24px;
+  height: 24px;
+  border: 2px solid #2f3542;
+  transform: translate(-8px, 5px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+
+.fatex__consequence__box__label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-60%, -40%);
+  font-weight: 900;
+  font-size: 24px;
+  color: #2f3542;
+  text-shadow: 1px 1px 1px #f1f2f6; }
+
+.fatex__consequence__box__checkbox {
+  position: absolute;
+  opacity: 0;
+  left: -5000px; }
+  .fatex__consequence__box__checkbox:checked + .fatex__consequence__box__icon {
+    opacity: 1; }
+
+.fatex__consequence__box__icon {
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  opacity: 0;
+  font-weight: 900;
+  font-family: "Font Awesome 5 Free";
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased; }
+  .fatex__consequence__box__icon:before {
+    content: "\f00d"; }
 
 .fatex__tabs {
   padding: 10px; }
@@ -625,6 +673,9 @@
 .fatex__setting__radio__image {
   height: 24px;
   margin: 8px; }
+
+.fatex__setting__radio__image--big {
+  height: 40px; }
 
 .fatex__setting__radio--active {
   background: rgba(0, 0, 0, 0.05); }

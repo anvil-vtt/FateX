@@ -30,7 +30,6 @@
             "stress",
             "aspect",
             "consequence",
-            "condition",
             "skill",
             "stunt",
             "extra"
@@ -63,16 +62,9 @@
             ],
             "label": "",
             "value": "",
-            "icon": ""
-        },
-        "condition": {
-            "templates": [
-                "base"
-            ],
-            "label": "",
-            "value": "",
             "icon": "",
-            "isActive": false
+            "type": 0,
+            "active": false
         },
         "skill": {
             "templates": [

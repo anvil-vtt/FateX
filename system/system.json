@@ -2,7 +2,7 @@
     "name": "fatex",
     "title": "FateX",
     "description": "An extended implementation of Fate and its derivative systems",
-    "version": "0.1.4",
+    "version": "0.1.5",
     "author": "Patrick Bauer (Daddi#2333)",
     "scripts": [],
     "esmodules": [

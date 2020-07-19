@@ -7,14 +7,26 @@
     </h2>
 
     {{#each consequences as |consequence consequenceIndex|}}
-        <div class="fatex__consequence fatex__input fatex__input--icon fatex__sortable item" data-item-id="{{consequence._id}}">
+        <div
+            class="fatex__consequence fatex__input fatex__input--icon fatex__sortable item{{#if consequence.isCondition}} fatex__consequence--condition{{/if}}"
+            data-item-id="{{consequence._id}}"
+        >
             <label class="fatex__consequence__label fatex__input__label">{{default consequence.data.label "&nbsp;"}}</label>
 
             <div class="fatex__consequence__actions_wrapper">
-                <div class="fatex__aspect__input fatex__input__input">{{default consequence.data.value "&nbsp;"}}</div>
+                <div class="fatex__consequence__input fatex__input__input">{{default consequence.data.value "&nbsp;"}}</div>
 
-                {{#if consequence.data.icon}}
+                {{#if consequence.isConsequence}}
                     <label class="fatex__consequence__icon fatex__input__icon">{{consequence.data.icon}}</label>
+                {{/if}}
+
+                {{log consequence}}
+                {{#if consequence.isCondition}}
+                    <label class="fatex__consequence__box" data-item="{{consequence._id}}">
+                        <span class="fatex__consequence__box__label">{{consequence.data.icon}}</span>
+                        <input class="fatex__consequence__box__checkbox" type="checkbox"{{#if consequence.data.active}} checked="checked"{{/if}}>
+                        <span class="fatex__consequence__box__icon"></span>
+                    </label>
                 {{/if}}
 
                 <div class="fatex__consequence__actions fatex__item__actions">

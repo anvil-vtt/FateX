@@ -8,6 +8,10 @@
     }
 }
 
+div.fatex__consequence--condition {
+    padding-left: 36px;
+}
+
 .fatex__consequence__actions_wrapper {
     position: relative;
 }
@@ -20,4 +24,51 @@
     border-radius: 3px;
     border-bottom: 1px solid $primary-color;
     padding: 3px 0;
+}
+
+.fatex__consequence__box {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    width: 24px;
+    height: 24px;
+    border: 2px solid $primary-color;
+
+    transform: translate(-8px, 5px);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.fatex__consequence__box__label {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    transform: translate(-60%, -40%);
+    font-weight: 900;
+    font-size: 24px;
+    color: $primary-color;
+
+    text-shadow: 1px 1px 1px $sheet-background;
+}
+
+.fatex__consequence__box__checkbox {
+    position: absolute;
+    opacity: 0;
+    left: -5000px;
+
+    &:checked + .fatex__consequence__box__icon{
+        opacity: 1;
+    }
+}
+
+.fatex__consequence__box__icon {
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    opacity: 0;
+
+    @include fa-icon($fa-var-times);
 }

@@ -77,7 +77,12 @@
                 "Label": "Label",
                 "LabelHelp": "A label to describe the severity, like \"Mild\" or \"Severe\".",
                 "Icon": "Icon",
-                "IconHelp": "Normally a number like 2, 4, 6 or 8. Displayed on the left."
+                "IconHelp": "Normally a number like 2, 4, 6 or 8. Displayed on the left.",
+                "Type": {
+                    "Label": "Variant",
+                    "Condition": "Condition",
+                    "Consequence": "Consequence"
+                }
             },
             "Skill": {
                 "Name": "Skill name",

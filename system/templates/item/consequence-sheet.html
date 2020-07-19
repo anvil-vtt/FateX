@@ -14,6 +14,34 @@
         help = "FAx.Item.Consequence.LabelHelp"
     }}
 
+    <div class="fatex__setting">
+        <h2 class="fatex__headline fatex__setting__headline">
+            <span>{{localize "FAx.Item.Consequence.Type.Label"}}</span>
+        </h2>
+
+        <div class="fatex__setting__radio__group">
+            <div
+                class="fatex__setting__radio{{#ifEquals 0 data.type}} fatex__setting__radio--active{{/ifEquals}}"
+                data-value="0"
+                data-name="data.type"
+                data-dtype="Number"
+            >
+                <img class="fatex__setting__radio__image fatex__setting__radio__image--big" alt="Consequence" src="systems/fatex/assets/ui/consequence/type_consequence.png">
+                <span class="fatex__setting__radio__label">{{localize "FAx.Item.Consequence.Type.Consequence"}}</span>
+            </div>
+
+            <div
+                class="fatex__setting__radio{{#ifEquals 1 data.type}} fatex__setting__radio--active{{/ifEquals}}"
+                data-value="1"
+                data-name="data.type"
+                data-dtype="Number"
+            >
+                <img class="fatex__setting__radio__image fatex__setting__radio__image--big" alt="Condition" src="systems/fatex/assets/ui/consequence/type_condition.png">
+                <span class="fatex__setting__radio__label">{{localize "FAx.Item.Consequence.Type.Condition"}}</span>
+            </div>
+        </div>
+    </div>
+
     {{> "systems/fatex/templates/item/parts/settings/setting-input.html"
         headline = "FAx.Item.Consequence.Icon"
         help = "FAx.Item.Consequence.IconHelp"
