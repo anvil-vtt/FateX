@@ -1,22 +1,60 @@
-{{> "systems/fatex/templates/settings/parts/layout/settings-header.html" title="FAx.Settings.Templates.App.Title" label="FAx.Settings.Templates.App.Label"}}
+{{#*inline "centerPartial"}}
+    <div class="fatex__header__center fatex__template__header__settings fatex__template__create">
+        <span class="fatex__header__label">{{localize "FAx.Settings.Templates.App.CreateNew"}}</span>
+        <i class="fas fa-plus fatex__item__header__title"></i>
+    </div>
+{{/inline}}
+
+{{> "systems/fatex/templates/settings/parts/layout/settings-header.html"
+    title="FAx.Settings.Templates.App.Title"
+    label="FAx.Settings.Templates.App.Label"
+    centerPartial="centerPartial"
+}}
 
 <div class="fatex__templates">
     {{#each templateActors as |template templateIndex|}}
         <div class="fatex__template">
             <div class="fatex__headline">
                 <span>{{ template.name }}</span>
+            </div>
 
-                <div class="fatex__template__actions fatex__headline__actions">
-                    <span class="fatex__template__configure fatex__item__settings" data-template="{{template._id}}"></span>
-                    <span class="fatex__template__delete fatex__item__delete" data-template="{{template._id}}"></span>
-                </div>
+            <style>
+                .fatex__template__image--{{template._id}} {
+                    background-image: url("{{template.img}}");
+                }
+            </style>
+
+            <div class="fatex__template__image fatex__template__image--{{template._id}}" title="{{template.name}}"></div>
+
+            <div class="fatex__template__information">
+                <span class="fatex__template__information__name">{{localize "FAx.Sheet.Aspects"}}</span>
+                <span class="fatex__template__information__value">{{template.aspects.length}}</span>
+
+                <span class="fatex__template__information__name">{{localize "FAx.Sheet.StressTracks"}}</span>
+                <span class="fatex__template__information__value">{{template.stress.length}}</span>
+
+                <span class="fatex__template__information__name">{{localize "FAx.Sheet.Skills"}}</span>
+                <span class="fatex__template__information__value">{{template.skills.length}}</span>
+
+                <span class="fatex__template__information__name">{{localize "FAx.Sheet.Consequences"}}</span>
+                <span class="fatex__template__information__value">{{template.consequences.length}}</span>
+            </div>
+
+            <div class="fatex__template__actions">
+                <span class="fatex__template__configure fatex__item__settings" data-template="{{template._id}}">
+                    {{localize "FAx.Global.Actions.Configure"}}
+                </span>
+
+                <span class="fatex__template__duplicate fatex__item__duplicate" data-template="{{template._id}}">
+                    {{localize "FAx.Global.Actions.Duplicate"}}
+                </span>
+
+                <span class="fatex__template__delete fatex__item__delete" data-template="{{template._id}}">
+                    {{localize "FAx.Global.Actions.Delete"}}
+                </span>
             </div>
         </div>
     {{/each}}
-
-    <h2 class="fatex__template__create fatex__headline">
-        <span>{{localize "FAx.Settings.Templates.App.CreateNew"}}</span>
-    </h2>
 </div>
 
 {{> "systems/fatex/templates/settings/parts/layout/settings-footer.html"}}

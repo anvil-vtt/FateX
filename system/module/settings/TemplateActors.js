@@ -2,7 +2,7 @@ import { TemplateActorPicker } from "./TemplateActorPicker.js";
 import { TemplateActorSettings } from "./TemplateActorSettings.js";
 
 export class TemplateActors {
-    static init() {
+    static ready() {
         // Initialize instances in config
         CONFIG.FateX.applications.templateSettings = new TemplateActorSettings();
         CONFIG.FateX.applications.templatePicker = new TemplateActorPicker();

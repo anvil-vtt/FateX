@@ -43,9 +43,6 @@ Hooks.once('init', async function () {
     // Register HandlebarsHelpers
     HandlebarsHelpers.registerHelpers();
 
-    // Initialize TemplateActors
-    TemplateActors.init();
-
     // Unregister Core sheets
     Actors.unregisterSheet('core', ActorSheet);
     Items.unregisterSheet('core', ItemSheet);
@@ -86,6 +83,11 @@ Hooks.once('init', async function () {
         types: ['extra'],
         makeDefault: true
     });
+});
+
+Hooks.once('ready', async function () {
+    // Initialize TemplateActors
+    TemplateActors.ready();
 });
 
 TemplateActors.hooks();

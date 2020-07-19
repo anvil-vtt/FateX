@@ -17,6 +17,14 @@
                 "-2": "Terrible",
                 "-3": "Catastrophic",
                 "-4": "Horrifying"
+            },
+            "Actions": {
+                "Configure": "Configure",
+                "Delete": "Delete",
+                "Duplicate": "Duplicate",
+                "Sort": "Sort",
+                "Create": "Create empty actor",
+                "Choose": "Choose template"
             }
         },
         "Sheet": {
@@ -30,6 +38,7 @@
             "Extras": "Extras",
             "Bio": "Bio",
             "Artwork": "Artwork",
+            "StressTracks": "Stress tracks",
             "Tabs": {
                 "SkillsStunts": "Skills & Stunts",
                 "Skills": "Skills",
@@ -119,6 +128,7 @@
                 "Hint": "Allows you to choose how character sheets will look like for new characters.",
                 "Button": "FateX Templates",
                 "New": "New template",
+                "Copy": "Copy",
                 "App": {
                     "Title": "Configure Templates",
                     "Label": "Settings",
@@ -131,7 +141,9 @@
                 "Title": "Choose Template",
                 "Label": "Templates",
                 "Configuration": "Configuration",
-                "Empty": "Empty actor"
+                "Empty": "Empty actor",
+                "CreateEmpty": "Empty actor",
+                "Or": "or"
             }
         }
     }

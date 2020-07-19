@@ -1,31 +1,36 @@
-import { TemplateActorPicker } from "./TemplateActorPicker.js";
-
 export class TemplateActorSettings extends FormApplication {
 
     static get defaultOptions() {
         const options = super.defaultOptions;
 
         mergeObject(options, {
-            title: game.i18n.localize("FAx.Settings.Templates.Title"),
+            title: game.i18n.localize("FAx.Settings.Templates.App.Title"),
             template: "/systems/fatex/templates/settings/template-actors.html",
             id: 'template-actors',
             resizable: true,
             classes: options.classes.concat([
                 'fatex fatex__settings_sheet',
             ]),
-            height: 400,
-            width: 600,
+            width: 920,
+            height: 500,
         });
 
         return options;
     }
 
     getData(options = {}) {
-        let filteredActors = game.actors.filter(actor => actor.isTemplateActor);
+        let filteredActors = duplicate(game.actors.filter(actor => actor.isTemplateActor));
+
+        filteredActors.forEach(actor => {
+            actor.stress = actor.items.filter(item => item.type === 'stress');
+            actor.aspects = actor.items.filter(item => item.type === 'aspect');
+            actor.skills = actor.items.filter(item => item.type === 'skill');
+            actor.consequences = actor.items.filter(item => item.type === 'consequence');
+        });
 
         return {
             options: this.options,
-            templateActors: duplicate(filteredActors)
+            templateActors: filteredActors
         };
     }
 
@@ -35,7 +40,12 @@ export class TemplateActorSettings extends FormApplication {
         html.find('.fatex__template__create').click((e) => this._createTemplate.call(this, e));
         html.find('.fatex__template__delete').click((e) => this._deleteTemplate.call(this, e));
         html.find('.fatex__template__configure').click((e) => this._configureTemplate.call(this, e));
+        html.find('.fatex__template__duplicate').click((e) => this._duplicateTemplate.call(this, e));
     }
+
+    /*************************
+     * EVENT HANDLER
+     *************************/
 
     async _configureTemplate(e) {
         e.preventDefault();
@@ -102,7 +112,32 @@ export class TemplateActorSettings extends FormApplication {
             }
         };
 
-        await Actor.create(createData, {renderSheet: false});
+        await Actor.create(createData, {renderSheet: true});
+
+        // Re-render this settings window and the picker if open
+        this.render(true);
+        CONFIG.FateX.applications.templatePicker.render();
+    }
+
+    async _duplicateTemplate(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const data = e.currentTarget.dataset;
+        const template = duplicate(game.actors.get(data.template));
+
+        if(!template) {
+            return;
+        }
+
+        // Delete id
+        delete template._id;
+
+        // Change name
+        template.name = template.name + ` (${game.i18n.localize("FAx.Settings.Templates.Copy")})`;
+
+        // Create new duplicate
+        await Actor.create(template, {renderSheet: true});
 
         // Re-render this settings window and the picker if open
         this.render(true);

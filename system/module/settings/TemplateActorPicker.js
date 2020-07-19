@@ -1,33 +1,24 @@
 import { ActorFate } from "../actor/ActorFate.js";
 import { TemplateActorSettings } from "./TemplateActorSettings.js";
 
-export class TemplateActorPicker extends FormApplication {
+export class TemplateActorPicker extends TemplateActorSettings {
 
     static get defaultOptions() {
         const options = super.defaultOptions;
 
         mergeObject(options, {
-            title: game.i18n.localize("FAx.Template.Picker.Title"),
+            title: game.i18n.localize("ACTOR.Create"),
             template: "/systems/fatex/templates/settings/template-actors-picker.html",
             id: 'template-actor-picker',
             resizable: true,
             classes: options.classes.concat([
                 'fatex fatex__settings_sheet',
             ]),
-            height: 400,
-            width: 600,
+            width: 1000,
+            height: 430,
         });
 
         return options;
-    }
-
-    getData(options = {}) {
-        let filteredActors = game.actors.filter(actor => actor.isTemplateActor);
-
-        return {
-            options: this.options,
-            templateActors: duplicate(filteredActors)
-        };
     }
 
     activateListeners(html) {
@@ -37,6 +28,10 @@ export class TemplateActorPicker extends FormApplication {
         html.find('.fatex__template__empty').click((e) => this._emptyTemplate.call(this, e));
         html.find('.fatex__template__header__settings').click((e) => this._openSettings.call(this, e));
     }
+
+    /*************************
+     * EVENT HANDLER
+     *************************/
 
     async _openSettings() {
         CONFIG.FateX.applications.templateSettings.render(true);
@@ -69,6 +64,7 @@ export class TemplateActorPicker extends FormApplication {
         // Delete id and flags
         delete template._id;
         delete template.flags.fatex.isTemplateActor;
+
 
         // Create the real actor
         ActorFate._create(template, { renderSheet: true });

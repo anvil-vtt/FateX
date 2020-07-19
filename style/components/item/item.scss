@@ -24,6 +24,16 @@
     cursor: pointer;
 }
 
+.fatex__item__duplicate {
+    @include fa-icon($fa-var-copy);
+    cursor: pointer;
+}
+
+.fatex__item__choose {
+    @include fa-icon($fa-var-file-medical);
+    cursor: pointer;
+}
+
 .fatex__item__sort {
     @include fa-icon($fa-var-sort);
     cursor: move;

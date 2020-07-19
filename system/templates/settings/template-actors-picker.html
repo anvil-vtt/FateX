@@ -6,25 +6,93 @@
 {{/inline}}
 
 {{> "systems/fatex/templates/settings/parts/layout/settings-header.html"
-    title="FAx.Template.Picker.Title"
+    title="ACTOR.Create"
     label="FAx.Template.Picker.Label"
     centerPartial="centerPartial"
 }}
 
-<div class="fatex__templates">
-    {{#each templateActors as |template templateIndex|}}
-        <div class="fatex__template fatex__template__choose" data-template="{{template._id}}">
-            <div class="fatex__headline">
-                <span>{{ template.name }}</span>
-            </div>
-        </div>
-    {{/each}}
 
-    <div class="fatex__template fatex__template__empty">
+
+<div class="fatex__templates">
+
+    <div class="fatex__template">
         <div class="fatex__headline">
             <span>{{localize "FAx.Template.Picker.Empty"}}</span>
         </div>
+
+        <style>
+            .fatex__template__image--empty {
+                background-image: url("icons/svg/mystery-man.svg");
+            }
+        </style>
+
+        <div class="fatex__template__image fatex__template__image--empty" title=""></div>
+
+        <div class="fatex__template__information">
+            <span class="fatex__template__information__name">{{localize "FAx.Sheet.Aspects"}}</span>
+            <span class="fatex__template__information__value">0</span>
+
+            <span class="fatex__template__information__name">{{localize "FAx.Sheet.StressTracks"}}</span>
+            <span class="fatex__template__information__value">0</span>
+
+            <span class="fatex__template__information__name">{{localize "FAx.Sheet.Skills"}}</span>
+            <span class="fatex__template__information__value">0</span>
+
+            <span class="fatex__template__information__name">{{localize "FAx.Sheet.Consequences"}}</span>
+            <span class="fatex__template__information__value">0</span>
+        </div>
+
+        <div class="fatex__template__actions">
+                <span class="fatex__template__empty fatex__item__add">
+                    {{localize "FAx.Global.Actions.Create"}}
+                </span>
+        </div>
     </div>
+
+
+
+    <div class="fatex__template__or">
+        <span>{{localize "FAx.Template.Picker.Or"}}</span>
+    </div>
+
+
+
+    {{#each templateActors as |template templateIndex|}}
+        <div class="fatex__template">
+            <div class="fatex__headline">
+                <span>{{ template.name }}</span>
+            </div>
+
+            <style>
+                .fatex__template__image--{{template._id}} {
+                    background-image: url({{template.img}});
+                }
+            </style>
+
+            <div class="fatex__template__image fatex__template__image--{{template._id}}"
+                 title="{{template.name}}"></div>
+
+            <div class="fatex__template__information">
+                <span class="fatex__template__information__name">{{localize "FAx.Sheet.Aspects"}}</span>
+                <span class="fatex__template__information__value">{{template.aspects.length}}</span>
+
+                <span class="fatex__template__information__name">{{localize "FAx.Sheet.StressTracks"}}</span>
+                <span class="fatex__template__information__value">{{template.stress.length}}</span>
+
+                <span class="fatex__template__information__name">{{localize "FAx.Sheet.Skills"}}</span>
+                <span class="fatex__template__information__value">{{template.skills.length}}</span>
+
+                <span class="fatex__template__information__name">{{localize "FAx.Sheet.Consequences"}}</span>
+                <span class="fatex__template__information__value">{{template.consequences.length}}</span>
+            </div>
+
+            <div class="fatex__template__actions">
+                <span class="fatex__template__choose fatex__item__choose" data-template="{{template._id}}">
+                    {{localize "FAx.Global.Actions.Choose"}}
+                </span>
+            </div>
+        </div>
+    {{/each}}
 </div>
 
 {{> "systems/fatex/templates/settings/parts/layout/settings-footer.html"}}
