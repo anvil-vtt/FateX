@@ -118,7 +118,7 @@ export class SkillItem extends BaseItem {
     static getDice(roll) {
         const dice = [];
 
-        if(roll.parts) {
+        if(roll.parts[0].rolls) {
             roll.parts[0].rolls.forEach(rolledDie => {
                 const die = {};
                 die.value = rolledDie.roll;
@@ -128,7 +128,7 @@ export class SkillItem extends BaseItem {
             })
         }
 
-        if(roll.terms) {
+        if(roll.terms[0].results) {
             roll.terms[0].results.forEach(rolledDie => {
                 const die = {};
                 die.value = rolledDie.result;
