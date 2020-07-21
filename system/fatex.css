@@ -423,12 +423,7 @@
 .fatex__aspect__input {
   border-radius: 3px;
   border-bottom: 1px solid #2f3542;
-  padding: 3px 0;
-    /*cursor: pointer;
-
-    &[contenteditable="true"] {
-        cursor: text;
-    }*/ }
+  padding: 3px 0; }
 
 .fatex__consequences {
   padding: 10px; }
@@ -448,12 +443,7 @@ div.fatex__consequence--condition {
 .fatex__consequence__input {
   border-radius: 3px;
   border-bottom: 1px solid #2f3542;
-  padding: 3px 0;
-    /*cursor: pointer;
-
-    &[contenteditable="true"] {
-        cursor: text;
-    }*/ }
+  padding: 3px 0; }
 
 .fatex__consequence__box {
   position: absolute;

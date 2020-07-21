@@ -128,16 +128,5 @@ export class ActorSheetFate extends ActorSheet {
         const html = app.find('.window-content');
 
         app.toggleClass("fatex__helper--enable-editmode")
-
-        // Let input fields be contenteditable
-        html.find('.fatex__aspect__input, .fatex__consequence__input').each((i, e) => {
-            const element = $(e);
-
-            if (element.attr('contenteditable')) {
-                return element.removeAttr('contenteditable');
-            }
-
-            element.attr('contenteditable', true);
-        });
     }
 }
