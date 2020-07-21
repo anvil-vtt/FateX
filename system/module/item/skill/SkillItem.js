@@ -128,7 +128,7 @@ export class SkillItem extends BaseItem {
             })
         }
 
-        if(roll.terms[0].results) {
+        if(roll.terms) {
             roll.terms[0].results.forEach(rolledDie => {
                 const die = {};
                 die.value = rolledDie.result;
