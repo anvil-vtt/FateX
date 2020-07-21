@@ -23,17 +23,10 @@ export class ConsequenceItem extends BaseItem {
         html.find('.fatex__consequence__input').on('blur', (e) => this._onConsequenceTextChange.call(this, e, sheet));
     }
 
-    static activateListeners(html, sheet) {
-        html.find('.addReference').on('click', (e) => this._onAddReference.call(this, e, sheet));
-    }
 
     /*************************
      * EVENT HANDLER
      *************************/
-
-    static async _onAddReference(e, sheet) {
-
-    }
 
     static _onToggleCondition(e, sheet) {
         e.preventDefault();
@@ -66,5 +59,4 @@ export class ConsequenceItem extends BaseItem {
             });
         }
     }
-
 }

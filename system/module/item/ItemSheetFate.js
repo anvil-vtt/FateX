@@ -20,7 +20,7 @@ export class ItemSheetFate extends ItemSheet {
         data.isOwnedBy = this.actor ? this.actor.name : false;
 
         // Let every item type manipulate its own sheet data
-        data = CONFIG.FateX.itemTypes[data.item.type].getSheetData(data);
+        data = CONFIG.FateX.itemTypes[data.item.type].getSheetData(data, this);
 
         return data;
     }

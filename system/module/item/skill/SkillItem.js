@@ -118,13 +118,25 @@ export class SkillItem extends BaseItem {
     static getDice(roll) {
         const dice = [];
 
-        roll.terms[0].results.forEach(rolledDie => {
-            const die = {};
-            die.value = rolledDie.result;
-            die.face = this.getDieFace(rolledDie.result)
+        if(roll.parts) {
+            roll.parts[0].rolls.forEach(rolledDie => {
+                const die = {};
+                die.value = rolledDie.roll;
+                die.face = this.getDieFace(rolledDie.roll)
 
-            dice.push(die);
-        })
+                dice.push(die);
+            })
+        }
+
+        if(roll.terms) {
+            roll.terms[0].results.forEach(rolledDie => {
+                const die = {};
+                die.value = rolledDie.result;
+                die.face = this.getDieFace(rolledDie.result)
+
+                dice.push(die);
+            })
+        }
 
         return dice;
     }

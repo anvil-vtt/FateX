@@ -29,7 +29,10 @@ export class BaseItem {
     /**
      * Allows each item to add data to its own sheet.
      */
-    static getSheetData(sheetData) {
+    static getSheetData(sheetData, sheet) {
+        sheetData.skillReferences = this.getSkillReferences(sheet.item);
+        sheetData.actorSkills = this.getActorSkills(sheet);
+
         return sheetData;
     }
 
@@ -55,12 +58,32 @@ export class BaseItem {
         });
     }
 
-    static activateListeners(html, sheet) {}
+    static activateListeners(html, sheet) {
+        html.find('.fatex__skill__reference__create').on('click', (e) => this._onAddReference.call(this, e, sheet));
+        html.find('.fatex__skill__reference__remove').on('click', (e) => this._onRemoveReference.call(this, e, sheet));
+    }
 
 
     /*************************
      * EVENT HANDLER
      *************************/
+
+    static async _onAddReference(e, sheet) {
+        e.preventDefault();
+
+        const item = sheet.entity;
+        await this.addSkillReference(item);
+    }
+
+    static async _onRemoveReference(e, sheet) {
+        e.preventDefault();
+
+        const dataset = e.currentTarget.dataset;
+        const index = dataset.index;
+
+        const item = sheet.entity;
+        await this.removeSkillReference(item, index);
+    }
 
     /**
      * Itemtype agnostic handler for creating new items via event.
@@ -129,11 +152,58 @@ export class BaseItem {
         })).render(true);
     }
 
+
+    /*************************
+     * HELPER FUNCTIONS
+     *************************/
+
     /**
      * Helper function to determine a new items name.
      * Defaults to the entityName with the first letter capitalized.
      */
     static getDefaultName() {
         return this.entityName.charAt(0).toUpperCase() + this.entityName.slice(1);
+    }
+
+
+    /**
+     * Adds a new skill reference to a given item
+     *
+     * @param item
+     *  The item for the skill reference to be added
+     */
+    static async addSkillReference(item) {
+        const currentReferences = this.getSkillReferences(item);
+        const references = duplicate(currentReferences);
+
+        references.push({
+            "skill": Math.random(),
+            "condition": 0,
+            "action": 0,
+            "argument": 0
+        });
+
+        await item.setFlag('fatex', 'skillReferences', references);
+    }
+
+    static async removeSkillReference(item, index) {
+        const currentReferences = this.getSkillReferences(item);
+        const references = duplicate(currentReferences);
+
+        references.splice(index, 1);
+
+        await item.setFlag('fatex', 'skillReferences', references);
+    }
+
+    static getSkillReferences(item) {
+        return item.getFlag('fatex', 'skillReferences') || [];
+    }
+
+    static getActorSkills(sheet) {
+        const actor = duplicate(sheet.actor);
+        const items = actor.items;
+        const skills = items.filter(item => item.type === 'skill');
+
+        return skills.map((skill) => skill.name);
     }
 }
