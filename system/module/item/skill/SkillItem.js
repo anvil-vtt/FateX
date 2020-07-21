@@ -115,6 +115,7 @@ export class SkillItem extends BaseItem {
         await ChatMessage.create(chatData);
     }
 
+    //Todo: Remove parts of this when breaking BC
     static getDice(roll) {
         const dice = [];
 
