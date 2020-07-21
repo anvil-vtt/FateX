@@ -556,6 +556,10 @@ div.fatex__consequence--condition {
     color: #2f3542;
     opacity: 0.3; }
 
+.fatex__input__input:focus ~ .fatex__item__actions {
+  opacity: 0;
+  pointer-events: none; }
+
 .fatex__input__textarea {
   height: auto;
   border-bottom: 1px solid #2f3542;

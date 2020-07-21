@@ -18,6 +18,9 @@ export class ConsequenceItem extends BaseItem {
 
         // Check or uncheck a single box
         html.find('.fatex__consequence__box').click((e) => this._onToggleCondition.call(this, e, sheet));
+
+        // Change consequence text
+        html.find('.fatex__consequence__input').on('blur', (e) => this._onConsequenceTextChange.call(this, e, sheet));
     }
 
     /*************************
@@ -37,5 +40,23 @@ export class ConsequenceItem extends BaseItem {
         }
     }
 
+    static _onConsequenceTextChange(e, sheet) {
+        e.preventDefault();
+
+        const dataset = e.currentTarget.dataset;
+        const item = sheet.actor.getOwnedItem(dataset.itemId);
+        const input = $(e.currentTarget).html();
+
+        // Check if the value of the input field changed
+        if(item.data.data.value === input) {
+            return;
+        }
+
+        if(item) {
+            item.update({
+                "data.value": input
+            });
+        }
+    }
 
 }

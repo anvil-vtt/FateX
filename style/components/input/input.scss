@@ -33,6 +33,13 @@
     }
 }
 
+.fatex__input__input {
+    &:focus ~ .fatex__item__actions {
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+
 .fatex__input__textarea {
     height: auto;
     border-bottom: 1px solid $primary-color;
