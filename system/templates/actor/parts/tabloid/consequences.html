@@ -14,7 +14,7 @@
             <label class="fatex__consequence__label fatex__input__label">{{default consequence.data.label "&nbsp;"}}</label>
 
             <div class="fatex__consequence__actions_wrapper">
-                <div class="fatex__consequence__input fatex__input__input" contenteditable="true" data-item-id="{{consequence._id}}">{{consequence.data.value}}</div>
+                <div class="fatex__consequence__input fatex__input__input" data-item-id="{{consequence._id}}">{{{consequence.data.value}}}</div>
 
                 {{#if consequence.isConsequence}}
                     <label class="fatex__consequence__icon fatex__input__icon">{{consequence.data.icon}}</label>
