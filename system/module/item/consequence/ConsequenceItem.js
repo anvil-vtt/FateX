@@ -24,7 +24,6 @@ export class ConsequenceItem extends BaseItem {
     }
 
     static activateListeners(html, sheet) {
-
         html.find('.addReference').on('click', (e) => this._onAddReference.call(this, e, sheet));
     }
 
@@ -32,7 +31,7 @@ export class ConsequenceItem extends BaseItem {
      * EVENT HANDLER
      *************************/
 
-    static _onAddReference(e, sheet) {
+    static async _onAddReference(e, sheet) {
 
     }
 

@@ -21,8 +21,7 @@
             "consequence",
             "skill",
             "stunt",
-            "extra",
-            "skillreference"
+            "extra"
         ],
         "templates": {
             "base": {
@@ -74,12 +73,6 @@
                 "base"
             ],
             "shortDescription": ""
-        },
-        "skillreference": {
-            "skill": "",
-            "condition": 0,
-            "action": 0,
-            "argument": 0
         }
     }
 }
