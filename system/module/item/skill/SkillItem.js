@@ -100,7 +100,7 @@ export class SkillItem extends BaseItem {
         const ladder = this.getLadderLabel(roll.total + rank);
 
         // Prepare skill item
-        let templateData = { skill, sheet, actor, rank, dice, total, ladder };
+        let templateData = { skill, rank, dice, total, ladder };
 
         let chatData = {
             user: game.user._id,
