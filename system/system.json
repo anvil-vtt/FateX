@@ -49,7 +49,7 @@
     "minimumCoreVersion": "0.5.2",
     "compatibleCoreVersion": "0.7.0",
     "socket": true,
-    "url": "https://github.com/anvil-vtt/fate",
+    "url": "https://github.com/anvil-vtt/FateX",
     "manifest": "https://github.com/anvil-vtt/FateX/releases/latest/download/system.json",
     "download": "https://github.com/anvil-vtt/FateX/releases/latest/download/fatex.zip"
 }
