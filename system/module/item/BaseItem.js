@@ -55,6 +55,8 @@ export class BaseItem {
         });
     }
 
+    static activateListeners(html, sheet) {}
+
 
     /*************************
      * EVENT HANDLER

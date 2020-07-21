@@ -1,19 +1,6 @@
 {{> "systems/fatex/templates/item/parts/layout/item-header.html" title="FAx.Item.Consequence.EditItem" item=item}}
 
 <div class="fatex__settings">
-    {{> "systems/fatex/templates/item/parts/settings/setting-input.html"
-        headline = "FAx.Item.Consequence.Value"
-        fieldName = "data.value"
-        field = data.value
-    }}
-
-    {{> "systems/fatex/templates/item/parts/settings/setting-input.html"
-        headline = "FAx.Item.Consequence.Label"
-        fieldName = "data.label"
-        field = data.label
-        help = "FAx.Item.Consequence.LabelHelp"
-    }}
-
     <div class="fatex__setting">
         <h2 class="fatex__headline fatex__setting__headline">
             <span>{{localize "FAx.Item.Consequence.Type.Label"}}</span>
@@ -43,18 +30,44 @@
     </div>
 
     {{> "systems/fatex/templates/item/parts/settings/setting-input.html"
+        headline = "FAx.Item.Consequence.Value"
+        fieldName = "data.value"
+        field = data.value
+    }}
+
+    {{> "systems/fatex/templates/item/parts/settings/setting-input.html"
+        headline = "FAx.Item.Consequence.Label"
+        fieldName = "data.label"
+        field = data.label
+        help = "FAx.Item.Consequence.LabelHelp"
+    }}
+
+    {{> "systems/fatex/templates/item/parts/settings/setting-input.html"
         headline = "FAx.Item.Consequence.Icon"
         help = "FAx.Item.Consequence.IconHelp"
         fieldName = "data.icon"
         field = data.icon
     }}
 
-    {{> "systems/fatex/templates/item/parts/settings/setting-input.html"
+    {{!--Description is disabled for now--}}
+    {{!--{{> "systems/fatex/templates/item/parts/settings/setting-input.html"
         headline = "FAx.Item.Consequence.Description"
         help = "FAx.Item.Consequence.DescriptionHelp"
         fieldName = "data.description"
         field = data.description
-    }}
+    }}--}}
+
+    <div class="fatex__setting">
+        <h2 class="fatex__headline fatex__setting__headline">
+            <span>Automation</span>
+        </h2>
+
+        {{#each skillReferences as |reference referenceIndex|}}
+            {{reference.name}}
+        {{/each}}
+
+        <button class="addReference">Add</button>
+    </div>
 </div>
 
 {{> "systems/fatex/templates/item/parts/layout/item-footer.html"}}

@@ -37,5 +37,8 @@ export class ItemSheetFate extends ItemSheet {
         for (let sheetComponent in CONFIG.FateX.sheetComponents) {
             CONFIG.FateX.sheetComponents[sheetComponent].activateListeners(html, this);
         }
+
+        // Let every item type add its own sheet listeners
+        CONFIG.FateX.itemTypes[this.entity.type].activateListeners(html, this);
     }
 }
