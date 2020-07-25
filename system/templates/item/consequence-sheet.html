@@ -57,23 +57,10 @@
         field = data.description
     }}--}}
 
-    <div class="fatex__setting">
-        <h2 class="fatex__headline fatex__setting__headline">
-            <span>Automation</span>
-        </h2>
 
-        {{#each skillReferences as |reference referenceIndex|}}
-            <div class="fatex__skill__reference__remove" data-index="{{referenceIndex}}">{{referenceIndex}} - {{reference.skill}}</div>
-        {{/each}}
-
-        {{#each actorSkills as |skillName skillIndex|}}
-            <div>{{skillName}}</div>
-        {{/each}}
-
-
-
-        <button class="fatex__skill__reference__create">Add</button>
-    </div>
+    {{> "systems/fatex/templates/item/parts/settings/setting-automation-skill-enable.html"
+        headline = "FAx.Item.Automation.Headline"
+    }}
 </div>
 
 {{> "systems/fatex/templates/item/parts/layout/item-footer.html"}}

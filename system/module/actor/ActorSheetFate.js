@@ -42,8 +42,8 @@ export class ActorSheetFate extends ActorSheet {
         }
 
         // Custom sheet listeners for every SheetComponent
-        for (let sheetComponent in CONFIG.FateX.sheetComponents) {
-            CONFIG.FateX.sheetComponents[sheetComponent].activateListeners(html, this);
+        for (let sheetComponent in CONFIG.FateX.sheetComponents.actor) {
+            CONFIG.FateX.sheetComponents.actor[sheetComponent].activateListeners(html, this);
         }
     }
 

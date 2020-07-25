@@ -12,6 +12,10 @@
     opacity: 0.3;
 }
 
+.fatex__setting--min-height {
+    min-height: 100px;
+}
+
 .fatex__setting__pair {
     display: flex;
 }
@@ -112,5 +116,14 @@ input[type="text"].fatex__setting__range__value {
 
         border-bottom: 1px solid $primary-color;
         border-radius: 3px;
+    }
+}
+
+.fatex__setting__actions {
+    opacity: 1;
+    pointer-events: all;
+
+    span::before {
+        margin-right: $component-padding / 2;
     }
 }

@@ -73,8 +73,8 @@ export class TemplateActorSettings extends FormApplication {
         }
 
         (new Dialog({
-            title: `Delete ${template.name}`,
-            content: game.i18n.format('FAx.Dialog.EntityDelete'),
+            title: `${game.i18n.format('FAx.Dialog.EntityDelete')} ${template.name}`,
+            content: game.i18n.format('FAx.Dialog.EntityDeleteText'),
             default: 'submit',
             buttons: {
                 cancel: {

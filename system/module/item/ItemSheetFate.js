@@ -7,7 +7,8 @@ export class ItemSheetFate extends ItemSheet {
         mergeObject(options, {
             classes: options.classes.concat([
                 'fatex fatex__item_sheet',
-            ])
+            ]),
+            scrollY: [".desk__content"],
         });
 
         return options;
@@ -22,6 +23,11 @@ export class ItemSheetFate extends ItemSheet {
         // Let every item type manipulate its own sheet data
         data = CONFIG.FateX.itemTypes[data.item.type].getSheetData(data, this);
 
+        // Let every component manipulate an items sheet data
+        for (let sheetComponent in CONFIG.FateX.sheetComponents.item) {
+            data = CONFIG.FateX.sheetComponents.item[sheetComponent].getSheetData(data, this);
+        }
+
         return data;
     }
 
@@ -34,8 +40,8 @@ export class ItemSheetFate extends ItemSheet {
     activateListeners(html) {
         super.activateListeners(html);
 
-        for (let sheetComponent in CONFIG.FateX.sheetComponents) {
-            CONFIG.FateX.sheetComponents[sheetComponent].activateListeners(html, this);
+        for (let sheetComponent in CONFIG.FateX.sheetComponents.item) {
+            CONFIG.FateX.sheetComponents.item[sheetComponent].activateListeners(html, this);
         }
 
         // Let every item type add its own sheet listeners

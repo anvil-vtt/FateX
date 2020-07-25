@@ -14,7 +14,7 @@ export class StressItem extends BaseItem {
         html.find('.fatex__stress__track__item__box').click((e) => this._onStressBoxToggle.call(this, e, sheet));
     }
 
-    static prepareItemForActorSheet(item) {
+    static prepareItemData(item, entity) {
         // Add renderable boxes
         item.boxes = [];
         item.fillers = [];

@@ -8,7 +8,7 @@
 
     {{#each consequences as |consequence consequenceIndex|}}
         <div
-            class="fatex__consequence fatex__input fatex__input--icon fatex__sortable item{{#if consequence.isCondition}} fatex__consequence--condition{{/if}}"
+            class="fatex__consequence fatex__input fatex__input--icon fatex__sortable item{{#if consequence.isCondition}} fatex__consequence--condition{{/if}}{{#if consequence.isDisabled}} fatex__helper--is-disabled{{/if}}"
             data-item-id="{{consequence._id}}"
         >
             <label class="fatex__consequence__label fatex__input__label">{{default consequence.data.label "&nbsp;"}}</label>

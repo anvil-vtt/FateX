@@ -3,10 +3,10 @@ export class ItemFate extends Item {
     /** @override */
     prepareData() {
         super.prepareData();
-        let item = this.data;
+        let data = this.data;
 
         // Let every itemType prepare itselt
-        CONFIG.FateX.itemTypes[item.type].prepareItemForActorSheet(item);
+        CONFIG.FateX.itemTypes[data.type].prepareItemData(data, this);
     }
 
 }

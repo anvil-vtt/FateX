@@ -30,7 +30,7 @@ export class SkillItem extends BaseItem {
     }
 
 
-    static prepareItemForActorSheet(item) {
+    static prepareItemData(item, entity) {
         item.data.isNegative = item.data.rank < 0;
         item.data.isPositive = item.data.rank >= 0;
         item.data.isNeutral = item.data.rank === 0;
@@ -90,7 +90,7 @@ export class SkillItem extends BaseItem {
     }
 
     static async rollSkill(sheet, item) {
-        const skill = this.prepareItemForActorSheet(duplicate(item));
+        const skill = this.prepareItemData(duplicate(item), item);
         const template = 'systems/fatex/templates/chat/roll-skill.html';
         const rank = parseInt(skill.data.rank) || 0;
         const actor = sheet.actor;

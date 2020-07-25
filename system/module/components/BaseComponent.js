@@ -4,4 +4,11 @@
  */
 export class BaseComponent {
     static activateListeners(html, sheet) {}
+
+    /**
+     * Allows each component to add data to sheets.
+     */
+    static getSheetData(sheetData, sheet) {
+        return sheetData;
+    }
 }

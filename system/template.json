@@ -25,7 +25,7 @@
         ],
         "templates": {
             "base": {
-                "active": true,
+                "disabled": false,
                 "description": ""
             }
         },

@@ -1,3 +1,4 @@
+import { Automation } from "../../components/Automation/Automation.js";
 import { BaseItem } from "../BaseItem.js";
 
 export class ConsequenceItem extends BaseItem {
@@ -6,11 +7,15 @@ export class ConsequenceItem extends BaseItem {
     static TYPE_CONSEQUENCE = 0;
     static TYPE_CONDITION = 1;
 
-    static prepareItemForActorSheet(item) {
-        item.isConsequence = item.data.type === ConsequenceItem.TYPE_CONSEQUENCE;
-        item.isCondition = item.data.type === ConsequenceItem.TYPE_CONDITION;
+    static prepareItemData(data, item) {
+        data.isConsequence = data.data.type === ConsequenceItem.TYPE_CONSEQUENCE;
+        data.isCondition = data.data.type === ConsequenceItem.TYPE_CONDITION;
 
-        return item;
+        if(item.isOwned) {
+            data.isDisabled = this.getDisabledState(item);
+        }
+
+        return data;
     }
 
     static activateActorSheetListeners(html, sheet) {
@@ -58,5 +63,37 @@ export class ConsequenceItem extends BaseItem {
                 "data.value": input
             });
         }
+    }
+
+    /*************************
+     * HELPER FUNCTIONS
+     *************************/
+
+    static getDisabledState(item) {
+        let disabled = false;
+        const skillReferences = Automation.getSkillReferences(item);
+
+        // Disable by default if automation was enabled
+        if(skillReferences.length) {
+            disabled = true;
+        }
+
+        // Not disabled if one of the skillReferences conditions is met
+        for (const reference of skillReferences) {
+            const skill = Automation.getActorSkillById(item.actor, reference.skill);
+
+            // Check if skill is still available on actor
+            if(skill === undefined) {
+                continue;
+            }
+
+            const isConditionMet = Automation.checkSkillCondition(skill, reference.condition, reference.operator);
+
+            if (isConditionMet) {
+                return false;
+            }
+        }
+
+        return disabled;
     }
 }

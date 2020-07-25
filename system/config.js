@@ -1,3 +1,4 @@
+import { Automation } from "./module/components/Automation/Automation.js";
 import { Configuration } from "./module/components/Configuration/Configuration.js";
 import { Radio } from "./module/components/Radio/Radio.js";
 import { RangeSlider } from "./module/components/RangeSlider/RangeSlider.js";
@@ -19,10 +20,15 @@ export const FateX = {
         "extra": ExtraItem,
     },
     "sheetComponents": {
-        "radio": Radio,
-        "rangeSlider": RangeSlider,
-        "sortable": Sortable,
-        "configuration": Configuration
+        "actor": {
+            "sortable": Sortable,
+            "configuration": Configuration
+        },
+        "item": {
+            "radio": Radio,
+            "rangeSlider": RangeSlider,
+            "automation": Automation,
+        }
     },
     "applications": {
         'templateSettings': null,

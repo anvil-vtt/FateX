@@ -115,10 +115,26 @@
                 "DescriptionHelp": "Long description for this extra",
                 "ShortDescription": "Short Description",
                 "ShortDescriptionHelp": "Short description for this extra"
+            },
+            "Automation": {
+                "Headline": "Automation",
+                "Description": "There are no skill references set yet. Please add one or more skill references to enable automation features.",
+                "AddSkillRef": "Add skill reference",
+                "Operators": {
+                    "OPERATOR_EQUALS": "equals",
+                    "OPERATOR_NOT_EQUALS": "doesn't equal",
+                    "OPERATOR_GT": "is greater than",
+                    "OPERATOR_LT": "is lesser than",
+                    "OPERATOR_GTE": "is greater than or equals",
+                    "OPERATOR_LTE": "is lesser than or equals"
+                }
             }
         },
         "Dialog": {
-            "EntityDelete": "Do you really want to <strong>permanently</strong> delete this entity?",
+            "ReferenceRemove": "Remove reference",
+            "ReferenceRemoveText": "Do you really want to <strong>permanently</strong> remove this reference?",
+            "EntityDelete": "Delete",
+            "EntityDeleteText": "Do you really want to <strong>permanently</strong> delete this entity?",
             "Confirm": "Confirm",
             "Cancel": "Cancel"
         },

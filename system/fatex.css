@@ -521,7 +521,7 @@ div.fatex__consequence--condition {
     min-width: 220px;
     width: 40%; }
   .fatex__tabs__tab--skills .fatex__tabs__tab__content .fatex__skills--columns {
-    min-width: 300px; }
+    min-width: 360px; }
   .fatex__tabs__tab--skills .fatex__tabs__tab__content .fatex__stunts {
     flex-grow: 1;
     padding-left: 10px; }
@@ -662,6 +662,9 @@ div.fatex__consequence--condition {
 .fatex__setting--disabled {
   opacity: 0.3; }
 
+.fatex__setting--min-height {
+  min-height: 100px; }
+
 .fatex__setting__pair {
   display: flex; }
 
@@ -737,6 +740,12 @@ input[type="text"].fatex__setting__range__value {
     border-bottom: 1px solid #2f3542;
     border-radius: 3px; }
 
+.fatex__setting__actions {
+  opacity: 1;
+  pointer-events: all; }
+  .fatex__setting__actions span::before {
+    margin-right: 5px; }
+
 .fatex__settings_sheet {
   font-family: "Montserrat", sans-serif;
   min-width: 500px; }
@@ -802,6 +811,9 @@ input[type=range]::-moz-range-thumb {
   display: none; }
   .fatex__helper--enable-editmode .fatex__helper__editmode--vanish {
     display: inherit; }
+
+.fatex__helper--is-disabled {
+  opacity: 0.3; }
 
 .fatex__copyright {
   padding: 10px;
@@ -1024,3 +1036,20 @@ input[type=range]::-moz-range-thumb {
 
 .fatex__extra__description {
   font-size: 12px; }
+
+.fatex__skill__reference {
+  display: flex;
+  justify-content: space-between; }
+
+.fatex__skill__reference__actions {
+  margin-right: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center; }
+
+.fatex__skill__reference__description {
+  font-size: 12px;
+  padding: 0 10px; }
+
+.fatex__skill__reference + .fatex__skill__reference {
+  margin-top: 10px; }

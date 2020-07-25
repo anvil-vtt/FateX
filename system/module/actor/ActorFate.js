@@ -69,4 +69,16 @@ export class ActorFate extends Actor {
 
         return super.visible;
     }
+
+    /**
+     * Re-prepare the data for all owned items when owned items are deleted.
+     * This ensures, that items that reference the deleted item get updated.
+     */
+    _onModifyEmbeddedEntity(embeddedName, changes, options, userId, context = {}) {
+        super._onModifyEmbeddedEntity(embeddedName, changes, options, userId, context);
+
+        if(embeddedName === 'OwnedItem') {
+            this.items.forEach((item) => item.prepareData());
+        }
+    }
 }
