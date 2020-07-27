@@ -7,10 +7,32 @@
         </div>
     </h2>
 
+    {{#if skillReferences}}
+    <div class="fatex__skill__references__settings">
+        <div class="fatex__skill__references__setting">
+            <span>{{localize "FAx.Item.Automation.MultipleConditions"}}</span>
+
+            <select
+                class="fatex__skill__reference__setting"
+                data-setting="combination"
+                data-dtype="Number"
+            >
+                {{#each availableCombinations as |combination|}}
+                    <option value="{{combination.value}}"{{#ifEquals ../skillReferenceSettings.combination combination.value}} selected="selected"{{/ifEquals}}>
+                        {{combination.label}}
+                    </option>
+                {{/each}}
+            </select>
+
+            <span>{{localize "FAx.Item.Automation.MultipleConditionsMatches"}}</span>
+        </div>
+    </div>
+    {{/if}}
+
     {{#each skillReferences as |reference referenceIndex|}}
         <div class="fatex__skill__reference" data-index="{{referenceIndex}}">
             <div class="fatex__skill__reference__condition">
-                <span>Disable until</span>
+                <span>{{localize "FAx.Item.Automation.DisableUntil"}}</span>
 
                 <select
                     class="fatex__skill__reference__change fatex__skill__reference__change--skill"

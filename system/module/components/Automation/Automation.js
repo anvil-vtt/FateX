@@ -10,17 +10,28 @@ export class Automation extends BaseComponent {
         OPERATOR_LTE: 5,
     }
 
+    static COMBINATIONS = {
+        OR: 0,
+        AND: 1
+    }
+
 
     static activateListeners(html, sheet) {
         html.find('.fatex__skill__reference__create').on('click', (e) => this._onAddReference.call(this, e, sheet));
         html.find('.fatex__skill__reference__change').on('change', (e) => this._onChangeReference.call(this, e, sheet));
         html.find('.fatex__skill__reference__remove').on('click', (e) => this._onRemoveReference.call(this, e, sheet));
+        html.find('.fatex__skill__reference__setting').on('change', (e) => this._onChangeSetting.call(this, e, sheet));
     }
 
-    static getSheetData(sheetData, sheet) {
+    static async getSheetData(sheetData, sheet) {
         sheetData.skillReferences = this.getSkillReferences(sheet.item);
+
+        sheetData.skillReferenceSettings = {};
+        sheetData.skillReferenceSettings.combination = this.getReferenceSetting(sheet.item, 'combination', Automation.COMBINATIONS.OR);
+
         sheetData.availableSkillLevels = this.getAvailableSkillLevels();
         sheetData.availableOperators = this.getAvailableOperators();
+        sheetData.availableCombinations = this.getAvailableCombinations();
 
         // Only items owned by actors can read the actors skill list
         if(sheet.entity.isOwned) {
@@ -61,6 +72,27 @@ export class Automation extends BaseComponent {
         }
 
         await this.changeSkillReference(entity, index, field, value)
+    }
+
+    static async _onChangeSetting(e, sheet) {
+        e.preventDefault();
+
+        let value = e.currentTarget.value;
+        const dataset = e.currentTarget.dataset;
+        const entity = sheet.entity;
+        const setting = dataset.setting;
+
+        // Check for numbers as only strings are passed
+        if(dataset.dtype === "Number") {
+            value = parseInt(value);
+        }
+
+        // Return early of no setting
+        if(setting === undefined) {
+            return;
+        }
+
+        await this.setReferenceSetting(entity, setting, value)
     }
 
     static async _onRemoveReference(e, sheet) {
@@ -150,6 +182,20 @@ export class Automation extends BaseComponent {
         await entity.setFlag('fatex', 'skillReferences', references);
     }
 
+    static async setReferenceSetting(entity, setting, value) {
+        await entity.setFlag('fatex', `skillReferenceSettings.${setting}`, value);
+    }
+
+    static getReferenceSetting(entity, setting, defaultValue) {
+        const flag = entity.getFlag('fatex', `skillReferenceSettings.${setting}`);
+
+        if (flag === undefined) {
+            return defaultValue;
+        }
+
+        return flag;
+    }
+
     static getSkillReferences(entity) {
         return entity.getFlag('fatex', 'skillReferences') || [];
     }
@@ -211,6 +257,21 @@ export class Automation extends BaseComponent {
 
         return operators;
     }
+    
+    static getAvailableCombinations() {
+        const combinations = [];
+
+        for(let combination in Automation.COMBINATIONS) {
+            const availableCombination = [];
+
+            availableCombination.value = Automation.COMBINATIONS[combination];
+            availableCombination.label = game.i18n.localize(`FAx.Item.Automation.Combinations.${combination}`);
+
+            combinations.push(availableCombination);
+        }
+
+        return combinations;
+    }
 
     static checkSkillCondition(skill, condition, operator = Automation.OPERATORS.OPERATOR_GTE) {
         const rank = skill.data.rank;
@@ -232,5 +293,4 @@ export class Automation extends BaseComponent {
 
         return false;
     }
-
 }

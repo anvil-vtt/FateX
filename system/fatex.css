@@ -1053,3 +1053,6 @@ input[type=range]::-moz-range-thumb {
 
 .fatex__skill__reference + .fatex__skill__reference {
   margin-top: 10px; }
+
+.fatex__skill__references__settings {
+  margin-bottom: 10px; }

@@ -72,25 +72,24 @@ export class ConsequenceItem extends BaseItem {
     static getDisabledState(item) {
         let disabled = false;
         const skillReferences = Automation.getSkillReferences(item);
+        const combination = Automation.getReferenceSetting(item, 'combination', Automation.COMBINATIONS.OR);
 
         // Disable by default if automation was enabled
-        if(skillReferences.length) {
+        if(combination === Automation.COMBINATIONS.OR && skillReferences.length) {
             disabled = true;
         }
 
         // Not disabled if one of the skillReferences conditions is met
         for (const reference of skillReferences) {
             const skill = Automation.getActorSkillById(item.actor, reference.skill);
+            const isConditionMet = skill === undefined ? false : Automation.checkSkillCondition(skill, reference.condition, reference.operator);
 
-            // Check if skill is still available on actor
-            if(skill === undefined) {
-                continue;
+            if(combination === Automation.COMBINATIONS.OR && isConditionMet) {
+                return false;
             }
 
-            const isConditionMet = Automation.checkSkillCondition(skill, reference.condition, reference.operator);
-
-            if (isConditionMet) {
-                return false;
+            if(combination === Automation.COMBINATIONS.AND && !isConditionMet) {
+                return true;
             }
         }
 

@@ -43,6 +43,13 @@ export class HandlebarsHelpers {
         });
 
         /**
+         * Checks if the length of an array is of a certain number
+         */
+        Handlebars.registerHelper('checkLength', function (arg1, arg2, options) {
+            return (arg1.length >= Number(arg2)) ? options.fn(this) : options.inverse(this);
+        });
+
+        /**
          * Helper which prints an argument or a default if it the argument is an empty string
          */
         Handlebars.registerHelper('default', function (value, defaultValue) {
