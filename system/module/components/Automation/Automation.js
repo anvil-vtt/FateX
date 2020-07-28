@@ -24,18 +24,15 @@ export class Automation extends BaseComponent {
     }
 
     static async getSheetData(sheetData, sheet) {
-        sheetData.skillReferences = this.getSkillReferences(sheet.item);
-
-        sheetData.skillReferenceSettings = {};
-        sheetData.skillReferenceSettings.conjunction = this.getReferenceSetting(sheet.item, 'conjunction', Automation.CONJUNCTIONS.OR);
-
+        sheetData.skillReferences = this.getSkillReferences(sheet.entity);
+        sheetData.skillReferenceSettings = this.getSkillReferenceSettings(sheet.entity);
         sheetData.availableSkillLevels = this.getAvailableSkillLevels();
         sheetData.availableOperators = this.getAvailableOperators();
         sheetData.availableConjunctions = this.getAvailableConjunctions();
 
         // Only items owned by actors can read the actors skill list
         if(sheet.entity.isOwned) {
-            sheetData.actorSkills = this.getActorSkills(sheet.actor);
+            sheetData.availableActorSkills = this.getSkillsByActor(sheet.actor);
         }
 
         return sheetData;
@@ -200,7 +197,7 @@ export class Automation extends BaseComponent {
         return entity.getFlag('fatex', 'skillReferences') || [];
     }
 
-    static getActorSkills(actor) {
+    static getSkillsByActor(actor, sort = true) {
         const actorData = duplicate(actor);
         const items = actorData.items;
 
@@ -209,7 +206,9 @@ export class Automation extends BaseComponent {
         const skillData = skills.map((skill) => duplicate(skill));
 
         // Sort alphabetically
-        skillData.sort((a, b) => b.name - a.name);
+        if (sort) {
+            skillData.sort((a, b) => b.name - a.name);
+        }
 
         return skillData;
     }
@@ -292,5 +291,13 @@ export class Automation extends BaseComponent {
         }
 
         return false;
+    }
+
+    static getSkillReferenceSettings(entity) {
+        const skillReferenceSettings = {};
+
+        skillReferenceSettings.conjunction = this.getReferenceSetting(entity, 'conjunction', Automation.CONJUNCTIONS.OR);
+
+        return skillReferenceSettings;
     }
 }

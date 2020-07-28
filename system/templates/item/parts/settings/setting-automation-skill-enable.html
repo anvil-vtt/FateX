@@ -41,7 +41,7 @@
                 >
                     <option value=""{{#ifEquals reference.skill ''}} selected="selected"{{/ifEquals}}> -</option>
 
-                    {{#each ../actorSkills as |actorSkill skillIndex|}}
+                    {{#each ../availableActorSkills as |actorSkill skillIndex|}}
                         <option value="{{actorSkill._id}}"{{#ifEquals reference.skill actorSkill._id}} selected="selected"{{/ifEquals}}>
                             {{actorSkill.name}}
                         </option>
