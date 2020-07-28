@@ -10,7 +10,7 @@ export class Automation extends BaseComponent {
         OPERATOR_LTE: 5,
     }
 
-    static COMBINATIONS = {
+    static CONJUNCTIONS = {
         OR: 0,
         AND: 1
     }
@@ -27,11 +27,11 @@ export class Automation extends BaseComponent {
         sheetData.skillReferences = this.getSkillReferences(sheet.item);
 
         sheetData.skillReferenceSettings = {};
-        sheetData.skillReferenceSettings.combination = this.getReferenceSetting(sheet.item, 'combination', Automation.COMBINATIONS.OR);
+        sheetData.skillReferenceSettings.conjunction = this.getReferenceSetting(sheet.item, 'conjunction', Automation.CONJUNCTIONS.OR);
 
         sheetData.availableSkillLevels = this.getAvailableSkillLevels();
         sheetData.availableOperators = this.getAvailableOperators();
-        sheetData.availableCombinations = this.getAvailableCombinations();
+        sheetData.availableConjunctions = this.getAvailableConjunctions();
 
         // Only items owned by actors can read the actors skill list
         if(sheet.entity.isOwned) {
@@ -258,19 +258,19 @@ export class Automation extends BaseComponent {
         return operators;
     }
     
-    static getAvailableCombinations() {
-        const combinations = [];
+    static getAvailableConjunctions() {
+        const conjunctions = [];
 
-        for(let combination in Automation.COMBINATIONS) {
-            const availableCombination = [];
+        for(let conjunction in Automation.CONJUNCTIONS) {
+            const availableConjunction = [];
 
-            availableCombination.value = Automation.COMBINATIONS[combination];
-            availableCombination.label = game.i18n.localize(`FAx.Item.Automation.Combinations.${combination}`);
+            availableConjunction.value = Automation.CONJUNCTIONS[conjunction];
+            availableConjunction.label = game.i18n.localize(`FAx.Item.Automation.Conjunctions.${conjunction}`);
 
-            combinations.push(availableCombination);
+            conjunctions.push(availableConjunction);
         }
 
-        return combinations;
+        return conjunctions;
     }
 
     static checkSkillCondition(skill, condition, operator = Automation.OPERATORS.OPERATOR_GTE) {

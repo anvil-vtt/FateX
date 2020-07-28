@@ -72,10 +72,10 @@ export class ConsequenceItem extends BaseItem {
     static getDisabledState(item) {
         let disabled = false;
         const skillReferences = Automation.getSkillReferences(item);
-        const combination = Automation.getReferenceSetting(item, 'combination', Automation.COMBINATIONS.OR);
+        const conjunction = Automation.getReferenceSetting(item, 'conjunction', Automation.CONJUNCTIONS.OR);
 
         // Disable by default if automation was enabled
-        if(combination === Automation.COMBINATIONS.OR && skillReferences.length) {
+        if(conjunction === Automation.CONJUNCTIONS.OR && skillReferences.length) {
             disabled = true;
         }
 
@@ -84,11 +84,11 @@ export class ConsequenceItem extends BaseItem {
             const skill = Automation.getActorSkillById(item.actor, reference.skill);
             const isConditionMet = skill === undefined ? false : Automation.checkSkillCondition(skill, reference.condition, reference.operator);
 
-            if(combination === Automation.COMBINATIONS.OR && isConditionMet) {
+            if(conjunction === Automation.CONJUNCTIONS.OR && isConditionMet) {
                 return false;
             }
 
-            if(combination === Automation.COMBINATIONS.AND && !isConditionMet) {
+            if(conjunction === Automation.CONJUNCTIONS.AND && !isConditionMet) {
                 return true;
             }
         }

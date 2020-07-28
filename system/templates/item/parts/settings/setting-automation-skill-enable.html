@@ -14,12 +14,12 @@
 
             <select
                 class="fatex__skill__reference__setting"
-                data-setting="combination"
+                data-setting="conjunction"
                 data-dtype="Number"
             >
-                {{#each availableCombinations as |combination|}}
-                    <option value="{{combination.value}}"{{#ifEquals ../skillReferenceSettings.combination combination.value}} selected="selected"{{/ifEquals}}>
-                        {{combination.label}}
+                {{#each availableConjunctions as |conjunction|}}
+                    <option value="{{conjunction.value}}"{{#ifEquals ../skillReferenceSettings.conjunction conjunction.value}} selected="selected"{{/ifEquals}}>
+                        {{conjunction.label}}
                     </option>
                 {{/each}}
             </select>
