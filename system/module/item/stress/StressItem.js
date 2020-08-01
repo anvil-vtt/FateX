@@ -3,9 +3,11 @@ import { BaseItem } from "../BaseItem.js";
 export class StressItem extends BaseItem {
     static entityName = 'stress';
 
-    static LABEL_TYPE_CORE = 0;
-    static LABEL_TYPE_CONDENSED = 1;
-    static LABEL_TYPE_CUSTOM = 2;
+    static LABEL_TYPE = {
+        CORE: 0,
+        CONDENSED: 1,
+        CUSTOM: 2
+    }
 
     static activateActorSheetListeners(html, sheet) {
         super.activateActorSheetListeners(html, sheet);
@@ -15,35 +17,30 @@ export class StressItem extends BaseItem {
     }
 
     static prepareItemData(item, entity) {
-        // Add renderable boxes
-        item.boxes = [];
-        item.fillers = [];
+        const numberOfBoxes = parseInt(item.data.size);
 
         // Add boxes with prepared data
-        for (let i = 0; i < item.data.size; i++) {
-            let box = {};
+        item.boxes = [...Array(numberOfBoxes).keys()].map((i) => {
+            const box = {};
 
-            box.isChecked = item.data.value & Math.pow(2, i);
+            box.isChecked = item.data.value & (2 ** i);
             box.label = this._getBoxLabel(item,i);
 
-            item.boxes[i] = box;
-        }
+            return box;
+        });
 
-        if(item.data.size % 4 !== 0) {
-            for (let i = (4 - (item.data.size % 4)); i > 0; i--) {
-                item.fillers[i] = i;
-            }
-        }
+        // Add filler boxes if needed
+        item.fillers = numberOfBoxes % 4 === 0 ? [] : [...Array(4 - (item.data.size % 4)).keys()];
 
         return item;
     }
 
      static _getBoxLabel(item, i) {
-        if(item.data.labelType === StressItem.LABEL_TYPE_CONDENSED) {
-            return 1;
+        if(item.data.labelType === StressItem.LABEL_TYPE.CONDENSED) {
+            return "1";
         }
 
-        if(item.data.labelType === StressItem.LABEL_TYPE_CUSTOM) {
+        if(item.data.labelType === StressItem.LABEL_TYPE.CUSTOM) {
             return (item.data.customLabel).split(" ")[i];
         }
 
@@ -51,7 +48,7 @@ export class StressItem extends BaseItem {
     }
 
     static _getToggledStressValue(currentStressTrackValue, boxIndexToToggle) {
-        return currentStressTrackValue ^ Math.pow(2, boxIndexToToggle);
+        return currentStressTrackValue ^ (2 ** boxIndexToToggle);
     }
 
     /*************************
