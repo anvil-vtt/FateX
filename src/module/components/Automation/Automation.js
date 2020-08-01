@@ -1,21 +1,20 @@
 import { BaseComponent } from "../BaseComponent.js";
 
+export const OPERATORS = {
+    OPERATOR_EQUALS: 0,
+    OPERATOR_NOT_EQUALS: 1,
+    OPERATOR_GT: 2,
+    OPERATOR_LT: 3,
+    OPERATOR_GTE: 4,
+    OPERATOR_LTE: 5,
+};
+
+export const CONJUNCTIONS = {
+    OR: 0,
+    AND: 1
+};
+
 export class Automation extends BaseComponent {
-    static OPERATORS = {
-        OPERATOR_EQUALS: 0,
-        OPERATOR_NOT_EQUALS: 1,
-        OPERATOR_GT: 2,
-        OPERATOR_LT: 3,
-        OPERATOR_GTE: 4,
-        OPERATOR_LTE: 5,
-    }
-
-    static CONJUNCTIONS = {
-        OR: 0,
-        AND: 1
-    }
-
-
     static activateListeners(html, sheet) {
         html.find('.fatex__skill__reference__create').on('click', (e) => this._onAddReference.call(this, e, sheet));
         html.find('.fatex__skill__reference__change').on('change', (e) => this._onChangeReference.call(this, e, sheet));
@@ -144,7 +143,7 @@ export class Automation extends BaseComponent {
         references.push({
             "skill": "",
             "condition": 0,
-            "operator": Automation.OPERATORS.OPERATOR_GTE,
+            "operator": OPERATORS.OPERATOR_GTE,
             "default": 0,
             "action": 0,
             "argument": 0,
@@ -245,10 +244,10 @@ export class Automation extends BaseComponent {
     static getAvailableOperators() {
         const operators = [];
 
-        for(let operator in Automation.OPERATORS) {
+        for(let operator in OPERATORS) {
             const availableOperator = [];
 
-            availableOperator.value = Automation.OPERATORS[operator];
+            availableOperator.value = OPERATORS[operator];
             availableOperator.label = game.i18n.localize(`FAx.Item.Automation.Operators.${operator}`);
 
             operators.push(availableOperator);
@@ -260,10 +259,10 @@ export class Automation extends BaseComponent {
     static getAvailableConjunctions() {
         const conjunctions = [];
 
-        for(let conjunction in Automation.CONJUNCTIONS) {
+        for(let conjunction in CONJUNCTIONS) {
             const availableConjunction = [];
 
-            availableConjunction.value = Automation.CONJUNCTIONS[conjunction];
+            availableConjunction.value = CONJUNCTIONS[conjunction];
             availableConjunction.label = game.i18n.localize(`FAx.Item.Automation.Conjunctions.${conjunction}`);
 
             conjunctions.push(availableConjunction);
@@ -272,21 +271,21 @@ export class Automation extends BaseComponent {
         return conjunctions;
     }
 
-    static checkSkillCondition(skill, condition, operator = Automation.OPERATORS.OPERATOR_GTE) {
+    static checkSkillCondition(skill, condition, operator = OPERATORS.OPERATOR_GTE) {
         const rank = skill.data.rank;
 
         switch (operator) {
-            case Automation.OPERATORS.OPERATOR_EQUALS:
+            case OPERATORS.OPERATOR_EQUALS:
                 return rank === condition;
-            case Automation.OPERATORS.OPERATOR_NOT_EQUALS:
+            case OPERATORS.OPERATOR_NOT_EQUALS:
                 return rank !== condition;
-            case Automation.OPERATORS.OPERATOR_GTE:
+            case OPERATORS.OPERATOR_GTE:
                 return rank >= condition;
-            case Automation.OPERATORS.OPERATOR_GT:
+            case OPERATORS.OPERATOR_GT:
                 return rank > condition;
-            case Automation.OPERATORS.OPERATOR_LTE:
+            case OPERATORS.OPERATOR_LTE:
                 return rank <= condition;
-            case Automation.OPERATORS.OPERATOR_LT:
+            case OPERATORS.OPERATOR_LT:
                 return rank < condition;
         }
 
@@ -296,7 +295,7 @@ export class Automation extends BaseComponent {
     static getSkillReferenceSettings(entity) {
         const skillReferenceSettings = {};
 
-        skillReferenceSettings.conjunction = this.getReferenceSetting(entity, 'conjunction', Automation.CONJUNCTIONS.OR);
+        skillReferenceSettings.conjunction = this.getReferenceSetting(entity, 'conjunction', CONJUNCTIONS.OR);
 
         return skillReferenceSettings;
     }

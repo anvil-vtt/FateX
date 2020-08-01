@@ -1,4 +1,7 @@
 export class BaseItem {
+    static get entityName() {
+        return false;
+    };
 
     /**
      * Allows each item to prepare its data before its rendered.
@@ -58,7 +61,7 @@ export class BaseItem {
         }
 
         const itemData = {
-            name: this.defaultName ?? this.getDefaultName(),
+            name: this.defaultName,
             type: this.entityName,
         };
 
@@ -138,7 +141,7 @@ export class BaseItem {
      * Helper function to determine a new items name.
      * Defaults to the entityName with the first letter capitalized.
      */
-    static getDefaultName() {
+    static get defaultName() {
         return this.entityName.charAt(0).toUpperCase() + this.entityName.slice(1);
-    }
+    };
 }

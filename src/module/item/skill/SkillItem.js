@@ -1,7 +1,9 @@
 import { BaseItem } from "../BaseItem.js";
 
 export class SkillItem extends BaseItem {
-    static entityName = 'skill';
+    static get entityName() {
+        return 'skill';
+    };
 
     /**
      * Adds skill specifig actorsheet listeners.

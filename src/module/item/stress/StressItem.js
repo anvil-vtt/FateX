@@ -1,13 +1,15 @@
 import { BaseItem } from "../BaseItem.js";
 
-export class StressItem extends BaseItem {
-    static entityName = 'stress';
+const STRESS_LABEL_TYPES = {
+    CORE: 0,
+    CONDENSED: 1,
+    CUSTOM: 2
+};
 
-    static LABEL_TYPE = {
-        CORE: 0,
-        CONDENSED: 1,
-        CUSTOM: 2
-    }
+export class StressItem extends BaseItem {
+    static get entityName() {
+        return 'stress';
+    };
 
     static activateActorSheetListeners(html, sheet) {
         super.activateActorSheetListeners(html, sheet);
@@ -36,11 +38,11 @@ export class StressItem extends BaseItem {
     }
 
      static _getBoxLabel(item, i) {
-        if(item.data.labelType === StressItem.LABEL_TYPE.CONDENSED) {
+        if(item.data.labelType === STRESS_LABEL_TYPES.CONDENSED) {
             return "1";
         }
 
-        if(item.data.labelType === StressItem.LABEL_TYPE.CUSTOM) {
+        if(item.data.labelType === STRESS_LABEL_TYPES.CUSTOM) {
             return (item.data.customLabel).split(" ")[i];
         }
 

@@ -1,15 +1,19 @@
-import { Automation } from "../../components/Automation/Automation.js";
+import { Automation, CONJUNCTIONS } from "../../components/Automation/Automation.js";
 import { BaseItem } from "../BaseItem.js";
 
-export class ConsequenceItem extends BaseItem {
-    static entityName = 'consequence';
+export const CONSEQUENCE_TYPES = {
+    CONSEQUENCE: 0,
+    CONDITION: 1,
+};
 
-    static TYPE_CONSEQUENCE = 0;
-    static TYPE_CONDITION = 1;
+export class ConsequenceItem extends BaseItem {
+    static get entityName() {
+        return 'consequence';
+    };
 
     static prepareItemData(data, item) {
-        data.isConsequence = data.data.type === ConsequenceItem.TYPE_CONSEQUENCE;
-        data.isCondition = data.data.type === ConsequenceItem.TYPE_CONDITION;
+        data.isConsequence = data.data.type === CONSEQUENCE_TYPES.CONSEQUENCE;
+        data.isCondition = data.data.type === CONSEQUENCE_TYPES.CONDITION;
 
         if(item.isOwned) {
             data.isDisabled = this.getDisabledState(item);
@@ -72,10 +76,10 @@ export class ConsequenceItem extends BaseItem {
     static getDisabledState(item) {
         let disabled = false;
         const skillReferences = Automation.getSkillReferences(item);
-        const conjunction = Automation.getReferenceSetting(item, 'conjunction', Automation.CONJUNCTIONS.OR);
+        const conjunction = Automation.getReferenceSetting(item, 'conjunction', CONJUNCTIONS.OR);
 
         // Disable by default if automation was enabled
-        if(conjunction === Automation.CONJUNCTIONS.OR && skillReferences.length) {
+        if(conjunction === CONJUNCTIONS.OR && skillReferences.length) {
             disabled = true;
         }
 
@@ -84,11 +88,11 @@ export class ConsequenceItem extends BaseItem {
             const skill = Automation.getActorSkillById(item.actor, reference.skill);
             const isConditionMet = skill === undefined ? false : Automation.checkSkillCondition(skill, reference.condition, reference.operator);
 
-            if(conjunction === Automation.CONJUNCTIONS.OR && isConditionMet) {
+            if(conjunction === CONJUNCTIONS.OR && isConditionMet) {
                 return false;
             }
 
-            if(conjunction === Automation.CONJUNCTIONS.AND && !isConditionMet) {
+            if(conjunction === CONJUNCTIONS.AND && !isConditionMet) {
                 return true;
             }
         }

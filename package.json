@@ -1,0 +1,20 @@
+{
+    "name": "fatex",
+    "version": "1.0.0",
+    "description": "FateX is the extended Fate game system for FoundryVTT.",
+    "private": true,
+    "scripts": {
+        "watch": "webpack --env.watch",
+        "build": "webpack"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/anvil-vtt/FateX.git"
+    },
+    "author": "Patrick Bauer (Daddi#2333)",
+    "license": "MIT",
+    "devDependencies": {
+        "webpack": "^4.44.1",
+        "webpack-cli": "^3.3.12"
+    }
+}

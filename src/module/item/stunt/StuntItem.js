@@ -1,7 +1,9 @@
 import { BaseItem } from "../BaseItem.js";
 
 export class StuntItem extends BaseItem {
-    static entityName = 'stunt';
+    static get entityName() {
+        return 'stunt';
+    };
 
     /**
      * Adds stunt specifig actorsheet listeners.
