@@ -13,10 +13,12 @@ jobs:
         run: echo "::set-output name=version::$(node ./.github/workflows/get-version.js)"
 
       - name: Install dependencies and run webpack
-          run: npm install --silent && npm run build:production
+        run: |
+          npm install --silent
+          npm run build:production
 
       - name: Create installable system zip file
-        - run: cd dist && zip -r ../fatex.zip *
+        run: cd dist && zip -r ../fatex.zip *
 
       - name: Create release
         id: create_versioned_release
