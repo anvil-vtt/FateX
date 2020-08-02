@@ -11,8 +11,6 @@
     centerPartial="centerPartial"
 }}
 
-
-
 <div class="fatex__templates">
 
     <div class="fatex__template">
@@ -49,13 +47,9 @@
         </div>
     </div>
 
-
-
     <div class="fatex__template__or">
         <span>{{localize "FAx.Template.Picker.Or"}}</span>
     </div>
-
-
 
     {{#each templateActors as |template templateIndex|}}
         <div class="fatex__template">
@@ -92,6 +86,13 @@
                 </span>
             </div>
         </div>
+    {{else}}
+    <div class="fatex__template__help">
+        <p>{{{localize "FAx.Template.Picker.Explain"}}}</p>
+        <p>{{{localize "FAx.Template.Picker.Help"}}}</p>
+
+        {{> centerPartial }}
+    </div>
     {{/each}}
 </div>
 

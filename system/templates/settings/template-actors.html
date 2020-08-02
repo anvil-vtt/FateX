@@ -54,6 +54,12 @@
                 </span>
             </div>
         </div>
+    {{else}}
+        <div class="fatex__template__help">
+            <p>{{{localize "FAx.Settings.Templates.App.Help"}}}</p>
+
+            {{> centerPartial }}
+        </div>
     {{/each}}
 </div>
 
