@@ -25,7 +25,8 @@
                 "Sort": "Sort",
                 "Create": "Create empty actor",
                 "Choose": "Choose template"
-            }
+            },
+            "BaseItem": "Base item"
         },
         "Sheet": {
             "Name": "Name",
@@ -50,7 +51,7 @@
                 "Add": "Add stress track"
             },
             "Messages": {
-                "EmptyActor": "It looks like your character doesn't have any content yet. You can change this in the \"Edit mode\". The button to toggle the edit mode can be found in the header bar."
+                "EmptyActor": "It looks like your character doesn't have any content yet. You can change this in the <strong>Edit mode</strong> or the <strong>Character builder</strong>. The buttons to toggle the edit mode or open the builder can be found in the header bar."
             }
         },
         "Item": {
@@ -145,6 +146,11 @@
             "Confirm": "Confirm",
             "Cancel": "Cancel"
         },
+        "Apps": {
+            "Builder": {
+                "Title": "Character Builder"
+            }
+        },
         "Settings": {
             "Templates": {
                 "Title": "Character sheet templates",
@@ -156,7 +162,7 @@
                     "Title": "Configure Templates",
                     "Label": "Settings",
                     "CreateNew": "Create new template",
-                    "Help": "There are no configured templates yet.<br />To add a new template, click on the <strong>Create new template</strong> button, which is also available in the header bar."
+                    "Help": "There are no configured templates yet.<br />To add a new template, click on the <strong>Create new template</strong> button (also available in the header bar)."
                 }
             }
         },
@@ -168,7 +174,7 @@
                 "Empty": "Empty actor",
                 "CreateEmpty": "Empty actor",
                 "Or": "or",
-                "Help": "To add new templates, click on the <strong>Configuration</strong> button, which is also available in the header bar.",
+                "Help": "To add new templates, click on the <strong>Configuration</strong> button below (also available in the header bar).",
                 "Explain": "Templates are a great way to have different sheets for different kinds of actors. We suggest using <strong>different templates</strong> for PCs, NPCs, and Mooks, as all of them have <strong>different sheet requirements</strong>."
             }
         }

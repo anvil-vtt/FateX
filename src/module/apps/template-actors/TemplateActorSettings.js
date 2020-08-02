@@ -1,4 +1,5 @@
-import { ActorFate } from "../actor/ActorFate.js";
+import { ActorFate } from "../../actor/ActorFate.js";
+import { CharacterBuilder } from "../character-builder/CharacterBuilder.js";
 
 export class TemplateActorSettings extends FormApplication {
 
@@ -7,11 +8,11 @@ export class TemplateActorSettings extends FormApplication {
 
         mergeObject(options, {
             title: game.i18n.localize("FAx.Settings.Templates.App.Title"),
-            template: "/systems/fatex/templates/settings/template-actors.html",
+            template: "/systems/fatex/templates/apps/template-actors.html",
             id: 'template-actors',
             resizable: true,
             classes: options.classes.concat([
-                'fatex fatex__settings_sheet',
+                'fatex fatex__app_sheet',
             ]),
             width: 920,
             height: 500,
@@ -114,7 +115,11 @@ export class TemplateActorSettings extends FormApplication {
             }
         };
 
-        await ActorFate._create(createData, {renderSheet: true});
+        const newTemplateActor = await ActorFate._create(createData, {renderSheet: true});
+
+        // Open character builder by default for new templates
+        const characterBuilder = new CharacterBuilder(newTemplateActor);
+        characterBuilder.render(true);
 
         // Re-render this settings window and the picker if open
         this.render(true);

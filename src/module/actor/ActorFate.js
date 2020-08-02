@@ -2,7 +2,6 @@
  * ActorFate is the default entity class for actors inside the FateX system.
  * Adds custom features based on the system.
  */
-import { TemplateActorPicker } from "../settings/TemplateActorPicker.js";
 import { TemplateActorSheetFate } from "./template/TemplateActorSheetFate.js";
 
 export class ActorFate extends Actor {
@@ -24,10 +23,6 @@ export class ActorFate extends Actor {
      * Automatically links new tokens to the actor.
      */
     static async _create(data, options = {}) {
-        if(options.actorTemplate) {
-            mergeObject(data, options.actorTemplate);
-        }
-
         data.token = data.token || {};
 
         // Set basic token data for newly created actors.
@@ -36,8 +31,9 @@ export class ActorFate extends Actor {
             dimSight: 30,
             brightSight: 0,
             actorLink: true,
-            disposition: 1
-        }, {overwrite: false});
+            disposition: 1,
+            img: CONST.DEFAULT_TOKEN
+        }, {overwrite: true});
 
         return super.create(data, options);
     }

@@ -31,8 +31,8 @@ export class TemplatePreloader {
             'systems/fatex/templates/item/parts/settings/setting-editor.html',
             'systems/fatex/templates/item/parts/settings/setting-automation-skill-enable.html',
 
-            'systems/fatex/templates/settings/parts/layout/settings-header.html',
-            'systems/fatex/templates/settings/parts/layout/settings-footer.html',
+            'systems/fatex/templates/apps/parts/layout/app-header.html',
+            'systems/fatex/templates/apps/parts/layout/app-footer.html',
         ];
 
         return loadTemplates(templatePaths);

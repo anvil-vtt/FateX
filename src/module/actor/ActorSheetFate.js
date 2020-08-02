@@ -2,6 +2,8 @@
  * FateX base class for all actor sheets.
  * Defines what information on the actorsheet may be rendered.
  */
+import { CharacterBuilder } from "../apps/character-builder/CharacterBuilder.js";
+
 export class ActorSheetFate extends ActorSheet {
 
     /**
@@ -105,7 +107,13 @@ export class ActorSheetFate extends ActorSheet {
                     class: "fatex-toggle-edit-mode",
                     icon: "fas fa-edit",
                     onclick: ev => this._onToggleEditMode(ev)
-                }
+                },
+                {
+                    label: "Character builder",
+                    class: "fatex-open-character-builder",
+                    icon: "fas fa-tools",
+                    onclick: ev => this._onOpenCharacterBuilder(ev)
+                },
             ].concat(buttons);
         }
 
@@ -128,5 +136,16 @@ export class ActorSheetFate extends ActorSheet {
         const html = app.find('.window-content');
 
         app.toggleClass("fatex__helper--enable-editmode")
+    }
+
+    /**
+     * OnClick handler for the previously declaried "Character builder" button.
+     * Opens a new character builder instance for this sheet.
+     */
+    _onOpenCharacterBuilder(e) {
+        e.preventDefault();
+
+        const characterBuilder = new CharacterBuilder(this.actor);
+        characterBuilder.render(true);
     }
 }

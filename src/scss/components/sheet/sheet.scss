@@ -5,6 +5,10 @@
         max-height: 100%;
     }
 
+    .window-header a {
+        margin-left: $component-padding;
+    }
+
     .window-content {
         padding: 0;
         background: $sheet-background;

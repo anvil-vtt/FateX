@@ -1,8 +1,7 @@
-const path = require('path');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-
-
+const globImporter = require('node-sass-glob-importer');
+const path = require('path');
 
 module.exports = environment => {
     environment = environment || {};
@@ -17,11 +16,11 @@ module.exports = environment => {
             filename: 'system.js',
             path: path.resolve(__dirname, 'dist'),
         },
-        module:{
-            rules:[
+        module: {
+            rules: [
                 {
-                    test:/\.scss$/,
-                    use:[
+                    test: /\.scss$/,
+                    use: [
                         {
                             loader: 'style-loader',
                         },
@@ -36,6 +35,9 @@ module.exports = environment => {
                             loader: 'sass-loader',
                             options: {
                                 sourceMap: true,
+                                sassOptions: {
+                                    importer: globImporter()
+                                }
                             },
                         },
                     ]
@@ -45,10 +47,10 @@ module.exports = environment => {
         plugins: [
             new CleanWebpackPlugin(),
             new CopyPlugin({
-                 patterns: [
-                     { from: 'system' },
-                 ],
-             }),
+                patterns: [
+                    {from: 'system'},
+                ],
+            }),
         ],
     }
 };

@@ -5,8 +5,17 @@
         <div class="desk__header">
             <div class="fatex__header item__header">
                 <div class="fatex__header__name">
-                    <label class="fatex__header__label fatex__item__header__label">{{localize label}}</label>
-                    <div class="fatex__header__title fatex__item__header__title">{{localize title}}</div>
+                    <label class="fatex__header__label fatex__item__header__label">
+                        {{#if isOwnedBy}}
+                            {{ isOwnedBy }}
+                        {{else}}
+                            {{localize label}}
+                        {{/if}}
+                    </label>
+
+                    <div class="fatex__header__title fatex__item__header__title">
+                        {{localize title}}
+                    </div>
                 </div>
 
                 {{#if centerPartial}}

@@ -26,7 +26,7 @@ import { ItemFate } from "./module/item/ItemFate.js";
 import { SkillSheet } from "./module/item/skill/SkillSheet.js";
 import { StressSheet } from "./module/item/stress/StressSheet.js";
 import { StuntSheet } from "./module/item/stunt/StuntSheet.js";
-import { TemplateActors } from "./module/settings/TemplateActors.js";
+import { TemplateActors } from "./module/apps/template-actors/TemplateActors.js";
 
 /* -------------------------------- */
 /*	System initialization			*/

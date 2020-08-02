@@ -1,4 +1,4 @@
-import { ActorFate } from "../actor/ActorFate.js";
+import { ActorFate } from "../../actor/ActorFate.js";
 import { TemplateActorSettings } from "./TemplateActorSettings.js";
 
 export class TemplateActorPicker extends TemplateActorSettings {
@@ -8,11 +8,11 @@ export class TemplateActorPicker extends TemplateActorSettings {
 
         mergeObject(options, {
             title: game.i18n.localize("ACTOR.Create"),
-            template: "/systems/fatex/templates/settings/template-actors-picker.html",
+            template: "/systems/fatex/templates/apps/template-actors-picker.html",
             id: 'template-actor-picker',
             resizable: true,
             classes: options.classes.concat([
-                'fatex fatex__settings_sheet',
+                'fatex fatex__app_sheet',
             ]),
             width: 1000,
             height: 430,
@@ -47,8 +47,8 @@ export class TemplateActorPicker extends TemplateActorSettings {
         }
 
         // Create actor without template data
-        ActorFate._create(data, { renderSheet: true });
-        this.close();
+        await ActorFate._create(data, {renderSheet: true});
+        await this.close();
     }
 
     async _chooseTemplate(e) {
@@ -64,11 +64,11 @@ export class TemplateActorPicker extends TemplateActorSettings {
         // Delete id and flags
         delete template._id;
         delete template.flags.fatex.isTemplateActor;
-
+        delete template.img;
 
         // Create the real actor
-        ActorFate._create(template, { renderSheet: true });
-        this.close();
+        await ActorFate._create(template, { renderSheet: true });
+        await this.close();
     }
 
     async _updateObject(event, formData) {
