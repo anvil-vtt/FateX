@@ -1,3 +1,5 @@
+import { ActorFate } from "../actor/ActorFate.js";
+
 export class TemplateActorSettings extends FormApplication {
 
     static get defaultOptions() {
@@ -112,7 +114,7 @@ export class TemplateActorSettings extends FormApplication {
             }
         };
 
-        await Actor.create(createData, {renderSheet: true});
+        await ActorFate._create(createData, {renderSheet: true});
 
         // Re-render this settings window and the picker if open
         this.render(true);

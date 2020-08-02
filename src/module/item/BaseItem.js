@@ -16,7 +16,7 @@ export class BaseItem {
      * Implements base listeners for adding, configuring and deleting embedded items.
      */
     static activateActorSheetListeners(html, sheet) {
-        if(!this.entityName) {
+        if (!this.entityName) {
             throw new Error("A subclass of the BaseItem must provide an entityName field or implement their own _onItemAdd() method.");
         }
 
@@ -43,7 +43,8 @@ export class BaseItem {
     /**
      * Allows each item to add listeners to its sheet
      */
-    static activateListeners(html, sheet) {}
+    static activateListeners(html, sheet) {
+    }
 
     /*************************
      * EVENT HANDLER
@@ -52,11 +53,11 @@ export class BaseItem {
     /**
      * Itemtype agnostic handler for creating new items via event.
      */
-    static _onItemAdd(e, sheet) {
+    static async _onItemAdd(e, sheet) {
         e.preventDefault();
         e.stopPropagation();
 
-        if(!this.entityName) {
+        if (!this.entityName) {
             throw new Error("A subclass of the BaseItem must provide an entityName field or implement their own _onItemAdd() method.");
         }
 
@@ -65,7 +66,7 @@ export class BaseItem {
             type: this.entityName,
         };
 
-        this.createNewItem(itemData, sheet);
+        await this.createNewItem(itemData, sheet);
     }
 
     /**
@@ -78,7 +79,7 @@ export class BaseItem {
         const data = e.currentTarget.dataset;
         const item = sheet.actor.getOwnedItem(data.item);
 
-        if(item) {
+        if (item) {
             item.sheet.render(true);
         }
     }
@@ -126,15 +127,16 @@ export class BaseItem {
      * Helper function to create a new item.
      * Render parameter determines if the items sheet should be rendered.
      */
-    static createNewItem(itemData, sheet, render = true) {
+    static async createNewItem(itemData, sheet, render = true) {
         // Create item and render sheet afterwards
-        sheet.actor.createOwnedItem(itemData).then((item) => {
-            if(!render) return;
+        const newItem = await sheet.actor.createOwnedItem(itemData);
 
-            // We have to reload the item for it to have a sheet
-            const createdItem = sheet.actor.getOwnedItem(item._id);
-            createdItem.sheet.render(true);
-        });
+        // Tokens don't return the new item
+        if (!render || sheet.actor.isToken) return;
+
+        // We have to reload the item for it to have a sheet
+        const createdItem = sheet.actor.getOwnedItem(newItem._id);
+        createdItem.sheet.render(true);
     }
 
     /**

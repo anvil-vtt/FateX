@@ -24,11 +24,11 @@ export class ActorFate extends Actor {
      * Automatically links new tokens to the actor.
      */
     static async _create(data, options = {}) {
-        data.token = data.token || {};
-
         if(options.actorTemplate) {
             mergeObject(data, options.actorTemplate);
         }
+
+        data.token = data.token || {};
 
         // Set basic token data for newly created actors.
         mergeObject(data.token, {
