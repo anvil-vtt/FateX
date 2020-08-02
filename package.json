@@ -5,7 +5,8 @@
     "private": true,
     "scripts": {
         "watch": "webpack --env.watch",
-        "build": "webpack"
+        "build": "webpack",
+        "build:production": "webpack --env.mode=production"
     },
     "repository": {
         "type": "git",
@@ -14,6 +15,7 @@
     "author": "Patrick Bauer (Daddi#2333)",
     "license": "MIT",
     "devDependencies": {
+        "copy-webpack-plugin": "^6.0.3",
         "webpack": "^4.44.1",
         "webpack-cli": "^3.3.12"
     }
