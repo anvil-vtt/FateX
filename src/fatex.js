@@ -17,6 +17,7 @@ import "./scss/fatex.scss";
 import { FateX } from "./config.js";
 import { ActorFate } from "./module/actor/ActorFate.js";
 import { CharacterSheet } from "./module/actor/character/CharacterSheet.js";
+import { CharacterBuilder } from "./module/apps/character-builder/CharacterBuilder.js";
 import { HandlebarsHelpers } from "./module/helper/HandlebarsHelpers.js";
 import { TemplatePreloader } from "./module/helper/TemplatePreloader.js";
 import { AspectSheet } from "./module/item/aspect/AspectSheet.js";

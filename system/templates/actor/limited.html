@@ -1,0 +1,37 @@
+<form autocomplete="off" class="{{cssClass}}">
+    <div class="desk">
+
+        {{!--HEADER--}}
+        <div class="desk__header">
+            {{> "systems/fatex/templates/actor/parts/header.html"}}
+        </div>
+
+        <div class="desk__content">
+            <div class="desk__content__inner{{#if sheetConfig.flipped}} desk__content__inner--flipped{{/if}}">
+
+                <div class="desk__tabloid">
+                    {{!--Tabs--}}
+                    <div class="desk__tabs fatex__tabs">
+                        <div class="fatex__tabs__content">
+                            {{!--Bio--}}
+                            <div class="fatex__tabs__tab fatex__tabs__tab--bio">
+                                <div class="fatex__tabs__tab__content">
+                                    {{> "systems/fatex/templates/actor/parts/tabs/bio.html"}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="desk__copyright">
+                        {{> "systems/fatex/templates/actor/parts/copyright.html"}}
+                    </div>
+                </div>
+
+                {{!--Sidebar--}}
+                <div class="desk__sidebar">
+                    {{> "systems/fatex/templates/actor/parts/sidebar/artwork.html"}}
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

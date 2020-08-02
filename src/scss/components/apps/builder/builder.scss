@@ -1,3 +1,61 @@
 .fatex__character_builder {
     padding: $component-padding;
+    min-width: 100%;
+
+    h2 {
+        border: 0;
+    }
+}
+
+.fatex__character_builder__import {
+    margin-top: $component-padding * 2;
+}
+
+
+.fatex__character_builder__actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: $component-padding/2 $component-padding/2;
+    grid-template-areas: "topl topm right" "bottoml bottomm right";
+
+    .builder_action--clear-aspects { grid-area: topl; }
+    .builder_action--clear-consequences { grid-area: topm; }
+    .builder_action--clear-skills { grid-area: bottoml; }
+    .builder_action--clear-stress { grid-area: bottomm; }
+    .builder_action--clear { grid-area: right; }
+}
+
+.fatex__character_builder_action {
+    cursor: pointer;
+
+    border: 1px solid $primary-color;
+    border-radius: 3px;
+    padding: $component-padding / 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: all 0.3s;
+
+    &:hover {
+        background-color: rgba(0,0,0,0.3);
+    }
+
+    &.fatex__character_builder_action--disabled {
+        pointer-events: none;
+        opacity: 0.3;
+    }
+}
+
+.builder_action--clear {
+    span {
+        @include fa-icon($fa-var-skull-crossbones);
+
+        &:before {
+            display: block;
+            text-align: center;
+        }
+    }
 }

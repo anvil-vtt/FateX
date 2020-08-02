@@ -114,28 +114,26 @@ export class SkillItem extends BaseItem {
         await ChatMessage.create(chatData);
     }
 
-    //Todo: Remove parts of this when breaking BC
     static getDice(roll) {
         const dice = [];
+        const useOldRollApi = isNewerVersion('0.7.0', game.data.version);
 
-        if(roll.parts[0].rolls) {
+        if(useOldRollApi) {
             roll.parts[0].rolls.forEach(rolledDie => {
                 const die = {};
                 die.value = rolledDie.roll;
                 die.face = this.getDieFace(rolledDie.roll)
 
                 dice.push(die);
-            })
-        }
-
-        if(roll.terms) {
+            });
+        } else {
             roll.terms[0].results.forEach(rolledDie => {
                 const die = {};
                 die.value = rolledDie.result;
                 die.face = this.getDieFace(rolledDie.result)
 
                 dice.push(die);
-            })
+            });
         }
 
         return dice;

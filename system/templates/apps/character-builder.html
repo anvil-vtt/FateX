@@ -3,21 +3,66 @@
 }}
 
 <div class="fatex__character_builder">
-    <p class="fatex__character_builder--import-core">
-        Import core data
-    </p>
 
-    <p class="fatex__character_builder--import-accelerated">
-        Import accelerated data
-    </p>
+    <div class="fatex__character_builder__manage">
+        <h2>{{localize "FAx.Apps.Builder.Manage"}}</h2>
 
-    <p class="fatex__character_builder--import-condensed">
-        Import condensed data
-    </p>
+        <div class="fatex__character_builder__actions">
+            <span class="fatex__character_builder_action builder_action--clear-aspects {{#unless hasAspects}}fatex__character_builder_action--disabled{{/unless}}">
+                {{localize "FAx.Apps.Builder.Actions.Clear.Aspects"}}
+            </span>
 
-    <p class="fatex__character_builder--clear-all">
-        Clear all
-    </p>
+            <span class="fatex__character_builder_action builder_action--clear-consequences {{#unless hasConsequences}}fatex__character_builder_action--disabled{{/unless}} ">
+                {{localize "FAx.Apps.Builder.Actions.Clear.Consequences"}}
+            </span>
+
+            <span class="fatex__character_builder_action builder_action--clear-skills {{#unless hasSkills}}fatex__character_builder_action--disabled{{/unless}}">
+                {{localize "FAx.Apps.Builder.Actions.Clear.Skills"}}
+            </span>
+
+            <span class="fatex__character_builder_action builder_action--clear-stress {{#unless hasStress}}fatex__character_builder_action--disabled{{/unless}}">
+                {{localize "FAx.Apps.Builder.Actions.Clear.Stress"}}
+            </span>
+
+            <span class="fatex__character_builder_action builder_action--clear {{#unless hasAny}}fatex__character_builder_action--disabled{{/unless}}">
+                <div>
+                    <span>{{localize "FAx.Apps.Builder.Actions.Clear.Everything"}}</span>
+                </div>
+            </span>
+        </div>
+    </div>
+
+    <div class="fatex__character_builder__import">
+        <h2>{{localize "FAx.Apps.Builder.Import"}}</h2>
+
+        <div class="fatex__vertical_tabs">
+            <nav class="fatex__vertical_tabs__navigation">
+                <a class="fatex__vertical_tabs__navigation__item item active" data-tab="core">Core</a>
+                <a class="fatex__vertical_tabs__navigation__item item" data-tab="accelarated">Accelerated</a>
+                <a class="fatex__vertical_tabs__navigation__item item" data-tab="condensed">Condensed</a>
+                <a class="fatex__vertical_tabs__navigation__item item" data-tab="dfa">Dresden Files Accelerated</a>
+            </nav>
+
+            <div class="fatex__vertical_tabs__content">
+                <div class="fatex__vertical_tabs__tab tab" data-tab="core">
+                    <div class="fatex__vertical_tabs__tab__content"></div>
+                </div>
+
+                <div class="fatex__vertical_tabs__tab tab" data-tab="accelarated">
+                    <div class="fatex__vertical_tabs__tab__content"></div>
+                </div>
+
+                <div class="fatex__vertical_tabs__tab tab" data-tab="condensed">
+                    <div class="fatex__vertical_tabs__tab__content"></div>
+                </div>
+
+                <div class="fatex__vertical_tabs__tab tab" data-tab="dfa">
+                    <div class="fatex__vertical_tabs__tab__content"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 {{> "systems/fatex/templates/apps/parts/layout/app-footer.html"}}

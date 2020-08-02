@@ -143,12 +143,25 @@
             "ReferenceRemoveText": "Do you really want to <strong>permanently</strong> remove this reference?",
             "EntityDelete": "Delete",
             "EntityDeleteText": "Do you really want to <strong>permanently</strong> delete this entity?",
+            "ActorClear": "Clear items",
+            "ActorClearText": "Do you really want to <strong>permanently</strong> delete all this actors items of the chosen type?",
             "Confirm": "Confirm",
             "Cancel": "Cancel"
         },
         "Apps": {
             "Builder": {
-                "Title": "Character Builder"
+                "Title": "Character Builder",
+                "Manage": "Manage",
+                "Import": "Import",
+                "Actions": {
+                    "Clear": {
+                        "Aspects": "Clear aspects",
+                        "Consequences": "Clear consequences",
+                        "Skills": "Clear skills",
+                        "Stress": "Clear stress tracks",
+                        "Everything": "Clear everything"
+                    }
+                }
             }
         },
         "Settings": {

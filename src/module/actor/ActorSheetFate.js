@@ -19,13 +19,25 @@ export class ActorSheetFate extends ActorSheet {
             classes: options.classes.concat([
                 'fatex fatex__sheet',
             ]),
-            template: "systems/fatex/templates/actor/character.html",
-            tabs: [{navSelector: ".fatex__tabs__navigation", contentSelector: ".fatex__tabs__content", initial: "skills"}],
+            template: "",
+            tabs: [{
+                navSelector: ".fatex__tabs__navigation",
+                contentSelector: ".fatex__tabs__content",
+                initial: "skills"
+            }],
             scrollY: [".desk__content"],
             width: 860,
         });
 
         return options;
+    }
+
+    get template() {
+        if ( !game.user.isGM && this.actor.limited ) {
+            return "systems/fatex/templates/actor/limited.html";
+        }
+
+        return "systems/fatex/templates/actor/character.html";
     }
 
     /**
