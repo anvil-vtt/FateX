@@ -6,11 +6,9 @@
     "author": "Patrick Bauer (Daddi#2333)",
     "scripts": [],
     "esmodules": [
-        "fatex.js"
+        "system.js"
     ],
-    "styles": [
-        "fatex.css"
-    ],
+    "styles": [],
     "packs": [
         {
             "name": "fate-core",

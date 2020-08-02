@@ -14,19 +14,23 @@ module.exports = environment => {
         mode: environment.mode,
         watch: environment.watch,
         output: {
-            filename: 'fatex.js',
+            filename: 'system.js',
             path: path.resolve(__dirname, 'dist'),
         },
         module:{
             rules:[
                 {
-                    test:/\.(s*)css$/,
+                    test:/\.scss$/,
                     use:[
                         {
-                            loader: 'file-loader',
+                            loader: 'style-loader',
+                        },
+                        {
+                            loader: 'css-loader',
                             options: {
-                                name: '[name].css',
-                            }
+                                sourceMap: true,
+                                url: false
+                            },
                         },
                         {
                             loader: 'sass-loader',
