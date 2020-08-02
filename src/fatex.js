@@ -12,6 +12,8 @@
  *      (http://creativecommons.org/licenses/by/3.0/).
  */
 
+import "./scss/fatex.scss";
+
 import { FateX } from "./config.js";
 import { ActorFate } from "./module/actor/ActorFate.js";
 import { CharacterSheet } from "./module/actor/character/CharacterSheet.js";

@@ -1,5 +1,7 @@
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
 
 
 module.exports = environment => {
@@ -15,12 +17,34 @@ module.exports = environment => {
             filename: 'fatex.js',
             path: path.resolve(__dirname, 'dist'),
         },
+        module:{
+            rules:[
+                {
+                    test:/\.(s*)css$/,
+                    use:[
+                        {
+                            loader: 'file-loader',
+                            options: {
+                                name: '[name].css',
+                            }
+                        },
+                        {
+                            loader: 'sass-loader',
+                            options: {
+                                sourceMap: true,
+                            },
+                        },
+                    ]
+                }
+            ]
+        },
         plugins: [
-            new CopyPlugin({
-                patterns: [
-                    { from: 'system' },
-                ],
-            }),
+            new CleanWebpackPlugin(),
+            /* new CopyPlugin({
+                 patterns: [
+                     { from: 'system' },
+                 ],
+             }),*/
         ],
     }
 };
