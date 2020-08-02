@@ -25,9 +25,6 @@ export class SkillItem extends BaseItem {
         // Render skill in two columns if necessary
         sheetData.options.enableColumns = sheetData.skills.length >= 8;
 
-        // If Skills are rendered in columns and need to be of even number
-        sheetData.options.addSkillFiller = sheetData.options.enableColumns && !!(sheetData.skills.length % 2);
-
         return sheetData;
     }
 

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: 'Montserrat';
   src: url("assets/fonts/Montserrat-Regular.otf"); }
@@ -137,7 +138,7 @@
     text-rendering: auto;
     line-height: 1;
     -webkit-font-smoothing: antialiased;
-    content: "\f067"; }
+    content: ""; }
 
 .fatex__item__settings {
   cursor: pointer; }
@@ -150,7 +151,7 @@
     text-rendering: auto;
     line-height: 1;
     -webkit-font-smoothing: antialiased;
-    content: "\f013"; }
+    content: ""; }
 
 .fatex__item__duplicate {
   cursor: pointer; }
@@ -163,7 +164,7 @@
     text-rendering: auto;
     line-height: 1;
     -webkit-font-smoothing: antialiased;
-    content: "\f0c5"; }
+    content: ""; }
 
 .fatex__item__choose {
   cursor: pointer; }
@@ -176,7 +177,7 @@
     text-rendering: auto;
     line-height: 1;
     -webkit-font-smoothing: antialiased;
-    content: "\f477"; }
+    content: ""; }
 
 .fatex__item__sort {
   cursor: move; }
@@ -189,7 +190,7 @@
     text-rendering: auto;
     line-height: 1;
     -webkit-font-smoothing: antialiased;
-    content: "\f0dc"; }
+    content: ""; }
 
 .fatex__item__delete {
   transition: color 0.2s;
@@ -203,7 +204,7 @@
     text-rendering: auto;
     line-height: 1;
     -webkit-font-smoothing: antialiased;
-    content: "\f1f8"; }
+    content: ""; }
   .fatex__item__delete:hover {
     color: #f21628; }
 
@@ -291,7 +292,7 @@
     text-rendering: auto;
     line-height: 1;
     -webkit-font-smoothing: antialiased;
-    content: "\f00d"; }
+    content: ""; }
 
 .fatex__stress__track__filler {
   opacity: 0;
@@ -488,7 +489,7 @@ div.fatex__consequence--condition {
     text-rendering: auto;
     line-height: 1;
     -webkit-font-smoothing: antialiased;
-    content: "\f00d"; }
+    content: ""; }
 
 .fatex__tabs {
   padding: 10px; }
@@ -830,6 +831,7 @@ input[type=range]::-moz-range-thumb {
   position: relative; }
 
 .fatex__skill {
+  break-inside: avoid;
   width: 100%;
   padding: 10px 5px;
   cursor: pointer; }

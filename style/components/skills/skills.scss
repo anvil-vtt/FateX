@@ -11,6 +11,7 @@
 }
 
 .fatex__skill {
+    break-inside: avoid;
     width: 100%;
     padding: $component-padding $component-padding / 2;
     cursor: pointer;
