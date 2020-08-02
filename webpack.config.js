@@ -40,11 +40,11 @@ module.exports = environment => {
         },
         plugins: [
             new CleanWebpackPlugin(),
-            /* new CopyPlugin({
+            new CopyPlugin({
                  patterns: [
                      { from: 'system' },
                  ],
-             }),*/
+             }),
         ],
     }
 };
