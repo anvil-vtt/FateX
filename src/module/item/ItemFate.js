@@ -1,5 +1,4 @@
 export class ItemFate extends Item {
-
     /** @override */
     prepareData() {
         super.prepareData();
@@ -8,5 +7,4 @@ export class ItemFate extends Item {
         // Let every itemType prepare itselt
         CONFIG.FateX.itemTypes[data.type].prepareItemData(data, this);
     }
-
 }

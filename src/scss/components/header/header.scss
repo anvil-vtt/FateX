@@ -6,7 +6,7 @@
 
     input[type="text"].fatex__header__name__input,
     input[type="text"].fatex__header__fp__input,
-    input[type="text"].fatex__header__refresh__input{
+    input[type="text"].fatex__header__refresh__input {
         color: $header-font-color;
         height: 25px;
         font-size: 23px;
@@ -14,7 +14,7 @@
     }
 
     input[type="text"].fatex__header__fp__input,
-    input[type="text"].fatex__header__refresh__input{
+    input[type="text"].fatex__header__refresh__input {
         width: 40px;
         text-align: center;
     }
@@ -75,8 +75,8 @@
     padding: calc(#{$component-padding} - 2px);
     text-align: right;
 }
+
 .fatex__header__logo__image {
     display: inline;
     height: 40px;
 }
-

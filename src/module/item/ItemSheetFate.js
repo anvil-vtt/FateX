@@ -1,13 +1,10 @@
 export class ItemSheetFate extends ItemSheet {
-
     /** @override */
     static get defaultOptions() {
         const options = super.defaultOptions;
 
         mergeObject(options, {
-            classes: options.classes.concat([
-                'fatex fatex__item_sheet',
-            ]),
+            classes: options.classes.concat(["fatex fatex__item_sheet"]),
             scrollY: [".desk__content"],
         });
 

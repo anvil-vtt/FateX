@@ -2,7 +2,7 @@ import { BaseItem } from "../BaseItem.js";
 
 export class SkillItem extends BaseItem {
     static get entityName() {
-        return 'skill';
+        return "skill";
     }
 
     /**
@@ -12,9 +12,9 @@ export class SkillItem extends BaseItem {
         super.activateActorSheetListeners(html, sheet);
 
         // Check or uncheck a single box
-        html.find('.fatex__skill').click((e) => this._onRollSkill.call(this, e, sheet));
-        html.find('.fatex__skill__increment').click((e) => this._onSkillChangeRank.call(this, e, sheet, true));
-        html.find('.fatex__skill__decrement').click((e) => this._onSkillChangeRank.call(this, e, sheet, false));
+        html.find(".fatex__skill").click((e) => this._onRollSkill.call(this, e, sheet));
+        html.find(".fatex__skill__increment").click((e) => this._onSkillChangeRank.call(this, e, sheet, true));
+        html.find(".fatex__skill__decrement").click((e) => this._onSkillChangeRank.call(this, e, sheet, false));
     }
 
     /**
@@ -27,7 +27,6 @@ export class SkillItem extends BaseItem {
 
         return sheetData;
     }
-
 
     static prepareItemData(item) {
         item.data.isNegative = item.data.rank < 0;
@@ -43,7 +42,7 @@ export class SkillItem extends BaseItem {
     static getSheetData(sheetData) {
         sheetData.availableRanks = [];
 
-        for(let i = 0; i <= 9; i++) {
+        for (let i = 0; i <= 9; i++) {
             sheetData.availableRanks.push(i);
         }
 
@@ -61,18 +60,18 @@ export class SkillItem extends BaseItem {
         const dataset = e.currentTarget.dataset;
         const skill = sheet.actor.getOwnedItem(dataset.item);
 
-        if(skill) {
+        if (skill) {
             const rank = skill.data.data.rank;
             let newRank = 0;
 
-            if(doIncrement) {
-                newRank = (rank >= 9 ) ? 9 : rank + 1;
+            if (doIncrement) {
+                newRank = rank >= 9 ? 9 : rank + 1;
             } else {
-                newRank = (rank <= -9 ) ? -9 : rank - 1;
+                newRank = rank <= -9 ? -9 : rank - 1;
             }
 
             skill.update({
-                "data.rank": newRank
+                "data.rank": newRank,
             });
         }
     }
@@ -83,14 +82,14 @@ export class SkillItem extends BaseItem {
         const dataset = e.currentTarget.dataset;
         const skill = sheet.actor.getOwnedItem(dataset.itemId);
 
-        if(skill) {
+        if (skill) {
             this.rollSkill(sheet, skill);
         }
     }
 
     static async rollSkill(sheet, item) {
         const skill = this.prepareItemData(duplicate(item), item);
-        const template = 'systems/fatex/templates/chat/roll-skill.html';
+        const template = "systems/fatex/templates/chat/roll-skill.html";
         const rank = parseInt(skill.data.rank) || 0;
         const actor = sheet.actor;
         const roll = new Roll("4dF").roll();
@@ -106,8 +105,8 @@ export class SkillItem extends BaseItem {
             speaker: ChatMessage.getSpeaker({ actor: actor }),
             sound: CONFIG.sounds.dice,
             flags: {
-                templateVariables: templateData
-            }
+                templateVariables: templateData,
+            },
         };
 
         chatData.content = await renderTemplate(template, templateData);
@@ -116,21 +115,21 @@ export class SkillItem extends BaseItem {
 
     static getDice(roll) {
         const dice = [];
-        const useOldRollApi = isNewerVersion('0.7.0', game.data.version);
+        const useOldRollApi = isNewerVersion("0.7.0", game.data.version);
 
-        if(useOldRollApi) {
-            roll.parts[0].rolls.forEach(rolledDie => {
+        if (useOldRollApi) {
+            roll.parts[0].rolls.forEach((rolledDie) => {
                 const die = {};
                 die.value = rolledDie.roll;
-                die.face = this.getDieFace(rolledDie.roll)
+                die.face = this.getDieFace(rolledDie.roll);
 
                 dice.push(die);
             });
         } else {
-            roll.terms[0].results.forEach(rolledDie => {
+            roll.terms[0].results.forEach((rolledDie) => {
                 const die = {};
                 die.value = rolledDie.result;
-                die.face = this.getDieFace(rolledDie.result)
+                die.face = this.getDieFace(rolledDie.result);
 
                 dice.push(die);
             });
@@ -140,22 +139,21 @@ export class SkillItem extends BaseItem {
     }
 
     static getDieFace(die) {
-        if(die > 0) return "+";
-        if(die < 0) return "-";
+        if (die > 0) return "+";
+        if (die < 0) return "-";
 
         return "0";
     }
 
     static getLadderLabel(value) {
-        if(value > 8) value = 8;
-        if(value < -4) value = -4;
+        if (value > 8) value = 8;
+        if (value < -4) value = -4;
 
-        return game.i18n.localize("FAx.Global.Ladder." + this.getTotalString(value))
+        return game.i18n.localize("FAx.Global.Ladder." + this.getTotalString(value));
     }
 
     static getLadderPrefix(value) {
-        if(value < 0)
-            return "-";
+        if (value < 0) return "-";
 
         return "+";
     }

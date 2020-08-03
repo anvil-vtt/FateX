@@ -8,14 +8,14 @@ export const CONSEQUENCE_TYPES = {
 
 export class ConsequenceItem extends BaseItem {
     static get entityName() {
-        return 'consequence';
+        return "consequence";
     }
 
     static prepareItemData(data, item) {
         data.isConsequence = data.data.type === CONSEQUENCE_TYPES.CONSEQUENCE;
         data.isCondition = data.data.type === CONSEQUENCE_TYPES.CONDITION;
 
-        if(item.isOwned) {
+        if (item.isOwned) {
             data.isDisabled = this.getDisabledState(item);
         }
 
@@ -26,12 +26,11 @@ export class ConsequenceItem extends BaseItem {
         super.activateActorSheetListeners(html, sheet);
 
         // Check or uncheck a single box
-        html.find('.fatex__consequence__box').click((e) => this._onToggleCondition.call(this, e, sheet));
+        html.find(".fatex__consequence__box").click((e) => this._onToggleCondition.call(this, e, sheet));
 
         // Change consequence text
-        html.find('.fatex__consequence__input').on('blur', (e) => this._onConsequenceTextChange.call(this, e, sheet));
+        html.find(".fatex__consequence__input").on("blur", (e) => this._onConsequenceTextChange.call(this, e, sheet));
     }
-
 
     /*************************
      * EVENT HANDLER
@@ -43,9 +42,9 @@ export class ConsequenceItem extends BaseItem {
         const dataset = e.currentTarget.dataset;
         const item = sheet.actor.getOwnedItem(dataset.item);
 
-        if(item) {
+        if (item) {
             item.update({
-                "data.active": !item.data.data.active
+                "data.active": !item.data.data.active,
             });
         }
     }
@@ -58,13 +57,13 @@ export class ConsequenceItem extends BaseItem {
         const input = $(e.currentTarget).html();
 
         // Check if the value of the input field changed
-        if(item.data.data.value === input) {
+        if (item.data.data.value === input) {
             return;
         }
 
-        if(item) {
+        if (item) {
             item.update({
-                "data.value": input
+                "data.value": input,
             });
         }
     }
@@ -76,23 +75,26 @@ export class ConsequenceItem extends BaseItem {
     static getDisabledState(item) {
         let disabled = false;
         const skillReferences = Automation.getSkillReferences(item);
-        const conjunction = Automation.getReferenceSetting(item, 'conjunction', CONJUNCTIONS.OR);
+        const conjunction = Automation.getReferenceSetting(item, "conjunction", CONJUNCTIONS.OR);
 
         // Disable by default if automation was enabled
-        if(conjunction === CONJUNCTIONS.OR && skillReferences.length) {
+        if (conjunction === CONJUNCTIONS.OR && skillReferences.length) {
             disabled = true;
         }
 
         // Not disabled if one of the skillReferences conditions is met
         for (const reference of skillReferences) {
             const skill = Automation.getActorSkillById(item.actor, reference.skill);
-            const isConditionMet = skill === undefined ? false : Automation.checkSkillCondition(skill, reference.condition, reference.operator);
+            const isConditionMet =
+                skill === undefined
+                    ? false
+                    : Automation.checkSkillCondition(skill, reference.condition, reference.operator);
 
-            if(conjunction === CONJUNCTIONS.OR && isConditionMet) {
+            if (conjunction === CONJUNCTIONS.OR && isConditionMet) {
                 return false;
             }
 
-            if(conjunction === CONJUNCTIONS.AND && !isConditionMet) {
+            if (conjunction === CONJUNCTIONS.AND && !isConditionMet) {
                 return true;
             }
         }

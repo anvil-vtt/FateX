@@ -12,7 +12,6 @@
     margin-top: $component-padding * 4;
 }
 
-
 .fatex__character_builder__actions {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -20,11 +19,25 @@
     gap: $component-padding/2 $component-padding/2;
     grid-template-areas: "topl topm right" "bottoml bottomm right";
 
-    .builder_action--clear-aspects { grid-area: topl; }
-    .builder_action--clear-consequences { grid-area: topm; }
-    .builder_action--clear-skills { grid-area: bottoml; }
-    .builder_action--clear-stress { grid-area: bottomm; }
-    .builder_action--clear { grid-area: right; }
+    .builder_action--clear-aspects {
+        grid-area: topl;
+    }
+
+    .builder_action--clear-consequences {
+        grid-area: topm;
+    }
+
+    .builder_action--clear-skills {
+        grid-area: bottoml;
+    }
+
+    .builder_action--clear-stress {
+        grid-area: bottomm;
+    }
+
+    .builder_action--clear {
+        grid-area: right;
+    }
 }
 
 .fatex__character_builder_action {
@@ -41,7 +54,7 @@
     transition: all 0.3s;
 
     &:hover {
-        background-color: rgba(0,0,0,0.3);
+        background-color: rgba(0, 0, 0, 0.3);
     }
 
     &.fatex__character_builder_action--disabled {
@@ -63,7 +76,6 @@
 
 .fatex__character_builder__group {
     margin-bottom: $component-padding * 2;
-
 }
 
 .fatex__character_builder__options {
@@ -103,5 +115,4 @@
 }
 
 .fatex__character_builder__headline {
-
 }

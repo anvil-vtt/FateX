@@ -3,19 +3,19 @@ import { BaseItem } from "../BaseItem.js";
 const STRESS_LABEL_TYPES = {
     CORE: 0,
     CONDENSED: 1,
-    CUSTOM: 2
+    CUSTOM: 2,
 };
 
 export class StressItem extends BaseItem {
     static get entityName() {
-        return 'stress';
+        return "stress";
     }
 
     static activateActorSheetListeners(html, sheet) {
         super.activateActorSheetListeners(html, sheet);
 
         // Check or uncheck a single box
-        html.find('.fatex__stress__track__item__box').click((e) => this._onStressBoxToggle.call(this, e, sheet));
+        html.find(".fatex__stress__track__item__box").click((e) => this._onStressBoxToggle.call(this, e, sheet));
     }
 
     static prepareItemData(item) {
@@ -26,7 +26,7 @@ export class StressItem extends BaseItem {
             const box = {};
 
             box.isChecked = item.data.value & (2 ** i);
-            box.label = this._getBoxLabel(item,i);
+            box.label = this._getBoxLabel(item, i);
 
             return box;
         });
@@ -37,16 +37,16 @@ export class StressItem extends BaseItem {
         return item;
     }
 
-     static _getBoxLabel(item, i) {
-        if(item.data.labelType === STRESS_LABEL_TYPES.CONDENSED) {
+    static _getBoxLabel(item, i) {
+        if (item.data.labelType === STRESS_LABEL_TYPES.CONDENSED) {
             return "1";
         }
 
-        if(item.data.labelType === STRESS_LABEL_TYPES.CUSTOM) {
-            return (item.data.customLabel).split(" ")[i];
+        if (item.data.labelType === STRESS_LABEL_TYPES.CUSTOM) {
+            return item.data.customLabel.split(" ")[i];
         }
 
-        return i+1;
+        return i + 1;
     }
 
     static _getToggledStressValue(currentStressTrackValue, boxIndexToToggle) {
@@ -64,13 +64,12 @@ export class StressItem extends BaseItem {
         const item = sheet.actor.getOwnedItem(dataset.item);
         const index = dataset.index;
 
-        if(item) {
+        if (item) {
             const newValue = StressItem._getToggledStressValue(item.data.data.value, index);
 
             item.update({
-                "data.value": newValue
+                "data.value": newValue,
             });
         }
     }
-
 }

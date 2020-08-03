@@ -11,15 +11,15 @@ export const OPERATORS = {
 
 export const CONJUNCTIONS = {
     OR: 0,
-    AND: 1
+    AND: 1,
 };
 
 export class Automation extends BaseComponent {
     static activateListeners(html, sheet) {
-        html.find('.fatex__skill__reference__create').on('click', (e) => this._onAddReference.call(this, e, sheet));
-        html.find('.fatex__skill__reference__change').on('change', (e) => this._onChangeReference.call(this, e, sheet));
-        html.find('.fatex__skill__reference__remove').on('click', (e) => this._onRemoveReference.call(this, e, sheet));
-        html.find('.fatex__skill__reference__setting').on('change', (e) => this._onChangeSetting.call(this, e, sheet));
+        html.find(".fatex__skill__reference__create").on("click", (e) => this._onAddReference.call(this, e, sheet));
+        html.find(".fatex__skill__reference__change").on("change", (e) => this._onChangeReference.call(this, e, sheet));
+        html.find(".fatex__skill__reference__remove").on("click", (e) => this._onRemoveReference.call(this, e, sheet));
+        html.find(".fatex__skill__reference__setting").on("change", (e) => this._onChangeSetting.call(this, e, sheet));
     }
 
     static async getSheetData(sheetData, sheet) {
@@ -30,7 +30,7 @@ export class Automation extends BaseComponent {
         sheetData.availableConjunctions = this.getAvailableConjunctions();
 
         // Only items owned by actors can read the actors skill list
-        if(sheet.entity.isOwned) {
+        if (sheet.entity.isOwned) {
             sheetData.availableActorSkills = this.getSkillsByActor(sheet.actor);
         }
 
@@ -58,16 +58,16 @@ export class Automation extends BaseComponent {
         const field = dataset.field;
 
         // Check for numbers as only strings are passed
-        if(dataset.dtype === "Number") {
+        if (dataset.dtype === "Number") {
             value = parseInt(value);
         }
 
         // Return early of no index or field was provided
-        if(index === undefined || field === undefined) {
+        if (index === undefined || field === undefined) {
             return;
         }
 
-        await this.changeSkillReference(entity, index, field, value)
+        await this.changeSkillReference(entity, index, field, value);
     }
 
     static async _onChangeSetting(e, sheet) {
@@ -79,16 +79,16 @@ export class Automation extends BaseComponent {
         const setting = dataset.setting;
 
         // Check for numbers as only strings are passed
-        if(dataset.dtype === "Number") {
+        if (dataset.dtype === "Number") {
             value = parseInt(value);
         }
 
         // Return early of no setting
-        if(setting === undefined) {
+        if (setting === undefined) {
             return;
         }
 
-        await this.setReferenceSetting(entity, setting, value)
+        await this.setReferenceSetting(entity, setting, value);
     }
 
     static async _onRemoveReference(e, sheet) {
@@ -99,31 +99,34 @@ export class Automation extends BaseComponent {
         const index = dataset.index;
 
         // Return early of no index was provided
-        if(index === undefined) {
+        if (index === undefined) {
             return;
         }
 
-        (new Dialog({
-            title: game.i18n.localize('FAx.Dialog.ReferenceRemove'),
-            content: game.i18n.format('FAx.Dialog.ReferenceRemoveText'),
-            default: 'submit',
-            buttons: {
-                cancel: {
-                    icon: '<i class="fas fa-times"></i>',
-                    label: game.i18n.localize("FAx.Dialog.Cancel"),
-                    callback: () => null
+        new Dialog(
+            {
+                title: game.i18n.localize("FAx.Dialog.ReferenceRemove"),
+                content: game.i18n.format("FAx.Dialog.ReferenceRemoveText"),
+                default: "submit",
+                buttons: {
+                    cancel: {
+                        icon: '<i class="fas fa-times"></i>',
+                        label: game.i18n.localize("FAx.Dialog.Cancel"),
+                        callback: () => null,
+                    },
+                    submit: {
+                        icon: '<i class="fas fa-check"></i>',
+                        label: game.i18n.localize("FAx.Dialog.Confirm"),
+                        callback: async () => {
+                            await this.removeSkillReference(entity, index);
+                        },
+                    },
                 },
-                submit: {
-                    icon: '<i class="fas fa-check"></i>',
-                    label: game.i18n.localize("FAx.Dialog.Confirm"),
-                    callback: async () => {
-                        await this.removeSkillReference(entity, index);
-                    }
-                }
+            },
+            {
+                classes: ["fatex", "fatex__dialog"],
             }
-        }, {
-            classes: ['fatex', 'fatex__dialog'],
-        })).render(true);
+        ).render(true);
     }
 
     /*************************
@@ -141,17 +144,17 @@ export class Automation extends BaseComponent {
         const references = duplicate(currentReferences);
 
         references.push({
-            "skill": "",
-            "condition": 0,
-            "operator": OPERATORS.OPERATOR_GTE,
-            "default": 0,
-            "action": 0,
-            "argument": 0,
-            "argument2": 0,
-            "argument3": 0
+            skill: "",
+            condition: 0,
+            operator: OPERATORS.OPERATOR_GTE,
+            default: 0,
+            action: 0,
+            argument: 0,
+            argument2: 0,
+            argument3: 0,
         });
 
-        await entity.setFlag('fatex', 'skillReferences', references);
+        await entity.setFlag("fatex", "skillReferences", references);
     }
 
     static async changeSkillReference(entity, index, field, value) {
@@ -165,7 +168,7 @@ export class Automation extends BaseComponent {
         // Replace one reference at the provided index
         references.splice(index, 1, reference);
 
-        await entity.setFlag('fatex', 'skillReferences', references);
+        await entity.setFlag("fatex", "skillReferences", references);
     }
 
     static async removeSkillReference(entity, index) {
@@ -175,15 +178,15 @@ export class Automation extends BaseComponent {
         // Remove one reference at the provided index
         references.splice(index, 1);
 
-        await entity.setFlag('fatex', 'skillReferences', references);
+        await entity.setFlag("fatex", "skillReferences", references);
     }
 
     static async setReferenceSetting(entity, setting, value) {
-        await entity.setFlag('fatex', `skillReferenceSettings.${setting}`, value);
+        await entity.setFlag("fatex", `skillReferenceSettings.${setting}`, value);
     }
 
     static getReferenceSetting(entity, setting, defaultValue) {
-        const flag = entity.getFlag('fatex', `skillReferenceSettings.${setting}`);
+        const flag = entity.getFlag("fatex", `skillReferenceSettings.${setting}`);
 
         if (flag === undefined) {
             return defaultValue;
@@ -193,7 +196,7 @@ export class Automation extends BaseComponent {
     }
 
     static getSkillReferences(entity) {
-        return entity.getFlag('fatex', 'skillReferences') || [];
+        return entity.getFlag("fatex", "skillReferences") || [];
     }
 
     static getSkillsByActor(actor, sort = true) {
@@ -201,7 +204,7 @@ export class Automation extends BaseComponent {
         const items = actorData.items;
 
         // Get list of all skill items and extract the data
-        const skills = items.filter(item => item.type === 'skill');
+        const skills = items.filter((item) => item.type === "skill");
         const skillData = skills.map((skill) => duplicate(skill));
 
         // Sort alphabetically
@@ -217,9 +220,9 @@ export class Automation extends BaseComponent {
         const items = actorData.items;
 
         // Filter single actors skills by id
-        const skills = items.filter(item => item._id === skillId);
+        const skills = items.filter((item) => item._id === skillId);
 
-        if(!skills) {
+        if (!skills) {
             return undefined;
         }
 
@@ -229,7 +232,7 @@ export class Automation extends BaseComponent {
     static getAvailableSkillLevels() {
         const skillLevels = [];
 
-        for(let i = 0; i <= 20; i++) {
+        for (let i = 0; i <= 20; i++) {
             const skillLevel = [];
 
             skillLevel.value = i;
@@ -244,7 +247,7 @@ export class Automation extends BaseComponent {
     static getAvailableOperators() {
         const operators = [];
 
-        for(let operator in OPERATORS) {
+        for (let operator in OPERATORS) {
             const availableOperator = [];
 
             availableOperator.value = OPERATORS[operator];
@@ -255,11 +258,11 @@ export class Automation extends BaseComponent {
 
         return operators;
     }
-    
+
     static getAvailableConjunctions() {
         const conjunctions = [];
 
-        for(let conjunction in CONJUNCTIONS) {
+        for (let conjunction in CONJUNCTIONS) {
             const availableConjunction = [];
 
             availableConjunction.value = CONJUNCTIONS[conjunction];
@@ -295,7 +298,7 @@ export class Automation extends BaseComponent {
     static getSkillReferenceSettings(entity) {
         const skillReferenceSettings = {};
 
-        skillReferenceSettings.conjunction = this.getReferenceSetting(entity, 'conjunction', CONJUNCTIONS.OR);
+        skillReferenceSettings.conjunction = this.getReferenceSetting(entity, "conjunction", CONJUNCTIONS.OR);
 
         return skillReferenceSettings;
     }

@@ -23,7 +23,7 @@ export class TemplateActors {
                 </button>
             `);
 
-            html.on('click', 'button[data-fatex="templates"]', () => {
+            html.on("click", 'button[data-fatex="templates"]', () => {
                 return CONFIG.FateX.applications.templateSettings.render(true);
             });
         });

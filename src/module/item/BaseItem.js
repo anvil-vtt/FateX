@@ -17,7 +17,9 @@ export class BaseItem {
      */
     static activateActorSheetListeners(html, sheet) {
         if (!this.entityName) {
-            throw new Error("A subclass of the BaseItem must provide an entityName field or implement their own _onItemAdd() method.");
+            throw new Error(
+                "A subclass of the BaseItem must provide an entityName field or implement their own _onItemAdd() method."
+            );
         }
 
         // Default listeners for adding, configuring and deleting embedded items
@@ -57,7 +59,9 @@ export class BaseItem {
         e.stopPropagation();
 
         if (!this.entityName) {
-            throw new Error("A subclass of the BaseItem must provide an entityName field or implement their own _onItemAdd() method.");
+            throw new Error(
+                "A subclass of the BaseItem must provide an entityName field or implement their own _onItemAdd() method."
+            );
         }
 
         const itemData = {
@@ -93,34 +97,35 @@ export class BaseItem {
         const data = e.currentTarget.dataset;
         const item = sheet.actor.getOwnedItem(data.item);
 
-        (new Dialog({
-            title: `${game.i18n.format('FAx.Dialog.EntityDelete')} ${item.name}`,
-            content: game.i18n.format('FAx.Dialog.EntityDeleteText'),
-            default: 'submit',
-            buttons: {
-                cancel: {
-                    icon: '<i class="fas fa-times"></i>',
-                    label: game.i18n.localize("FAx.Dialog.Cancel"),
-                    callback: () => null
+        new Dialog(
+            {
+                title: `${game.i18n.format("FAx.Dialog.EntityDelete")} ${item.name}`,
+                content: game.i18n.format("FAx.Dialog.EntityDeleteText"),
+                default: "submit",
+                buttons: {
+                    cancel: {
+                        icon: '<i class="fas fa-times"></i>',
+                        label: game.i18n.localize("FAx.Dialog.Cancel"),
+                        callback: () => null,
+                    },
+                    submit: {
+                        icon: '<i class="fas fa-check"></i>',
+                        label: game.i18n.localize("FAx.Dialog.Confirm"),
+                        callback: async () => {
+                            await sheet.actor.deleteOwnedItem(data.item);
+                        },
+                    },
                 },
-                submit: {
-                    icon: '<i class="fas fa-check"></i>',
-                    label: game.i18n.localize("FAx.Dialog.Confirm"),
-                    callback: async () => {
-                        await sheet.actor.deleteOwnedItem(data.item);
-                    }
-                }
+            },
+            {
+                classes: ["fatex", "fatex__dialog"],
             }
-        }, {
-            classes: ['fatex', 'fatex__dialog'],
-        })).render(true);
+        ).render(true);
     }
-
 
     /*************************
      * HELPER FUNCTIONS
      *************************/
-
 
     /**
      * Helper function to create a new item.

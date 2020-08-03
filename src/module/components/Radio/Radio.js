@@ -5,7 +5,6 @@ import { BaseComponent } from "../BaseComponent.js";
  * Allows the user to change between multiple choices.
  */
 export class Radio extends BaseComponent {
-
     /**
      * Adds a click listener to every .fatex__setting__radio element.
      * The name of the field, the value of the field and more a loaded via datasets.
@@ -17,7 +16,7 @@ export class Radio extends BaseComponent {
      *   The actor- or itemsheet to be referenced inside the handler.
      */
     static activateListeners(html, sheet) {
-        html.find('.fatex__setting__radio').click((e) => this._onSettingsRadio.call(this, e, sheet));
+        html.find(".fatex__setting__radio").click((e) => this._onSettingsRadio.call(this, e, sheet));
     }
 
     /**
@@ -41,15 +40,14 @@ export class Radio extends BaseComponent {
         let value = "";
 
         // Check for numbers as only strings are passed in datasets
-        if(dataset.dtype === "Number") {
+        if (dataset.dtype === "Number") {
             value = parseInt(dataset.value);
         } else {
             value = dataset.value;
         }
 
         sheetEntity.update({
-            [dataKey]: value
+            [dataKey]: value,
         });
     }
-
 }

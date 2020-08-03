@@ -1,5 +1,3 @@
 import { ItemSheetFate } from "../ItemSheetFate.js";
 
-export class AspectSheet extends ItemSheetFate {
-
-}
+export class AspectSheet extends ItemSheetFate {}

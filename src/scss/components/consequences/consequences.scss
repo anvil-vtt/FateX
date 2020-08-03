@@ -59,7 +59,7 @@ div.fatex__consequence--condition {
     opacity: 0;
     left: -5000px;
 
-    &:checked + .fatex__consequence__box__icon{
+    &:checked + .fatex__consequence__box__icon {
         opacity: 1;
     }
 }

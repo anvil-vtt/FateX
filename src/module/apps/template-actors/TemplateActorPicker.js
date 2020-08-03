@@ -2,18 +2,15 @@ import { ActorFate } from "../../actor/ActorFate.js";
 import { TemplateActorSettings } from "./TemplateActorSettings.js";
 
 export class TemplateActorPicker extends TemplateActorSettings {
-
     static get defaultOptions() {
         const options = super.defaultOptions;
 
         mergeObject(options, {
             title: game.i18n.localize("ACTOR.Create"),
             template: "/systems/fatex/templates/apps/template-actors-picker.html",
-            id: 'template-actor-picker',
+            id: "template-actor-picker",
             resizable: true,
-            classes: options.classes.concat([
-                'fatex fatex__app_sheet',
-            ]),
+            classes: options.classes.concat(["fatex fatex__app_sheet"]),
             width: 1000,
             height: 430,
         });
@@ -24,9 +21,9 @@ export class TemplateActorPicker extends TemplateActorSettings {
     activateListeners(html) {
         super.activateListeners(html);
 
-        html.find('.fatex__template__choose').click((e) => this._chooseTemplate.call(this, e));
-        html.find('.fatex__template__empty').click((e) => this._emptyTemplate.call(this, e));
-        html.find('.fatex__template__header__settings').click((e) => this._openSettings.call(this, e));
+        html.find(".fatex__template__choose").click((e) => this._chooseTemplate.call(this, e));
+        html.find(".fatex__template__empty").click((e) => this._emptyTemplate.call(this, e));
+        html.find(".fatex__template__header__settings").click((e) => this._openSettings.call(this, e));
     }
 
     /*************************
@@ -42,12 +39,12 @@ export class TemplateActorPicker extends TemplateActorSettings {
         e.stopPropagation();
 
         const data = {
-            'name': game.i18n.localize('FAx.Template.Picker.Empty'),
-            'type': 'character',
-        }
+            name: game.i18n.localize("FAx.Template.Picker.Empty"),
+            type: "character",
+        };
 
         // Create actor without template data
-        await ActorFate._create(data, {renderSheet: true});
+        await ActorFate._create(data, { renderSheet: true });
         await this.close();
     }
 

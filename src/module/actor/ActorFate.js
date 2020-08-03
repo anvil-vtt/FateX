@@ -5,13 +5,12 @@
 import { TemplateActorSheetFate } from "./template/TemplateActorSheetFate.js";
 
 export class ActorFate extends Actor {
-
     /**
      * Open template picker instead of directly creating a new actor
      */
     static async create(data, options = {}) {
         // Fallback for manual actor duplication
-        if(data._id) {
+        if (data._id) {
             return super.create(data, options);
         }
 
@@ -26,19 +25,23 @@ export class ActorFate extends Actor {
         data.token = data.token || {};
 
         // Set basic token data for newly created actors.
-        mergeObject(data.token, {
-            vision: true,
-            dimSight: 30,
-            brightSight: 0,
-            actorLink: true,
-            disposition: 1,
-            img: CONST.DEFAULT_TOKEN
-        }, {overwrite: true});
+        mergeObject(
+            data.token,
+            {
+                vision: true,
+                dimSight: 30,
+                brightSight: 0,
+                actorLink: true,
+                disposition: 1,
+                img: CONST.DEFAULT_TOKEN,
+            },
+            { overwrite: true }
+        );
 
         return super.create(data, options);
     }
 
-    render(force=false, options={}) {
+    render(force = false, options = {}) {
         super.render(force, options);
 
         for (let app in CONFIG.FateX.applications) {
@@ -55,11 +58,11 @@ export class ActorFate extends Actor {
     }
 
     get isTemplateActor() {
-        return !!this.getFlag('fatex', 'isTemplateActor');
+        return !!this.getFlag("fatex", "isTemplateActor");
     }
 
     get visible() {
-        if(this.isTemplateActor) {
+        if (this.isTemplateActor) {
             return false;
         }
 
@@ -73,7 +76,7 @@ export class ActorFate extends Actor {
     _onModifyEmbeddedEntity(embeddedName, changes, options, userId, context = {}) {
         super._onModifyEmbeddedEntity(embeddedName, changes, options, userId, context);
 
-        if(embeddedName === 'OwnedItem') {
+        if (embeddedName === "OwnedItem") {
             this.items.forEach((item) => item.prepareData());
         }
     }

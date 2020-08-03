@@ -5,7 +5,6 @@
 import { CharacterBuilder } from "../apps/character-builder/CharacterBuilder.js";
 
 export class ActorSheetFate extends ActorSheet {
-
     /**
      * Defines the default options for all FateX actor sheets.
      * This consists of things like css classes, the template to load and the tab configuration.
@@ -16,15 +15,15 @@ export class ActorSheetFate extends ActorSheet {
         const options = super.defaultOptions;
 
         mergeObject(options, {
-            classes: options.classes.concat([
-                'fatex fatex__sheet',
-            ]),
+            classes: options.classes.concat(["fatex fatex__sheet"]),
             template: "",
-            tabs: [{
-                navSelector: ".fatex__tabs__navigation",
-                contentSelector: ".fatex__tabs__content",
-                initial: "skills"
-            }],
+            tabs: [
+                {
+                    navSelector: ".fatex__tabs__navigation",
+                    contentSelector: ".fatex__tabs__content",
+                    initial: "skills",
+                },
+            ],
             scrollY: [".desk__content"],
             width: 860,
         });
@@ -33,7 +32,7 @@ export class ActorSheetFate extends ActorSheet {
     }
 
     get template() {
-        if ( !game.user.isGM && this.actor.limited ) {
+        if (!game.user.isGM && this.actor.limited) {
             return "systems/fatex/templates/actor/limited.html";
         }
 
@@ -83,15 +82,15 @@ export class ActorSheetFate extends ActorSheet {
         // Add actor, actor data and item
         data.actor = duplicate(this.actor.data);
         data.data = data.actor.data;
-        data.items = this.actor.items.map(i => i.data).sort(this._sortItems)
+        data.items = this.actor.items.map((i) => i.data).sort(this._sortItems);
 
         // Add filtered item lists for easier access
-        data.stress = data.items.filter(item => item.type === 'stress');
-        data.aspects = data.items.filter(item => item.type === 'aspect');
-        data.skills = data.items.filter(item => item.type === 'skill');
-        data.stunts = data.items.filter(item => item.type === 'stunt');
-        data.extras = data.items.filter(item => item.type === 'extra');
-        data.consequences = data.items.filter(item => item.type === 'consequence');
+        data.stress = data.items.filter((item) => item.type === "stress");
+        data.aspects = data.items.filter((item) => item.type === "aspect");
+        data.skills = data.items.filter((item) => item.type === "skill");
+        data.stunts = data.items.filter((item) => item.type === "stunt");
+        data.extras = data.items.filter((item) => item.type === "extra");
+        data.consequences = data.items.filter((item) => item.type === "consequence");
 
         // Allow every itemtype to add data to the actorsheet
         for (let itemType in CONFIG.FateX.itemTypes) {
@@ -118,21 +117,21 @@ export class ActorSheetFate extends ActorSheet {
                     label: "Edit mode",
                     class: "fatex-toggle-edit-mode",
                     icon: "fas fa-edit",
-                    onclick: ev => this._onToggleEditMode(ev)
+                    onclick: (ev) => this._onToggleEditMode(ev),
                 },
                 {
                     label: "Character builder",
                     class: "fatex-open-character-builder",
                     icon: "fas fa-tools",
-                    onclick: ev => this._onOpenCharacterBuilder(ev)
+                    onclick: (ev) => this._onOpenCharacterBuilder(ev),
                 },
             ].concat(buttons);
         }
 
-        return buttons
+        return buttons;
     }
 
-    _sortItems(a,b) {
+    _sortItems(a, b) {
         return (a.sort || 0) - (b.sort || 0);
     }
 
@@ -144,10 +143,10 @@ export class ActorSheetFate extends ActorSheet {
         e.preventDefault();
 
         const target = $(e.currentTarget);
-        const app = target.parents('.app');
-        const html = app.find('.window-content');
+        const app = target.parents(".app");
+        const html = app.find(".window-content");
 
-        html.toggleClass("fatex__helper--enable-editmode")
+        html.toggleClass("fatex__helper--enable-editmode");
     }
 
     /**

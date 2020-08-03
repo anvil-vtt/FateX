@@ -4,13 +4,13 @@
 
 .fatex__vertical_tabs__content {
     flex: 3;
-    border-left: 1px solid rgba(0,0,0,1);
+    border-left: 1px solid rgba(0, 0, 0, 1);
     margin-left: -1px;
 }
 
 .fatex__vertical_tabs__navigation {
     flex: 1;
-    padding: $component-padding*2 0;
+    padding: $component-padding * 2 0;
     display: flex;
     flex-direction: column;
 }
@@ -26,7 +26,8 @@
     border: 1px solid transparent;
     transition: opacity 0.3s, background-color 0s;
 
-    &.active, &:hover {
+    &.active,
+    &:hover {
         font-weight: bold;
         background: $sheet-background;
         border: 1px solid $primary-color;

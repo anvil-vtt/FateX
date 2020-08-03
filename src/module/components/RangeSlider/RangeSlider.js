@@ -4,8 +4,7 @@ import { BaseComponent } from "../BaseComponent.js";
  * Extends the input[type="range"] element with an additional input field.
  * The field and the range input are both synchronized.
  */
-export class RangeSlider extends BaseComponent{
-
+export class RangeSlider extends BaseComponent {
     /**
      * Adds event listeners to all fatex__setting__range components.
      * onChange for the input[type="text"] field and onInput for the input[type="range"].
@@ -13,8 +12,8 @@ export class RangeSlider extends BaseComponent{
      * @param html
      */
     static activateListeners(html) {
-        html.find('.fatex__setting__range__value').on('change', (e) => this._onChangeRangeValue.call(this, e));
-        html.find('.fatex__setting__range__slider').on('input', (e) => this._onChangeRangeSlider.call(this, e));
+        html.find(".fatex__setting__range__value").on("change", (e) => this._onChangeRangeValue.call(this, e));
+        html.find(".fatex__setting__range__slider").on("input", (e) => this._onChangeRangeSlider.call(this, e));
     }
 
     /**
@@ -42,5 +41,4 @@ export class RangeSlider extends BaseComponent{
         const valueInput = event.currentTarget.nextElementSibling;
         valueInput.value = event.currentTarget.value;
     }
-
 }

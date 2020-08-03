@@ -32,7 +32,7 @@ import { TemplateActors } from "./module/apps/template-actors/TemplateActors.js"
 /* -------------------------------- */
 /*	System initialization			*/
 /* -------------------------------- */
-Hooks.once('init', async function () {
+Hooks.once("init", async function () {
     console.log(`FateX | Initializing Fate extended game system`);
 
     // Initialise config
@@ -47,54 +47,54 @@ Hooks.once('init', async function () {
     HandlebarsHelpers.registerHelpers();
 
     // Unregister Core sheets
-    Actors.unregisterSheet('core', ActorSheet);
-    Items.unregisterSheet('core', ItemSheet);
+    Actors.unregisterSheet("core", ActorSheet);
+    Items.unregisterSheet("core", ItemSheet);
 
     // Register FateX actor sheets
-    Actors.registerSheet('FateX', CharacterSheet, {
-        types: ['character'],
-        makeDefault: true
+    Actors.registerSheet("FateX", CharacterSheet, {
+        types: ["character"],
+        makeDefault: true,
     });
 
     // Register FateX item sheets
-    Items.registerSheet('FateX', StressSheet, {
-        types: ['stress'],
-        makeDefault: true
+    Items.registerSheet("FateX", StressSheet, {
+        types: ["stress"],
+        makeDefault: true,
     });
 
-    Items.registerSheet('FateX', AspectSheet, {
-        types: ['aspect'],
-        makeDefault: true
+    Items.registerSheet("FateX", AspectSheet, {
+        types: ["aspect"],
+        makeDefault: true,
     });
 
-    Items.registerSheet('FateX', ConsequenceSheet, {
-        types: ['consequence'],
-        makeDefault: true
+    Items.registerSheet("FateX", ConsequenceSheet, {
+        types: ["consequence"],
+        makeDefault: true,
     });
 
-    Items.registerSheet('FateX', SkillSheet, {
-        types: ['skill'],
-        makeDefault: true
+    Items.registerSheet("FateX", SkillSheet, {
+        types: ["skill"],
+        makeDefault: true,
     });
 
-    Items.registerSheet('FateX', StuntSheet, {
-        types: ['stunt'],
-        makeDefault: true
+    Items.registerSheet("FateX", StuntSheet, {
+        types: ["stunt"],
+        makeDefault: true,
     });
 
-    Items.registerSheet('FateX', ExtraSheet, {
-        types: ['extra'],
-        makeDefault: true
+    Items.registerSheet("FateX", ExtraSheet, {
+        types: ["extra"],
+        makeDefault: true,
     });
 });
 
-Hooks.once('ready', async function () {
+Hooks.once("ready", async function () {
     // Initialize TemplateActors
     TemplateActors.ready();
 
     const actor = game.actors.get("vNSOHehGy1FCs2bV");
     actor.sheet.render(true);
-    (new CharacterBuilder(actor)).render(true);
+    new CharacterBuilder(actor).render(true);
 });
 
 TemplateActors.hooks();

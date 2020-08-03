@@ -11,27 +11,27 @@ import { StressItem } from "./module/item/stress/StressItem.js";
 import { StuntItem } from "./module/item/stunt/StuntItem.js";
 
 export const FateX = {
-    "itemTypes": {
-        "stress": StressItem,
-        "aspect": AspectItem,
-        "consequence": ConsequenceItem,
-        "skill": SkillItem,
-        "stunt": StuntItem,
-        "extra": ExtraItem,
+    itemTypes: {
+        stress: StressItem,
+        aspect: AspectItem,
+        consequence: ConsequenceItem,
+        skill: SkillItem,
+        stunt: StuntItem,
+        extra: ExtraItem,
     },
-    "sheetComponents": {
-        "actor": {
-            "sortable": Sortable,
-            "configuration": Configuration
+    sheetComponents: {
+        actor: {
+            sortable: Sortable,
+            configuration: Configuration,
         },
-        "item": {
-            "radio": Radio,
-            "rangeSlider": RangeSlider,
-            "automation": Automation,
-        }
+        item: {
+            radio: Radio,
+            rangeSlider: RangeSlider,
+            automation: Automation,
+        },
     },
-    "applications": {
-        'templateSettings': null,
-        'templatePicker': null,
-    }
+    applications: {
+        templateSettings: null,
+        templatePicker: null,
+    },
 };

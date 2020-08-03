@@ -51,7 +51,6 @@
     flex-direction: column;
     justify-content: space-between;
 
-
     > span {
         text-align: center;
 
@@ -94,13 +93,14 @@
     }
 
     p {
-        margin: $component-padding*2;
+        margin: $component-padding * 2;
     }
 
     .fatex__template__header__settings {
         padding-top: $component-padding * 3;
 
-        span, i {
+        span,
+        i {
             color: $primary-color;
         }
     }
