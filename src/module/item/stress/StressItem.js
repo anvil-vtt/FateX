@@ -9,7 +9,7 @@ const STRESS_LABEL_TYPES = {
 export class StressItem extends BaseItem {
     static get entityName() {
         return 'stress';
-    };
+    }
 
     static activateActorSheetListeners(html, sheet) {
         super.activateActorSheetListeners(html, sheet);
@@ -18,7 +18,7 @@ export class StressItem extends BaseItem {
         html.find('.fatex__stress__track__item__box').click((e) => this._onStressBoxToggle.call(this, e, sheet));
     }
 
-    static prepareItemData(item, entity) {
+    static prepareItemData(item) {
         const numberOfBoxes = parseInt(item.data.size);
 
         // Add boxes with prepared data

@@ -147,7 +147,7 @@ export class ActorSheetFate extends ActorSheet {
         const app = target.parents('.app');
         const html = app.find('.window-content');
 
-        app.toggleClass("fatex__helper--enable-editmode")
+        html.toggleClass("fatex__helper--enable-editmode")
     }
 
     /**

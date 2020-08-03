@@ -3,7 +3,7 @@ import { BaseItem } from "../BaseItem.js";
 export class SkillItem extends BaseItem {
     static get entityName() {
         return 'skill';
-    };
+    }
 
     /**
      * Adds skill specifig actorsheet listeners.
@@ -29,7 +29,7 @@ export class SkillItem extends BaseItem {
     }
 
 
-    static prepareItemData(item, entity) {
+    static prepareItemData(item) {
         item.data.isNegative = item.data.rank < 0;
         item.data.isPositive = item.data.rank >= 0;
         item.data.isNeutral = item.data.rank === 0;

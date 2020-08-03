@@ -14,6 +14,11 @@ const TYPES = {
 }
 
 export class CharacterBuilder extends FormApplication {
+    constructor(object, options) {
+        super(object, options);
+
+        this.entity.apps[this.appId] = this;
+    }
 
     static get defaultOptions() {
         const options = super.defaultOptions;
@@ -42,7 +47,7 @@ export class CharacterBuilder extends FormApplication {
         return this.object;
     }
 
-    getData(options = {}) {
+    getData() {
         return {
             options: this.options,
             isOwnedBy: this.actor ? this.actor.name : false,
@@ -132,7 +137,5 @@ export class CharacterBuilder extends FormApplication {
     }
 
 
-    async _updateObject(event, formData) {
-        // Do nothing
-    }
+    async _updateObject() {}
 }

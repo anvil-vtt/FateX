@@ -19,6 +19,12 @@ module.exports = environment => {
         module: {
             rules: [
                 {
+                    test: /\.js$/,
+                    exclude: /node_modules/,
+                    loader: 'eslint-loader',
+                    options: {},
+                },
+                {
                     test: /\.scss$/,
                     use: [
                         {

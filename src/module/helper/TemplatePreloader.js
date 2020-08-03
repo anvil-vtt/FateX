@@ -36,5 +36,5 @@ export class TemplatePreloader {
         ];
 
         return loadTemplates(templatePaths);
-    };
+    }
 }

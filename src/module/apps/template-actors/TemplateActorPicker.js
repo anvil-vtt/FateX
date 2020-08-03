@@ -71,7 +71,5 @@ export class TemplateActorPicker extends TemplateActorSettings {
         await this.close();
     }
 
-    async _updateObject(event, formData) {
-        // Do nothing
-    }
+    async _updateObject() {}
 }

@@ -1,13 +1,13 @@
 export class BaseItem {
     static get entityName() {
         return false;
-    };
+    }
 
     /**
      * Allows each item to prepare its data before its rendered.
      * This can be used to add additional information right before rendering.
      */
-    static prepareItemData(item, entity) {
+    static prepareItemData(item) {
         return item;
     }
 
@@ -29,7 +29,7 @@ export class BaseItem {
     /**
      * Allows each item to add data to its own sheet.
      */
-    static getSheetData(sheetData, sheet) {
+    static getSheetData(sheetData) {
         return sheetData;
     }
 
@@ -43,8 +43,7 @@ export class BaseItem {
     /**
      * Allows each item to add listeners to its sheet
      */
-    static activateListeners(html, sheet) {
-    }
+    static activateListeners() {}
 
     /*************************
      * EVENT HANDLER
@@ -145,5 +144,5 @@ export class BaseItem {
      */
     static get defaultName() {
         return this.entityName.charAt(0).toUpperCase() + this.entityName.slice(1);
-    };
+    }
 }

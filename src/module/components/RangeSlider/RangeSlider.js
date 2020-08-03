@@ -11,11 +11,10 @@ export class RangeSlider extends BaseComponent{
      * onChange for the input[type="text"] field and onInput for the input[type="range"].
      *
      * @param html
-     * @param sheet
      */
-    static activateListeners(html, sheet) {
-        html.find('.fatex__setting__range__value').on('change', (e) => this._onChangeRangeValue.call(this, e, sheet));
-        html.find('.fatex__setting__range__slider').on('input', (e) => this._onChangeRangeSlider.call(this, e, sheet));
+    static activateListeners(html) {
+        html.find('.fatex__setting__range__value').on('change', (e) => this._onChangeRangeValue.call(this, e));
+        html.find('.fatex__setting__range__slider').on('input', (e) => this._onChangeRangeSlider.call(this, e));
     }
 
     /**
@@ -24,7 +23,7 @@ export class RangeSlider extends BaseComponent{
      *
      * This is likely to break as soon as one of the elements is wrapped.
      */
-    static _onChangeRangeSlider(event, sheet) {
+    static _onChangeRangeSlider(event) {
         event.preventDefault();
 
         const valueInput = event.currentTarget.previousElementSibling;
@@ -37,7 +36,7 @@ export class RangeSlider extends BaseComponent{
      *
      * This is likely to break as soon as one of the elements is wrapped.
      */
-    static _onChangeRangeValue(event, sheet) {
+    static _onChangeRangeValue(event) {
         event.preventDefault();
 
         const valueInput = event.currentTarget.nextElementSibling;

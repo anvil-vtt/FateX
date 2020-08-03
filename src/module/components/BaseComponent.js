@@ -3,12 +3,12 @@
  * Ensures that not every method has be implemented by every component.
  */
 export class BaseComponent {
-    static activateListeners(html, sheet) {}
+    static activateListeners() {}
 
     /**
      * Allows each component to add data to sheets.
      */
-    static getSheetData(sheetData, sheet) {
+    static getSheetData(sheetData) {
         return sheetData;
     }
 }

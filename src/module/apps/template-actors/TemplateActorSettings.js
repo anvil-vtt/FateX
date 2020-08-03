@@ -21,7 +21,7 @@ export class TemplateActorSettings extends FormApplication {
         return options;
     }
 
-    getData(options = {}) {
+    getData() {
         let filteredActors = duplicate(game.actors.filter(actor => actor.isTemplateActor));
 
         filteredActors.forEach(actor => {
@@ -151,7 +151,5 @@ export class TemplateActorSettings extends FormApplication {
         CONFIG.FateX.applications.templatePicker.render();
     }
 
-    async _updateObject(event, formData) {
-        // Do nothing
-    }
+    async _updateObject() {}
 }

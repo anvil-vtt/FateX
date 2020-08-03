@@ -10,7 +10,7 @@ export class TemplateActors {
 
     static hooks() {
         // Add extra button to foundrys settings menu
-        Hooks.on("renderSidebarTab", (app, html, data) => {
+        Hooks.on("renderSidebarTab", (app, html) => {
             if (!(app instanceof Settings) || !game.user.isGM) {
                 return;
             }

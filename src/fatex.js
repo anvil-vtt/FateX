@@ -91,6 +91,10 @@ Hooks.once('init', async function () {
 Hooks.once('ready', async function () {
     // Initialize TemplateActors
     TemplateActors.ready();
+
+    const actor = game.actors.get("vNSOHehGy1FCs2bV");
+    actor.sheet.render(true);
+    (new CharacterBuilder(actor)).render(true);
 });
 
 TemplateActors.hooks();
