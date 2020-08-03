@@ -144,7 +144,7 @@
             "EntityDelete": "Delete",
             "EntityDeleteText": "Do you really want to <strong>permanently</strong> delete this entity?",
             "ActorClear": "Clear items",
-            "ActorClearText": "Do you really want to <strong>permanently</strong> delete all this actors items of the chosen type?",
+            "ActorClearText": "Do you really want to <strong>permanently</strong> delete all this actors items <strong>and their content</strong> of the chosen type?",
             "Confirm": "Confirm",
             "Cancel": "Cancel"
         },

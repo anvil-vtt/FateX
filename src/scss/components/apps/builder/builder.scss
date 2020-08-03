@@ -4,11 +4,12 @@
 
     h2 {
         border: 0;
+        margin-bottom: $component-padding;
     }
 }
 
 .fatex__character_builder__import {
-    margin-top: $component-padding * 2;
+    margin-top: $component-padding * 4;
 }
 
 
@@ -58,4 +59,49 @@
             text-align: center;
         }
     }
+}
+
+.fatex__character_builder__group {
+    margin-bottom: $component-padding * 2;
+
+}
+
+.fatex__character_builder__options {
+    padding: $component-padding;
+}
+
+.fatex__character_builder__option {
+    display: flex;
+}
+
+.fatex__character_builder__option + .fatex__character_builder__option {
+    margin-top: $component-padding;
+}
+
+.fatex__character_builder__option__box {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 1px solid $primary-color;
+    border-radius: 3px;
+    margin-right: $component-padding;
+    color: $headline-color;
+    font-size: 11px;
+    text-align: center;
+}
+
+.fatex__character_builder__option__checkbox {
+    position: absolute;
+    opacity: 0;
+    left: -5000px;
+
+    &:checked + .fatex__character_builder__option__box {
+        @include fa-icon($fa-var-check);
+
+        background: $headline-background;
+    }
+}
+
+.fatex__character_builder__headline {
+
 }

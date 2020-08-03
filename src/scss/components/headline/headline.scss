@@ -18,6 +18,7 @@
     text-align: center;
 }
 
+.fatex__headline__actions.fatex__item__actions,
 .fatex__headline__actions {
     @include edit-settings($headline-background);
     pointer-events: none;
