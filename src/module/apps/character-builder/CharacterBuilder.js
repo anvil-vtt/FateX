@@ -17,7 +17,11 @@ export class CharacterBuilder extends FormApplication {
     constructor(object, options) {
         super(object, options);
 
-        this.entity.apps[this.appId] = this;
+        this.actor.apps[this.appId] = this;
+    }
+
+    get actor() {
+        return this.object;
     }
 
     static get defaultOptions() {
@@ -41,10 +45,6 @@ export class CharacterBuilder extends FormApplication {
         });
 
         return options;
-    }
-
-    get actor() {
-        return this.object;
     }
 
     getData() {

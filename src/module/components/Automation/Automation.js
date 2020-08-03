@@ -28,11 +28,7 @@ export class Automation extends BaseComponent {
         sheetData.availableSkillLevels = this.getAvailableSkillLevels();
         sheetData.availableOperators = this.getAvailableOperators();
         sheetData.availableConjunctions = this.getAvailableConjunctions();
-
-        // Only items owned by actors can read the actors skill list
-        if (sheet.entity.isOwned) {
-            sheetData.availableActorSkills = this.getSkillsByActor(sheet.actor);
-        }
+        sheetData.availableSkills = this.getAllAvailableSkills(sheet.actor);
 
         return sheetData;
     }
@@ -199,28 +195,32 @@ export class Automation extends BaseComponent {
         return entity.getFlag("fatex", "skillReferences") || [];
     }
 
-    static getSkillsByActor(actor, sort = true) {
-        const actorData = duplicate(actor);
-        const items = actorData.items;
-
-        // Get list of all skill items and extract the data
-        const skills = items.filter((item) => item.type === "skill");
-        const skillData = skills.map((skill) => duplicate(skill));
+    static getAllAvailableSkills(actor, sort = true) {
+        // Get all actors skills in a unique list of names
+        const skills = [
+            ...new Set(
+                game.actors
+                    .map((actor) =>
+                        actor.items.entries.filter((item) => item.type === "skill").map((item) => item.name)
+                    )
+                    .flat()
+            ),
+        ];
 
         // Sort alphabetically
         if (sort) {
-            skillData.sort((a, b) => b.name - a.name);
+            skills.sort((a, b) => b - a);
         }
 
-        return skillData;
+        return skills;
     }
 
-    static getActorSkillById(actor, skillId) {
+    static getActorSkillByName(actor, skillId) {
         const actorData = duplicate(actor);
         const items = actorData.items;
 
         // Filter single actors skills by id
-        const skills = items.filter((item) => item._id === skillId);
+        const skills = items.filter((item) => item.name === skillId);
 
         if (!skills) {
             return undefined;
@@ -230,48 +230,24 @@ export class Automation extends BaseComponent {
     }
 
     static getAvailableSkillLevels() {
-        const skillLevels = [];
-
-        for (let i = 0; i <= 20; i++) {
-            const skillLevel = [];
-
-            skillLevel.value = i;
-            skillLevel.label = `+${i}`;
-
-            skillLevels.push(skillLevel);
-        }
-
-        return skillLevels;
+        return [...Array(21).keys()].map((i) => ({
+            value: i,
+            label: `+${i}`,
+        }));
     }
 
     static getAvailableOperators() {
-        const operators = [];
-
-        for (let operator in OPERATORS) {
-            const availableOperator = [];
-
-            availableOperator.value = OPERATORS[operator];
-            availableOperator.label = game.i18n.localize(`FAx.Item.Automation.Operators.${operator}`);
-
-            operators.push(availableOperator);
-        }
-
-        return operators;
+        return Object.keys(OPERATORS).map((operator) => ({
+            value: OPERATORS[operator],
+            label: game.i18n.localize(`FAx.Item.Automation.Operators.${operator}`),
+        }));
     }
 
     static getAvailableConjunctions() {
-        const conjunctions = [];
-
-        for (let conjunction in CONJUNCTIONS) {
-            const availableConjunction = [];
-
-            availableConjunction.value = CONJUNCTIONS[conjunction];
-            availableConjunction.label = game.i18n.localize(`FAx.Item.Automation.Conjunctions.${conjunction}`);
-
-            conjunctions.push(availableConjunction);
-        }
-
-        return conjunctions;
+        return Object.keys(CONJUNCTIONS).map((conjunction) => ({
+            value: CONJUNCTIONS[conjunction],
+            label: game.i18n.localize(`FAx.Item.Automation.Conjunctions.${conjunction}`),
+        }));
     }
 
     static checkSkillCondition(skill, condition, operator = OPERATORS.OPERATOR_GTE) {
@@ -296,10 +272,8 @@ export class Automation extends BaseComponent {
     }
 
     static getSkillReferenceSettings(entity) {
-        const skillReferenceSettings = {};
-
-        skillReferenceSettings.conjunction = this.getReferenceSetting(entity, "conjunction", CONJUNCTIONS.OR);
-
-        return skillReferenceSettings;
+        return {
+            conjunction: this.getReferenceSetting(entity, "conjunction", CONJUNCTIONS.OR),
+        };
     }
 }

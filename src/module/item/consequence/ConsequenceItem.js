@@ -84,7 +84,7 @@ export class ConsequenceItem extends BaseItem {
 
         // Not disabled if one of the skillReferences conditions is met
         for (const reference of skillReferences) {
-            const skill = Automation.getActorSkillById(item.actor, reference.skill);
+            const skill = Automation.getActorSkillByName(item.actor, reference.skill);
             const isConditionMet =
                 skill === undefined
                     ? false
