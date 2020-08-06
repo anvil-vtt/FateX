@@ -58,7 +58,7 @@ export class TemplateActorPicker extends TemplateActorSettings {
         // Add current template as a flag for later use
         template.flags.fatex.templateActor = template._id;
 
-        // Delete id and flags
+        // Delete id, specific flags and the actors image
         delete template._id;
         delete template.flags.fatex.isTemplateActor;
         delete template.img;

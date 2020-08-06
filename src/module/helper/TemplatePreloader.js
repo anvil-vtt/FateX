@@ -32,6 +32,8 @@ export class TemplatePreloader {
 
             "systems/fatex/templates/apps/parts/layout/app-header.html",
             "systems/fatex/templates/apps/parts/layout/app-footer.html",
+
+            "systems/fatex/templates/apps/parts/builder/actions.html",
         ];
 
         return loadTemplates(templatePaths);

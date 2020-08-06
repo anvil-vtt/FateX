@@ -82,6 +82,14 @@
     padding: $component-padding;
 }
 
+.fatex__character_builder__options--columns {
+    column-count: 2;
+
+    label {
+        page-break-inside: avoid;
+    }
+}
+
 .fatex__character_builder__option {
     display: flex;
 }

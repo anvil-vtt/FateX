@@ -7,29 +7,7 @@
     <div class="fatex__character_builder__manage">
         <h2>{{localize "FAx.Apps.Builder.Manage"}}</h2>
 
-        <div class="fatex__character_builder__actions">
-            <span class="fatex__character_builder_action builder_action--clear-aspects {{#unless hasAspects}}fatex__character_builder_action--disabled{{/unless}}">
-                {{localize "FAx.Apps.Builder.Actions.Clear.Aspects"}}
-            </span>
-
-            <span class="fatex__character_builder_action builder_action--clear-consequences {{#unless hasConsequences}}fatex__character_builder_action--disabled{{/unless}} ">
-                {{localize "FAx.Apps.Builder.Actions.Clear.Consequences"}}
-            </span>
-
-            <span class="fatex__character_builder_action builder_action--clear-skills {{#unless hasSkills}}fatex__character_builder_action--disabled{{/unless}}">
-                {{localize "FAx.Apps.Builder.Actions.Clear.Skills"}}
-            </span>
-
-            <span class="fatex__character_builder_action builder_action--clear-stress {{#unless hasStress}}fatex__character_builder_action--disabled{{/unless}}">
-                {{localize "FAx.Apps.Builder.Actions.Clear.Stress"}}
-            </span>
-
-            <span class="fatex__character_builder_action builder_action--clear {{#unless hasAny}}fatex__character_builder_action--disabled{{/unless}}">
-                <div>
-                    <span>{{localize "FAx.Apps.Builder.Actions.Clear.Everything"}}</span>
-                </div>
-            </span>
-        </div>
+        {{> "systems/fatex/templates/apps/parts/builder/actions.html" }}
     </div>
 
     <div class="fatex__character_builder__import">
@@ -37,68 +15,61 @@
 
         <div class="fatex__vertical_tabs">
             <nav class="fatex__vertical_tabs__navigation">
-                <a class="fatex__vertical_tabs__navigation__item item active" data-tab="core">Core</a>
-                <a class="fatex__vertical_tabs__navigation__item item" data-tab="accelarated">Accelerated</a>
-                <a class="fatex__vertical_tabs__navigation__item item" data-tab="condensed">Condensed</a>
-                <a class="fatex__vertical_tabs__navigation__item item" data-tab="dfa">Dresden Files Accelerated</a>
+                {{#each availableSystems as |system machineName|}}
+                    <a class="fatex__vertical_tabs__navigation__item item" data-tab="{{machineName}}">{{system}}</a>
+                {{/each}}
             </nav>
 
             <div class="fatex__vertical_tabs__content">
-                <div class="fatex__vertical_tabs__tab tab" data-tab="core">
-                    <div class="fatex__vertical_tabs__tab__content">
-                        <h2 class="fatex__character_builder__headline">Import Core</h2>
+                {{#each systems as |system|}}
+                    {{#if system.aspects}}
+                        <div class="fatex__vertical_tabs__tab tab" data-tab="{{system.name}}">
+                            <div class="fatex__vertical_tabs__tab__content">
+                                <div class="fatex__character_builder__group">
+                                    <div class="fatex__headline">
+                                        {{localize "FAx.Sheet.Aspects"}}
+                                    </div>
 
-                        <div class="fatex__character_builder__group">
-                            <div class="fatex__headline">
-                                Aspects
-                            </div>
-
-                            <div class="fatex__character_builder__options">
-                                <label class="fatex__character_builder__option">
-                                    <input class="fatex__character_builder__option__checkbox" type="checkbox">
-                                    <div class="fatex__character_builder__option__box"></div>
-                                    <span class="fatex__character_builder__option__label">High concept</span>
-                                </label>
-
-                                <label class="fatex__character_builder__option">
-                                    <input class="fatex__character_builder__option__checkbox" type="checkbox">
-                                    <div class="fatex__character_builder__option__box"></div>
-                                    <span class="fatex__character_builder__option__label">Trouble</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="fatex__character_builder__group">
-                            <div class="fatex__headline">
-                                Consequences
+                                    <div class="fatex__character_builder__options">
+                                        {{#each system.aspects as |aspect index|}}
+                                            <label class="fatex__character_builder__option">
+                                                <input class="fatex__character_builder__option__checkbox"
+                                                       type="checkbox">
+                                                <div class="fatex__character_builder__option__box"></div>
+                                                <span
+                                                    class="fatex__character_builder__option__label">{{aspect.name}}</span>
+                                            </label>
+                                        {{/each}}
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                    {{/if}}
 
-                        <div class="fatex__character_builder__group fatex__character_builder__group--columns">
-                            <div class="fatex__headline">
-                                Skills
+                    {{#if system.skills}}
+                        <div class="fatex__vertical_tabs__tab tab" data-tab="{{system.name}}">
+                            <div class="fatex__vertical_tabs__tab__content">
+                                <div class="fatex__character_builder__group">
+                                    <div class="fatex__headline">
+                                        {{localize "FAx.Sheet.Skills"}}
+                                    </div>
+
+                                    <div class="fatex__character_builder__options fatex__character_builder__options--columns">
+                                        {{#each system.skills as |skill index|}}
+                                            <label class="fatex__character_builder__option">
+                                                <input class="fatex__character_builder__option__checkbox"
+                                                       type="checkbox">
+                                                <div class="fatex__character_builder__option__box"></div>
+                                                <span
+                                                    class="fatex__character_builder__option__label">{{skill.name}}</span>
+                                            </label>
+                                        {{/each}}
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="fatex__character_builder__group">
-                            <div class="fatex__headline">
-                                Stress tracks
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="fatex__vertical_tabs__tab tab" data-tab="accelarated">
-                    <div class="fatex__vertical_tabs__tab__content"></div>
-                </div>
-
-                <div class="fatex__vertical_tabs__tab tab" data-tab="condensed">
-                    <div class="fatex__vertical_tabs__tab__content"></div>
-                </div>
-
-                <div class="fatex__vertical_tabs__tab tab" data-tab="dfa">
-                    <div class="fatex__vertical_tabs__tab__content"></div>
-                </div>
+                    {{/if}}
+                {{/each}}
             </div>
         </div>
     </div>

@@ -33,6 +33,14 @@ export class ActorFate extends Actor {
                 brightSight: 0,
                 actorLink: true,
                 disposition: 1,
+            },
+            { overwrite: false }
+        );
+
+        // Overwrite specific token data (used for template actors)
+        mergeObject(
+            data.token,
+            {
                 img: CONST.DEFAULT_TOKEN,
             },
             { overwrite: true }

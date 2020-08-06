@@ -1,3 +1,5 @@
+import { DataManager } from "./DataManager.js";
+
 const CLEAR = {
     EVERYTHING: 0,
     ASPECTS: 1,
@@ -39,7 +41,6 @@ export class CharacterBuilder extends FormApplication {
                 {
                     navSelector: ".fatex__vertical_tabs__navigation",
                     contentSelector: ".fatex__vertical_tabs__content",
-                    initial: "core",
                 },
             ],
         });
@@ -47,8 +48,8 @@ export class CharacterBuilder extends FormApplication {
         return options;
     }
 
-    getData() {
-        return {
+    async getData() {
+        const data = {
             options: this.options,
             isOwnedBy: this.actor ? this.actor.name : false,
 
@@ -58,19 +59,20 @@ export class CharacterBuilder extends FormApplication {
             hasStress: !!this.actor.items.filter((i) => i.type === "stress").length,
             hasAny: !!this.actor.items.entries.length,
         };
+
+        const dataManager = new DataManager();
+        const { lang, availableSystems } = await dataManager.getAvailableSystems();
+
+        data.availableSystems = availableSystems;
+        data.systems = await dataManager.getSystems(lang, availableSystems);
+
+        return data;
     }
 
     activateListeners(html) {
         super.activateListeners(html);
 
-        html.find(".fatex__character_builder--import-core").click((e) => this._onImport.call(this, e, "core"));
-        html.find(".fatex__character_builder--import-condensed").click((e) =>
-            this._onImport.call(this, e, "condensed")
-        );
-        html.find(".fatex__character_builder--import-accelerated").click((e) =>
-            this._onImport.call(this, e, "accelerated")
-        );
-
+        // Clear actions
         html.find(".builder_action--clear").click((e) => this._onClear.call(this, e, CLEAR.EVERYTHING));
         html.find(".builder_action--clear-stress").click((e) => this._onClear.call(this, e, CLEAR.STRESS));
         html.find(".builder_action--clear-skills").click((e) => this._onClear.call(this, e, CLEAR.SKILLS));
@@ -82,6 +84,7 @@ export class CharacterBuilder extends FormApplication {
      * EVENT HANDLER
      *************************/
 
+    // Old import function
     async _onImport(event, name) {
         event.preventDefault();
 
