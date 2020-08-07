@@ -2,40 +2,8 @@
     "name": "Core",
     "identifier": "core",
     "types": {
-        "Aspects": {
-            "general": {
-                "label": "Default",
-                "entries": [
-                    {
-                        "name": "High Concept",
-                        "type": "aspect",
-                        "data": {
-                            "label": "High Concept"
-                        }
-                    },
-                    {
-                        "name": "Trouble",
-                        "type": "aspect",
-                        "data": {
-                            "label": "Trouble"
-                        }
-                    },
-                    {
-                        "name": "Empty Aspect",
-                        "type": "aspect"
-                    },
-                    {
-                        "name": "Empty Aspect",
-                        "type": "aspect"
-                    },
-                    {
-                        "name": "Empty Aspect",
-                        "type": "aspect"
-                    }
-                ]
-            },
-            "extra": {
-                "label": "Extra",
+        "Aspects": [
+            {
                 "entries": [
                     {
                         "name": "High Concept",
@@ -65,9 +33,9 @@
                     }
                 ]
             }
-        },
-        "Consequences": {
-            "general": {
+        ],
+        "Consequences": [
+            {
                 "entries": [
                     {
                         "name": "Mild consequence",
@@ -88,13 +56,13 @@
                                     "skillReferenceSettings": {
                                         "conjunction": 0
                                     },
-                                "skillReferences": [
-                                    {
-                                        "skill": "Physique",
-                                        "condition": 4,
-                                        "operator": 4
-                                    }
-                                ]
+                                    "skillReferences": [
+                                        {
+                                            "skill": "Physique",
+                                            "condition": 4,
+                                            "operator": 4
+                                        }
+                                    ]
                                 }
                             }
                         }
@@ -117,9 +85,9 @@
                     }
                 ]
             }
-        },
-        "Skills": {
-            "general": {
+        ],
+        "Skills": [
+            {
                 "columns": true,
                 "entries": [
                     {
@@ -250,9 +218,9 @@
                     }
                 ]
             }
-        },
-        "Tracks": {
-            "general": {
+        ],
+        "Tracks": [
+            {
                 "entries": [
                     {
                         "name": "Physical stress",
@@ -272,6 +240,6 @@
                     }
                 ]
             }
-        }
+        ]
     }
 }

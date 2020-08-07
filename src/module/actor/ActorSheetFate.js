@@ -2,7 +2,7 @@
  * FateX base class for all actor sheets.
  * Defines what information on the actorsheet may be rendered.
  */
-import { CharacterBuilder } from "../apps/character-builder/CharacterBuilder.js";
+import { SheetSetup } from "../apps/sheet-setup/SheetSetup.js";
 
 export class ActorSheetFate extends ActorSheet {
     /**
@@ -114,16 +114,16 @@ export class ActorSheetFate extends ActorSheet {
         if (this.options.editable && canConfigure) {
             buttons = [
                 {
-                    label: "Edit mode",
+                    label: game.i18n.localize("FAx.Sheet.Buttons.EditMode"),
                     class: "fatex-toggle-edit-mode",
                     icon: "fas fa-edit",
                     onclick: (ev) => this._onToggleEditMode(ev),
                 },
                 {
-                    label: "Character builder",
-                    class: "fatex-open-character-builder",
+                    label: game.i18n.localize("FAx.Sheet.Buttons.SheetSetup"),
+                    class: "fatex-open-sheet-manager",
                     icon: "fas fa-tools",
-                    onclick: (ev) => this._onOpenCharacterBuilder(ev),
+                    onclick: (ev) => this._onOpenSheetSetup(ev),
                 },
             ].concat(buttons);
         }
@@ -150,13 +150,13 @@ export class ActorSheetFate extends ActorSheet {
     }
 
     /**
-     * OnClick handler for the previously declaried "Character builder" button.
-     * Opens a new character builder instance for this sheet.
+     * OnClick handler for the previously declaried "Sheet setup" button.
+     * Opens a new sheet setup instance for this sheet.
      */
-    _onOpenCharacterBuilder(e) {
+    _onOpenSheetSetup(e) {
         e.preventDefault();
 
-        const characterBuilder = new CharacterBuilder(this.actor);
-        characterBuilder.render(true);
+        const sheetSetup = new SheetSetup(this.actor);
+        sheetSetup.render(true);
     }
 }

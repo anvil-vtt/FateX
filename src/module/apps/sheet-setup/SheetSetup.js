@@ -15,7 +15,7 @@ const TYPES = {
     4: "stress",
 };
 
-export class CharacterBuilder extends FormApplication {
+export class SheetSetup extends FormApplication {
     constructor(object, options) {
         super(object, options);
 
@@ -30,8 +30,8 @@ export class CharacterBuilder extends FormApplication {
         const options = super.defaultOptions;
 
         mergeObject(options, {
-            title: game.i18n.localize("FAx.Apps.Builder.Title"),
-            template: "/systems/fatex/templates/apps/character-builder.html",
+            title: game.i18n.localize("FAx.Apps.Setup.Title"),
+            template: "/systems/fatex/templates/apps/sheet-setup.html",
             resizable: true,
             classes: options.classes.concat(["fatex fatex__app_sheet"]),
             width: 600,
@@ -70,11 +70,11 @@ export class CharacterBuilder extends FormApplication {
         super.activateListeners(html);
 
         // Clear actions
-        html.find(".builder_action--clear").click((e) => this._onClear.call(this, e, CLEAR.EVERYTHING));
-        html.find(".builder_action--clear-stress").click((e) => this._onClear.call(this, e, CLEAR.STRESS));
-        html.find(".builder_action--clear-skills").click((e) => this._onClear.call(this, e, CLEAR.SKILLS));
-        html.find(".builder_action--clear-consequences").click((e) => this._onClear.call(this, e, CLEAR.CONSEQUENCES));
-        html.find(".builder_action--clear-aspects").click((e) => this._onClear.call(this, e, CLEAR.ASPECTS));
+        html.find(".setup_action--clear").click((e) => this._onClear.call(this, e, CLEAR.EVERYTHING));
+        html.find(".setup_action--clear-stress").click((e) => this._onClear.call(this, e, CLEAR.STRESS));
+        html.find(".setup_action--clear-skills").click((e) => this._onClear.call(this, e, CLEAR.SKILLS));
+        html.find(".setup_action--clear-consequences").click((e) => this._onClear.call(this, e, CLEAR.CONSEQUENCES));
+        html.find(".setup_action--clear-aspects").click((e) => this._onClear.call(this, e, CLEAR.ASPECTS));
     }
 
     /*************************

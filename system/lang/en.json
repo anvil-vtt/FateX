@@ -47,11 +47,15 @@
                 "Extras": "Extras",
                 "Bio": "Bio"
             },
+            "Buttons": {
+                "EditMode": "Edit Mode",
+                "SheetSetup": "Sheet Setup"
+            },
             "Stress": {
                 "Add": "Add stress track"
             },
             "Messages": {
-                "EmptyActor": "It looks like your character doesn't have any content yet. You can change this in the <strong>Edit mode</strong> or the <strong>Character builder</strong>. The buttons to toggle the edit mode or open the builder can be found in the header bar."
+                "EmptyActor": "It looks like your character doesn't have any content yet. You can change this in the <strong>Edit Mode</strong> or the <strong>Sheet Setup</strong>. The buttons to toggle the edit mode or open the setup can be found in the header bar."
             }
         },
         "Item": {
@@ -143,16 +147,16 @@
             "ReferenceRemoveText": "Do you really want to <strong>permanently</strong> remove this reference?",
             "EntityDelete": "Delete",
             "EntityDeleteText": "Do you really want to <strong>permanently</strong> delete this entity?",
-            "ActorClear": "Clear items",
-            "ActorClearText": "Do you really want to <strong>permanently</strong> delete all this actors items <strong>and their content</strong> of the chosen type?",
+            "ActorClear": "Clear component",
+            "ActorClearText": "Do you really want to <strong>permanently</strong> delete all this actors comonents <strong>and their content</strong> of the chosen type?",
             "Confirm": "Confirm",
             "Cancel": "Cancel"
         },
         "Apps": {
-            "Builder": {
-                "Title": "Character Builder",
+            "Setup": {
+                "Title": "Sheet Setup",
                 "Manage": "Manage",
-                "Import": "Import",
+                "Setup": "Setup",
                 "Actions": {
                     "Clear": {
                         "Aspects": "Clear aspects",

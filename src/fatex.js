@@ -17,7 +17,7 @@ import "./scss/fatex.scss";
 import { FateX } from "./config.js";
 import { ActorFate } from "./module/actor/ActorFate.js";
 import { CharacterSheet } from "./module/actor/character/CharacterSheet.js";
-import { CharacterBuilder } from "./module/apps/character-builder/CharacterBuilder.js";
+import { SheetSetup } from "./module/apps/sheet-setup/SheetSetup.js";
 import { HandlebarsHelpers } from "./module/helper/HandlebarsHelpers.js";
 import { TemplatePreloader } from "./module/helper/TemplatePreloader.js";
 import { AspectSheet } from "./module/item/aspect/AspectSheet.js";
@@ -94,7 +94,7 @@ Hooks.once("ready", async function () {
 
     const actor = game.actors.get("vNSOHehGy1FCs2bV");
     actor.sheet.render(true);
-    new CharacterBuilder(actor).render(true);
+    new SheetSetup(actor).render(true);
 });
 
 TemplateActors.hooks();

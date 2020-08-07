@@ -1,5 +1,5 @@
 import { ActorFate } from "../../actor/ActorFate.js";
-import { CharacterBuilder } from "../character-builder/CharacterBuilder.js";
+import { SheetSetup } from "../sheet-setup/SheetSetup.js";
 
 export class TemplateActorSettings extends FormApplication {
     static get defaultOptions() {
@@ -117,9 +117,9 @@ export class TemplateActorSettings extends FormApplication {
 
         const newTemplateActor = await ActorFate._create(createData, { renderSheet: true });
 
-        // Open character builder by default for new templates
-        const characterBuilder = new CharacterBuilder(newTemplateActor);
-        characterBuilder.render(true);
+        // Open sheet setup by default for new templates
+        const sheetSetup = new SheetSetup(newTemplateActor);
+        sheetSetup.render(true);
 
         // Re-render this settings window and the picker if open
         this.render(true);

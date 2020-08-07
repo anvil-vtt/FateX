@@ -1,4 +1,4 @@
-.fatex__character_builder {
+.fatex__sheet_setup {
     padding: $component-padding;
     min-width: 100%;
 
@@ -8,39 +8,39 @@
     }
 }
 
-.fatex__character_builder__import {
+.fatex__sheet_setup__setup {
     margin-top: $component-padding * 4;
 }
 
-.fatex__character_builder__actions {
+.fatex__sheet_setup__actions {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     gap: $component-padding/2 $component-padding/2;
     grid-template-areas: "topl topm right" "bottoml bottomm right";
 
-    .builder_action--clear-aspects {
+    .setup_action--clear-aspects {
         grid-area: topl;
     }
 
-    .builder_action--clear-consequences {
+    .setup_action--clear-consequences {
         grid-area: topm;
     }
 
-    .builder_action--clear-skills {
+    .setup_action--clear-skills {
         grid-area: bottoml;
     }
 
-    .builder_action--clear-stress {
+    .setup_action--clear-stress {
         grid-area: bottomm;
     }
 
-    .builder_action--clear {
+    .setup_action--clear {
         grid-area: right;
     }
 }
 
-.fatex__character_builder_action {
+.fatex__sheet_setup_action {
     cursor: pointer;
 
     border: 1px solid $primary-color;
@@ -57,13 +57,13 @@
         background-color: rgba(0, 0, 0, 0.3);
     }
 
-    &.fatex__character_builder_action--disabled {
+    &.fatex__sheet_setup_action--disabled {
         pointer-events: none;
         opacity: 0.3;
     }
 }
 
-.builder_action--clear {
+.setup_action--clear {
     span {
         @include fa-icon($fa-var-skull-crossbones);
 
@@ -74,48 +74,50 @@
     }
 }
 
-.fatex__character_builder__type {
+.fatex__sheet_setup__type {
     margin-bottom: $component-padding * 2;
 }
 
-.fatex__character_builder__groups {
+.fatex__sheet_setup__groups {
     display: flex;
     flex-wrap: wrap;
 }
 
-.fatex__character_builder__group {
+.fatex__sheet_setup__group {
     padding: $component-padding;
+    width: 50%;
+    min-width: 180px;
 }
 
-.fatex__character_builder__group__label {
+.fatex__sheet_setup__group--columns {
+    width: 100%;
+}
+
+.fatex__sheet_setup__group__label {
     font-weight: bold;
     text-transform: uppercase;
     margin-bottom: $component-padding;
     display: block;
+    font-size: 10px;
 }
 
-.fatex__character_builder__options {
-    padding-right: $component-padding * 2;
-}
-
-.fatex__character_builder__options--columns {
+.fatex__sheet_setup__options--columns {
     column-count: 2;
-    column-gap: $component-padding * 4;
 
-    .fatex__character_builder__option {
+    .fatex__sheet_setup__option {
         page-break-inside: avoid;
     }
 }
 
-.fatex__character_builder__option {
+.fatex__sheet_setup__option {
     display: flex;
 }
 
-.fatex__character_builder__option + .fatex__character_builder__option {
+.fatex__sheet_setup__option + .fatex__sheet_setup__option {
     margin-top: $component-padding;
 }
 
-.fatex__character_builder__option__box {
+.fatex__sheet_setup__option__box {
     display: inline-block;
     width: 16px;
     height: 16px;
@@ -127,17 +129,17 @@
     text-align: center;
 }
 
-.fatex__character_builder__option__checkbox {
+.fatex__sheet_setup__option__checkbox {
     position: absolute;
     opacity: 0;
     left: -5000px;
 
-    &:checked + .fatex__character_builder__option__box {
+    &:checked + .fatex__sheet_setup__option__box {
         @include fa-icon($fa-var-check);
 
         background: $headline-background;
     }
 }
 
-.fatex__character_builder__headline {
+.fatex__sheet_setup__headline {
 }
