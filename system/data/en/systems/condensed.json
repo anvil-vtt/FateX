@@ -259,9 +259,10 @@
         ],
         "Tracks": [
             {
+                "label": "Core style",
                 "entries": [
                     {
-                        "name": "Physical stress (Core style)",
+                        "name": "Physical stress",
                         "type": "stress",
                         "data": {
                             "size": 4,
@@ -269,7 +270,7 @@
                         }
                     },
                     {
-                        "name": "Mental stress (Core style)",
+                        "name": "Mental stress",
                         "type": "stress",
                         "data": {
                             "size": 4,
