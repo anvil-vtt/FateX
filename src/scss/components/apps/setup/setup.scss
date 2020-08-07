@@ -142,7 +142,8 @@
 .fatex__sheet_setup__option__checkbox {
     position: absolute;
     opacity: 0;
-    left: -5000px;
+    left: -10000px;
+    top: -10000px;
 
     &:checked + .fatex__sheet_setup__option__box {
         @include fa-icon($fa-var-check);
