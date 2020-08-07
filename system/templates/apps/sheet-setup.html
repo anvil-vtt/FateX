@@ -29,13 +29,19 @@
                                 <div class="fatex__sheet_setup__type">
                                     <div class="fatex__headline">
                                         {{typeLabel}}
+
+                                        <div class="fatex__headline__actions">
+                                            <span class="fatex__headline__action setup_action--toggle-type">
+                                                {{localize "FAx.Apps.Setup.Actions.Setup.ToggleSelection"}}
+                                            </span>
+                                        </div>
                                     </div>
 
                                     <div class="fatex__sheet_setup__groups">
                                         {{#each type as |group groupIndex|}}
                                             <div class="fatex__sheet_setup__group {{#if group.columns}}fatex__sheet_setup__group--columns{{/if}}">
                                                 {{#if group.label}}
-                                                    <span class="fatex__sheet_setup__group__label">
+                                                    <span class="fatex__sheet_setup__group__label setup_action--toggle-type">
                                                         {{group.label}}
                                                     </span>
                                                 {{/if}}
@@ -43,7 +49,7 @@
                                                 <div class="fatex__sheet_setup__options {{#if group.columns}}fatex__sheet_setup__options--columns{{/if}}">
                                                     {{#each group.entries as |entry entryIndex|}}
                                                         <label class="fatex__sheet_setup__option">
-                                                            <input class="fatex__sheet_setup__option__checkbox" type="checkbox">
+                                                            <input class="fatex__sheet_setup__option__checkbox" type="checkbox" data-entity="{{stringify entry}}">
                                                             <span class="fatex__sheet_setup__option__box"></span>
                                                             <span class="fatex__sheet_setup__option__label">{{entry.name}}</span>
                                                         </label>
@@ -51,6 +57,12 @@
                                                 </div>
                                             </div>
                                         {{/each}}
+                                    </div>
+
+                                    <div class="fatex__sheet_setup__type__actions">
+                                        <span class="fatex__sheet_setup__type__action setup_action--setup-type">
+                                            {{localize "FAx.Apps.Setup.Actions.Setup.AddToSheet"}}
+                                        </span>
                                     </div>
                                 </div>
                             {{/each}}

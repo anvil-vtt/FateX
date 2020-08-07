@@ -4,6 +4,7 @@
     "types": {
         "Aspects": [
             {
+                "label": "Basic",
                 "entries": [
                     {
                         "name": "High Concept",
@@ -32,6 +33,25 @@
                         "type": "aspect"
                     }
                 ]
+            },
+            {
+                "label": "Optional",
+                "entries": [
+                    {
+                        "name": "Relationship",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Relationship"
+                        }
+                    },
+                    {
+                        "name": "Other aspect",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Other"
+                        }
+                    }
+                ]
             }
         ],
         "Consequences": [
@@ -46,24 +66,29 @@
                         }
                     },
                     {
-                        "name": "Mild consequence",
+                        "name": "2nd Mild consequence (Skill condition)",
                         "type": "consequence",
                         "data": {
                             "label": "Mild",
-                            "icon": "2",
-                            "flags": {
-                                "fatex": {
-                                    "skillReferenceSettings": {
-                                        "conjunction": 0
+                            "icon": "2"
+                        },
+                        "flags": {
+                            "fatex": {
+                                "skillReferenceSettings": {
+                                    "conjunction": 0
+                                },
+                                "skillReferences": [
+                                    {
+                                        "skill": "Physique",
+                                        "condition": 4,
+                                        "operator": 4
                                     },
-                                    "skillReferences": [
-                                        {
-                                            "skill": "Physique",
-                                            "condition": 4,
-                                            "operator": 4
-                                        }
-                                    ]
-                                }
+                                    {
+                                        "skill": "Will",
+                                        "condition": 4,
+                                        "operator": 4
+                                    }
+                                ]
                             }
                         }
                     },

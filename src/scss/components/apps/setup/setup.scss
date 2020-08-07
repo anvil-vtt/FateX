@@ -40,7 +40,7 @@
     }
 }
 
-.fatex__sheet_setup_action {
+.fatex__sheet_setup__action {
     cursor: pointer;
 
     border: 1px solid $primary-color;
@@ -57,7 +57,7 @@
         background-color: rgba(0, 0, 0, 0.3);
     }
 
-    &.fatex__sheet_setup_action--disabled {
+    &.fatex__sheet_setup__action--disabled {
         pointer-events: none;
         opacity: 0.3;
     }
@@ -76,6 +76,12 @@
 
 .fatex__sheet_setup__type {
     margin-bottom: $component-padding * 2;
+
+    .fatex__headline__actions {
+        font-size: 10px;
+        opacity: 1;
+        pointer-events: all;
+    }
 }
 
 .fatex__sheet_setup__groups {
@@ -87,10 +93,11 @@
     padding: $component-padding;
     width: 50%;
     min-width: 180px;
-}
 
-.fatex__sheet_setup__group--columns {
-    width: 100%;
+    &:only-child,
+    &.fatex__sheet_setup__group--columns {
+        width: 100%;
+    }
 }
 
 .fatex__sheet_setup__group__label {
@@ -99,6 +106,9 @@
     margin-bottom: $component-padding;
     display: block;
     font-size: 10px;
+
+    position: relative;
+    cursor: pointer;
 }
 
 .fatex__sheet_setup__options--columns {
@@ -141,5 +151,29 @@
     }
 }
 
-.fatex__sheet_setup__headline {
+.fatex__sheet_setup__type__actions {
+    padding: $component-padding $component-padding 0;
+    text-align: center;
+}
+
+.fatex__sheet_setup__type__action {
+    padding: $component-padding;
+    background: $primary-color;
+    color: $headline-color;
+    box-shadow: 2px 2px 4px 0 $primary-color;
+    display: inline-block;
+
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.setup_action--setup-type {
+    @include fa-icon($fa-var-plus);
+}
+
+.setup_action--toggle-type {
+    @include fa-icon($fa-var-sync);
+    cursor: pointer;
 }

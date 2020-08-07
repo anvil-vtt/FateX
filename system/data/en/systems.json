@@ -1,6 +1,5 @@
 [
     "core",
     "accelerated",
-    "condensed",
-    "dfa"
+    "condensed"
 ]

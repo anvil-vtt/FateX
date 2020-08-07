@@ -75,24 +75,43 @@ export class SheetSetup extends FormApplication {
         html.find(".setup_action--clear-skills").click((e) => this._onClear.call(this, e, CLEAR.SKILLS));
         html.find(".setup_action--clear-consequences").click((e) => this._onClear.call(this, e, CLEAR.CONSEQUENCES));
         html.find(".setup_action--clear-aspects").click((e) => this._onClear.call(this, e, CLEAR.ASPECTS));
+
+        // Setup actions
+        html.find(".setup_action--setup-type").click((e) => this._onSetupType.call(this, e));
+        html.find(".setup_action--toggle-type").click((e) => this._onToggleType.call(this, e));
     }
 
     /*************************
      * EVENT HANDLER
      *************************/
 
-    // Old import function
-    async _onImport(event, name) {
+    async _onSetupType(event) {
         event.preventDefault();
 
-        const pack = game.packs.find((p) => p.collection === `fatex.fate-${name}`);
-        const packItems = await pack.getContent();
+        const button = $(event.currentTarget);
+        const type = button.parents(".fatex__sheet_setup__type").first();
+        const entries = type.find("input:checked");
 
-        let itemData = duplicate(packItems);
-        itemData.sort((a, b) => a.flags.fatex.importSort - b.flags.fatex.importSort);
+        if (!entries.length) {
+            return;
+        }
+
+        const itemData = entries.toArray().map((item) => {
+            return JSON.parse(item.dataset.entity);
+        });
 
         await this.actor.createOwnedItem(itemData);
         this.render(true);
+    }
+
+    async _onToggleType(event) {
+        event.preventDefault();
+
+        const button = $(event.currentTarget);
+        const type = button.parents(".fatex__sheet_setup__type, .fatex__sheet_setup__group").first();
+        const entries = type.find("input");
+
+        entries.prop("checked", !entries.first().prop("checked"));
     }
 
     async _onClear(event, type) {

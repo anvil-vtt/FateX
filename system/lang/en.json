@@ -156,7 +156,7 @@
             "Setup": {
                 "Title": "Sheet Setup",
                 "Manage": "Manage",
-                "Setup": "Setup",
+                "Setup": "Setup (Presets)",
                 "Actions": {
                     "Clear": {
                         "Aspects": "Clear aspects",
@@ -164,6 +164,10 @@
                         "Skills": "Clear skills",
                         "Stress": "Clear stress tracks",
                         "Everything": "Clear everything"
+                    },
+                    "Setup": {
+                        "AddToSheet": "Add selected to sheet",
+                        "ToggleSelection": "Toggle selection"
                     }
                 }
             }

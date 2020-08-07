@@ -5,6 +5,13 @@
 export class HandlebarsHelpers {
     static registerHelpers() {
         /**
+         * Converts an object into a json string
+         */
+        Handlebars.registerHelper("stringify", function (arg1) {
+            return JSON.stringify(arg1);
+        });
+
+        /**
          * If-Helper which checks if every nth-loop was reached using modulo
          */
         Handlebars.registerHelper("ifNth", function (nth, options) {
