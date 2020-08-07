@@ -74,18 +74,35 @@
     }
 }
 
-.fatex__character_builder__group {
+.fatex__character_builder__type {
     margin-bottom: $component-padding * 2;
 }
 
-.fatex__character_builder__options {
+.fatex__character_builder__groups {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.fatex__character_builder__group {
     padding: $component-padding;
+}
+
+.fatex__character_builder__group__label {
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: $component-padding;
+    display: block;
+}
+
+.fatex__character_builder__options {
+    padding-right: $component-padding * 2;
 }
 
 .fatex__character_builder__options--columns {
     column-count: 2;
+    column-gap: $component-padding * 4;
 
-    label {
+    .fatex__character_builder__option {
         page-break-inside: avoid;
     }
 }

@@ -14,22 +14,14 @@ export class DataManager {
         return { lang, availableSystems };
     }
 
-    async getSystems(lang, systems) {
-        return Promise.all(Object.keys(systems).map(async (systemName) => this.getSystem(lang, systemName)));
+    async getSystems() {
+        const { lang, availableSystems } = await this.getAvailableSystems();
+
+        return Promise.all(availableSystems.map(async (systemName) => await this.fetchSystemByName(lang, systemName)));
     }
 
-    async getSystem(lang, systemName) {
-        const system = await this.fetchSystem(lang, systemName);
-
-        // Add additional fields
-        system.name = systemName;
-
-        return Promise.resolve(system);
-    }
-
-    async fetchSystem(lang, system) {
-        let response = await fetch(`systems/fatex/data/${lang}/systems/${system}.json`);
-
+    async fetchSystemByName(lang, systemName) {
+        let response = await fetch(`systems/fatex/data/${lang}/systems/${systemName}.json`);
         return response.status === 200 ? await response.json() : {};
     }
 }

@@ -199,11 +199,7 @@ export class Automation extends BaseComponent {
         // Get all actors skills in a unique list of names
         const skills = [
             ...new Set(
-                game.actors
-                    .map((actor) =>
-                        actor.items.entries.filter((item) => item.type === "skill").map((item) => item.name)
-                    )
-                    .flat()
+                game.actors.map((actor) => actor.items.entries.filter((item) => item.type === "skill").map((item) => item.name)).flat()
             ),
         ];
 

@@ -61,10 +61,7 @@ export class CharacterBuilder extends FormApplication {
         };
 
         const dataManager = new DataManager();
-        const { lang, availableSystems } = await dataManager.getAvailableSystems();
-
-        data.availableSystems = availableSystems;
-        data.systems = await dataManager.getSystems(lang, availableSystems);
+        data.systems = await dataManager.getSystems();
 
         return data;
     }

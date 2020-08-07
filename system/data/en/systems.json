@@ -1,5 +1,5 @@
-{
-    "core": "Core",
-    "accelerated": "Accelerated",
-    "condensed": "Condensed"
-}
+[
+    "core",
+    "accelerated",
+    "condensed"
+]
