@@ -9,8 +9,6 @@ module.exports = (env) => {
     environment.watch = environment.watch || false;
     environment.mode = environment.mode || "development";
 
-    const isDevelopment = environment.mode === "development";
-
     return {
         entry: "./src/fatex.js",
         mode: environment.mode,
@@ -21,18 +19,16 @@ module.exports = (env) => {
         },
         devServer: {
             hot: true,
-            publicPath: "/",
             writeToDisk: true,
-            proxy: {
-                "/": {
+            proxy: [
+                {
+                    context: (pathname) => {
+                        return !pathname.match("^/sockjs");
+                    },
                     target: "http://localhost:30000",
                     ws: true,
                 },
-                "^/socksjs-node/": {
-                    target: "http://localhost:8080",
-                    ws: true,
-                },
-            },
+            ],
         },
         module: {
             rules: [
