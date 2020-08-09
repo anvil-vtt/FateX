@@ -2,13 +2,13 @@ import { TemplateActorPicker } from "./TemplateActorPicker.js";
 import { TemplateActorSettings } from "./TemplateActorSettings.js";
 
 export class TemplateActors {
-    static ready() {
-        // Initialize instances in config
-        CONFIG.FateX.applications.templateSettings = new TemplateActorSettings();
-        CONFIG.FateX.applications.templatePicker = new TemplateActorPicker();
-    }
-
     static hooks() {
+        Hooks.once("ready", async function () {
+            // Initialize instances in config
+            CONFIG.FateX.applications.templateSettings = new TemplateActorSettings();
+            CONFIG.FateX.applications.templatePicker = new TemplateActorPicker();
+        });
+
         // Add extra button to foundrys settings menu
         Hooks.on("renderSidebarTab", (app, html) => {
             if (!(app instanceof Settings) || !game.user.isGM) {

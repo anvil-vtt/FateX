@@ -29,6 +29,11 @@ import { StuntSheet } from "./module/item/stunt/StuntSheet.js";
 import { TemplateActors } from "./module/apps/template-actors/TemplateActors.js";
 
 /* -------------------------------- */
+/*	Register hooks      			*/
+/* -------------------------------- */
+TemplateActors.hooks();
+
+/* -------------------------------- */
 /*	System initialization			*/
 /* -------------------------------- */
 Hooks.once("init", async function () {
@@ -87,9 +92,9 @@ Hooks.once("init", async function () {
     });
 });
 
-Hooks.once("ready", async function () {
-    // Initialize TemplateActors
-    TemplateActors.ready();
-});
-
-TemplateActors.hooks();
+// Allow webpack-dev-server to hot-reload the system
+if (process.env.NODE_ENV === "development") {
+    if (module.hot) {
+        module.hot.accept();
+    }
+}

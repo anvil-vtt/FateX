@@ -6,7 +6,8 @@
     "scripts": {
         "watch": "webpack --env.watch",
         "build": "webpack",
-        "build:production": "webpack --env.mode=production"
+        "build:production": "webpack --env.mode=production",
+        "start:dev": "webpack-dev-server --hot"
     },
     "repository": {
         "type": "git",
@@ -27,6 +28,7 @@
         "sass-loader": "^9.0.2",
         "style-loader": "^1.2.1",
         "webpack": "^4.44.1",
-        "webpack-cli": "^3.3.12"
+        "webpack-cli": "^3.3.12",
+        "webpack-dev-server": "^3.11.0"
     }
 }
