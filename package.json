@@ -7,7 +7,7 @@
         "watch": "webpack --env.watch",
         "build": "webpack",
         "build:production": "webpack --env.mode=production",
-        "start:dev": "webpack-dev-server --hot"
+        "start": "webpack-dev-server --hot"
     },
     "repository": {
         "type": "git",
@@ -24,6 +24,7 @@
         "eslint-loader": "^4.0.2",
         "node-sass": "^4.14.1",
         "node-sass-glob-importer": "^5.3.2",
+        "null-loader": "^4.0.0",
         "prettier": "2.0.5",
         "raw-loader": "^4.0.1",
         "sass-loader": "^9.0.2",

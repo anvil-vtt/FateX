@@ -8,6 +8,8 @@ module.exports = (env) => {
     environment.watch = environment.watch || false;
     environment.mode = environment.mode || "development";
 
+    const isDevelopment = environment.mode === "development";
+
     return {
         entry: "./src/fatex.js",
         mode: environment.mode,
@@ -31,10 +33,15 @@ module.exports = (env) => {
         },
         module: {
             rules: [
-                {
-                    test: /\.html$/,
-                    loader: "raw-loader",
-                },
+                isDevelopment
+                    ? {
+                          test: /\.html$/,
+                          loader: "raw-loader",
+                      }
+                    : {
+                          test: /\.html$/,
+                          loader: "null-loader",
+                      },
                 {
                     test: /\.js$/,
                     exclude: /node_modules/,
