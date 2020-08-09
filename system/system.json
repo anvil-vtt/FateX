@@ -13,12 +13,12 @@
         {
             "lang": "en",
             "name": "English",
-            "path": "lang/en.json"
+            "path": "languages/en.json"
         },
         {
             "lang": "de",
             "name": "German",
-            "path": "lang/de.json"
+            "path": "languages/de.json"
         }
     ],
     "minimumCoreVersion": "0.5.2",
