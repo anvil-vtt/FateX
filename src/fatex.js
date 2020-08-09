@@ -18,7 +18,7 @@ import { FateX } from "./config.js";
 import { ActorFate } from "./module/actor/ActorFate.js";
 import { CharacterSheet } from "./module/actor/character/CharacterSheet.js";
 import { HandlebarsHelpers } from "./module/helper/HandlebarsHelpers.js";
-import { TemplatePreloader } from "webpack-import-glob-loader!./module/helper/TemplatePreloader.js";
+import { TemplatePreloader } from "./module/helper/TemplatePreloader.js";
 import { AspectSheet } from "./module/item/aspect/AspectSheet.js";
 import { ConsequenceSheet } from "./module/item/consequence/ConsequenceSheet.js";
 import { ExtraSheet } from "./module/item/extra/ExtraSheet.js";

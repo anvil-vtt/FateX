@@ -2,6 +2,14 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const globImporter = require("node-sass-glob-importer");
 const path = require("path");
+const glob = require("glob");
+
+const allTemplates = () => {
+    return glob
+        .sync("**/*.html", { cwd: path.join(__dirname, "system/templates") })
+        .map((file) => `"systems/fatex/templates/${file}"`)
+        .join(", ");
+};
 
 module.exports = (env) => {
     const environment = env || {};
@@ -45,15 +53,22 @@ module.exports = (env) => {
                 {
                     test: /\.js$/,
                     exclude: /node_modules/,
-                    loader: "eslint-loader",
-                    options: {},
+                    use: [
+                        "eslint-loader",
+                        "webpack-import-glob-loader",
+                        {
+                            loader: "string-replace-loader",
+                            options: {
+                                search: "__ALL_TEMPLATES__",
+                                replace: allTemplates,
+                            },
+                        },
+                    ],
                 },
                 {
                     test: /\.scss$/,
                     use: [
-                        {
-                            loader: "style-loader",
-                        },
+                        "style-loader",
                         {
                             loader: "css-loader",
                             options: {
