@@ -10,11 +10,11 @@ export class ActorFate extends Actor {
      */
     static async create(data, options = {}) {
         // Fallback for manual actor duplication
-        if (data._id) {
+        if (data._id || Object.prototype.hasOwnProperty.call(data, "data")) {
             return super.create(data, options);
         }
 
-        CONFIG.FateX.applications.templatePicker.render(true);
+        return CONFIG.FateX.applications.templatePicker.render(true);
     }
 
     /**
