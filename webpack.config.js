@@ -22,6 +22,7 @@ module.exports = (env) => {
         entry: "./src/fatex.js",
         mode: environment.mode,
         watch: environment.watch,
+        stats: "minimal",
         output: {
             filename: "system.js",
             path: path.resolve(__dirname, "dist"),
