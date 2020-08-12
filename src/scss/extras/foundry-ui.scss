@@ -6,7 +6,8 @@
 #chat-log .message,
 #chat-form textarea,
 #chat-controls div.roll-type-select select,
-.sidebar-tab .directory-header .header-search input {
+.sidebar-tab .directory-header .header-search input,
+#chat-form .cm-s-easymde {
     background: $sheet-background;
 }
 

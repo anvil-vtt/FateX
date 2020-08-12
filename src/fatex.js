@@ -44,6 +44,10 @@ Hooks.once("init", async function () {
     CONFIG.Actor.entityClass = ActorFate;
     CONFIG.Item.entityClass = ItemFate;
 
+    CONFIG.FateX.global.useMarkdown = !![...game.modules.values()].filter((module) => {
+        return module.id === "markdown-editor" && module.active;
+    }).length;
+
     // Preload all needed templates
     await TemplatePreloader.preloadHandlebarsTemplates();
 

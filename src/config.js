@@ -34,4 +34,7 @@ export const FateX = {
         templateSettings: null,
         templatePicker: null,
     },
+    global: {
+        useMarkdown: false,
+    },
 };

@@ -19,7 +19,6 @@
                 </div>
 
                 <div class="fatex__item__collapsible">
-                    {{log stunt}}
                     <span class="fatex__item__collapse fatex__stunt__collapse--toggle {{#if stunt.data.collapsed}}fatex__item__collapse--closed{{/if}}" data-item="{{stunt._id}}"></span>
                 </div>
             </h2>
@@ -27,7 +26,11 @@
             {{#unless stunt.data.collapsed}}
                 {{#ifNotEmpty stunt.data.description}}
                     <div class="fatex__stunt__description">
-                        {{{stunt.data.description}}}
+                        {{#if stunt.data.markdown}}
+                            {{{stunt.data.markdown}}}
+                        {{else}}
+                            {{{stunt.data.description}}}
+                        {{/if}}
                     </div>
                 {{/ifNotEmpty}}
             {{/unless}}

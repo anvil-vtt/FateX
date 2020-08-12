@@ -1,8 +1,19 @@
 import { BaseItem } from "../BaseItem.js";
+import * as marked from "marked";
 
 export class StuntItem extends BaseItem {
     static get entityName() {
         return "stunt";
+    }
+
+    static getActorSheetData(sheetData) {
+        if (CONFIG.FateX.global.useMarkdown) {
+            for (const stunt of sheetData.stunts) {
+                stunt.data.markdown = marked(stunt.data.description);
+            }
+        }
+
+        return sheetData;
     }
 
     static activateActorSheetListeners(html, sheet) {

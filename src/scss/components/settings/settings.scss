@@ -106,12 +106,14 @@ input[type="text"].fatex__setting__range__value {
 }
 
 .fatex__setting__editor__editor {
-    height: 150px;
+    height: 250px;
+    overflow: hidden;
+
     border-bottom: 1px solid $primary-color;
     border-radius: 3px;
 
     > .editor {
-        height: 150px;
+        height: 250px;
     }
 }
 
