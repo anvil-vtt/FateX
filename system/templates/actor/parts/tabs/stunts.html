@@ -8,7 +8,7 @@
     </h2>
 
     {{#each stunts as |stunt stuntIndex|}}
-        <div class="fatex__stunt item" data-item-id="{{stunt._id}}">
+        <div class="fatex__stunt item {{#if stunt.data.collapsed}}fatex__stunt__collapsed{{/if}}" data-item-id="{{stunt._id}}">
             <h2 class="fatex__headline fatex__sortable" data-item-id="{{stunt._id}}">
                 <span>{{stunt.name}}</span>
 
@@ -17,13 +17,20 @@
                     <span class="fatex__item__settings fatex__stunt__settings" data-item="{{stunt._id}}"></span>
                     <span class="fatex__item__delete fatex__stunt__delete" data-item="{{stunt._id}}"></span>
                 </div>
+
+                <div class="fatex__item__collapsible">
+                    {{log stunt}}
+                    <span class="fatex__item__collapse fatex__stunt__collapse--toggle {{#if stunt.data.collapsed}}fatex__item__collapse--closed{{/if}}" data-item="{{stunt._id}}"></span>
+                </div>
             </h2>
 
-            {{#ifNotEmpty stunt.data.description}}
-                <div class="fatex__stunt__description">
-                    {{{stunt.data.description}}}
-                </div>
-            {{/ifNotEmpty}}
+            {{#unless stunt.data.collapsed}}
+                {{#ifNotEmpty stunt.data.description}}
+                    <div class="fatex__stunt__description">
+                        {{{stunt.data.description}}}
+                    </div>
+                {{/ifNotEmpty}}
+            {{/unless}}
         </div>
     {{/each}}
 </div>

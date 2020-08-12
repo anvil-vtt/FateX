@@ -7,4 +7,20 @@
 
 .fatex__stunt {
     padding: $component-padding 0;
+
+    .fatex__headline {
+        padding-right: $component-padding * 4;
+    }
+
+    .fatex__headline__actions {
+        right: 35px;
+    }
+}
+
+.fatex__stunt__collapsed {
+    padding-bottom: 0;
+
+    h2 {
+        margin: 0;
+    }
 }

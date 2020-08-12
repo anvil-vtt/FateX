@@ -98,12 +98,11 @@ if (process.env.NODE_ENV === "development") {
         module.hot.accept();
 
         if (module.hot.status() === "apply") {
-            Object.values(ui.windows).map((app) => {
-                if (Object.prototype.hasOwnProperty.call(_templateCache, app.template)) {
-                    delete _templateCache[app.template];
-                }
-
-                app.render(true);
+            _templateCache = {};
+            TemplatePreloader.preloadHandlebarsTemplates().then(() => {
+                Object.values(ui.windows).map((app) => {
+                    app.render(true);
+                });
             });
         }
     }
