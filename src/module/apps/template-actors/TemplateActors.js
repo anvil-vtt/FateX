@@ -3,10 +3,10 @@ import { TemplateActorSettings } from "./TemplateActorSettings.js";
 
 export class TemplateActors {
     static hooks() {
-        Hooks.once("ready", async function () {
+        Hooks.once("ready", async () => {
             // Initialize instances in config
-            CONFIG.FateX.applications.templateSettings = new TemplateActorSettings();
-            CONFIG.FateX.applications.templatePicker = new TemplateActorPicker();
+            CONFIG.FateX.applications.templateSettings = new TemplateActorSettings({});
+            CONFIG.FateX.applications.templatePicker = new TemplateActorPicker({});
         });
 
         // Add extra button to foundrys settings menu

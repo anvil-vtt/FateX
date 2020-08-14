@@ -36,11 +36,13 @@ TemplateActors.hooks();
 /* -------------------------------- */
 /*	System initialization			*/
 /* -------------------------------- */
-Hooks.once("init", async function () {
+Hooks.once("init", async () => {
     console.log(`FateX | Initializing Fate extended game system`);
 
     // Initialise config
     CONFIG.FateX = FateX;
+
+    // @ts-ignore
     CONFIG.Actor.entityClass = ActorFate;
     CONFIG.Item.entityClass = ItemFate;
 
@@ -102,11 +104,14 @@ if (process.env.NODE_ENV === "development") {
         module.hot.accept();
 
         if (module.hot.status() === "apply") {
-            _templateCache = {};
+            for (let key in _templateCache) {
+                delete _templateCache[key];
+            }
+
             TemplatePreloader.preloadHandlebarsTemplates().then(() => {
-                Object.values(ui.windows).map((app) => {
-                    app.render(true);
-                });
+                for (let application of ui.windows) {
+                    application.render(true);
+                }
             });
         }
     }
