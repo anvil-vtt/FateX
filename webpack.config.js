@@ -57,14 +57,14 @@ module.exports = (env) => {
                 {
                     test: /\.[tj]s$/,
                     use: [
+                        "ts-loader",
+                        "webpack-import-glob-loader",
                         {
                             loader: "eslint-loader",
                             options: {
                                 cache: true,
                             },
                         },
-                        "ts-loader",
-                        "webpack-import-glob-loader",
                         {
                             loader: "string-replace-loader",
                             options: {

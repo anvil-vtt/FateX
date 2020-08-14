@@ -17,6 +17,8 @@
     "license": "MIT",
     "devDependencies": {
         "@types/webpack-env": "^1.15.2",
+        "@typescript-eslint/eslint-plugin": "^3.9.0",
+        "@typescript-eslint/parser": "^3.9.0",
         "clean-webpack-plugin": "^3.0.0",
         "copy-webpack-plugin": "^6.0.3",
         "css-loader": "^4.2.0",

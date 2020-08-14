@@ -41,8 +41,6 @@ Hooks.once("init", async () => {
 
     // Initialise config
     CONFIG.FateX = FateX;
-
-    // @ts-ignore
     CONFIG.Actor.entityClass = ActorFate;
     CONFIG.Item.entityClass = ItemFate;
 
@@ -106,14 +104,14 @@ if (process.env.NODE_ENV === "development") {
         module.hot.accept();
 
         if (module.hot.status() === "apply") {
-            for (let template in _templateCache) {
+            for (const template in _templateCache) {
                 if (Object.prototype.hasOwnProperty.call(_templateCache, template)) {
                     delete _templateCache[template];
                 }
             }
 
             TemplatePreloader.preloadHandlebarsTemplates().then(() => {
-                for (let application in ui.windows) {
+                for (const application in ui.windows) {
                     if (Object.prototype.hasOwnProperty.call(ui.windows, application)) {
                         ui.windows[application].render(true);
                     }
