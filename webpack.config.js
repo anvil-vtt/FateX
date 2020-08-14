@@ -73,14 +73,14 @@ module.exports = (env) => {
                         {
                             loader: "css-loader",
                             options: {
-                                sourceMap: true,
+                                sourceMap: isDevelopment,
                                 url: false,
                             },
                         },
                         {
                             loader: "sass-loader",
                             options: {
-                                sourceMap: true,
+                                sourceMap: isDevelopment,
                                 sassOptions: {
                                     importer: globImporter(),
                                 },
