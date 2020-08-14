@@ -19,7 +19,7 @@ module.exports = (env) => {
     const isDevelopment = environment.mode === "development";
 
     return {
-        entry: "./src/fatex.js",
+        entry: "./src/fatex.ts",
         mode: environment.mode,
         watch: environment.watch,
         stats: "minimal",
@@ -52,10 +52,16 @@ module.exports = (env) => {
                           loader: "null-loader",
                       },
                 {
-                    test: /\.js$/,
+                    test: /\.[tj]s$/,
                     exclude: /node_modules/,
                     use: [
-                        "eslint-loader",
+                        {
+                            loader: "eslint-loader",
+                            options: {
+                                cache: true,
+                            },
+                        },
+                        "ts-loader",
                         "webpack-import-glob-loader",
                         {
                             loader: "string-replace-loader",

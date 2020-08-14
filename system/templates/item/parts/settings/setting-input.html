@@ -10,7 +10,7 @@
             type="text"
             class="fatex__setting__input fatex__input__input"
             name="{{ fieldName }}"
-            value="{{#ifNotEquals field ' '}}{{ field }}{{/ifNotEquals}}"
+            value="{{ field }}"
             {{#if placeholder }}placeholder="{{ localize placeholder}}"{{/if}}
             {{#if dtype }}data-dtype="{{ dtype }}"{{/if}}
         />
