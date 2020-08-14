@@ -12,10 +12,12 @@ const allTemplates = () => {
 };
 
 module.exports = (env) => {
-    const environment = env || {};
-    environment.watch = environment.watch || false;
-    environment.mode = environment.mode || "development";
+    const defaults = {
+        watch: false,
+        mode: "development",
+    };
 
+    const environment = { ...defaults, ...env };
     const isDevelopment = environment.mode === "development";
 
     const config = {
