@@ -1,3 +1,3 @@
-import { BaseComponent } from "../BaseComponent.js";
+import { BaseComponent } from "../BaseComponent";
 
 export class Configuration extends BaseComponent {}

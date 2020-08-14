@@ -1,4 +1,4 @@
-import { BaseComponent } from "../BaseComponent.js";
+import { BaseComponent } from "../BaseComponent";
 
 export const OPERATORS = {
     OPERATOR_EQUALS: 0,

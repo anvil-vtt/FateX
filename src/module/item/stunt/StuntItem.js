@@ -1,4 +1,4 @@
-import { BaseItem } from "../BaseItem.js";
+import { BaseItem } from "../BaseItem";
 import * as marked from "marked";
 
 export class StuntItem extends BaseItem {

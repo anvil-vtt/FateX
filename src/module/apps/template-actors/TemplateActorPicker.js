@@ -1,6 +1,6 @@
-import { ActorFate } from "../../actor/ActorFate.js";
-import { SheetSetup } from "../sheet-setup/SheetSetup.js";
-import { TemplateActorSettings } from "./TemplateActorSettings.js";
+import { ActorFate } from "../../actor/ActorFate";
+import { SheetSetup } from "../sheet-setup/SheetSetup";
+import { TemplateActorSettings } from "./TemplateActorSettings";
 
 export class TemplateActorPicker extends TemplateActorSettings {
     static get defaultOptions() {

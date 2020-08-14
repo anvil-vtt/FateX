@@ -32,6 +32,7 @@
         "prettier": "2.0.5",
         "raw-loader": "^4.0.1",
         "sass-loader": "^9.0.2",
+        "source-map-loader": "^1.0.1",
         "string-replace-loader": "^2.3.0",
         "style-loader": "^1.2.1",
         "ts-loader": "^8.0.2",

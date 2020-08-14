@@ -14,19 +14,19 @@
 
 import "./scss/fatex.scss";
 
-import { FateX } from "./config.js";
-import { ActorFate } from "./module/actor/ActorFate.js";
-import { CharacterSheet } from "./module/actor/character/CharacterSheet.js";
-import { HandlebarsHelpers } from "./module/helper/HandlebarsHelpers.js";
-import { TemplatePreloader } from "./module/helper/TemplatePreloader.js";
-import { AspectSheet } from "./module/item/aspect/AspectSheet.js";
-import { ConsequenceSheet } from "./module/item/consequence/ConsequenceSheet.js";
-import { ExtraSheet } from "./module/item/extra/ExtraSheet.js";
-import { ItemFate } from "./module/item/ItemFate.js";
-import { SkillSheet } from "./module/item/skill/SkillSheet.js";
-import { StressSheet } from "./module/item/stress/StressSheet.js";
-import { StuntSheet } from "./module/item/stunt/StuntSheet.js";
-import { TemplateActors } from "./module/apps/template-actors/TemplateActors.js";
+import { FateX } from "./config";
+import { ActorFate } from "./module/actor/ActorFate";
+import { CharacterSheet } from "./module/actor/character/CharacterSheet";
+import { HandlebarsHelpers } from "./module/helper/HandlebarsHelpers";
+import { TemplatePreloader } from "./module/helper/TemplatePreloader";
+import { AspectSheet } from "./module/item/aspect/AspectSheet";
+import { ConsequenceSheet } from "./module/item/consequence/ConsequenceSheet";
+import { ExtraSheet } from "./module/item/extra/ExtraSheet";
+import { ItemFate } from "./module/item/ItemFate";
+import { SkillSheet } from "./module/item/skill/SkillSheet";
+import { StressSheet } from "./module/item/stress/StressSheet";
+import { StuntSheet } from "./module/item/stunt/StuntSheet";
+import { TemplateActors } from "./module/apps/template-actors/TemplateActors";
 
 /* -------------------------------- */
 /*	Register hooks      			*/
@@ -98,19 +98,25 @@ Hooks.once("init", async () => {
     });
 });
 
-// Allow webpack-dev-server to hot-reload the system
+/* -------------------------------- */
+/*	Webpack HMR                     */
+/* -------------------------------- */
 if (process.env.NODE_ENV === "development") {
     if (module.hot) {
         module.hot.accept();
 
         if (module.hot.status() === "apply") {
-            for (let key in _templateCache) {
-                delete _templateCache[key];
+            for (let template in _templateCache) {
+                if (Object.prototype.hasOwnProperty.call(_templateCache, template)) {
+                    delete _templateCache[template];
+                }
             }
 
             TemplatePreloader.preloadHandlebarsTemplates().then(() => {
-                for (let application of ui.windows) {
-                    application.render(true);
+                for (let application in ui.windows) {
+                    if (Object.prototype.hasOwnProperty.call(ui.windows, application)) {
+                        ui.windows[application].render(true);
+                    }
                 }
             });
         }

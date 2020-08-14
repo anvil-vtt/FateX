@@ -1,3 +1,3 @@
-import { ItemSheetFate } from "../ItemSheetFate.js";
+import { ItemSheetFate } from "../ItemSheetFate";
 
 export class SkillSheet extends ItemSheetFate {}

@@ -1,4 +1,4 @@
-import { StuntItem } from "../stunt/StuntItem.js";
+import { StuntItem } from "../stunt/StuntItem";
 
 export class ExtraItem extends StuntItem {
     static get entityName() {

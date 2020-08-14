@@ -1,5 +1,5 @@
-import { ActorFate } from "../../actor/ActorFate.js";
-import { SheetSetup } from "../sheet-setup/SheetSetup.js";
+import { ActorFate } from "../../actor/ActorFate";
+import { SheetSetup } from "../sheet-setup/SheetSetup";
 
 export class TemplateActorSettings extends FormApplication {
     static get defaultOptions() {

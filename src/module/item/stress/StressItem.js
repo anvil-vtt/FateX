@@ -1,4 +1,4 @@
-import { BaseItem } from "../BaseItem.js";
+import { BaseItem } from "../BaseItem";
 
 const STRESS_LABEL_TYPES = {
     CORE: 0,

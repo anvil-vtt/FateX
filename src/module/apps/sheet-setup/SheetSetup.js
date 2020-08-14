@@ -1,4 +1,4 @@
-import { DataManager } from "./DataManager.js";
+import { DataManager } from "./DataManager";
 
 const CLEAR = {
     EVERYTHING: 0,

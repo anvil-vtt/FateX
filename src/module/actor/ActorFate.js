@@ -2,7 +2,7 @@
  * ActorFate is the default entity class for actors inside the FateX system.
  * Adds custom features based on the system.
  */
-import { TemplateActorSheetFate } from "./template/TemplateActorSheetFate.js";
+import { TemplateActorSheetFate } from "./template/TemplateActorSheetFate";
 
 export class ActorFate extends Actor {
     /**

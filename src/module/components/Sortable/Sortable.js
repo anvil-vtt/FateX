@@ -1,4 +1,4 @@
-import { BaseComponent } from "../BaseComponent.js";
+import { BaseComponent } from "../BaseComponent";
 
 /**
  * Allows all items on the sheet to be sorted.

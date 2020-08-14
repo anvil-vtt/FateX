@@ -1,5 +1,5 @@
-import { TemplateActorPicker } from "./TemplateActorPicker.js";
-import { TemplateActorSettings } from "./TemplateActorSettings.js";
+import { TemplateActorPicker } from "./TemplateActorPicker";
+import { TemplateActorSettings } from "./TemplateActorSettings";
 
 export class TemplateActors {
     static hooks() {

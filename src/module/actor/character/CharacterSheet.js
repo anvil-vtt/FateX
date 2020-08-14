@@ -1,4 +1,4 @@
-import { ActorSheetFate } from "../ActorSheetFate.js";
+import { ActorSheetFate } from "../ActorSheetFate";
 
 /**
  * Class to define character specific changes for the actor sheets.

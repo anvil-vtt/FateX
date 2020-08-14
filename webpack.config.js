@@ -18,10 +18,11 @@ module.exports = (env) => {
 
     const isDevelopment = environment.mode === "development";
 
-    return {
+    const config = {
         entry: "./src/fatex.ts",
         mode: environment.mode,
         watch: environment.watch,
+        devtool: "inline-source-map",
         stats: "minimal",
         output: {
             filename: "system.js",
@@ -53,7 +54,6 @@ module.exports = (env) => {
                       },
                 {
                     test: /\.[tj]s$/,
-                    exclude: /node_modules/,
                     use: [
                         {
                             loader: "eslint-loader",
@@ -70,6 +70,7 @@ module.exports = (env) => {
                                 replace: allTemplates,
                             },
                         },
+                        "source-map-loader",
                     ],
                 },
                 {
@@ -103,4 +104,10 @@ module.exports = (env) => {
             }),
         ],
     };
+
+    if (!isDevelopment) {
+        delete config.devtool;
+    }
+
+    return config;
 };

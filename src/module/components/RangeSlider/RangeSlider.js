@@ -1,4 +1,4 @@
-import { BaseComponent } from "../BaseComponent.js";
+import { BaseComponent } from "../BaseComponent";
 
 /**
  * Extends the input[type="range"] element with an additional input field.

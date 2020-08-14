@@ -1,4 +1,4 @@
-import { BaseComponent } from "../BaseComponent.js";
+import { BaseComponent } from "../BaseComponent";
 
 /**
  * Radio component for actor- and itemsheets.

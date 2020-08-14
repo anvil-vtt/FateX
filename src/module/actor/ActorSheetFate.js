@@ -2,7 +2,7 @@
  * FateX base class for all actor sheets.
  * Defines what information on the actorsheet may be rendered.
  */
-import { SheetSetup } from "../apps/sheet-setup/SheetSetup.js";
+import { SheetSetup } from "../apps/sheet-setup/SheetSetup";
 
 export class ActorSheetFate extends ActorSheet {
     /**

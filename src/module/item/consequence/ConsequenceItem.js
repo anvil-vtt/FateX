@@ -1,5 +1,5 @@
-import { Automation, CONJUNCTIONS } from "../../components/Automation/Automation.js";
-import { BaseItem } from "../BaseItem.js";
+import { Automation, CONJUNCTIONS } from "../../components/Automation/Automation";
+import { BaseItem } from "../BaseItem";
 
 export const CONSEQUENCE_TYPES = {
     CONSEQUENCE: 0,
@@ -86,9 +86,7 @@ export class ConsequenceItem extends BaseItem {
         for (const reference of skillReferences) {
             const skill = Automation.getActorSkillByName(item.actor, reference.skill);
             const isConditionMet =
-                skill === undefined
-                    ? false
-                    : Automation.checkSkillCondition(skill, reference.condition, reference.operator);
+                skill === undefined ? false : Automation.checkSkillCondition(skill, reference.condition, reference.operator);
 
             if (conjunction === CONJUNCTIONS.OR && isConditionMet) {
                 return false;
