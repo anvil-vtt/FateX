@@ -1,3 +1,4 @@
+/* eslint-disable */
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const globImporter = require("node-sass-glob-importer");

@@ -16,6 +16,7 @@
     "author": "Patrick Bauer (Daddi#2333)",
     "license": "MIT",
     "devDependencies": {
+        "@types/marked": "^1.1.0",
         "@types/webpack-env": "^1.15.2",
         "@typescript-eslint/eslint-plugin": "^3.9.0",
         "@typescript-eslint/parser": "^3.9.0",

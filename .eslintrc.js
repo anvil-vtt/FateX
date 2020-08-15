@@ -13,6 +13,8 @@ module.exports = {
     },
     plugins: ["@typescript-eslint"],
     rules: {
+        "@typescript-eslint/no-unused-vars": [1, { argsIgnorePattern: "^_" }],
         "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/ban-ts-comment": "off",
     },
 };
