@@ -161,5 +161,7 @@ export class SheetSetup extends FormApplication {
         this.render(true);
     }
 
-    async _updateObject() {}
+    async _updateObject() {
+        // No update necessary.
+    }
 }

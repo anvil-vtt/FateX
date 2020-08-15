@@ -151,5 +151,7 @@ export class TemplateActorSettings extends FormApplication {
         CONFIG.FateX.applications.templatePicker.render();
     }
 
-    async _updateObject() {}
+    async _updateObject() {
+        // No update necessary.
+    }
 }

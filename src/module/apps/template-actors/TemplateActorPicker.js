@@ -74,5 +74,7 @@ export class TemplateActorPicker extends TemplateActorSettings {
         await this.close();
     }
 
-    async _updateObject() {}
+    async _updateObject() {
+        // No update necessary
+    }
 }

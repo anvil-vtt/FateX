@@ -12,5 +12,8 @@ module.exports = {
         node: true,
     },
     plugins: ["@typescript-eslint"],
-    rules: {},
+    rules: {
+        "no-undef": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+    },
 };

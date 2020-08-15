@@ -17,9 +17,7 @@ export class BaseItem {
      */
     static activateActorSheetListeners(html, sheet) {
         if (!this.entityName) {
-            throw new Error(
-                "A subclass of the BaseItem must provide an entityName field or implement their own _onItemAdd() method."
-            );
+            throw new Error("A subclass of the BaseItem must provide an entityName field or implement their own _onItemAdd() method.");
         }
 
         // Default listeners for adding, configuring and deleting embedded items
@@ -45,7 +43,9 @@ export class BaseItem {
     /**
      * Allows each item to add listeners to its sheet
      */
-    static activateListeners() {}
+    static activateListeners() {
+        // Do nothing by default
+    }
 
     /*************************
      * EVENT HANDLER
@@ -59,9 +59,7 @@ export class BaseItem {
         e.stopPropagation();
 
         if (!this.entityName) {
-            throw new Error(
-                "A subclass of the BaseItem must provide an entityName field or implement their own _onItemAdd() method."
-            );
+            throw new Error("A subclass of the BaseItem must provide an entityName field or implement their own _onItemAdd() method.");
         }
 
         const itemData = {
