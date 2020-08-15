@@ -39,7 +39,7 @@ export class SkillItem extends BaseItem {
     /**
      * Add a list of available ranks to the sheet
      */
-    static getSheetData(sheetData) {
+    static getSheetData(sheetData, _item) {
         sheetData.availableRanks = [];
 
         for (let i = 0; i <= 9; i++) {

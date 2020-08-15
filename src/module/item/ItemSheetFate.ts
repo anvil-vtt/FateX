@@ -1,3 +1,6 @@
+import { BaseItem } from "./BaseItem";
+import { BaseComponent } from "../components/BaseComponent";
+
 export class ItemSheetFate extends ItemSheet {
     /** @override */
     static get defaultOptions() {
@@ -23,11 +26,11 @@ export class ItemSheetFate extends ItemSheet {
         data.isOwnedBy = this.actor ? this.actor.name : false;
 
         // Let every item type manipulate its own sheet data
-        data = CONFIG.FateX.itemTypes[data.item.type].getSheetData(data, this);
+        data = (CONFIG.FateX.itemClasses[data.item.type] as typeof BaseItem).getSheetData(data, this);
 
         // Let every component manipulate an items sheet data
         for (const sheetComponent in CONFIG.FateX.sheetComponents.item) {
-            data = CONFIG.FateX.sheetComponents.item[sheetComponent].getSheetData(data, this);
+            data = (CONFIG.FateX.sheetComponents.item[sheetComponent] as typeof BaseComponent).getSheetData(data, this);
         }
 
         return data;

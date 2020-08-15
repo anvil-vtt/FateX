@@ -7,7 +7,7 @@ export class ItemFate extends Item {
         const data = this.data;
 
         // Let every itemType prepare itselt
-        const item = CONFIG.FateX.itemTypes[data.type] as typeof BaseItem;
+        const item = CONFIG.FateX.itemClasses[data.type] as typeof BaseItem;
         item.prepareItemData(data, this);
     }
 }

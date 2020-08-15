@@ -10,6 +10,7 @@
     "types": ["foundry-pc-types", "webpack-env"],
     "sourceMap": true,
     "strict": true,
+    "allowJs": true,
 
     //TODO: enable again
     "noImplicitAny": false,                /* Raise error on expressions and declarations with an implied 'any' type. */

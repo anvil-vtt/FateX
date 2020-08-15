@@ -27,7 +27,7 @@ export abstract class BaseItem {
     /**
      * Allows each item to add data to its own sheet.
      */
-    static getSheetData(sheetData) {
+    static getSheetData(sheetData, _item) {
         return sheetData;
     }
 
