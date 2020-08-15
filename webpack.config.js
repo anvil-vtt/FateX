@@ -26,6 +26,9 @@ module.exports = (env) => {
         watch: environment.watch,
         devtool: "inline-source-map",
         stats: "minimal",
+        resolve: {
+            extensions: [".wasm", ".mjs", ".ts", ".js", ".json"],
+        },
         output: {
             filename: "system.js",
             path: path.resolve(__dirname, "dist"),

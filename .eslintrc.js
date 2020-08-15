@@ -13,7 +13,6 @@ module.exports = {
     },
     plugins: ["@typescript-eslint"],
     rules: {
-        "no-undef": "off",
         "@typescript-eslint/explicit-module-boundary-types": "off",
     },
 };
