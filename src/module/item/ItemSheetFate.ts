@@ -50,6 +50,6 @@ export class ItemSheetFate extends ItemSheet {
         }
 
         // Let every item type add its own sheet listeners
-        CONFIG.FateX.itemTypes[this.entity.type].activateListeners(html, this);
+        (CONFIG.FateX.itemClasses[this.entity.type] as typeof BaseItem).activateListeners(html, this);
     }
 }

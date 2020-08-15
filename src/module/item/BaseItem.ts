@@ -41,7 +41,7 @@ export abstract class BaseItem {
     /**
      * Allows each item to add listeners to its sheet
      */
-    static activateListeners() {
+    static activateListeners(_html, _item) {
         // Do nothing by default
     }
 
