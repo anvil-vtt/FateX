@@ -1,6 +1,6 @@
 <div class="fatex__stress">
     {{#each stress as |stress stressIndex|}}
-        <div class="fatex__stress__track fatex__stress__track--index-{{stressIndex}} item" data-item-id="{{stress._id}}">
+        <div class="fatex__stress__track fatex__stress__track--index-{{stressIndex}} item {{#if stress.isDisabled}}fatex__helper--is-disabled{{/if}}" data-item-id="{{stress._id}}">
             <h2 class="fatex__headline fatex__sortable" data-item-id="{{stress._id}}">
                 <span>{{stress.name}}</span>
                 <div class="fatex__headline__actions fatex__item__actions">

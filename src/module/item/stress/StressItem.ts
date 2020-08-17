@@ -1,4 +1,5 @@
 import { BaseItem } from "../BaseItem";
+import { Automation } from "../../components/Automation/Automation";
 
 const STRESS_LABEL_TYPES = {
     CORE: 0,
@@ -18,19 +19,23 @@ export class StressItem extends BaseItem {
         html.find(".fatex__stress__track__item__box").click((e) => this._onStressBoxToggle.call(this, e, sheet));
     }
 
-    static prepareItemData(item) {
-        const numberOfBoxes = parseInt(item.data.size);
+    static prepareItemData(data, item) {
+        const numberOfBoxes = parseInt(data.data.size);
 
         // Add boxes with prepared data
-        item.boxes = [...Array(numberOfBoxes).keys()].map((i) => ({
-            isChecked: item.data.value & (2 ** i),
-            label: this._getBoxLabel(item, i),
+        data.boxes = [...Array(numberOfBoxes).keys()].map((i) => ({
+            isChecked: data.data.value & (2 ** i),
+            label: this._getBoxLabel(data, i),
         }));
 
         // Add filler boxes if needed
-        item.fillers = numberOfBoxes % 4 === 0 ? [] : [...Array(4 - (item.data.size % 4)).keys()];
+        data.fillers = numberOfBoxes % 4 === 0 ? [] : [...Array(4 - (data.data.size % 4)).keys()];
 
-        return item;
+        if (item.isOwned) {
+            data.isDisabled = Automation.getDisabledState(item);
+        }
+
+        return data;
     }
 
     static _getBoxLabel(item, i) {

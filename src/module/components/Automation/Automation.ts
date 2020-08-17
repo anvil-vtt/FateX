@@ -272,4 +272,32 @@ export class Automation extends BaseComponent {
             conjunction: this.getReferenceSetting(entity, "conjunction", CONJUNCTIONS.OR),
         };
     }
+
+    static getDisabledState(item) {
+        let disabled = false;
+        const skillReferences = Automation.getSkillReferences(item);
+        const conjunction = Automation.getReferenceSetting(item, "conjunction", CONJUNCTIONS.OR);
+
+        // Disable by default if automation was enabled
+        if (conjunction === CONJUNCTIONS.OR && skillReferences.length) {
+            disabled = true;
+        }
+
+        // Not disabled if one of the skillReferences conditions is met
+        for (const reference of skillReferences) {
+            const skill = Automation.getActorSkillByName(item.actor, reference.skill);
+            const isConditionMet =
+                skill === undefined ? false : Automation.checkSkillCondition(skill, reference.condition, reference.operator);
+
+            if (conjunction === CONJUNCTIONS.OR && isConditionMet) {
+                return false;
+            }
+
+            if (conjunction === CONJUNCTIONS.AND && !isConditionMet) {
+                return true;
+            }
+        }
+
+        return disabled;
+    }
 }
