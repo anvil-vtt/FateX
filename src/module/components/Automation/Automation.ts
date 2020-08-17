@@ -205,7 +205,9 @@ export class Automation extends BaseComponent {
 
         // Sort alphabetically
         if (sort) {
-            skills.sort((a, b) => b - a);
+            skills.sort(function (a, b) {
+                return a.toLowerCase().localeCompare(b.toLowerCase());
+            });
         }
 
         return skills;
