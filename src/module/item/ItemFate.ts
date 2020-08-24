@@ -1,5 +1,4 @@
 export class ItemFate extends Item {
-    /** @override */
     prepareData() {
         super.prepareData();
         const data = this.data;

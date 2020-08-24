@@ -2,7 +2,6 @@ import { ItemFate } from "./ItemFate";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export class ItemSheetFate extends ItemSheet<any, ItemFate> {
-    /** @override */
     static get defaultOptions() {
         const options = super.defaultOptions;
 
@@ -38,12 +37,10 @@ export class ItemSheetFate extends ItemSheet<any, ItemFate> {
         return data;
     }
 
-    /** @override */
     get template() {
         return `systems/fatex/templates/item/${this.item.data.type}-sheet.html`;
     }
 
-    /** @override */
     activateListeners(html) {
         super.activateListeners(html);
 
