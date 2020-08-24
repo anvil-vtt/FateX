@@ -1,6 +1,6 @@
 {
     "Actor": {
-        "types": ["character"],
+        "types": ["character", "group"],
         "templates": {},
         "character": {
             "biography": {
@@ -10,10 +10,16 @@
                 "current": 3,
                 "refresh": 3
             }
+        },
+        "group": {
+            "groupType": "manual",
+            "options": {
+                "showArtwork": true
+            }
         }
     },
     "Item": {
-        "types": ["stress", "aspect", "consequence", "skill", "stunt", "extra"],
+        "types": ["stress", "aspect", "consequence", "skill", "stunt", "extra", "actorReference", "tokenReference"],
         "templates": {
             "base": {
                 "disabled": false,
@@ -56,6 +62,13 @@
             "templates": ["base"],
             "shortDescription": "",
             "collapsed": false
+        },
+        "actorReference": {
+            "id": ""
+        },
+        "tokenReference": {
+            "id": "",
+            "scene": ""
         }
     }
 }

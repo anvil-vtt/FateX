@@ -1,0 +1,22 @@
+.actor_group_panel_wrapper {
+    flex: none;
+
+    .actor_group_panel__groups {
+        overflow-y: visible;
+    }
+}
+
+.actor_group_panel__group__images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    margin: 0 8px 0 2px;
+    flex: 0 0 48px;
+}
+
+.sidebar-tab .directory-list .directory-item .actor_group_panel__group__image {
+    margin: 0;
+    height: 24px;
+    width: 24px;
+    flex: 0;
+}

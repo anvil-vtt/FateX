@@ -14,6 +14,7 @@
 
 import "./scss/fatex.scss";
 
+import { FateX } from "./config";
 import { ActorFate } from "./module/actor/ActorFate";
 import { CharacterSheet } from "./module/actor/character/CharacterSheet";
 import { HandlebarsHelpers } from "./module/helper/HandlebarsHelpers";
@@ -25,13 +26,10 @@ import { ItemFate } from "./module/item/ItemFate";
 import { SkillSheet } from "./module/item/skill/SkillSheet";
 import { StressSheet } from "./module/item/stress/StressSheet";
 import { StuntSheet } from "./module/item/stunt/StuntSheet";
-import { TemplateActors } from "./module/apps/template-actors/TemplateActors";
-import { FateX } from "./config";
-
-/* -------------------------------- */
-/*	Register hooks      			*/
-/* -------------------------------- */
-TemplateActors.hooks();
+import { TemplateActorsFeature } from "./module/apps/template-actors/TemplateActorsFeature";
+import { ActorGroupSheet } from "./module/actor/ActorGroupSheet";
+import { ActorGroupPanel } from "./module/apps/actor-groups/ActorGroupPanel";
+import { ReferenceSheet } from "./module/item/references/ReferenceSheet";
 
 /* -------------------------------- */
 /*	System initialization			*/
@@ -65,6 +63,11 @@ Hooks.once("init", async () => {
         makeDefault: true,
     });
 
+    Actors.registerSheet("FateX", ActorGroupSheet, {
+        types: ["group"],
+        makeDefault: true,
+    });
+
     // Register FateX item sheets
     Items.registerSheet("FateX", StressSheet, {
         types: ["stress"],
@@ -95,7 +98,18 @@ Hooks.once("init", async () => {
         types: ["extra"],
         makeDefault: true,
     });
+
+    Items.registerSheet("FateX", ReferenceSheet, {
+        types: ["actorReference", "tokenReference"],
+        makeDefault: true,
+    });
 });
+
+/* -------------------------------- */
+/*	Register hooks      			*/
+/* -------------------------------- */
+TemplateActorsFeature.hooks();
+ActorGroupPanel.hooks();
 
 /* -------------------------------- */
 /*	Webpack HMR                     */

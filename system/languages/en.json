@@ -121,6 +121,12 @@
                 "ShortDescription": "Short Description",
                 "ShortDescriptionHelp": "Short description for this extra"
             },
+            "Reference": {
+                "EditItem": "Edit Reference",
+                "Name": "Reference name",
+                "ID": "ID",
+                "Scene": "Scene"
+            },
             "Automation": {
                 "Headline": "Automation",
                 "BoxesHeadline": "Box Automation",
@@ -206,6 +212,9 @@
                 "Help": "To add new templates, click on the <strong>Configuration</strong> button below (also available in the header bar).",
                 "Explain": "Templates are a great way to have different sheets for different kinds of actors. We suggest using <strong>different templates</strong> for PCs, NPCs, and Mooks, as all of them have <strong>different sheet requirements</strong>."
             }
+        },
+        "ActorGroups": {
+            "New": "New group"
         }
     }
 }

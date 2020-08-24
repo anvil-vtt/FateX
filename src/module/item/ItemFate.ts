@@ -4,6 +4,8 @@ export class ItemFate extends Item {
         const data = this.data;
 
         // Let every itemType prepare itself
-        CONFIG.FateX.itemClasses[data.type].prepareItemData(data, this);
+        if (CONFIG.FateX.itemClasses[data.type]) {
+            CONFIG.FateX.itemClasses[data.type].prepareItemData(data, this);
+        }
     }
 }

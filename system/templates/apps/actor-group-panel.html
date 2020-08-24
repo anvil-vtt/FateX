@@ -1,0 +1,16 @@
+{{#*inline "entityPartial"}}
+    <li class="actor_group_panel__group directory-item entity actor flexrow" data-entity-id="{{this._id}}">
+        <div class="actor_group_panel__group__images">
+            {{#each this.images}}
+                <img class="profile actor-profile actor_group_panel__group__image" title="" src="{{this}}" />
+            {{/each}}
+        </div>
+        <h4 class="entity-name"><a>{{this.name}}</a></h4>
+    </li>
+{{/inline}}
+
+<div class="directory-list actor_group_panel__groups">
+    {{#each groups}}
+        {{> entityPartial}}
+    {{/each~}}
+</div>

@@ -33,10 +33,10 @@ export class TemplateActorSettings extends FormApplication<any, any, any> {
     activateListeners(html) {
         super.activateListeners(html);
 
-        html.find(".fatex__template__create").click((e) => this._createTemplate.call(this, e));
-        html.find(".fatex__template__delete").click((e) => this._deleteTemplate.call(this, e));
-        html.find(".fatex__template__configure").click((e) => this._configureTemplate.call(this, e));
-        html.find(".fatex__template__duplicate").click((e) => this._duplicateTemplate.call(this, e));
+        html.find(".fatex__template__create").on("click", (e) => this._createTemplate.call(this, e));
+        html.find(".fatex__template__delete").on("click", (e) => this._deleteTemplate.call(this, e));
+        html.find(".fatex__template__configure").on("click", (e) => this._configureTemplate.call(this, e));
+        html.find(".fatex__template__duplicate").on("click", (e) => this._duplicateTemplate.call(this, e));
     }
 
     /*************************

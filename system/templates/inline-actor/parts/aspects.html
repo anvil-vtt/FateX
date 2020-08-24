@@ -1,0 +1,9 @@
+<div class="fatex__aspects">
+    {{#each aspects as |aspect aspectIndex|}}
+        <div class="fatex__aspect fatex__input fatex__sortable item" data-item-id="{{aspect._id}}">
+            <div class="fatex__aspect__actions_wrapper">
+                <div class="fatex__aspect__input fatex__input__input" data-placeholder="{{aspect.data.label}}" contenteditable="true" data-item-id="{{aspect._id}}">{{{aspect.data.value}}}</div>
+            </div>
+        </div>
+    {{/each}}
+</div>

@@ -40,6 +40,11 @@ export class TemplateActorPicker extends TemplateActorSettings {
             type: "character",
         };
 
+        if (this.options.folder) {
+            // @ts-ignore
+            data.folder = this.options.folder;
+        }
+
         // Create actor without template data
         const newActor = await ActorFate._create(data, { renderSheet: true });
 
@@ -67,6 +72,11 @@ export class TemplateActorPicker extends TemplateActorSettings {
         delete fateXFlags.isTemplateActor;
 
         delete template.img;
+
+        if (this.options.folder) {
+            // @ts-ignore
+            template.folder = this.options.folder;
+        }
 
         // Create the real actor
         await ActorFate._create(template, { renderSheet: true });

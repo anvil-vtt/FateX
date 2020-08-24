@@ -1,6 +1,6 @@
 <div class="fatex__header">
     <div class="fatex__header__name">
-        <label class="fatex__header__label" for="name">{{localize "FAx.Sheet.Name"}}</label>
+        <label class="fatex__header__label" for="name">{{#if isToken}}Token-{{/if}}{{localize "FAx.Sheet.Name"}}</label>
         <input class="fatex__header__name__input fatex__input" name="name" type="text" value="{{actor.name}}">
     </div>
 

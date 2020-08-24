@@ -1,0 +1,48 @@
+<form autocomplete="off" class="{{cssClass}}">
+
+    <div class="fatex__inline_sheet">
+        <h2 class="fatex__inline_sheet__headline fatex__headline">
+            <img alt="{{actor.name}}" data-edit="img" src="{{actor.img}}" />
+            <span class="fatex__inline_sheet__headline__name">{{actor.name}}</span>
+            <input class="fatex__inline_sheet__headline__fp" name="data.fatepoints.current" type="number" value="{{data.fatepoints.current}}">
+        </h2>
+
+        <div class="fatex__inline_sheet__content">
+            <div class="fatex__inline_sheet__front">
+                {{> "systems/fatex/templates/inline-actor/parts/aspects.html"}}
+            </div>
+
+            <div class="fatex__inline_sheet__back">
+                {{> "systems/fatex/templates/inline-actor/parts/consequences.html"}}
+                {{> "systems/fatex/templates/inline-actor/parts/stress.html"}}
+            </div>
+        </div>
+    </div>
+
+
+    {{!--<div class="desk">
+
+        <div class="desk__header">
+            <div class="fatex__header">
+                <div class="fatex__header__name">
+                    <label class="fatex__header__label" for="name">{{#if isToken}}Token-{{/if}}{{localize "FAx.Sheet.Name"}}</label>
+                    <input class="fatex__header__name__input fatex__input" name="name" type="text" value="{{actor.name}}">
+                </div>
+
+                <div class="fatex__header__fate-points">
+                    <label class="fatex__header__label fatex__header__label--center" for="name">{{localize "FAx.Sheet.FatePoints"}}</label>
+
+                    <div class="fatex__header__fate-points__wrapper">
+                        <input class="fatex__header__fp__input" name="data.fatepoints.current" type="text" value="{{data.fatepoints.current}}">
+                        <span class="fatex__header__fatepoint_divider"> / </span>
+                        <input class="fatex__header__refresh__input" name="data.fatepoints.refresh" type="text" value="{{data.fatepoints.refresh}}">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="desk__aspects">
+            {{> "systems/fatex/templates/actor/parts/tabloid/aspects.html"}}
+        </div>
+    </div>--}}
+</form>

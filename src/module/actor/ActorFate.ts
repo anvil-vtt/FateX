@@ -3,6 +3,7 @@
  * Adds custom features based on the system.
  */
 import { TemplateActorSheetFate } from "./template/TemplateActorSheetFate";
+import { getImageFromReference, getReferencesByGroupType } from "../helper/ActorGroupHelper";
 
 export class ActorFate extends Actor {
     /**
@@ -20,7 +21,10 @@ export class ActorFate extends Actor {
     /**
      * Open template picker instead of showing creation dialog
      */
-    static async createDialog(_data = {}, _options = {}): Promise<any> {
+    static async createDialog(data = {}, _options = {}): Promise<any> {
+        // @ts-ignore
+        CONFIG.FateX.applications.templatePicker.options.folder = data.folder;
+
         return CONFIG.FateX.applications.templatePicker?.render(true);
     }
 
@@ -56,6 +60,9 @@ export class ActorFate extends Actor {
         return super.create(data, options);
     }
 
+    /**
+     * Re-render all open FateX applications as soon a single actor is updated (used for TemplateActorSettings and TemplateActorPicker)
+     */
     render(force = false, options = {}) {
         // @ts-ignore
         super.render(force, options);
@@ -65,6 +72,9 @@ export class ActorFate extends Actor {
         }
     }
 
+    /**
+     * Return a specific sheet class for actor templates
+     */
     get _sheetClass() {
         if (this.isTemplateActor) {
             return TemplateActorSheetFate;
@@ -73,12 +83,22 @@ export class ActorFate extends Actor {
         return super._sheetClass;
     }
 
+    /**
+     * Returns true if the current actor is an actor template
+     */
     get isTemplateActor() {
         return !!this.getFlag("fatex", "isTemplateActor");
     }
 
+    /**
+     * Hides some actors from the sidebar directory list
+     */
     get visible() {
         if (this.isTemplateActor) {
+            return false;
+        }
+
+        if (this.data.type === "group") {
             return false;
         }
 
@@ -86,11 +106,41 @@ export class ActorFate extends Actor {
     }
 
     /**
+     * Helper method to only test for visibility based on permissions
+     */
+    get isVisibleByPermission() {
+        return super.visible;
+    }
+
+    get images(): string[] {
+        if (this.data.type != "group") {
+            return [];
+        }
+
+        const images: string[] = [];
+        const actorReferences = getReferencesByGroupType(this.data.data.groupType, this);
+
+        for (let i = 0; i < 4; i++) {
+            // @ts-ignore
+            images.push(actorReferences[i] ? getImageFromReference(actorReferences[i]) : DEFAULT_TOKEN);
+        }
+
+        // @ts-ignore
+        return images;
+    }
+
+    /**
      * Re-prepare the data for all owned items when owned items are deleted.
      * This ensures, that items that reference the deleted item get updated.
+     *
+     * Also rerenders the actor group panel if necessary
      */
     _onModifyEmbeddedEntity(embeddedName, changes, options, userId, context = {}) {
         super._onModifyEmbeddedEntity(embeddedName, changes, options, userId, context);
+
+        if (this.data.type === "group") {
+            CONFIG.FateX.instances.actorGroupsPanel.render(true);
+        }
 
         if (embeddedName === "OwnedItem") {
             this.items.forEach((item) => item.prepareData());

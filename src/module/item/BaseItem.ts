@@ -151,6 +151,7 @@ export abstract class BaseItem {
         if (!render || sheet.actor.isToken) return;
 
         // We have to reload the item for it to have a sheet
+        // Todo: Fix to use renderSheet option on creation
         const createdItem = sheet.actor.getOwnedItem(newItem._id);
         createdItem.sheet.render(true);
     }

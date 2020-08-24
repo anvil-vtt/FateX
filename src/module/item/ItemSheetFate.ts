@@ -15,7 +15,7 @@ export class ItemSheetFate extends ItemSheet {
         data.isOwnedBy = this.actor ? this.actor.name : false;
 
         // Let every item type manipulate its own sheet data
-        data = CONFIG.FateX.itemClasses[this.item.type].getSheetData(data, this);
+        data = CONFIG.FateX.itemClasses[this.item.type]?.getSheetData(data, this) || data;
 
         // Let every component manipulate an items sheet data
         for (const sheetComponent in CONFIG.FateX.sheetComponents.item) {
@@ -41,6 +41,6 @@ export class ItemSheetFate extends ItemSheet {
         }
 
         // Let every item type add its own sheet listeners
-        CONFIG.FateX.itemClasses[this.item.type].activateListeners(html, this);
+        CONFIG.FateX.itemClasses[this.item.type]?.activateListeners(html, this);
     }
 }
