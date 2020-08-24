@@ -1,7 +1,6 @@
-import { BaseItem } from "./BaseItem";
-import { BaseComponent } from "../components/BaseComponent";
 import { ItemFate } from "./ItemFate";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export class ItemSheetFate extends ItemSheet<any, ItemFate> {
     /** @override */
     static get defaultOptions() {
