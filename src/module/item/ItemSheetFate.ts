@@ -1,7 +1,8 @@
 import { BaseItem } from "./BaseItem";
 import { BaseComponent } from "../components/BaseComponent";
+import { ItemFate } from "./ItemFate";
 
-export class ItemSheetFate extends ItemSheet {
+export class ItemSheetFate extends ItemSheet<any, ItemFate> {
     /** @override */
     static get defaultOptions() {
         const options = super.defaultOptions;
@@ -26,11 +27,13 @@ export class ItemSheetFate extends ItemSheet {
         data.isOwnedBy = this.actor ? this.actor.name : false;
 
         // Let every item type manipulate its own sheet data
-        data = (CONFIG.FateX.itemClasses[data.item.type] as typeof BaseItem).getSheetData(data, this);
+        data = CONFIG.FateX.itemClasses[this.item.type].getSheetData(data, this);
 
         // Let every component manipulate an items sheet data
         for (const sheetComponent in CONFIG.FateX.sheetComponents.item) {
-            data = (CONFIG.FateX.sheetComponents.item[sheetComponent] as typeof BaseComponent).getSheetData(data, this);
+            if (Object.prototype.hasOwnProperty.call(CONFIG.FateX.sheetComponents.item, sheetComponent)) {
+                data = CONFIG.FateX.sheetComponents.item[sheetComponent].getSheetData(data, this);
+            }
         }
 
         return data;
@@ -46,10 +49,12 @@ export class ItemSheetFate extends ItemSheet {
         super.activateListeners(html);
 
         for (const sheetComponent in CONFIG.FateX.sheetComponents.item) {
-            CONFIG.FateX.sheetComponents.item[sheetComponent].activateListeners(html, this);
+            if (Object.prototype.hasOwnProperty.call(CONFIG.FateX.sheetComponents.item, sheetComponent)) {
+                CONFIG.FateX.sheetComponents.item[sheetComponent].activateListeners(html, this);
+            }
         }
 
         // Let every item type add its own sheet listeners
-        (CONFIG.FateX.itemClasses[this.entity.type] as typeof BaseItem).activateListeners(html, this);
+        CONFIG.FateX.itemClasses[this.item.type].activateListeners(html, this);
     }
 }

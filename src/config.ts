@@ -9,8 +9,37 @@ import { ExtraItem } from "./module/item/extra/ExtraItem";
 import { SkillItem } from "./module/item/skill/SkillItem";
 import { StressItem } from "./module/item/stress/StressItem";
 import { StuntItem } from "./module/item/stunt/StuntItem";
+import { BaseItem } from "./module/item/BaseItem";
+import { BaseComponent } from "./module/components/BaseComponent";
 
-export const FateX = {
+export interface FatexConfig {
+    itemClasses: {
+        [key: string]: typeof BaseItem;
+        [key: number]: typeof BaseItem;
+    };
+
+    sheetComponents: {
+        actor: {
+            [key: string]: typeof BaseComponent;
+            [key: number]: typeof BaseComponent;
+        };
+        item: {
+            [key: string]: typeof BaseComponent;
+            [key: number]: typeof BaseComponent;
+        };
+    };
+
+    applications: {
+        [key: string]: typeof Application | null;
+        [key: number]: typeof Application | null;
+    };
+
+    global: {
+        useMarkdown: boolean;
+    };
+}
+
+export const FateX: FatexConfig = {
     itemClasses: {
         stress: StressItem,
         aspect: AspectItem,

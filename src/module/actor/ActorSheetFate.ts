@@ -3,8 +3,6 @@
  * Defines what information on the actorsheet may be rendered.
  */
 import { SheetSetup } from "../apps/sheet-setup/SheetSetup";
-import { BaseItem } from "../item/BaseItem";
-import { BaseComponent } from "../components/BaseComponent";
 
 export class ActorSheetFate extends ActorSheet {
     /**
@@ -57,12 +55,12 @@ export class ActorSheetFate extends ActorSheet {
 
         // Custom sheet listeners for every ItemType
         for (const itemType in CONFIG.FateX.itemClasses) {
-            (CONFIG.FateX.itemClasses[itemType] as typeof BaseItem).activateActorSheetListeners(html, this);
+            CONFIG.FateX.itemClasses[itemType].activateActorSheetListeners(html, this);
         }
 
         // Custom sheet listeners for every SheetComponent
         for (const sheetComponent in CONFIG.FateX.sheetComponents.actor) {
-            (CONFIG.FateX.sheetComponents.actor[sheetComponent] as typeof BaseComponent).activateListeners(html, this);
+            CONFIG.FateX.sheetComponents.actor[sheetComponent].activateListeners(html, this);
         }
     }
 
@@ -101,7 +99,7 @@ export class ActorSheetFate extends ActorSheet {
 
         // Allow every itemtype to add data to the actorsheet
         for (const itemType in CONFIG.FateX.itemClasses) {
-            data = (CONFIG.FateX.itemClasses[itemType] as typeof BaseItem).getActorSheetData(data, this);
+            data = CONFIG.FateX.itemClasses[itemType].getActorSheetData(data, this);
         }
 
         return data;
