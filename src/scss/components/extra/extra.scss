@@ -3,13 +3,30 @@
 
 .fatex__extras__wrapper {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .fatex__extra {
-    width: 50%;
+    width: 100%;
     padding: $component-padding;
+
+    .fatex__headline {
+        padding-right: $component-padding * 4;
+    }
+
+    .fatex__headline__actions {
+        right: 35px;
+    }
 }
 
 .fatex__extra__description {
     font-size: 12px;
+}
+
+.fatex__extra__collapsed {
+    padding-bottom: 0;
+
+    h2 {
+        margin: 0;
+    }
 }
