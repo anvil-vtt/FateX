@@ -1,3 +1,5 @@
+<img alt="GitHub All Releases" src="https://img.shields.io/github/downloads/anvil-vtt/fatex/total"> <img alt="GitHub Releases" src="https://img.shields.io/github/downloads/anvil-vtt/fatex/latest/total"> <img alt="GitHub Release Date" src="https://img.shields.io/github/release-date/anvil-vtt/fatex?label=latest%20release">
+
 # The FateX game system for FoundryVTT
 FateX is the **extended Fate game system** for FoundryVTT. This system allows you to play **any Fate game you want**.
 It provides default options for playing **Fate Core, Fate Accelerated, and Fate Condensed**, but can be used in **all its derivative systems too**.
