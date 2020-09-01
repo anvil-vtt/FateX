@@ -28,11 +28,10 @@
 
     .desk__tabloid {
         flex: 4;
-        min-width: 500px;
+        min-width: 650px;
         display: grid;
         grid-template-columns: 55% 1fr;
         grid-template-rows: min-content min-content 1fr min-content;
-        gap: 1px 1px;
         grid-template-areas: "messages messages" "aspects consequences" "tabs tabs" "copyright copyright";
 
         .desk__aspects {

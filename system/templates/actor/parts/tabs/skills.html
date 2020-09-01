@@ -7,7 +7,13 @@
         </div>
     </h2>
 
-    <div class="fatex__skills__columns">
+    <style>
+        .fatex__skills__columns--{{actor._id}} {
+            grid-template-rows: repeat({{options.numberRows}}, auto);
+        }
+    </style>
+
+    <div class="fatex__skills__columns fatex__skills__columns--{{actor._id}}">
         {{#each skills as |skill skillIndex|}}
             <div class="fatex__skill fatex__input fatex__input--icon fatex__sortable item" data-item-id="{{skill._id}}">
 

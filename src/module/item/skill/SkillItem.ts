@@ -24,6 +24,7 @@ export class SkillItem extends BaseItem {
     static getActorSheetData(sheetData) {
         // Render skill in two columns if necessary
         sheetData.options.enableColumns = sheetData.skills.length >= 8;
+        sheetData.options.numberRows = Math.ceil(sheetData.skills.length / 2);
 
         return sheetData;
     }
