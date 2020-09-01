@@ -1,6 +1,6 @@
 <img alt="GitHub All Releases" src="https://img.shields.io/github/downloads/anvil-vtt/fatex/total"> <img alt="GitHub Releases" src="https://img.shields.io/github/downloads/anvil-vtt/fatex/latest/total"> <img alt="GitHub Release Date" src="https://img.shields.io/github/release-date/anvil-vtt/fatex?label=latest%20release">
 
-# The FateX game system for FoundryVTT
+# The FateX game system for FoundryVTT (EN/DE/ES/FR)
 FateX is the **extended Fate game system** for FoundryVTT. This system allows you to play **any Fate game you want**.
 It provides default options for playing **Fate Core, Fate Accelerated, and Fate Condensed**, but can be used in **all its derivative systems too**.
 
@@ -16,6 +16,30 @@ It's possible to use **different mechanics** for different character types. For 
 **Manifest URL**: https://github.com/anvil-vtt/FateX/releases/latest/download/system.json
 
 For manual installation, use the provided manifest URL in the "*Install System*" popup window while managing game systems.
+
+## Translations
+
+#### German:
+* System translation provided by Daddi#2888
+* German Fate translation by Uhrwerk Verlag
+
+> Deutsche Ausgabe Fate Core:
+> www.uhrwerk-verlag.de • info@uhrwerk-verlag.de   
+> © Uhrwerk Verlag 2015 Authorized translation of the English edition
+ 
+ 
+#### Spanish
+* System translation provided by patoarayas#8224
+
+
+#### French
+* System translation provded by Cougy#6185
+
+---
+
+A big thank you to all who are contributing translations files! You're a great help for the international Fate community! ❤️
+
+If your language isn't represented yet and would like to contribute, please don't hesitate and contact Daddi#2888 on Discord or create a new pull request. 
 
 ## Screenshots
 ![fateX_base_screenshot](https://user-images.githubusercontent.com/1428943/87879320-34960a80-c9ea-11ea-8a56-60a073d28953.jpg)
