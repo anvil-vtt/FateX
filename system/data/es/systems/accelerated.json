@@ -1,0 +1,166 @@
+{
+    "name": "Acelerado",
+    "identifier": "fae",
+    "types": {
+        "Aspects": [
+            {
+                "label": "Basico",
+                "entries": [
+                    {
+                        "name": "Concepto principal",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Concepto principal"
+                        }
+                    },
+                    {
+                        "name": "Complicación",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Complicación"
+                        }
+                    },
+                    {
+                        "name": "Otro aspecto",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Otro"
+                        }
+                    },
+                    {
+                        "name": "Otro aspecto",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Otro"
+                        }
+                    },
+                    {
+                        "name": "Otro aspecto",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Otro"
+                        }
+                    }
+                ]
+            },
+            {
+                "label": "Opcional",
+                "entries": [
+                    {
+                        "name": "Relación",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Relación"
+                        }
+                    },
+                    {
+                        "name": "Aspecto vacio",
+                        "type": "aspect"
+                    }
+                ]
+            }
+        ],
+        "Consequences": [
+            {
+                "entries": [
+                    {
+                        "name": "Consecuencia leve",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Leve",
+                            "icon": "2"
+                        }
+                    },
+                    {
+                        "name": "Segunda consecuencia leve (Condición de habilidad)",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Leve",
+                            "icon": "2"
+                        },
+                        "flags": {
+                            "fatex": {
+                                "skillReferenceSettings": {
+                                    "conjunction": 0
+                                },
+                                "skillReferences": [
+                                    {
+                                        "skill": "Physique",
+                                        "condition": 4,
+                                        "operator": 4
+                                    },
+                                    {
+                                        "skill": "Will",
+                                        "condition": 4,
+                                        "operator": 4
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "Consecuencia moderada",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Moderada",
+                            "icon": "4"
+                        }
+                    },
+                    {
+                        "name": "Consecuencia grave",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Grave",
+                            "icon": "6"
+                        }
+                    }
+                ]
+            }
+        ],
+        "Skills": [
+            {
+                "columns": true,
+                "entries": [
+                    {
+                        "name": "Cauta",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "Ingeniosa",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "Llamativa",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "Vigorosa",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "Rapida",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "Furtiva",
+                        "type": "skill"
+                    }
+                ]
+            }
+        ],
+        "Tracks": [
+            {
+                "entries": [
+                    {
+                        "name": "Estrés",
+                        "type": "stress",
+                        "data": {
+                            "size": 3,
+                            "labelType": 0
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

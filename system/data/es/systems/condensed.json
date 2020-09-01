@@ -1,0 +1,284 @@
+{
+    "name": "Condensado",
+    "identifier": "condensed",
+    "types": {
+        "Aspects": [
+            {
+                "label": "Básico",
+                "entries": [
+                    {
+                        "name": "Concepto principal",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Concepto principal"
+                        }
+                    },
+                    {
+                        "name": "Complicación",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Complicación"
+                        }
+                    },
+                    {
+                        "name": "Relación",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Relación"
+                        }
+                    },
+                    {
+                        "name": "Otro aspecto",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Otro"
+                        }
+                    },
+                    {
+                        "name": "Otro aspecto",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Otro"
+                        }
+                    }
+                ]
+            },
+            {
+                "label": "Opcional",
+                "entries": [
+                    {
+                        "name": "Relación",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Relación"
+                        }
+                    },
+                    {
+                        "name": "Aspecto vacío",
+                        "type": "aspect"
+                    }
+                ]
+            }
+        ],
+        "Consequences": [
+            {
+                "entries": [
+                    {
+                        "name": "Consecuencia leve",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Leve",
+                            "icon": "2"
+                        }
+                    },
+                    {
+                        "name": "Segunda consecuencia leve (Condición de habilidad)",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Leve",
+                            "icon": "2"
+                        },
+                        "flags": {
+                            "fatex": {
+                                "skillReferenceSettings": {
+                                    "conjunction": 0
+                                },
+                                "skillReferences": [
+                                    {
+                                        "skill": "Físico",
+                                        "condition": 4,
+                                        "operator": 4
+                                    },
+                                    {
+                                        "skill": "Voluntad",
+                                        "condition": 4,
+                                        "operator": 4
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "Consecuencia moderada",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Moderada",
+                            "icon": "4"
+                        }
+                    },
+                    {
+                        "name": "Consecuencia grave",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Grave",
+                            "icon": "6"
+                        }
+                    }
+                ]
+            }
+        ],
+        "Skills": [
+            {
+                "columns": true,
+                "entries": [
+                    {
+                        "name": "Conocimiento",
+                        "type": "skill",
+                        "data": {
+                            "description": "Conocimiento mundano y cotidiano. Incluye historia, ciencias y medicina."
+                        }
+                    },
+                    {
+                        "name": "Atletísmo",
+                        "type": "skill",
+                        "data": {
+                            "description": "Medida del potencial físico."
+                        }
+                    },
+                    {
+                        "name": "Robar",
+                        "type": "skill",
+                        "data": {
+                            "description": "Conocimiento y habilidad para traspasar sistemas de seguridad, vaciar carteras y cometer crímenes en general."
+                        }
+                    },
+                    {
+                        "name": "Contactos",
+                        "type": "skill",
+                        "data": {
+                            "description": "Conocer a las personas adecuadas y las conexiones que te puedan ser útiles."
+                        }
+                    },
+                    {
+                        "name": "Máquinas",
+                        "type": "skill",
+                        "data": {
+                            "description": "Habilidad para fabricar y destruir máquinas, artilugios e inventos a lo MacGyver."
+                        }
+                    },
+                    {
+                        "name": "Engañar",
+                        "type": "skill",
+                        "data": {
+                            "description": "Habilidad mara mentir y engañar convincentemente y con aplomo."
+                        }
+                    },
+                    {
+                        "name": "Conducir",
+                        "type": "skill",
+                        "data": {
+                            "description": "Controlar vehículos en circunstancias adversas, hacer piruetas o simplemente sacarle el mayor partido a tu viaje"
+                        }
+                    },
+                    {
+                        "name": "Empatía",
+                        "type": "skill",
+                        "data": {
+                            "description": "Habilidad para juzgar acertadamente el estado de ánimo o las intenciones de alguien."
+                        }
+                    },
+                    {
+                        "name": "Pelear",
+                        "type": "skill",
+                        "data": {
+                            "description": "Habilidad para destacar en el combate cuerpo a cuerpo, ya sea con armas o con los puños"
+                        }
+                    },
+                    {
+                        "name": "Investigar",
+                        "type": "skill",
+                        "data": {
+                            "description": "Estudiar de manera deliberada y meticulosa un misterio para resolverlo."
+                        }
+                    },
+                    {
+                        "name": "Saber",
+                        "type": "skill",
+                        "data": {
+                            "description": "Conocimiento especializado o arcano fuera del alcance de la habilidad de Conocimiento."
+                        }
+                    },
+                    {
+                        "name": "Percepción",
+                        "type": "skill",
+                        "data": {
+                            "description": "Habilidad para dar cuenta de detalles, presentir un problema o simplemente ser mas perceptivo. "
+                        }
+                    },
+                    {
+                        "name": "Físico",
+                        "type": "skill",
+                        "data": {
+                            "description": "Fuerza bruta y resistencia"
+                        }
+                    },
+                    {
+                        "name": "Provocar",
+                        "type": "skill",
+                        "data": {
+                            "description": "Capacidad para incitar a otros para que actuen según tu voluntad a través de la manipulación."
+                        }
+                    },
+                    {
+                        "name": "Carisma",
+                        "type": "skill",
+                        "data": {
+                            "description": "Crear vínculos con otros y trabajar de manera conjunta."
+                        }
+                    },
+                    {
+                        "name": "Recursos",
+                        "type": "skill",
+                        "data": {
+                            "description": "Acceso a recursos materiales (no solo dinero)."
+                        }
+                    },
+                    {
+                        "name": "Disparar",
+                        "type": "skill",
+                        "data": {
+                            "description": "Todo tipo de ataques a distancia, desde armas de fuego, lanzar cuchillos o arco y flechas."
+                        }
+                    },
+                    {
+                        "name": "Sigilo",
+                        "type": "skill",
+                        "data": {
+                            "description": "Evitar ser detectado y esconderte cuando es necesario."
+                        }
+                    },
+                    {
+                        "name": "Voluntad",
+                        "type": "skill",
+                        "data": {
+                            "description": "Fortaleza mental, la capacidad de evitar la tentación o soportar traumas."
+                        }
+                    }
+                ]
+            }
+        ],
+        "Tracks": [
+            {
+                "label": "Estilo Core (Básico)",
+                "entries": [
+                    {
+                        "name": "Estrés físico",
+                        "type": "stress",
+                        "data": {
+                            "size": 4,
+                            "labelType": 0
+                        }
+                    },
+                    {
+                        "name": "Estrés mental",
+                        "type": "stress",
+                        "data": {
+                            "size": 4,
+                            "labelType": 0
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}
