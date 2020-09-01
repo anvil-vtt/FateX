@@ -1,15 +1,6 @@
 @mixin cutoff($size: 10px, $onlytop: 0) {
     @if $onlytop == 0 {
-        clip-path: polygon(
-            0 $size,
-            $size 0%,
-            100% 0%,
-            100% 0%,
-            100% calc(100% - #{$size}),
-            calc(100% - #{$size}) 100%,
-            0 100%,
-            0 100%
-        );
+        clip-path: polygon(0 $size, $size 0%, 100% 0%, 100% 0%, 100% calc(100% - #{$size}), calc(100% - #{$size}) 100%, 0 100%, 0 100%);
     }
 
     @if $onlytop == 1 {
@@ -37,12 +28,7 @@
     align-items: center;
 
     background: $background-color;
-    background: linear-gradient(
-        90deg,
-        transparentize($background-color, 1) 0%,
-        $background-color 33%,
-        $background-color 100%
-    );
+    background: linear-gradient(90deg, transparentize($background-color, 1) 0%, $background-color 33%, $background-color 100%);
 
     position: absolute;
     height: 100%;

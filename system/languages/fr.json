@@ -1,0 +1,203 @@
+{
+    "FateX": "FateX",
+    "FAx": {
+        "name": "FateX",
+        "Global": {
+            "Ladder": {
+                "+8": "Légendaire",
+                "+7": "Épique",
+                "+6": "Fantastique",
+                "+5": "Superbe",
+                "+4": "Excellente",
+                "+3": "Bonne",
+                "+2": "Passable",
+                "+1": "Moyenne",
+                "+0": "Médiocre",
+                "-1": "Mauvais",
+                "-2": "Atroce",
+                "-3": "Catastrophique",
+                "-4": "Horrifiante"
+            },
+            "Actions": {
+                "Configure": "Configurer",
+                "Delete": "Effacer",
+                "Duplicate": "Dupliquer",
+                "Sort": "Trier",
+                "Create": "Créer un acteur vierge",
+                "Choose": "Choisir un modèle"
+            },
+            "BaseItem": "Objet basique"
+        },
+        "Sheet": {
+            "Name": "Nom",
+            "Description": "Description",
+            "FatePoints": "Points Fate",
+            "Aspects": "Aspects",
+            "Consequences": "Conséquences",
+            "Skills": "Compétences",
+            "Stunts": "Prouesses",
+            "Extras": "Extras",
+            "Bio": "Bio",
+            "Artwork": "Illustration",
+            "StressTracks": "Type de Stress",
+            "Tabs": {
+                "SkillsStunts": "Compétences & Prouesses",
+                "Skills": "Compétences",
+                "Stunts": "Prouesses",
+                "Extras": "Extras",
+                "Bio": "Bio"
+            },
+            "Buttons": {
+                "EditMode": "Edition",
+                "SheetSetup": "Paramètres"
+            },
+            "Stress": {
+                "Add": "Ajouter une piste de stress"
+            },
+            "Messages": {
+                "EmptyActor": "Il semblerait que votre personnage soit encore vide. Vous pouvez le modifier à l'aide du menu <strong>édition</strong> ou <strong>paramètres</strong>. Les boutons pour déclencher le mode édition ou paramètre se situe dans la barre de titre"
+            }
+        },
+        "Item": {
+            "Stress": {
+                "Name": "Label de la piste de stress",
+                "EditItem": "Éditer la piste de stress",
+                "Size": "Nombre de cases",
+                "Description": "Description",
+                "DescriptionHelp": "La description sera visible sous la piste de stress.",
+                "Boxes": {
+                    "Label": "Modèle du label des cases",
+                    "Custom": "Label personnalisé des cases",
+                    "CustomHelp": "Lister des caractères unicode séparés par un espace. I.e. \"2 4 6 ☀\"."
+                },
+                "Type": {
+                    "Core": "Core",
+                    "Condensed": "Condensé",
+                    "Custom": "Vierge / Personnalisé"
+                }
+            },
+            "Aspect": {
+                "EditItem": "Éditer un Aspect",
+                "Value": "Texte",
+                "Description": "Description",
+                "DescriptionHelp": "N'est affiché que dans la fenêtre de discussion",
+                "Label": "Label"
+            },
+            "Consequence": {
+                "EditItem": "Éditer une Consequence",
+                "Value": "Texte",
+                "Description": "Description",
+                "DescriptionHelp": "N'est affichée que dans la fenêtre de discussion",
+                "Label": "Label",
+                "LabelHelp": "Un label pour décrire la gravité, tel que \"Légère\" or \"Sévère\".",
+                "Icon": "Icône",
+                "IconHelp": "Habituellement un nombre tel que 2, 4, 6 ou 8. Afficher à gauche.",
+                "Type": {
+                    "Label": "Variante",
+                    "Condition": "Condition",
+                    "Consequence": "Conséquence"
+                }
+            },
+            "Skill": {
+                "Name": "Nom de la compétence",
+                "EditItem": "Éditer une Compétence",
+                "Rank": "Rang",
+                "Description": "Description",
+                "DescriptionHelp": "N'est affichée que dans la fenêtre de discussion"
+            },
+            "Stunt": {
+                "Name": "Titre de la Prouesse",
+                "EditItem": "Éditer une Prouesse",
+                "Description": "Description",
+                "DescriptionHelp": "Une description complète de cette prouesse",
+                "ShortDescription": "Description succinte",
+                "ShortDescriptionHelp": "Une description succinte de cette prouesse"
+            },
+            "Extra": {
+                "Name": "Titre de l'Extra",
+                "EditItem": "Éditer un Extra",
+                "Description": "Description",
+                "DescriptionHelp": "Une description complète de cette extra",
+                "ShortDescription": "Description succinte",
+                "ShortDescriptionHelp": "Une description succinte de cette extra"
+            },
+            "Automation": {
+                "Headline": "Automatisation",
+                "Description": "Aucune condition liée à compétence n'est définie. Veuillez ajouter une ou plusieurs conditions liée à une compétence pour activer l'automatisation.",
+                "AddSkillRef": "Ajouter une condition",
+                "DisableUntil": "Désactiver jusqu'à",
+                "MultipleConditions": "Activer l'automatisation si",
+                "MultipleConditionsMatches": "condition est vraie",
+                "Conjunctions": {
+                    "AND": "chaque",
+                    "OR": "une"
+                },
+                "Operators": {
+                    "OPERATOR_EQUALS": "égale",
+                    "OPERATOR_NOT_EQUALS": "n'est pas égale à",
+                    "OPERATOR_GT": "est plus grand que",
+                    "OPERATOR_LT": "est plus petit que",
+                    "OPERATOR_GTE": "est plus grand ou égale à",
+                    "OPERATOR_LTE": "est plus petit ou égale à"
+                }
+            }
+        },
+        "Dialog": {
+            "ReferenceRemove": "Supprimer cette référence",
+            "ReferenceRemoveText": "Voulez-vous vraiment <strong>supprimer</strong> cette référence ?",
+            "EntityDelete": "Effacer",
+            "EntityDeleteText": "Voulez-vous vraiment effacer de manière <strong>permanente</strong> cette entité ?",
+            "ActorClear": "Enlever ses éléments",
+            "ActorClearText": "Voulez-vous vraiment enlever de cette acteur tout ses éléments <strong>et leur contenu</strong> de manière <strong>permanente</strong> ?",
+            "Confirm": "Confirmer",
+            "Cancel": "Annuler"
+        },
+        "Apps": {
+            "Setup": {
+                "Title": "Paramètres",
+                "Manage": "Gérer",
+                "Setup": "Configuration (Prédéfinis)",
+                "Actions": {
+                    "Clear": {
+                        "Aspects": "Effacer les aspects",
+                        "Consequences": "Effacer les conséquences",
+                        "Skills": "Effacer les compétences",
+                        "Stress": "Effacer les pistes de stress",
+                        "Everything": "Effacer tout"
+                    },
+                    "Setup": {
+                        "AddToSheet": "Ajouter la sélection à la feuille",
+                        "ToggleSelection": "Inverser la sélection"
+                    }
+                }
+            }
+        },
+        "Settings": {
+            "Templates": {
+                "Title": "Modèle de feuille de personnage",
+                "Hint": "Vous permet de définir l'apparence des nouvelles feuilles de personnage.",
+                "Button": "Modèles FateX",
+                "New": "Nouveau modèle",
+                "Copy": "Copier",
+                "App": {
+                    "Title": "Configurer les Modèles",
+                    "Label": "Paramètres",
+                    "CreateNew": "Créer un nouveau modèle",
+                    "Help": "Aucun modèle n'est configuré.<br />Pour ajouter un nouveau modèle, cliquer sur le bouton <strong>Créer un nouveau modèle</strong> (disponible aussi dans la barre de titre)."
+                }
+            }
+        },
+        "Template": {
+            "Picker": {
+                "Title": "Choisir un modèle",
+                "Label": "Modèles",
+                "Configuration": "Configuration",
+                "Empty": "Acteur vide",
+                "CreateEmpty": "Acteur vide",
+                "Or": "ou",
+                "Help": "Pour ajouter un nouveau modèle, cliquer sur le bouton <strong>Configuration</strong> ci-dessous (disponible aussi dans la barre de titre).",
+                "Explain": "Les modèles sont une élégante manière d'avoir différents types de feuille de personnage pour différents acteurs. Nous vous suggérons d'utiliser <strong>différents modèles</strong> pour les PJs, PNJs mineurs, secondaires et majeurs, qui ont tous des <strong>particularités différentes</strong> sur leur feuille."
+            }
+        }
+    }
+}
