@@ -1,13 +1,10 @@
 {
     "name": "fatex",
-    "title": "Fate Extended (FateX)",
+    "title": "FateX - Fate Extended (EN/DE/FR/ES)",
     "description": "An extended implementation of Fate and its derivative systems",
-    "version": "0.6.4",
+    "version": "0.7.0",
     "author": "Patrick Bauer (Daddi#2333)",
-    "scripts": [
-        "system.js"
-    ],
-    "esmodules": [],
+    "scripts": ["system.js"],
     "styles": [],
     "languages": [
         {
