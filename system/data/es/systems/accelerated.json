@@ -4,7 +4,7 @@
     "types": {
         "Aspects": [
             {
-                "label": "Basico",
+                "label": "Básico",
                 "entries": [
                     {
                         "name": "Concepto principal",
@@ -54,7 +54,7 @@
                         }
                     },
                     {
-                        "name": "Aspecto vacio",
+                        "name": "Aspecto vacío",
                         "type": "aspect"
                     }
                 ]
@@ -72,7 +72,7 @@
                         }
                     },
                     {
-                        "name": "Segunda consecuencia leve (Condición de habilidad)",
+                        "name": "Segunda consecuencia leve (condición de habilidad)",
                         "type": "consequence",
                         "data": {
                             "label": "Leve",
@@ -122,27 +122,27 @@
                 "columns": true,
                 "entries": [
                     {
-                        "name": "Cauta",
+                        "name": "Cauto",
                         "type": "skill"
                     },
                     {
-                        "name": "Ingeniosa",
+                        "name": "Ingenioso",
                         "type": "skill"
                     },
                     {
-                        "name": "Llamativa",
+                        "name": "Llamativo",
                         "type": "skill"
                     },
                     {
-                        "name": "Vigorosa",
+                        "name": "Vigoroso",
                         "type": "skill"
                     },
                     {
-                        "name": "Rapida",
+                        "name": "Rápido",
                         "type": "skill"
                     },
                     {
-                        "name": "Furtiva",
+                        "name": "Furtivo",
                         "type": "skill"
                     }
                 ]

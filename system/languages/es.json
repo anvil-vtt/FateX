@@ -5,8 +5,8 @@
         "Global": {
             "Ladder": {
                 "+8": "Legendario",
-                "+7": "Epico",
-                "+6": "Fantastico",
+                "+7": "Épico",
+                "+6": "Fantástico",
                 "+5": "Excelente",
                 "+4": "Enorme",
                 "+3": "Grande",
@@ -26,7 +26,7 @@
                 "Create": "Crear actor",
                 "Choose": "Escoger plantilla"
             },
-            "BaseItem": "Item base"
+            "BaseItem": "Ítem base"
         },
         "Sheet": {
             "Name": "Nombre",
@@ -41,7 +41,7 @@
             "Artwork": "Arte",
             "StressTracks": "Medidores de estrés",
             "Tabs": {
-                "SkillsStunts": "Habilidades y Proezas",
+                "SkillsStunts": "Habilidades y proezas",
                 "Skills": "Habilidades",
                 "Stunts": "Proezas",
                 "Extras": "Extras",
@@ -55,7 +55,7 @@
                 "Add": "Añadir medidor de estrés"
             },
             "Messages": {
-                "EmptyActor": "Parece que tu hoja de personaje esta vacía. Puedes hacer cambios entrando en el <strong>Modo Edición</strong> o en <strong>Configurar Hoja</strong>. Estas opciones las puedes encontrar en la barra superior de esta hoja de personaje."
+                "EmptyActor": "Parece que tu hoja de personaje esta vacía. Puedes hacer cambios entrando en el <strong>Modo edición</strong> o en <strong>Configurar hoja</strong>. Estas opciones las puedes encontrar en la barra superior de esta hoja de personaje."
             }
         },
         "Item": {
@@ -156,7 +156,7 @@
             "Setup": {
                 "Title": "Configurar hoja",
                 "Manage": "Administrar",
-                "Setup": "Opciones (Predefinidas)",
+                "Setup": "Opciones (predefinidas)",
                 "Actions": {
                     "Clear": {
                         "Aspects": "Remover aspectos",
@@ -175,7 +175,7 @@
         "Settings": {
             "Templates": {
                 "Title": "Plantillas de hojas de personaje",
-                "Hint": "Te permite elegir como será la hoja de personajes.",
+                "Hint": "Te permite elegir cómo será la hoja de personajes.",
                 "Button": "Plantillas FateX",
                 "New": "Nueva plantilla",
                 "Copy": "Copiar",
@@ -183,7 +183,7 @@
                     "Title": "Configurar plantillas",
                     "Label": "Opciones",
                     "CreateNew": "Crear nueva plantilla",
-                    "Help": "Aún no hay plantillas configuradas.<br> Para añadir una nueva plantilla haz click en el botón <strong>Crear nueva plantilla</strong> (También disponible en la barra superior)."
+                    "Help": "Aún no hay plantillas configuradas.<br> Para añadir una nueva plantilla haz click en el botón <strong>Crear nueva plantilla</strong> (también disponible en la barra superior)."
                 }
             }
         },
@@ -195,8 +195,8 @@
                 "Empty": "Actor vacío",
                 "CreateEmpty": "Actor vacío",
                 "Or": "o",
-                "Help": "Para añadir nuevas plantillas, haz click en el botón <strong>Configuración</strong> que se encuentra debajo (También lo puedes encontrar en la barra superior).",
-                "Explain": "Las plantillas son una excelente manera de tener diferentes hojas de personaje para distintos tipos de actores. Puedes usar <strong>plantillas diferentes</strong> para PJs, PNJs principales, PNJs secundarios ya que cada uno tiene diferentes <strong>requerimientos</strong>"
+                "Help": "Para añadir nuevas plantillas, haz click en el botón <strong>Configuración</strong> que se encuentra debajo (también lo puedes encontrar en la barra superior).",
+                "Explain": "Las plantillas son una excelente manera de tener diferentes hojas de personaje para distintos tipos de actores. Puedes usar <strong>plantillas diferentes</strong> para PJs, PNJs principales y PNJs secundarios ya que cada uno tiene diferentes <strong>requerimientos</strong>."
             }
         }
     }

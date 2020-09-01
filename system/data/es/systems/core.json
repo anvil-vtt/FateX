@@ -1,5 +1,5 @@
 {
-    "name": "Core (Básico)",
+    "name": "Básico",
     "identifier": "core",
     "types": {
         "Aspects": [
@@ -66,7 +66,7 @@
                         }
                     },
                     {
-                        "name": "Segunda consecuencia leve (Condición de habilidad)",
+                        "name": "Segunda consecuencia leve (condición de habilidad)",
                         "type": "consequence",
                         "data": {
                             "label": "Leve",
@@ -147,14 +147,14 @@
                         "name": "Engañar",
                         "type": "skill",
                         "data": {
-                            "description": "Habilidad mara mentir y engañar convincentemente y con aplomo."
+                            "description": "Habilidad para mentir y engañar convincentemente y con aplomo."
                         }
                     },
                     {
                         "name": "Conducir",
                         "type": "skill",
                         "data": {
-                            "description": "Controlar vehículos en circunstancias adversas, hacer piruetas o simplemente sacarle el mayor partido a tu viaje"
+                            "description": "Controlar vehículos en circunstancias adversas, hacer piruetas o simplemente sacarle el mayor partido a tu viaje."
                         }
                     },
                     {
@@ -168,7 +168,7 @@
                         "name": "Pelear",
                         "type": "skill",
                         "data": {
-                            "description": "Habilidad para destacar en el combate cuerpo a cuerpo, ya sea con armas o con los puños"
+                            "description": "Habilidad para destacar en el combate cuerpo a cuerpo, ya sea con armas o con los puños."
                         }
                     },
                     {
@@ -196,14 +196,14 @@
                         "name": "Físico",
                         "type": "skill",
                         "data": {
-                            "description": "Fuerza bruta y resistencia"
+                            "description": "Fuerza bruta y resistencia."
                         }
                     },
                     {
                         "name": "Provocar",
                         "type": "skill",
                         "data": {
-                            "description": "Capacidad para incitar a otros para que actuen según tu voluntad a través de la manipulación."
+                            "description": "Capacidad para incitar a otros para que actúen según tu voluntad a través de la manipulación."
                         }
                     },
                     {
