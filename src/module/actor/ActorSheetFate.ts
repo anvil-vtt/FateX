@@ -29,7 +29,7 @@ export class ActorSheetFate extends ActorSheet {
                 },
             ],
             scrollY: [".desk__content"],
-            width: 860,
+            width: 900,
         });
 
         return options;
