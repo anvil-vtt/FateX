@@ -1,0 +1,203 @@
+{
+    "FateX": "FateX",
+    "FAx": {
+        "name": "FateX",
+        "Global": {
+            "Ladder": {
+                "+8": "Legendario",
+                "+7": "Épico",
+                "+6": "Fantástico",
+                "+5": "Excelente",
+                "+4": "Enorme",
+                "+3": "Grande",
+                "+2": "Bueno",
+                "+1": "Normal",
+                "+0": "Mediocre",
+                "-1": "Malo",
+                "-2": "Terrible",
+                "-3": "Catastrófico",
+                "-4": "Horrible"
+            },
+            "Actions": {
+                "Configure": "Configurar",
+                "Delete": "Eliminar",
+                "Duplicate": "Duplicar",
+                "Sort": "Ordenar",
+                "Create": "Crear actor",
+                "Choose": "Escoger plantilla"
+            },
+            "BaseItem": "Ítem base"
+        },
+        "Sheet": {
+            "Name": "Nombre",
+            "Description": "Descripción",
+            "FatePoints": "Puntos Fate",
+            "Aspects": "Aspectos",
+            "Consequences": "Consecuencias",
+            "Skills": "Habilidades",
+            "Stunts": "Proezas",
+            "Extras": "Extras",
+            "Bio": "Bio",
+            "Artwork": "Arte",
+            "StressTracks": "Medidores de estrés",
+            "Tabs": {
+                "SkillsStunts": "Habilidades y proezas",
+                "Skills": "Habilidades",
+                "Stunts": "Proezas",
+                "Extras": "Extras",
+                "Bio": "Bio"
+            },
+            "Buttons": {
+                "EditMode": "Modo edición",
+                "SheetSetup": "Configurar hoja"
+            },
+            "Stress": {
+                "Add": "Añadir medidor de estrés"
+            },
+            "Messages": {
+                "EmptyActor": "Parece que tu hoja de personaje esta vacía. Puedes hacer cambios entrando en el <strong>Modo edición</strong> o en <strong>Configurar hoja</strong>. Estas opciones las puedes encontrar en la barra superior de esta hoja de personaje."
+            }
+        },
+        "Item": {
+            "Stress": {
+                "Name": "Nombre del medidor de estrés",
+                "EditItem": "Editar medidor",
+                "Size": "Número de casillas",
+                "Description": "Descripción",
+                "DescriptionHelp": "La descripción se mostrará sobre las casillas de estrés.",
+                "Boxes": {
+                    "Label": "Estilo de casilla",
+                    "Custom": "Casillas de estilo personalizado",
+                    "CustomHelp": "Ingresa una lista de caracteres <strong>unicode</strong> separados por espacios. Ejemplo: \"2 4 6 ☀\"."
+                },
+                "Type": {
+                    "Core": "Básico",
+                    "Condensed": "Condensado",
+                    "Custom": "En blanco / Personalizado"
+                }
+            },
+            "Aspect": {
+                "EditItem": "Aspecto",
+                "Value": "Texto",
+                "Description": "Descripción",
+                "DescriptionHelp": "Solo se muestra cuando es enviada al chat",
+                "Label": "Etiqueta"
+            },
+            "Consequence": {
+                "EditItem": "Consecuencia",
+                "Value": "Texto",
+                "Description": "Descripción",
+                "DescriptionHelp": "Solo se muestra cuando es enviada al chat",
+                "Label": "Etiqueta",
+                "LabelHelp": "Una etiqueta que describa su severidad, como \"Leve\" o \"Grave\".",
+                "Icon": "Icono",
+                "IconHelp": "Usualmente un número como 2, 4, 6 o 8. Se muestra a la izquierda.",
+                "Type": {
+                    "Label": "Variante",
+                    "Condition": "Condición",
+                    "Consequence": "Consecuencia"
+                }
+            },
+            "Skill": {
+                "Name": "Nombre de la habilidad",
+                "EditItem": "Habilidad",
+                "Rank": "Rango",
+                "Description": "Descripción",
+                "DescriptionHelp": "Solo se muestra cuando es enviada al chat"
+            },
+            "Stunt": {
+                "Name": "Nombre de la proeza",
+                "EditItem": "Proeza",
+                "Description": "Descripción",
+                "DescriptionHelp": "Descripción detallada de la proeza",
+                "ShortDescription": "Descripción breve",
+                "ShortDescriptionHelp": "Descripción acotada de la proeza"
+            },
+            "Extra": {
+                "Name": "Nombre del Extra",
+                "EditItem": "Extra",
+                "Description": "Descripción",
+                "DescriptionHelp": "Descripción detallada del Extra",
+                "ShortDescription": "Descripción breve",
+                "ShortDescriptionHelp": "Descripción acotada del Extra"
+            },
+            "Automation": {
+                "Headline": "Automatización",
+                "Description": "No hay condiciones de habilidad configuradas. Añade una o más condiciónes para habilitar la automatización.",
+                "AddSkillRef": "Añadir condición de habilidad",
+                "DisableUntil": "Deshabilitar hasta",
+                "MultipleConditions": "Habilitar automatización si",
+                "MultipleConditionsMatches": "coinciden (las condiciones).",
+                "Conjunctions": {
+                    "AND": "todas",
+                    "OR": "algunas"
+                },
+                "Operators": {
+                    "OPERATOR_EQUALS": "es igual",
+                    "OPERATOR_NOT_EQUALS": "no es igual",
+                    "OPERATOR_GT": "es mayor que",
+                    "OPERATOR_LT": "es menor que",
+                    "OPERATOR_GTE": "es mayor o igual que",
+                    "OPERATOR_LTE": "es menor o igual que"
+                }
+            }
+        },
+        "Dialog": {
+            "ReferenceRemove": "Eliminar referencia",
+            "ReferenceRemoveText": "¿Estás seguro que deseas eliminar <strong>permanentemente</strong> esta referencia?",
+            "EntityDelete": "Eliminar",
+            "EntityDeleteText": "¿Estás seguro que deseas eliminar <strong>permanentemente</strong> esta entidad?",
+            "ActorClear": "Eliminar componente",
+            "ActorClearText": "¿Seguro deseas eliminar <strong>permanentemente</strong> este componente y <strong>todo</strong> su contenido asociado de este actor?",
+            "Confirm": "Confirmar",
+            "Cancel": "Cancelar"
+        },
+        "Apps": {
+            "Setup": {
+                "Title": "Configurar hoja",
+                "Manage": "Administrar",
+                "Setup": "Opciones (predefinidas)",
+                "Actions": {
+                    "Clear": {
+                        "Aspects": "Remover aspectos",
+                        "Consequences": "Remover consecuencias",
+                        "Skills": "Remover habilidades",
+                        "Stress": "Remover medidores de estrés",
+                        "Everything": "Remover todo"
+                    },
+                    "Setup": {
+                        "AddToSheet": "Añadir seleccionados",
+                        "ToggleSelection": "Invertir selección"
+                    }
+                }
+            }
+        },
+        "Settings": {
+            "Templates": {
+                "Title": "Plantillas de hojas de personaje",
+                "Hint": "Te permite elegir cómo será la hoja de personajes.",
+                "Button": "Plantillas FateX",
+                "New": "Nueva plantilla",
+                "Copy": "Copiar",
+                "App": {
+                    "Title": "Configurar plantillas",
+                    "Label": "Opciones",
+                    "CreateNew": "Crear nueva plantilla",
+                    "Help": "Aún no hay plantillas configuradas.<br> Para añadir una nueva plantilla haz click en el botón <strong>Crear nueva plantilla</strong> (también disponible en la barra superior)."
+                }
+            }
+        },
+        "Template": {
+            "Picker": {
+                "Title": "Elige una plantilla",
+                "Label": "Plantillas",
+                "Configuration": "Configuración",
+                "Empty": "Actor vacío",
+                "CreateEmpty": "Actor vacío",
+                "Or": "o",
+                "Help": "Para añadir nuevas plantillas, haz click en el botón <strong>Configuración</strong> que se encuentra debajo (también lo puedes encontrar en la barra superior).",
+                "Explain": "Las plantillas son una excelente manera de tener diferentes hojas de personaje para distintos tipos de actores. Puedes usar <strong>plantillas diferentes</strong> para PJs, PNJs principales y PNJs secundarios ya que cada uno tiene diferentes <strong>requerimientos</strong>."
+            }
+        }
+    }
+}
