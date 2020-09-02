@@ -55,7 +55,7 @@
                 "Add": "Ajouter une piste de stress"
             },
             "Messages": {
-                "EmptyActor": "Il semblerait que votre personnage soit encore vide. Vous pouvez le modifier à l'aide du menu <strong>édition</strong> ou <strong>paramètres</strong>. Les boutons pour déclencher le mode édition ou paramètre se situe dans la barre de titre"
+                "EmptyActor": "Il semblerait que votre personnage soit encore vide. Vous pouvez le modifier à l'aide du menu <strong>édition</strong> ou <strong>paramètres</strong>. Les boutons pour déclencher le mode édition ou paramètre se situent dans la barre de titre"
             }
         },
         "Item": {
