@@ -23,7 +23,7 @@ For manual installation, use the provided manifest URL in the "*Install System*"
 * System translation provided by Daddi#2888
 * German Fate translation by Uhrwerk Verlag
 
-> Deutsche Ausgabe Fate Core:
+> Deutsche Ausgabe Fate:
 > www.uhrwerk-verlag.de • info@uhrwerk-verlag.de   
 > © Uhrwerk Verlag 2015 Authorized translation of the English edition
  
