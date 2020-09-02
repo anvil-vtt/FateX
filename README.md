@@ -30,10 +30,19 @@ For manual installation, use the provided manifest URL in the "*Install System*"
  
 #### Spanish
 * System translation provided by patoarayas#8224
+* Spanish Fate Core and Accelerated translation by Nosolorol
+* Spanish Fate Condensed translation by 1d12monos
+  
+> Edición en Español de Fate básico y acelerado:
+> www.nosolorol.es • atencionalcliente@nosolorol.com 
+> Copyright © 2015 Nosolorol, S.L. por la edición en castellano.
+
+> SRD en Español de Fate Condensado:
+> www.fate.1d12monos.com bajo licencia CC-BY 4.0
 
 
 #### French
-* System translation provded by Cougy#6185
+* System translation provided by Cougy#6185
 
 ---
 
