@@ -5,7 +5,7 @@
 </p>
 
 <p>
-<img src="https://user-images.githubusercontent.com/1428943/92243016-077db880-eec1-11ea-95e9-20881f5869cd.jpg" width="48%" /> <img src="https://user-images.githubusercontent.com/1428943/92243022-0b113f80-eec1-11ea-9594-50f02ad6d719.jpg" width="48%" /> <img src="https://user-images.githubusercontent.com/1428943/92243024-0c426c80-eec1-11ea-983e-429ba5fc6cd3.jpg" width="48%" /> 
+<img src="https://user-images.githubusercontent.com/1428943/92243016-077db880-eec1-11ea-95e9-20881f5869cd.jpg" width="48%" /> <img src="https://user-images.githubusercontent.com/1428943/92243022-0b113f80-eec1-11ea-9594-50f02ad6d719.jpg" width="48%" /> <img src="https://user-images.githubusercontent.com/1428943/92243024-0c426c80-eec1-11ea-983e-429ba5fc6cd3.jpg" width="48%" /> <img src="https://user-images.githubusercontent.com/1428943/92244504-4d3b8080-eec3-11ea-8f90-662bc1bf8bb6.jpg" width="48%" />
 </p>
 
 FateX is the **extended Fate game system** for FoundryVTT. This system allows you to play **any Fate game you want**.
@@ -66,11 +66,7 @@ A big thank you to all who are contributing translations files! You're a great h
 
 If your language isn't represented yet and would like to contribute, please don't hesitate and contact Daddi#2888 on Discord or create a new pull request. 
 
-## Screenshots
-![fateX_base_screenshot](https://user-images.githubusercontent.com/1428943/87879320-34960a80-c9ea-11ea-8a56-60a073d28953.jpg)
-
-
-## MIT License
+## License
 
 Copyright (c) 2020 Patrick Bauer
 
