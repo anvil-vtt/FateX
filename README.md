@@ -1,7 +1,7 @@
 # The FateX game system for FoundryVTT (EN/DE/ES/FR)
 
 <p align="center">
-<img alt="GitHub All Releases" src="https://img.shields.io/github/downloads/anvil-vtt/fatex/total" /> <img alt="GitHub Releases" src="https://img.shields.io/github/downloads/anvil-vtt/fatex/latest/total" /> <img alt="GitHub Release Date" src="https://img.shields.io/github/release-date/anvil-vtt/fatex?label=latest%20release" />
+<img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/anvil-vtt/fatex"> <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/anvil-vtt/fatex"> <img alt="GitHub All Releases" src="https://img.shields.io/github/downloads/anvil-vtt/fatex/total" /> <img alt="GitHub Releases" src="https://img.shields.io/github/downloads/anvil-vtt/fatex/latest/total" /> <img alt="GitHub Release Date" src="https://img.shields.io/github/release-date/anvil-vtt/fatex?label=latest%20release" /> <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/anvil-vtt/fatex/FateX%20CI"> <img alt="GitHub" src="https://img.shields.io/github/license/anvil-vtt/fatex"> <a href="https://github.com/anvil-vtt/FateX/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/anvil-vtt/FateX"></a> <a href="https://github.com/anvil-vtt/FateX/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/anvil-vtt/FateX"></a> <a href="https://github.com/anvil-vtt/FateX/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/anvil-vtt/FateX"></a> 
 </p>
 
 <p>
