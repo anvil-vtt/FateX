@@ -1,0 +1,270 @@
+{
+    "name": "Core",
+    "identifier": "core",
+    "types": {
+        "Aspects": [
+            {
+                "label": "Basique",
+                "entries": [
+                    {
+                        "name": "Concept",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Concept"
+                        }
+                    },
+                    {
+                        "name": "Problème",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Problème"
+                        }
+                    },
+                    {
+                        "name": "Nouvel Aspect",
+                        "type": "aspect"
+                    },
+                    {
+                        "name": "Nouvel Aspect",
+                        "type": "aspect"
+                    },
+                    {
+                        "name": "Nouvel Aspect",
+                        "type": "aspect"
+                    }
+                ]
+            },
+            {
+                "label": "Option",
+                "entries": [
+                    {
+                        "name": "Parenté",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Parenté"
+                        }
+                    },
+                    {
+                        "name": "Autre aspect",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Autre"
+                        }
+                    }
+                ]
+            }
+        ],
+        "Consequences": [
+            {
+                "entries": [
+                    {
+                        "name": "Conséquence Légère",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Légère",
+                            "icon": "2"
+                        }
+                    },
+                    {
+                        "name": "2ème conséquence Légère (Lié à une Compétence)",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Légère",
+                            "icon": "2"
+                        },
+                        "flags": {
+                            "fatex": {
+                                "skillReferenceSettings": {
+                                    "conjunction": 0
+                                },
+                                "skillReferences": [
+                                    {
+                                        "skill": "Physique",
+                                        "condition": 4,
+                                        "operator": 4
+                                    },
+                                    {
+                                        "skill": "Volonté",
+                                        "condition": 4,
+                                        "operator": 4
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "Conséquence Modérée",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Modérée",
+                            "icon": "4"
+                        }
+                    },
+                    {
+                        "name": "Consequence Grave",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Grave",
+                            "icon": "6"
+                        }
+                    }
+                ]
+            }
+        ],
+        "Skills": [
+            {
+                "columns": true,
+                "entries": [
+                    {
+                        "name": "Athlétisme",
+                        "type": "skill",
+                        "data": {
+                            "description": "Représente votre niveau d'aptitude physique. Les prouesses d'Athlétisme se concentre sur les déplacements, sauts, obstacles et l'esquive d'attaques."
+                        }
+                    },
+                    {
+                        "name": "Cambriolage",
+                        "type": "skill",
+                        "data": {
+                            "description": "Couvre les aptitudes à voler et entrer par effraction dans les endroits interdits. Les prouesses de Cambriolage accordent des bonus aux différents actes criminels, de la planification à l'évasion."
+                        }
+                    },
+                    {
+                        "name": "Combat",
+                        "type": "skill",
+                        "data": {
+                            "description": "Couvre toutes les formes de combat au contact, aussi bien avec que sans armes. Les prouesses de combat inclut des armes et techniques particulières."
+                        }
+                    },
+                    {
+                        "name": "Conduite",
+                        "type": "skill",
+                        "data": {
+                            "description": "Diriger des véhicules lors de circonstances éreintantes, effectuer des manœuvres périlleuses, et plus simplement tirer le meilleur de votre monture. Les prouesses de Conduite peuvent être des manœuvres particulières, votre véhicule spéciale, ou la capacité à utiliser Conduite à la place d'une autre compétence tel que Cambriolage ou Académique dans certaines circonstances."  
+                        }
+                    },
+                    {
+                        "name": "Combat à distance",
+                        "type": "skill",
+                        "data": {
+                            "description": "Toutes les pratiques de combat à distance, que cela soit les armes à feu, les couteaux de lancer, ou les arcs et flèches. Les prouesses de Combat à distance permettent de viser, de dégainer rapidement, ou d'avoir toujours une arme à portée de main."
+                        }
+                    },
+                    {
+                        "name": "Discrétion",
+                        "type": "skill",
+                        "data": {
+                            "description": "Éviter de se faire repérer quand vous avez besoin de vous cacher. Les prouesses de Discrétion vous permettent de disparaître au vu et au su de tous, de vous mélanger à la foule, ou de vous déplacer dans les ombres discrètement."
+                        }
+                    },
+                    {
+                        "name": "Empathie",
+                        "type": "skill",
+                        "data": {
+                            "description": "Connaître et remarquer les changements d'humeur d'une personne. Les prouesses d'Empathie vous permettent d'évaluer une foule, détecter les mensonges ou aider une personne à récupérer une conséquence mentale."
+                        }
+                    },
+                    {
+                        "name": "Enquête",
+                        "type": "skill",
+                        "data": {
+                            "description": "Recherches consciencieuses et réfléchies ainsi que la résolution de d'énigmes. S'utilise pour trouver des indices ou reconstituer la scène d'un crime. Les prouesses d'Enquête améliorent votre capacité de déduction et votre recherche d'informations."
+                        }
+                    },
+                    {
+                        "name": "Érudition",
+                        "type": "skill",
+                        "data": {
+                            "description": "Connaissances spécialisées, arcaniques, qui étends les études Académiques, comprenant un thème surnaturel quelconque. Lorsque l'étrange se produit. Les prouesses d'Érudition sont souvent des applications pratiques de connaissances arcaniques, tel que le lancement de sorts. Certain cadre de campagne peuvent remplacer l'Érudition par une compétence différente, ou la combiner avec Académie."
+                        }
+                    },
+                    {
+                        "name": "Intimidation",
+                        "type": "skill",
+                        "data": {
+                            "description": "Mettre en colère et instiller des émotions négatives. Grossière et manipulatrice, vous fera passer pour 'gros con'. Les prouesses d'Intimidation poussent vos adversaires à effectuer des actions idiotes, attirer leur attention sur vous, ou effrayer vos ennemis (si ceux-ci peuvent ressentir la peur)."
+                        }
+                    },
+                    {
+                        "name": "Métiers",
+                        "type": "skill",
+                        "data": {
+                            "description": "Utiliser pour réparer ou détruire des machines, bidouiller un truc, ou sortir de son chapeau une idée de génie à la MacGyver. Les prouesses de Métiers vous permettent d'avoir le gadget adéquate, de gagner un bonus pour construire ou casser des trucs, et si vous fournissez une explication peut remplacer les compétences Cambriolage ou Académie sous certaines circonstances."
+                        }
+                    },
+                    {
+                        "name": "Observation",
+                        "type": "skill",
+                        "data": {
+                            "description": "Remarquer des choses, repérer les ennuis avant qu'ils ne surviennent, et tout simplement être perceptif. C'est le complément de la compétence Enquête, qui est plus minutieuse et lente. Les prouesses d'Observation améliorent vos sens, vos temps de réaction, et vous rendent plus difficile à surprendre."
+                        }
+                    },
+                    {
+                        "name": "Physique",
+                        "type": "skill",
+                        "data": {
+                            "description": "Représente la force brute et l'endurance. Les prouesses Physique vous permettent de réaliser des exploits de force, de lutte, et annuler certaines conséquences physiques. De plus, un rang de Physique élevé vous accorde des cases de stress et des conséquences physiques supplémentaires."
+                        }
+                    },
+                    {
+                        "name": "Relations",
+                        "type": "skill",
+                        "data": {
+                            "description": "Connaître la bonne personne et créer des liens qui peuvent vous aider. Les prouesses de Relations vous accordent des alliés disponibles et un réseau d'informations où que vous soyez dans le monde."
+                        }
+                    },
+                    {
+                        "name": "Resources",
+                        "type": "skill",
+                        "data": {
+                            "description": "Représent les biens matériels ainsi que la capacité à s'en servir. Ce n'est pas toujours sous forme d'argent. Cela peut refléter votre capacité à emprunter à des amis ou à piocher dans l'armurerie d'une organisation. Les prouesses de Ressources vous permettent d'utiliser Ressources à la place de Relations ou de Sociabilité ou d'avoir une invocation gratuite supplémentaire du moment que cela rapporte à court terme."
+                        }
+                    },
+                    {
+                        "name": "Sociabilité",
+                        "type": "skill",
+                        "data": {
+                            "description": "Faire bonne impression, susciter des émotions positives. Là où Intimidation est manipulateur, Sociabilité est sincérité, confiance, et bonne volonté. Les prouesses de Sociabilité vous permettent de lever la foule, d'améliorer votre relationnel, ou de créer des contacts."
+                        }
+                    },
+                    {
+                        "name": "Tromperie",
+                        "type": "skill",
+                        "data": {
+                            "description": "Permet de mentir et de tromper les gens. Les prouesses de Tromperie améliore la crédibilité de vos mensonges ou invente de fausses identités."
+                        }
+                    },
+                    {
+                        "name": "Volonté",
+                        "type": "skill",
+                        "data": {
+                            "description": "Représente la force mentale, votre capacité à surmonter les tentatives de séductions ou éviter les traumatismes. Les prouesses de Volonté vous permettent d'ignorer les conséquences mentales, supporter les douleurs mentales liées aux pouvoirs étranges, et à rester calme face aux intimidations. De plus, un rang de Volonté élevé vous accorde des cases de stress et des conséquences mentales supplémentaires."
+                        }
+                    }
+                ]
+            }
+        ],
+        "Tracks": [
+            {
+                "entries": [
+                    {
+                        "name": "Stress Physique",
+                        "type": "stress",
+                        "data": {
+                            "size": 4,
+                            "labelType": 0
+                        }
+                    },
+                    {
+                        "name": "Stress Mental",
+                        "type": "stress",
+                        "data": {
+                            "size": 4,
+                            "labelType": 0
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

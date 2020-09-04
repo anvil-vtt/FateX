@@ -1,0 +1,63 @@
+{
+    "name": "Dresden Files Accelerated",
+    "identifier": "dfa",
+    "types": {
+        "Conditions": [
+            {
+                "label": "Clued-In Mortal",
+                "disableAutoImport": true,
+                "entries": []
+            },
+            {
+                "label": "Focused Practioner",
+                "disableAutoImport": true,
+                "entries": []
+            },
+            {
+                "label": "Magical Practioner",
+                "disableAutoImport": true,
+                "entries": []
+            },
+            {
+                "label": "One-Percenter",
+                "disableAutoImport": true,
+                "entries": []
+            },
+            {
+                "label": "Reporter",
+                "disableAutoImport": true,
+                "entries": []
+            },
+            {
+                "label": "Erlkings's Huntmaster",
+                "disableAutoImport": true,
+                "entries": []
+            },
+            {
+                "label": "Leader of the People",
+                "disableAutoImport": true,
+                "entries": []
+            },
+            {
+                "label": "Law Enforcement",
+                "disableAutoImport": true,
+                "entries": []
+            },
+            {
+                "label": "Monster Hunter",
+                "disableAutoImport": true,
+                "entries": []
+            },
+            {
+                "label": "Medic",
+                "disableAutoImport": true,
+                "entries": []
+            },
+            {
+                "label": "Criminal",
+                "disableAutoImport": true,
+                "entries": []
+            }
+        ]
+    }
+}

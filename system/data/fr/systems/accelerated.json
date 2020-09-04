@@ -1,0 +1,166 @@
+{
+    "name": "Accéléré",
+    "identifier": "fae",
+    "types": {
+        "Aspects": [
+            {
+                "label": "Basique",
+                "entries": [
+                    {
+                        "name": "Concept",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Concept"
+                        }
+                    },
+                    {
+                        "name": "Problème",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Problème"
+                        }
+                    },
+                    {
+                        "name": "Autre aspect",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Autre"
+                        }
+                    },
+                    {
+                        "name": "Autre aspect",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Autre"
+                        }
+                    },
+                    {
+                        "name": "Autre aspect",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Autre"
+                        }
+                    }
+                ]
+            },
+            {
+                "label": "Option",
+                "entries": [
+                    {
+                        "name": "Parenté",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Parenté"
+                        }
+                    },
+                    {
+                        "name": "Autre Aspect",
+                        "type": "aspect"
+                    }
+                ]
+            }
+        ],
+        "Consequences": [
+            {
+                "entries": [
+                    {
+                        "name": "Conséquence Légère",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Légère",
+                            "icon": "2"
+                        }
+                    },
+                    {
+                        "name": "2ème conséquence Légère (Lié à une Compétence)",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Légère",
+                            "icon": "2"
+                        },
+                        "flags": {
+                            "fatex": {
+                                "skillReferenceSettings": {
+                                    "conjunction": 0
+                                },
+                                "skillReferences": [
+                                    {
+                                        "skill": "Physique",
+                                        "condition": 4,
+                                        "operator": 4
+                                    },
+                                    {
+                                        "skill": "Volonté",
+                                        "condition": 4,
+                                        "operator": 4
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "Conséquence Modérée",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Moderate",
+                            "icon": "4"
+                        }
+                    },
+                    {
+                        "name": "Consequence Grave",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Grave",
+                            "icon": "6"
+                        }
+                    }
+                ]
+            }
+        ],
+        "Skills": [
+            {
+                "columns": true,
+                "entries": [
+                    {
+                        "name": "Soigneux",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "Astucieux",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "Flamboyant",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "Puissant",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "Rapide",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "Sournois",
+                        "type": "skill"
+                    }
+                ]
+            }
+        ],
+        "Tracks": [
+            {
+                "entries": [
+                    {
+                        "name": "Stress",
+                        "type": "stress",
+                        "data": {
+                            "size": 3,
+                            "labelType": 0
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -44,6 +44,9 @@ For manual installation, use the provided manifest URL in the "*Install System*"
 #### French
 * System translation provided by Cougy#6185
 
+> Le Fate Core System, Fate System Toolkit et  Fate Accelerated Edition (que vous pouvez retrouver sur http://www.faterpg.com), produits de Evil Hat Productions, LLC, développés, écrits et édités par Leonard  Balsera, Brian Engard, Jeremy Keller, Ryan Macklin, Mike Olson, Clark Valentine, Amanda Valentine, Fred Hicks et Rob Donoghue sont sous licence d’utilisation Creative Commons Attribution 3.0 Unported. 
+> Le SRD français est lui-même sous licence Creative Commons Attribution 3.0 non transposé (http://creativecommons.org/licenses/by/3.0/deed.fr), par Philippe Marichal, Alain Dutech, Jean-Christophe Cubertafon, Geoffrey Sanchez, “Casque Noir”, Maxime Moraine, Thomas Pereira, Mickael Houet, Gabriel Ollier et François Enders. 
+
 ---
 
 A big thank you to all who are contributing translations files! You're a great help for the international Fate community! ❤️
