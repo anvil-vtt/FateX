@@ -9,3 +9,4 @@ foundry.js
 system/fatex.css.map
 .sass-cache
 dist
+.DS_Store
