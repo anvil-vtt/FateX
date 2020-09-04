@@ -146,4 +146,10 @@ export abstract class BaseItem {
     static get defaultName() {
         return this.entityName.charAt(0).toUpperCase() + this.entityName.slice(1);
     }
+
+    protected static isEditMode(e): boolean {
+        const element = jQuery(e.currentTarget);
+
+        return !!element.closest(".fatex__helper--enable-editmode").length;
+    }
 }

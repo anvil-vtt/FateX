@@ -83,6 +83,10 @@ export class SkillItem extends BaseItem {
     static async _onRollSkill(e, sheet) {
         e.preventDefault();
 
+        if (this.isEditMode(e)) {
+            return;
+        }
+
         const dataset = e.currentTarget.dataset;
         const skill = sheet.actor.getOwnedItem(dataset.itemId);
 
