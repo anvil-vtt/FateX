@@ -54,7 +54,7 @@
                 ]
             }
         ],
-        "Consequences": [
+        "Conséquences": [
             {
                 "entries": [
                     {
@@ -111,7 +111,7 @@
                 ]
             }
         ],
-        "Skills": [
+        "Compétences": [
             {
                 "columns": true,
                 "entries": [
@@ -140,7 +140,7 @@
                         "name": "Conduite",
                         "type": "skill",
                         "data": {
-                            "description": "Diriger des véhicules lors de circonstances éreintantes, effectuer des manœuvres périlleuses, et plus simplement tirer le meilleur de votre monture. Les prouesses de Conduite peuvent être des manœuvres particulières, votre véhicule spéciale, ou la capacité à utiliser Conduite à la place d'une autre compétence tel que Cambriolage ou Académique dans certaines circonstances."  
+                            "description": "Diriger des véhicules lors de circonstances éreintantes, effectuer des manœuvres périlleuses, et plus simplement tirer le meilleur de votre monture. Les prouesses de Conduite peuvent être des manœuvres particulières, votre véhicule spéciale, ou la capacité à utiliser Conduite à la place d'une autre compétence tel que Cambriolage ou Académique dans certaines circonstances."
                         }
                     },
                     {
@@ -244,7 +244,7 @@
                 ]
             }
         ],
-        "Tracks": [
+        "Stress": [
             {
                 "entries": [
                     {

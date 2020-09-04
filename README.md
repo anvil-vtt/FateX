@@ -23,13 +23,16 @@ For manual installation, use the provided manifest URL in the "*Install System*"
 * System translation provided by Daddi#2888
 * German Fate translation by Uhrwerk Verlag
 
-> Deutsche Ausgabe Fate:
+> Deutsche Ausgabe Fate Core und Turbo Fate:
 > www.uhrwerk-verlag.de • info@uhrwerk-verlag.de   
 > © Uhrwerk Verlag 2015 Authorized translation of the English edition
+
+> Deusches SRD:
+> https://srd.faterpg.de/ unter CC-BY 3.0 Lizenz
  
  
 #### Spanish
-* System translation provided by patoarayas#8224
+* System translation provided by patoarayas#8224 (supported by qarkeed#5885)
 * Spanish Fate Core and Accelerated translation by Nosolorol
 * Spanish Fate Condensed translation by 1d12monos
   
@@ -38,15 +41,18 @@ For manual installation, use the provided manifest URL in the "*Install System*"
 > Copyright © 2015 Nosolorol, S.L. por la edición en castellano.
 
 > SRD en Español de Fate Condensado:
-> www.fate.1d12monos.com bajo licencia CC-BY 4.0
+> https://fate.1d12monos.com/ bajo licencia CC-BY 4.0
 
 
 #### French
-* System translation provided by Cougy#6185
+* System translation provided by Cougy#6185 (supported by orome#4359)
 
-> Le Fate Core System, Fate System Toolkit et  Fate Accelerated Edition (que vous pouvez retrouver sur http://www.faterpg.com), produits de Evil Hat Productions, LLC, développés, écrits et édités par Leonard  Balsera, Brian Engard, Jeremy Keller, Ryan Macklin, Mike Olson, Clark Valentine, Amanda Valentine, Fred Hicks et Rob Donoghue sont sous licence d’utilisation Creative Commons Attribution 3.0 Unported. 
+> Le Fate Core System, Fate System Toolkit et Fate Accelerated Edition (que vous pouvez retrouver sur http://www.faterpg.com), produits de Evil Hat Productions, LLC, développés, écrits et édités par Leonard  Balsera, Brian Engard, Jeremy Keller, Ryan Macklin, Mike Olson, Clark Valentine, Amanda Valentine, Fred Hicks et Rob Donoghue sont sous licence d’utilisation Creative Commons Attribution 3.0 Unported. 
 > Le SRD français est lui-même sous licence Creative Commons Attribution 3.0 non transposé (http://creativecommons.org/licenses/by/3.0/deed.fr), par Philippe Marichal, Alain Dutech, Jean-Christophe Cubertafon, Geoffrey Sanchez, “Casque Noir”, Maxime Moraine, Thomas Pereira, Mickael Houet, Gabriel Ollier et François Enders. 
 
+> SRD français: 
+> https://fate-srd.fr/ sous licence CC-BY 3.0
+> https://fate-srd.fr/wikifate/licence
 ---
 
 A big thank you to all who are contributing translations files! You're a great help for the international Fate community! ❤️

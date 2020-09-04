@@ -2,7 +2,7 @@
     "name": "Básico",
     "identifier": "core",
     "types": {
-        "Aspects": [
+        "Aspectos": [
             {
                 "label": "Básico",
                 "entries": [
@@ -54,7 +54,7 @@
                 ]
             }
         ],
-        "Consequences": [
+        "Consecuencias": [
             {
                 "entries": [
                     {
@@ -111,7 +111,7 @@
                 ]
             }
         ],
-        "Skills": [
+        "Habilidades": [
             {
                 "columns": true,
                 "entries": [
@@ -244,7 +244,7 @@
                 ]
             }
         ],
-        "Tracks": [
+        "Estrés": [
             {
                 "entries": [
                     {
