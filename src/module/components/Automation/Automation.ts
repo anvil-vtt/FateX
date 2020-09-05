@@ -14,20 +14,35 @@ export const CONJUNCTIONS = {
     AND: 1,
 };
 
+export const TYPES = {
+    STATUS: 0,
+    BOXES: 1,
+};
+
 export class Automation extends BaseComponent {
     static activateListeners(html, sheet) {
         html.find(".fatex__skill__reference__create").on("click", (e) => this._onAddReference.call(this, e, sheet));
+        html.find(".fatex__skill__reference__create--boxes").on("click", (e) => this._onAddReference.call(this, e, sheet, TYPES.BOXES));
+
         html.find(".fatex__skill__reference__change").on("change", (e) => this._onChangeReference.call(this, e, sheet));
         html.find(".fatex__skill__reference__remove").on("click", (e) => this._onRemoveReference.call(this, e, sheet));
         html.find(".fatex__skill__reference__setting").on("change", (e) => this._onChangeSetting.call(this, e, sheet));
     }
 
     static async getSheetData(sheetData, sheet) {
-        sheetData.skillReferences = this.getSkillReferences(sheet.entity);
+        const skillReferences = this.getSkillReferences(sheet.entity).map((ref, index) => {
+            ref.index = index;
+            return ref;
+        });
+
+        sheetData.statusReferences = skillReferences.filter((ref) => ref.type === TYPES.STATUS || ref.type === undefined);
+        sheetData.boxReferences = skillReferences.filter((ref) => ref.type === TYPES.BOXES);
+
         sheetData.skillReferenceSettings = this.getSkillReferenceSettings(sheet.entity);
         sheetData.availableSkillLevels = this.getAvailableSkillLevels();
         sheetData.availableOperators = this.getAvailableOperators();
         sheetData.availableConjunctions = this.getAvailableConjunctions();
+        sheetData.availableBoxCount = this.getAvailableBoxCount();
         sheetData.availableSkills = this.getAllAvailableSkills();
 
         return sheetData;
@@ -37,11 +52,11 @@ export class Automation extends BaseComponent {
      * EVENT HANDLER
      *************************/
 
-    static async _onAddReference(e, sheet) {
+    static async _onAddReference(e, sheet, type = TYPES.STATUS) {
         e.preventDefault();
 
         const entity = sheet.entity;
-        await this.addSkillReference(entity);
+        await this.addSkillReference(entity, type);
     }
 
     static async _onChangeReference(e, sheet) {
@@ -134,12 +149,16 @@ export class Automation extends BaseComponent {
      *
      * @param entity
      *  The entity for the skill reference to be added
+     *
+     * @param type
+     *  Optional type of the skillReference
      */
-    static async addSkillReference(entity) {
+    static async addSkillReference(entity, type = TYPES.STATUS) {
         const currentReferences = this.getSkillReferences(entity);
         const references = duplicate(currentReferences);
 
         references.push({
+            type: type,
             skill: "",
             condition: 0,
             operator: OPERATORS.OPERATOR_GTE,
@@ -197,11 +216,7 @@ export class Automation extends BaseComponent {
 
     static getAllAvailableSkills(sort = true) {
         // Get all actors skills in a unique list of names
-        const skills = [
-            ...new Set(
-                game.actors.map((actor) => actor.items.entries.filter((item) => item.type === "skill").map((item) => item.name)).flat()
-            ),
-        ];
+        const skills = [...new Set(game.actors.map((actor) => actor.items.entries.filter((item) => item.type === "skill").map((item) => item.name)).flat())];
 
         // Sort alphabetically
         if (sort) {
@@ -231,6 +246,13 @@ export class Automation extends BaseComponent {
         return [...Array(21).keys()].map((i) => ({
             value: i,
             label: `+${i}`,
+        }));
+    }
+
+    static getAvailableBoxCount() {
+        return [...Array(21).keys()].map((i) => ({
+            value: i - 10,
+            label: `${i - 10 >= 0 ? "+" : ""}${i - 10}`,
         }));
     }
 
@@ -275,9 +297,20 @@ export class Automation extends BaseComponent {
         };
     }
 
+    static getBoxModifier(item) {
+        const skillReferences = Automation.getSkillReferences(item).filter((ref) => ref.type === TYPES.BOXES);
+
+        return skillReferences.reduce((modifier, reference) => {
+            const skill = Automation.getActorSkillByName(item.actor, reference.skill);
+            const isConditionMet = skill === undefined ? false : Automation.checkSkillCondition(skill, reference.condition, reference.operator);
+
+            return modifier + (isConditionMet ? reference.argument : 0);
+        }, 0);
+    }
+
     static getDisabledState(item) {
         let disabled = false;
-        const skillReferences = Automation.getSkillReferences(item);
+        const skillReferences = Automation.getSkillReferences(item).filter((ref) => ref.type === TYPES.STATUS || ref.type === undefined);
         const conjunction = Automation.getReferenceSetting(item, "conjunction", CONJUNCTIONS.OR);
 
         // Disable by default if automation was enabled
@@ -288,8 +321,7 @@ export class Automation extends BaseComponent {
         // Not disabled if one of the skillReferences conditions is met
         for (const reference of skillReferences) {
             const skill = Automation.getActorSkillByName(item.actor, reference.skill);
-            const isConditionMet =
-                skill === undefined ? false : Automation.checkSkillCondition(skill, reference.condition, reference.operator);
+            const isConditionMet = skill === undefined ? false : Automation.checkSkillCondition(skill, reference.condition, reference.operator);
 
             if (conjunction === CONJUNCTIONS.OR && isConditionMet) {
                 return false;

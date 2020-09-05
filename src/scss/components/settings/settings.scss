@@ -13,7 +13,7 @@
 }
 
 .fatex__setting--min-height {
-    min-height: 100px;
+    min-height: 70px;
 }
 
 .fatex__setting__pair {
@@ -90,13 +90,15 @@
     display: flex;
 }
 
-input[type="text"].fatex__setting__range__value {
-    font-weight: 900;
-    font-size: 24px;
-    color: $primary-color;
-    text-shadow: 1px 1px 1px $sheet-background;
-    width: 50px;
-    text-align: center;
+.fatex__setting__range {
+    input[type="text"].fatex__setting__range__value {
+        font-weight: 900;
+        font-size: 24px;
+        color: $primary-color;
+        text-shadow: 1px 1px 1px $sheet-background;
+        width: 50px;
+        text-align: center;
+    }
 }
 
 .fatex__setting__text {

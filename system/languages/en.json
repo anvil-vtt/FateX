@@ -123,11 +123,19 @@
             },
             "Automation": {
                 "Headline": "Automation",
+                "BoxesHeadline": "Box Automation",
                 "Description": "There are no skill conditions set yet. Please add one or more skill conditions to enable automation features.",
                 "AddSkillRef": "Add skill condition",
                 "DisableUntil": "Disable until",
+                "BoxesIf": "box(es) if",
                 "MultipleConditions": "Enable automation if",
                 "MultipleConditionsMatches": "condition matches",
+                "Actions": {
+                    "Box": {
+                        "ADD": "Add",
+                        "REMOVE": "Remove"
+                    }
+                },
                 "Conjunctions": {
                     "AND": "every",
                     "OR": "any"

@@ -3,14 +3,27 @@
         <span>{{localize headline}}</span>
 
         <div class="fatex__headline__actions fatex__setting__actions">
-            <span class="fatex__item__add fatex__skill__reference__create">{{localize "FAx.Item.Automation.AddSkillRef"}}</span>
+            <span class="fatex__item__add fatex__skill__reference__create--boxes">{{localize "FAx.Item.Automation.AddSkillRef"}}</span>
         </div>
     </h2>
 
-    {{#each statusReferences as |reference|}}
+    {{#each boxReferences as |reference|}}
         <div class="fatex__skill__reference" data-index="{{reference.index}}">
             <div class="fatex__skill__reference__condition">
-                <span>{{localize "FAx.Item.Automation.DisableUntil"}}</span>
+                <select
+                        class="fatex__skill__reference__change fatex__skill__reference__change--argument"
+                        data-index="{{reference.index}}"
+                        data-field="argument"
+                        data-dtype="Number"
+                >
+                    {{#each ../availableBoxCount as |boxCount|}}
+                        <option value="{{boxCount.value}}"{{#ifEquals reference.argument boxCount.value}} selected="selected"{{/ifEquals}}>
+                            {{boxCount.label}}
+                        </option>
+                    {{/each}}
+                </select>
+
+                <span>{{localize "FAx.Item.Automation.BoxesIf"}}</span>
 
                 <select
                     class="fatex__skill__reference__change fatex__skill__reference__change--skill"

@@ -20,7 +20,12 @@ export class StressItem extends BaseItem {
     }
 
     static prepareItemData(data, item) {
-        const numberOfBoxes = parseInt(data.data.size);
+        let numberOfBoxes = parseInt(data.data.size) + Automation.getBoxModifier(item);
+
+        // Negative number of boxes is not allowed
+        if (numberOfBoxes < 0) {
+            numberOfBoxes = 0;
+        }
 
         // Add boxes with prepared data
         data.boxes = [...Array(numberOfBoxes).keys()].map((i) => ({
@@ -29,10 +34,10 @@ export class StressItem extends BaseItem {
         }));
 
         // Add filler boxes if needed
-        data.fillers = numberOfBoxes % 4 === 0 ? [] : [...Array(4 - (data.data.size % 4)).keys()];
+        data.fillers = numberOfBoxes % 4 === 0 ? [] : [...Array(4 - (numberOfBoxes % 4)).keys()];
 
         if (item.isOwned) {
-            data.isDisabled = Automation.getDisabledState(item);
+            data.isDisabled = numberOfBoxes <= 0 || Automation.getDisabledState(item);
         }
 
         return data;
