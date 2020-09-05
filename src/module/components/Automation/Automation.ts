@@ -233,7 +233,7 @@ export class Automation extends BaseComponent {
         const items = actorData.items;
 
         // Filter single actors skills by id
-        const skills = items.filter((item) => item.name === skillId);
+        const skills = items.filter((item) => item.type === "skill" && item.name === skillId);
 
         if (!skills) {
             return undefined;
