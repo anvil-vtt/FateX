@@ -1,8 +1,6 @@
 {
     "Actor": {
-        "types": [
-            "character"
-        ],
+        "types": ["character"],
         "templates": {},
         "character": {
             "biography": {
@@ -15,14 +13,7 @@
         }
     },
     "Item": {
-        "types": [
-            "stress",
-            "aspect",
-            "consequence",
-            "skill",
-            "stunt",
-            "extra"
-        ],
+        "types": ["stress", "aspect", "consequence", "skill", "stunt", "extra"],
         "templates": {
             "base": {
                 "disabled": false,
@@ -30,49 +21,39 @@
             }
         },
         "stress": {
-            "templates": [
-                "base"
-            ],
+            "templates": ["base"],
             "size": 4,
             "value": 0,
             "labelType": 0,
             "customLabel": ""
         },
         "aspect": {
-            "templates": [
-                "base"
-            ],
+            "templates": ["base"],
             "label": "",
             "value": "",
             "corrupted": false
         },
         "consequence": {
-            "templates": [
-                "base"
-            ],
+            "templates": ["base"],
             "label": "",
             "value": "",
             "icon": "",
             "type": 0,
-            "active": false
+            "active": false,
+            "boxAmount": 1,
+            "boxValue": 0
         },
         "skill": {
-            "templates": [
-                "base"
-            ],
+            "templates": ["base"],
             "rank": 0
         },
         "stunt": {
-            "templates": [
-                "base"
-            ],
+            "templates": ["base"],
             "shortDescription": "",
             "collapsed": false
         },
         "extra": {
-            "templates": [
-                "base"
-            ],
+            "templates": ["base"],
             "shortDescription": "",
             "collapsed": false
         }
