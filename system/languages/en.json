@@ -144,9 +144,9 @@
                     "OPERATOR_EQUALS": "equals",
                     "OPERATOR_NOT_EQUALS": "doesn't equal",
                     "OPERATOR_GT": "is greater than",
-                    "OPERATOR_LT": "is lesser than",
+                    "OPERATOR_LT": "is less than",
                     "OPERATOR_GTE": "is greater than or equals",
-                    "OPERATOR_LTE": "is lesser than or equals"
+                    "OPERATOR_LTE": "is less than or equals"
                 }
             }
         },
@@ -156,7 +156,7 @@
             "EntityDelete": "Delete",
             "EntityDeleteText": "Do you really want to <strong>permanently</strong> delete this entity?",
             "ActorClear": "Clear component",
-            "ActorClearText": "Do you really want to <strong>permanently</strong> delete all this actors comonents <strong>and their content</strong> of the chosen type?",
+            "ActorClearText": "Do you really want to <strong>permanently</strong> delete all this actors components <strong>and their content</strong> of the chosen type?",
             "Confirm": "Confirm",
             "Cancel": "Cancel"
         },
