@@ -1,21 +1,18 @@
-import { BaseItem } from "../BaseItem";
-import { Automation } from "../../components/Automation/Automation";
+import { TrackItem } from "../TrackItem";
 
 export const CONSEQUENCE_TYPES = {
     CONSEQUENCE: 0,
     CONDITION: 1,
 };
 
-export class ConsequenceItem extends BaseItem {
+export class ConsequenceItem extends TrackItem {
     static entityName = "consequence";
 
     static prepareItemData(data, item) {
+        data = super.prepareItemData(data, item);
+
         data.isConsequence = data.data.type === CONSEQUENCE_TYPES.CONSEQUENCE;
         data.isCondition = data.data.type === CONSEQUENCE_TYPES.CONDITION;
-
-        if (item.isOwned) {
-            data.isDisabled = Automation.getDisabledState(item);
-        }
 
         return data;
     }

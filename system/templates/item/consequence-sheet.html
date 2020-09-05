@@ -29,6 +29,20 @@
         </div>
     </div>
 
+
+    {{#ifEquals 1 data.type}}
+        <div class="fatex__setting">
+            <h2 class="fatex__headline">
+                <span>{{localize "FAx.Item.Consequence.BoxAmount"}}</span>
+            </h2>
+
+            <div class="fatex__setting__range">
+                <input type="text" class="fatex__setting__range__value" value="{{data.boxAmount}}" />
+                <input type="range" class="fatex__setting__range__slider" name="data.boxAmount" data-dtype="Number" value="{{data.boxAmount}}" min="1" max="32"/>
+            </div>
+        </div>
+    {{/ifEquals}}
+
     {{> "systems/fatex/templates/item/parts/settings/setting-input.html"
         headline = "FAx.Item.Consequence.Value"
         fieldName = "data.value"
@@ -57,10 +71,15 @@
         field = data.description
     }}--}}
 
-
     {{> "systems/fatex/templates/item/parts/settings/setting-automation-skill-enable.html"
         headline = "FAx.Item.Automation.Headline"
     }}
+
+    {{#ifEquals 1 data.type}}
+        {{> "systems/fatex/templates/item/parts/settings/setting-automation-boxes.html"
+                headline = "FAx.Item.Automation.BoxesHeadline"
+        }}
+    {{/ifEquals}}
 </div>
 
 {{> "systems/fatex/templates/item/parts/layout/item-footer.html"}}

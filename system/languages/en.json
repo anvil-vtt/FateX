@@ -90,8 +90,9 @@
                 "DescriptionHelp": "Is only displayed when sending to chat",
                 "Label": "Label",
                 "LabelHelp": "A label to describe the severity, like \"Mild\" or \"Severe\".",
+                "BoxAmount": "Number of boxes",
                 "Icon": "Icon",
-                "IconHelp": "Normally a number like 2, 4, 6 or 8. Displayed on the left.",
+                "IconHelp": "Normally a number like 2, 4, 6 or 8. Displayed on the left. Use a space-separated list if you're using multiple boxes.",
                 "Type": {
                     "Label": "Variant",
                     "Condition": "Condition",
