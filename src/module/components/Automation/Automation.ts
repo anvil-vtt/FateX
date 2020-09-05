@@ -297,7 +297,7 @@ export class Automation extends BaseComponent {
         };
     }
 
-    static getBoxModifier(item) {
+    static getBoxAmountModifier(item) {
         const skillReferences = Automation.getSkillReferences(item).filter((ref) => ref.type === TYPES.BOXES);
 
         return skillReferences.reduce((modifier, reference) => {

@@ -12,6 +12,7 @@ export class ItemSheetFate extends ItemSheet<any, ItemFate> {
         mergeObject(options, {
             classes: options.classes.concat(["fatex fatex__item_sheet"]),
             scrollY: [".desk__content"],
+            width: 575,
         });
 
         return options;

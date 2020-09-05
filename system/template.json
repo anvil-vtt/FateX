@@ -22,7 +22,7 @@
         },
         "stress": {
             "templates": ["base"],
-            "size": 4,
+            "size": 2,
             "value": 0,
             "labelType": 0,
             "customLabel": ""
@@ -41,7 +41,7 @@
             "type": 0,
             "active": false,
             "boxAmount": 1,
-            "boxValue": 0
+            "boxValues": 0
         },
         "skill": {
             "templates": ["base"],

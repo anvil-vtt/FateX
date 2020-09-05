@@ -20,7 +20,7 @@ export class StressItem extends BaseItem {
     }
 
     static prepareItemData(data, item) {
-        let numberOfBoxes = parseInt(data.data.size) + Automation.getBoxModifier(item);
+        let numberOfBoxes = parseInt(data.data.size) + Automation.getBoxAmountModifier(item);
 
         // Negative number of boxes is not allowed
         if (numberOfBoxes < 0) {
