@@ -24,6 +24,22 @@ export class ActorFate extends Actor {
         return CONFIG.FateX.applications.templatePicker?.render(true);
     }
 
+    /*    prepareData() {
+        super.prepareData();
+
+        const data: any = this.data;
+
+        data.skills = {};
+
+        const items = this.items.map((i) => i.data);
+
+        items
+            .filter((item) => item.type === "skill")
+            .forEach((skill) => {
+                data.skills[skill.name] = skill.rank;
+            });
+    }*/
+
     /**
      * Provide basic token configuration for newly created actors.
      * Automatically links new tokens to the actor.
