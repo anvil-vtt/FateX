@@ -1,23 +1,209 @@
 {
     "FateX": "FateX",
     "FAx": {
+        "Global": {
+            "Ladder": {
+                "+8": "Legendär",
+                "+7": "Episch",
+                "+6": "Fantastisch",
+                "+5": "Hervorragend",
+                "+4": "Großartig",
+                "+3": "Gut",
+                "+2": "Ordentlich",
+                "+1": "Durchschnittlich",
+                "+0": "Mäßig",
+                "-1": "Schwach",
+                "-2": "Fürchterlich",
+                "-3": "Katastrophal",
+                "-4": "Entsetzlich"
+            },
+            "Actions": {
+                "Configure": "Einstellen",
+                "Delete": "Löschen",
+                "Duplicate": "Duplizieren",
+                "Sort": "Sortieren",
+                "Create": "Leeren Akteur anlegen",
+                "Choose": "Vorlage wählen"
+            },
+            "BaseItem": "Basis Item"
+        },
         "Sheet": {
             "Name": "Name",
-            "Description": "Description",
+            "Description": "Beschreibung",
             "FatePoints": "Fatepunkte",
             "Aspects": "Aspekte",
             "Consequences": "Konsequenzen",
+            "Skills": "Fertigkeiten",
+            "Stunts": "Stunts",
+            "Extras": "Extras",
+            "Bio": "Bio",
             "Artwork": "Artwork",
+            "StressTracks": "Stressbalken",
             "Tabs": {
-                "Skills": "Skills",
+                "SkillsStunts": "Fertigkeiten & Stunts",
+                "Skills": "Fertigkeiten",
                 "Stunts": "Stunts",
                 "Extras": "Extras",
                 "Bio": "Bio"
+            },
+            "Buttons": {
+                "EditMode": "Edit Mode",
+                "SheetSetup": "Sheet Setup"
+            },
+            "Stress": {
+                "Add": "Add stress track"
+            },
+            "Messages": {
+                "EmptyActor": "It looks like your character doesn't have any content yet. You can change this in the <strong>Edit Mode</strong> or the <strong>Sheet Setup</strong>. The buttons to toggle the edit mode or open the setup can be found in the header bar."
             }
         },
         "Item": {
             "Stress": {
-                "Name": "Bezeichner"
+                "Name": "Bezeichner",
+                "EditItem": "Stressbalken Bearbeiten",
+                "Size": "Anzahl Stresskästchen",
+                "Description": "Beschreibung",
+                "DescriptionHelp": "Die Beschreibung wird im Bereich des Stressbalkens angezeigt.",
+                "Boxes": {
+                    "Label": "Stil der Kästchenlabel",
+                    "Custom": "Eigene Kästchenlabel",
+                    "CustomHelp": "Durch Leerzeichen getrennte List von Unicode Zeichen. z.B.: \"2 4 6 ☀\"."
+                },
+                "Type": {
+                    "Core": "Core",
+                    "Condensed": "Condensed",
+                    "Custom": "Leer / Angepasst"
+                }
+            },
+            "Aspect": {
+                "EditItem": "Bearbeiten",
+                "Value": "Text",
+                "Description": "Beschreibung",
+                "DescriptionHelp": "Wird nur im Chat angezeigt",
+                "Label": "Label"
+            },
+            "Consequence": {
+                "EditItem": "Bearbeiten",
+                "Value": "Text",
+                "Description": "Beschreibung",
+                "DescriptionHelp": "Wird nur im Chat angezeigt",
+                "Label": "Label",
+                "LabelHelp": "Ein Label um den Stufenwert zu beschreiben, wie \"Leicht\" or \"Schwer\".",
+                "Icon": "Icon",
+                "IconHelp": "Normalerweise eine Nummer wie 2, 4, 6 or 8. Wird links angezeigt.",
+                "Type": {
+                    "Label": "Variante",
+                    "Condition": "Bedingung",
+                    "Consequence": "Konsequenz"
+                }
+            },
+            "Skill": {
+                "Name": "Name",
+                "EditItem": "Bearbeiten",
+                "Rank": "Wert",
+                "Description": "Beschreibung",
+                "DescriptionHelp": "Wird nur im Chat angezeigt"
+            },
+            "Stunt": {
+                "Name": "Titel",
+                "EditItem": "Bearbeiten",
+                "Description": "Beschreibung",
+                "DescriptionHelp": "Ausführliche Beschreibung für diesen Stunt",
+                "ShortDescription": "Kurze Beschreibung",
+                "ShortDescriptionHelp": "Kurze Beschreibung für diesen Stunt"
+            },
+            "Extra": {
+                "Name": "Titel",
+                "EditItem": "Bearbeiten",
+                "Description": "Beschreibung",
+                "DescriptionHelp": "Ausführliche Beschreibung für dieses Extra",
+                "ShortDescription": "Kurze Beschreibung",
+                "ShortDescriptionHelp": "Kurze Beschreibung für dieses Extra"
+            },
+            "Automation": {
+                "Headline": "Automatisierung",
+                "BoxesHeadline": "Kästchen Automatisierung",
+                "Description": "Es gibt noch keine Fertigkeiten-Bedingungen. Um die Automatisierungsfunktion zu nutzen füge mindestens eine Fertigkeiten-Bedingung hinzu.",
+                "AddSkillRef": "Fertigkeiten-Bedingung Hinzufügen",
+                "DisableUntil": "Deaktivieren bis",
+                "BoxesIf": "Wenn Kästchen",
+                "MultipleConditions": "Automatisierung aktivieren wenn",
+                "MultipleConditionsMatches": "Bedinungen treffen zu",
+                "Actions": {
+                    "Box": {
+                        "ADD": "Hinzufügen",
+                        "REMOVE": "Enfernen"
+                    }
+                },
+                "Conjunctions": {
+                    "AND": "alle",
+                    "OR": "eines"
+                },
+                "Operators": {
+                    "OPERATOR_EQUALS": "gleich",
+                    "OPERATOR_NOT_EQUALS": "ungleich",
+                    "OPERATOR_GT": "größer als",
+                    "OPERATOR_LT": "kleiner als",
+                    "OPERATOR_GTE": "größer gleich",
+                    "OPERATOR_LTE": "kleiner gleich"
+                }
+            }
+        },
+        "Dialog": {
+            "ReferenceRemove": "Referenz Entfernen",
+            "ReferenceRemoveText": "Willst du diese Referenz wirklich <strong>dauerhaft</strong> entfernen?",
+            "EntityDelete": "Löschen",
+            "EntityDeleteText": "Willst du diese Enität wirklich <strong>dauerhaft</strong> löschen?",
+            "ActorClear": "Teil löschen",
+            "ActorClearText": "willst du für diesen Charakter wirklich alle Teile <strong>und Inhalte </strong> diesen Typs <strong>dauerhaft</strong> löschen?",
+            "Confirm": "Bestätigen",
+            "Cancel": "Abbrechen"
+        },
+        "Apps": {
+            "Setup": {
+                "Title": "Charakterblatt Setup",
+                "Manage": "Einstellen",
+                "Setup": "Setup (Vorlagen)",
+                "Actions": {
+                    "Clear": {
+                        "Aspects": "Aspekte zurücksetzen",
+                        "Consequences": "Konsequenzen zurücksetzen",
+                        "Skills": "Fertigkeiten zurücksetzen",
+                        "Stress": "Stressleisten zurücksetzen",
+                        "Everything": "Alles zurücksetzen"
+                    },
+                    "Setup": {
+                        "AddToSheet": "Auswahl zum Charakterblatt hinzufügen",
+                        "ToggleSelection": "Auswahl umkehren"
+                    }
+                }
+            }
+        },
+        "Settings": {
+            "Templates": {
+                "Title": "Charakterblatt Vorlagen",
+                "Hint": "Erlaubt Vorlagen für neue Charakter zu erstellen und wählen.",
+                "Button": "FateX Vorlagen",
+                "New": "Neue Vorlage",
+                "Copy": "Kopieren",
+                "App": {
+                    "Title": "Bearbeiten",
+                    "Label": "Einstellungen",
+                    "CreateNew": "Neue Vorlage erstellen",
+                    "Help": "Es gibt noch keine Charakterblatt Vorlagen.<br />Klicke den<strong>Neue Vorlage erstellen</strong> Button (auch in der Titelleiste verfügbar)."
+                }
+            }
+        },
+        "Template": {
+            "Picker": {
+                "Title": "Vorlage Wählen",
+                "Label": "Vorlagen",
+                "Configuration": "Einstellungen",
+                "Empty": "Leerer Akteur",
+                "CreateEmpty": "Leerer Akteur",
+                "Or": "oder",
+                "Help": "Klicke den <strong>Einstellungen</strong> Button unten (auch in der Titelleiste verfügbar), um eine neue Vorlage hinzuzufügen.",
+                "Explain": "Vorlagen erlauben angepasste Charakterblätter für verschiedene Sorten von Akteuren. Wir empfehlen <strong>unterschiedliche Vorlagen</strong> für PCs, NPCs, und Mobs, da sie jeweils <strong>andere Anforderungen</strong> an ein Charakterblatt besitzen."
             }
         }
     }
