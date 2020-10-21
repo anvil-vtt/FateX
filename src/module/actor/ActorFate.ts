@@ -18,6 +18,13 @@ export class ActorFate extends Actor {
     }
 
     /**
+     * Open template picker instead of showing creation dialog
+     */
+    static async createDialog(data = {}, options = {}) {
+        return CONFIG.FateX.applications.templatePicker.render(true);
+    }
+
+    /**
      * Provide basic token configuration for newly created actors.
      * Automatically links new tokens to the actor.
      */
