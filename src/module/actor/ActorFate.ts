@@ -20,7 +20,7 @@ export class ActorFate extends Actor {
     /**
      * Open template picker instead of showing creation dialog
      */
-    static async createDialog(data = {}, options = {}) {
+    static async createDialog(_data = {}, _options = {}) {
         return CONFIG.FateX.applications.templatePicker.render(true);
     }
 
