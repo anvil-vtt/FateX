@@ -135,7 +135,7 @@ export class SkillItem extends BaseItem {
 
         return rolls.map((rolledDie) => ({
             value: rolledDie.roll,
-            face: this.getDieFace(rolledDie.roll),
+            face: this.getDieFace(useOldRollApi ? rolledDie.roll : rolledDie.result),
         }));
     }
 
