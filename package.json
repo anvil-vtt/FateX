@@ -6,7 +6,7 @@
     "scripts": {
         "watch": "webpack --env watch",
         "build": "webpack",
-        "build:production": "npx webpack --mode production --env mode=production",
+        "build:production": "webpack --mode production --env mode=production",
         "start": "webpack serve --hot"
     },
     "repository": {
