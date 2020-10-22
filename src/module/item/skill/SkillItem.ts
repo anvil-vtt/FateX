@@ -112,6 +112,9 @@ export class SkillItem extends BaseItem {
             user: string;
             speaker: unknown;
             sound: string;
+            type: number;
+            roll: Roll;
+            rollMode: string;
             flags: {
                 templateVariables: unknown;
             };
@@ -119,7 +122,11 @@ export class SkillItem extends BaseItem {
         } = {
             user: game.user._id,
             speaker: ChatMessage.getSpeaker({ actor: actor }),
+            type: CONST.CHAT_MESSAGE_TYPES.ROLL,
             sound: CONFIG.sounds.dice,
+            roll: roll,
+            rollMode: game.settings.get("core", "rollMode"),
+
             flags: {
                 templateVariables: templateData,
             },
