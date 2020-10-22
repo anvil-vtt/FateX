@@ -23,7 +23,6 @@ module.exports = (env) => {
 
     const config = {
         entry: "./src/fatex.ts",
-        mode: environment.mode,
         watch: environment.watch,
         devtool: "inline-source-map",
         stats: "minimal",
