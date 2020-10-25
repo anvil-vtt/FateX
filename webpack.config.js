@@ -26,6 +26,7 @@ module.exports = (env) => {
         watch: environment.watch,
         devtool: "inline-source-map",
         stats: "minimal",
+        mode: environment.mode,
         resolve: {
             extensions: [".wasm", ".mjs", ".ts", ".js", ".json"],
         },

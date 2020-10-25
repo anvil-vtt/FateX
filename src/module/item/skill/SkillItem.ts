@@ -96,7 +96,7 @@ export class SkillItem extends BaseItem {
     }
 
     static async rollSkill(sheet, item) {
-        const skill = this.prepareItemData(duplicate(item), item);
+        const skill = this.prepareItemData(duplicate(item.data), item);
         const template = "systems/fatex/templates/chat/roll-skill.html";
         const rank = parseInt(skill.data.rank) || 0;
         const actor = sheet.actor;
