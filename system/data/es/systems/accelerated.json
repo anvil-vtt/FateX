@@ -72,33 +72,6 @@
                         }
                     },
                     {
-                        "name": "Segunda consecuencia leve (condición de habilidad)",
-                        "type": "consequence",
-                        "data": {
-                            "label": "Leve",
-                            "icon": "2"
-                        },
-                        "flags": {
-                            "fatex": {
-                                "skillReferenceSettings": {
-                                    "conjunction": 0
-                                },
-                                "skillReferences": [
-                                    {
-                                        "skill": "Physique",
-                                        "condition": 4,
-                                        "operator": 4
-                                    },
-                                    {
-                                        "skill": "Will",
-                                        "condition": 4,
-                                        "operator": 4
-                                    }
-                                ]
-                            }
-                        }
-                    },
-                    {
                         "name": "Consecuencia moderada",
                         "type": "consequence",
                         "data": {

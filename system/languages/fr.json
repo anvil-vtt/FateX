@@ -64,7 +64,7 @@
                 "EditItem": "Éditer la piste de stress",
                 "Size": "Nombre de cases",
                 "Description": "Description",
-                "DescriptionHelp": "La description sera visible sous la piste de stress.",
+                "DescriptionHelp": "La description sera visible sur la piste de stress.",
                 "Boxes": {
                     "Label": "Modèle du label des cases",
                     "Custom": "Label personnalisé des cases",

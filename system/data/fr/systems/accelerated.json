@@ -72,33 +72,6 @@
                         }
                     },
                     {
-                        "name": "2ème conséquence Légère (Lié à une Compétence)",
-                        "type": "consequence",
-                        "data": {
-                            "label": "Légère",
-                            "icon": "2"
-                        },
-                        "flags": {
-                            "fatex": {
-                                "skillReferenceSettings": {
-                                    "conjunction": 0
-                                },
-                                "skillReferences": [
-                                    {
-                                        "skill": "Physique",
-                                        "condition": 4,
-                                        "operator": 4
-                                    },
-                                    {
-                                        "skill": "Volonté",
-                                        "condition": 4,
-                                        "operator": 4
-                                    }
-                                ]
-                            }
-                        }
-                    },
-                    {
                         "name": "Conséquence Modérée",
                         "type": "consequence",
                         "data": {
