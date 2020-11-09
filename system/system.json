@@ -14,22 +14,22 @@
         },
         {
             "lang": "de",
-            "name": "German",
+            "name": "Deutsch",
             "path": "languages/de.json"
         },
         {
             "lang": "es",
-            "name": "Spanish",
+            "name": "Español",
             "path": "languages/es.json"
         },
         {
             "lang": "fr",
-            "name": "French",
+            "name": "Français",
             "path": "languages/fr.json"
         },
         {
             "lang": "gl",
-            "name": "Galician",
+            "name": "Galego",
             "path": "languages/gl.json"
         }
     ],
