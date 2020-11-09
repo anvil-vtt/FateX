@@ -26,6 +26,11 @@
             "lang": "fr",
             "name": "French",
             "path": "languages/fr.json"
+        },
+        {
+            "lang": "gl",
+            "name": "Galician",
+            "path": "languages/gl.json"
         }
     ],
     "minimumCoreVersion": "0.5.2",

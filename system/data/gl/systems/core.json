@@ -1,0 +1,272 @@
+{
+    "name": "Básico",
+    "identifier": "core",
+    "types": {
+        "Aspectos": [
+            {
+                "label": "Habituais",
+                "entries": [
+                    {
+                        "name": "Idea xeral",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Idea xeral"
+                        }
+                    },
+                    {
+                        "name": "Problema",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Problema"
+                        }
+                    },
+                    {
+                        "name": "Aspecto baleiro",
+                        "type": "aspect"
+                    },
+                    {
+                        "name": "Aspecto baleiro",
+                        "type": "aspect"
+                    },
+                    {
+                        "name": "Aspecto baleiro",
+                        "type": "aspect"
+                    }
+                ]
+            },
+            {
+                "label": "Opcionais",
+                "entries": [
+                    {
+                        "name": "Relación",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Relación"
+                        }
+                    },
+                    {
+                        "name": "Outro aspecto",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Outro"
+                        }
+                    }
+                ]
+            }
+        ],
+        "Consecuencias": [
+            {
+                "entries": [
+                    {
+                        "name": "Consecuencia leve",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Leve",
+                            "icon": "2"
+                        }
+                    },
+                    {
+                        "name": "Consecuencia leve extra (require habilidade)",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Leve",
+                            "icon": "2"
+                        },
+                        "flags": {
+                            "fatex": {
+                                "skillReferenceSettings": {
+                                    "conjunction": 0
+                                },
+                                "skillReferences": [
+                                    {
+                                        "skill": "Vigor",
+                                        "condition": 4,
+                                        "operator": 4
+                                    },
+                                    {
+                                        "skill": "Vontade",
+                                        "condition": 4,
+                                        "operator": 4
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "Consecuencia moderada",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Moderada",
+                            "icon": "4"
+                        }
+                    },
+                    {
+                        "name": "Consecuencia grave",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Grave",
+                            "icon": "6"
+                        }
+                    }
+                ]
+            }
+        ],
+        "Habilidades": [
+            {
+                "columns": true,
+                "entries": [
+                    {
+                        "name": "Aparellos",
+                        "type": "skill",
+                        "data": {
+                            "description": "Capacidade para construír ou romper maquinaria, ensamblar aparatos, e ser quen de argallar enxeños coma MacGyver. Os talentos de Aparellos permítenche ter sempre a man o trebello axeitado, dar bonus a construír ou romper cousas, e xustificar o uso de Aparellos en troques doutras habilidades como Roubo ou Coñecementos en determinadas circunstancias."
+                        }
+                    },
+                    {
+                        "name": "Atletismo",
+                        "type": "skill",
+                        "data": {
+                            "description": "Unha medida do potencial físico. Os talentos de Atletismo céntranse nos movementos (correr, saltar, facer parkour) e en esquivar os ataques."
+                        }
+                    },
+                    {
+                        "name": "Condución",
+                        "type": "skill",
+                        "data": {
+                            "description": "Control de vehículos nas situacións máis esixentes, facendo manobras arrevesadas e sacándolles todo o partido. Os talentos de Condución poden ser manobras senlleiras, un vehículo especial de teu, ou a capacidade para usares Condución en troques doutra habilidade como Roubo ou Coñecementos en determinadas circunstancias."
+                        }
+                    },
+                    {
+                        "name": "Contactos",
+                        "type": "skill",
+                        "data": {
+                            "description": "Coñecemento da xente adecuada e das conexións que te poden servir de axuda. Os talentos de Contactos danche aliados dispostos e unha rede de información alí onde quera que vaias no mundo."
+                        }
+                    },
+                    {
+                        "name": "Coñecementos",
+                        "type": "skill",
+                        "data": {
+                            "description": "Todo tipo de educación formal ou sabedoría, abranguendo desde a formación puramente académica ata a tradición ou o sobrenatural. Os talentos de Coñecementos adoitan referirse a áreas especializadas como a medicina ou á aplicación práctica do coñecemento arcano, como lanzar feitizos."
+                        }
+                    },
+                    {
+                        "name": "Discreción",
+                        "type": "skill",
+                        "data": {
+                            "description": "Permanecer sen ser visto ou oido e escapares cando necesitas agocharte. Os talentos de Discreción permítenche desaparecer á vista de todos, camuflarte nas multitudes ou avanzar polas sombras sen te percibiren."
+                        }
+                    },
+                    {
+                        "name": "Empatía",
+                        "type": "skill",
+                        "data": {
+                            "description": "Capacidade para xulgar axeitadamente o humor e as emocións da xente. Os talentos de Empatía poden tratar sobre xulgar unha multitude, detectar mentiras, ou axudar a outras persoas a se recuperaren de consecuencias mentais."
+                        }
+                    },
+                    {
+                        "name": "Engano",
+                        "type": "skill",
+                        "data": {
+                            "description": "Capacidade para mentir e trampear convincentemente sen que se note. Os talentos de Engano poden mellorar a túa capacidade para contares un tipo específico de metira ou inventares identidades falsas."
+                        }
+                    },
+                    {
+                        "name": "Investigación",
+                        "type": "skill",
+                        "data": {
+                            "description": "Estudo coidadoso e deliberado e resolución de misterios. Usa esta habilidade para relacionar pistas ou reconstruír a escena dun crime. Os talentos de Investigación axúdante a faceres brillantes deducións ou averiguar información máis axiña."
+                        }
+                    },
+                    {
+                        "name": "Pelexa",
+                        "type": "skill",
+                        "data": {
+                            "description": "Capacidade para destacar nos combates corpo a corpo, sexa con armas ou cos puños. Os talentos de Pelexa inclúen armas distintivas e técnicas especiais."
+                        }
+                    },
+                    {
+                        "name": "Percepción",
+                        "type": "skill",
+                        "data": {
+                            "description": "Capacidade para reparar detalles ao instante, ver vir os problemas antes de que acontezan, e en xeral ser moi observador. Contrástase con Investigación, que é para a contemplación pausada e deliberada. Os talentos de Percepción agudizan os teus sentidos, melloran o teu tempo de reacción e fan máis difícil collerte por sorpresa."
+                        }
+                    },
+
+                    {
+                        "name": "Provocación",
+                        "type": "skill",
+                        "data": {
+                            "description": "Capacidade para mangonear á xente para actuaren como ti queres. É unha interacción sucia e manipulativa, non positiva. Os talentos de Provocación permítenche convencer aos opoñentes de actuaren imprudentemente, volverlles agresivos contra ti, ou mesmo asustalos (asumiendo que poden sentir medo)."
+                        }
+                    },
+                    {
+                        "name": "Recursos",
+                        "type": "skill",
+                        "data": {
+                            "description": "Acceso a bens materiais, non só cartos ou propiedade directa. Pode representar a túa capacidade para tomares prestado das túas amizades ou para faceres uso da armería dunha organización. Os talentos de Recursos permítenche usar recursos en troques de Sociabilidade ou Contactos ou danche invocacións de balde extra cando pagas polo mellor servizo."
+                        }
+                    },
+                    {
+                        "name": "Roubo",
+                        "type": "skill",
+                        "data": {
+                            "description": "Coñecemento dos diferentes sistemas de seguridade e capacidade para burlalos, para furtar e para perpetrar delitos en xeral. Os talentos de Roubo dan bonuses ás diferentes partes de cometer un crime, desde a planificación ata a execución e a fuga."
+                        }
+                    },
+                    {
+                        "name": "Sociabilidade",
+                        "type": "skill",
+                        "data": {
+                            "description": "Establecer conexións cos outros e traballar xuntos. Se Provocación usa a manipulación, Sociabilidade usa a sinceridade, confianza e boa disposición. Os talentos de Sociabilidade permítenche convencer á xente, mellorar relacións, ou facer contactos."
+                        }
+                    },
+
+                    {
+                        "name": "Tiro",
+                        "type": "skill",
+                        "data": {
+                            "description": "Todo tipo de combate a distancia, sexan pistolas, lanzamento de coitelos, ou arco e frechas. Os talentos de Tiro permítenche facer disparos dirixidos, desenvaiñar rapidamente, ou ter sempre unha pistola a man."
+                        }
+                    },
+                    {
+                        "name": "Vigor",
+                        "type": "skill",
+                        "data": {
+                            "description": "Forza bruta e durabilidade. Os talentos de Vigor permítenche realizar fazañas sobrehumanas, aproveitar o teu peso ao loitares e desdeñares as consecuencias físicas. A maiores, un rango alto de Vigor aumenta a túa barra de estrés físico ou engade outro espazo para consecuencias."
+                        }
+                    },
+                    {
+                        "name": "Vontade",
+                        "type": "skill",
+                        "data": {
+                            "description": "Fortaleza mental, a capacidade de sobrepoñerte ás tentacións e soportar os traumas. Os talentos de Vontade permítenche desdeñar as consecuencias mentais, resistires a agonía mental de poderes estraños, e manter a calma contra os inimigos que te provocan. A maiores, un rango alto de Vontade aumenta a túa barra de estrés mental ou engade outro espazo para consecuencias."
+                        }
+                    }
+                ]
+            }
+        ],
+        "Estrés": [
+            {
+                "entries": [
+                    {
+                        "name": "Estrés físico",
+                        "type": "stress",
+                        "data": {
+                            "size": 4,
+                            "labelType": 0
+                        }
+                    },
+                    {
+                        "name": "Estrés mental",
+                        "type": "stress",
+                        "data": {
+                            "size": 4,
+                            "labelType": 0
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}
