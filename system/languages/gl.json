@@ -68,7 +68,7 @@
                 "Boxes": {
                     "Label": "Estilo da barra",
                     "Custom": "Etiquetas personalizadas",
-                    "CustomHelp": "Insire unha lista de caracteres unicode separados por espazos. P.ex. \"2 4 6 ☀\"."
+                    "CustomHelp": "Insire unha lista de caracteres unicode separados por espazos. P.ex. '2 4 6 ☀'."
                 },
                 "Type": {
                     "Core": "Básico",
@@ -89,7 +89,7 @@
                 "Description": "Descrición",
                 "DescriptionHelp": "Móstrase só ao enviala ao chat",
                 "Label": "Etiqueta",
-                "LabelHelp": "Unha etiqueta que describa a súa gravidade, como \"Leve\" ou \"Moderada\".",
+                "LabelHelp": "Unha etiqueta que describa a súa gravidade, como «Leve» ou «Moderada».",
                 "Icon": "Icona",
                 "IconHelp": "Normalmente é un número como 2, 4, 6 ou 8. Móstrase á esquerda.",
                 "Type": {
