@@ -140,21 +140,21 @@
                         "name": "Crafts",
                         "type": "skill",
                         "data": {
-                            "description": "Ability to make or break machinery, build contraptions, and pull off MacGyver-esque feats of ingenuity. Crafts stunts let you have the gizmo on hand, give bonuses to building and breaking things, and provide justification for using Crafts in place of skills like Burglary or Academics under certain circumstances."
+                            "description": "Ability to make or break machinery, build contraptions, and pull off MacGyver-esque feats of ingenuity. Crafts stunts let you have the gizmo on hand, give bonuses to building and breaking things, and provide justification for using Crafts in place of skills like Burglary or Lore under certain circumstances."
                         }
                     },
                     {
                         "name": "Deceive",
                         "type": "skill",
                         "data": {
-                            "description": "Ability to lie and cheat convincingly and with aplomb. Deceive stunts might improve your ability to tell a particular breed of lie or help invent false identries."
+                            "description": "Ability to lie and cheat convincingly and with aplomb. Deceive stunts might improve your ability to tell a particular breed of lie or help invent false identities."
                         }
                     },
                     {
                         "name": "Drive",
                         "type": "skill",
                         "data": {
-                            "description": "Controlling vehicles under the most grueling circumstances, pulling wicked maneuvers, and simply getting the most out of your ride. Drive stunts can be signature maneuvers, a special vehicle of your own, or the ability to use Drive in place of a skill like Burglary or Academics under certain circumstances."
+                            "description": "Controlling vehicles under the most grueling circumstances, pulling wicked maneuvers, and simply getting the most out of your ride. Drive stunts can be signature maneuvers, a special vehicle of your own, or the ability to use Drive in place of a skill like Burglary or Lore under certain circumstances."
                         }
                     },
                     {
@@ -182,7 +182,7 @@
                         "name": "Lore",
                         "type": "skill",
                         "data": {
-                            "description": "Specialized, arcane knowledge that falls outside of the scope of Academics, including supernatural topics of one sort or another. This is where the weird stuff happens. Lore stunts often support practical applications of your arcane knowledge, such as casting spells. Some settings may remove Lore, replace it with a different skill, or combine it with Academics."
+                            "description": "Any kind of formal education or knowledge, covering from purely academic training to traditions or the supernatural. Lore stunts usually refer to specialized areas such as Medicine ou the practical application of arcane knowledge, like casting spells."
                         }
                     },
                     {

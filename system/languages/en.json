@@ -68,7 +68,7 @@
                 "Boxes": {
                     "Label": "Box label style",
                     "Custom": "Custom box labels",
-                    "CustomHelp": "Enter space-seperated list of unicode characters. E.g. \"2 4 6 ☀\"."
+                    "CustomHelp": "Enter space-separated list of unicode characters. E.g. \"2 4 6 ☀\"."
                 },
                 "Type": {
                     "Core": "Core",

@@ -1,86 +1,86 @@
 {
-    "name": "Accéléré",
+    "name": "Acelerado",
     "identifier": "fae",
     "types": {
-        "Aspects": [
+        "Aspectos": [
             {
-                "label": "Basique",
+                "label": "Habituais",
                 "entries": [
                     {
-                        "name": "Concept",
+                        "name": "Idea xeral",
                         "type": "aspect",
                         "data": {
-                            "label": "Concept"
+                            "label": "Idea xeral"
                         }
                     },
                     {
-                        "name": "Problème",
+                        "name": "Problema",
                         "type": "aspect",
                         "data": {
-                            "label": "Problème"
+                            "label": "Problema"
                         }
                     },
                     {
-                        "name": "Autre aspect",
+                        "name": "Outro aspecto",
                         "type": "aspect",
                         "data": {
-                            "label": "Autre"
+                            "label": "Outro"
                         }
                     },
                     {
-                        "name": "Autre aspect",
+                        "name": "Outro aspecto",
                         "type": "aspect",
                         "data": {
-                            "label": "Autre"
+                            "label": "Outro"
                         }
                     },
                     {
-                        "name": "Autre aspect",
+                        "name": "Outro aspecto",
                         "type": "aspect",
                         "data": {
-                            "label": "Autre"
+                            "label": "Outro"
                         }
                     }
                 ]
             },
             {
-                "label": "Option",
+                "label": "Opcionais",
                 "entries": [
                     {
-                        "name": "Parenté",
+                        "name": "Relación",
                         "type": "aspect",
                         "data": {
-                            "label": "Parenté"
+                            "label": "Relación"
                         }
                     },
                     {
-                        "name": "Autre Aspect",
+                        "name": "Aspecto baleiro",
                         "type": "aspect"
                     }
                 ]
             }
         ],
-        "Conséquences": [
+        "Consecuencias": [
             {
                 "entries": [
                     {
-                        "name": "Conséquence Légère",
+                        "name": "Consecuencia leve",
                         "type": "consequence",
                         "data": {
-                            "label": "Légère",
+                            "label": "Leve",
                             "icon": "2"
                         }
                     },
                     {
-                        "name": "Conséquence Modérée",
+                        "name": "Consecuencia moderada",
                         "type": "consequence",
                         "data": {
-                            "label": "Moderate",
+                            "label": "Moderada",
                             "icon": "4"
                         }
                     },
                     {
-                        "name": "Consequence Grave",
+                        "name": "Consecuencia grave",
                         "type": "consequence",
                         "data": {
                             "label": "Grave",
@@ -90,42 +90,42 @@
                 ]
             }
         ],
-        "Compétences": [
+        "Habilidades": [
             {
                 "columns": true,
                 "entries": [
                     {
-                        "name": "Soigneux",
+                        "name": "Coidadoso",
                         "type": "skill"
                     },
                     {
-                        "name": "Astucieux",
+                        "name": "Enxeñoso",
                         "type": "skill"
                     },
                     {
-                        "name": "Flamboyant",
+                        "name": "Chamativo",
                         "type": "skill"
                     },
                     {
-                        "name": "Puissant",
+                        "name": "Enérxico",
                         "type": "skill"
                     },
                     {
-                        "name": "Rapide",
+                        "name": "Áxil",
                         "type": "skill"
                     },
                     {
-                        "name": "Sournois",
+                        "name": "Furtivo",
                         "type": "skill"
                     }
                 ]
             }
         ],
-        "Stress": [
+        "Estrés": [
             {
                 "entries": [
                     {
-                        "name": "Stress",
+                        "name": "Estrés",
                         "type": "stress",
                         "data": {
                             "size": 3,

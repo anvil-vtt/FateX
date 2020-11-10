@@ -63,6 +63,11 @@ For manual installation, use the provided manifest URL in the "*Install System*"
 > SRD français: 
 > https://fate-srd.fr/ sous licence CC-BY 3.0
 > https://fate-srd.fr/wikifate/licence
+
+
+#### Galician
+* System translation provided by xurxodiz#5885
+* Fate Core/Accelered/Condensed translation by xurxodiz#5885
 ---
 
 A big thank you to all who are contributing translations files! You're a great help for the international Fate community! ❤️
