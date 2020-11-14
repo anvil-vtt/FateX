@@ -14,10 +14,10 @@
                         }
                     },
                     {
-                        "name": "Problema",
+                        "name": "Atranco",
                         "type": "aspect",
                         "data": {
-                            "label": "Problema"
+                            "label": "Atranco"
                         }
                     },
                     {
