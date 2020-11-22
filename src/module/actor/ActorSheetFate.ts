@@ -164,4 +164,39 @@ export class ActorSheetFate extends ActorSheet {
         const sheetSetup = new SheetSetup(this.actor, {});
         sheetSetup.render(true);
     }
+
+    /** @override */
+    async _onDrop(event) {
+        // Try to extract the data
+        let data;
+
+        try {
+            data = JSON.parse(event.dataTransfer.getData("text/plain"));
+        } catch (err) {
+            return false;
+        }
+
+        if (data.type === "JournalEntry") {
+            return this._onDropJournalEntry(data);
+        }
+
+        return super._onDrop(event);
+    }
+
+    async _onDropJournalEntry(data: JournalEntry) {
+        // @ts-ignore
+        const entry = await JournalEntry.fromDropData(data);
+        const actor = this.actor;
+
+        const extraData = {
+            type: "extra",
+            name: entry.data.name,
+            data: {
+                description: entry.data.content,
+            },
+        };
+
+        // Create item and render sheet afterwards
+        await actor.createOwnedItem(extraData);
+    }
 }

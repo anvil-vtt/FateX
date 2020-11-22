@@ -59,11 +59,12 @@ module.exports = (env) => {
                           loader: "null-loader",
                       },
                 {
-                    test: /\.[tj]s$/,
+                    test: /\.ts$/,
                     use: [
                         "ts-loader",
                         "eslint-loader",
                         "webpack-import-glob-loader",
+                        "source-map-loader",
                         {
                             loader: "string-replace-loader",
                             options: {
@@ -71,7 +72,6 @@ module.exports = (env) => {
                                 replace: allTemplates,
                             },
                         },
-                        "source-map-loader",
                     ],
                 },
                 {
