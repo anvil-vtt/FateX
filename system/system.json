@@ -26,11 +26,6 @@
             "lang": "fr",
             "name": "Français",
             "path": "languages/fr.json"
-        },
-        {
-            "lang": "gl",
-            "name": "Galego",
-            "path": "languages/gl.json"
         }
     ],
     "minimumCoreVersion": "0.5.2",
