@@ -66,7 +66,7 @@ For manual installation, use the provided manifest URL in the "*Install System*"
 
 
 #### Galician
-* System translation provided by xurxodiz#5885
+* System translation provided at the [foundryvtt-gl](http://github.com/xurxodiz/foundryvtt-gl) package
 * Fate Core/Accelered/Condensed translation by xurxodiz#5885
 ---
 
