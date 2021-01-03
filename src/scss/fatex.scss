@@ -5,4 +5,37 @@
 @import "extras/fontawesome";
 @import "extras/foundry-ui";
 
-@import "components/**/*.scss";
+* {
+    //outline: 1px solid blue;
+}
+
+@import "components/apps/setup/setup";
+@import "components/apps/templates/templates";
+@import "components/artwork/artwork";
+@import "components/aspects/aspects";
+@import "components/automation/automation";
+@import "components/biography/biography";
+@import "components/chat/chat";
+@import "components/consequences/consequences";
+@import "components/copyright/copyright";
+@import "components/desk/desk";
+@import "components/dialog/dialog";
+@import "components/extra/extra";
+@import "components/footer/footer";
+@import "components/header/header";
+@import "components/headline/headline";
+@import "components/helper/helper";
+@import "components/input/input";
+@import "components/item/item";
+@import "components/messages/messages";
+@import "components/scrollbar/scrollbar";
+@import "components/settings/settings";
+@import "components/sheet/app-sheet";
+@import "components/sheet/configuration";
+@import "components/sheet/item-sheet";
+@import "components/sheet/sheet";
+@import "components/skills/skills";
+@import "components/stress/stress";
+@import "components/stunt/stunt";
+@import "components/tabs/tabs";
+@import "components/tabs/vertical-tabs";

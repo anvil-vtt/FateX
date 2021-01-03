@@ -1,5 +1,5 @@
 import { BaseItem } from "../BaseItem";
-import * as marked from "marked";
+import marked from "marked";
 
 export class StuntItem extends BaseItem {
     static entityName = "stunt";

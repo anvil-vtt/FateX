@@ -1,4 +1,4 @@
-import "../../../system/templates/**/*.html";
+//import "../../../system/templates/**/*.html";
 
 export class TemplatePreloader {
     /**

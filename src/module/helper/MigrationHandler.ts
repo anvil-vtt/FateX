@@ -14,9 +14,9 @@ export class MigrationHandler {
     static checkMigrationStatus() {
         if (!game.user.isGM) return;
 
-        const currentMigrationVersion = game.settings.get("fatex", "systemMigrationVersion");
+        // const currentMigrationVersion = game.settings.get("fatex", "systemMigrationVersion");
 
         // Set current version after all migrations ran
-        game.settings.get("fatex", "systemMigrationVersion", game.system.data.version);
+        // game.settings.get("fatex", "systemMigrationVersion", game.system.data.version);
     }
 }

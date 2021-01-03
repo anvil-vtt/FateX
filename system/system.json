@@ -4,8 +4,9 @@
     "description": "An extended implementation of Fate and its derivative systems",
     "version": "0.9.0",
     "author": "Patrick Bauer (Daddi#2333)",
-    "scripts": ["system.js"],
-    "styles": [],
+    "esmodules": ["system.js"],
+    "scripts": ["hmr.js"],
+    "styles": ["scss/fatex.css"],
     "languages": [
         {
             "lang": "en",
