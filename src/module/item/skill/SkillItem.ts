@@ -43,7 +43,7 @@ export class SkillItem extends BaseItem {
     static getSheetData(sheetData, _item) {
         sheetData.availableRanks = [];
 
-        for (let i = 0; i <= 9; i++) {
+        for (let i = -2; i <= 7; i++) {
             sheetData.availableRanks.push(i);
         }
 
