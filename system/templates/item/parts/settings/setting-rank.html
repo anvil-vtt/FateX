@@ -9,9 +9,9 @@
                 class="fatex__setting__radio{{#ifEquals radioItem ../field}} fatex__setting__radio--active{{/ifEquals}}"
                 data-value="{{ radioItem }}"
                 data-name="{{ ../fieldName }}"
-                data-dtype="Number"
+                data-dtype="{{ ../dtype }}"
             >
-                <span class="fatex__setting__radio__value">+{{ radioItem }}</span>
+                <span class="fatex__setting__radio__value">{{#if radioItem.isPositive}}+{{/if}}{{ radioItem.rank }}</span>
             </div>
         {{/each}}
 
