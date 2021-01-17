@@ -6,12 +6,12 @@
     <div class="fatex__setting__radio__group fatex__setting__radio__group--ranks">
         {{#each radioItems as |radioItem radioItemIndex|}}
             <div
-                class="fatex__setting__radio{{#ifEquals radioItem ../field}} fatex__setting__radio--active{{/ifEquals}}"
+                class="fatex__setting__radio{{#ifEquals radioItem ../field}} fatex__setting__radio--active{{/ifEquals}}{{#if (lt radioItem 0)}} fatex__setting__radio--negative{{/if}}"
                 data-value="{{ radioItem }}"
                 data-name="{{ ../fieldName }}"
                 data-dtype="{{ ../dtype }}"
             >
-                <span class="fatex__setting__radio__value">{{#if radioItem.isPositive}}+{{/if}}{{ radioItem.rank }}</span>
+                <span class="fatex__setting__radio__value">{{#if (gte radioItem 0)}}+{{/if}}{{ radioItem }}</span>
             </div>
         {{/each}}
 

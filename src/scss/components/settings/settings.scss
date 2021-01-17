@@ -47,6 +47,11 @@
         text-shadow: 1px 1px 1px $sheet-background;
     }
 
+    .fatex__setting__radio--negative {
+        color: $caution-color;
+        -webkit-text-stroke: 2px $primary-color;
+    }
+
     .fatex__setting__radio + .fatex__setting__radio {
         margin-left: $component-padding / 2;
     }
