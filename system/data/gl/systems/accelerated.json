@@ -7,17 +7,17 @@
                 "label": "Habituais",
                 "entries": [
                     {
-                        "name": "Idea xeral",
+                        "name": "Concepto",
                         "type": "aspect",
                         "data": {
-                            "label": "Idea xeral"
+                            "label": "Concepto"
                         }
                     },
                     {
-                        "name": "Atranco",
+                        "name": "Problema",
                         "type": "aspect",
                         "data": {
-                            "label": "Atranco"
+                            "label": "Problema"
                         }
                     },
                     {
