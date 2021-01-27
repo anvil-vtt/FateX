@@ -1,0 +1,270 @@
+{
+    "name": "Core",
+    "identifier": "core",
+    "types": {
+        "Aspects": [
+            {
+                "label": "Grundlegend",
+                "entries": [
+                    {
+                        "name": "Konzept",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Konzept"
+                        }
+                    },
+                    {
+                        "name": "Dilemma",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Dilemma"
+                        }
+                    },
+                    {
+                        "name": "leerer Aspekt",
+                        "type": "aspect"
+                    },
+                    {
+                        "name": "leerer Aspekt",
+                        "type": "aspect"
+                    },
+                    {
+                        "name": "leerer Aspekt",
+                        "type": "aspect"
+                    }
+                ]
+            },
+            {
+                "label": "Optional",
+                "entries": [
+                    {
+                        "name": "Beziehungen",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Beziehungen"
+                        }
+                    },
+                    {
+                        "name": "anderer Aspekt",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Anderer Aspekt"
+                        }
+                    }
+                ]
+            }
+        ],
+        "Consequences": [
+            {
+                "entries": [
+                    {
+                        "name": "leichte Konsequenz",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Leicht",
+                            "icon": "2"
+                        }
+                    },
+                    {
+                        "name": "2te leichte  Konsequenz (nach Fertigkeit)",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Leicht",
+                            "icon": "2"
+                        },
+                        "flags": {
+                            "fatex": {
+                                "skillReferenceSettings": {
+                                    "conjunction": 0
+                                },
+                                "skillReferences": [
+                                    {
+                                        "skill": "Kraft",
+                                        "condition": 4,
+                                        "operator": 4
+                                    },
+                                    {
+                                        "skill": "Wille",
+                                        "condition": 4,
+                                        "operator": 4
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "mittlere  Konsequenz",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Mittel",
+                            "icon": "4"
+                        }
+                    },
+                    {
+                        "name": "schwere Konsequenz",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Schwer",
+                            "icon": "6"
+                        }
+                    }
+                ]
+            }
+        ],
+        "Skills": [
+            {
+                "columns": true,
+                "entries": [
+                    {
+                        "name": "Athletik",
+                        "type": "skill",
+                        "data": {
+                            "description": "Die Fertigkeit Athletik repräsentiert die Fitness und Körperbeherrschung deines Charakters. Diese Fitness hat er durch Training, natürliches Talent oder genre-spezifische Mittel (z. B. Magie oder genetische Veränderung) erreicht. Daher ist sie besonders für jeden actionlastigen Charakter interessant."
+                        }
+                    },
+                    {
+                        "name": "Charisma",
+                        "type": "skill",
+                        "data": {
+                            "description": "Bei  Charisma  geht  es  darum,  positive  Beziehungen  zu  anderen  Personen aufzubauen  und  ihnen  freundliche Gefühle zu entlocken. Mit dieser Fertigkeit bringst du andere dazu, dich zu mögen und dir zu vertrauen."
+                        }
+                    },
+                    {
+                        "name": "Diebeskunst",
+                        "type": "skill",
+                        "data": {
+                            "description": "Mit  der  Fertigkeit  Diebeskunst kann dein Charakter Gegenstände stehlen oder an Orten eindringen, an denen man ihn nicht haben will."
+                        }
+                    },
+                    {
+                        "name": "Empathie",
+                        "type": "skill",
+                        "data": {
+                            "description": "Mit Empathie erkennst du Veränderungen in der Stimmung und im Verhalten von anderen Personen. Im Grunde funktioniert Empathie wie die Fertigkeit Wahrnehmung, wenn es um Gefühle geht."
+                        }
+                    },
+                    {
+                        "name": "Fahren",
+                        "type": "skill",
+                        "data": {
+                            "description": "Beim Fahren geht es darum, Fahrzeuge und alle anderen Dinge, die sich schnell bewegen, zu steuern. Wie bei der Fertigkeit Handwerk kommt es beim Fahren stark darauf an, wie sehr es in der Geschichte um Fahrzeuge oder Transporte geht und welchen technologischen Stand deine Spielwelt hat."
+                        }
+                    },
+                    {
+                        "name": "Handwerk",
+                        "type": "skill",
+                        "data": {
+                            "description": "Mit der Fertigkeit Handwerk kannst du mit Maschinen umgehen. Die Grundfertigkeit wird Handwerk genannt, weil das gut zu unseren Beispielen passt, aber sie kann je nach Spielwelt und technologischem Stand auch ganz anders heißen. In einem modernen oder Sci-Fi-Setting könnte sie Mechanik oder Reparieren heißen."
+                        }
+                    },
+                    {
+                        "name": "Heimlichkeit",
+                        "type": "skill",
+                        "data": {
+                            "description": "Mit Heimlichkeit kannst du dich ungesehen und ungehört bewegen und verstecken. Sie passt bestens zu der Fertigkeit Diebeskunst."
+                        }
+                    },
+                    {
+                        "name": "Kämpfen",
+                        "type": "skill",
+                        "data": {
+                            "description": "Die Fertigkeit Kämpfen deckt alle Nahkämpfe ab, egal, ob waffenlos oder mit Waffen (mit anderen Worten: alle Angriffe innerhalb einer Zone). Für Angriffe aus der Entfernung brauchst du die Fertigkeit Schießen."
+                        }
+                    },
+                    {
+                        "name": "Kontakte",
+                        "type": "skill",
+                        "data": {
+                            "description": "Mit der Fertigkeit Kontakte hast du Verbindungen zu Personen und weißt, wie du neue knüpfen kannst. Du kennst dich mit allen in eurer Spielwelt vorhandenen technischen oder anderen Methoden aus, mit denen du eine Beziehung pflegen kannst."
+                        }
+                    },
+                    {
+                        "name": "Kraft",
+                        "type": "skill",
+                        "data": {
+                            "description": "Kraft ist das Gegenstück zu Athletik und repräsentiert die natürlichen, körperlichen Fähigkeiten eines Charakters, wie rohe Kraft oder Ausdauer. In diesem Buch gibt es zwei körperliche Fertigkeiten (Athletik und Kraft). Diese Unterscheidung wurde getroffen, damit du zwei verschiedene Stereotypen spielen kannst: den Geschickten (basierend auf Athletik) und den Starken (basierend auf Kraft)."
+                        }
+                    },
+                    {
+                        "name": "Nachforschung",
+                        "type": "skill",
+                        "data": {
+                            "description": "Du benutzt Nachforschung, um etwas herauszufinden. Die Fertigkeit ist das Gegenstück zu Wahrnehmung, bei der es um oberflächliche Aufmerksamkeit und situationsabhängige Wachsamkeit geht. Bei Nachforschung geht es um konzentrierte Handlungen und genaue Überprüfungen."
+                        }
+                    },
+                    {
+                        "name": "Provozieren",
+                        "type": "skill",
+                        "data": {
+                            "description": "Du kannst Provozieren nutzen, um jemanden zu erzürnen und ihm generell negative Gefühle zu entlocken (z. B. Furcht, Wut, Scham usw.). Provozieren ist die Fertigkeit, die du benutzt, wenn es darum geht, ein Arschloch zu sein."
+                        }
+                    },
+                    {
+                        "name": "Ressourcen",
+                        "type": "skill",
+                        "data": {
+                            "description": "Die Fertigkeit Ressourcen beschreibt das Vermögen deines Charakters und seine Möglichkeiten, dieses einzusetzen."
+                        }
+                    },
+                    {
+                        "name": "Schießen",
+                        "type": "skill",
+                        "data": {
+                            "description": "Schießen ist das Gegenstück zu Kämpfen. Mit Schießen kannst du Fernkampfwaffen in einem Konflikt oder gegen Ziele, die sich nicht aktiv wehren können (wie eine Dartscheibe oder ein Scheunentor), benutzen."
+                        }
+                    },
+                    {
+                        "name": "Täuschung",
+                        "type": "skill",
+                        "data": {
+                            "description": "Mit der Fertigkeit Täuschung kannst du Leute belügen oder in die Irre leiten."
+                        }
+                    },
+                    {
+                        "name": "Wahrnehmung",
+                        "type": "skill",
+                        "data": {
+                            "description": "Bei der Fertigkeit Wahrnehmung geht es genau darum – etwas wahrzunehmen. Sie ist das Gegenstück zu Nachforschung und repräsentiert die allgemeine Aufmerksamkeit eines Charakters, die Fähigkeit, auf einen Blick ein Detail zu erkennen oder Dinge spontan zu bemerken. "
+                        }
+                    },
+                    {
+                        "name": "Wille",
+                        "type": "skill",
+                        "data": {
+                            "description": "Wille beschreibt die allgemeine geistige Ausdauer deines Charakters, ebenso wie Kraft die körperliche Ausdauer beschreibt."
+                        }
+                    },
+                    {
+                        "name": "Wissen",
+                        "type": "skill",
+                        "data": {
+                            "description": "Diese Fertigkeit sagt dir, über welches Wissen und über welche Ausbildung ein Charakter verfügt."
+                        }
+                    }
+                ]
+            }
+        ],
+        "Stress": [
+            {
+                "entries": [
+                    {
+                        "name": "körperlicher Stress",
+                        "type": "stress",
+                        "data": {
+                            "size": 4,
+                            "labelType": 0
+                        }
+                    },
+                    {
+                        "name": "geistiger Stress",
+                        "type": "stress",
+                        "data": {
+                            "size": 4,
+                            "labelType": 0
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

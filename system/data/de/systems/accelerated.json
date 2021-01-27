@@ -1,0 +1,139 @@
+{
+    "name": "Accelerated",
+    "identifier": "fae",
+    "types": {
+        "Aspects": [
+            {
+                "label": "Basic",
+                "entries": [
+                    {
+                        "name": "High Concept",
+                        "type": "aspect",
+                        "data": {
+                            "label": "High Concept"
+                        }
+                    },
+                    {
+                        "name": "Trouble",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Trouble"
+                        }
+                    },
+                    {
+                        "name": "Other aspect",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Other"
+                        }
+                    },
+                    {
+                        "name": "Other aspect",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Other"
+                        }
+                    },
+                    {
+                        "name": "Other aspect",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Other"
+                        }
+                    }
+                ]
+            },
+            {
+                "label": "Optional",
+                "entries": [
+                    {
+                        "name": "Relationship",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Relationship"
+                        }
+                    },
+                    {
+                        "name": "Empty Aspect",
+                        "type": "aspect"
+                    }
+                ]
+            }
+        ],
+        "Consequences": [
+            {
+                "entries": [
+                    {
+                        "name": "Mild consequence",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Mild",
+                            "icon": "2"
+                        }
+                    },
+                    {
+                        "name": "Moderate consequence",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Moderate",
+                            "icon": "4"
+                        }
+                    },
+                    {
+                        "name": "Severe consequence",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Severe",
+                            "icon": "6"
+                        }
+                    }
+                ]
+            }
+        ],
+        "Skills": [
+            {
+                "columns": true,
+                "entries": [
+                    {
+                        "name": "Careful",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "Clever",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "Flashy",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "Forceful",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "Quick",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "Sneaky",
+                        "type": "skill"
+                    }
+                ]
+            }
+        ],
+        "Stress": [
+            {
+                "entries": [
+                    {
+                        "name": "Stress",
+                        "type": "stress",
+                        "data": {
+                            "size": 3,
+                            "labelType": 0
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}
