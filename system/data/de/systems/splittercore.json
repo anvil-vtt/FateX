@@ -1,0 +1,301 @@
+{
+    "name": "Splitter Core",
+    "identifier": "splittercore",
+    "types": {
+        "Aspects": [
+            {
+                "label": "Grundlegend",
+                "entries": [
+                    {
+                        "name": "Rasse & Kultur",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Rasse & Kultur"
+                        }
+                    },
+                    {
+                        "name": "Charakter Konzept",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Charakter Konzept"
+                        }
+                    },
+                    {
+                        "name": "Motivation",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Motivation"
+                        }
+                    },
+                    {
+                        "name": "Beziehung zu SC",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Beziehung zu SC"
+                        }
+                    },
+                    {
+                        "name": "Beziehung zu NSC",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Beziehung zu NSC"
+                        }
+                    },
+                    {
+                        "name": "Schicksal",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Schicksal"
+                        }
+                    }
+                ]
+            },
+            {
+                "label": "Optional",
+                "entries": [
+                    {
+                        "name": "anderer Aspekt",
+                        "type": "aspect",
+                        "data": {
+                            "label": "anderer Aspekt"
+                        }
+                    }
+                ]
+            }
+        ],
+        "Consequences": [
+            {
+                "entries": [
+                    {
+                        "name": "leichte Konsequenz",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Leicht",
+                            "icon": "2"
+                        }
+                    },
+                    {
+                        "name": "2te leichte  Konsequenz (nach Fertigkeit)",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Leicht",
+                            "icon": "2"
+                        },
+                        "flags": {
+                            "fatex": {
+                                "skillReferenceSettings": {
+                                    "conjunction": 0
+                                },
+                                "skillReferences": [
+                                    {
+                                        "skill": "Kraft",
+                                        "condition": 4,
+                                        "operator": 4
+                                    },
+                                    {
+                                        "skill": "Wille",
+                                        "condition": 4,
+                                        "operator": 4
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "mittlere  Konsequenz",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Mittel",
+                            "icon": "4"
+                        }
+                    },
+                    {
+                        "name": "schwere Konsequenz",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Schwer",
+                            "icon": "6"
+                        }
+                    }
+                ]
+            }
+        ],
+        "Skills": [
+            {
+                "columns": true,
+                "entries": [
+                    {
+                        "name": "Athletik",
+                        "type": "skill",
+                        "data": {
+                            "description": ""
+                        }
+                    },
+                    {
+                        "name": "Charisma",
+                        "type": "skill",
+                        "data": {
+                            "description": ""
+                        }
+                    },
+                    {
+                        "name": "Diebeskunst",
+                        "type": "skill",
+                        "data": {
+                            "description": ""
+                        }
+                    },
+                    {
+                        "name": "Empathie",
+                        "type": "skill",
+                        "data": {
+                            "description": ""
+                        }
+                    },
+                    {
+                        "name": "Fernkampf",
+                        "type": "skill",
+                        "data": {
+                            "description": ""
+                        }
+                    },
+                    {
+                        "name": "Gelehrsamkeit",
+                        "type": "skill",
+                        "data": {
+                            "description": ""
+                        }
+                    },
+                    {
+                        "name": "Handwerk",
+                        "type": "skill",
+                        "data": {
+                            "description": ""
+                        }
+                    },
+                    {
+                        "name": "Heimlichkeit",
+                        "type": "skill",
+                        "data": {
+                            "description": ""
+                        }
+                    },
+                    {
+                        "name": "Kämpfen",
+                        "type": "skill",
+                        "data": {
+                            "description": ""
+                        }
+                    },
+                    {
+                        "name": "Kontakte",
+                        "type": "skill",
+                        "data": {
+                            "description": ""
+                        }
+                    },
+                    {
+                        "name": "Lenken",
+                        "type": "skill",
+                        "data": {
+                            "description": ""
+                        }
+                    },
+                    {
+                        "name": "Nachforschen",
+                        "type": "skill",
+                        "data": {
+                            "description": ""
+                        }
+                    },
+                    {
+                        "name": "Provozieren",
+                        "type": "skill",
+                        "data": {
+                            "description": ""
+                        }
+                    },
+                    {
+                        "name": "Ressourcen",
+                        "type": "skill",
+                        "data": {
+                            "description": ""
+                        }
+                    },
+                    {
+                        "name": "Statur",
+                        "type": "skill",
+                        "data": {
+                            "description": ""
+                        }
+                    },
+                    {
+                        "name": "Täuschen",
+                        "type": "skill",
+                        "data": {
+                            "description": ""
+                        }
+                    },
+                    {
+                        "name": "Überleben",
+                        "type": "skill",
+                        "data": {
+                            "description": ""
+                        }
+                    },
+                    {
+                        "name": "Wahrnehmen",
+                        "type": "skill",
+                        "data": {
+                            "description": ""
+                        }
+                    },
+                    {
+                        "name": "Wille",
+                        "type": "skill",
+                        "data": {
+                            "description": ""
+                        }
+                    },
+                    {
+                        "name": "Zaubern",
+                        "type": "skill",
+                        "data": {
+                            "description": ""
+                        }
+                    }
+                ]
+            }
+        ],
+        "Stress": [
+            {
+                "entries": [
+                    {
+                        "name": "körperlicher Stress",
+                        "type": "stress",
+                        "data": {
+                            "size": 4,
+                            "labelType": 0
+                        }
+                    },
+                    {
+                        "name": "geistiger Stress",
+                        "type": "stress",
+                        "data": {
+                            "size": 4,
+                            "labelType": 0
+                        }
+                    },
+                    {
+                        "name": "Fokus",
+                        "type": "stress",
+                        "data": {
+                            "size": 4,
+                            "labelType": 0
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}
