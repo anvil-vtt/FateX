@@ -122,12 +122,20 @@
                 "ShortDescriptionHelp": "Descripción acotada del Extra"
             },
             "Automation": {
-                "Headline": "Automatización",
+                "Headline": "Automatizar medidor",
+                "BoxesHeadLine": "Automatizar casillas",
                 "Description": "No hay condiciones de habilidad configuradas. Añade una o más condiciónes para habilitar la automatización.",
-                "AddSkillRef": "Añadir condición de habilidad",
-                "DisableUntil": "Deshabilitar hasta",
+                "AddSkillRef": "Añadir condición",
+                "DisableUntil": "Deshabilitar medidor hasta que",
+                "BoxesIf": "casillas si",
                 "MultipleConditions": "Habilitar automatización si",
                 "MultipleConditionsMatches": "coinciden (las condiciones).",
+                "Actions":{
+                    "Box": {
+                        "ADD" : "Añadir",
+                        "REMOVE": "Remover"
+                    }
+                },
                 "Conjunctions": {
                     "AND": "todas",
                     "OR": "algunas"
