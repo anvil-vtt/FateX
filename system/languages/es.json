@@ -123,11 +123,19 @@
             },
             "Automation": {
                 "Headline": "Automatización",
+                "BoxesHeadLine": "Automatización de casillas",
                 "Description": "No hay condiciones de habilidad configuradas. Añade una o más condiciónes para habilitar la automatización.",
-                "AddSkillRef": "Añadir condición de habilidad",
-                "DisableUntil": "Deshabilitar hasta",
+                "AddSkillRef": "Añadir condicionante",
+                "DisableUntil": "Deshabilitar medidor hasta que",
+                "BoxesIf": "casillas si",
                 "MultipleConditions": "Habilitar automatización si",
                 "MultipleConditionsMatches": "coinciden (las condiciones).",
+                "Actions":{
+                    "Box": {
+                        "ADD" : "Agregar",
+                        "REMOVE": "Remover"
+                    }
+                },
                 "Conjunctions": {
                     "AND": "todas",
                     "OR": "algunas"
