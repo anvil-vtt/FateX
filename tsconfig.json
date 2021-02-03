@@ -3,7 +3,7 @@
         "target": "es2018",
         "module": "esnext",
         "lib": ["es2015", "es2019", "dom"],
-        "types": ["foundry-pc-types", "webpack-env"],
+        "types": ["foundry-vtt-types", "webpack-env"],
         "sourceMap": true,
         "strict": true,
         "allowJs": true,

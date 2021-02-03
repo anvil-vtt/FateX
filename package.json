@@ -26,7 +26,7 @@
         "eslint": "^7.14.0",
         "eslint-config-prettier": "^6.15.0",
         "eslint-loader": "^4.0.2",
-        "foundry-pc-types": "gitlab:foundry-projects/foundry-pc/foundry-pc-types",
+        "foundry-vtt-types": "github:League-of-Foundry-Developers/foundry-vtt-types",
         "glob": "^7.1.6",
         "marked": "^1.2.5",
         "node-sass": "^5.0.0",
