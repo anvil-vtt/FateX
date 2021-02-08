@@ -28,7 +28,7 @@
         "eslint-loader": "^4.0.2",
         "foundry-vtt-types": "github:League-of-Foundry-Developers/foundry-vtt-types",
         "glob": "^7.1.6",
-        "marked": "^1.2.5",
+        "marked": "^2.0.0",
         "node-sass": "^5.0.0",
         "node-sass-glob-importer": "^5.3.2",
         "null-loader": "^4.0.1",
