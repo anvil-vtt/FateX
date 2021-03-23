@@ -1,41 +1,41 @@
 {
-    "name": "加速",
-    "identifier": "fae",
+    "name": "加速版",
+    "identifier": "FAE",
     "types": {
-        "外观": [
+        "特征": [
             {
-                "label": "基本",
+                "label": "基础",
                 "entries": [
                     {
-                        "name": "概念",
+                        "name": "核心概念",
                         "type": "aspect",
                         "data": {
-                            "label": "概念"
+                            "label": "核心概念"
                         }
                     },
                     {
-                        "name": "问题",
+                        "name": "困扰",
                         "type": "aspect",
                         "data": {
-                            "label": "问题"
+                            "label": "困扰"
                         }
                     },
                     {
-                        "name": "其他方面",
-                        "type": "aspect",
-                        "data": {
-                            "label": "其他"
-                        }
-                    },
-                    {
-                        "name": "其他方面",
+                        "name": "其他特征",
                         "type": "aspect",
                         "data": {
                             "label": "其他"
                         }
                     },
                     {
-                        "name": "其他方面",
+                        "name": "其他特征",
+                        "type": "aspect",
+                        "data": {
+                            "label": "其他"
+                        }
+                    },
+                    {
+                        "name": "其他特征",
                         "type": "aspect",
                         "data": {
                             "label": "其他"
@@ -47,15 +47,15 @@
                 "label": "选项",
                 "entries": [
                     {
-                        "name": "亲属关系",
+                        "name": "关系",
                         "type": "aspect",
                         "data": {
-                            "label": "亲属关系"
+                            "label": "关系"
                         }
                     },
                     {
-                        "name": "其他方面",
-                        "type": "aspect"
+                        "name": "空特征",
+                        "type": "aspect",
                     }
                 ]
             }
@@ -67,7 +67,7 @@
                         "name": "轻微伤痕",
                         "type": "consequence",
                         "data": {
-                            "label": "轻度",
+                            "label": "轻微",
                             "icon": "2"
                         }
                     },
@@ -75,7 +75,7 @@
                         "name": "中度伤痕",
                         "type": "consequence",
                         "data": {
-                            "label": "中等",
+                            "label": "中度",
                             "icon": "4"
                         }
                     },
@@ -95,11 +95,11 @@
                 "columns": true,
                 "entries": [
                     {
-                        "name": "小心",
+                        "name": "谨慎",
                         "type": "skill"
                     },
                     {
-                        "name": "巧妙",
+                        "name": "机智",
                         "type": "skill"
                     },
                     {
@@ -107,15 +107,15 @@
                         "type": "skill"
                     },
                     {
-                        "name": "强力",
+                        "name": "强劲",
                         "type": "skill"
                     },
                     {
-                        "name": "快捷",
+                        "name": "迅捷",
                         "type": "skill"
                     },
                     {
-                        "name": "鬼祟",
+                        "name": "狡诈",
                         "type": "skill"
                     }
                 ]

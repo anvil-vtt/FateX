@@ -6,17 +6,17 @@
             "Ladder": {
                 "+8":"传奇",
                 "+7":"史诗",
-                "+6":"惊异",
-                "+5":"卓越",
-                "+4":"极佳",
+                "+6":"卓绝",
+                "+5":"杰出",
+                "+4":"出色",
                 "+3":"良好",
                 "+2":"尚可",
                 "+1":"一般",
                 "+0":"平庸",
                 "-1":"差劲",
-                "-2":"拙劣",
-                "-3":"可怕",
-                "-4":"灾难"
+                "-2":"糟糕",
+                "-3":"灾难",
+                "-4":"绝望"
             },
             "Actions": {
                 "Configure": "配置",
@@ -30,107 +30,115 @@
         },
         "Sheet": {
             "Name": "名字",
-            "Description": "说明",
+            "Description": "描述",
             "FatePoints": "命运点",
-            "Aspects": "外观",
+            "Aspects": "特征",
             "Consequences": "伤痕",
             "Skills": "技能",
             "Stunts": "特技",
-            "Extras": "额外",
-            "Bio": "经历",
+            "Extras": "额外要素",
+            "Bio": "个人经历",
             "Artwork": "画像",
-            "StressTracks": "压力",
+            "StressTracks": "压力轨",
             "Tabs": {
                 "SkillsStunts": "技能和特技",
                 "Skills": "技能",
                 "Stunts": "特技",
-                "Extras": "额外",
-                "Bio": "经历"
+                "Extras": "额外要素",
+                "Bio": "个人经历"
             },
             "Buttons": {
                 "EditMode": "编辑",
                 "SheetSetup": "设置"
             },
             "Stress": {
-                "Add": "添加压力轨迹"
+                "Add": "添加压力轨"
             },
             "Messages": {
-                "EmptyActor": "看来你的角色还是空的。可以使用<strong>\"编辑\"</strong>或<strong>\"设置\"</strong>菜单对其进行编辑。用于触发编辑或设置模式的按钮位于标题栏中"
+                "EmptyActor": "看来你的角色还是空的。可以使用<strong>\"编辑\"</strong>或<strong>\"设置\"</strong>菜单对其进行编辑。用于切换到编辑模式或设置模式的按钮位于标题栏中。"
             }
         },
         "Item": {
             "Stress": {
-                "Name": "压力轨迹标签",
-                "EditItem": "编辑压力轨迹",
-                "Size": "槽量",
-                "Description": "说明",
-                "DescriptionHelp": "说明将在压力轨迹上可见。",
+                "Name": "压力轨标签",
+                "EditItem": "编辑压力轨",
+                "Size": "压力格数量",
+                "Description": "描述",
+                "DescriptionHelp": "描述将在压力轨上可见。",
                 "Boxes": {
-                    "Label": "盒子标签模板",
-                    "Custom": "自定义方框标签",
+                    "Label": "压力格标签模板",
+                    "Custom": "自定义压力格标签",
                     "CustomHelp": "列出以空格分隔的Unicode字符。 I.e. \"2 4 6 ☀\"."
                 },
                 "Type": {
                     "Core": "核心",
-                    "Condensed": "浓缩",
+                    "Condensed": "浓缩版",
                     "Custom": "空白/自定义"
                 }
             },
             "Aspect": {
-                "EditItem": "编辑外观",
+                "EditItem": "编辑特征",
                 "Value": "文本",
-                "Description": "说明",
+                "Description": "描述",
                 "DescriptionHelp": "仅在聊天窗口中显示",
                 "Label": "标签"
             },
             "Consequence": {
                 "EditItem": "编辑伤痕",
                 "Value": "文本",
-                "Description": "说明",
+                "Description": "描述",
                 "DescriptionHelp": "仅在聊天窗口中显示",
                 "Label": "标签",
-                "LabelHelp": "描述严重性的标签，如\"轻\"或\"严重\".",
+                "LabelHelp": "描述伤痕轻重程度的标签，如\"轻微\"或\"严重\".",
                 "Icon": "图标",
                 "IconHelp": "通常是2、4、6或8等数字。显示在左侧。",
                 "Type": {
-                    "Label": "变量",
-                    "Condition": "条件",
+                    "Label": "变体",
+                    "Condition": "状态",
                     "Consequence": "伤痕"
                 }
             },
             "Skill": {
                 "Name": "技能名称",
                 "EditItem": "编辑技能",
-                "Rank": "范围",
-                "Description": "说明",
+                "Rank": "等级",
+                "Description": "描述",
                 "DescriptionHelp": "仅在讨论窗口中显示"
             },
             "Stunt": {
-                "Name": "特技",
+                "Name": "特技名称",
                 "EditItem": "编辑特技",
-                "Description": "说明",
-                "DescriptionHelp": "此功能的完整说明",
-                "ShortDescription": "描述简洁",
-                "ShortDescriptionHelp": "此功能的简要说明"
+                "Description": "描述",
+                "DescriptionHelp": "此特技的完整描述",
+                "ShortDescription": "简要描述",
+                "ShortDescriptionHelp": "此特技的简要描述"
             },
             "Extra": {
-                "Name": "附加标题",
-                "EditItem": "编辑附加",
-                "Description": "说明",
-                "DescriptionHelp": "此附加功能的完整说明",
-                "ShortDescription": "简洁描述",
-                "ShortDescriptionHelp": "此附加功能的简要说明"
+                "Name": "额外要素名称",
+                "EditItem": "编辑额外要素",
+                "Description": "描述",
+                "DescriptionHelp": "此额外要素的完整描述",
+                "ShortDescription": "简要描述",
+                "ShortDescriptionHelp": "此额外要素的简要描述"
             },
             "Automation": {
                 "Headline": "自动化",
-                "Description": "未定义与能力相关的条件。请添加一个或多个与技能相关的条件以启用自动化。",
+				"BoxesHeadline": "压力格自动化",
+                "Description": "未定义与技能相关的条件。请添加一个或多个与技能相关的条件以启用自动化。",
                 "AddSkillRef": "添加条件",
                 "DisableUntil": "禁用时间上限",
+				"BoxesIf": "如果压力格",
                 "MultipleConditions": "启用自动化",
                 "MultipleConditionsMatches": "条件成立",
+				"Actions": {
+                    "Box": {
+                        "ADD": "添加",
+                        "REMOVE": "移除"
+                    }
+                },
                 "Conjunctions": {
-                    "AND": "每个",
-                    "OR": "一个"
+                    "AND": "每一个",
+                    "OR": "任意一个"
                 },
                 "Operators": {
                     "OPERATOR_EQUALS": "等于",
@@ -159,10 +167,10 @@
                 "Setup": "配置（预定义）",
                 "Actions": {
                     "Clear": {
-                        "Aspects": "清除外观",
-                        "Consequences": "消除伤痕",
+                        "Aspects": "清除特征",
+                        "Consequences": "清除伤痕",
                         "Skills": "清除技能",
-                        "Stress": "清除压力轨迹",
+                        "Stress": "清除压力轨",
                         "Everything": "全部清除"
                     },
                     "Setup": {
@@ -192,11 +200,11 @@
                 "Title": "选择模板",
                 "Label": "模板",
                 "Configuration": "配置",
-                "Empty": "空",
-                "CreateEmpty": "空演员",
+                "Empty": "空角色",
+                "CreateEmpty": "空角色",
                 "Or": "或",
                 "Help": "要添加新模板，请单击下面的“配置”按钮（也可在标题栏中找到）。",
-                "Explain": "模板是一种优雅的方式，可以为不同的演员提供不同类型的角色表。我们建议您对PJS、次要、次要和主要PNJS使用<strong>不同的模型</strong>，这些模型在其工作表上都有不同的特性。"
+                "Explain": "模板可以便捷地为不同类型的角色提供不同的角色表。我们建议你对PC、NPC和敌人使用<strong>不同的模板</strong>，因为他们的角色卡<strong>需求各有不同<strong>。"
             }
         }
     }
