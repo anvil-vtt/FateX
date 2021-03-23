@@ -55,7 +55,7 @@
                     },
                     {
                         "name": "空特征",
-                        "type": "aspect",
+                        "type": "aspect"
                     }
                 ]
             }
