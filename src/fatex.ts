@@ -14,7 +14,6 @@
 
 import "./scss/fatex.scss";
 
-import { FateX } from "./config";
 import { ActorFate } from "./module/actor/ActorFate";
 import { CharacterSheet } from "./module/actor/character/CharacterSheet";
 import { HandlebarsHelpers } from "./module/helper/HandlebarsHelpers";
@@ -40,7 +39,7 @@ Hooks.once("init", async () => {
     console.log(`FateX | Initializing Fate extended game system`);
 
     // Initialise config
-    CONFIG.FateX = FateX;
+    CONFIG.FateX = "a";
 
     //@ts-ignore
     CONFIG.Actor.entityClass = ActorFate;

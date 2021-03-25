@@ -1,7 +1,4 @@
-import { ItemFate } from "./ItemFate";
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export class ItemSheetFate extends ItemSheet<any, ItemFate> {
+export class ItemSheetFate extends ItemSheet {
     static get defaultOptions() {
         const options = super.defaultOptions;
 
@@ -9,6 +6,7 @@ export class ItemSheetFate extends ItemSheet<any, ItemFate> {
             options.classes = [];
         }
 
+        // @ts-ignore
         mergeObject(options, {
             classes: options.classes.concat(["fatex fatex__item_sheet"]),
             scrollY: [".desk__content"],

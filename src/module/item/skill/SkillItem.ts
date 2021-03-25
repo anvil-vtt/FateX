@@ -102,42 +102,31 @@ export class SkillItem extends BaseItem {
         const actor = sheet.actor;
         const roll = new Roll("4dF").roll();
         const dice = this.getDice(roll);
-        const total = this.getTotalString(roll.total + rank);
-        const ladder = this.getLadderLabel(roll.total + rank);
+        const total = this.getTotalString((roll.total || 0) + rank);
+        const ladder = this.getLadderLabel((roll.total || 0) + rank);
 
         // Prepare skill item
         const templateData = { skill, rank, dice, total, ladder };
 
-        const chatData: {
-            user: string;
-            speaker: unknown;
-            sound: string;
-            type: number;
-            roll: Roll;
-            rollMode: string;
-            flags: {
-                templateVariables: unknown;
-            };
-            content?: HTMLElement;
-        } = {
-            user: game.user._id,
+        const chatData = {
+            user: game.user?._id,
             speaker: ChatMessage.getSpeaker({ actor: actor }),
             type: CONST.CHAT_MESSAGE_TYPES.ROLL,
             sound: CONFIG.sounds.dice,
             roll: roll,
-            rollMode: game.settings.get("core", "rollMode"),
+            rollMode: game.settings.get("core", "rollMode") as string,
+            content: await renderTemplate(template, templateData),
 
             flags: {
                 templateVariables: templateData,
             },
         };
 
-        chatData.content = await renderTemplate(template, templateData);
         await ChatMessage.create(chatData);
     }
 
     static getDice(roll) {
-        const useOldRollApi = isNewerVersion("0.7.0", game.data.version);
+        const useOldRollApi = isNewerVersion("0.7.0", game.data.version as string);
         const rolls = useOldRollApi ? roll.parts[0].rolls : roll.terms[0].results;
 
         return rolls.map((rolledDie) => ({
