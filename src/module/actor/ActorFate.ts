@@ -4,7 +4,7 @@
  */
 import { TemplateActorSheetFate } from "./template/TemplateActorSheetFate";
 
-export class ActorFate extends Actor<any> {
+export class ActorFate extends Actor {
     /**
      * Open template picker instead of directly creating a new actor
      */

@@ -166,7 +166,7 @@ export class ActorSheetFate extends ActorSheet<any, ActorFate> {
         try {
             data = JSON.parse(event.dataTransfer.getData("text/plain"));
         } catch (err) {
-            return false;
+            return;
         }
 
         if (data.type === "JournalEntry") {
@@ -189,6 +189,6 @@ export class ActorSheetFate extends ActorSheet<any, ActorFate> {
         };
 
         // Create item and render sheet afterwards
-        await actor.createOwnedItem(extraData);
+        return await actor.createOwnedItem(extraData);
     }
 }
