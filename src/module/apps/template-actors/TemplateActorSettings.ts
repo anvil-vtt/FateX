@@ -1,29 +1,21 @@
 import { ActorFate } from "../../actor/ActorFate";
 import { SheetSetup } from "../sheet-setup/SheetSetup";
 
-export class TemplateActorSettings extends FormApplication {
+export class TemplateActorSettings extends FormApplication<any, any, any> {
     static get defaultOptions() {
-        const options = super.defaultOptions;
-
-        if (!options.classes) {
-            options.classes = [];
-        }
-
-        mergeObject(options, {
+        return mergeObject(super.defaultOptions, {
             title: game.i18n.localize("FAx.Settings.Templates.App.Title"),
             template: "/systems/fatex/templates/apps/template-actors.html",
             id: "template-actors",
             resizable: true,
-            classes: options.classes.concat(["fatex fatex__app_sheet"]),
+            classes: ["fatex fatex__app_sheet"],
             width: 920,
             height: 500,
-        });
-
-        return options;
+        } as FormApplication.Options);
     }
 
     getData() {
-        const filteredActors = duplicate(game.actors.filter((actor) => actor.isTemplateActor));
+        const filteredActors = duplicate(game.actors?.filter((actor) => actor.isTemplateActor) as Record<any, any>[]);
 
         filteredActors.forEach((actorEntity) => {
             actorEntity.stress = actorEntity.items.filter((item) => item.type === "stress");
@@ -56,13 +48,13 @@ export class TemplateActorSettings extends FormApplication {
         e.stopPropagation();
 
         const data = e.currentTarget.dataset;
-        const template = game.actors.get(data.template);
+        const template = game.actors?.get(data.template);
 
         if (!template) {
             return;
         }
 
-        template.sheet.render(true);
+        template.sheet?.render(true);
     }
 
     async _deleteTemplate(e) {
@@ -70,7 +62,7 @@ export class TemplateActorSettings extends FormApplication {
         e.stopPropagation();
 
         const data = e.currentTarget.dataset;
-        const template = game.actors.get(data.template);
+        const template = game.actors?.get(data.template);
 
         if (!template) {
             return;
@@ -95,7 +87,7 @@ export class TemplateActorSettings extends FormApplication {
 
                             // Re-render this settings window and the picker if open
                             this.render(true);
-                            CONFIG.FateX.applications.templatePicker.render();
+                            CONFIG.FateX.applications.templatePicker?.render();
                         },
                     },
                 },
@@ -127,7 +119,7 @@ export class TemplateActorSettings extends FormApplication {
 
         // Re-render this settings window and the picker if open
         this.render(true);
-        CONFIG.FateX.applications.templatePicker.render();
+        CONFIG.FateX.applications.templatePicker?.render();
     }
 
     async _duplicateTemplate(e) {
@@ -135,7 +127,7 @@ export class TemplateActorSettings extends FormApplication {
         e.stopPropagation();
 
         const data = e.currentTarget.dataset;
-        const template = duplicate(game.actors.get(data.template));
+        const template = duplicate(game.actors?.get(data.template));
 
         if (!template) {
             return;
@@ -154,7 +146,7 @@ export class TemplateActorSettings extends FormApplication {
 
         // Re-render this settings window and the picker if open
         this.render(true);
-        CONFIG.FateX.applications.templatePicker.render();
+        CONFIG.FateX.applications.templatePicker?.render();
     }
 
     async _updateObject() {

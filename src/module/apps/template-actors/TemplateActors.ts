@@ -13,7 +13,7 @@ export class TemplateActors {
 
         // Add extra button to foundrys settings menu
         Hooks.on("renderSidebarTab", (app, html) => {
-            if (!(app instanceof Settings) || !game.user.isGM) {
+            if (!(app instanceof Settings) || !game.user?.isGM) {
                 return;
             }
 
@@ -26,7 +26,7 @@ export class TemplateActors {
             `);
 
             html.on("click", 'button[data-fatex="templates"]', () => {
-                return CONFIG.FateX.applications.templateSettings.render(true);
+                return CONFIG.FateX.applications.templateSettings?.render(true);
             });
         });
     }

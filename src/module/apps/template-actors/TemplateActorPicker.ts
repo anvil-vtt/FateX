@@ -4,23 +4,15 @@ import { TemplateActorSettings } from "./TemplateActorSettings";
 
 export class TemplateActorPicker extends TemplateActorSettings {
     static get defaultOptions() {
-        const options = super.defaultOptions;
-
-        if (!options.classes) {
-            options.classes = [];
-        }
-
-        mergeObject(options, {
+        return mergeObject(super.defaultOptions, {
             title: game.i18n.localize("ACTOR.Create"),
             template: "/systems/fatex/templates/apps/template-actors-picker.html",
             id: "template-actor-picker",
             resizable: true,
-            classes: options.classes.concat(["fatex fatex__app_sheet"]),
+            classes: ["fatex fatex__app_sheet"],
             width: 1000,
             height: 430,
-        });
-
-        return options;
+        } as FormApplication.Options);
     }
 
     activateListeners(html) {
@@ -36,7 +28,7 @@ export class TemplateActorPicker extends TemplateActorSettings {
      *************************/
 
     async _openSettings() {
-        CONFIG.FateX.applications.templateSettings.render(true);
+        CONFIG.FateX.applications.templateSettings?.render(true);
     }
 
     async _emptyTemplate(e) {
@@ -63,7 +55,7 @@ export class TemplateActorPicker extends TemplateActorSettings {
         e.stopPropagation();
 
         const data = e.currentTarget.dataset;
-        const template = duplicate(game.actors.get(data.template));
+        const template = duplicate(game.actors?.get(data.template));
 
         // Add current template as a flag for later use
         //@ts-ignore

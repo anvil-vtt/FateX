@@ -1,4 +1,5 @@
 import { DataManager } from "./DataManager";
+import { ActorFate } from "../../actor/ActorFate";
 
 const CLEAR = {
     EVERYTHING: 0,
@@ -15,7 +16,7 @@ const TYPES = {
     4: "stress",
 };
 
-export class SheetSetup extends FormApplication {
+export class SheetSetup extends FormApplication<any, any, ActorFate> {
     constructor(object, options) {
         super(object, options);
 
@@ -27,17 +28,11 @@ export class SheetSetup extends FormApplication {
     }
 
     static get defaultOptions() {
-        const options = super.defaultOptions;
-
-        if (!options.classes) {
-            options.classes = [];
-        }
-
-        mergeObject(options, {
+        return mergeObject(super.defaultOptions, {
             title: game.i18n.localize("FAx.Apps.Setup.Title"),
             template: "/systems/fatex/templates/apps/sheet-setup.html",
             resizable: true,
-            classes: options.classes.concat(["fatex fatex__app_sheet"]),
+            classes: ["fatex fatex__app_sheet"],
             width: 600,
             height: 700,
             scrollY: [".desk__content"],
@@ -47,9 +42,7 @@ export class SheetSetup extends FormApplication {
                     contentSelector: ".fatex__vertical_tabs__content",
                 },
             ],
-        });
-
-        return options;
+        } as FormApplication.Options);
     }
 
     async getData() {

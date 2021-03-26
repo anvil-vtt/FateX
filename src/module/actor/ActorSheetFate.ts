@@ -3,8 +3,9 @@
  * Defines what information on the actorsheet may be rendered.
  */
 import { SheetSetup } from "../apps/sheet-setup/SheetSetup";
+import { ActorFate } from "./ActorFate";
 
-export class ActorSheetFate extends ActorSheet {
+export class ActorSheetFate extends ActorSheet<any, ActorFate> {
     /**
      * Defines the default options for all FateX actor sheets.
      * This consists of things like css classes, the template to load and the tab configuration.
@@ -12,14 +13,8 @@ export class ActorSheetFate extends ActorSheet {
      * @returns {Object}
      */
     static get defaultOptions() {
-        const options = super.defaultOptions;
-
-        if (!options.classes) {
-            options.classes = [];
-        }
-
-        mergeObject(options, {
-            classes: options.classes.concat(["fatex fatex__sheet"]),
+        return mergeObject(super.defaultOptions, {
+            classes: ["fatex fatex__sheet"],
             template: "",
             tabs: [
                 {
@@ -30,13 +25,11 @@ export class ActorSheetFate extends ActorSheet {
             ],
             scrollY: [".desk__content"],
             width: 900,
-        });
-
-        return options;
+        } as BaseEntitySheet.Options);
     }
 
     get template() {
-        if (!game.user.isGM && this.actor.limited) {
+        if (!game.user?.isGM && this.actor.limited) {
             return "systems/fatex/templates/actor/limited.html";
         }
 
@@ -55,7 +48,7 @@ export class ActorSheetFate extends ActorSheet {
 
         // Custom sheet listeners for every ItemType
         for (const itemType in CONFIG.FateX.itemClasses) {
-            CONFIG.FateX.itemClasses[itemType].activateActorSheetListeners(html, this);
+            CONFIG.FateX.itemClasses[itemType]?.activateActorSheetListeners(html, this);
         }
 
         // Custom sheet listeners for every SheetComponent
@@ -112,25 +105,25 @@ export class ActorSheetFate extends ActorSheet {
      *   A list of buttons to be rendered.
      */
     _getHeaderButtons() {
-        let buttons = super._getHeaderButtons();
+        const buttons = super._getHeaderButtons();
 
         // Edit mode button to toggle which interactive elements are visible on the sheet.
-        const canConfigure = game.user.isGM || this.actor.owner;
+        const canConfigure = game.user?.isGM || this.actor.owner;
         if (this.options.editable && canConfigure) {
-            buttons = [
+            buttons.push(
                 {
-                    label: game.i18n.localize("FAx.Sheet.Buttons.EditMode"),
                     class: "fatex-toggle-edit-mode",
+                    label: game.i18n.localize("FAx.Sheet.Buttons.EditMode"),
                     icon: "fas fa-edit",
-                    onclick: (ev) => this._onToggleEditMode(ev),
+                    onclick: (e: JQuery.ClickEvent) => this._onToggleEditMode(e),
                 },
                 {
-                    label: game.i18n.localize("FAx.Sheet.Buttons.SheetSetup"),
                     class: "fatex-open-sheet-manager",
+                    label: game.i18n.localize("FAx.Sheet.Buttons.SheetSetup"),
                     icon: "fas fa-tools",
-                    onclick: (ev) => this._onOpenSheetSetup(ev),
-                },
-            ].concat(buttons);
+                    onclick: (e: JQuery.ClickEvent) => this._onOpenSheetSetup(e),
+                }
+            );
         }
 
         return buttons;
@@ -144,7 +137,7 @@ export class ActorSheetFate extends ActorSheet {
      * OnClick handler for the previously declaried "Edit mode" button.
      * Toggles the 'fatex__helper--enable-editmode' class for the sheet container.
      */
-    _onToggleEditMode(e) {
+    _onToggleEditMode(e): void {
         e.preventDefault();
 
         const target = $(e.currentTarget);
@@ -158,7 +151,7 @@ export class ActorSheetFate extends ActorSheet {
      * OnClick handler for the previously declaried "Sheet setup" button.
      * Opens a new sheet setup instance for this sheet.
      */
-    _onOpenSheetSetup(e) {
+    _onOpenSheetSetup(e): void {
         e.preventDefault();
 
         const sheetSetup = new SheetSetup(this.actor, {});

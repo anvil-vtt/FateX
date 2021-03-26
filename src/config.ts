@@ -30,8 +30,8 @@ export interface FatexConfig {
     };
 
     applications: {
-        [key: string]: typeof Application | null;
-        [key: number]: typeof Application | null;
+        [key: string]: Application | null;
+        [key: number]: Application | null;
     };
 
     global: {

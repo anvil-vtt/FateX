@@ -1,7 +1,11 @@
-import { FatexConfig } from "../src/config.ts";
+import { FatexConfig } from "../src/config";
 
 declare global {
     interface CONFIG {
-        FateX: typeof FatexConfig;
+        FateX: FatexConfig;
+    }
+
+    interface Actor {
+        isTemplateActor: boolean;
     }
 }

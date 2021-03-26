@@ -1,4 +1,5 @@
 import { BaseComponent } from "../BaseComponent";
+import { ItemFate } from "../../item/ItemFate";
 
 export const OPERATORS = {
     OPERATOR_EQUALS: 0,
@@ -216,7 +217,16 @@ export class Automation extends BaseComponent {
 
     static getAllAvailableSkills(sort = true) {
         // Get all actors skills in a unique list of names
-        const skills = [...new Set(game.actors.map((actor) => actor.items.entries.filter((item) => item.type === "skill").map((item) => item.name)).flat())];
+        const skills = [
+            ...new Set(
+                game.actors
+                    ?.map((actor) => {
+                        const items = (actor.items.entries as unknown) as Array<ItemFate>;
+                        return items.filter((item) => item.type === "skill").map((item) => item.name);
+                    })
+                    .flat()
+            ),
+        ];
 
         // Sort alphabetically
         if (sort) {

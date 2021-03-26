@@ -4,7 +4,8 @@
  */
 import { TemplateActorSheetFate } from "./template/TemplateActorSheetFate";
 
-export class ActorFate extends Actor {
+// @ts-ignore
+export class ActorFate extends Actor<any> {
     /**
      * Open template picker instead of directly creating a new actor
      */
@@ -14,14 +15,14 @@ export class ActorFate extends Actor {
             return super.create(data, options);
         }
 
-        return CONFIG.FateX.applications.templatePicker.render(true);
+        return CONFIG.FateX.applications.templatePicker?.render(true);
     }
 
     /**
      * Open template picker instead of showing creation dialog
      */
     static async createDialog(_data = {}, _options = {}) {
-        return CONFIG.FateX.applications.templatePicker.render(true);
+        return CONFIG.FateX.applications.templatePicker?.render(true);
     }
 
     /**
@@ -60,10 +61,11 @@ export class ActorFate extends Actor {
         super.render(force, options);
 
         for (const app in CONFIG.FateX.applications) {
-            CONFIG.FateX.applications[app].render();
+            CONFIG.FateX.applications[app]?.render();
         }
     }
 
+    // @ts-ignore
     get _sheetClass() {
         if (this.isTemplateActor) {
             return TemplateActorSheetFate;

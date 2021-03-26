@@ -26,6 +26,7 @@ import { SkillSheet } from "./module/item/skill/SkillSheet";
 import { StressSheet } from "./module/item/stress/StressSheet";
 import { StuntSheet } from "./module/item/stunt/StuntSheet";
 import { TemplateActors } from "./module/apps/template-actors/TemplateActors";
+import { FateX } from "./config";
 
 /* -------------------------------- */
 /*	Register hooks      			*/
@@ -39,7 +40,7 @@ Hooks.once("init", async () => {
     console.log(`FateX | Initializing Fate extended game system`);
 
     // Initialise config
-    CONFIG.FateX = "a";
+    CONFIG.FateX = FateX;
 
     //@ts-ignore
     CONFIG.Actor.entityClass = ActorFate;
