@@ -1,13 +1,9 @@
-import { FatexConfig } from "../src/config";
-
-declare global {
-    interface CONFIG {
-        FateX: FatexConfig;
-    }
-
-    interface Actor {
-        isTemplateActor: boolean;
-    }
-
-    const __ALL_TEMPLATES__: string;
+interface CONFIG {
+    FateX: import("../src/config").FatexConfig;
 }
+
+interface Actor {
+    isTemplateActor: boolean;
+}
+
+declare const __ALL_TEMPLATES__: string;
