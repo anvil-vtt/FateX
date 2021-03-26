@@ -127,18 +127,16 @@ export class TemplateActorSettings extends FormApplication<any, any, any> {
         e.stopPropagation();
 
         const data = e.currentTarget.dataset;
-        const template = duplicate(game.actors?.get(data.template));
+        const template = duplicate(game.actors?.get(data.template)) as Partial<Actor.Data>;
 
         if (!template) {
             return;
         }
 
         // Delete id
-        //@ts-ignore
         delete template._id;
 
         // Change name
-        //@ts-ignore
         template.name = template.name + ` (${game.i18n.localize("FAx.Settings.Templates.Copy")})`;
 
         // Create new duplicate

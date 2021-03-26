@@ -177,7 +177,6 @@ export class ActorSheetFate extends ActorSheet<any, ActorFate> {
     }
 
     async _onDropJournalEntry(data: JournalEntry) {
-        // @ts-ignore
         const entry = await JournalEntry.fromDropData(data);
         const actor = this.actor;
 

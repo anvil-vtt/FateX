@@ -42,7 +42,6 @@ Hooks.once("init", async () => {
     // Initialise config
     CONFIG.FateX = FateX;
 
-    //@ts-ignore
     CONFIG.Actor.entityClass = ActorFate;
     CONFIG.Item.entityClass = ItemFate;
 

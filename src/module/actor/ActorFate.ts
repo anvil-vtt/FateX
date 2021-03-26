@@ -4,7 +4,6 @@
  */
 import { TemplateActorSheetFate } from "./template/TemplateActorSheetFate";
 
-// @ts-ignore
 export class ActorFate extends Actor<any> {
     /**
      * Open template picker instead of directly creating a new actor
@@ -21,7 +20,7 @@ export class ActorFate extends Actor<any> {
     /**
      * Open template picker instead of showing creation dialog
      */
-    static async createDialog(_data = {}, _options = {}) {
+    static async createDialog(_data = {}, _options = {}): Promise<any> {
         return CONFIG.FateX.applications.templatePicker?.render(true);
     }
 
@@ -65,7 +64,6 @@ export class ActorFate extends Actor<any> {
         }
     }
 
-    // @ts-ignore
     get _sheetClass() {
         if (this.isTemplateActor) {
             return TemplateActorSheetFate;
@@ -90,9 +88,7 @@ export class ActorFate extends Actor<any> {
      * Re-prepare the data for all owned items when owned items are deleted.
      * This ensures, that items that reference the deleted item get updated.
      */
-    //@ts-ignore
     _onModifyEmbeddedEntity(embeddedName, changes, options, userId, context = {}) {
-        //@ts-ignore
         super._onModifyEmbeddedEntity(embeddedName, changes, options, userId, context);
 
         if (embeddedName === "OwnedItem") {

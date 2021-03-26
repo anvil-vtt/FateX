@@ -8,4 +8,6 @@ declare global {
     interface Actor {
         isTemplateActor: boolean;
     }
+
+    const __ALL_TEMPLATES__: string;
 }

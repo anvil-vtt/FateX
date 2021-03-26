@@ -6,12 +6,11 @@ export class ItemSheetFate extends ItemSheet {
             options.classes = [];
         }
 
-        // @ts-ignore
         mergeObject(options, {
             classes: options.classes.concat(["fatex fatex__item_sheet"]),
             scrollY: [".desk__content"],
             width: 575,
-        });
+        } as BaseEntitySheet.Options);
 
         return options;
     }

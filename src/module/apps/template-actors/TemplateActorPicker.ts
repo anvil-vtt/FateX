@@ -55,20 +55,17 @@ export class TemplateActorPicker extends TemplateActorSettings {
         e.stopPropagation();
 
         const data = e.currentTarget.dataset;
-        const template = duplicate(game.actors?.get(data.template));
+        const template = duplicate(game.actors?.get(data.template)) as Partial<Actor.Data>;
+        const fateXFlags = template.flags?.fatex as Record<string, unknown>;
 
         // Add current template as a flag for later use
-        //@ts-ignore
-        template.flags.fatex.templateActor = template._id;
+        fateXFlags.templateActor = false;
 
         // Delete id, specific flags and the actors image
-        //@ts-ignore
         delete template._id;
 
-        //@ts-ignore
-        delete template.flags.fatex.isTemplateActor;
+        delete fateXFlags.isTemplateActor;
 
-        //@ts-ignore
         delete template.img;
 
         // Create the real actor
