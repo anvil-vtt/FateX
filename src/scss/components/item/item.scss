@@ -50,6 +50,11 @@
     cursor: move;
 }
 
+.fatex__item__sortall {
+    @include fa-icon($fa-var-sort-amount-down);
+    cursor: pointer;
+}
+
 .fatex__item__collapse {
     @include fa-icon($fa-var-chevron-down);
     cursor: pointer;
