@@ -1,0 +1,211 @@
+{
+    "FateX": "FateX",
+    "FAx": {
+        "name": "FateX",
+        "Global": {
+            "Scala": {
+                "+8": "Leggendario",
+                "+7": "Epico",
+                "+6": "Fantastico",
+                "+5": "Eccellente",
+                "+4": "Ottimo",
+                "+3": "Buono",
+                "+2": "Discreto",
+                "+1": "Medio",
+                "+0": "Mediocre",
+                "-1": "Scarso",
+                "-2": "Pessimo",
+                "-3": "Catastrofico",
+                "-4": "Terribile"
+            },
+            "Actions": {
+                "Configure": "Configura",
+                "Delete": "Cancella",
+                "Duplicate": "Duplica",
+                "Sort": "Ordina",
+                "Create": "Crea Scheda senza Modello",
+                "Choose": "Scegli Modello"
+            },
+            "BaseItem": "Oggetto base"
+        },
+        "Sheet": {
+            "Name": "Nome",
+            "Description": "Descrizione",
+            "FatePoints": "Punti Fato",
+            "Aspects": "Aspetti",
+            "Consequences": "Conseguenze",
+            "Skills": "Abilità",
+            "Stunts": "Talenti",
+            "Extras": "Elementi Accessori",
+            "Bio": "Biografia",
+            "Artwork": "Ritratto",
+            "StressTracks": "Caselle Stress",
+            "Tabs": {
+                "SkillsStunts": "Abilità e Talenti",
+                "Skills": "Abilità",
+                "Stunts": "Talenti",
+                "Extras": "Elementi Accessori",
+                "Bio": "Biografia"
+            },
+            "Buttons": {
+                "EditMode": "Modalità di Modifica",
+                "SheetSetup": "Impostazione Scheda"
+            },
+            "Stress": {
+                "Add": "Aggiungi Caselle Stress"
+            },
+            "Messages": {
+                "EmptyActor": "Sembra che il tuo Personaggio non sia ancora pronto. Puoi modificarlo dalla <strong>Modalità di Modifica</strong> o da <strong>Impostazione Scheda</strong>. I bottoni per attivare o disattivare la modalità di modifica o per aprire le impostazioni si trovano nella parte superiore della scheda."
+            }
+        },
+        "Item": {
+            "Stress": {
+                "Name": "Nome Caselle Stress",
+                "EditItem": "Modifica Caselle Stress",
+                "Size": "Numero di Caselle",
+                "Description": "Descrizione",
+                "DescriptionHelp": "La descrizione sarà visibile dentro l'area delle Caselle Stress.",
+                "Boxes": {
+                    "Label": "Stile Nome Casella",
+                    "Custom": "Nomi Caselle Personalizzati",
+                    "CustomHelp": "Inserisci una lista di caratteri unicode separati da uno spazio. Es. \"2 4 6 ☀\"."
+                },
+                "Type": {
+                    "Core": "Sistema Base",
+                    "Condensed": "Condensato",
+                    "Custom": "Vuoto / Personalizzato"
+                }
+            },
+            "Aspect": {
+                "EditItem": "Modifica Aspetto",
+                "Value": "Testo",
+                "Description": "Descrizione",
+                "DescriptionHelp": "Mostrato solo quando inviato alla chat.",
+                "Label": "Nome"
+            },
+            "Consequence": {
+                "EditItem": "Modifica Conseguenza",
+                "Value": "Testo",
+                "Description": "Descrizione",
+                "DescriptionHelp": "Mostrato solo quando inviato alla chat.",
+                "Label": "Nome",
+                "LabelHelp": "Un nome per descrivere la gravità, come \"Lieve\" o \"Grave\".",
+                "Icon": "Icona",
+                "IconHelp": "Normalmente un numero come 2, 4, 6 o 8. Mostrato sulla sinistra.",
+                "Type": {
+                    "Label": "Variante",
+                    "Condition": "Condizione",
+                    "Consequence": "Conseguenza"
+                }
+            },
+            "Skill": {
+                "Name": "Nome Abilità",
+                "EditItem": "Modifica Abilità",
+                "Rank": "Valore",
+                "Description": "Descrizione",
+                "DescriptionHelp": "Viene mostrata solo in chat"
+            },
+            "Stunt": {
+                "Name": "Nome Talento",
+                "EditItem": "Modifica Talento",
+                "Description": "Descrizione",
+                "DescriptionHelp": "Descrizione Completa del Talento",
+                "ShortDescription": "Descrizione Breve",
+                "ShortDescriptionHelp": "Descrizione Breve del Talento"
+            },
+            "Extra": {
+                "Name": "Nome Elemento Accessorio",
+                "EditItem": "Modifica Elemento Accessorio",
+                "Description": "Descrizione",
+                "DescriptionHelp": "Descrizione Completa dell'Elemento Accessorio",
+                "ShortDescription": "Descrizione Breve",
+                "ShortDescriptionHelp": "Descrizione Breve dell'Elemento Accessorio"
+            },
+            "Automation": {
+                "Headline": "Automazione",
+                "BoxesHeadline": "Automazione Casella",
+                "Description": "Non ci sono condizioni per le abilità attualmente impostate. Aggiungine una o più per attivare l'automazione.",
+                "AddSkillRef": "Aggiungi condizione abilità",
+                "DisableUntil": "Disabilità finché",
+                "BoxesIf": "casella/e se",
+                "MultipleConditions": "Attiva automazione se",
+                "MultipleConditionsMatches": "le condizioni coincidono",
+                "Actions": {
+                    "Box": {
+                        "ADD": "Aggiungi",
+                        "REMOVE": "Rimuovi"
+                    }
+                },
+                "Conjunctions": {
+                    "AND": "sempre",
+                    "OR": "qualsiasi"
+                },
+                "Operators": {
+                    "OPERATOR_EQUALS": "equivale",
+                    "OPERATOR_NOT_EQUALS": "non equivale",
+                    "OPERATOR_GT": "è maggiore di",
+                    "OPERATOR_LT": "è minore di",
+                    "OPERATOR_GTE": "è maggiore o uguale a",
+                    "OPERATOR_LTE": "è minore o uguale a"
+                }
+            }
+        },
+        "Dialog": {
+            "ReferenceRemove": "Rimuovi sezione",
+            "ReferenceRemoveText": "Vuoi davvero rimuovere <strong>permanentemente</strong> questa sezione?",
+            "EntityDelete": "Rimuovi",
+            "EntityDeleteText": "Vuoi davvero rimuovere <strong>permanentemente</strong> questo elemento?",
+            "ActorClear": "Rimuovi elementi",
+            "ActorClearText": "Vuoi davvero rimuovere <strong>permanentemente</strong> questa sezione della scheda <strong>e il suo contenuto</strong>?",
+            "Confirm": "Conferma",
+            "Cancel": "Annulla"
+        },
+        "Apps": {
+            "Setup": {
+                "Title": "Impostazione Scheda",
+                "Manage": "Manage",
+                "Setup": "Imposta (Preset)",
+                "Actions": {
+                    "Clear": {
+                        "Aspects": "Rimuovi aspetti",
+                        "Consequences": "Rimuovi conseguenze",
+                        "Skills": "Rimuovi abilità",
+                        "Stress": "Rimuovi caselle stress",
+                        "Everything": "Rimuovi tutto"
+                    },
+                    "Setup": {
+                        "AddToSheet": "Aggiungi selezionati alla scheda",
+                        "ToggleSelection": "Seleziona tutti"
+                    }
+                }
+            }
+        },
+        "Settings": {
+            "Templates": {
+                "Title": "Modelli Schede Personaggio",
+                "Hint": "Ti permette di scegliere come saranno le schede dei giocatori per i nuovi personaggi.",
+                "Button": "FateX Templates",
+                "New": "Nuovo Modello",
+                "Copy": "Copia",
+                "App": {
+                    "Title": "Configura Modello",
+                    "Label": "Impostazioni",
+                    "CreateNew": "Crea un nuovo modello",
+                    "Help": "Non è ancora stato impostato nessun modello. Per aggiungere un nuovo modello, clicca su <strong>Crea un nuovo modello</strong> (si trova anche nella sezione in alto della scheda)."
+                }
+            }
+        },
+        "Template": {
+            "Picker": {
+                "Title": "Scegli Modello",
+                "Label": "Modelli",
+                "Configuration": "Configurazione",
+                "Empty": "Scheda vuota",
+                "CreateEmpty": "Scheda vuota",
+                "Or": "o",
+                "Help": "Per aggiungere un nuovo modello, clicca su <strong>Configurazione</strong> (si trova anche nella sezione in alto della scheda).",
+                "Explain": "I Modelli sono un ottimo modo per avere diverse schede per diversi tipi di personaggi. Noi conisgliamo di usare <strong>modelli differenti</strong> per PG, PNG e Mostri.Templates are a great way to have different sheets for different kinds of actors."
+            }
+        }
+    }
+}

@@ -2,7 +2,7 @@
     "name": "fatex",
     "title": "FateX - Fate Extended (EN/DE/FR/ES/GL)",
     "description": "An extended implementation of Fate and its derivative systems",
-    "version": "0.8.2",
+    "version": "0.8.3",
     "author": "Patrick Bauer (Daddi#2333)",
     "scripts": ["system.js"],
     "styles": [],
@@ -26,6 +26,16 @@
             "lang": "fr",
             "name": "Français",
             "path": "languages/fr.json"
+        },
+        {
+            "lang": "it",
+            "name": "Italian",
+            "path": "languages/it.json"
+        },
+        {
+            "lang": "cn",
+            "name": "Chinese",
+            "path": "languages/cn.json"
         }
     ],
     "minimumCoreVersion": "0.5.2",

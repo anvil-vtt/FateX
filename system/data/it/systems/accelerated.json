@@ -1,0 +1,139 @@
+{
+    "name": "Accelerato",
+    "identifier": "fae",
+    "types": {
+        "Aspetti": [
+            {
+                "label": "Base",
+                "entries": [
+                    {
+                        "name": "Concetto Base",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Concetto Base"
+                        }
+                    },
+                    {
+                        "name": "Problema",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Problema"
+                        }
+                    },
+                    {
+                        "name": "Altro Aspetto",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Altro"
+                        }
+                    },
+                    {
+                        "name": "Altro Aspetto",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Altro"
+                        }
+                    },
+                    {
+                        "name": "Altro Aspetto",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Altro"
+                        }
+                    }
+                ]
+            },
+            {
+                "label": "Opzionali",
+                "entries": [
+                    {
+                        "name": "Relazione",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Relazione"
+                        }
+                    },
+                    {
+                        "name": "Altro Aspetto",
+                        "type": "aspect"
+                    }
+                ]
+            }
+        ],
+        "Conseguenze": [
+            {
+                "entries": [
+                    {
+                        "name": "Conseguenza Lieve",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Lieve",
+                            "icon": "2"
+                        }
+                    },
+                    {
+                        "name": "Conseguenza Moderata",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Moderata",
+                            "icon": "4"
+                        }
+                    },
+                    {
+                        "name": "Conseguenza Grave",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Grave",
+                            "icon": "6"
+                        }
+                    }
+                ]
+            }
+        ],
+        "Abilità": [
+            {
+                "columns": true,
+                "entries": [
+                    {
+                        "name": "Attento",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "Ingegnoso",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "Appariscente",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "Energico",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "Rapido",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "Elusivo",
+                        "type": "skill"
+                    }
+                ]
+            }
+        ],
+        "Stress": [
+            {
+                "entries": [
+                    {
+                        "name": "Stress",
+                        "type": "stress",
+                        "data": {
+                            "size": 3,
+                            "labelType": 0
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

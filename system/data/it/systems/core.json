@@ -1,0 +1,270 @@
+{
+    "name": "Sistema Base",
+    "identifier": "core",
+    "types": {
+        "Aspetti": [
+            {
+                "label": "Base",
+                "entries": [
+                    {
+                        "name": "Concetto Base",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Concetto Base"
+                        }
+                    },
+                    {
+                        "name": "Problema",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Problema"
+                        }
+                    },
+                    {
+                        "name": "Aspetto",
+                        "type": "aspect"
+                    },
+                    {
+                        "name": "Aspetto",
+                        "type": "aspect"
+                    },
+                    {
+                        "name": "Aspetto",
+                        "type": "aspect"
+                    }
+                ]
+            },
+            {
+                "label": "Opzionali",
+                "entries": [
+                    {
+                        "name": "Relazione",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Relazione"
+                        }
+                    },
+                    {
+                        "name": "Altro Aspetto",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Altro"
+                        }
+                    }
+                ]
+            }
+        ],
+        "Conseguenze": [
+            {
+                "entries": [
+                    {
+                        "name": "Conseguenza Lieve",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Lieve",
+                            "icon": "2"
+                        }
+                    },
+                    {
+                       "name": "2a Conseguenza Lieve (in base alle Abilità)",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Lieve",
+                            "icon": "2"
+                        },
+                        "flags": {
+                            "fatex": {
+                                "skillReferenceSettings": {
+                                    "conjunction": 0
+                                },
+                                "skillReferences": [
+                                    {
+                                        "skill": "Fisico",
+                                        "condition": 4,
+                                        "operator": 4
+                                    },
+                                    {
+                                        "skill": "Volontà",
+                                        "condition": 4,
+                                        "operator": 4
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "Conseguenza Moderata",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Moderata",
+                            "icon": "4"
+                        }
+                    },
+                    {
+                        "name": "Conseguenza Grave",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Grave",
+                            "icon": "6"
+                        }
+                    }
+                ]
+            }
+        ],
+        "Abilità": [
+            {
+                "columns": true,
+                "entries": [
+                    {
+                        "name": "Atletica",
+                        "type": "skill",
+                        "data": {
+                            "description": "Una misura di potenziale fisico. I talenti di Atletica si concentrano sul movimento: correre, saltare, parkour, e sull’evitare gli attacchi."
+                        }
+                    },
+                    {
+                        "name": "Furtività",
+                        "type": "skill",
+                        "data": {
+                            "description": "Conoscenza e abilità di superare i sistemi di sicurezza, scassinare e in generale commettere crimini. I talenti di Furtività forniscono bonus alle varie fasi dell’eseguire un crimine, dalla pianificazione all’esecuzione e alla fuga."
+                        }
+                    },
+                    {
+                        "name": "Contatti",
+                        "type": "skill",
+                        "data": {
+                            "description": "Conoscenza delle persone e dei collegamenti giusti che possono aiutarti. I talenti di Contatti ti forniscono alleati e una rete informativa dovunque tu vada nel mondo."
+                        }
+                    },
+                    {
+                        "name": "Artigianato",
+                        "type": "skill",
+                        "data": {
+                            "description": "L’abilità di creare o disfare macchinari, costruire marchingegni e realizzare imprese d’ingegno alla McGyver. I talenti di Artigianato ti permettono di avere a mano aggeggi, forniscono bonus nel costruire o disfare cose e offrono la giustificazione per utilizzare Artigianato al posto di abilità come Furtività o Accademiche in determinate situazioni."
+                        }
+                    },
+                    {
+                        "name": "Raggirare",
+                        "type": "skill",
+                        "data": {
+                            "description": "L’abilità di mentire e imbrogliare in modo convincente e con disinvoltura. I talenti di Raggirare possono migliorare la tua abilità di raccontare un certo tipo di bugie o aiutarti a inventare false identità."
+                        }
+                    },
+                    {
+                        "name": "Guidare",
+                        "type": "skill",
+                        "data": {
+                            "description": "Controllare veicoli nelle situazioni più ardue, eseguire manovre scellerate e semplicemente tirar fuori il meglio dalla tua corsa. I talenti di Guidare possono rappresentare manovre caratteristiche, un veicolo personale speciale o l’abilità di utilizzare Guidare al posto di abilità tipo Furtività o Folclore, in certe situazioni."
+                        }
+                    },
+                    {
+                        "name": "Empatia",
+                        "type": "skill",
+                        "data": {
+                            "description": "L’abilità di giudicare accuratamente le intenzioni e l’umore di qualcuno. I talenti di Empatia possono riguardare il giudicare una folla, riconoscere le bugie, o aiutare gli altri a riprendersi da conseguenze mentali."
+                        }
+                    },
+                    {
+                        "name": "Combattimento",
+                        "type": "skill",
+                        "data": {
+                            "description": "L’abilità di eccellere nel combattimento corpo a corpo, con o senza armi. I talenti di Combattimento comprendono armi specifiche e tecniche speciali."
+                        }
+                    },
+                    {
+                        "name": "Investigare",
+                        "type": "skill",
+                        "data": {
+                            "description": "Il deliberato studiare e risolvere misteri. Usala per mettere insieme gli indizi o ricostruire una scena del crimine. I talenti di Investigare ti aiutano a formarti brillanti deduzioni o mettere insieme le informazioni più velocemente."
+                        }
+                    },
+                    {
+                        "name": "Folclore",
+                        "type": "skill",
+                        "data": {
+                            "description": "Conoscenze specializzate e arcane che ricadono fuori dall’ambito di Accademiche, compresi argomenti sovrannaturali di qualsiasi tipo. È qui che succede la roba strana. I talenti di Folclore supportano le applicazioni pratiche delle tue conoscenze arcane, come lanciare incantesimi."
+                        }
+                    },
+                    {
+                        "name": "Percezione",
+                        "type": "skill",
+                        "data": {
+                            "description": "L’abilità di percepire dettagli al momento, avvistare pericoli prima che accadano e in generale essere percettivi. È in contrasto con Investigare, che riguarda l’osservazione lenta e deliberata. I talenti di Percezione affilano i tuoi sensi, migliorano il tuo tempo di reazione o rendono più difficile prenderti di sorpresa."
+                        }
+                    },
+                    {
+                        "name": "Fisico",
+                        "type": "skill",
+                        "data": {
+                            "description": "Forza bruta e robustezza. I talenti di Fisico ti permettono di eseguire imprese sovrumane di forza, utilizzare il tuo peso mentre lotti e scrollarti di dosso le conseguenze fisiche. In aggiunta, un valore alto in Fisico di fornisce ulteriori spazi di stress e conseguenze fisiche."
+                        }
+                    },
+                    {
+                        "name": "Provocare",
+                        "type": "skill",
+                        "data": {
+                            "description": "L’abilità di spingere le persone ad agire come vuoi. È volgare e manipolativo, non si tratta di un’interazione positiva. I talenti di Provocare ti permettono di spingere gli avversari ad agire in modo sconsiderato, attirare l’aggressività verso di te o impaurire gli avversari (posto che possano percepire la paura)."
+                        }
+                    },
+                    {
+                        "name": "Influenzare",
+                        "type": "skill",
+                        "data": {
+                            "description": "Costruire connessioni con gli altri e lavorare insieme. Dove Provocare è manipolativo, Influenzare è sincerità, fiducia e buona volontà. I talenti di Influenzare ti permettono di convincere le folle, migliorare le relazioni o costruire contatti."
+                        }
+                    },
+                    {
+                        "name": "Risorse",
+                        "type": "skill",
+                        "data": {
+                            "description": "L’accesso a cose materiali, non solo denaro o proprietà diretta. Potrebbe rappresentare la tua abilità di ricevere prestiti da amici o attingere dall’armeria di un’organizzazione. I talenti di Risorse ti permettono di usarla al posto di Influenzare o Contatti o ti forniscono invocazioni gratuite aggiuntive quando paghi per avere il meglio."
+                        }
+                    },
+                    {
+                        "name": "Sparare",
+                        "type": "skill",
+                        "data": {
+                            "description": "Tutte le forme di combattimento a distanza, che si utilizzino pistole, coltelli da lancio o archi e frecce. I talenti di Sparare ti permettono di eseguire colpi mirati, di estrarre velocemente o di avere sempre una pistola a disposizione."
+                        }
+                    },
+                    {
+                        "name": "Discrezione",
+                        "type": "skill",
+                        "data": {
+                            "description": "Riuscire a non farsi vedere o udire e fuggire quando hai bisogno di nasconderti. I talenti di Discrezione ti permettono di svanire in piena vista, mescolarti alla folla o procedere nelle ombre non visto."
+                        }
+                    },
+                    {
+                        "name": "Volontà",
+                        "type": "skill",
+                        "data": {
+                            "description": "Resistenza mentale, l’abilità di resistere alle tentazioni e di sopportare i traumi. I talenti di Volontà ti permettono di ignorare le conseguenze mentali, sopportare l’agonia mentale di poteri sconosciuti e rimanere fermo contro nemici che ti provocano. In aggiunta, un valore alto in Volontà ti fornisce ulteriori slot di stress e conseguenze mentali."
+                        }
+                    }
+                ]
+            }
+        ],
+        "Stress": [
+            {
+                "entries": [
+                    {
+                        "name": "Stress Fisico",
+                        "type": "stress",
+                        "data": {
+                            "size": 4,
+                            "labelType": 0
+                        }
+                    },
+                    {
+                        "name": "Stress Mentale",
+                        "type": "stress",
+                        "data": {
+                            "size": 4,
+                            "labelType": 0
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}
