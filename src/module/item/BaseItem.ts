@@ -22,6 +22,8 @@ export abstract class BaseItem {
         html.find(`.fatex__${this.entityName}__add`).click((e) => this._onItemAdd.call(this, e, sheet));
         html.find(`.fatex__${this.entityName}__settings`).click((e) => this._onItemSettings.call(this, e, sheet));
         html.find(`.fatex__${this.entityName}__delete`).click((e) => this._onItemDelete.call(this, e, sheet));
+        html.find(`.fatex__${this.entityName}__sortrank`).click(() => this._onItemSortRank.call(this, sheet));
+
     }
 
     /**
@@ -66,6 +68,20 @@ export abstract class BaseItem {
         };
 
         await this.createNewItem(itemData, sheet);
+    }
+
+    /**
+     * Itemtype agnostic handler for sorting all items in sheet
+     */
+    static async _onItemSortRank(sheet) {
+        const skills = sheet.actor.items.entries.filter((item) => item.type == 'skill');
+        skills.sort((a, b) => a.data.data.rank - b.data.data.rank);
+        for (const i in skills) {
+            if (skills[i].type == 'skill') {
+                skills[i].data.sort = skills[0].data.sort - parseInt(i);
+            }
+        }
+        sheet.actor.updateOwnedItem(skills.map(s => {return s.data}));
     }
 
     /**
