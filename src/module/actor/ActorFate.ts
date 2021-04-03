@@ -57,6 +57,7 @@ export class ActorFate extends Actor {
     }
 
     render(force = false, options = {}) {
+        // @ts-ignore
         super.render(force, options);
 
         for (const app in CONFIG.FateX.applications) {
