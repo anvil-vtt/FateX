@@ -110,7 +110,7 @@ export class ActorSheetFate extends ActorSheet<any, ActorFate> {
         // Edit mode button to toggle which interactive elements are visible on the sheet.
         const canConfigure = game.user?.isGM || this.actor.owner;
         if (this.options.editable && canConfigure) {
-            buttons.push(
+            buttons.unshift(
                 {
                     class: "fatex-toggle-edit-mode",
                     label: game.i18n.localize("FAx.Sheet.Buttons.EditMode"),
