@@ -1,0 +1,139 @@
+{
+    "name": "加速版",
+    "identifier": "FAE",
+    "types": {
+        "特征": [
+            {
+                "label": "基础",
+                "entries": [
+                    {
+                        "name": "核心概念",
+                        "type": "aspect",
+                        "data": {
+                            "label": "核心概念"
+                        }
+                    },
+                    {
+                        "name": "困扰",
+                        "type": "aspect",
+                        "data": {
+                            "label": "困扰"
+                        }
+                    },
+                    {
+                        "name": "其他特征",
+                        "type": "aspect",
+                        "data": {
+                            "label": "其他"
+                        }
+                    },
+                    {
+                        "name": "其他特征",
+                        "type": "aspect",
+                        "data": {
+                            "label": "其他"
+                        }
+                    },
+                    {
+                        "name": "其他特征",
+                        "type": "aspect",
+                        "data": {
+                            "label": "其他"
+                        }
+                    }
+                ]
+            },
+            {
+                "label": "选项",
+                "entries": [
+                    {
+                        "name": "关系",
+                        "type": "aspect",
+                        "data": {
+                            "label": "关系"
+                        }
+                    },
+                    {
+                        "name": "空特征",
+                        "type": "aspect"
+                    }
+                ]
+            }
+        ],
+        "伤痕": [
+            {
+                "entries": [
+                    {
+                        "name": "轻微伤痕",
+                        "type": "consequence",
+                        "data": {
+                            "label": "轻微",
+                            "icon": "2"
+                        }
+                    },
+                    {
+                        "name": "中度伤痕",
+                        "type": "consequence",
+                        "data": {
+                            "label": "中度",
+                            "icon": "4"
+                        }
+                    },
+                    {
+                        "name": "严重伤痕",
+                        "type": "consequence",
+                        "data": {
+                            "label": "严重",
+                            "icon": "6"
+                        }
+                    }
+                ]
+            }
+        ],
+        "技能": [
+            {
+                "columns": true,
+                "entries": [
+                    {
+                        "name": "谨慎",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "机智",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "华丽",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "强劲",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "迅捷",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "狡诈",
+                        "type": "skill"
+                    }
+                ]
+            }
+        ],
+        "压力": [
+            {
+                "entries": [
+                    {
+                        "name": "压力",
+                        "type": "stress",
+                        "data": {
+                            "size": 3,
+                            "labelType": 0
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}
