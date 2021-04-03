@@ -16,5 +16,6 @@ module.exports = {
         "@typescript-eslint/no-unused-vars": [1, { argsIgnorePattern: "^_" }],
         "@typescript-eslint/explicit-module-boundary-types": "off",
         "@typescript-eslint/ban-ts-comment": "off",
+        "@typescript-eslint/no-explicit-any": "off",
     },
 };
