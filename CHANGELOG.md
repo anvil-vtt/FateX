@@ -1,6 +1,10 @@
 # Changelog
 
-## 0.9.0
+### 0.9.1
+* Fixed biography editor 
+* Better handling of tab height for actor sheets
+
+### 0.9.0
 * Started this changelog
 * Added new translations
   * Chinese (big thanks to contributor [Nowpaper](https://github.com/Nowpaper))
