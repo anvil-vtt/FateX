@@ -61,13 +61,24 @@ For manual installation, use the provided manifest URL in the "*Install System*"
 > Le SRD français est lui-même sous licence Creative Commons Attribution 3.0 non transposé (http://creativecommons.org/licenses/by/3.0/deed.fr), par Philippe Marichal, Alain Dutech, Jean-Christophe Cubertafon, Geoffrey Sanchez, “Casque Noir”, Maxime Moraine, Thomas Pereira, Mickael Houet, Gabriel Ollier et François Enders. 
 
 > SRD français: 
-> https://fate-srd.fr/ sous licence CC-BY 3.0
-> https://fate-srd.fr/wikifate/licence
+> https://fate-srd.fr/ sous licence CC-BY 3.0 (https://fate-srd.fr/wikifate/licence)
 
 
 #### Galician
 * System translation provided at the [foundryvtt-gl](http://github.com/xurxodiz/foundryvtt-gl) package
 * Fate Core/Accelered/Condensed translation by xurxodiz#5885
+
+#### Italian
+
+* System translation provided by smoothingplane#6772
+* Italian Fate translation by [Dreamlord Games](https://www.dreamlord.it/)
+> Quest’opera si basa su “Fate Core System” e su “Fate Accelerated Edition”, sviluppati, scritti ed editati da Leonard Balsera, Brian Engard, Jeremy Keller, Ryan Macklin, Mike Olson, Clark Valentine, Amanda Valentine, Fred Hicks e Robert Donoghue, su “Fate System Toolkit”, sviluppato scritto ed editato da Robert Donoghue, Brian Engard, Brennan Taylor, Mike Olson, Mark Diaz Truman, Fred Hicks e Matthew Gandy, e su “Fate Adversary Toolkit”, sviluppato, scritto ed editato da Brian Engard, Lara Turner, Joshua Yearsley e Anna Meade, prodotti dalla Evil Hat Productions, LLC e potete trovare qui (http://www.faterpg.com/), e sulla loro traduzione italiana, effettuata da Fateitalia.it e pubblicata da Dreamlord Games, e distribuiti sotto la licenza Creative Commons Attribuzione 3.0 (http://creativecommons.org/licenses/by/3.0/).
+
+> SRD italiano: https://www.fateitalia.it/ con licenza CC-BY 3.0 (https://www.fateitalia.it/fatesrdccbyitalicenza/)
+
+#### Chinese
+* System translation provided by [Nowpaper](https://github.com/Nowpaper)
+
 ---
 
 A big thank you to all who are contributing translations files! You're a great help for the international Fate community! ❤️
