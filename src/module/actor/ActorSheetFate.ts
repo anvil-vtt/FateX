@@ -14,8 +14,7 @@ export class ActorSheetFate extends ActorSheet<any, ActorFate> {
      */
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
-            classes: ["fatex fatex__sheet"],
-            template: "",
+            classes: ["fatex", "fatex__sheet", "sheet"],
             tabs: [
                 {
                     navSelector: ".fatex__tabs__navigation",

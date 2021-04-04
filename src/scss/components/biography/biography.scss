@@ -1,10 +1,10 @@
 .fatex__biography {
     width: 100%;
-    min-height: 200px;
-    display: flex;
+    height: 100%;
+    min-height: 100%;
 
     > .editor {
         width: 100%;
-        min-height: 200px;
+        height: 100%;
     }
 }

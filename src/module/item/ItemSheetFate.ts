@@ -1,18 +1,10 @@
 export class ItemSheetFate extends ItemSheet {
     static get defaultOptions() {
-        const options = super.defaultOptions;
-
-        if (!options.classes) {
-            options.classes = [];
-        }
-
-        mergeObject(options, {
-            classes: options.classes.concat(["fatex fatex__item_sheet"]),
+        return mergeObject(super.defaultOptions, {
+            classes: ["fatex", "fatex__item_sheet", "sheet"],
             scrollY: [".desk__content"],
             width: 575,
         } as BaseEntitySheet.Options);
-
-        return options;
     }
 
     getData() {
