@@ -163,7 +163,6 @@ export class ActorSheetFate extends ActorSheet<ActorSheet.Data<ActorFate>> {
 
     /** @override */
     async _onDrop(event) {
-        // Try to extract the data
         let data;
 
         try {
@@ -191,7 +190,6 @@ export class ActorSheetFate extends ActorSheet<ActorSheet.Data<ActorFate>> {
             },
         };
 
-        // Create item and render sheet afterwards
         return await actor.createOwnedItem(extraData);
     }
 }
