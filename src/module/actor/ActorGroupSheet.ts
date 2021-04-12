@@ -3,6 +3,7 @@ import { getReferencesByGroupType } from "../helper/ActorGroupHelper";
 import { FateActorSheetOptions } from "./ActorSheetFate";
 import { ActorFate } from "./ActorFate";
 import { ActorReferenceItemData, TokenReferenceItemData } from "../item/ItemTypes";
+import { ItemFate } from "../item/ItemFate";
 
 /**
  * Represents a single actor group. Has a normal (inside groups panel) and a popped out state.
@@ -37,18 +38,32 @@ export class ActorGroupSheet extends ActorSheet<ActorSheet.Data<ActorFate>> {
     }
 
     getData() {
-        const data = super.getData();
+        // Basic fields and flags
+        const data: any = {
+            owner: this.actor.owner,
+            options: this.options,
+            editable: this.isEditable,
+            isTemplateActor: this.actor.isTemplateActor,
+            isEmptyActor: !this.actor.items.size,
+            isToken: this.token && !this.token.data.actorLink,
+            config: CONFIG.FateX,
+        };
+
+        // Add actor, actor data and item
+        data.actor = duplicate(this.actor.data);
+        data.data = data.actor.data;
+        data.items = this.actor.items.map((i) => i.data);
+        data.items.sort((a, b) => (a.sort || 0) - (b.sort || 0));
 
         const usedTokenReferences = this.actor.items.filter((i) => i.data.type === "tokenReference" && i.data.data.scene === game.scenes?.active.id);
-        const usedTokenReferencesMap = usedTokenReferences.map((token) => {
-            token.data.type === "tokenReference" ? token.data.data.id : undefined;
+        const usedTokenReferencesMap: string[] = usedTokenReferences.map((token: ItemFate) => {
+            return token.data.type === "tokenReference" ? token.data.data.id : "";
         });
 
-        //TODO: implement new typings
-        const actors = game.actors?.tokens;
-
-        // @ts-ignore
-        data.availableTokens = actors.filter((actor) => !usedTokenReferencesMap.includes(actor.token.id));
+        if (game.actors) {
+            const actors = Object.values(game.actors.tokens) ?? [];
+            data.availableTokens = actors.filter((actor) => (actor?.token ? !usedTokenReferencesMap.includes(actor.token.id) : false));
+        }
 
         return data;
     }

@@ -72,7 +72,6 @@ export class ActorSheetFate extends ActorSheet<ActorSheet.Data<ActorFate>> {
      */
     getData() {
         // Basic fields and flags
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         let data: any = {
             owner: this.actor.owner,
             options: this.options,

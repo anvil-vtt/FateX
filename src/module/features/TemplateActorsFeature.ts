@@ -1,5 +1,5 @@
-import { TemplateActorPicker } from "./TemplateActorPicker";
-import { TemplateActorSettings } from "./TemplateActorSettings";
+import { TemplateActorPicker } from "../apps/template-actors/TemplateActorPicker";
+import { TemplateActorSettings } from "../apps/template-actors/TemplateActorSettings";
 
 declare class Settings extends SidebarTab {}
 

@@ -100,10 +100,6 @@ export class ActorFate extends Actor<ActorDataFate, ItemFate> {
             return false;
         }
 
-        if (this.data.type === "group") {
-            return false;
-        }
-
         return super.visible;
     }
 

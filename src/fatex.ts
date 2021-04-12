@@ -26,9 +26,9 @@ import { ItemFate } from "./module/item/ItemFate";
 import { SkillSheet } from "./module/item/skill/SkillSheet";
 import { StressSheet } from "./module/item/stress/StressSheet";
 import { StuntSheet } from "./module/item/stunt/StuntSheet";
-import { TemplateActorsFeature } from "./module/apps/template-actors/TemplateActorsFeature";
+import { TemplateActorsFeature } from "./module/features/TemplateActorsFeature";
 import { ActorGroupSheet } from "./module/actor/ActorGroupSheet";
-import { ActorGroupPanel } from "./module/apps/actor-groups/ActorGroupPanel";
+import { ActorGroupFeature } from "./module/features/ActorGroupFeature";
 import { ReferenceSheet } from "./module/item/references/ReferenceSheet";
 
 /* -------------------------------- */
@@ -109,7 +109,7 @@ Hooks.once("init", async () => {
 /*	Register hooks      			*/
 /* -------------------------------- */
 TemplateActorsFeature.hooks();
-ActorGroupPanel.hooks();
+ActorGroupFeature.hooks();
 
 /* -------------------------------- */
 /*	Webpack HMR                     */
