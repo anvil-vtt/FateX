@@ -15,7 +15,7 @@ export class TemplateActorSettings extends FormApplication<any, any, any> {
     }
 
     getData() {
-        const filteredActors = duplicate(game.actors?.filter((actor) => actor.isTemplateActor) as Record<any, any>[]);
+        const filteredActors = duplicate(game.actors?.filter((actor) => (actor as ActorFate).isTemplateActor) as Record<any, any>[]);
 
         filteredActors.forEach((actorEntity) => {
             actorEntity.stress = actorEntity.items.filter((item) => item.type === "stress");
