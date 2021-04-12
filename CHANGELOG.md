@@ -1,5 +1,10 @@
 # Changelog
 
+### 0.9.2
+* Fixed italian language file
+* Updated all npm dependencies
+* Fixed build errors
+
 ### 0.9.1
 * Fixed biography editor 
 * Better handling of tab height for actor sheets
