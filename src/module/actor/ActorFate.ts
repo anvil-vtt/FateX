@@ -4,8 +4,10 @@
  */
 import { TemplateActorSheetFate } from "./template/TemplateActorSheetFate";
 import { getImageFromReference, getReferencesByGroupType } from "../helper/ActorGroupHelper";
+import { ActorDataFate } from "./ActorTypes";
+import { ItemFate } from "../item/ItemFate";
 
-export class ActorFate extends Actor {
+export class ActorFate extends Actor<ActorDataFate, ItemFate> {
     /**
      * Open template picker instead of directly creating a new actor
      */
@@ -139,7 +141,7 @@ export class ActorFate extends Actor {
         super._onModifyEmbeddedEntity(embeddedName, changes, options, userId, context);
 
         if (this.data.type === "group") {
-            CONFIG.FateX.instances.actorGroupsPanel.render(true);
+            CONFIG.FateX.instances.actorGroupsPanel?.render(true);
         }
 
         if (embeddedName === "OwnedItem") {

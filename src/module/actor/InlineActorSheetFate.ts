@@ -2,13 +2,9 @@ import { ActorSheetFate } from "./ActorSheetFate";
 
 export class InlineActorSheetFate extends ActorSheetFate {
     static get defaultOptions() {
-        const options = super.defaultOptions;
-
-        mergeObject(options, {
+        return mergeObject(super.defaultOptions, {
             baseApplication: "InlineActorSheetFate",
-        });
-
-        return options;
+        } as BaseEntitySheet.Options);
     }
 
     get id() {
@@ -28,7 +24,7 @@ export class InlineActorSheetFate extends ActorSheetFate {
         this._element = html;
     }
 
-    render(force = false, options: RenderOptions & { token?: Token; group?: Application } = {}) {
+    render(force = false, options: Application.RenderOptions & { token?: Token; group?: Application } = {}) {
         return super.render(force, options);
     }
 }

@@ -4,8 +4,13 @@
  */
 import { SheetSetup } from "../apps/sheet-setup/SheetSetup";
 import { ActorFate } from "./ActorFate";
+import { ExtraItemData } from "../item/ItemTypes";
 
-export class ActorSheetFate extends ActorSheet<any, ActorFate> {
+export interface FateActorSheetOptions extends BaseEntitySheet.Options {
+    type?: string;
+}
+
+export class ActorSheetFate extends ActorSheet<ActorSheet.Data<ActorFate>> {
     /**
      * Defines the default options for all FateX actor sheets.
      * This consists of things like css classes, the template to load and the tab configuration.
@@ -25,7 +30,7 @@ export class ActorSheetFate extends ActorSheet<any, ActorFate> {
             scrollY: [".desk__content"],
             width: 900,
             type: "full",
-        } as BaseEntitySheet.Options);
+        } as FateActorSheetOptions);
     }
 
     get template(): string {
@@ -178,7 +183,7 @@ export class ActorSheetFate extends ActorSheet<any, ActorFate> {
         const entry = await JournalEntry.fromDropData(data);
         const actor = this.actor;
 
-        const extraData = {
+        const extraData: Partial<ExtraItemData> = {
             type: "extra",
             name: entry.data.name,
             data: {

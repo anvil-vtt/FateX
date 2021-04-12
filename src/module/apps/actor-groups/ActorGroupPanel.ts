@@ -13,7 +13,7 @@ export class ActorGroupPanel extends Application {
         return mergeObject(super.defaultOptions, {
             popOut: false,
             template: `/systems/fatex/templates/apps/actor-group-panel.html`,
-        });
+        } as Application.Options);
     }
 
     /**
@@ -51,8 +51,8 @@ export class ActorGroupPanel extends Application {
             groups?: Actor[];
         } = {};
 
-        data.groups = game.actors.filter((actor) => actor.data.type === "group" && actor.isVisibleByPermission);
-        data.groups.sort((a, b) => a.name.localeCompare(b.name));
+        data.groups = game.actors?.filter((actor) => actor.data.type === "group" && (actor as ActorFate).isVisibleByPermission);
+        data.groups?.sort((a, b) => a.name.localeCompare(b.name));
 
         return data;
     }
@@ -83,7 +83,7 @@ export class ActorGroupPanel extends Application {
 
             html.find(".header-actions").after(`
                 <div class="header-actions action-buttons flexrow">
-                    <button class="create-actor-group"><i class="fas fa-users"></i> ${"Create Group"}</button>
+                    <button class="create-actor-group"><i class="fas fa-users"></i> ${game.i18n.localize("FAx.ActorGroups.New")}</button>
                 </div>
             `);
 
@@ -91,7 +91,7 @@ export class ActorGroupPanel extends Application {
 
             // If sidebar is re-rendered (not available on first invocation)
             if (game.ready) {
-                CONFIG.FateX.instances.actorGroupsPanel.render(true);
+                CONFIG.FateX.instances.actorGroupsPanel?.render(true);
             }
         });
 
@@ -133,15 +133,15 @@ export class ActorGroupPanel extends Application {
         event.preventDefault();
         const element = event.currentTarget;
         const entityId = element.parentElement.dataset.entityId;
-        const entity = game.actors.get(entityId);
-        const sheet = entity.sheet;
+        const entity = game.actors?.get(entityId);
+        const sheet = entity?.sheet;
 
-        if (sheet.rendered) {
+        if (sheet?.rendered) {
             sheet.maximize();
             // @ts-ignore
             sheet.bringToTop();
         } else {
-            sheet.render(true);
+            sheet?.render(true);
         }
     }
 
@@ -154,6 +154,6 @@ export class ActorGroupPanel extends Application {
             type: "group",
         };
 
-        ActorFate._create(actorData, { renderSheet: true });
+        return ActorFate._create(actorData, { renderSheet: true });
     }
 }

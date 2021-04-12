@@ -2,20 +2,13 @@
  * Item type holding the reference to an actor or a token in a scene
  */
 import { ActorFate } from "../actor/ActorFate";
-
-export interface ReferenceItem {
-    type: "actorReference" | "tokenReference";
-    data: {
-        id: string;
-        scene?: string;
-    };
-}
+import { ItemDataFate, ReferenceItem } from "../item/ItemTypes";
 
 /**
  * Returns all references of actors or tokens to be rendered as inlineSheeds based on a given groupType
  * Defaults to type "manual" which consists of manually added actors and tokens
  */
-export function getReferencesByGroupType(groupType: any = "manual", actor?: ActorFate): ReferenceItem[] {
+export function getReferencesByGroupType(groupType: any = "manual", actor?: ActorFate): ItemDataFate[] {
     switch (groupType) {
         case "scene":
             return this.getReferencesFromCurrentScene();
@@ -42,14 +35,14 @@ export function getReferencesFromCurrentEncounter(): ReferenceItem[] {
 
 export function getImageFromReference(reference: ReferenceItem): string {
     if (reference.type === "actorReference") {
-        const actor = game.actors.find((actor) => actor.id === reference.data.id);
+        const actor = game.actors?.find((actor) => actor.id === reference.data.id);
 
         // @ts-ignore
         return actor?.data.img ?? DEFAULT_TOKEN;
     }
 
     if (reference.type === "tokenReference") {
-        const scene = game.scenes.find((scene) => scene.id === reference.data.scene);
+        const scene = game.scenes?.find((scene) => scene.id === reference.data.scene);
         const tokenData = scene?.data?.tokens.find((token) => token._id === reference.data.id);
 
         // @ts-ignore

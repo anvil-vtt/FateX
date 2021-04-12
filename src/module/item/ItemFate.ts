@@ -1,4 +1,6 @@
-export class ItemFate extends Item {
+import { ItemDataFate } from "./ItemTypes";
+
+export class ItemFate extends Item<ItemDataFate> {
     prepareData() {
         super.prepareData();
         const data = this.data;

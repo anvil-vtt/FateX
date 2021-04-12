@@ -1,11 +1,13 @@
 import { InlineActorSheetFate } from "./InlineActorSheetFate";
-import { getReferencesByGroupType, ReferenceItem } from "../helper/ActorGroupHelper";
+import { getReferencesByGroupType } from "../helper/ActorGroupHelper";
+import { FateActorSheetOptions } from "./ActorSheetFate";
 import { ActorFate } from "./ActorFate";
+import { ActorReferenceItemData, TokenReferenceItemData } from "../item/ItemTypes";
 
 /**
  * Represents a single actor group. Has a normal (inside groups panel) and a popped out state.
  */
-export class ActorGroupSheet extends ActorSheet {
+export class ActorGroupSheet extends ActorSheet<ActorSheet.Data<ActorFate>> {
     public inlineSheets: InlineActorSheetFate[];
 
     /**
@@ -13,6 +15,7 @@ export class ActorGroupSheet extends ActorSheet {
      * @param args
      */
     constructor(...args) {
+        // @ts-ignore
         super(...args);
 
         /**
@@ -25,28 +28,24 @@ export class ActorGroupSheet extends ActorSheet {
      * Sets the default options for every actor group sheet
      */
     static get defaultOptions() {
-        const options = super.defaultOptions;
-
-        if (!options.classes) {
-            options.classes = [];
-        }
-
-        return mergeObject(options, {
-            classes: options.classes.concat(["fatex fatex__sheet actor_group_overview"]),
+        return mergeObject(super.defaultOptions, {
+            classes: ["fatex fatex__sheet sheet actor_group_overview"],
             resizable: true,
             template: "/systems/fatex/templates/actor/group.html",
             dragDrop: [{ dropSelector: null }],
-        });
+        } as FateActorSheetOptions);
     }
 
     getData() {
         const data = super.getData();
 
-        const usedTokenReferences = this.actor.items.filter((i) => i.data.type === "tokenReference" && i.data.data.scene === game.scenes.active.id);
-        const usedTokenReferencesMap = usedTokenReferences.map((token) => token.data.data.id);
+        const usedTokenReferences = this.actor.items.filter((i) => i.data.type === "tokenReference" && i.data.data.scene === game.scenes?.active.id);
+        const usedTokenReferencesMap = usedTokenReferences.map((token) => {
+            token.data.type === "tokenReference" ? token.data.data.id : undefined;
+        });
 
         //TODO: implement new typings
-        const actors = (Object.values(game.actors.tokens) as unknown) as ActorFate[];
+        const actors = game.actors?.tokens;
 
         // @ts-ignore
         data.availableTokens = actors.filter((actor) => !usedTokenReferencesMap.includes(actor.token.id));
@@ -57,7 +56,7 @@ export class ActorGroupSheet extends ActorSheet {
     activateListeners(html) {
         super.activateListeners(html);
 
-        html.find(`.fatex__actor_group__createToken`).click((e) => this._onCreateTokenReference.call(this, e));
+        html.find(`.fatex__actor_group__createToken`).on("click", (e) => this._onCreateTokenReference.call(this, e));
     }
 
     /**
@@ -80,7 +79,11 @@ export class ActorGroupSheet extends ActorSheet {
     async _render(force = false, options = {}) {
         await super._render(force, options);
 
-        const references = getReferencesByGroupType(this.actor.data.groupType, this.actor);
+        if (this.actor.data.type !== "group") {
+            return;
+        }
+
+        const references = getReferencesByGroupType(this.actor.data.data.groupType, this.actor);
 
         for (const reference of references) {
             if (reference.type === "actorReference") {
@@ -95,14 +98,14 @@ export class ActorGroupSheet extends ActorSheet {
      * Creates and renders a new InlineActorSheet based on an actor reference.
      * An actor is referenced by his actor id
      */
-    renderInlineActor(reference: ReferenceItem) {
-        const actor = game.actors.find((actor) => actor.id === reference.data.id && actor.isVisibleByPermission);
+    renderInlineActor(reference: ActorReferenceItemData) {
+        const actor = game.actors?.find((actor) => actor.id === reference.data.id && (actor as ActorFate).isVisibleByPermission);
 
         if (!actor) {
             return;
         }
 
-        const actorSheet = new InlineActorSheetFate(actor);
+        const actorSheet = new InlineActorSheetFate(actor as ActorFate);
         actorSheet.render(true, { group: this });
 
         this.inlineSheets.push(actorSheet);
@@ -112,8 +115,8 @@ export class ActorGroupSheet extends ActorSheet {
      * Creates and renders a new InlineActorSheet based on a token reference.
      * A token is referenced by a combination of the scene where its placed and its token id
      */
-    renderInlineToken(reference: ReferenceItem) {
-        const scene: any = game.scenes.find((scene) => scene.id === reference.data.scene);
+    renderInlineToken(reference: TokenReferenceItemData) {
+        const scene: any = game.scenes?.find((scene) => scene.id === reference.data.scene);
         const tokenData = scene?.data.tokens.find((token) => token._id === reference.data.id);
 
         if (!tokenData) {
@@ -122,7 +125,7 @@ export class ActorGroupSheet extends ActorSheet {
 
         const token = new Token(tokenData, scene);
 
-        const tokenSheet = new InlineActorSheetFate(token.actor);
+        const tokenSheet = new InlineActorSheetFate(token.actor as ActorFate);
         tokenSheet.render(true, { token: token, group: this });
 
         this.inlineSheets.push(tokenSheet);
@@ -132,12 +135,12 @@ export class ActorGroupSheet extends ActorSheet {
      * Create a new ownedItem of type ActorReference based on a given actorID
      * @param actorID
      */
-    _createActorReference(actorID) {
+    _createActorReference(actorID: string) {
         if (this.actor.items.find((i) => i.data.type === "actorReference" && i.data.data.id === actorID)) {
             return;
         }
 
-        const itemData = {
+        const itemData: Partial<ActorReferenceItemData> = {
             name: "ActorReference",
             type: "actorReference",
             data: {
@@ -145,7 +148,7 @@ export class ActorGroupSheet extends ActorSheet {
             },
         };
 
-        this.actor.createOwnedItem(itemData);
+        return this.actor.createOwnedItem(itemData);
     }
 
     /**
@@ -156,7 +159,7 @@ export class ActorGroupSheet extends ActorSheet {
             return;
         }
 
-        const itemData = {
+        const itemData: Partial<TokenReferenceItemData> = {
             name: "TokenReference",
             type: "tokenReference",
             data: {
@@ -178,15 +181,20 @@ export class ActorGroupSheet extends ActorSheet {
 
         const dataset = e.currentTarget.dataset;
 
-        //TODO: implement new typings
-        /*const actors = (Object.values(game.actors.tokens) as unknown) as ActorFate[];
-        const tokenActor = actors.find((t: ActorFate) => t.id === dataset.tokenId);
+        if (!game.actors) {
+            return;
+        }
+
+        const tokens = game.actors.tokens;
+        const tokenActor = Object.values(tokens).find((t) => t.id === dataset.tokenId);
 
         if (!tokenActor) {
             return;
-        }*/
+        }
 
-        this._createTokenReference(dataset.tokenId, game.scenes.active.id);
+        if (game.scenes) {
+            this._createTokenReference(dataset.tokenId, game.scenes.active.id);
+        }
     }
 
     /**
@@ -207,10 +215,9 @@ export class ActorGroupSheet extends ActorSheet {
             case "Actor":
                 return this._createActorReference(data.id);
             case "Item":
-                // @ts-ignore
                 return this._onDropItem(event, data);
             default:
-                break;
+                return false;
         }
     }
 }
