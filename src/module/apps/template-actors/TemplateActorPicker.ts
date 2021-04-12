@@ -1,6 +1,7 @@
 import { ActorFate } from "../../actor/ActorFate";
 import { SheetSetup } from "../sheet-setup/SheetSetup";
 import { TemplateActorSettings } from "./TemplateActorSettings";
+import { ActorDataFate } from "../../actor/ActorTypes";
 
 export class TemplateActorPicker extends TemplateActorSettings {
     static get defaultOptions() {
@@ -35,13 +36,12 @@ export class TemplateActorPicker extends TemplateActorSettings {
         e.preventDefault();
         e.stopPropagation();
 
-        const data = {
+        const data: Partial<ActorDataFate> = {
             name: game.i18n.localize("FAx.Template.Picker.Empty"),
             type: "character",
         };
 
         if (this.options.folder) {
-            // @ts-ignore
             data.folder = this.options.folder;
         }
 
@@ -61,20 +61,19 @@ export class TemplateActorPicker extends TemplateActorSettings {
 
         const data = e.currentTarget.dataset;
         const template = duplicate(game.actors?.get(data.template)) as Partial<Actor.Data>;
-        const fateXFlags = template.flags?.fatex as Record<string, unknown>;
+        const fatexFlags = template.flags?.fatex as Record<string, unknown>;
 
         // Add current template as a flag for later use
-        fateXFlags.templateActor = false;
+        fatexFlags.templateActor = template._id;
 
         // Delete id, specific flags and the actors image
         delete template._id;
 
-        delete fateXFlags.isTemplateActor;
+        delete fatexFlags.isTemplateActor;
 
         delete template.img;
 
         if (this.options.folder) {
-            // @ts-ignore
             template.folder = this.options.folder;
         }
 

@@ -13,11 +13,9 @@ export class ActorGroupSheet extends ActorSheet<ActorSheet.Data<ActorFate>> {
 
     /**
      * Initialize inlineSheets as an empty array of sheets
-     * @param args
      */
-    constructor(...args) {
-        // @ts-ignore
-        super(...args);
+    constructor(object, options) {
+        super(object, options);
 
         /**
          * Inline sheets that are rendered by this actor group instance
@@ -82,7 +80,6 @@ export class ActorGroupSheet extends ActorSheet<ActorSheet.Data<ActorFate>> {
             delete inlineSheet.actor.apps[inlineSheet.appId];
         }
 
-        // @ts-ignore
         return super.close(options);
     }
 

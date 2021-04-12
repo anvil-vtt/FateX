@@ -33,11 +33,10 @@ export function getReferencesFromCurrentEncounter(): ReferenceItem[] {
     return [];
 }
 
-export function getImageFromReference(reference: ReferenceItem): string {
+export function getImageFromReference(reference: ItemDataFate): string {
     if (reference.type === "actorReference") {
         const actor = game.actors?.find((actor) => actor.id === reference.data.id);
 
-        // @ts-ignore
         return actor?.data.img ?? DEFAULT_TOKEN;
     }
 
@@ -45,10 +44,8 @@ export function getImageFromReference(reference: ReferenceItem): string {
         const scene = game.scenes?.find((scene) => scene.id === reference.data.scene);
         const tokenData = scene?.data?.tokens.find((token) => token._id === reference.data.id);
 
-        // @ts-ignore
         return tokenData?.img ?? DEFAULT_TOKEN;
     }
 
-    // @ts-ignore
     return DEFAULT_TOKEN;
 }

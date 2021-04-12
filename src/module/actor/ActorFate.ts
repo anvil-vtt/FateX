@@ -2,7 +2,6 @@
  * ActorFate is the default entity class for actors inside the FateX system.
  * Adds custom features based on the system.
  */
-import { TemplateActorSheetFate } from "./template/TemplateActorSheetFate";
 import { getImageFromReference, getReferencesByGroupType } from "../helper/ActorGroupHelper";
 import { ActorDataFate } from "./ActorTypes";
 import { ItemFate } from "../item/ItemFate";
@@ -23,9 +22,10 @@ export class ActorFate extends Actor<ActorDataFate, ItemFate> {
     /**
      * Open template picker instead of showing creation dialog
      */
-    static async createDialog(data = {}, _options = {}): Promise<any> {
-        // @ts-ignore
-        CONFIG.FateX.applications.templatePicker.options.folder = data.folder;
+    static async createDialog(data, _options = {}): Promise<any> {
+        if (CONFIG.FateX.applications.templatePicker) {
+            CONFIG.FateX.applications.templatePicker.options.folder = data.folder;
+        }
 
         return CONFIG.FateX.applications.templatePicker?.render(true);
     }
@@ -65,24 +65,12 @@ export class ActorFate extends Actor<ActorDataFate, ItemFate> {
     /**
      * Re-render all open FateX applications as soon a single actor is updated (used for TemplateActorSettings and TemplateActorPicker)
      */
-    render(force = false, options = {}) {
-        // @ts-ignore
+    render(force = false, options) {
         super.render(force, options);
 
         for (const app in CONFIG.FateX.applications) {
             CONFIG.FateX.applications[app]?.render();
         }
-    }
-
-    /**
-     * Return a specific sheet class for actor templates
-     */
-    get _sheetClass() {
-        if (this.isTemplateActor) {
-            return TemplateActorSheetFate;
-        }
-
-        return super._sheetClass;
     }
 
     /**
@@ -119,11 +107,9 @@ export class ActorFate extends Actor<ActorDataFate, ItemFate> {
         const actorReferences = getReferencesByGroupType(this.data.data.groupType, this);
 
         for (let i = 0; i < 4; i++) {
-            // @ts-ignore
             images.push(actorReferences[i] ? getImageFromReference(actorReferences[i]) : DEFAULT_TOKEN);
         }
 
-        // @ts-ignore
         return images;
     }
 
