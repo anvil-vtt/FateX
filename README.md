@@ -81,7 +81,7 @@ For manual installation, use the provided manifest URL in the "*Install System*"
 
 ---
 
-A big thank you to all who are contributing translations files! You're a great help for the international Fate community! ❤️
+A big thank you to all who are contributing translations! You're a great help to the international Fate community! ❤️
 
 If your language isn't represented yet and would like to contribute, please don't hesitate and contact Daddi#2888 on Discord or create a new pull request. 
 
