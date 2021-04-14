@@ -1,0 +1,139 @@
+{
+    "name": "기동형",
+    "identifier": "fae",
+    "types": {
+        "Aspects": [
+            {
+                "label": "기본",
+                "entries": [
+                    {
+                        "name": "정체성",
+                        "type": "aspect",
+                        "data": {
+                            "label": "정체성"
+                        }
+                    },
+                    {
+                        "name": "고민",
+                        "type": "aspect",
+                        "data": {
+                            "label": "고민"
+                        }
+                    },
+                    {
+                        "name": "기타 면모",
+                        "type": "aspect",
+                        "data": {
+                            "label": "기타"
+                        }
+                    },
+                    {
+                        "name": "기타 면모",
+                        "type": "aspect",
+                        "data": {
+                            "label": "기타"
+                        }
+                    },
+                    {
+                        "name": "기타 면모",
+                        "type": "aspect",
+                        "data": {
+                            "label": "기타"
+                        }
+                    }
+                ]
+            },
+            {
+                "label": "선택",
+                "entries": [
+                    {
+                        "name": "인간관계",
+                        "type": "aspect",
+                        "data": {
+                            "label": "인간관계"
+                        }
+                    },
+                    {
+                        "name": "빈 면모",
+                        "type": "aspect"
+                    }
+                ]
+            }
+        ],
+        "Consequences": [
+            {
+                "entries": [
+                    {
+                        "name": "경미한 타격",
+                        "type": "consequence",
+                        "data": {
+                            "label": "경미",
+                            "icon": "2"
+                        }
+                    },
+                    {
+                        "name": "심각한 타격",
+                        "type": "consequence",
+                        "data": {
+                            "label": "심각",
+                            "icon": "4"
+                        }
+                    },
+                    {
+                        "name": "막대한 타격",
+                        "type": "consequence",
+                        "data": {
+                            "label": "막대",
+                            "icon": "6"
+                        }
+                    }
+                ]
+            }
+        ],
+        "Skills": [
+            {
+                "columns": true,
+                "entries": [
+                    {
+                        "name": "세심하게",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "똑똑하게",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "화려하게",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "강하게",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "날쌔게",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "은근하게",
+                        "type": "skill"
+                    }
+                ]
+            }
+        ],
+        "Stress": [
+            {
+                "entries": [
+                    {
+                        "name": "스트레스",
+                        "type": "stress",
+                        "data": {
+                            "size": 3,
+                            "labelType": 0
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}
