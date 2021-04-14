@@ -1,0 +1,211 @@
+{
+    "FateX": "FateX",
+    "FAx": {
+        "name": "페이트 X",
+        "Global": {
+            "Ladder": {
+                "+8": "전설적",
+                "+7": "영웅적",
+                "+6": "환상적",
+                "+5": "엄청남",
+                "+4": "대단함",
+                "+3": "우수",
+                "+2": "양호",
+                "+1": "보통",
+                "+0": "미약",
+                "-1": "부실",
+                "-2": "엉망",
+                "-3": "재앙적",
+                "-4": "끔찍함"
+            },
+            "Actions": {
+                "Configure": "설정",
+                "Delete": "삭제",
+                "Duplicate": "복제",
+                "Sort": "정렬",
+                "Create": "새 액터 만들기",
+                "Choose": "템플릿 결정"
+            },
+            "BaseItem": "기본 아이템"
+        },
+        "Sheet": {
+            "Name": "이름",
+            "Description": "소개",
+            "FatePoints": "운명점",
+            "Aspects": "면모",
+            "Consequences": "타격",
+            "Skills": "기능",
+            "Stunts": "특기",
+            "Extras": "특수항목",
+            "Bio": "일대기",
+            "Artwork": "사진",
+            "StressTracks": "스트레스",
+            "Tabs": {
+                "SkillsStunts": "기능 & 특기",
+                "Skills": "기능",
+                "Stunts": "특기",
+                "Extras": "특수항목",
+                "Bio": "일대기"
+            },
+            "Buttons": {
+                "EditMode": "수정 모드",
+                "SheetSetup": "시트 설정"
+            },
+            "Stress": {
+                "Add": "스트레스 칸 추가"
+            },
+            "Messages": {
+                "EmptyActor": "캐릭터가 아무런 항목도 가지고 있지 않은 것 같습니다. <strong>수정 모드</strong> 나 <strong>시트 설정</strong>에 진입하여 시트를 수정할 수 있습니다. 수정 모드와 설정 버튼은 헤더 바에서 찾을 수 있습니다."
+            }
+        },
+        "Item": {
+            "Stress": {
+                "Name": "스트레스 칸 라벨",
+                "EditItem": "스트레스 칸 수정",
+                "Size": "박스 수",
+                "Description": "설명",
+                "DescriptionHelp": "설명은 스트레스 칸 구역 안쪽에 보여집니다.",
+                "Boxes": {
+                    "Label": "박스 라벨 스타일",
+                    "Custom": "커스텀 박스 라벨",
+                    "CustomHelp": "공백으로 분할되는 유니코드 문자열을 입력하십시오. 예) \"2 4 6 ☀\"."
+                },
+                "Type": {
+                    "Core": "코어",
+                    "Condensed": "Condensed",
+                    "Custom": "공란 / 커스텀"
+                }
+            },
+            "Aspect": {
+                "EditItem": "면모 수정",
+                "Value": "텍스트",
+                "Description": "설명",
+                "DescriptionHelp": "채팅에서만 표시됩니다.",
+                "Label": "라벨"
+            },
+            "Consequence": {
+                "EditItem": "타격 수정",
+                "Value": "텍스트",
+                "Description": "설명",
+                "DescriptionHelp": "채팅에서만 표시됩니다.",
+                "Label": "라벨",
+                "LabelHelp": "\"경미\" 나 \"심각\"처럼 심각도를 표시하는 라벨입니다.",
+                "Icon": "아이콘",
+                "IconHelp": "보통 2, 4, 6, 8 같은 숫자입니다. 좌측에 표시됩니다.",
+                "Type": {
+                    "Label": "종류",
+                    "Condition": "상태",
+                    "Consequence": "타격"
+                }
+            },
+            "Skill": {
+                "Name": "기능명",
+                "EditItem": "기능 수정",
+                "Rank": "수준",
+                "Description": "설명",
+                "DescriptionHelp": "채팅에서만 표시됩니다."
+            },
+            "Stunt": {
+                "Name": "특기명",
+                "EditItem": "특기 수정",
+                "Description": "설명",
+                "DescriptionHelp": "해당 특기에 대한 자세한 설명",
+                "ShortDescription": "요약",
+                "ShortDescriptionHelp": "해당 특기에 대한 짧은 설명"
+            },
+            "Extra": {
+                "Name": "특수항목명",
+                "EditItem": "특수항목 수정",
+                "Description": "설명",
+                "DescriptionHelp": "해당 특수항목에 대한 자세한 설명",
+                "ShortDescription": "요약",
+                "ShortDescriptionHelp": "해당 특수항목에 대한 자세한 설명"
+            },
+            "Automation": {
+                "Headline": "자동화",
+                "BoxesHeadline": "박스 자동화",
+                "Description": "기능 상태가 지정되지 않았습니다. 자동화 사용을 위해서 기능을 지정하십시오.",
+                "AddSkillRef": "기능 상태 추가",
+                "DisableUntil": "해당 상태에 활성화: ",
+                "BoxesIf": "box(es) if",
+                "MultipleConditions": "Enable automation if",
+                "MultipleConditionsMatches": "condition matches",
+                "Actions": {
+                    "Box": {
+                        "ADD": "추가",
+                        "REMOVE": "제거"
+                    }
+                },
+                "Conjunctions": {
+                    "AND": "모든",
+                    "OR": "아무"
+                },
+                "Operators": {
+                    "OPERATOR_EQUALS": "이 다음 숫자와 같을 때",
+                    "OPERATOR_NOT_EQUALS": "이 다음 숫자가 아닐 때",
+                    "OPERATOR_GT": "이 다음 숫자 초과일 때",
+                    "OPERATOR_LT": "이 다음 숫자 미만일 때",
+                    "OPERATOR_GTE": "이 다음 숫자 이상일 때",
+                    "OPERATOR_LTE": "이 다음 숫자 이하일 때"
+                }
+            }
+        },
+        "Dialog": {
+            "ReferenceRemove": "대상 제거",
+            "ReferenceRemoveText": "정말 대상을 <strong>영구적으로</strong> 제거하시겠습니까?",
+            "EntityDelete": "삭제",
+            "EntityDeleteText": "정말 항목을 <strong>영구적으로</strong> 삭제하시겠습니까?",
+            "ActorClear": "액터 초기화",
+            "ActorClearText": "정말 해당 액터의 요소들과 선택된 유형의 항목들을 <strong>영구적으로</strong> 삭제하시겠습니까?",
+            "Confirm": "승인",
+            "Cancel": "취소"
+        },
+        "Apps": {
+            "Setup": {
+                "Title": "시트 설정",
+                "Manage": "관리",
+                "Setup": "설정 (프리셋)",
+                "Actions": {
+                    "Clear": {
+                        "Aspects": "면모 초기화",
+                        "Consequences": "타격 초기화",
+                        "Skills": "기능 초기화",
+                        "Stress": "스트레스 칸 초기화",
+                        "Everything": "전체 초기화"
+                    },
+                    "Setup": {
+                        "AddToSheet": "선택된 항목을 시트에 추가",
+                        "ToggleSelection": "섹션 활성화"
+                    }
+                }
+            }
+        },
+        "Settings": {
+            "Templates": {
+                "Title": "캐릭터 시트 템플릿",
+                "Hint": "새 캐릭터의 시트 형식을 선택할 수 있습니다.",
+                "Button": "페이트 X 템플릿",
+                "New": "새 템플릿",
+                "Copy": "복사",
+                "App": {
+                    "Title": "템플릿 설정",
+                    "Label": "설정",
+                    "CreateNew": "새 템플릿 생성",
+                    "Help": "지정된 템플릿이 없습니다.<br />새 템플릿을 만들려면 <strong>새 템플릿 생성</strong> 버튼을 클릭하십시오. (헤더 바에서도 찾을 수 있습니다)."
+                }
+            }
+        },
+        "Template": {
+            "Picker": {
+                "Title": "템플릿 선택",
+                "Label": "템플릿",
+                "Configuration": "설정",
+                "Empty": "빈 액터",
+                "CreateEmpty": "새 액터",
+                "Or": "또는",
+                "Help": "새 템플릿을 추가하려면, 하단의 <strong>설정</strong> 버튼을 클릭하십시오. (헤더 바에서도 찾을 수 있습니다).",
+                "Explain": "템플릿은 각 캐릭터가 다른 종류의 시트를 가지게 할 수 있는 좋은 방법입니다. PC, NPC, 또는 여러 아이템마다 <strong>다른 시트 항목</strong>들을 채워넣기 위해 <strong>다른 템플릿</strong>을 사용하십시오."
+            }
+        }
+    }
+}
