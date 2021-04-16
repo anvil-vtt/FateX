@@ -30,7 +30,7 @@ For manual installation, use the provided manifest URL in the "*Install System*"
 ## Translations
 
 #### German:
-* System translation provided by E1Camino#4300 (supported by Daddi#2888)
+* System translation provided by E1Camino#4300 and hauke#9245
 * German Fate translation by Uhrwerk Verlag
 
 > Deutsche Ausgabe Fate Core und Turbo Fate:
