@@ -79,6 +79,13 @@ For manual installation, use the provided manifest URL in the "*Install System*"
 #### Chinese
 * System translation provided by [Nowpaper](https://github.com/Nowpaper)
 
+### Korean
+* System translation provided by [MaronKB](https://github.com/MaronKB)
+
+> 페이트 코어 한국어 공개판은 Leonard Balsera, Brian Engard, Jeremy Keller, Ryan Macklin, Mike Olson, Clark Valentine, Amanda Valentine, Fred Hicks, Rob Donoghue가 개발, 저술, 편집한 Evil Hat Productions, LLC 제품 Fate Core System을 크리에이티브 커먼즈 저작자표시 3.0 Unported 라이선스에 의거하여 도서출판 초여명의 김성일이 번역한 작품입니다.
+
+> 페이트 코어 한국어 공개판: https://sites.google.com/site/fatecorekr/ 은 크리에이티브 커먼즈 저작자표시 3.0 Unported (CC BY 3.0) 라이센스에 따라 이용할 수 있습니다.
+
 ---
 
 A big thank you to all who are contributing translations! You're a great help to the international Fate community! ❤️

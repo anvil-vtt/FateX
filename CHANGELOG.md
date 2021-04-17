@@ -1,5 +1,12 @@
 # Changelog
 
+
+### 0.9.3
+* Added new translations
+  * Korean (big thanks to contributor [MaronKB](https://github.com/MaronKB))
+* Updated all npm dependencies
+
+
 ### 0.9.2
 * Fixed italian language file
 * Updated all npm dependencies
