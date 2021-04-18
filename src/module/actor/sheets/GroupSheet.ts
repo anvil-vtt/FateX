@@ -53,15 +53,17 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<ActorFate>> {
         data.items = this.actor.items.map((i) => i.data);
         data.items.sort((a, b) => (a.sort || 0) - (b.sort || 0));
 
+        // Add filtered item lists for easier access
+        data.groupActors = data.items.filter((item) => ["tokenReference", "actorReference"].includes(item.type));
+
+        // Create list of available tokens in the current scene
         const usedTokenReferences = this.actor.items.filter((i) => i.data.type === "tokenReference" && i.data.data.scene === game.scenes?.active.id);
         const usedTokenReferencesMap: string[] = usedTokenReferences.map((token: FateItem) => {
             return token.data.type === "tokenReference" ? token.data.data.id : "";
         });
 
-        if (game.actors) {
-            const actors = Object.values(game.actors.tokens) ?? [];
-            data.availableTokens = actors.filter((actor) => (actor?.token ? !usedTokenReferencesMap.includes(actor.token.id) : false));
-        }
+        const actors = game.actors ? Object.values(game.actors.tokens) ?? [] : [];
+        data.availableTokens = actors.filter((actor) => (actor?.token ? !usedTokenReferencesMap.includes(actor.token.id) : false));
 
         return data;
     }
@@ -207,7 +209,7 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<ActorFate>> {
         }
 
         const tokens = game.actors.tokens;
-        const tokenActor = Object.values(tokens).find((t) => t.id === dataset.tokenId);
+        const tokenActor = Object.values(tokens).find((t) => t.token?.id === dataset.tokenId);
 
         if (!tokenActor) {
             return;
