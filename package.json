@@ -4,10 +4,9 @@
     "description": "FateX is the extended Fate game system for FoundryVTT.",
     "private": true,
     "scripts": {
-        "watch": "webpack --env watch",
         "build": "webpack",
-        "build:production": "webpack --mode production --env mode=production",
-        "start": "webpack serve --hot"
+        "build:production": "webpack --env mode=production",
+        "start": "webpack serve"
     },
     "repository": {
         "type": "git",
