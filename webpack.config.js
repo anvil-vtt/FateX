@@ -61,10 +61,11 @@ module.exports = (env) => {
                       },
                 {
                     test: /\.ts$/,
+                    use: ["ts-loader", "webpack-import-glob-loader", "source-map-loader"],
+                },
+                {
+                    test: /TemplatePreloader\.ts$/,
                     use: [
-                        "ts-loader",
-                        "webpack-import-glob-loader",
-                        "source-map-loader",
                         {
                             loader: "string-replace-loader",
                             options: {
@@ -85,9 +86,9 @@ module.exports = (env) => {
                                 url: false,
                             },
                         },
-                        /*{
+                        {
                             loader: "postcss-loader",
-                        },*/
+                        },
                         {
                             loader: "sass-loader",
                             options: {
