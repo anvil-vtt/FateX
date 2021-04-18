@@ -1,6 +1,6 @@
-import { ActorSheetFate } from "./ActorSheetFate";
+import { FateActorSheet } from "./FateActorSheet";
 
-export class InlineActorSheetFate extends ActorSheetFate {
+export class InlineActorSheetFate extends FateActorSheet {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
             baseApplication: "InlineActorSheetFate",

@@ -12,22 +12,22 @@
  *      (http://creativecommons.org/licenses/by/3.0/).
  */
 
-import "./scss/fatex.scss";
+import "./styles/fatex.scss";
 
 import { FateX } from "./config";
 import { ActorFate } from "./module/actor/ActorFate";
-import { CharacterSheet } from "./module/actor/character/CharacterSheet";
+import { CharacterSheet } from "./module/actor/sheets/CharacterSheet";
 import { HandlebarsHelpers } from "./module/helper/HandlebarsHelpers";
 import { TemplatePreloader } from "./module/helper/TemplatePreloader";
 import { AspectSheet } from "./module/item/aspect/AspectSheet";
 import { ConsequenceSheet } from "./module/item/consequence/ConsequenceSheet";
 import { ExtraSheet } from "./module/item/extra/ExtraSheet";
-import { ItemFate } from "./module/item/ItemFate";
+import { FateItem } from "./module/item/FateItem";
 import { SkillSheet } from "./module/item/skill/SkillSheet";
 import { StressSheet } from "./module/item/stress/StressSheet";
 import { StuntSheet } from "./module/item/stunt/StuntSheet";
 import { TemplateActorsFeature } from "./module/features/TemplateActorsFeature";
-import { ActorGroupSheet } from "./module/actor/ActorGroupSheet";
+import { GroupSheet } from "./module/actor/sheets/GroupSheet";
 import { ActorGroupFeature } from "./module/features/ActorGroupFeature";
 import { ReferenceSheet } from "./module/item/references/ReferenceSheet";
 
@@ -41,7 +41,7 @@ Hooks.once("init", async () => {
     CONFIG.FateX = FateX;
 
     CONFIG.Actor.entityClass = ActorFate;
-    CONFIG.Item.entityClass = ItemFate;
+    CONFIG.Item.entityClass = FateItem;
 
     CONFIG.FateX.global.useMarkdown = !![...game.modules.values()].filter((module) => {
         return module.id === "markdown-editor" && module.active;
@@ -63,7 +63,7 @@ Hooks.once("init", async () => {
         makeDefault: true,
     });
 
-    Actors.registerSheet("FateX", ActorGroupSheet, {
+    Actors.registerSheet("FateX", GroupSheet, {
         types: ["group"],
         makeDefault: true,
     });

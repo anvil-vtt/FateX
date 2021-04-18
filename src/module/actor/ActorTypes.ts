@@ -1,11 +1,11 @@
-import { ItemDataFate } from "../item/ItemTypes";
+import { FateItemData } from "../item/ItemTypes";
 import { ActorFate } from "./ActorFate";
 
 interface CharacterData {
     isTemplateActor: boolean;
 }
 
-interface CharacterActorData extends Actor.Data<CharacterData, ItemDataFate> {
+interface CharacterActorData extends Actor.Data<CharacterData, FateItemData> {
     type: "character";
 }
 
@@ -16,7 +16,7 @@ interface GroupData {
     };
 }
 
-interface GroupActorData extends Actor.Data<GroupData, ItemDataFate> {
+interface GroupActorData extends Actor.Data<GroupData, FateItemData> {
     type: "group";
 }
 

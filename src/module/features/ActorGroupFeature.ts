@@ -1,5 +1,5 @@
 import { ActorFate } from "../actor/ActorFate";
-import { ActorGroupSheet } from "../actor/ActorGroupSheet";
+import { GroupSheet } from "../actor/sheets/GroupSheet";
 
 /**
  * Represents the actor group panel containing multiple actor groups.
@@ -21,8 +21,8 @@ export class ActorGroupFeature {
          * Rerender all inline-sheets of updated actor (needed for synthetic actor token to circumvent patching the _onUpdateBaseActor method)
          */
         Hooks.on("updateActor", (entity, _data, _options, _userId) => {
-            const openGroupSheetApps = Object.values(ui.windows).filter((app) => app instanceof ActorGroupSheet);
-            const openGroupSheets = openGroupSheetApps as ActorGroupSheet[];
+            const openGroupSheetApps = Object.values(ui.windows).filter((app) => app instanceof GroupSheet);
+            const openGroupSheets = openGroupSheetApps as GroupSheet[];
 
             for (const groupSheet of openGroupSheets) {
                 const inlineSheetsOfUpdatedActor = groupSheet.inlineSheets.filter((sheet) => sheet.actor.id === entity.id);

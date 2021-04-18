@@ -2,13 +2,13 @@
  * Item type holding the reference to an actor or a token in a scene
  */
 import { ActorFate } from "../actor/ActorFate";
-import { ItemDataFate, ReferenceItem } from "../item/ItemTypes";
+import { FateItemData, ReferenceItem } from "../item/ItemTypes";
 
 /**
  * Returns all references of actors or tokens to be rendered as inlineSheeds based on a given groupType
  * Defaults to type "manual" which consists of manually added actors and tokens
  */
-export function getReferencesByGroupType(groupType: any = "manual", actor?: ActorFate): ItemDataFate[] {
+export function getReferencesByGroupType(groupType: any = "manual", actor?: ActorFate): FateItemData[] {
     switch (groupType) {
         case "scene":
             return this.getReferencesFromCurrentScene();
@@ -33,7 +33,7 @@ export function getReferencesFromCurrentEncounter(): ReferenceItem[] {
     return [];
 }
 
-export function getImageFromReference(reference: ItemDataFate): string {
+export function getImageFromReference(reference: FateItemData): string {
     if (reference.type === "actorReference") {
         const actor = game.actors?.find((actor) => actor.id === reference.data.id);
 

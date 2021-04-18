@@ -2,15 +2,15 @@
  * FateX base class for all actor sheets.
  * Defines what information on the actorsheet may be rendered.
  */
-import { SheetSetup } from "../apps/sheet-setup/SheetSetup";
-import { ActorFate } from "./ActorFate";
-import { ExtraItemData } from "../item/ItemTypes";
+import { SheetSetup } from "../../applications/sheet-setup/SheetSetup";
+import { ActorFate } from "../ActorFate";
+import { ExtraItemData } from "../../item/ItemTypes";
 
 export interface FateActorSheetOptions extends BaseEntitySheet.Options {
     type?: string;
 }
 
-export class ActorSheetFate extends ActorSheet<ActorSheet.Data<ActorFate>> {
+export class FateActorSheet extends ActorSheet<ActorSheet.Data<ActorFate>> {
     /**
      * Defines the default options for all FateX actor sheets.
      * This consists of things like css classes, the template to load and the tab configuration.

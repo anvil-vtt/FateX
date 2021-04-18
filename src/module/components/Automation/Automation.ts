@@ -1,5 +1,5 @@
 import { BaseComponent } from "../BaseComponent";
-import { ItemFate } from "../../item/ItemFate";
+import { FateItem } from "../../item/FateItem";
 
 export const OPERATORS = {
     OPERATOR_EQUALS: 0,
@@ -221,7 +221,7 @@ export class Automation extends BaseComponent {
             ...new Set(
                 game.actors
                     ?.map((actor) => {
-                        const items = (actor.items.entries as unknown) as Array<ItemFate>;
+                        const items = (actor.items.entries as unknown) as Array<FateItem>;
                         return items.filter((item) => item.type === "skill").map((item) => item.name);
                     })
                     .flat()

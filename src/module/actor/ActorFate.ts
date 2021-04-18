@@ -4,9 +4,9 @@
  */
 import { getImageFromReference, getReferencesByGroupType } from "../helper/ActorGroupHelper";
 import { ActorDataFate } from "./ActorTypes";
-import { ItemFate } from "../item/ItemFate";
+import { FateItem } from "../item/FateItem";
 
-export class ActorFate extends Actor<ActorDataFate, ItemFate> {
+export class ActorFate extends Actor<ActorDataFate, FateItem> {
     /**
      * Open template picker instead of directly creating a new actor
      */

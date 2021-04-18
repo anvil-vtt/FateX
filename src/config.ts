@@ -11,8 +11,8 @@ import { StressItem } from "./module/item/stress/StressItem";
 import { StuntItem } from "./module/item/stunt/StuntItem";
 import { BaseItem } from "./module/item/BaseItem";
 import { BaseComponent } from "./module/components/BaseComponent";
-import { TemplateActorPicker } from "./module/apps/template-actors/TemplateActorPicker";
-import { TemplateActorSettings } from "./module/apps/template-actors/TemplateActorSettings";
+import { TemplateActorPicker } from "./module/applications/template-actors/TemplateActorPicker";
+import { TemplateActorSettings } from "./module/applications/template-actors/TemplateActorSettings";
 
 export interface FatexConfig {
     itemClasses: {

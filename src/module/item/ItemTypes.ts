@@ -50,4 +50,4 @@ export interface ExtraItemData extends Item.Data<ExtraData> {
 ///////////////////////////////
 
 export type ReferenceItem = TokenReferenceItemData | ActorReferenceItemData;
-export type ItemDataFate = StressItemData | AspectItemData | TokenReferenceItemData | ActorReferenceItemData | ExtraItemData;
+export type FateItemData = StressItemData | AspectItemData | TokenReferenceItemData | ActorReferenceItemData | ExtraItemData;

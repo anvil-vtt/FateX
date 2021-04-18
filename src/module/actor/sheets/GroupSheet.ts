@@ -1,14 +1,14 @@
 import { InlineActorSheetFate } from "./InlineActorSheetFate";
-import { getReferencesByGroupType } from "../helper/ActorGroupHelper";
-import { FateActorSheetOptions } from "./ActorSheetFate";
-import { ActorFate } from "./ActorFate";
-import { ActorReferenceItemData, TokenReferenceItemData } from "../item/ItemTypes";
-import { ItemFate } from "../item/ItemFate";
+import { getReferencesByGroupType } from "../../helper/ActorGroupHelper";
+import { FateActorSheetOptions } from "./FateActorSheet";
+import { ActorFate } from "../ActorFate";
+import { ActorReferenceItemData, TokenReferenceItemData } from "../../item/ItemTypes";
+import { FateItem } from "../../item/FateItem";
 
 /**
  * Represents a single actor group. Has a normal (inside groups panel) and a popped out state.
  */
-export class ActorGroupSheet extends ActorSheet<ActorSheet.Data<ActorFate>> {
+export class GroupSheet extends ActorSheet<ActorSheet.Data<ActorFate>> {
     public inlineSheets: InlineActorSheetFate[];
 
     /**
@@ -54,7 +54,7 @@ export class ActorGroupSheet extends ActorSheet<ActorSheet.Data<ActorFate>> {
         data.items.sort((a, b) => (a.sort || 0) - (b.sort || 0));
 
         const usedTokenReferences = this.actor.items.filter((i) => i.data.type === "tokenReference" && i.data.data.scene === game.scenes?.active.id);
-        const usedTokenReferencesMap: string[] = usedTokenReferences.map((token: ItemFate) => {
+        const usedTokenReferencesMap: string[] = usedTokenReferences.map((token: FateItem) => {
             return token.data.type === "tokenReference" ? token.data.data.id : "";
         });
 

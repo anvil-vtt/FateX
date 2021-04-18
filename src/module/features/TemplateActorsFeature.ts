@@ -1,5 +1,5 @@
-import { TemplateActorPicker } from "../apps/template-actors/TemplateActorPicker";
-import { TemplateActorSettings } from "../apps/template-actors/TemplateActorSettings";
+import { TemplateActorPicker } from "../applications/template-actors/TemplateActorPicker";
+import { TemplateActorSettings } from "../applications/template-actors/TemplateActorSettings";
 
 export class TemplateActorsFeature {
     static hooks() {
