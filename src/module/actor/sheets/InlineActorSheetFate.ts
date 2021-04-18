@@ -1,6 +1,6 @@
-import { FateActorSheet } from "./FateActorSheet";
+import { CharacterSheet } from "./CharacterSheet";
 
-export class InlineActorSheetFate extends FateActorSheet {
+export class InlineActorSheetFate extends CharacterSheet {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
             baseApplication: "InlineActorSheetFate",
@@ -16,7 +16,7 @@ export class InlineActorSheetFate extends FateActorSheet {
     }
 
     get template() {
-        return "systems/fatex/templates/inline-actor/character.html";
+        return "systems/fatex/templates/inline-sheet/character.html";
     }
 
     _injectHTML(html, options) {

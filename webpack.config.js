@@ -34,14 +34,14 @@ module.exports = (env) => {
         output: {
             filename: "system.js",
             path: path.resolve(__dirname, "dist"),
+            publicPath: "/systems/fatex/",
         },
         devServer: {
             hot: true,
-            writeToDisk: true,
             proxy: [
                 {
                     context: (pathname) => {
-                        return !pathname.match("^/sockjs");
+                        return !pathname.match("^/ws");
                     },
                     target: "http://localhost:30000",
                     ws: true,

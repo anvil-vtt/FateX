@@ -73,6 +73,15 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<ActorFate>> {
     }
 
     /**
+     * Remove some of the default header buttons for group sheets
+     */
+    _getHeaderButtons() {
+        const buttons = super._getHeaderButtons();
+
+        return buttons.filter((b) => !["configure-token", "configure-sheet"].includes(b.class));
+    }
+
+    /**
      * Delete all inline sheets that were created by this instance before closing the window
      */
     async close(options = {}) {
