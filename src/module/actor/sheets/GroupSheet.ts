@@ -4,6 +4,8 @@ import { FateActorSheetOptions } from "./FateActorSheet";
 import { ActorFate } from "../ActorFate";
 import { ActorReferenceItemData, TokenReferenceItemData } from "../../item/ItemTypes";
 import { FateItem } from "../../item/FateItem";
+import { SortableEvent } from "sortablejs";
+import Sortable from "sortablejs/modular/sortable.complete.esm.js";
 
 /**
  * Represents a single actor group. Has a normal (inside groups panel) and a popped out state.
@@ -32,6 +34,7 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<ActorFate>> {
             resizable: true,
             template: "/systems/fatex/templates/actor/group.html",
             dragDrop: [{ dropSelector: null }],
+            scrollY: [".window-content"],
         } as FateActorSheetOptions);
     }
 
@@ -72,6 +75,40 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<ActorFate>> {
         super.activateListeners(html);
 
         html.find(`.fatex__actor_group__createToken`).on("click", (e) => this._onCreateTokenReference.call(this, e));
+
+        // Custom sheet listeners for every ItemType
+        for (const itemType in CONFIG.FateX.itemClasses) {
+            CONFIG.FateX.itemClasses[itemType]?.activateActorSheetListeners(html, this);
+        }
+
+        // Custom sheet listeners for every SheetComponent
+        for (const sheetComponent in CONFIG.FateX.sheetComponents.actor) {
+            CONFIG.FateX.sheetComponents.actor[sheetComponent].activateListeners(html, this);
+        }
+
+        Sortable.create(html.find(".fatex__actor_group__inlinesheets")[0], {
+            animation: 150,
+            removeOnSpill: true,
+            onEnd: (e: SortableEvent) => this.sortInlineSheets.call(this, e),
+            onSpill: (e: SortableEvent) => this.spillInlineSheet.call(this, e),
+        });
+    }
+
+    async spillInlineSheet(event: SortableEvent) {
+        if (event.item.dataset.id) {
+            await this.actor.deleteEmbeddedEntity("OwnedItem", event.item.dataset.id);
+        }
+    }
+
+    async sortInlineSheets(event: SortableEvent) {
+        const itemIDs: string[] = Array.from(event.to.children).map((e) => (e as HTMLElement).dataset.id ?? "");
+
+        const updateData = itemIDs.map((id, index) => ({
+            _id: id,
+            sort: SORT_INTEGER_DENSITY + index,
+        }));
+
+        await this.actor.updateEmbeddedEntity("OwnedItem", updateData);
     }
 
     /**
@@ -117,6 +154,36 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<ActorFate>> {
         }
     }
 
+    ////////////////////////////////////////////////
+    ////////////////////////////////////////////////
+    ////////////////////////////////////////////////
+    ////////////////////////////////////////////////
+    // Wo kommen die inlinesheets hin? Outer? Inner?  :>
+    // Problem -> ScrollY nach dem Rendern ist putt
+    // Alternativ -> ScrollY selbst nachbauen für Groups
+    ////////////////////////////////////////////////
+    ////////////////////////////////////////////////
+    ////////////////////////////////////////////////
+    ////////////////////////////////////////////////
+    ////////////////////////////////////////////////
+
+    /*async _renderOuter(options: Application.RenderOptions): Promise<JQuery<JQuery.Node>> {
+        const html = (await super._renderOuter(options)) as JQuery<JQuery.Node>;
+
+        //Add inlinesheets wrapper to outer window
+        html.append(`<div class="fatex__actor_group__inlinesheets"></div>`);
+
+        //Add sortablejs to new inline sheets
+        Sortable.create(html.find(".fatex__actor_group__inlinesheets")[0], {
+            animation: 150,
+            removeOnSpill: true,
+            onEnd: (e: SortableEvent) => this.sortInlineSheets.call(this, e),
+            onSpill: (e: SortableEvent) => this.spillInlineSheet.call(this, e),
+        });
+
+        return html;
+    }*/
+
     /**
      * Creates and renders a new InlineActorSheet based on an actor reference.
      * An actor is referenced by his actor id
@@ -129,7 +196,7 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<ActorFate>> {
         }
 
         const actorSheet = new InlineActorSheetFate(actor as ActorFate);
-        actorSheet.render(true, { group: this });
+        actorSheet.render(true, { group: this, referenceID: reference._id });
 
         this.inlineSheets.push(actorSheet);
     }
@@ -149,7 +216,7 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<ActorFate>> {
         const token = new Token(tokenData, scene);
 
         const tokenSheet = new InlineActorSheetFate(token.actor as ActorFate);
-        tokenSheet.render(true, { token: token, group: this });
+        tokenSheet.render(true, { token: token, group: this, referenceID: reference._id });
 
         this.inlineSheets.push(tokenSheet);
     }
@@ -159,7 +226,13 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<ActorFate>> {
      * @param actorID
      */
     _createActorReference(actorID: string) {
+        // Check if character is already present
         if (this.actor.items.find((i) => i.data.type === "actorReference" && i.data.data.id === actorID)) {
+            return;
+        }
+
+        // Only allow character-type actors to be referenced
+        if (game.actors?.get(actorID)?.data.type !== "character") {
             return;
         }
 

@@ -7,6 +7,16 @@ export class InlineActorSheetFate extends CharacterSheet {
         } as BaseEntitySheet.Options);
     }
 
+    getData(options?: Application.RenderOptions & { referenceID?: string }) {
+        const data = super.getData();
+
+        if (options?.referenceID) {
+            data.referenceID = options.referenceID;
+        }
+
+        return data;
+    }
+
     get id() {
         return this.options.id ? this.options.id : `inline-app-${this.appId}`;
     }
@@ -24,7 +34,7 @@ export class InlineActorSheetFate extends CharacterSheet {
         this._element = html;
     }
 
-    render(force = false, options: Application.RenderOptions & { token?: Token; group?: Application } = {}) {
+    render(force = false, options: Application.RenderOptions & { token?: Token; group?: Application; referenceID?: string } = {}) {
         return super.render(force, options);
     }
 }

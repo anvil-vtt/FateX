@@ -13,6 +13,8 @@ import { BaseItem } from "./module/item/BaseItem";
 import { BaseComponent } from "./module/components/BaseComponent";
 import { TemplateActorPicker } from "./module/applications/template-actors/TemplateActorPicker";
 import { TemplateActorSettings } from "./module/applications/template-actors/TemplateActorSettings";
+import { TokenReferenceItem } from "./module/item/references/TokenReferenceItem";
+import { ActorReferenceItem } from "./module/item/references/ActorReferenceItem";
 
 export interface FatexConfig {
     itemClasses: {
@@ -56,6 +58,8 @@ export const FateX: FatexConfig = {
         skill: SkillItem,
         stunt: StuntItem,
         extra: ExtraItem,
+        tokenRefernce: TokenReferenceItem,
+        actorReference: ActorReferenceItem,
     },
     sheetComponents: {
         actor: {
