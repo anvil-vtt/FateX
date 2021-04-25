@@ -194,9 +194,9 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
             return;
         }
 
-        const actorSheet = new InlineActorSheetFate(actor as FateActor);
+        const actorSheet = new InlineActorSheetFate(actor as FateActor, { referenceID: reference._id } as FateActorSheetOptions);
         // @ts-ignore
-        await actorSheet._render(true, { group: this, referenceID: reference._id } as Application.RenderOptions);
+        await actorSheet._render(true, { group: this } as Application.RenderOptions);
 
         this.inlineSheets.push(actorSheet);
     }
@@ -215,9 +215,9 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
 
         const token = new Token(tokenData, scene);
 
-        const tokenSheet = new InlineActorSheetFate(token.actor as FateActor);
+        const tokenSheet = new InlineActorSheetFate(token.actor as FateActor, { referenceID: reference._id } as FateActorSheetOptions);
         // @ts-ignore
-        await tokenSheet._render(true, { token: token, group: this, referenceID: reference._id } as Application.RenderOptions);
+        await tokenSheet._render(true, { token: token, group: this } as Application.RenderOptions);
 
         this.inlineSheets.push(tokenSheet);
     }
@@ -225,21 +225,27 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
     /**
      * Creates and renders a new InlineActorSheet based on a combatant reference.
      */
-    async renderInlineCombatant(_reference: DeepPartial<CombatantReferenceItemData>) {
-        /* const scene: any = game.scenes?.find((scene) => scene.id === reference.data?.scene);
-        const tokenData = scene?.data.tokens.find((token) => token._id === reference.data?.id);
-
-        if (!tokenData) {
+    async renderInlineCombatant(reference: DeepPartial<CombatantReferenceItemData>) {
+        if (!game.combats || !game.combats.active) {
             return;
         }
 
+        const scene: any = game.scenes?.find((scene) => scene.id === game.combats?.active?.data.scene);
+        const combatant = game.combats.active.combatants.find((combatant) => combatant._id === reference.data?.id);
+        const tokenData = scene?.data.tokens.find((token) => token._id === combatant?.tokenId);
+
+        if (!tokenData || !combatant || !combatant.visible) {
+            return;
+        }
+
+        delete combatant.actor;
+
         const token = new Token(tokenData, scene);
-
-        const tokenSheet = new InlineActorSheetFate(token.actor as FateActor);
+        const tokenSheet = new InlineActorSheetFate(token.actor as FateActor, { combatant: combatant, referenceID: reference._id } as FateActorSheetOptions);
         // @ts-ignore
-        await tokenSheet._render(true, { token: token, group: this, referenceID: reference._id } as Application.RenderOptions);
+        await tokenSheet._render(true, { token: token, group: this } as Application.RenderOptions);
 
-        this.inlineSheets.push(tokenSheet);*/
+        this.inlineSheets.push(tokenSheet);
     }
 
     /**

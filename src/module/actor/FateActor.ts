@@ -122,10 +122,6 @@ export class FateActor extends Actor<ActorDataFate, FateItem> {
     _onModifyEmbeddedEntity(embeddedName, changes, options, userId, context = {}) {
         super._onModifyEmbeddedEntity(embeddedName, changes, options, userId, context);
 
-        if (this.data.type === "group") {
-            CONFIG.FateX.instances.actorGroupsPanel?.render(true);
-        }
-
         if (embeddedName === "OwnedItem") {
             this.items.forEach((item) => item.prepareData());
         }

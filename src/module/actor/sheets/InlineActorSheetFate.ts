@@ -1,17 +1,22 @@
 import { CharacterSheet } from "./CharacterSheet";
 
 export class InlineActorSheetFate extends CharacterSheet {
-    static get defaultOptions() {
+    /*static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
-            baseApplication: "InlineActorSheetFate",
+            baseApplication: "CharacterSheet",
         } as BaseEntitySheet.Options);
-    }
+    }*/
 
-    getData(options?: Application.RenderOptions & { referenceID?: string }) {
+    getData(_options?: Application.RenderOptions) {
         const data = super.getData();
 
-        if (options?.referenceID) {
-            data.referenceID = options.referenceID;
+        if (this.options.referenceID) {
+            data.referenceID = this.options.referenceID;
+        }
+
+        if (this.options.combatant) {
+            data.defeated = this.options.combatant.defeated;
+            data.hidden = this.options.combatant.hidden;
         }
 
         return data;
@@ -27,6 +32,15 @@ export class InlineActorSheetFate extends CharacterSheet {
 
     get template() {
         return "systems/fatex/templates/inline-sheet/character.html";
+    }
+
+    /**
+     * Circumvent BaseEntitySheet::render() as it wouldn't allow InlineActorSheets
+     * to update for actors which the user has no view-permission for.
+     */
+    render(force = false, options = {}) {
+        this._render(force, options);
+        return this;
     }
 
     _injectHTML(html, options) {

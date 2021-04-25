@@ -1,6 +1,6 @@
-<form autocomplete="off" class="{{cssClass}}" data-id="{{referenceID}}">
-
-    <div class="fatex__inline_sheet">
+<form autocomplete="off" data-id="{{referenceID}}">
+    {{log this}}
+    <div class="fatex__inline_sheet{{#if defeated}} fatex__inline_sheet--defeated{{/if}}{{#if hidden}} fatex__inline_sheet--hidden{{/if}}">
         <h2 class="fatex__inline_sheet__headline fatex__headline">
             <img alt="{{actor.name}}" data-edit="img" src="{{actor.img}}" />
             <span class="fatex__inline_sheet__headline__name">{{actor.name}}</span>

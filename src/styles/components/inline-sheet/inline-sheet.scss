@@ -14,6 +14,14 @@
     }
 }
 
+.fatex__inline_sheet--hidden {
+    opacity: 0.3;
+}
+
+.fatex__inline_sheet--defeated {
+    opacity: 0.5;
+}
+
 .fatex__inline_sheet__headline {
     display: flex;
     align-items: center;
@@ -27,6 +35,10 @@
         object-position: 50% 0;
 
         margin-right: $component-padding / 2;
+    }
+
+    .fatex__inline_sheet--defeated & {
+        color: $caution-color;
     }
 }
 

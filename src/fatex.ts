@@ -31,6 +31,7 @@ import { GroupSheet } from "./module/actor/sheets/GroupSheet";
 import { ActorGroupFeature } from "./module/features/ActorGroupFeature";
 import { ReferenceSheet } from "./module/item/references/ReferenceSheet";
 import { FateScene } from "./module/scene/FateScene";
+import { FateCombat } from "./module/combat/FateCombat";
 
 /* -------------------------------- */
 /*	System initialization			*/
@@ -43,9 +44,8 @@ Hooks.once("init", async () => {
 
     CONFIG.Actor.entityClass = FateActor;
     CONFIG.Item.entityClass = FateItem;
-
-    // @ts-ignore
     CONFIG.Scene.entityClass = FateScene;
+    CONFIG.Combat.entityClass = FateCombat;
 
     CONFIG.FateX.global.useMarkdown = !![...game.modules.values()].filter((module) => {
         return module.id === "markdown-editor" && module.active;

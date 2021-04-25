@@ -5,12 +5,15 @@
 import { SheetSetup } from "../../applications/sheet-setup/SheetSetup";
 import { FateActor } from "../FateActor";
 import { ExtraItemData } from "../../item/ItemTypes";
+import Combatant = Combat.Combatant;
 
 export interface FateActorSheetOptions extends BaseEntitySheet.Options {
     type?: string;
+    combatant?: Combatant;
+    referenceID?: string;
 }
 
-export class FateActorSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
+export class FateActorSheet extends ActorSheet<ActorSheet.Data<FateActor>, FateActor, FateActorSheetOptions> {
     /**
      * Defines the default options for all FateX actor sheets.
      * This consists of things like css classes, the template to load and the tab configuration.

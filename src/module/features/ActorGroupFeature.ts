@@ -1,6 +1,6 @@
 import { FateActor } from "../actor/FateActor";
 import { GroupSheet } from "../actor/sheets/GroupSheet";
-import { renderGroupSheet } from "../helper/ActorGroupHelper";
+import { renderGroupSheetsByGroupType } from "../helper/ActorGroupHelper";
 
 /**
  * Represents the actor group panel containing multiple actor groups.
@@ -41,14 +41,7 @@ export class ActorGroupFeature {
          * Rerender groupsheets of type scene whenever the viewed scene changes to another scene
          */
         Hooks.on("canvasReady", (_entity, _data, _options, _userId) => {
-            renderGroupSheet("scene");
-        });
-
-        /**
-         * Rerender groupsheets of type encounter whenever
-         */
-        Hooks.on("renderCombatTracker", (_entity, _data, _options, _userId) => {
-            //renderGroupSheet("encounter");
+            renderGroupSheetsByGroupType("scene");
         });
     }
 

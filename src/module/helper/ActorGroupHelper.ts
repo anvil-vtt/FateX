@@ -4,6 +4,7 @@
 import { FateActor } from "../actor/FateActor";
 import { ReferenceItemData } from "../item/ItemTypes";
 import { GroupSheet } from "../actor/sheets/GroupSheet";
+import { groupType } from "../actor/ActorTypes";
 
 /**
  * Returns all references of actors or tokens to be rendered as inlineSheeds based on a given groupType
@@ -37,7 +38,7 @@ export function getReferencesFromCurrentScene(): DeepPartial<ReferenceItemData>[
 
         if (token.actor.token) {
             return {
-                _id: ["token", canvas?.scene?.id, token.id].join("-"),
+                _id: ["tokenReference", canvas?.scene?.id, token.id].join("-"),
                 type: "tokenReference",
                 data: {
                     id: token.id,
@@ -47,7 +48,7 @@ export function getReferencesFromCurrentScene(): DeepPartial<ReferenceItemData>[
         }
 
         return {
-            _id: ["actor", token.actor.id].join("-"),
+            _id: ["actorReference", token.actor.id].join("-"),
             type: "actorReference",
             data: {
                 id: token.actor.id,
@@ -60,13 +61,19 @@ export function getReferencesFromCurrentScene(): DeepPartial<ReferenceItemData>[
  * Returns all references to tokens which are enlisted in the currenctly active encounter
  */
 export function getReferencesFromCurrentEncounter(): DeepPartial<ReferenceItemData>[] {
-    if (!game.combats) {
+    if (!game.combats || !game.combats.active) {
         return [];
     }
 
-    game.combats.active;
-
-    return [];
+    return game.combats.active?.combatants.map((combatant) => {
+        return {
+            _id: ["combatantReference", combatant._id].join("-"),
+            type: "combatantReference",
+            data: {
+                id: combatant._id,
+            },
+        };
+    });
 }
 
 export function getImageFromReference(reference: DeepPartial<ReferenceItemData>): string {
@@ -86,7 +93,7 @@ export function getImageFromReference(reference: DeepPartial<ReferenceItemData>)
     return DEFAULT_TOKEN;
 }
 
-export function renderGroupSheet(groupType: string) {
+export function renderGroupSheetsByGroupType(groupType: groupType) {
     const openGroupSheets = Object.values(ui.windows).filter<GroupSheet>((app): app is GroupSheet => app instanceof GroupSheet);
 
     for (const groupSheet of openGroupSheets) {

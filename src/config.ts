@@ -40,11 +40,6 @@ export interface FatexConfig {
         [key: number]: Application | null;
     };
 
-    instances: {
-        [key: string]: Application | null;
-        [key: number]: Application | null;
-    };
-
     global: {
         useMarkdown: boolean;
     };
@@ -75,9 +70,6 @@ export const FateX: FatexConfig = {
     applications: {
         templateSettings: null,
         templatePicker: null,
-    },
-    instances: {
-        actorGroupsPanel: null,
     },
     global: {
         useMarkdown: false,

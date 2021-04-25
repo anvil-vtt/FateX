@@ -9,8 +9,10 @@ interface CharacterActorData extends Actor.Data<CharacterData, FateItemData> {
     type: "character";
 }
 
+export type groupType = "manual" | "scene" | "encounter";
+
 interface GroupData {
-    groupType: "manual" | "scene" | "encounter";
+    groupType: groupType;
     availableTokens: {
         [id: string]: FateActor;
     };
