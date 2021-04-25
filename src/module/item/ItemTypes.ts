@@ -29,6 +29,16 @@ export interface TokenReferenceItemData extends Item.Data<TokenReferenceData> {
 
 ///////////////////////////////
 
+interface CombatantReferenceData {
+    id: string;
+}
+
+export interface CombatantReferenceItemData extends Item.Data<CombatantReferenceData> {
+    type: "combatantReference";
+}
+
+///////////////////////////////
+
 interface ActorReferenceData {
     id: string;
 }
@@ -49,5 +59,5 @@ export interface ExtraItemData extends Item.Data<ExtraData> {
 
 ///////////////////////////////
 
-export type ReferenceItem = TokenReferenceItemData | ActorReferenceItemData;
+export type ReferenceItemData = TokenReferenceItemData | ActorReferenceItemData | CombatantReferenceItemData;
 export type FateItemData = StressItemData | AspectItemData | TokenReferenceItemData | ActorReferenceItemData | ExtraItemData;

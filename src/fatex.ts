@@ -15,7 +15,7 @@
 import "./styles/fatex.scss";
 
 import { FateX } from "./config";
-import { ActorFate } from "./module/actor/ActorFate";
+import { FateActor } from "./module/actor/FateActor";
 import { CharacterSheet } from "./module/actor/sheets/CharacterSheet";
 import { HandlebarsHelpers } from "./module/helper/HandlebarsHelpers";
 import { TemplatePreloader } from "./module/helper/TemplatePreloader";
@@ -30,6 +30,7 @@ import { TemplateActorsFeature } from "./module/features/TemplateActorsFeature";
 import { GroupSheet } from "./module/actor/sheets/GroupSheet";
 import { ActorGroupFeature } from "./module/features/ActorGroupFeature";
 import { ReferenceSheet } from "./module/item/references/ReferenceSheet";
+import { FateScene } from "./module/scene/FateScene";
 
 /* -------------------------------- */
 /*	System initialization			*/
@@ -40,8 +41,11 @@ Hooks.once("init", async () => {
     // Initialise config
     CONFIG.FateX = FateX;
 
-    CONFIG.Actor.entityClass = ActorFate;
+    CONFIG.Actor.entityClass = FateActor;
     CONFIG.Item.entityClass = FateItem;
+
+    // @ts-ignore
+    CONFIG.Scene.entityClass = FateScene;
 
     CONFIG.FateX.global.useMarkdown = !![...game.modules.values()].filter((module) => {
         return module.id === "markdown-editor" && module.active;

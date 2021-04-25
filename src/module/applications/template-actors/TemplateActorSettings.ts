@@ -1,4 +1,4 @@
-import { ActorFate } from "../../actor/ActorFate";
+import { FateActor } from "../../actor/FateActor";
 import { SheetSetup } from "../sheet-setup/SheetSetup";
 
 export class TemplateActorSettings extends FormApplication<any, any, any> {
@@ -15,7 +15,7 @@ export class TemplateActorSettings extends FormApplication<any, any, any> {
     }
 
     getData() {
-        const filteredActors = duplicate(game.actors?.filter((actor) => (actor as ActorFate).isTemplateActor) as Record<any, any>[]);
+        const filteredActors = duplicate(game.actors?.filter((actor) => (actor as FateActor).isTemplateActor) as Record<any, any>[]);
 
         filteredActors.forEach((actorEntity) => {
             actorEntity.stress = actorEntity.items.filter((item) => item.type === "stress");
@@ -111,7 +111,7 @@ export class TemplateActorSettings extends FormApplication<any, any, any> {
             },
         };
 
-        const newTemplateActor = await ActorFate._create(createData, { renderSheet: true });
+        const newTemplateActor = await FateActor._create(createData, { renderSheet: true });
 
         // Open sheet setup by default for new templates
         const sheetSetup = new SheetSetup(newTemplateActor, {});

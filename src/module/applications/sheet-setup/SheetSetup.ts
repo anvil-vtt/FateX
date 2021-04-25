@@ -1,5 +1,5 @@
 import { DataManager } from "./DataManager";
-import { ActorFate } from "../../actor/ActorFate";
+import { FateActor } from "../../actor/FateActor";
 
 const CLEAR = {
     EVERYTHING: 0,
@@ -16,7 +16,7 @@ const TYPES = {
     4: "stress",
 };
 
-export class SheetSetup extends FormApplication<any, any, ActorFate> {
+export class SheetSetup extends FormApplication<any, any, FateActor> {
     constructor(object, options) {
         super(object, options);
 

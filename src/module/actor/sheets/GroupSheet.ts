@@ -1,16 +1,16 @@
 import { InlineActorSheetFate } from "./InlineActorSheetFate";
 import { getReferencesByGroupType } from "../../helper/ActorGroupHelper";
 import { FateActorSheetOptions } from "./FateActorSheet";
-import { ActorFate } from "../ActorFate";
-import { ActorReferenceItemData, TokenReferenceItemData } from "../../item/ItemTypes";
+import { FateActor } from "../FateActor";
+import { ActorReferenceItemData, CombatantReferenceItemData, TokenReferenceItemData } from "../../item/ItemTypes";
 import { FateItem } from "../../item/FateItem";
 import { SortableEvent } from "sortablejs";
 import Sortable from "sortablejs/modular/sortable.complete.esm.js";
 
 /**
- * Represents a single actor group. Has a normal (inside groups panel) and a popped out state.
+ * Represents a single actor group
  */
-export class GroupSheet extends ActorSheet<ActorSheet.Data<ActorFate>> {
+export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
     public inlineSheets: InlineActorSheetFate[];
 
     /**
@@ -56,17 +56,16 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<ActorFate>> {
         data.items = this.actor.items.map((i) => i.data);
         data.items.sort((a, b) => (a.sort || 0) - (b.sort || 0));
 
-        // Add filtered item lists for easier access
-        data.groupActors = data.items.filter((item) => ["tokenReference", "actorReference"].includes(item.type));
+        // Create list of available tokens in the current scene for manual groups
+        if (this.actor.data.type == "group" && this.actor.data.data.groupType == "manual") {
+            const usedTokenReferences = this.actor.items.filter((i) => i.data.type === "tokenReference" && i.data.data.scene === game.scenes?.active.id);
+            const usedTokenReferencesMap: string[] = usedTokenReferences.map((token: FateItem) => {
+                return token.data.type === "tokenReference" ? token.data.data.id : "";
+            });
 
-        // Create list of available tokens in the current scene
-        const usedTokenReferences = this.actor.items.filter((i) => i.data.type === "tokenReference" && i.data.data.scene === game.scenes?.active.id);
-        const usedTokenReferencesMap: string[] = usedTokenReferences.map((token: FateItem) => {
-            return token.data.type === "tokenReference" ? token.data.data.id : "";
-        });
-
-        const actors = game.actors ? Object.values(game.actors.tokens) ?? [] : [];
-        data.availableTokens = actors.filter((actor) => (actor?.token ? !usedTokenReferencesMap.includes(actor.token.id) : false));
+            const actors = game.actors ? Object.values(game.actors.tokens) ?? [] : [];
+            data.availableTokens = actors.filter((actor) => (actor?.token ? !usedTokenReferencesMap.includes(actor.token.id) : false));
+        }
 
         return data;
     }
@@ -85,12 +84,33 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<ActorFate>> {
         for (const sheetComponent in CONFIG.FateX.sheetComponents.actor) {
             CONFIG.FateX.sheetComponents.actor[sheetComponent].activateListeners(html, this);
         }
+    }
+
+    /**
+     * Adds sortableJS handlers to groups.
+     *
+     * Saves manual group order by sorting embedded entities.
+     * Saves scene/encounter group order by using sortables integrated localstorage sorting
+     */
+    addSortableJSHandler(html) {
+        if (this.actor.data.type != "group") return;
+
+        if (this.actor.data.data.groupType == "manual") {
+            return Sortable.create(html.find(".fatex__actor_group__inlinesheets")[0], {
+                animation: 150,
+                removeOnSpill: true,
+                onEnd: (e: SortableEvent) => this.sortInlineSheets.call(this, e),
+                onSpill: (e: SortableEvent) => this.spillInlineSheet.call(this, e),
+            });
+        }
 
         Sortable.create(html.find(".fatex__actor_group__inlinesheets")[0], {
+            group: ["groupSort", this.actor.id].join("-"),
             animation: 150,
-            removeOnSpill: true,
-            onEnd: (e: SortableEvent) => this.sortInlineSheets.call(this, e),
-            onSpill: (e: SortableEvent) => this.spillInlineSheet.call(this, e),
+            store: {
+                get: (sortable) => (localStorage.getItem(sortable.options.group.name) ? localStorage.getItem(sortable.options.group.name)?.split("|") : []),
+                set: (sortable) => localStorage.setItem(sortable.options.group.name, sortable.toArray().join("|")),
+            },
         });
     }
 
@@ -150,26 +170,31 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<ActorFate>> {
                 await this.renderInlineActor(reference);
             } else if (reference.type === "tokenReference") {
                 await this.renderInlineToken(reference);
+            } else if (reference.type === "combatantReference") {
+                await this.renderInlineCombatant(reference);
             }
         }
 
         if (this.element && this._scrollPositions && this._scrollPositions[".window-content"]) {
             this.element.find(".window-content")[0].scrollTop = this._scrollPositions[".window-content"];
         }
+
+        // Add sortable handler after rendering for all sub-sheets is finished
+        this.addSortableJSHandler(this.element.find(".window-content"));
     }
 
     /**
      * Creates and renders a new InlineActorSheet based on an actor reference.
      * An actor is referenced by his actor id
      */
-    async renderInlineActor(reference: ActorReferenceItemData) {
-        const actor = game.actors?.find((actor) => actor.id === reference.data.id && (actor as ActorFate).isVisibleByPermission);
+    async renderInlineActor(reference: DeepPartial<ActorReferenceItemData>) {
+        const actor = game.actors?.find((actor) => actor.id === reference.data?.id && (actor as FateActor).isVisibleByPermission);
 
         if (!actor) {
             return;
         }
 
-        const actorSheet = new InlineActorSheetFate(actor as ActorFate);
+        const actorSheet = new InlineActorSheetFate(actor as FateActor);
         // @ts-ignore
         await actorSheet._render(true, { group: this, referenceID: reference._id } as Application.RenderOptions);
 
@@ -180,9 +205,9 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<ActorFate>> {
      * Creates and renders a new InlineActorSheet based on a token reference.
      * A token is referenced by a combination of the scene where its placed and its token id
      */
-    async renderInlineToken(reference: TokenReferenceItemData) {
-        const scene: any = game.scenes?.find((scene) => scene.id === reference.data.scene);
-        const tokenData = scene?.data.tokens.find((token) => token._id === reference.data.id);
+    async renderInlineToken(reference: DeepPartial<TokenReferenceItemData>) {
+        const scene: any = game.scenes?.find((scene) => scene.id === reference.data?.scene);
+        const tokenData = scene?.data.tokens.find((token) => token._id === reference.data?.id);
 
         if (!tokenData) {
             return;
@@ -190,11 +215,31 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<ActorFate>> {
 
         const token = new Token(tokenData, scene);
 
-        const tokenSheet = new InlineActorSheetFate(token.actor as ActorFate);
+        const tokenSheet = new InlineActorSheetFate(token.actor as FateActor);
         // @ts-ignore
         await tokenSheet._render(true, { token: token, group: this, referenceID: reference._id } as Application.RenderOptions);
 
         this.inlineSheets.push(tokenSheet);
+    }
+
+    /**
+     * Creates and renders a new InlineActorSheet based on a combatant reference.
+     */
+    async renderInlineCombatant(_reference: DeepPartial<CombatantReferenceItemData>) {
+        /* const scene: any = game.scenes?.find((scene) => scene.id === reference.data?.scene);
+        const tokenData = scene?.data.tokens.find((token) => token._id === reference.data?.id);
+
+        if (!tokenData) {
+            return;
+        }
+
+        const token = new Token(tokenData, scene);
+
+        const tokenSheet = new InlineActorSheetFate(token.actor as FateActor);
+        // @ts-ignore
+        await tokenSheet._render(true, { token: token, group: this, referenceID: reference._id } as Application.RenderOptions);
+
+        this.inlineSheets.push(tokenSheet);*/
     }
 
     /**
@@ -282,7 +327,11 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<ActorFate>> {
             return false;
         }
 
-        // Handle different data types
+        if (this.actor.data.type != "group" || this.actor.data.data.groupType != "manual") {
+            ui.notifications?.error(game.i18n.localize("FAx.ActorGroups.Notifications.ManualOnly"));
+            return false;
+        }
+
         switch (data.type) {
             case "Actor":
                 return this._createActorReference(data.id);

@@ -1,4 +1,4 @@
-import { ActorFate } from "../../actor/ActorFate";
+import { FateActor } from "../../actor/FateActor";
 import { SheetSetup } from "../sheet-setup/SheetSetup";
 import { TemplateActorSettings } from "./TemplateActorSettings";
 import { ActorDataFate } from "../../actor/ActorTypes";
@@ -46,7 +46,7 @@ export class TemplateActorPicker extends TemplateActorSettings {
         }
 
         // Create actor without template data
-        const newActor = await ActorFate._create(data, { renderSheet: true });
+        const newActor = await FateActor._create(data, { renderSheet: true });
 
         // Open sheet setup by default for new empty actors
         const sheetSetup = new SheetSetup(newActor, {});
@@ -78,7 +78,7 @@ export class TemplateActorPicker extends TemplateActorSettings {
         }
 
         // Create the real actor
-        await ActorFate._create(template, { renderSheet: true });
+        await FateActor._create(template, { renderSheet: true });
         await this.close();
     }
 

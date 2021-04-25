@@ -1,12 +1,12 @@
 /**
- * ActorFate is the default entity class for actors inside the FateX system.
+ * FateActor is the default entity class for actors inside the FateX system.
  * Adds custom features based on the system.
  */
 import { getImageFromReference, getReferencesByGroupType } from "../helper/ActorGroupHelper";
 import { ActorDataFate } from "./ActorTypes";
 import { FateItem } from "../item/FateItem";
 
-export class ActorFate extends Actor<ActorDataFate, FateItem> {
+export class FateActor extends Actor<ActorDataFate, FateItem> {
     /**
      * Open template picker instead of directly creating a new actor
      */

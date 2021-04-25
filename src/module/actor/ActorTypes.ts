@@ -1,5 +1,5 @@
 import { FateItemData } from "../item/ItemTypes";
-import { ActorFate } from "./ActorFate";
+import { FateActor } from "./FateActor";
 
 interface CharacterData {
     isTemplateActor: boolean;
@@ -10,9 +10,9 @@ interface CharacterActorData extends Actor.Data<CharacterData, FateItemData> {
 }
 
 interface GroupData {
-    groupType: string;
+    groupType: "manual" | "scene" | "encounter";
     availableTokens: {
-        [id: string]: ActorFate;
+        [id: string]: FateActor;
     };
 }
 

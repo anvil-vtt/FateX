@@ -2,20 +2,7 @@
     <form autocomplete="off" class="{{cssClass}}">
         <div class="fatex__actor_group__settings">
             <input class="fatex__header__name__input fatex__input" name="name" type="text" value="{{actor.name}}" />
-
-            {{#if groupActors}}
-                <div class="fatex__actor_group__actors sortablejs">
-                    {{#each groupActors}}
-                        <div class="fatex__actor_group__actor item" data-item-id="{{this._id}}">
-                            <img width="48" src="{{this.img}}" alt="" />
-                            <span>{{this.name}}</span>
-
-                            <span class="fatex__skill__sort"></span>
-                            <span class="fatex__{{this.type}}__delete fatex__item__delete" data-item="{{this._id}}"></span>
-                        </div>
-                    {{/each}}
-                </div>
-            {{/if}}
+            <input class="fatex__header__name__input fatex__input" name="data.groupType" type="text" value="{{actor.data.groupType}}" />
 
             {{#if availableTokens}}
                 <div class="fatex__actor_group__availableTokens">

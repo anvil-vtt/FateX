@@ -1,5 +1,6 @@
-import { ActorFate } from "../actor/ActorFate";
+import { FateActor } from "../actor/FateActor";
 import { GroupSheet } from "../actor/sheets/GroupSheet";
+import { renderGroupSheet } from "../helper/ActorGroupHelper";
 
 /**
  * Represents the actor group panel containing multiple actor groups.
@@ -8,8 +9,12 @@ import { GroupSheet } from "../actor/sheets/GroupSheet";
 export class ActorGroupFeature {
     static hooks() {
         Hooks.on("renderActorDirectory", (_app, html) => {
+            if (!game.user?.isGM || html.find(".fatex-header-actions").length) {
+                return;
+            }
+
             html.find(".header-actions").after(`
-                <div class="header-actions action-buttons flexrow">
+                <div class="fatex-header-actions header-actions action-buttons flexrow">
                     <button class="create-actor-group"><i class="fas fa-users"></i> ${game.i18n.localize("FAx.ActorGroups.New")}</button>
                 </div>
             `);
@@ -21,7 +26,7 @@ export class ActorGroupFeature {
          * Rerender all inline-sheets of updated actor (needed for synthetic actor token to circumvent patching the _onUpdateBaseActor method)
          */
         Hooks.on("updateActor", (entity, _data, _options, _userId) => {
-            const openGroupSheets = Object.values(ui.windows).filter((app) => app instanceof GroupSheet) as GroupSheet[];
+            const openGroupSheets = Object.values(ui.windows).filter<GroupSheet>((app): app is GroupSheet => app instanceof GroupSheet);
 
             for (const groupSheet of openGroupSheets) {
                 const inlineSheetsOfUpdatedActor = groupSheet.inlineSheets.filter((sheet) => sheet.actor.id === entity.id);
@@ -30,6 +35,20 @@ export class ActorGroupFeature {
                     inlineSheet.render();
                 }
             }
+        });
+
+        /**
+         * Rerender groupsheets of type scene whenever the viewed scene changes to another scene
+         */
+        Hooks.on("canvasReady", (_entity, _data, _options, _userId) => {
+            renderGroupSheet("scene");
+        });
+
+        /**
+         * Rerender groupsheets of type encounter whenever
+         */
+        Hooks.on("renderCombatTracker", (_entity, _data, _options, _userId) => {
+            //renderGroupSheet("encounter");
         });
     }
 
@@ -46,6 +65,6 @@ export class ActorGroupFeature {
             type: "group",
         };
 
-        return ActorFate._create(actorData, { renderSheet: true });
+        return FateActor._create(actorData, { renderSheet: true });
     }
 }
