@@ -1,6 +1,6 @@
 import { InlineActorSheetFate } from "./InlineActorSheetFate";
 import { getReferencesByGroupType } from "../../helper/ActorGroupHelper";
-import { FateActorSheetOptions } from "./FateActorSheet";
+import { CharacterSheetOptions } from "./CharacterSheet";
 import { FateActor } from "../FateActor";
 import { ActorReferenceItemData, CombatantReferenceItemData, TokenReferenceItemData } from "../../item/ItemTypes";
 import { FateItem } from "../../item/FateItem";
@@ -35,7 +35,7 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
             template: "/systems/fatex/templates/actor/group.html",
             dragDrop: [{ dropSelector: null }],
             scrollY: [".window-content"],
-        } as FateActorSheetOptions);
+        } as CharacterSheetOptions);
     }
 
     getData() {
@@ -93,7 +93,7 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
      * Saves scene/encounter group order by using sortables integrated localstorage sorting
      */
     addSortableJSHandler(html) {
-        if (this.actor.data.type != "group") return;
+        if (this.actor.data.type != "group" || !html.find(".fatex__actor_group__inlinesheets").length) return;
 
         if (this.actor.data.data.groupType == "manual") {
             return Sortable.create(html.find(".fatex__actor_group__inlinesheets")[0], {
@@ -194,7 +194,7 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
             return;
         }
 
-        const actorSheet = new InlineActorSheetFate(actor as FateActor, { referenceID: reference._id } as FateActorSheetOptions);
+        const actorSheet = new InlineActorSheetFate(actor as FateActor, { referenceID: reference._id } as CharacterSheetOptions);
         // @ts-ignore
         await actorSheet._render(true, { group: this } as Application.RenderOptions);
 
@@ -215,7 +215,7 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
 
         const token = new Token(tokenData, scene);
 
-        const tokenSheet = new InlineActorSheetFate(token.actor as FateActor, { referenceID: reference._id } as FateActorSheetOptions);
+        const tokenSheet = new InlineActorSheetFate(token.actor as FateActor, { referenceID: reference._id } as CharacterSheetOptions);
         // @ts-ignore
         await tokenSheet._render(true, { token: token, group: this } as Application.RenderOptions);
 
@@ -241,7 +241,7 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
         delete combatant.actor;
 
         const token = new Token(tokenData, scene);
-        const tokenSheet = new InlineActorSheetFate(token.actor as FateActor, { combatant: combatant, referenceID: reference._id } as FateActorSheetOptions);
+        const tokenSheet = new InlineActorSheetFate(token.actor as FateActor, { combatant: combatant, referenceID: reference._id } as CharacterSheetOptions);
         // @ts-ignore
         await tokenSheet._render(true, { token: token, group: this } as Application.RenderOptions);
 
@@ -264,7 +264,7 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
         }
 
         const itemData: Partial<ActorReferenceItemData> = {
-            name: "ActorReference",
+            name: ["actorReference", actorID].join("-"),
             type: "actorReference",
             data: {
                 id: actorID,
@@ -272,6 +272,14 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
         };
 
         return this.actor.createOwnedItem(itemData);
+    }
+
+    _createActorReferencesFromFolder(folder: string) {
+        const actors = game.folders?.get(folder)?.entities.filter((actor) => actor.data.type === "character") || [];
+
+        actors.forEach((actor) => {
+            this._createActorReference(actor.id);
+        });
     }
 
     /**
@@ -283,7 +291,7 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
         }
 
         const itemData: Partial<TokenReferenceItemData> = {
-            name: "TokenReference",
+            name: ["tokenReference", sceneID, tokenID].join("-"),
             type: "tokenReference",
             data: {
                 id: tokenID,
@@ -324,6 +332,7 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
      * Override of the default drop handler.
      * Handles the ability to drop actors from the sidebar into an actor group
      */
+    // @ts-ignore
     async _onDrop(event) {
         let data;
 
@@ -341,10 +350,10 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
         switch (data.type) {
             case "Actor":
                 return this._createActorReference(data.id);
+            case "Folder":
+                return this._createActorReferencesFromFolder(data.id);
             case "Item":
                 return this._onDropItem(event, data);
-            default:
-                return false;
         }
     }
 }

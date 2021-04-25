@@ -1,9 +1,17 @@
-.actor_group_panel_wrapper {
-    flex: none;
+.fatex__actorDirectory__entry {
+    align-items: center;
 
-    .actor_group_panel__groups {
-        overflow-y: visible;
+    i {
+        flex: 0 0 24px;
     }
+}
+
+li.folder > .folder-header .create-folder-group {
+    flex: 0 0 20px;
+    text-align: center;
+    color: #ccc;
+    font-size: 14px;
+    padding-left: 5px;
 }
 
 .actor_group_panel__group__images {

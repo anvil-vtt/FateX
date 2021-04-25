@@ -1,12 +1,6 @@
 import { CharacterSheet } from "./CharacterSheet";
 
 export class InlineActorSheetFate extends CharacterSheet {
-    /*static get defaultOptions() {
-        return mergeObject(super.defaultOptions, {
-            baseApplication: "CharacterSheet",
-        } as BaseEntitySheet.Options);
-    }*/
-
     getData(_options?: Application.RenderOptions) {
         const data = super.getData();
 

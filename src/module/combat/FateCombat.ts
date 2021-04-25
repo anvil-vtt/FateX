@@ -8,4 +8,10 @@ export class FateCombat extends Combat {
             renderGroupSheetsByGroupType("encounter");
         }
     }
+
+    _onDelete(options, userId) {
+        super._onDelete(options, userId);
+
+        renderGroupSheetsByGroupType("encounter");
+    }
 }
