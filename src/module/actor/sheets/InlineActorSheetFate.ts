@@ -33,8 +33,4 @@ export class InlineActorSheetFate extends CharacterSheet {
         $(`#${options.group.id} .fatex__actor_group__inlinesheets`).append(html);
         this._element = html;
     }
-
-    render(force = false, options: Application.RenderOptions & { token?: Token; group?: Application; referenceID?: string } = {}) {
-        return super.render(force, options);
-    }
 }

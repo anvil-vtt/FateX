@@ -147,48 +147,22 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<ActorFate>> {
 
         for (const reference of references) {
             if (reference.type === "actorReference") {
-                this.renderInlineActor(reference);
+                await this.renderInlineActor(reference);
             } else if (reference.type === "tokenReference") {
-                this.renderInlineToken(reference);
+                await this.renderInlineToken(reference);
             }
         }
+
+        if (this.element && this._scrollPositions && this._scrollPositions[".window-content"]) {
+            this.element.find(".window-content")[0].scrollTop = this._scrollPositions[".window-content"];
+        }
     }
-
-    ////////////////////////////////////////////////
-    ////////////////////////////////////////////////
-    ////////////////////////////////////////////////
-    ////////////////////////////////////////////////
-    // Wo kommen die inlinesheets hin? Outer? Inner?  :>
-    // Problem -> ScrollY nach dem Rendern ist putt
-    // Alternativ -> ScrollY selbst nachbauen für Groups
-    ////////////////////////////////////////////////
-    ////////////////////////////////////////////////
-    ////////////////////////////////////////////////
-    ////////////////////////////////////////////////
-    ////////////////////////////////////////////////
-
-    /*async _renderOuter(options: Application.RenderOptions): Promise<JQuery<JQuery.Node>> {
-        const html = (await super._renderOuter(options)) as JQuery<JQuery.Node>;
-
-        //Add inlinesheets wrapper to outer window
-        html.append(`<div class="fatex__actor_group__inlinesheets"></div>`);
-
-        //Add sortablejs to new inline sheets
-        Sortable.create(html.find(".fatex__actor_group__inlinesheets")[0], {
-            animation: 150,
-            removeOnSpill: true,
-            onEnd: (e: SortableEvent) => this.sortInlineSheets.call(this, e),
-            onSpill: (e: SortableEvent) => this.spillInlineSheet.call(this, e),
-        });
-
-        return html;
-    }*/
 
     /**
      * Creates and renders a new InlineActorSheet based on an actor reference.
      * An actor is referenced by his actor id
      */
-    renderInlineActor(reference: ActorReferenceItemData) {
+    async renderInlineActor(reference: ActorReferenceItemData) {
         const actor = game.actors?.find((actor) => actor.id === reference.data.id && (actor as ActorFate).isVisibleByPermission);
 
         if (!actor) {
@@ -196,7 +170,8 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<ActorFate>> {
         }
 
         const actorSheet = new InlineActorSheetFate(actor as ActorFate);
-        actorSheet.render(true, { group: this, referenceID: reference._id });
+        // @ts-ignore
+        await actorSheet._render(true, { group: this, referenceID: reference._id } as Application.RenderOptions);
 
         this.inlineSheets.push(actorSheet);
     }
@@ -205,7 +180,7 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<ActorFate>> {
      * Creates and renders a new InlineActorSheet based on a token reference.
      * A token is referenced by a combination of the scene where its placed and its token id
      */
-    renderInlineToken(reference: TokenReferenceItemData) {
+    async renderInlineToken(reference: TokenReferenceItemData) {
         const scene: any = game.scenes?.find((scene) => scene.id === reference.data.scene);
         const tokenData = scene?.data.tokens.find((token) => token._id === reference.data.id);
 
@@ -216,7 +191,8 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<ActorFate>> {
         const token = new Token(tokenData, scene);
 
         const tokenSheet = new InlineActorSheetFate(token.actor as ActorFate);
-        tokenSheet.render(true, { token: token, group: this, referenceID: reference._id });
+        // @ts-ignore
+        await tokenSheet._render(true, { token: token, group: this, referenceID: reference._id } as Application.RenderOptions);
 
         this.inlineSheets.push(tokenSheet);
     }

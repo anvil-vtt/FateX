@@ -21,8 +21,7 @@ export class ActorGroupFeature {
          * Rerender all inline-sheets of updated actor (needed for synthetic actor token to circumvent patching the _onUpdateBaseActor method)
          */
         Hooks.on("updateActor", (entity, _data, _options, _userId) => {
-            const openGroupSheetApps = Object.values(ui.windows).filter((app) => app instanceof GroupSheet);
-            const openGroupSheets = openGroupSheetApps as GroupSheet[];
+            const openGroupSheets = Object.values(ui.windows).filter((app) => app instanceof GroupSheet) as GroupSheet[];
 
             for (const groupSheet of openGroupSheets) {
                 const inlineSheetsOfUpdatedActor = groupSheet.inlineSheets.filter((sheet) => sheet.actor.id === entity.id);
