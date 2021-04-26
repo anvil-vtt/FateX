@@ -1,5 +1,88 @@
 .fatex__actor_group__sheet {
+    height: 100%;
+    max-height: 100%;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(100px, 100%) min-content;
+    grid-template-areas: "content" "footer";
+
+    .fatex__actor_group__sheet__content {
+        grid-area: content;
+        overflow-y: auto;
+    }
+
+    .fatex__actor_group__sheet__navigation {
+        grid-area: footer;
+        z-index: 10;
+        padding: $component-padding / 2;
+        box-shadow: 0 -2px 15px 0 $header-shadow-color;
+    }
 }
 
 .fatex__actor_group__settings {
+    display: none;
+
+    .actor_group_overview--settings & {
+        display: block;
+    }
+}
+
+.actor_group_overview {
+    .window-resizable-handle {
+        z-index: 20;
+    }
+}
+
+.fatex__actor_group__sheet__navigation {
+}
+
+.fatex__actor_group__sheet__navigation a {
+    color: $headline-background;
+    padding: $component-padding/2 $component-padding * 2 $component-padding/2 $component-padding * 2;
+    @include cutoff(15px);
+    position: relative;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 13px;
+    box-shadow: 1px 1px 1px $shadow-color;
+
+    &.active,
+    &:hover {
+        background: $headline-background;
+        color: white;
+    }
+}
+
+///////////////////////
+
+.fatex__actorDirectory__entry {
+    align-items: center;
+
+    i {
+        flex: 0 0 24px;
+    }
+}
+
+li.folder > .folder-header .create-folder-group {
+    flex: 0 0 20px;
+    text-align: center;
+    color: #ccc;
+    font-size: 14px;
+    padding-left: 5px;
+}
+
+.actor_group_panel__group__images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    margin: 0 8px 0 2px;
+    flex: 0 0 48px;
+}
+
+.sidebar-tab .directory-list .directory-item .actor_group_panel__group__image {
+    margin: 0;
+    height: 24px;
+    width: 24px;
+    flex: 0;
 }

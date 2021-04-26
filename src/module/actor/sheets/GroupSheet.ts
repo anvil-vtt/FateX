@@ -30,7 +30,7 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
      */
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
-            classes: ["fatex fatex__sheet sheet actor_group_overview"],
+            classes: ["fatex fatex__sheet sheet actor_group_overview actor_group_overview--front"],
             resizable: true,
             template: "/systems/fatex/templates/actor/group.html",
             dragDrop: [{ dropSelector: null }],
@@ -74,6 +74,8 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
         super.activateListeners(html);
 
         html.find(`.fatex__actor_group__createToken`).on("click", (e) => this._onCreateTokenReference.call(this, e));
+
+        html.find(`.fatex__actor_group__sheet__navigation a`).on("click", (e) => this._onChangeGroupNavigation.call(this, e));
 
         // Custom sheet listeners for every ItemType
         for (const itemType in CONFIG.FateX.itemClasses) {
@@ -305,6 +307,22 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
     /*************************
      * EVENT HANDLER
      *************************/
+
+    _onChangeGroupNavigation(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const target = $(e.currentTarget);
+        const app = target.parents(".app");
+
+        // Re-set application classes to represent different group states
+        app.removeClass(["actor_group_overview--front", "actor_group_overview--back", "actor_group_overview--settings"]);
+        app.addClass(`actor_group_overview--${e.currentTarget.dataset.show}`);
+
+        // Re-set active classes on navigation
+        app.find(".fatex__actor_group__sheet__navigation a").removeClass("active");
+        app.find(`.fatex__actor_group__sheet__navigation--${e.currentTarget.dataset.show}`).addClass("active");
+    }
 
     _onCreateTokenReference(e) {
         e.preventDefault();
