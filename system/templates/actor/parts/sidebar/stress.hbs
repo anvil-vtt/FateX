@@ -10,11 +10,11 @@
                 </div>
             </h2>
 
-            {{#ifNotEmpty stress.data.description}}
+            {{#if stress.data.description}}
                 <span class="fatex__stress__track__description">
                     {{stress.data.description}}
                 </span>
-            {{/ifNotEmpty}}
+            {{/if}}
 
             <div class="fatex__stress__track__items fatex__stress__track__items__break">
                 {{#each stress.boxes as |box boxIndex|}}
@@ -26,9 +26,9 @@
                         </label>
                     </div>
 
-                    {{#ifNth 4}}
+                    {{#if (eq @index 3)}}
                         <div class="fatex__stress__track__break"></div>
-                    {{/ifNth}}
+                    {{/if}}
                 {{/each}}
 
                 {{#each stress.fillers}}

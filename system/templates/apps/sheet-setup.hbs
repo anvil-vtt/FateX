@@ -48,7 +48,7 @@
                                                 <div class="fatex__sheet_setup__options {{#if group.columns}}fatex__sheet_setup__options--columns{{/if}}">
                                                     {{#each group.entries as |entry entryIndex|}}
                                                         <label class="fatex__sheet_setup__option">
-                                                            <input class="fatex__sheet_setup__option__checkbox" type="checkbox" data-entity="{{stringify entry}}">
+                                                            <input class="fatex__sheet_setup__option__checkbox" type="checkbox" data-entity="{{JSONstringify entry}}">
                                                             <span class="fatex__sheet_setup__option__box"></span>
                                                             <span class="fatex__sheet_setup__option__label">{{entry.name}}</span>
                                                         </label>

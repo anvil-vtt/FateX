@@ -17,7 +17,7 @@
                         data-dtype="Number"
                 >
                     {{#each ../availableBoxCount as |boxCount|}}
-                        <option value="{{boxCount.value}}"{{#ifEquals reference.argument boxCount.value}} selected="selected"{{/ifEquals}}>
+                        <option value="{{boxCount.value}}"{{#if (eq reference.argument boxCount.value)}} selected="selected"{{/if}}>
                             {{boxCount.label}}
                         </option>
                     {{/each}}
@@ -30,10 +30,10 @@
                     data-index="{{reference.index}}"
                     data-field="skill"
                 >
-                    <option value=""{{#ifEquals reference.skill ''}} selected="selected"{{/ifEquals}}> -</option>
+                    <option value=""{{#if (eq reference.skill '')}} selected="selected"{{/if}}> -</option>
 
                     {{#each ../availableSkills as |skill skillIndex|}}
-                        <option value="{{skill}}"{{#ifEquals reference.skill skill}} selected="selected"{{/ifEquals}}>
+                        <option value="{{skill}}"{{#if (eq reference.skill skill)}} selected="selected"{{/if}}>
                             {{skill}}
                         </option>
                     {{/each}}
@@ -46,7 +46,7 @@
                     data-dtype="Number"
                 >
                     {{#each ../availableOperators as |operator|}}
-                        <option value="{{operator.value}}"{{#ifEquals reference.operator operator.value}} selected="selected"{{/ifEquals}}>
+                        <option value="{{operator.value}}"{{#if (eq reference.operator operator.value)}} selected="selected"{{/if}}>
                             {{operator.label}}
                         </option>
                     {{/each}}
@@ -59,7 +59,7 @@
                     data-dtype="Number"
                 >
                     {{#each ../availableSkillLevels as |skillLevel|}}
-                        <option value="{{skillLevel.value}}"{{#ifEquals reference.condition skillLevel.value}} selected="selected"{{/ifEquals}}>
+                        <option value="{{skillLevel.value}}"{{#if (eq reference.condition skillLevel.value)}} selected="selected"{{/if}}>
                             {{skillLevel.label}}
                         </option>
                     {{/each}}

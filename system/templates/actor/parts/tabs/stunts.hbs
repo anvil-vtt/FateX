@@ -24,7 +24,7 @@
             </h2>
 
             {{#unless stunt.data.collapsed}}
-                {{#ifNotEmpty stunt.data.description}}
+                {{#if stunt.data.description}}
                     <div class="fatex__stunt__description">
                         {{#if stunt.data.markdown}}
                             {{{stunt.data.markdown}}}
@@ -32,7 +32,7 @@
                             {{{stunt.data.description}}}
                         {{/if}}
                     </div>
-                {{/ifNotEmpty}}
+                {{/if}}
             {{/unless}}
         </div>
     {{/each}}

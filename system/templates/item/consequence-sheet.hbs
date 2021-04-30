@@ -8,7 +8,7 @@
 
         <div class="fatex__setting__radio__group">
             <div
-                class="fatex__setting__radio{{#ifEquals 0 data.type}} fatex__setting__radio--active{{/ifEquals}}"
+                class="fatex__setting__radio{{#if (eq 0 data.type)}} fatex__setting__radio--active{{/if}}"
                 data-value="0"
                 data-name="data.type"
                 data-dtype="Number"
@@ -18,7 +18,7 @@
             </div>
 
             <div
-                class="fatex__setting__radio{{#ifEquals 1 data.type}} fatex__setting__radio--active{{/ifEquals}}"
+                class="fatex__setting__radio{{#if (eq 1 data.type)}} fatex__setting__radio--active{{/if}}"
                 data-value="1"
                 data-name="data.type"
                 data-dtype="Number"

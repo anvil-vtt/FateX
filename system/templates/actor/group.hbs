@@ -25,7 +25,7 @@
         <a class="fatex__actor_group__sheet__navigation--front active" data-show="front"><i class="fas fa-theater-masks"></i></a>
         <a class="fatex__actor_group__sheet__navigation--back" data-show="back"><i class="fas fa-user-injured"></i></a>
 
-        {{#if (data.groupType eq "manual")}}
+        {{#if (eq data.groupType "manual")}}
             <a class="fatex__actor_group__sheet__navigation--settings"><i class="fas fa-user-plus"></i></a>
         {{/if}}
 

@@ -24,11 +24,11 @@
                 </h2>
 
                 {{#unless extra.data.collapsed}}
-                    {{#ifNotEmpty extra.data.description}}
+                    {{#if extra.data.description}}
                         <div class="fatex__extra__description">
                             {{{extra.data.description}}}
                         </div>
-                    {{/ifNotEmpty}}
+                    {{/if}}
                 {{/unless}}
             </div>
         {{/each}}

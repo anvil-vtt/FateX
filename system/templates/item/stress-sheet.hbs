@@ -26,7 +26,7 @@
 
         <div class="fatex__setting__radio__group">
             <div
-                    class="fatex__setting__radio{{#ifEquals 0 data.labelType}} fatex__setting__radio--active{{/ifEquals}}"
+                    class="fatex__setting__radio{{#if (eq 0 data.labelType)}} fatex__setting__radio--active{{/if}}"
                     data-value="0"
                     data-name="data.labelType"
                     data-dtype="Number"
@@ -36,7 +36,7 @@
             </div>
 
             <div
-                    class="fatex__setting__radio{{#ifEquals 1 data.labelType}} fatex__setting__radio--active{{/ifEquals}}"
+                    class="fatex__setting__radio{{#if (eq 1 data.labelType)}} fatex__setting__radio--active{{/if}}"
                     data-value="1"
                     data-name="data.labelType"
                     data-dtype="Number"
@@ -46,7 +46,7 @@
             </div>
 
             <div
-                    class="fatex__setting__radio{{#ifEquals 2 data.labelType}} fatex__setting__radio--active{{/ifEquals}}"
+                    class="fatex__setting__radio{{#if (eq 2 data.labelType)}} fatex__setting__radio--active{{/if}}"
                     data-value="2"
                     data-name="data.labelType"
                     data-dtype="Number"
@@ -57,7 +57,7 @@
         </div>
     </div>
 
-    <div class="fatex__setting{{#ifNotEquals 2 data.labelType}} fatex__setting--disabled{{/ifNotEquals}}">
+    <div class="fatex__setting{{#if (ne 2 data.labelType)}} fatex__setting--disabled{{/if}}">
         <h2 class="fatex__headline fatex__setting__headline">
             <span>{{localize "FAx.Item.Stress.Boxes.Custom"}}</span>
         </h2>

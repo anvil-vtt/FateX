@@ -17,6 +17,10 @@
     padding-left: $component-padding / 2;
     padding-top: 3px;
     white-space: nowrap;
+
+    &:empty::before {
+        content: "\a0";
+    }
 }
 
 .fatex__input input[type="text"].fatex__input__input,
