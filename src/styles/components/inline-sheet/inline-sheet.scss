@@ -1,12 +1,3 @@
-.fatex__actor_group__inlinesheets {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-
-    form {
-        background: $sheet-background;
-    }
-}
-
 .fatex__inline_sheet--hidden {
     opacity: 0.3;
 }
@@ -89,6 +80,6 @@
 
     .actor_group_overview--back & {
         visibility: visible;
-        z-index: 5;
+        z-index: 1;
     }
 }

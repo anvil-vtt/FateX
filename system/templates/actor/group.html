@@ -1,24 +1,25 @@
 <div class="fatex__actor_group__sheet">
     <div class="fatex__actor_group__sheet__content">
         <div class="fatex__actor_group__inlinesheets"></div>
-        <form autocomplete="off" class="{{cssClass}}">
-            <div class="fatex__actor_group__settings">
-                <input class="fatex__header__name__input fatex__input" name="name" type="text" value="{{actor.name}}" />
-                <input class="fatex__header__name__input fatex__input" name="data.groupType" type="text" value="{{actor.data.groupType}}" />
-
-                {{#if availableTokens}}
-                    <div class="fatex__actor_group__availableTokens">
-                        {{#each availableTokens}}
-                            <div class="fatex__actor_group__createToken" data-token-id="{{this.token.id}}">
-                                <img width="48" src="{{this.img}}" alt="" />
-                                <span>{{this.name}}</span>
-                            </div>
-                        {{/each}}
-                    </div>
-                {{/if}}
-            </div>
-        </form>
     </div>
+
+    <form autocomplete="off" class="{{cssClass}}">
+        <div class="fatex__actor_group__settings">
+            <input class="fatex__header__name__input fatex__input" name="name" type="text" value="{{actor.name}}" />
+            <input class="fatex__header__name__input fatex__input" name="data.groupType" type="text" value="{{actor.data.groupType}}" />
+
+            {{#if availableTokens}}
+                <div class="fatex__actor_group__availableTokens">
+                    {{#each availableTokens}}
+                        <div class="fatex__actor_group__createToken" data-token-id="{{this.token.id}}">
+                            <img width="48" src="{{this.img}}" alt="" />
+                            <span>{{this.name}}</span>
+                        </div>
+                    {{/each}}
+                </div>
+            {{/if}}
+        </div>
+    </form>
 
     <div class="fatex__actor_group__sheet__navigation">
         <a class="fatex__actor_group__sheet__navigation--front active" data-show="front"><i class="fas fa-theater-masks"></i></a>

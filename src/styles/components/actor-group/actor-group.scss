@@ -34,7 +34,13 @@
     }
 }
 
-.fatex__actor_group__sheet__navigation {
+.fatex__actor_group__inlinesheets {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    form {
+        background: $sheet-background;
+    }
 }
 
 .fatex__actor_group__sheet__navigation a {
