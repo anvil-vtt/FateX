@@ -63,8 +63,9 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
                 return token.data.type === "tokenReference" ? token.data.data.id : "";
             });
 
-            const actors = game.actors ? Object.values(game.actors.tokens) ?? [] : [];
-            data.availableTokens = actors.filter((actor) => (actor?.token ? !usedTokenReferencesMap.includes(actor.token.id) : false));
+            if (canvas instanceof Canvas && canvas.scene) {
+                data.availableTokens = canvas.scene.data.tokens.filter((token) => !token.actorLink && !usedTokenReferencesMap.includes(token._id));
+            }
         }
 
         return data;

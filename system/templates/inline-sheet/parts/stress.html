@@ -1,45 +1,40 @@
-<div class="fatex__stress">
+<div class="fatex__inline_stress">
     {{#each stress as |stress stressIndex|}}
-        <div class="fatex__stress__track fatex__stress__track--index-{{stressIndex}} item {{#if stress.isDisabled}}fatex__helper--is-disabled{{/if}}" data-item-id="{{stress._id}}">
+        <div class="fatex__inline_stress__track fatex__inline_stress__track--index-{{stressIndex}} item {{#if stress.isDisabled}}fatex__helper--is-disabled{{/if}}" data-item-id="{{stress._id}}">
             <h2 class="fatex__headline fatex__sortable" data-item-id="{{stress._id}}">
                 <span>{{stress.name}}</span>
                 <div class="fatex__headline__actions fatex__item__actions">
-                    <span class="fatex__item__sort fatex__stress__sort"></span>
-                    <span class="fatex__item__settings fatex__stress__settings" data-item="{{stress._id}}"></span>
-                    <span class="fatex__item__delete fatex__stress__delete" data-item="{{stress._id}}"></span>
+                    <span class="fatex__item__sort fatex__inline_stress__sort"></span>
+                    <span class="fatex__item__settings fatex__inline_stress__settings" data-item="{{stress._id}}"></span>
+                    <span class="fatex__item__delete fatex__inline_stress__delete" data-item="{{stress._id}}"></span>
                 </div>
             </h2>
 
             {{#ifNotEmpty stress.data.description}}
-                <span class="fatex__stress__track__description">
+                <span class="fatex__inline_stress__track__description">
                     {{stress.data.description}}
                 </span>
             {{/ifNotEmpty}}
 
-            <div class="fatex__stress__track__items fatex__stress__track__items__break">
+            <div class="fatex__inline_stress__track__items fatex__inline_stress__track__items__break">
                 {{#each stress.boxes as |box boxIndex|}}
-                    <div class="fatex__stress__track__item">
-                        <label class="fatex__stress__track__item__box" data-index="{{boxIndex}}" data-item="{{stress._id}}">
-                            <span class="fatex__stress__track__item__label">{{box.label}}</span>
-                            <input class="fatex__stress__track__item__checkbox" type="checkbox"{{#if box.isChecked}} checked="checked"{{/if}}>
-                            <span class="fatex__stress__track__item__icon"></span>
+                    <div class="fatex__inline_stress__track__item">
+                        <label class="fatex__inline_stress__track__item__box" data-index="{{boxIndex}}" data-item="{{stress._id}}">
+                            <span class="fatex__inline_stress__track__item__label">{{box.label}}</span>
+                            <input class="fatex__inline_stress__track__item__checkbox" type="checkbox"{{#if box.isChecked}} checked="checked"{{/if}}>
+                            <span class="fatex__inline_stress__track__item__icon"></span>
                         </label>
                     </div>
 
                     {{#ifNth 4}}
-                        <div class="fatex__stress__track__break"></div>
+                        <div class="fatex__inline_stress__track__break"></div>
                     {{/ifNth}}
                 {{/each}}
 
                 {{#each stress.fillers}}
-                    <div class="fatex__stress__track__filler"><div class="fatex__stress__track__item__box"></div></div>
+                    <div class="fatex__inline_stress__track__filler"><div class="fatex__inline_stress__track__item__box"></div></div>
                 {{/each}}
             </div>
         </div>
     {{/each}}
-
-    <div class="fatex__stress__track fatex__helper__editmode">
-        <h2 class="fatex__headline fatex__headline--center fatex__stress__add">+</h2>
-    </div>
-
 </div>

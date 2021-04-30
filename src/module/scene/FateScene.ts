@@ -6,6 +6,7 @@ export class FateScene extends Scene {
 
         if (embeddedName == "Token") {
             renderGroupSheetsByGroupType("scene");
+            renderGroupSheetsByGroupType("manual");
         }
     }
 }
