@@ -75,7 +75,6 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
         super.activateListeners(html);
 
         html.find(`.fatex__actor_group__createToken`).on("click", (e) => this._onCreateTokenReference.call(this, e));
-
         html.find(`.fatex__actor_group__sheet__navigation a`).on("click", (e) => this._onChangeGroupNavigation.call(this, e));
 
         // Custom sheet listeners for every ItemType

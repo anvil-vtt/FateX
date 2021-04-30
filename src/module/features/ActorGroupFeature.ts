@@ -54,11 +54,12 @@ export class ActorGroupFeature {
 
             $(element)
                 .find(".folder-header")
+                .first()
                 .append(`<a class="create-folder-group" data-folder="${folder}" data-groupname="${name}"> <i class="fas fa-user-friends fa-fw"></i></a>`);
         });
 
         // Bind click event listener
-        html.on("click", "button.create-actor-group, a.create-folder-group", (e: MouseEvent) => this._onClickCreateGroup.call(this, e));
+        html.find("button.create-actor-group, a.create-folder-group").on("click", (e: MouseEvent) => this._onClickCreateGroup.call(this, e));
     }
 
     static styleGroupEntries(html: JQuery<HTMLElement>) {
@@ -85,7 +86,6 @@ export class ActorGroupFeature {
      * Creates a new group actor and renders it immediately (inside the group panel)
      */
     static async _onClickCreateGroup(event: MouseEvent) {
-        event.preventDefault();
         event.stopPropagation();
 
         const target = event.currentTarget as HTMLElement;
