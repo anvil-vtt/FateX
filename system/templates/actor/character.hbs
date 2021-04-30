@@ -3,7 +3,7 @@
 
         {{!--HEADER--}}
         <div class="desk__header">
-            {{> "systems/fatex/templates/actor/parts/header.html"}}
+            {{> "systems/fatex/templates/actor/parts/header.hbs"}}
         </div>
 
         <div class="desk__content">
@@ -12,18 +12,18 @@
                 <div class="desk__tabloid">
                     {{!--Messages--}}
                     <div class="desk__messages">
-                        {{> "systems/fatex/templates/actor/parts/tabloid/messages.html"}}
+                        {{> "systems/fatex/templates/actor/parts/tabloid/messages.hbs"}}
                     </div>
 
                     {{!--Aspects--}}
                     <div class="desk__aspects">
-                        {{> "systems/fatex/templates/actor/parts/tabloid/aspects.html"}}
+                        {{> "systems/fatex/templates/actor/parts/tabloid/aspects.hbs"}}
                     </div>
 
                     {{!--Consequences--}}
                     <div class="desk__consequences">
-                        {{> "systems/fatex/templates/actor/parts/tabloid/consequences.html"}}
-                        {{> "systems/fatex/templates/actor/parts/tabloid/conditions.html"}}
+                        {{> "systems/fatex/templates/actor/parts/tabloid/consequences.hbs"}}
+                        {{> "systems/fatex/templates/actor/parts/tabloid/conditions.hbs"}}
                     </div>
 
                     {{!--Tabs--}}
@@ -38,43 +38,43 @@
                             {{!--Skills & Stunts--}}
                             <div class="fatex__tabs__tab fatex__tabs__tab--skills tab" data-tab="skills">
                                 <div class="fatex__tabs__tab__content">
-                                    {{> "systems/fatex/templates/actor/parts/tabs/skills.html"}}
-                                    {{> "systems/fatex/templates/actor/parts/tabs/stunts.html"}}
+                                    {{> "systems/fatex/templates/actor/parts/tabs/skills.hbs"}}
+                                    {{> "systems/fatex/templates/actor/parts/tabs/stunts.hbs"}}
                                 </div>
                             </div>
 
                             {{!--Extras--}}
                             <div class="fatex__tabs__tab fatex__tabs__tab--extras tab" data-tab="extras">
                                 <div class="fatex__tabs__tab__content">
-                                    {{> "systems/fatex/templates/actor/parts/tabs/extras.html"}}
+                                    {{> "systems/fatex/templates/actor/parts/tabs/extras.hbs"}}
                                 </div>
                             </div>
 
                             {{!--Bio--}}
                             <div class="fatex__tabs__tab fatex__tabs__tab--bio tab" data-tab="bio">
                                 <div class="fatex__tabs__tab__content">
-                                    {{> "systems/fatex/templates/actor/parts/tabs/bio.html"}}
+                                    {{> "systems/fatex/templates/actor/parts/tabs/bio.hbs"}}
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="desk__copyright">
-                        {{> "systems/fatex/templates/actor/parts/copyright.html"}}
+                        {{> "systems/fatex/templates/actor/parts/copyright.hbs"}}
                     </div>
                 </div>
 
                 {{!--Sidebar--}}
                 <div class="desk__sidebar">
-                    {{> "systems/fatex/templates/actor/parts/sidebar/artwork.html"}}
-                    {{> "systems/fatex/templates/actor/parts/sidebar/stress.html"}}
+                    {{> "systems/fatex/templates/actor/parts/sidebar/artwork.hbs"}}
+                    {{> "systems/fatex/templates/actor/parts/sidebar/stress.hbs"}}
                 </div>
             </div>
         </div>
 
         {{!--Footer--}}
         <div class="desk__footer">
-            {{> "systems/fatex/templates/actor/parts/config.html"}}
+            {{> "systems/fatex/templates/actor/parts/config.hbs"}}
         </div>
     </div>
 </form>

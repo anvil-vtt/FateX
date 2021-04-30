@@ -30,7 +30,7 @@ export class SheetSetup extends FormApplication<any, any, FateActor> {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
             title: game.i18n.localize("FAx.Apps.Setup.Title"),
-            template: "/systems/fatex/templates/apps/sheet-setup.html",
+            template: "/systems/fatex/templates/apps/sheet-setup.hbs",
             resizable: true,
             classes: ["fatex fatex__app_sheet"],
             width: 600,

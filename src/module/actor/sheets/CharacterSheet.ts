@@ -38,10 +38,10 @@ export class CharacterSheet extends ActorSheet<ActorSheet.Data<FateActor>, FateA
 
     get template(): string {
         if (!game.user?.isGM && this.actor.limited) {
-            return "systems/fatex/templates/actor/limited.html";
+            return "systems/fatex/templates/actor/limited.hbs";
         }
 
-        return "systems/fatex/templates/actor/character.html";
+        return "systems/fatex/templates/actor/character.hbs";
     }
 
     /**

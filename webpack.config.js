@@ -8,7 +8,7 @@ const glob = require("glob");
 
 const allTemplates = () => {
     return glob
-        .sync("**/*.html", { cwd: path.join(__dirname, "system/templates") })
+        .sync("**/*.hbs", { cwd: path.join(__dirname, "system/templates") })
         .map((file) => `"systems/fatex/templates/${file}"`)
         .join(", ");
 };
@@ -52,11 +52,11 @@ module.exports = (env) => {
             rules: [
                 isDevelopment
                     ? {
-                          test: /\.html$/,
+                          test: /\.hbs$/,
                           loader: "raw-loader",
                       }
                     : {
-                          test: /\.html$/,
+                          test: /\.hbs$/,
                           loader: "null-loader",
                       },
                 {

@@ -1,21 +1,21 @@
-{{> "systems/fatex/templates/item/parts/layout/item-header.html" title="FAx.Item.Stunt.EditItem" item=item}}
+{{> "systems/fatex/templates/item/parts/layout/item-header.hbs" title="FAx.Item.Stunt.EditItem" item=item}}
 
 <div class="fatex__settings">
-    {{> "systems/fatex/templates/item/parts/settings/setting-input.html"
+    {{> "systems/fatex/templates/item/parts/settings/setting-input.hbs"
         headline = "FAx.Item.Stunt.Name"
         field = item.name
         fieldName = "name"
         placeholder = "FAx.Item.Stunt.Name"
     }}
 
-    {{> "systems/fatex/templates/item/parts/settings/setting-input.html"
+    {{> "systems/fatex/templates/item/parts/settings/setting-input.hbs"
         headline = "FAx.Item.Stunt.ShortDescription"
         help = "FAx.Item.Stunt.ShortDescriptionHelp"
         fieldName = "data.shortDescription"
         field = data.shortDescription
     }}
 
-    {{> "systems/fatex/templates/item/parts/settings/setting-editor.html"
+    {{> "systems/fatex/templates/item/parts/settings/setting-editor.hbs"
         headline = "FAx.Item.Stunt.Description"
         help = "FAx.Item.Stunt.DescriptionHelp"
         fieldName = "data.description"
@@ -23,5 +23,5 @@
     }}
 </div>
 
-{{> "systems/fatex/templates/item/parts/layout/item-footer.html"}}
+{{> "systems/fatex/templates/item/parts/layout/item-footer.hbs"}}
 

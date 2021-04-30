@@ -25,7 +25,7 @@ export class InlineActorSheetFate extends CharacterSheet {
     }
 
     get template() {
-        return "systems/fatex/templates/inline-sheet/character.html";
+        return "systems/fatex/templates/inline-sheet/character.hbs";
     }
 
     /**

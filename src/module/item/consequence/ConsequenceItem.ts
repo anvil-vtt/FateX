@@ -55,7 +55,7 @@ export class ConsequenceItem extends BaseItem {
 
         const dataset = e.currentTarget.dataset;
         const item = sheet.actor.getOwnedItem(dataset.itemId);
-        const input = $(e.currentTarget).html();
+        const input = $(e.currentTarget).hbs();
 
         // Check if the value of the input field changed
         if (item.data.data.value === input) {

@@ -28,7 +28,7 @@ export class ItemSheetFate extends ItemSheet {
     }
 
     get template() {
-        return `systems/fatex/templates/item/${this.item.data.type}-sheet.html`;
+        return `systems/fatex/templates/item/${this.item.data.type}-sheet.hbs`;
     }
 
     activateListeners(html) {

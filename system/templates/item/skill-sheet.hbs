@@ -1,14 +1,14 @@
-{{> "systems/fatex/templates/item/parts/layout/item-header.html" title="FAx.Item.Skill.EditItem" item=item}}
+{{> "systems/fatex/templates/item/parts/layout/item-header.hbs" title="FAx.Item.Skill.EditItem" item=item}}
 
 <div class="fatex__settings">
-    {{> "systems/fatex/templates/item/parts/settings/setting-input.html"
+    {{> "systems/fatex/templates/item/parts/settings/setting-input.hbs"
         headline = "FAx.Item.Skill.Name"
         field = item.name
         fieldName = "name"
         placeholder = "FAx.Item.Skill.Name"
     }}
 
-    {{> "systems/fatex/templates/item/parts/settings/setting-rank.html"
+    {{> "systems/fatex/templates/item/parts/settings/setting-rank.hbs"
         headline = "FAx.Item.Skill.Rank"
         fieldName = "data.rank"
         field = data.rank
@@ -17,7 +17,7 @@
     }}
 
     {{!--Description is disabled for now--}}
-    {{!--{{> "systems/fatex/templates/item/parts/settings/setting-input.html"
+    {{!--{{> "systems/fatex/templates/item/parts/settings/setting-input.hbs"
         headline = "FAx.Item.Skill.Description"
         help = "FAx.Item.Skill.DescriptionHelp"
         fieldName = "data.description"
@@ -25,5 +25,5 @@
     }}--}}
 </div>
 
-{{> "systems/fatex/templates/item/parts/layout/item-footer.html"}}
+{{> "systems/fatex/templates/item/parts/layout/item-footer.hbs"}}
 

@@ -1,20 +1,20 @@
-{{> "systems/fatex/templates/item/parts/layout/item-header.html" title="FAx.Item.Aspect.EditItem" item=item}}
+{{> "systems/fatex/templates/item/parts/layout/item-header.hbs" title="FAx.Item.Aspect.EditItem" item=item}}
 
 <div class="fatex__settings">
-    {{> "systems/fatex/templates/item/parts/settings/setting-input.html"
+    {{> "systems/fatex/templates/item/parts/settings/setting-input.hbs"
         headline = "FAx.Item.Aspect.Value"
         fieldName = "data.value"
         field = data.value
     }}
 
-    {{> "systems/fatex/templates/item/parts/settings/setting-input.html"
+    {{> "systems/fatex/templates/item/parts/settings/setting-input.hbs"
         headline = "FAx.Item.Aspect.Label"
         fieldName = "data.label"
         field = data.label
     }}
 
     {{!--Description is disabled for now--}}
-    {{!--{{> "systems/fatex/templates/item/parts/settings/setting-input.html"
+    {{!--{{> "systems/fatex/templates/item/parts/settings/setting-input.hbs"
         headline = "FAx.Item.Aspect.Description"
         help = "FAx.Item.Aspect.DescriptionHelp"
         fieldName = "data.description"
@@ -22,5 +22,5 @@
     }}--}}
 </div>
 
-{{> "systems/fatex/templates/item/parts/layout/item-footer.html"}}
+{{> "systems/fatex/templates/item/parts/layout/item-footer.hbs"}}
 

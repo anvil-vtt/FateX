@@ -7,7 +7,7 @@ export class TemplateActorPicker extends TemplateActorSettings {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
             title: game.i18n.localize("ACTOR.Create"),
-            template: "/systems/fatex/templates/apps/template-actors-picker.html",
+            template: "/systems/fatex/templates/apps/template-actors-picker.hbs",
             id: "template-actor-picker",
             resizable: true,
             classes: ["fatex fatex__app_sheet"],
