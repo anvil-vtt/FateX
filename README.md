@@ -1,4 +1,4 @@
-# The FateX game system for FoundryVTT (EN/DE/ES/FR/GL/IT/CN/KO)
+# The FateX game system for FoundryVTT (EN/DE/ES/FR/GL/IT/CN/KO/SV)
 
 <p align="center">
 <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/anvil-vtt/fatex"> <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/anvil-vtt/fatex"> <img alt="GitHub All Releases" src="https://img.shields.io/github/downloads/anvil-vtt/fatex/total" /> <img alt="GitHub Releases" src="https://img.shields.io/github/downloads/anvil-vtt/fatex/latest/total" /> <img alt="GitHub Release Date" src="https://img.shields.io/github/release-date/anvil-vtt/fatex?label=latest%20release" /> 
@@ -85,6 +85,9 @@ For manual installation, use the provided manifest URL in the "*Install System*"
 > 페이트 코어 한국어 공개판은 Leonard Balsera, Brian Engard, Jeremy Keller, Ryan Macklin, Mike Olson, Clark Valentine, Amanda Valentine, Fred Hicks, Rob Donoghue가 개발, 저술, 편집한 Evil Hat Productions, LLC 제품 Fate Core System을 크리에이티브 커먼즈 저작자표시 3.0 Unported 라이선스에 의거하여 도서출판 초여명의 김성일이 번역한 작품입니다.
 
 > 페이트 코어 한국어 공개판: https://sites.google.com/site/fatecorekr/ 은 크리에이티브 커먼즈 저작자표시 3.0 Unported (CC BY 3.0) 라이센스에 따라 이용할 수 있습니다.
+
+#### Swedish
+* System translation provided by [Grottmastaren](https://github.com/Grottmastaren)
 
 ---
 

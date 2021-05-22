@@ -1,6 +1,14 @@
 # Changelog
 
 
+### 0.10.0
+* Added new translations
+  * Swedish (big thanks to contributor [Grottmastaren](https://github.com/Grottmastaren))
+* Updated all npm dependencies
+* Added new "Alpha features" setting to system
+  * This enables experimental alpha features. These are subject to change and could potentially break things.
+* Added alpha version of the group system. This is still a very early, unfinished version. Only meant for deverloper use.
+
 ### 0.9.3
 * Added new translations
   * Korean (big thanks to contributor [MaronKB](https://github.com/MaronKB))
