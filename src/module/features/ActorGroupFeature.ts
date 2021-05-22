@@ -9,21 +9,25 @@ import { renderGroupSheetsByGroupType } from "../helper/ActorGroupHelper";
 export class ActorGroupFeature {
     static hooks() {
         Hooks.on("renderActorDirectory", (_app, html) => {
-            this.addCreateGroupButton(html);
-            this.styleGroupEntries(html);
+            if (game.settings.get("fatex", "enableAlphaFeatures")) {
+                this.addCreateGroupButton(html);
+                this.styleGroupEntries(html);
+            }
         });
 
         /**
          * Rerender all inline-sheets of updated actor (needed for synthetic actor token to circumvent patching the _onUpdateBaseActor method)
          */
         Hooks.on("updateActor", (entity, _data, _options, _userId) => {
-            const openGroupSheets = Object.values(ui.windows).filter<GroupSheet>((app): app is GroupSheet => app instanceof GroupSheet);
+            if (game.settings.get("fatex", "enableAlphaFeatures")) {
+                const openGroupSheets = Object.values(ui.windows).filter<GroupSheet>((app): app is GroupSheet => app instanceof GroupSheet);
 
-            for (const groupSheet of openGroupSheets) {
-                const inlineSheetsOfUpdatedActor = groupSheet.inlineSheets.filter((sheet) => sheet.actor.id === entity.id);
+                for (const groupSheet of openGroupSheets) {
+                    const inlineSheetsOfUpdatedActor = groupSheet.inlineSheets.filter((sheet) => sheet.actor.id === entity.id);
 
-                for (const inlineSheet of inlineSheetsOfUpdatedActor) {
-                    inlineSheet.render();
+                    for (const inlineSheet of inlineSheetsOfUpdatedActor) {
+                        inlineSheet.render();
+                    }
                 }
             }
         });
@@ -32,7 +36,9 @@ export class ActorGroupFeature {
          * Rerender groupsheets of type scene whenever the viewed scene changes to another scene
          */
         Hooks.on("canvasReady", (_entity, _data, _options, _userId) => {
-            renderGroupSheetsByGroupType("scene");
+            if (game.settings.get("fatex", "enableAlphaFeatures")) {
+                renderGroupSheetsByGroupType("scene");
+            }
         });
     }
 

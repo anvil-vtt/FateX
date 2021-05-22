@@ -32,6 +32,7 @@ import { ActorGroupFeature } from "./module/features/ActorGroupFeature";
 import { ReferenceSheet } from "./module/item/references/ReferenceSheet";
 import { FateScene } from "./module/scene/FateScene";
 import { FateCombat } from "./module/combat/FateCombat";
+import { FateXSettings } from "./module/helper/Settings";
 
 /* -------------------------------- */
 /*	System initialization			*/
@@ -53,6 +54,9 @@ Hooks.once("init", async () => {
 
     // Preload all needed templates
     await TemplatePreloader.preloadHandlebarsTemplates();
+
+    // Register generic system settings
+    FateXSettings.registerSettings();
 
     // Register HandlebarsHelpers
     HandlebarsHelpers.registerHelpers();
