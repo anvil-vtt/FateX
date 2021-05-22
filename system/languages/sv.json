@@ -1,0 +1,211 @@
+{
+    "FateX": "FateX",
+    "FAx": {
+        "name": "FateX",
+        "Global": {
+            "Ladder": {
+                "+8": "Legendariskt",
+                "+7": "Episkt",
+                "+6": "Fantastiskt",
+                "+5": "Överlägset",
+                "+4": "Utmärkt",
+                "+3": "Bra",
+                "+2": "Hyggligt",
+                "+1": "Genomsnittligt",
+                "+0": "Mediokert",
+                "-1": "Svagt",
+                "-2": "Dåligt",
+                "-3": "Katastrofalt",
+                "-4": "Förskräckligt"
+            },
+            "Actions": {
+                "Configure": "Anpassa",
+                "Delete": "Radera",
+                "Duplicate": "Duplicera",
+                "Sort": "Sortera",
+                "Create": "Skapa blank aktör",
+                "Choose": "Välj mall"
+            },
+            "BaseItem": "Base item"
+        },
+        "Sheet": {
+            "Name": "Namn",
+            "Description": "Beskrivning",
+            "FatePoints": "Ödespoäng",
+            "Aspects": "Aspekter",
+            "Consequences": "Konsekvenser",
+            "Skills": "Färdigheter",
+            "Stunts": "Förmågor",
+            "Extras": "Tillägg",
+            "Bio": "Biografi",
+            "Artwork": "Bild",
+            "StressTracks": "Påfrestning",
+            "Tabs": {
+                "SkillsStunts": "Färdigheter & Förmågor",
+                "Skills": "Färdigheter",
+                "Stunts": "Förmågor",
+                "Extras": "Tillägg",
+                "Bio": "Biografi"
+            },
+            "Buttons": {
+                "EditMode": "Redigeringsläge",
+                "SheetSetup": "Formulärinställningar"
+            },
+            "Stress": {
+                "Add": "Lägg till påfrestningsrutor"
+            },
+            "Messages": {
+                "EmptyActor": "Det ser ut som att din aktör inte har något innehåll ännu. Du kan ändra det i <strong>Redigeringsläge</strong> eller <strong>Formulärinställningar</strong>. Knappar för att slå på eller av redigeringsläget eller öppna formulärinställningar finner du i rubriklisten."
+            }
+        },
+        "Item": {
+            "Stress": {
+                "Name": "Etikett för påfrestningsrutor",
+                "EditItem": "Redigera påfrestningsrutor",
+                "Size": "Antal rutor",
+                "Description": "Beskrivning",
+                "DescriptionHelp": "Beskrivningen kommer att visas i området för påfrestningsrutorna.",
+                "Boxes": {
+                    "Label": "Stil på rutornas etiketter",
+                    "Custom": "Anpassade etiketter för rutor",
+                    "CustomHelp": "Ange en lista med unicode-symboler separerade med mellanslag. Tex. \"2 4 6 ☀\"."
+                },
+                "Type": {
+                    "Core": "Core",
+                    "Condensed": "Condensed",
+                    "Custom": "Blank / Anpassad"
+                }
+            },
+            "Aspect": {
+                "EditItem": "Redigera Aspekt",
+                "Value": "Text",
+                "Description": "Beskrivning",
+                "DescriptionHelp": "Visas endast när den skickat till chatten",
+                "Label": "Etikett"
+            },
+            "Consequence": {
+                "EditItem": "Redigera Konsekvens",
+                "Value": "Text",
+                "Description": "Beskrivning",
+                "DescriptionHelp": "Visas endast när den skickat till chatten",
+                "Label": "Etikett",
+                "LabelHelp": "En etikett som beskriver svårighetsgraden, såsom \"Mild\" eller \"Svår\".",
+                "Icon": "Ikon",
+                "IconHelp": "Vanligen en siffra som 2, 4, 6 or 8. Visas till vänster.",
+                "Type": {
+                    "Label": "Variant",
+                    "Condition": "Tillstånd",
+                    "Consequence": "Konsekvens"
+                }
+            },
+            "Skill": {
+                "Name": "Färdighetens namn",
+                "EditItem": "Redigera Färdighet",
+                "Rank": "Nivå",
+                "Description": "Beskrivning",
+                "DescriptionHelp": "Visas endast när den skickat till chatten"
+            },
+            "Stunt": {
+                "Name": "Förmågans namn",
+                "EditItem": "Redigera Förmåga",
+                "Description": "Beskrivning",
+                "DescriptionHelp": "Lång beskrivning för denna förmåga",
+                "ShortDescription": "Kort beskrivning",
+                "ShortDescriptionHelp": "Kort beskrivning för denna förmåga"
+            },
+            "Extra": {
+                "Name": "Tilläggets namn",
+                "EditItem": "Redigera Tillägg",
+                "Description": "Beskrivning",
+                "DescriptionHelp": "Lång beskrivning för detta tillägg",
+                "ShortDescription": "Kort beskrivning",
+                "ShortDescriptionHelp": "Lång beskrivning för detta tillägg"
+            },
+            "Automation": {
+                "Headline": "Automatisering",
+                "BoxesHeadline": "Automatisering av rutor",
+                "Description": "Det finns inga färdighetsbaserade regler ännu. Vänligen lägg till en eller flera färdighetsbaserade regler för att kunna aktivera automatisering.",
+                "AddSkillRef": "Lägg till färdighetsbaserad regel",
+                "DisableUntil": "Slå av tills",
+                "BoxesIf": "Rutor om",
+                "MultipleConditions": "Slå på automatisering om",
+                "MultipleConditionsMatches": "regeln matchar",
+                "Actions": {
+                    "Box": {
+                        "ADD": "Lägg till",
+                        "REMOVE": "Tag bort"
+                    }
+                },
+                "Conjunctions": {
+                    "AND": "varje",
+                    "OR": "eller"
+                },
+                "Operators": {
+                    "OPERATOR_EQUALS": "lika med",
+                    "OPERATOR_NOT_EQUALS": "ej lika med",
+                    "OPERATOR_GT": "är större än",
+                    "OPERATOR_LT": "är mindre än",
+                    "OPERATOR_GTE": "är större än eller lika med",
+                    "OPERATOR_LTE": "är mindre än eller lika med"
+                }
+            }
+        },
+        "Dialog": {
+            "ReferenceRemove": "Tag bort referens",
+            "ReferenceRemoveText": "Vill du verkligen <strong>permanent</strong> ta bort denna referens?",
+            "EntityDelete": "Delete",
+            "EntityDeleteText": "Vill du verkligen <strong>permanent</strong> ta bort denna entitet?",
+            "ActorClear": "Radera komponent",
+            "ActorClearText": "Vill du verkligen <strong>permanent</strong> ta bort denna aktörs samtliga komponenter <strong>och deras innehåll</strong> av den valda typen?",
+            "Confirm": "Bekräfta",
+            "Cancel": "Ångra"
+        },
+        "Apps": {
+            "Setup": {
+                "Title": "Formulärinställningar",
+                "Manage": "Hantera",
+                "Setup": "Inställning (Förifyllning)",
+                "Actions": {
+                    "Clear": {
+                        "Aspects": "Radera aspekter",
+                        "Consequences": "Radera konsekvenser",
+                        "Skills": "Radera färdigheter",
+                        "Stress": "Radera rutor för påfrestningar",
+                        "Everything": "Radera allt"
+                    },
+                    "Setup": {
+                        "AddToSheet": "Lägg urval till formuläret",
+                        "ToggleSelection": "Slå på eller av urval"
+                    }
+                }
+            }
+        },
+        "Settings": {
+            "Templates": {
+                "Title": "Mallar för rollformulär",
+                "Hint": "Låter dig välja hur rollformulär ser ut för nya karaktärer.",
+                "Button": "FateX Mallar",
+                "New": "Ny mall",
+                "Copy": "Kopiera",
+                "App": {
+                    "Title": "Utforma mall",
+                    "Label": "Inställningar",
+                    "CreateNew": "Skapa ny mall",
+                    "Help": "Det finns inga mallar än. <br />För att lägga till en mall, klicka på knappen <strong>Skapa ny mall</strong> (även tillgänglig i rubrikraden)."
+                }
+            }
+        },
+        "Template": {
+            "Picker": {
+                "Title": "Välj mall",
+                "Label": "Mallar",
+                "Configuration": "Inställningar",
+                "Empty": "Blank aktör",
+                "CreateEmpty": "Blank aktör",
+                "Or": "eller",
+                "Help": "För att lägga till nya mallar, klicka på knappen <strong>Inställningar</strong> nedan (även tillgänglig i rubrikraden).",
+                "Explain": "Mallar är ett utmärkt sätt att ha olika formulär för olika typer av aktörer. Vi föreslår att <strong>olika mallar</strong> används för spelarkaraktärer, spelledarkaraktärer, och hejdukar, då dessa har <strong>olika behov av formuläruppställning</strong>."
+            }
+        }
+    }
+}
