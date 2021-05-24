@@ -3,11 +3,12 @@ import { FateItemData } from "./ItemTypes";
 export class FateItem extends Item<FateItemData> {
     prepareData() {
         super.prepareData();
-        const data = this.data;
 
         // Let every itemType prepare itself
-        if (CONFIG.FateX.itemClasses[data.type]) {
-            CONFIG.FateX.itemClasses[data.type].prepareItemData(data, this);
+        if (this.actor?.data) {
+            if (CONFIG.FateX.itemClasses[this.data.type]) {
+                CONFIG.FateX.itemClasses[this.data.type].prepareItemData(this.data, this);
+            }
         }
     }
 }

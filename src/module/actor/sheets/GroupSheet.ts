@@ -130,7 +130,7 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
             sort: 100000 + index,
         }));
 
-        await this.actor.updateEmbeddedEntity("OwnedItem", updateData);
+        await this.actor.updateOwnedItem(updateData);
     }
 
     /**
