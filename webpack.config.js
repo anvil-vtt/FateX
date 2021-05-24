@@ -38,12 +38,28 @@ module.exports = (env) => {
         },
         devServer: {
             hot: true,
+            firewall: false,
             proxy: [
                 {
-                    context: (pathname) => {
+                    context: (pathname, req) => {
+                        if (req.headers.host.match("^foundry8.local")) {
+                            return false;
+                        }
+
                         return !pathname.match("^/ws");
                     },
                     target: "http://localhost:30000",
+                    ws: true,
+                },
+                {
+                    context: (pathname, req) => {
+                        if (req.headers.host.match("^foundry.local")) {
+                            return false;
+                        }
+
+                        return !pathname.match("^/ws");
+                    },
+                    target: "http://localhost:40000",
                     ws: true,
                 },
             ],

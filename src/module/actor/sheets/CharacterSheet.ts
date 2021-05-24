@@ -6,11 +6,13 @@ import { SheetSetup } from "../../applications/sheet-setup/SheetSetup";
 import { FateActor } from "../FateActor";
 import { ExtraItemData } from "../../item/ItemTypes";
 import Combatant = Combat.Combatant;
+import { GroupSheet } from "./GroupSheet";
 
 export interface CharacterSheetOptions extends BaseEntitySheet.Options {
     type?: string;
     combatant?: Combatant;
     referenceID?: string;
+    group?: GroupSheet;
 }
 
 export class CharacterSheet extends ActorSheet<ActorSheet.Data<FateActor>, FateActor, CharacterSheetOptions> {

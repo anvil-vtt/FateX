@@ -127,7 +127,7 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
 
         const updateData = itemIDs.map((id, index) => ({
             _id: id,
-            sort: SORT_INTEGER_DENSITY + index,
+            sort: 100000 + index,
         }));
 
         await this.actor.updateEmbeddedEntity("OwnedItem", updateData);
