@@ -64,6 +64,7 @@ export abstract class BaseItem {
         const itemData = {
             name: this.defaultName,
             type: this.entityName,
+            sort: 9000000,
         };
 
         await this.createNewItem(itemData, sheet);
@@ -73,22 +74,17 @@ export abstract class BaseItem {
      * Itemtype agnostic handler for sorting all items in sheet
      */
     static async _onItemSortRank(sheet) {
-        const skills = sheet.actor.items.contents.filter((item) => item.type == "skill");
-        skills.sort((a, b) => a.data.data.rank - b.data.data.rank);
+        const skills = sheet.actor.items.filter((item) => item.type == "skill");
+        skills.sort((a, b) => a.data.data.rank - b.data.data.rank).reverse();
 
-        for (const i in skills) {
-            if (skills[i].type == "skill") {
-                skills[i].data.sort = skills[0].data.sort - parseInt(i);
-            }
-        }
+        let i = 0;
 
-        await sheet.actor.updateOwnedItem(
-            skills.map((s) => {
-                return s.data;
-            })
-        );
+        const updates = skills.map((skill) => ({
+            _id: skill._id,
+            sort: 10000 + i++,
+        }));
 
-        sheet.render(true);
+        sheet.actor.updateOwnedItem(updates);
     }
 
     /**
@@ -152,14 +148,19 @@ export abstract class BaseItem {
      */
     static async createNewItem(itemData, sheet, render = true) {
         // Create item and render sheet afterwards
-        const newItem = await sheet.actor.createOwnedItem(itemData);
+        let newItem = await sheet.actor.createOwnedItem(itemData);
 
         // Tokens don't return the new item
         if (!render || sheet.actor.isToken) return;
 
+        if (newItem instanceof Array) {
+            newItem = newItem[0];
+        }
+
         // We have to reload the item for it to have a sheet
         // Todo: Fix to use renderSheet option on creation
-        newItem.forEach((item) => item.render(true));
+        const createdItem = sheet.actor.getOwnedItem(newItem._id);
+        createdItem.sheet.render(true);
     }
 
     /**
