@@ -19,7 +19,7 @@ jobs:
 
       - name: Install dependencies and run webpack
         run: |
-          npm install --silent
+          npm ci
           npm run build:production
 
       - name: Create installable system zip file
