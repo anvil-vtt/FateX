@@ -30,7 +30,7 @@ export class Automation extends BaseComponent {
     }
 
     static async getSheetData(sheetData, sheet) {
-        const skillReferences = this.getSkillReferences(sheet.entity).map((ref, index) => {
+        const skillReferences = this.getSkillReferences(sheet.document).map((ref, index) => {
             ref.index = index;
             return ref;
         });
@@ -38,7 +38,7 @@ export class Automation extends BaseComponent {
         sheetData.statusReferences = skillReferences.filter((ref) => ref.type === TYPES.STATUS || ref.type === undefined);
         sheetData.boxReferences = skillReferences.filter((ref) => ref.type === TYPES.BOXES);
 
-        sheetData.skillReferenceSettings = this.getSkillReferenceSettings(sheet.entity);
+        sheetData.skillReferenceSettings = this.getSkillReferenceSettings(sheet.document);
         sheetData.availableSkillLevels = this.getAvailableSkillLevels();
         sheetData.availableOperators = this.getAvailableOperators();
         sheetData.availableConjunctions = this.getAvailableConjunctions();
@@ -55,7 +55,7 @@ export class Automation extends BaseComponent {
     static async _onAddReference(e, sheet, type = TYPES.STATUS) {
         e.preventDefault();
 
-        const entity = sheet.entity;
+        const entity = sheet.document;
         await this.addSkillReference(entity, type);
     }
 
@@ -64,7 +64,7 @@ export class Automation extends BaseComponent {
 
         let value = e.currentTarget.value;
         const dataset = e.currentTarget.dataset;
-        const entity = sheet.entity;
+        const entity = sheet.document;
         const index = dataset.index;
         const field = dataset.field;
 
@@ -86,7 +86,7 @@ export class Automation extends BaseComponent {
 
         let value = e.currentTarget.value;
         const dataset = e.currentTarget.dataset;
-        const entity = sheet.entity;
+        const entity = sheet.document;
         const setting = dataset.setting;
 
         // Check for numbers as only strings are passed
@@ -106,7 +106,7 @@ export class Automation extends BaseComponent {
         e.preventDefault();
 
         const dataset = e.currentTarget.dataset;
-        const entity = sheet.entity;
+        const entity = sheet.document;
         const index = dataset.index;
 
         // Return early of no index was provided

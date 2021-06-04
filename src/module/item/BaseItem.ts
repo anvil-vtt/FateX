@@ -81,7 +81,7 @@ export abstract class BaseItem {
                 skills[i].data.sort = skills[0].data.sort - parseInt(i);
             }
         }
-        sheet.actor.updateOwnedItem(skills.map(s => {return s.data}));
+        sheet.actor.updateEmbeddedDocuments('Item', skills);
     }
 
     /**
@@ -152,7 +152,7 @@ export abstract class BaseItem {
 
         // We have to reload the item for it to have a sheet
         // Todo: Fix to use renderSheet option on creation
-        const createdItem = sheet.actor.items.get(newItem.id);
+        const createdItem = sheet.actor.items.get(newItem[0].id);
         createdItem.sheet.render(true);
     }
 
