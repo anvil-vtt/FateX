@@ -55,7 +55,7 @@ export class SheetSetup extends FormApplication<any, any, FateActor> {
             hasSkills: !!this.actor.items.filter((i) => i.type === "skill").length,
             hasConsequences: !!this.actor.items.filter((i) => i.type === "consequence").length,
             hasStress: !!this.actor.items.filter((i) => i.type === "stress").length,
-            hasAny: !!this.actor.items.entries.length,
+            hasAny: !!this.actor.items.size,
         };
 
         const dataManager = new DataManager();
