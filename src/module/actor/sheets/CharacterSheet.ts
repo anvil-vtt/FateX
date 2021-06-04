@@ -78,7 +78,6 @@ export class CharacterSheet extends ActorSheet<ActorSheet.Data<FateActor>, FateA
     getData() {
         // Basic fields and flags
         let data: any = {
-            // @ts-ignore
             owner: this.actor.owner,
             options: this.options,
             editable: this.isEditable,
@@ -120,7 +119,6 @@ export class CharacterSheet extends ActorSheet<ActorSheet.Data<FateActor>, FateA
         const buttons = super._getHeaderButtons();
 
         // Edit mode button to toggle which interactive elements are visible on the sheet.
-        // @ts-ignore
         const canConfigure = game.user?.isGM || this.actor.owner;
         if (this.options.editable && canConfigure) {
             buttons.unshift(
