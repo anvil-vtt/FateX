@@ -74,14 +74,14 @@ export abstract class BaseItem {
      * Itemtype agnostic handler for sorting all items in sheet
      */
     static async _onItemSortRank(sheet) {
-        const skills = sheet.actor.items.contents.filter((item) => item.type == 'skill');
+        const skills = sheet.actor.getEmbeddedCollection('Item').contents.filter((item) => item.type == 'skill');
         skills.sort((a, b) => a.data.data.rank - b.data.data.rank);
         for (const i in skills) {
             if (skills[i].type == 'skill') {
                 skills[i].data.sort = skills[0].data.sort - parseInt(i);
             }
         }
-        await sheet.actor.updateEmbeddedDocuments('Item', skills);
+        await sheet.actor.updateEmbeddedDocuments('Item', skills.map(s => { return {'_id': s.data._id, 'sort': s.data.sort}}));
         sheet.render(true);
     }
 
