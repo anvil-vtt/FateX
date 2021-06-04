@@ -23,7 +23,6 @@ export abstract class BaseItem {
         html.find(`.fatex__${this.entityName}__settings`).click((e) => this._onItemSettings.call(this, e, sheet));
         html.find(`.fatex__${this.entityName}__delete`).click((e) => this._onItemDelete.call(this, e, sheet));
         html.find(`.fatex__${this.entityName}__sortrank`).click(() => this._onItemSortRank.call(this, sheet));
-
     }
 
     /**
@@ -65,6 +64,7 @@ export abstract class BaseItem {
         const itemData = {
             name: this.defaultName,
             type: this.entityName,
+            sort: 9000000,
         };
 
         await this.createNewItem(itemData, sheet);
@@ -74,14 +74,17 @@ export abstract class BaseItem {
      * Itemtype agnostic handler for sorting all items in sheet
      */
     static async _onItemSortRank(sheet) {
-        const skills = sheet.actor.items.entries.filter((item) => item.type == 'skill');
-        skills.sort((a, b) => a.data.data.rank - b.data.data.rank);
-        for (const i in skills) {
-            if (skills[i].type == 'skill') {
-                skills[i].data.sort = skills[0].data.sort - parseInt(i);
-            }
-        }
-        sheet.actor.updateOwnedItem(skills.map(s => {return s.data}));
+        const skills = sheet.actor.items.filter((item) => item.type == "skill");
+        skills.sort((a, b) => a.data.data.rank - b.data.data.rank).reverse();
+
+        let i = 0;
+
+        const updates = skills.map((skill) => ({
+            _id: skill._id,
+            sort: 10000 + i++,
+        }));
+
+        sheet.actor.updateOwnedItem(updates);
     }
 
     /**
@@ -92,7 +95,7 @@ export abstract class BaseItem {
         e.stopPropagation();
 
         const data = e.currentTarget.dataset;
-        const item = sheet.actor.getOwnedItem(data.item);
+        const item = sheet.actor.items.get(data.item);
 
         if (item) {
             item.sheet.render(true);
@@ -107,7 +110,7 @@ export abstract class BaseItem {
         e.stopPropagation();
 
         const data = e.currentTarget.dataset;
-        const item = sheet.actor.getOwnedItem(data.item);
+        const item = sheet.actor.items.get(data.item);
 
         new Dialog(
             {
@@ -124,7 +127,7 @@ export abstract class BaseItem {
                         icon: '<i class="fas fa-check"></i>',
                         label: game.i18n.localize("FAx.Dialog.Confirm"),
                         callback: async () => {
-                            await sheet.actor.deleteOwnedItem(data.item);
+                            item.delete();
                         },
                     },
                 },
@@ -145,10 +148,14 @@ export abstract class BaseItem {
      */
     static async createNewItem(itemData, sheet, render = true) {
         // Create item and render sheet afterwards
-        const newItem = await sheet.actor.createOwnedItem(itemData);
+        let newItem = await sheet.actor.createOwnedItem(itemData);
 
         // Tokens don't return the new item
         if (!render || sheet.actor.isToken) return;
+
+        if (newItem instanceof Array) {
+            newItem = newItem[0];
+        }
 
         // We have to reload the item for it to have a sheet
         // Todo: Fix to use renderSheet option on creation

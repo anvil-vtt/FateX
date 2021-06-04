@@ -1,6 +1,12 @@
-import { CharacterSheet } from "./CharacterSheet";
+import { CharacterSheet, CharacterSheetOptions } from "./CharacterSheet";
 
 export class InlineActorSheetFate extends CharacterSheet {
+    static get defaultOptions() {
+        return mergeObject(super.defaultOptions, ({
+            group: undefined,
+        } as unknown) as CharacterSheetOptions);
+    }
+
     getData(_options?: Application.RenderOptions) {
         const data = super.getData();
 
@@ -38,7 +44,9 @@ export class InlineActorSheetFate extends CharacterSheet {
     }
 
     _injectHTML(html, options) {
-        $(`#${options.group.id} .fatex__actor_group__inlinesheets`).append(html);
+        const group = options?.group ?? this.options.group;
+
+        $(`#${group.id} .fatex__actor_group__inlinesheets`).append(html);
         this._element = html;
     }
 }

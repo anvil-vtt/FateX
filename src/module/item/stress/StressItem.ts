@@ -67,7 +67,7 @@ export class StressItem extends BaseItem {
         e.preventDefault();
 
         const dataset = e.currentTarget.dataset;
-        const item = sheet.actor.getOwnedItem(dataset.item);
+        const item = sheet.actor.items.get(dataset.item);
         const index = dataset.index;
 
         if (item) {
