@@ -100,7 +100,10 @@ export class SkillItem extends BaseItem {
         const template = "systems/fatex/templates/chat/roll-skill.hbs";
         const rank = parseInt(skill.data.rank) || 0;
         const actor = sheet.actor;
-        const roll = new Roll("4dF").roll();
+        // The  League of Foundry Developers types are missing the new async parameter
+        // This will become async by default in 0.9.x
+        /* @ts-ignore */
+        const roll = new Roll("4dF").evaluate({ async: false });
         const dice = this.getDice(roll);
         const total = this.getTotalString((roll.total || 0) + rank);
         const ladder = this.getLadderLabel((roll.total || 0) + rank);
