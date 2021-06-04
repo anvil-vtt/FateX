@@ -17,13 +17,13 @@ export class StuntItem extends BaseItem {
     static activateActorSheetListeners(html, sheet) {
         super.activateActorSheetListeners(html, sheet);
 
-        html.find(".fatex__stunt .fatex__headline").click((e) => {
+        html.find(".fatex__stunt > .fatex__headline").off().click((e) => {
             if ($(e.target).is(".fatex__stunt__collapse--toggle")) {
                 e.preventDefault();
                 return;
             }
 
-            this._onActiveStunt.call(this, e, sheet)
+            this._onActiveStunt.call(this, e, sheet);
         });
 
         html.find(".fatex__item__collapse").click((e) => this._onCollapseToggle.call(this, e, sheet));
