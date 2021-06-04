@@ -17,6 +17,15 @@ export class StuntItem extends BaseItem {
     static activateActorSheetListeners(html, sheet) {
         super.activateActorSheetListeners(html, sheet);
 
+        html.find(".fatex__stunt .fatex__headline").click((e) => {
+            if ($(e.target).is(".fatex__stunt__collapse--toggle")) {
+                e.preventDefault();
+                return;
+            }
+
+            this._onActiveStunt.call(this, e, sheet)
+        });
+
         html.find(".fatex__item__collapse").click((e) => this._onCollapseToggle.call(this, e, sheet));
     }
 
@@ -38,5 +47,40 @@ export class StuntItem extends BaseItem {
                 {}
             );
         }
+    }
+
+    static async _onActiveStunt(e, sheet) {
+        e.preventDefault();
+
+        if (this.isEditMode(e)) {
+            return;
+        }
+
+        const dataset = e.currentTarget.dataset;
+        const stunt = sheet.actor.items.get(dataset.itemId);
+
+        if (stunt) {
+            await this.activateStunt(sheet, stunt);
+        }
+    }
+
+    static async activateStunt(sheet, item) {
+        const stunt = this.prepareItemData(duplicate(item.data), item);
+        const template = "systems/fatex/templates/chat/display-stunt.hbs";
+        const actor = sheet.actor;
+
+        const chatData = {
+            user: game.user?.id,
+            speaker: ChatMessage.getSpeaker({ actor: actor }),
+            type: CONST.CHAT_MESSAGE_TYPES.OTHER,
+            sound: CONFIG.sounds.notification,
+            content: await renderTemplate(template, { stunt }),
+
+            flags: {
+                templateVariables: { stunt },
+            },
+        };
+
+        await ChatMessage.create(chatData);
     }
 }
