@@ -34,7 +34,7 @@ export class Radio extends BaseComponent {
 
         const dataset = event.currentTarget.dataset;
         const dataKey = dataset.name;
-        const sheetEntity = sheet.entity;
+        const sheetEntity = sheet.document;
 
         // Sane default
         let value: number | string = "";

@@ -93,7 +93,7 @@ export abstract class BaseItem {
         e.stopPropagation();
 
         const data = e.currentTarget.dataset;
-        const item = sheet.actor.getEmbeddedDocument('Item', data.item);
+        const item = sheet.actor.items.get(data.item);
 
         if (item) {
             item.sheet.render(true);
@@ -125,7 +125,7 @@ export abstract class BaseItem {
                         icon: '<i class="fas fa-check"></i>',
                         label: game.i18n.localize("FAx.Dialog.Confirm"),
                         callback: async () => {
-                            await sheet.actor.deleteEmbeddedDocuments('Item', [data.item]);
+                            item.delete();
                         },
                     },
                 },
@@ -153,8 +153,7 @@ export abstract class BaseItem {
 
         // We have to reload the item for it to have a sheet
         // Todo: Fix to use renderSheet option on creation
-        const createdItem = sheet.actor.items.get(newItem[0].id);
-        createdItem.sheet.render(true);
+        newItem.forEach(item => item.render(true));
     }
 
     /**
