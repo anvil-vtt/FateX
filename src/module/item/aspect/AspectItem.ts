@@ -18,7 +18,7 @@ export class AspectItem extends BaseItem {
         e.preventDefault();
 
         const dataset = e.currentTarget.dataset;
-        const item = sheet.actor.getOwnedItem(dataset.itemId);
+        const item = sheet.actor.items.get(dataset.itemId);
         const input = $(e.currentTarget).html();
 
         // Check if the value of the input field changed

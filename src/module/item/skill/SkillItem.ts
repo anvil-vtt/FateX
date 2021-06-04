@@ -59,7 +59,7 @@ export class SkillItem extends BaseItem {
         e.stopPropagation();
 
         const dataset = e.currentTarget.dataset;
-        const skill = sheet.actor.getOwnedItem(dataset.item);
+        const skill = sheet.actor.items.get(dataset.item);
 
         if (skill) {
             const rank = skill.data.data.rank;
@@ -88,7 +88,7 @@ export class SkillItem extends BaseItem {
         }
 
         const dataset = e.currentTarget.dataset;
-        const skill = sheet.actor.getOwnedItem(dataset.itemId);
+        const skill = sheet.actor.items.get(dataset.itemId);
 
         if (skill) {
             await this.rollSkill(sheet, skill);

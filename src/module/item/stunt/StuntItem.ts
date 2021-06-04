@@ -28,7 +28,7 @@ export class StuntItem extends BaseItem {
         e.preventDefault();
 
         const dataset = e.currentTarget.dataset;
-        const item = sheet.actor.getOwnedItem(dataset.item);
+        const item = sheet.actor.items.get(dataset.item);
 
         if (item) {
             await item.update(

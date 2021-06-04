@@ -92,7 +92,7 @@ export abstract class BaseItem {
         e.stopPropagation();
 
         const data = e.currentTarget.dataset;
-        const item = sheet.actor.getOwnedItem(data.item);
+        const item = sheet.actor.items.get(data.item);
 
         if (item) {
             item.sheet.render(true);
@@ -107,7 +107,7 @@ export abstract class BaseItem {
         e.stopPropagation();
 
         const data = e.currentTarget.dataset;
-        const item = sheet.actor.getOwnedItem(data.item);
+        const item = sheet.actor.items.get(data.item);
 
         new Dialog(
             {
@@ -152,7 +152,7 @@ export abstract class BaseItem {
 
         // We have to reload the item for it to have a sheet
         // Todo: Fix to use renderSheet option on creation
-        const createdItem = sheet.actor.getOwnedItem(newItem._id);
+        const createdItem = sheet.actor.items.get(newItem._id);
         createdItem.sheet.render(true);
     }
 
