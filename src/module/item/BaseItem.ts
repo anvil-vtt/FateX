@@ -81,7 +81,8 @@ export abstract class BaseItem {
                 skills[i].data.sort = skills[0].data.sort - parseInt(i);
             }
         }
-        sheet.actor.updateEmbeddedDocuments('Item', skills);
+        await sheet.actor.updateEmbeddedDocuments('Item', skills);
+        sheet.render(true);
     }
 
     /**
