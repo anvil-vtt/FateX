@@ -107,7 +107,7 @@ export abstract class BaseItem {
         e.stopPropagation();
 
         const data = e.currentTarget.dataset;
-        const item = sheet.actor.getOwnedItem(data.item);
+        const item = sheet.actor.items.get(data.item);
 
         new Dialog(
             {
@@ -124,7 +124,7 @@ export abstract class BaseItem {
                         icon: '<i class="fas fa-check"></i>',
                         label: game.i18n.localize("FAx.Dialog.Confirm"),
                         callback: async () => {
-                            await sheet.actor.deleteOwnedItem(data.item);
+                            await sheet.actor.deleteEmbeddedDocuments('Item', [data.item]);
                         },
                     },
                 },
@@ -145,14 +145,14 @@ export abstract class BaseItem {
      */
     static async createNewItem(itemData, sheet, render = true) {
         // Create item and render sheet afterwards
-        const newItem = await sheet.actor.createOwnedItem(itemData);
+        const newItem = await sheet.actor.createEmbeddedDocuments('Item', [itemData]);
 
         // Tokens don't return the new item
         if (!render || sheet.actor.isToken) return;
 
         // We have to reload the item for it to have a sheet
         // Todo: Fix to use renderSheet option on creation
-        const createdItem = sheet.actor.getOwnedItem(newItem._id);
+        const createdItem = sheet.actor.items.get(newItem.id);
         createdItem.sheet.render(true);
     }
 
