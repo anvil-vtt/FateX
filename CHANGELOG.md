@@ -2,7 +2,7 @@
 
 ### 0.11.0
 * Added compatibility to FoundryVTT 0.8
-* The system is compatible to 0.7 and 0.8 at the same time
+* Updated all npm dependencies
 
 ### 0.10.0
 * Added new translations
