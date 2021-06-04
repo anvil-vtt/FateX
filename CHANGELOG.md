@@ -1,7 +1,7 @@
 # Changelog
 
 ### 0.11.0
-* Added compatibility to FoundryVTT 0.8
+* Added compatibility to FoundryVTT 0.8 (big thanks to contributors [saif-ellafi](https://github.com/saif-ellafi) and [Pjb518](https://github.com/Pjb518))
 * Updated all npm dependencies
 
 ### 0.10.0
