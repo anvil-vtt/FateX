@@ -93,7 +93,7 @@ export abstract class BaseItem {
         e.stopPropagation();
 
         const data = e.currentTarget.dataset;
-        const item = sheet.actor.getOwnedItem(data.item);
+        const item = sheet.actor.getEmbeddedDocument('Item', data.item);
 
         if (item) {
             item.sheet.render(true);
