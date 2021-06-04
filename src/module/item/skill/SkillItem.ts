@@ -59,7 +59,7 @@ export class SkillItem extends BaseItem {
         e.stopPropagation();
 
         const dataset = e.currentTarget.dataset;
-        const skill = sheet.actor.getOwnedItem(dataset.item);
+        const skill = sheet.actor.items.get(dataset.item);
 
         if (skill) {
             const rank = skill.data.data.rank;
@@ -88,7 +88,7 @@ export class SkillItem extends BaseItem {
         }
 
         const dataset = e.currentTarget.dataset;
-        const skill = sheet.actor.getOwnedItem(dataset.itemId);
+        const skill = sheet.actor.items.get(dataset.itemId);
 
         if (skill) {
             await this.rollSkill(sheet, skill);
@@ -100,7 +100,8 @@ export class SkillItem extends BaseItem {
         const template = "systems/fatex/templates/chat/roll-skill.hbs";
         const rank = parseInt(skill.data.rank) || 0;
         const actor = sheet.actor;
-        const roll = new Roll("4dF").roll();
+        // @ts-ignore
+        const roll = new Roll("4dF").roll({ 'async': false });
         const dice = this.getDice(roll);
         const total = this.getTotalString((roll.total || 0) + rank);
         const ladder = this.getLadderLabel((roll.total || 0) + rank);
@@ -109,7 +110,7 @@ export class SkillItem extends BaseItem {
         const templateData = { skill, rank, dice, total, ladder };
 
         const chatData = {
-            user: game.user?._id,
+            user: game.user?.id,
             speaker: ChatMessage.getSpeaker({ actor: actor }),
             type: CONST.CHAT_MESSAGE_TYPES.ROLL,
             sound: CONFIG.sounds.dice,

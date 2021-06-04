@@ -41,7 +41,8 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
     getData() {
         // Basic fields and flags
         const data: any = {
-            owner: this.actor.owner,
+            // @ts-ignore
+            owner: this.actor.isOwner,
             options: this.options,
             editable: this.isEditable,
             isTemplateActor: this.actor.isTemplateActor,
