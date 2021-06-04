@@ -1,5 +1,6 @@
 export abstract class BaseItem {
     static entityName = "";
+    static sortedByRank;
 
     /**
      * Allows each item to prepare its data before its rendered.
@@ -22,7 +23,7 @@ export abstract class BaseItem {
         html.find(`.fatex__${this.entityName}__add`).click((e) => this._onItemAdd.call(this, e, sheet));
         html.find(`.fatex__${this.entityName}__settings`).click((e) => this._onItemSettings.call(this, e, sheet));
         html.find(`.fatex__${this.entityName}__delete`).click((e) => this._onItemDelete.call(this, e, sheet));
-        html.find(`.fatex__${this.entityName}__sortrank`).click(() => this._onItemSortRank.call(this, sheet));
+        html.find(`.fatex__${this.entityName}__sortrank`).click(() => this._onItemSort.call(this, sheet));
     }
 
     /**
@@ -71,12 +72,24 @@ export abstract class BaseItem {
     }
 
     /**
+     * Itemtype sorting toggle through rank or name
+     */
+    static async _onItemSort(sheet) {
+        const skills = sheet.actor.items.filter((item) => item.type == "skill");
+        if (this.sortedByRank === 1) {
+            this.sortedByRank = 0;
+            skills.sort((a, b) => (a.name > b.name) ? 1 : -1);
+        } else {
+            this.sortedByRank = 1;
+            skills.sort((a, b) => a.data.data.rank - b.data.data.rank).reverse();
+        }
+        await this._onItemSortAccordingly(sheet, skills);
+    }
+
+    /**
      * Itemtype agnostic handler for sorting all items in sheet
      */
-    static async _onItemSortRank(sheet) {
-        const skills = sheet.actor.items.filter((item) => item.type == "skill");
-        skills.sort((a, b) => a.data.data.rank - b.data.data.rank).reverse();
-
+    static async _onItemSortAccordingly(sheet, skills) {
         let i = 0;
 
         const updates = skills.map((skill) => ({
