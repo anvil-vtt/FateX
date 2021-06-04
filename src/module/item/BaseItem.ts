@@ -124,7 +124,7 @@ export abstract class BaseItem {
                         icon: '<i class="fas fa-check"></i>',
                         label: game.i18n.localize("FAx.Dialog.Confirm"),
                         callback: async () => {
-                            await sheet.actor.deleteOwnedItem(data.item);
+                            await item.delete();
                         },
                     },
                 },
