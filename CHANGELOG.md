@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.11.0
+* Added compatibility to FoundryVTT 0.8
+* The system is compatible to 0.7 and 0.8 at the same time
 
 ### 0.10.0
 * Added new translations
