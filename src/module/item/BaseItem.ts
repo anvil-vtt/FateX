@@ -23,7 +23,6 @@ export abstract class BaseItem {
         html.find(`.fatex__${this.entityName}__settings`).click((e) => this._onItemSettings.call(this, e, sheet));
         html.find(`.fatex__${this.entityName}__delete`).click((e) => this._onItemDelete.call(this, e, sheet));
         html.find(`.fatex__${this.entityName}__sortrank`).click(() => this._onItemSortRank.call(this, sheet));
-
     }
 
     /**
@@ -74,14 +73,21 @@ export abstract class BaseItem {
      * Itemtype agnostic handler for sorting all items in sheet
      */
     static async _onItemSortRank(sheet) {
-        const skills = sheet.actor.items.contents.filter((item) => item.type == 'skill');
+        const skills = sheet.actor.items.contents.filter((item) => item.type == "skill");
         skills.sort((a, b) => a.data.data.rank - b.data.data.rank);
+
         for (const i in skills) {
-            if (skills[i].type == 'skill') {
+            if (skills[i].type == "skill") {
                 skills[i].data.sort = skills[0].data.sort - parseInt(i);
             }
         }
-        await sheet.actor.updateEmbeddedDocuments('Item', skills);
+
+        await sheet.actor.updateOwnedItem(
+            skills.map((s) => {
+                return s.data;
+            })
+        );
+
         sheet.render(true);
     }
 
@@ -146,14 +152,14 @@ export abstract class BaseItem {
      */
     static async createNewItem(itemData, sheet, render = true) {
         // Create item and render sheet afterwards
-        const newItem = await sheet.actor.createEmbeddedDocuments('Item', [itemData]);
+        const newItem = await sheet.actor.createOwnedItem(itemData);
 
         // Tokens don't return the new item
         if (!render || sheet.actor.isToken) return;
 
         // We have to reload the item for it to have a sheet
         // Todo: Fix to use renderSheet option on creation
-        newItem.forEach(item => item.render(true));
+        newItem.forEach((item) => item.render(true));
     }
 
     /**
