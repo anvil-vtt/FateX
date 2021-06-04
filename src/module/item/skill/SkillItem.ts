@@ -109,7 +109,7 @@ export class SkillItem extends BaseItem {
         const templateData = { skill, rank, dice, total, ladder };
 
         const chatData = {
-            user: game.user?._id,
+            user: game.user?.id,
             speaker: ChatMessage.getSpeaker({ actor: actor }),
             type: CONST.CHAT_MESSAGE_TYPES.ROLL,
             sound: CONFIG.sounds.dice,
