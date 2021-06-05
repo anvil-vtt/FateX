@@ -22,27 +22,27 @@
     color: $caution-color;
 }
 
-.fatex__chat__dice {
-    width: 50%;
-    margin: auto;
+.fatex-chat__dice-container {
     display: flex;
     justify-content: space-between;
+    width: 50%;
+    margin: auto;
     margin-bottom: $component-padding * 2;
 }
 
-.fatex__chat__die {
+.fatex-chat__die {
     font-family: "Fate Icons", sans-serif;
     font-size: 24px;
     color: $primary-color;
 }
 
-.fatex__chat__total {
+.fatex-chat__total {
     text-align: center;
     font-weight: 700;
     font-size: 26px;
 }
 
-.fatex__chat__ladder {
+.fatex-chat__ladder {
     color: $primary-color;
     font-weight: 300;
     font-size: 12px;

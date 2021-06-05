@@ -10,18 +10,18 @@
     </div>
 
 
-    <div class="fatex__chat__dice">
+    <div class="fatex-chat__dice-container">
         {{#each dice as |die dieIndex|}}
-            <div class="fatex__chat__die fatex__chat__die" title="{{ die.value }}">
+            <div class="fatex-chat__die">
                 {{ die.face }}
             </div>
         {{/each}}
     </div>
 
-    <div class="fatex__chat__total">
+    <div class="fatex-chat__total">
         {{ total }}
 
-        <span class="fatex__chat__ladder">
+        <span class="fatex-chat__ladder">
             {{ ladder }}
         </span>
     </div>
