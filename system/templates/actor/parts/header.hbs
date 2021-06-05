@@ -1,7 +1,15 @@
 <header class="fatex-header">
     <div class="fatex-header__name">
-        <label class="fatex-header__label" for="name">{{#if isToken}}Token-{{/if}}{{localize "FAx.Sheet.Name"}}</label>
-        <input class="fatex-header__input fatex__input" name="name" type="text" value="{{actor.name}}">
+        <label class="fatex-header__label" for="name">
+            {{#if isToken}}Token-{{/if}}{{localize "FAx.Sheet.Name"}}
+        </label>
+
+        <input
+            class="fatex-header__input fatex__input"
+            name="name"
+            type="text"
+            value="{{actor.name}}"
+        >
     </div>
 
     <div class="fatex-header__fate-points">
