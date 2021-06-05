@@ -1,8 +1,9 @@
-@import "settings";
+@import "abstract/variables";
+@import "abstract/mixins";
 
-@import "extras/mixins";
-@import "extras/fonts";
-@import "extras/fontawesome";
-@import "extras/foundry-ui";
+@import "base/foundry-ui";
+@import "base/typography";
+
+@import "vendor/fontawesome";
 
 @import "components/**/*.scss";
