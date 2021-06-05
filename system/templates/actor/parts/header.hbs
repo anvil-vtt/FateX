@@ -1,7 +1,7 @@
 <header class="fatex-header">
     <div class="fatex-header__name">
-        <span class="fatex-header__label" for="name">{{#if isToken}}Token-{{/if}}{{localize "FAx.Sheet.Name"}}</span>
-        <input class="fatex-header__name-input fatex__input" name="name" type="text" value="{{actor.name}}">
+        <label class="fatex-header__label" for="name">{{#if isToken}}Token-{{/if}}{{localize "FAx.Sheet.Name"}}</label>
+        <input class="fatex-header__input fatex__input" name="name" type="text" value="{{actor.name}}">
     </div>
 
     <div class="fatex-header__fate-points">
@@ -10,9 +10,21 @@
         </label>
 
         <div class="fatex-header__fate-points-wrapper">
-            <input class="fatex-header__fp-input" name="data.fatepoints.current" type="text" value="{{data.fatepoints.current}}">
+            <input
+                class="fatex-header__input fatex-header__input--fp"
+                name="data.fatepoints.current"
+                type="text"
+                value="{{data.fatepoints.current}}"
+            >
+
             <span class="fatex-header__fatepoint-divider"> / </span>
-            <input class="fatex-header__refresh-input" name="data.fatepoints.refresh" type="text" value="{{data.fatepoints.refresh}}">
+
+            <input
+                class="fatex-header__input fatex-header__input--fp"
+                name="data.fatepoints.refresh"
+                type="text"
+                value="{{data.fatepoints.refresh}}"
+            >
         </div>
     </div>
 

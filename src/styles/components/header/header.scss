@@ -1,29 +1,27 @@
 .fatex-header {
-    height: 100%;
     position: relative;
     display: flex;
     justify-content: space-between;
+    height: 100%;
+    font-size: 23px;
+    color: $header-font-color;
 
-    input[type="text"].fatex-header__name-input,
-    input[type="text"].fatex-header__fp-input,
-    input[type="text"].fatex-header__refresh-input {
-        color: $header-font-color;
+    .fatex-header__input {
         height: 25px;
-        font-size: 23px;
+        color: $header-font-color;
         border: 0;
-    }
 
-    input[type="text"].fatex-header__fp-input,
-    input[type="text"].fatex-header__refresh-input {
-        width: 40px;
-        text-align: center;
+        &--fp {
+            width: 40px;
+            text-align: center;
+        }
     }
 
     &__center,
     &__name {
-        padding: $component-padding;
         display: flex;
         flex-direction: column-reverse;
+        padding: $component-padding;
     }
 
     &__name {
@@ -45,7 +43,6 @@
         font-size: 10px;
         font-weight: 300;
         letter-spacing: 3px;
-        color: $header-font-color;
         padding-left: 2px;
         padding-top: 3px;
         white-space: nowrap;
@@ -69,15 +66,10 @@
 
     &__logo {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-
-        padding: calc(#{$component-padding} - 2px);
-        text-align: right;
+        padding: $component-padding - 2px;
     }
 
     &__logo-image {
-        display: inline;
         height: 40px;
     }
 }
