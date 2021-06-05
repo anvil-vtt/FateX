@@ -1,7 +1,3 @@
-.fatex__consequences {
-    padding: $component-padding;
-}
-
 .fatex__consequence {
     & + .fatex__consequence {
         padding-top: $component-padding;
