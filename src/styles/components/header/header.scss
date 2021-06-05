@@ -2,7 +2,9 @@
     position: relative;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     height: 100%;
+    padding: 10px 10px 8px 10px;
     font-size: 23px;
     color: $header-font-color;
 
@@ -21,7 +23,6 @@
     &__name {
         display: flex;
         flex-direction: column-reverse;
-        padding: $component-padding;
     }
 
     &__name {
@@ -34,7 +35,6 @@
 
     &__fate-points {
         display: flex;
-        padding: 10px;
         flex-direction: column-reverse;
     }
 
@@ -65,11 +65,6 @@
     }
 
     &__logo {
-        display: flex;
-        padding: $component-padding - 2px;
-    }
-
-    &__logo-image {
         height: 40px;
     }
 }
