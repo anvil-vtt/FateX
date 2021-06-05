@@ -1,13 +1,14 @@
 <div class="fatex__chat">
-    <div class="fatex__chat__headline__wrapper">
-        <div class="fatex__chat__headline fatex-headline fatex__headline--icon fatex__headline--center">
+    <header class="fatex-chat__headline-container">
+        <h2 class="fatex-headline fatex-headline--icon fatex-headline--center">
             {{ skill.name }}
-        </div>
+        </h2>
 
-        <label class="fatex__chat__headline__icon fatex__headline__icon{{#if skill.data.isNegative}} fatex__chat__headline__icon--negative{{/if}}">
+        <span class="fatex-chat__headline-icon{{#if skill.data.isNegative}} fatex-chat__headline-icon--negative{{/if}}">
             {{#if skill.data.isPositive}}+{{/if}}{{ rank }}
-        </label>
-    </div>
+        </span>
+    </header>
+
 
 
     <div class="fatex-chat__dice-container">

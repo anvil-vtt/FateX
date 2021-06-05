@@ -1,12 +1,10 @@
-.fatex__chat__headline__wrapper {
-    width: 70%;
-    margin: auto;
+.fatex-chat__headline-container {
     position: relative;
-    margin-bottom: $component-padding;
-    margin-top: $component-padding;
+    width: 70%;
+    margin: $component-padding auto;
 }
 
-.fatex__chat__headline__icon {
+.fatex-chat__headline-icon {
     position: absolute;
     top: 0;
     left: 100%;
@@ -16,10 +14,10 @@
     color: $sheet-background;
     -webkit-text-stroke: 2px $primary-color;
     text-shadow: initial;
-}
 
-.fatex__chat__headline__icon--negative {
-    color: $caution-color;
+    &--negative {
+        color: $caution-color;
+    }
 }
 
 .fatex-chat__dice-container {

@@ -9,14 +9,14 @@
     box-shadow: 1px 1px 1px $shadow-color;
 
     @include cutoff(15px);
-}
 
-.fatex__headline--icon {
-    position: relative;
-}
+    &--icon {
+        position: relative;
+    }
 
-.fatex__headline--center {
-    text-align: center;
+    &--center {
+        text-align: center;
+    }
 }
 
 .fatex__headline__actions.fatex__item__actions,
