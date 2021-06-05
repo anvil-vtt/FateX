@@ -1,13 +1,14 @@
-.fatex__headline {
+.fatex-headline {
+    position: relative;
+    padding: $component-padding / 2 $component-padding * 2;
     background: $headline-background;
     color: $headline-color;
-    padding: $component-padding/2 $component-padding * 2 $component-padding/2 $component-padding * 2;
-    @include cutoff(15px);
-    position: relative;
+    font-size: 13px;
     font-weight: bold;
     text-transform: uppercase;
-    font-size: 13px;
     box-shadow: 1px 1px 1px $shadow-color;
+
+    @include cutoff(15px);
 }
 
 .fatex__headline--icon {

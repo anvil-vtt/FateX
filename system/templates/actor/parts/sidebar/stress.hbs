@@ -1,7 +1,7 @@
 <div class="u-padding-std">
     {{#each stress as |stress stressIndex|}}
         <div class="fatex__stress__track fatex__stress__track--index-{{stressIndex}} item {{#if stress.isDisabled}}fatex__helper--is-disabled{{/if}}" data-item-id="{{stress._id}}">
-            <h2 class="fatex__headline fatex__sortable" data-item-id="{{stress._id}}">
+            <h2 class="fatex-headline fatex__sortable" data-item-id="{{stress._id}}">
                 <span>{{stress.name}}</span>
                 <div class="fatex__headline__actions fatex__item__actions">
                     <span class="fatex__item__sort fatex__stress__sort"></span>
@@ -39,7 +39,7 @@
     {{/each}}
 
     <div class="fatex__stress__track fatex__helper__editmode">
-        <h2 class="fatex__headline fatex__headline--center fatex__stress__add">+</h2>
+        <h2 class="fatex-headline fatex__headline--center fatex__stress__add">+</h2>
     </div>
 
 </div>

@@ -1,7 +1,7 @@
 <div class="fatex__extras">
 
     <div class="fatex__extra__add fatex__helper__editmode fatex__helper__editmode--vanish">
-        <h2 class="fatex__headline fatex__headline--center">
+        <h2 class="fatex-headline fatex__headline--center">
             <span>+</span>
         </h2>
     </div>
@@ -9,7 +9,7 @@
     <div class="fatex__extras__wrapper">
         {{#each extras as |extra extraIndex|}}
             <div class="fatex__extra item {{#if extra.data.collapsed}}fatex__extra__collapsed{{/if}}" data-item-id="{{extra._id}}">
-                <h2 class="fatex__headline fatex__sortable" data-item-id="{{extra._id}}">
+                <h2 class="fatex-headline fatex__sortable" data-item-id="{{extra._id}}">
                     <span>{{extra.name}}</span>
 
                     <div class="fatex__headline__actions fatex__item__actions">
