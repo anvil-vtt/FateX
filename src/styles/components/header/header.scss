@@ -1,83 +1,83 @@
-.fatex__header {
+.fatex-header {
     height: 100%;
     position: relative;
     display: flex;
     justify-content: space-between;
 
-    input[type="text"].fatex__header__name__input,
-    input[type="text"].fatex__header__fp__input,
-    input[type="text"].fatex__header__refresh__input {
+    input[type="text"].fatex-header__name-input,
+    input[type="text"].fatex-header__fp-input,
+    input[type="text"].fatex-header__refresh-input {
         color: $header-font-color;
         height: 25px;
         font-size: 23px;
         border: 0;
     }
 
-    input[type="text"].fatex__header__fp__input,
-    input[type="text"].fatex__header__refresh__input {
+    input[type="text"].fatex-header__fp-input,
+    input[type="text"].fatex-header__refresh-input {
         width: 40px;
         text-align: center;
     }
-}
 
-.fatex__header__center,
-.fatex__header__name {
-    padding: $component-padding;
-    display: flex;
-    flex-direction: column-reverse;
-}
+    &__center,
+    &__name {
+        padding: $component-padding;
+        display: flex;
+        flex-direction: column-reverse;
+    }
 
-.fatex__header__name {
-    width: 50%;
-}
+    &__name {
+        width: 50%;
+    }
 
-.fatex__header__center {
-    align-items: center;
-}
+    &__center {
+        align-items: center;
+    }
 
-.fatex__header__fate-points {
-    display: flex;
-    padding: 10px;
-    flex-direction: column-reverse;
-}
+    &__fate-points {
+        display: flex;
+        padding: 10px;
+        flex-direction: column-reverse;
+    }
 
-.fatex__header__label {
-    text-transform: uppercase;
-    font-size: 10px;
-    font-weight: 300;
-    letter-spacing: 3px;
-    color: $header-font-color;
-    padding-left: 2px;
-    padding-top: 3px;
-    white-space: nowrap;
-}
+    &__label {
+        text-transform: uppercase;
+        font-size: 10px;
+        font-weight: 300;
+        letter-spacing: 3px;
+        color: $header-font-color;
+        padding-left: 2px;
+        padding-top: 3px;
+        white-space: nowrap;
 
-.fatex__header__label--center {
-    padding-left: 0;
-    text-align: center;
-}
+        &--center {
+            padding-left: 0;
+            text-align: center;
+        }
+    }
 
-.fatex__header__fate-points__wrapper {
-    display: flex;
-    justify-content: center;
-}
+    &__fate-points-wrapper {
+        display: flex;
+        justify-content: center;
+    }
 
-.fatex__header__fatepoint_divider {
-    font-size: 25px;
-    line-height: 25px;
-    color: $header-font-color;
-}
+    &__fatepoint-divider {
+        font-size: 25px;
+        line-height: 25px;
+        color: $header-font-color;
+    }
 
-.fatex__header__logo {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    &__logo {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
 
-    padding: calc(#{$component-padding} - 2px);
-    text-align: right;
-}
+        padding: calc(#{$component-padding} - 2px);
+        text-align: right;
+    }
 
-.fatex__header__logo__image {
-    display: inline;
-    height: 40px;
+    &__logo-image {
+        display: inline;
+        height: 40px;
+    }
 }
