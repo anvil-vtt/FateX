@@ -13,16 +13,14 @@
     &::before {
         top: 0;
         left: 0;
-        width: 0;
-        height: 0;
         border-top: 15px solid #f1f2f6;
         border-right: 15px solid transparent;
     }
 
     &::after {
-        bottom: -3px;
+        bottom: -2px;
         right: -6px;
-        width: 17px;
+        width: 18px;
         height: 9px;
         transform: rotate(315deg);
         background: #f1f2f6;
@@ -36,6 +34,10 @@
     &--chat {
         width: 70%;
         margin: $component-padding auto;
+    }
+
+    &--stunt {
+        padding-right: $component-padding * 4;
     }
 
     &__icon {
@@ -70,6 +72,10 @@
         font-weight: bold;
         text-transform: uppercase;
     }
+}
+
+.fatex-section-heading {
+    position: relative;
 }
 
 .fatex__headline__actions.fatex__item__actions,

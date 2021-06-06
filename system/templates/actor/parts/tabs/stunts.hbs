@@ -1,15 +1,15 @@
-<div class="fatex__stunts">
-    <h2 class="fatex__stunts__headline">
-        <span>{{localize "FAx.Sheet.Stunts"}}</span>
+<section class="fatex__stunts">
+    <heading class="fatex-section-heading">
+        <h2>{{localize "FAx.Sheet.Stunts"}}</h2>
 
         <div class="fatex__item__actions">
             <span class="fatex__item__add fatex__stunt__add"></span>
         </div>
-    </h2>
+    </heading>
 
     {{#each stunts as |stunt stuntIndex|}}
         <div class="fatex__stunt item {{#if stunt.data.collapsed}}fatex__stunt__collapsed{{/if}}" data-item-id="{{stunt._id}}">
-            <header class="fatex-headline fatex-eb-sortable" data-item-id="{{stunt._id}}">
+            <header class="fatex-headline fatex-headline--stunt fatex-eb-sortable" data-item-id="{{stunt._id}}">
                 <h3 class="fatex-headline__text">{{stunt.name}}</h3>
 
                 <div class="fatex__headline__actions fatex__item__actions">
@@ -36,4 +36,4 @@
             {{/unless}}
         </div>
     {{/each}}
-</div>
+</section>
