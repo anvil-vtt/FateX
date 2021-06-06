@@ -46,7 +46,6 @@
 .fatex__actor_group__sheet__navigation a {
     color: $headline-background;
     padding: $component-padding/2 $component-padding * 2 $component-padding/2 $component-padding * 2;
-    @include cutoff(15px);
     position: relative;
     font-weight: bold;
     text-transform: uppercase;

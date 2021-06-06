@@ -31,9 +31,9 @@
 }
 
 .fatex__tabs__navigation__item {
-    color: $primary-color;
-
+    position: relative;
     padding: 5px 20px 5px 15px;
+    color: $primary-color;
     font-weight: bold;
     text-transform: uppercase;
     font-size: 13px;
@@ -45,7 +45,15 @@
     &:hover {
         background: $headline-background;
         color: $headline-color;
-        @include cutoff(15px, 1);
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            border-top: 15px solid #f1f2f6;
+            border-left: 15px solid transparent;
+        }
     }
 }
 
