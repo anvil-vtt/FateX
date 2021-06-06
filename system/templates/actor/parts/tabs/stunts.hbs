@@ -1,11 +1,11 @@
 <section class="fatex__stunts">
-    <heading class="fatex-section-heading">
+    <header class="fatex-section-heading">
         <h2>{{localize "FAx.Sheet.Stunts"}}</h2>
 
         <div class="fatex__item__actions">
             <span class="fatex__item__add fatex__stunt__add"></span>
         </div>
-    </heading>
+    </header>
 
     {{#each stunts as |stunt stuntIndex|}}
         <div class="fatex__stunt item {{#if stunt.data.collapsed}}fatex__stunt__collapsed{{/if}}" data-item-id="{{stunt._id}}">

@@ -2,7 +2,6 @@
     position: relative;
     color: $headline-color;
     background: $headline-background;
-    box-shadow: 1px 1px 1px $shadow-color;
 
     &::before,
     &::after {
@@ -18,13 +17,10 @@
     }
 
     &::after {
-        bottom: -2px;
-        right: -6px;
-        width: 18px;
-        height: 9px;
-        transform: rotate(315deg);
-        background: #f1f2f6;
-        border-top: 1px solid #a0a0a0;
+        bottom: 0;
+        right: 0;
+        border-bottom: 15px solid #f1f2f6;
+        border-left: 15px solid transparent;
     }
 
     &--center {
