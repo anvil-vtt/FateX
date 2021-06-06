@@ -1,48 +1,40 @@
+.fatex-chat {
+    font-size: 24px;
+    text-align: center;
+}
+
 .fatex-chat__headline-container {
     position: relative;
     width: 70%;
     margin: $component-padding auto;
 }
 
-.fatex-chat__headline-icon {
-    position: absolute;
-    top: 0;
-    left: 100%;
-    transform: translate(-25px, 0px);
-    font-weight: 900;
-    font-size: 24px;
-    color: $sheet-background;
-    -webkit-text-stroke: 2px $primary-color;
-    text-shadow: initial;
+.fatex-roll {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    &--negative {
-        color: $caution-color;
+    &__ladder {
+        font-size: 12px;
+        font-weight: 300;
+        color: $primary-color;
+    }
+
+    &__total {
+        width: 100%;
+        font-weight: 700;
+        text-align: center;
     }
 }
 
-.fatex-chat__dice-container {
+.fatex-dice {
     display: flex;
     justify-content: space-between;
     width: 50%;
-    margin: auto;
     margin-bottom: $component-padding * 2;
-}
 
-.fatex-chat__die {
-    font-family: "Fate Icons", sans-serif;
-    font-size: 24px;
-    color: $primary-color;
-}
-
-.fatex-chat__total {
-    text-align: center;
-    font-weight: 700;
-    font-size: 26px;
-}
-
-.fatex-chat__ladder {
-    color: $primary-color;
-    font-weight: 300;
-    font-size: 12px;
-    display: block;
+    &__die {
+        font-family: "Fate Icons", sans-serif;
+        color: $primary-color;
+    }
 }

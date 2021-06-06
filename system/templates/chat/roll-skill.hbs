@@ -1,28 +1,28 @@
-<div class="fatex__chat">
+<div class="fatex-chat">
     <header class="fatex-chat__headline-container">
-        <h2 class="fatex-headline fatex-headline--icon fatex-headline--center">
+        <h2 class="fatex-headline">
             {{ skill.name }}
         </h2>
 
-        <span class="fatex-chat__headline-icon{{#if skill.data.isNegative}} fatex-chat__headline-icon--negative{{/if}}">
+        <span class="fatex-headline__icon{{#if skill.data.isNegative}} fatex-headline__icon--negative{{/if}}">
             {{#if skill.data.isPositive}}+{{/if}}{{ rank }}
         </span>
     </header>
 
+    <div class="fatex-roll">
+        <div class="fatex-dice">
+            {{#each dice as |die dieIndex|}}
+                <div class="fatex-dice__die">
+                    {{ die.face }}
+                </div>
+            {{/each}}
+        </div>
 
+        <span class="fatex-roll__total">
+            {{ total }}
+        </span>
 
-    <div class="fatex-chat__dice-container">
-        {{#each dice as |die dieIndex|}}
-            <div class="fatex-chat__die">
-                {{ die.face }}
-            </div>
-        {{/each}}
-    </div>
-
-    <div class="fatex-chat__total">
-        {{ total }}
-
-        <span class="fatex-chat__ladder">
+        <span class="fatex-roll__ladder">
             {{ ladder }}
         </span>
     </div>
