@@ -1,5 +1,6 @@
 .fatex-headline {
     position: relative;
+    color: $headline-color;
     background: $headline-background;
     box-shadow: 1px 1px 1px $shadow-color;
 
@@ -65,7 +66,6 @@
         position: relative;
         padding: $component-padding / 2 $component-padding * 2;
         border: none;
-        color: $headline-color;
         font-size: 13px;
         font-weight: bold;
         text-transform: uppercase;
