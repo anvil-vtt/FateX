@@ -8,12 +8,31 @@
 }
 
 .fatex__artwork--image {
+    position: relative;
     width: 100%;
     height: 200px;
     background-size: cover;
     background-position: top center;
 
-    @include cutoff(25px);
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+    }
+
+    &::before {
+        top: 0;
+        left: 0;
+        border-top: 25px solid #f1f2f6;
+        border-right: 25px solid transparent;
+    }
+
+    &::after {
+        bottom: 0;
+        right: 0;
+        border-bottom: 25px solid #f1f2f6;
+        border-left: 25px solid transparent;
+    }
 }
 
 .fatex__artwork--handler {
