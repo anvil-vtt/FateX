@@ -68,11 +68,11 @@ export class SheetSetup extends FormApplication<any, any, FateActor> {
         super.activateListeners(html);
 
         // Clear actions
-        html.find(".setup_action--clear").click((e) => this._onClear.call(this, e, CLEAR.EVERYTHING));
-        html.find(".setup_action--clear-stress").click((e) => this._onClear.call(this, e, CLEAR.STRESS));
-        html.find(".setup_action--clear-skills").click((e) => this._onClear.call(this, e, CLEAR.SKILLS));
-        html.find(".setup_action--clear-consequences").click((e) => this._onClear.call(this, e, CLEAR.CONSEQUENCES));
-        html.find(".setup_action--clear-aspects").click((e) => this._onClear.call(this, e, CLEAR.ASPECTS));
+        html.find(".fatex-eb-clear").click((e) => this._onClear.call(this, e, CLEAR.EVERYTHING));
+        html.find(".fatex-eb-clear-stress").click((e) => this._onClear.call(this, e, CLEAR.STRESS));
+        html.find(".fatex-eb-clear-skills").click((e) => this._onClear.call(this, e, CLEAR.SKILLS));
+        html.find(".fatex-eb-clear-consequences").click((e) => this._onClear.call(this, e, CLEAR.CONSEQUENCES));
+        html.find(".fatex-eb-clear-aspects").click((e) => this._onClear.call(this, e, CLEAR.ASPECTS));
 
         // Setup actions
         html.find(".setup_action--setup-type").click((e) => this._onSetupType.call(this, e));

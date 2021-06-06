@@ -1,77 +1,44 @@
-.fatex__sheet_setup {
+.fatex-sheet-setup {
     padding: $component-padding;
     min-width: 100%;
 
-    h2 {
-        border: 0;
-        margin-bottom: $component-padding;
+    &__main {
+        margin-top: $component-padding * 4;
     }
 }
 
-.fatex__sheet_setup__setup {
-    margin-top: $component-padding * 4;
-}
-
-.fatex__sheet_setup__actions {
+.fatex-setup-actions {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: $component-padding/2 $component-padding/2;
-    grid-template-areas: "topl topm right" "bottoml bottomm right";
+    grid-template: 1fr 1fr / repeat(3, 1fr);
+    grid-template-areas: "x x r" "x x r";
+    gap: $component-padding / 2;
 
-    .setup_action--clear-aspects {
-        grid-area: topl;
-    }
+    &__button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: $component-padding / 2;
+        font-size: 12px;
+        border: 1px solid $primary-color;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: all 0.3s;
 
-    .setup_action--clear-consequences {
-        grid-area: topm;
-    }
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.3);
+        }
 
-    .setup_action--clear-skills {
-        grid-area: bottoml;
-    }
+        &--clear-all {
+            display: flex;
+            flex-direction: column;
+            grid-area: r;
 
-    .setup_action--clear-stress {
-        grid-area: bottomm;
-    }
+            @include fa-icon($fa-var-skull-crossbones);
+        }
 
-    .setup_action--clear {
-        grid-area: right;
-    }
-}
-
-.fatex__sheet_setup__action {
-    cursor: pointer;
-
-    border: 1px solid $primary-color;
-    border-radius: 3px;
-    padding: $component-padding / 2;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    transition: all 0.3s;
-
-    font-size: 12px;
-
-    &:hover {
-        background-color: rgba(0, 0, 0, 0.3);
-    }
-
-    &.fatex__sheet_setup__action--disabled {
-        pointer-events: none;
-        opacity: 0.3;
-    }
-}
-
-.setup_action--clear {
-    span {
-        @include fa-icon($fa-var-skull-crossbones);
-
-        &:before {
-            display: block;
-            text-align: center;
+        &--disabled {
+            pointer-events: none;
+            opacity: 0.3;
         }
     }
 }

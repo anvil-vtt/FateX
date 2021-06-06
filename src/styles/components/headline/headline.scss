@@ -71,8 +71,13 @@
 }
 
 .fatex-section-heading {
-    position: relative;
     display: block;
+    position: relative;
+
+    &--no-border {
+        border: none;
+        margin-bottom: $component-padding;
+    }
 }
 
 .fatex__headline__actions.fatex__item__actions,
