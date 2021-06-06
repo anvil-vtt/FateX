@@ -6,14 +6,14 @@ import { BaseComponent } from "../BaseComponent";
  */
 export class Sortable extends BaseComponent {
     /**
-     * Adds event listeners to all fatex__sortable components.
+     * Adds event listeners to all fatex-eb-sortable components.
      *
      * @param html
      * @param sheet
      */
     static activateListeners(html, sheet) {
         // We have to use standard event listeners here, because Items _onDrop() does not support jQuery events.
-        html.find(".fatex__sortable").each((_i, sortable) => {
+        html.find(".fatex-eb-sortable").each((_i, sortable) => {
             sortable.addEventListener("dragstart", (e) => sheet._onDragStart.call(sheet, e), false);
         });
 
@@ -23,10 +23,10 @@ export class Sortable extends BaseComponent {
     }
 
     static _onDragHandlerMouseDown(e) {
-        $(e.currentTarget).parents(".fatex__sortable").get(0).setAttribute("draggable", "true");
+        $(e.currentTarget).parents(".fatex-eb-sortable").get(0).setAttribute("draggable", "true");
     }
 
     static _onDragHandlerMouseUp(e) {
-        $(e.currentTarget).parents(".fatex__sortable").get(0).setAttribute("draggable", "false");
+        $(e.currentTarget).parents(".fatex-eb-sortable").get(0).setAttribute("draggable", "false");
     }
 }
