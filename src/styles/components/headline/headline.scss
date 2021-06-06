@@ -7,22 +7,25 @@
     &::after {
         content: "";
         position: absolute;
-        width: 0;
-        height: 0;
     }
 
     &::before {
         top: 0;
         left: 0;
+        width: 0;
+        height: 0;
         border-top: 15px solid #f1f2f6;
         border-right: 15px solid transparent;
     }
 
     &::after {
-        bottom: -2px;
-        right: -2px;
-        border-bottom: 17px solid #f1f2f6;
-        border-left: 17px solid transparent;
+        bottom: -3px;
+        right: -6px;
+        width: 17px;
+        height: 9px;
+        transform: rotate(315deg);
+        background: #f1f2f6;
+        border-top: 1px solid #a0a0a0;
     }
 
     &--center {
