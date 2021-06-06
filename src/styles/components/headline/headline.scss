@@ -1,17 +1,26 @@
 .fatex-headline {
     position: relative;
-    padding: $component-padding / 2 $component-padding * 2;
-    background: $headline-background;
-    color: $headline-color;
-    font-size: 13px;
-    font-weight: bold;
-    text-transform: uppercase;
-    box-shadow: 1px 1px 1px $shadow-color;
 
-    @include cutoff(15px);
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: $headline-background;
+        box-shadow: 1px 1px 1px $shadow-color;
+
+        @include cutoff(15px);
+    }
 
     &--center {
         text-align: center;
+    }
+
+    &--chat {
+        width: 70%;
+        margin: $component-padding auto;
     }
 
     &__icon {
@@ -24,9 +33,27 @@
         -webkit-text-stroke: 2px $primary-color;
         text-shadow: initial;
 
+        &--skill {
+            left: initial;
+            right: 100%;
+            font-size: 24px;
+            text-shadow: 1px 1px 1px $sheet-background;
+            transform: translate(15px, -7px);
+        }
+
         &--negative {
             color: $caution-color;
         }
+    }
+
+    &__text {
+        position: relative;
+        padding: $component-padding / 2 $component-padding * 2;
+        border: none;
+        color: $headline-color;
+        font-size: 13px;
+        font-weight: bold;
+        text-transform: uppercase;
     }
 }
 

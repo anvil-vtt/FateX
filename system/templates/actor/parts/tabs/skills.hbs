@@ -19,14 +19,17 @@
             <div class="fatex__skill fatex__input fatex__input--icon fatex__sortable item" data-item-id="{{skill._id}}">
 
                 <div class="fatex__skill__actions_wrapper">
-                    <div class="fatex__skill__input fatex-headline">{{skill.name}}</div>
+                    <div class="fatex-headline">
+                        <h3 class="fatex-headline__text">{{skill.name}}</h3>
 
-                    {{#unless skill.data.isNeutral}}
-                        <label
-                            class="fatex__skill__icon fatex__input__icon{{#if skill.data.isNegative}} fatex__skill__icon--negative{{/if}}">
-                            {{#if skill.data.isPositive}}+{{/if}}{{skill.data.rank}}
-                        </label>
-                    {{/unless}}
+                        {{#unless skill.data.isNeutral}}
+                            <span
+                                class="fatex-headline__icon fatex-headline__icon--skill{{#if skill.data.isNegative}} fatex-headline__icon--negative{{/if}}"
+                            >
+                                {{#if skill.data.isPositive}}+{{/if}}{{skill.data.rank}}
+                            </span>
+                        {{/unless}}
+                    </div>
 
                     <div class="fatex__skill__secondary__actions">
                         <span class="fatex__skill__increment" data-item="{{skill._id}}">+</span>

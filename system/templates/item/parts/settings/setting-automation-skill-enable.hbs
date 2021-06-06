@@ -1,11 +1,11 @@
 <div class="fatex__automation fatex__setting fatex__setting--min-height">
-    <h2 class="fatex-headline">
-        <span>{{localize headline}}</span>
+    <header class="fatex-headline">
+        <h3 class="fatex-headline__text">{{localize headline}}</h3>
 
         <div class="fatex__headline__actions fatex__setting__actions">
             <span class="fatex__item__add fatex__skill__reference__create">{{localize "FAx.Item.Automation.AddSkillRef"}}</span>
         </div>
-    </h2>
+    </header>
 
     {{#each statusReferences as |reference|}}
         <div class="fatex__skill__reference" data-index="{{reference.index}}">

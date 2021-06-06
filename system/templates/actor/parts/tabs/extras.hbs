@@ -9,8 +9,8 @@
     <div class="fatex__extras__wrapper">
         {{#each extras as |extra extraIndex|}}
             <div class="fatex__extra item {{#if extra.data.collapsed}}fatex__extra__collapsed{{/if}}" data-item-id="{{extra._id}}">
-                <h2 class="fatex-headline fatex__sortable" data-item-id="{{extra._id}}">
-                    <span>{{extra.name}}</span>
+                <header class="fatex-headline fatex__sortable" data-item-id="{{extra._id}}">
+                    <h3 class="fatex-headline__text">{{extra.name}}</h3>
 
                     <div class="fatex__headline__actions fatex__item__actions">
                         <span class="fatex__item__sort fatex__extra__sort"></span>
@@ -21,7 +21,7 @@
                     <div class="fatex__item__collapsible">
                         <span class="fatex__item__collapse fatex__stunt__collapse--toggle {{#if extra.data.collapsed}}fatex__item__collapse--closed{{/if}}" data-item="{{extra._id}}"></span>
                     </div>
-                </h2>
+                </header>
 
                 {{#unless extra.data.collapsed}}
                     {{#if extra.data.description}}
