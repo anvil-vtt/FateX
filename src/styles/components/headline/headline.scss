@@ -36,6 +36,13 @@
         padding-right: $component-padding * 4;
     }
 
+    &__action {
+        &--toggle {
+            @include fa-icon($fa-var-sync);
+            cursor: pointer;
+        }
+    }
+
     &__icon {
         position: absolute;
         top: 0;

@@ -1,0 +1,53 @@
+.fatex-button {
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+
+    &--add {
+        display: inline-block;
+        padding: 10px;
+        font-size: 10px;
+        font-weight: bold;
+        text-transform: uppercase;
+        border-radius: 0;
+        box-shadow: 2px 2px 4px 0 #2f3542;
+
+        @include fa-icon($fa-var-plus);
+    }
+
+    &--add,
+    &--dark {
+        background: #2f3542;
+        color: white;
+        text-align: center;
+    }
+
+    &--dark:before {
+        margin-right: $component-padding;
+    }
+
+    &--clear-all {
+        flex-direction: column;
+        grid-area: r;
+
+        @include fa-icon($fa-var-skull-crossbones);
+    }
+
+    &--disabled {
+        opacity: 0.3;
+        pointer-events: none;
+    }
+
+    &--light {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        border: 1px solid #2f3542;
+        transition: all 0.3s;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+    }
+}
