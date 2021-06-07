@@ -1,39 +1,37 @@
-<div class="u-padding-std">
-    <header class="fatex-headline">
-        <h2 class="fatex-headline__text">{{localize "FAx.Sheet.Consequences"}}</h2>
-        <div class="fatex__headline__actions fatex__item__actions">
-            <span class="fatex__item__add fatex__consequence__add"></span>
-        </div>
-    </header>
+<header class="fatex-headline">
+    <h2 class="fatex-headline__text">{{localize "FAx.Sheet.Consequences"}}</h2>
+    <div class="fatex__headline__actions fatex__item__actions">
+        <span class="fatex__item__add fatex__consequence__add"></span>
+    </div>
+</header>
 
-    {{#each consequences as |consequence consequenceIndex|}}
-        <div
-            class="fatex__consequence fatex__input fatex__input--icon fatex-eb-sortable item{{#if consequence.isCondition}} fatex__consequence--condition{{/if}}{{#if consequence.isDisabled}} fatex__helper--is-disabled{{/if}}"
-            data-item-id="{{consequence._id}}"
-        >
-            <label class="fatex__consequence__label fatex__input__label">{{consequence.data.label}}</label>
+{{#each consequences as |consequence consequenceIndex|}}
+    <div
+        class="fatex__consequence fatex__input fatex__input--icon fatex-eb-sortable item{{#if consequence.isCondition}} fatex__consequence--condition{{/if}}{{#if consequence.isDisabled}} fatex__helper--is-disabled{{/if}}"
+        data-item-id="{{consequence._id}}"
+    >
+        <label class="fatex__consequence__label fatex__input__label">{{consequence.data.label}}</label>
 
-            <div class="fatex__consequence__actions_wrapper">
-                <div class="fatex__consequence__input fatex__input__input" contenteditable="true" data-item-id="{{consequence._id}}">{{{consequence.data.value}}}</div>
+        <div class="fatex__consequence__actions_wrapper">
+            <div class="fatex__consequence__input fatex__input__input" contenteditable="true" data-item-id="{{consequence._id}}">{{{consequence.data.value}}}</div>
 
-                {{#if consequence.isConsequence}}
-                    <label class="fatex__consequence__icon fatex__input__icon">{{consequence.data.icon}}</label>
-                {{/if}}
+            {{#if consequence.isConsequence}}
+                <label class="fatex__consequence__icon fatex__input__icon">{{consequence.data.icon}}</label>
+            {{/if}}
 
-                {{#if consequence.isCondition}}
-                    <label class="fatex__consequence__box" data-item="{{consequence._id}}">
-                        <span class="fatex__consequence__box__label">{{consequence.data.icon}}</span>
-                        <input class="fatex__consequence__box__checkbox" type="checkbox"{{#if consequence.data.active}} checked="checked"{{/if}}>
-                        <span class="fatex__consequence__box__icon"></span>
-                    </label>
-                {{/if}}
+            {{#if consequence.isCondition}}
+                <label class="fatex__consequence__box" data-item="{{consequence._id}}">
+                    <span class="fatex__consequence__box__label">{{consequence.data.icon}}</span>
+                    <input class="fatex__consequence__box__checkbox" type="checkbox"{{#if consequence.data.active}} checked="checked"{{/if}}>
+                    <span class="fatex__consequence__box__icon"></span>
+                </label>
+            {{/if}}
 
-                <div class="fatex__consequence__actions fatex__item__actions">
-                    <span class="fatex__consequence__sort fatex__item__sort"></span>
-                    <span class="fatex__consequence__settings fatex__item__settings" data-item="{{consequence._id}}"></span>
-                    <span class="fatex__consequence__delete fatex__item__delete" data-item="{{consequence._id}}"></span>
-                </div>
+            <div class="fatex__consequence__actions fatex__item__actions">
+                <span class="fatex__consequence__sort fatex__item__sort"></span>
+                <span class="fatex__consequence__settings fatex__item__settings" data-item="{{consequence._id}}"></span>
+                <span class="fatex__consequence__delete fatex__item__delete" data-item="{{consequence._id}}"></span>
             </div>
         </div>
-    {{/each}}
-</div>
+    </div>
+{{/each}}

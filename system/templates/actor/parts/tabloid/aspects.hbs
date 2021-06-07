@@ -1,24 +1,22 @@
-<div class="u-padding-std">
-    <header class="fatex-headline">
-        <h2 class="fatex-headline__text">{{localize "FAx.Sheet.Aspects"}}</h2>
-        <div class="fatex__headline__actions fatex__item__actions">
-            <span class="fatex__item__add fatex__aspect__add"></span>
-        </div>
-    </header>
+<header class="fatex-headline">
+    <h2 class="fatex-headline__text">{{localize "FAx.Sheet.Aspects"}}</h2>
+    <div class="fatex__headline__actions fatex__item__actions">
+        <span class="fatex__item__add fatex__aspect__add"></span>
+    </div>
+</header>
 
-    {{#each aspects as |aspect aspectIndex|}}
-        <div class="fatex__aspect fatex__input fatex-eb-sortable item" data-item-id="{{aspect._id}}">
-            <label class="fatex__aspect__label fatex__input__label">{{aspect.data.label}}</label>
+{{#each aspects as |aspect aspectIndex|}}
+    <div class="fatex__aspect fatex__input fatex-eb-sortable item" data-item-id="{{aspect._id}}">
+        <label class="fatex__aspect__label fatex__input__label">{{aspect.data.label}}</label>
 
-            <div class="fatex__aspect__actions_wrapper">
-                <div class="fatex__aspect__input fatex__input__input" contenteditable="true" data-item-id="{{aspect._id}}">{{{aspect.data.value}}}</div>
+        <div class="fatex__aspect__actions_wrapper">
+            <div class="fatex__aspect__input fatex__input__input" contenteditable="true" data-item-id="{{aspect._id}}">{{{aspect.data.value}}}</div>
 
-                <div class="fatex__aspect__actions fatex__item__actions">
-                    <span class="fatex__aspect__sort fatex__item__sort"></span>
-                    <span class="fatex__aspect__settings fatex__item__settings" data-item="{{aspect._id}}"></span>
-                    <span class="fatex__aspect__delete fatex__item__delete" data-item="{{aspect._id}}"></span>
-                </div>
+            <div class="fatex__aspect__actions fatex__item__actions">
+                <span class="fatex__aspect__sort fatex__item__sort"></span>
+                <span class="fatex__aspect__settings fatex__item__settings" data-item="{{aspect._id}}"></span>
+                <span class="fatex__aspect__delete fatex__item__delete" data-item="{{aspect._id}}"></span>
             </div>
         </div>
-    {{/each}}
-</div>
+    </div>
+{{/each}}

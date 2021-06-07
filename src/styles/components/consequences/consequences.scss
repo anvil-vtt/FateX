@@ -1,9 +1,3 @@
-.fatex__consequence {
-    & + .fatex__consequence {
-        padding-top: $component-padding;
-    }
-}
-
 div.fatex__consequence--condition {
     padding-left: 36px;
 }

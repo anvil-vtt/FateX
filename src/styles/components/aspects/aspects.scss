@@ -1,9 +1,3 @@
-.fatex__aspect {
-    & + .fatex__aspect {
-        padding-top: $component-padding;
-    }
-}
-
 .fatex__aspect__actions_wrapper {
     position: relative;
 }
