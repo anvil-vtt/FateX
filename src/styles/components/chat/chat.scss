@@ -30,9 +30,6 @@
     justify-content: space-between;
     width: 50%;
     margin-bottom: $component-padding * 2;
-
-    &__die {
-        font-family: "Fate Icons", sans-serif;
-        color: $primary-color;
-    }
+    font-family: "Fate Icons", sans-serif;
+    color: $primary-color;
 }
