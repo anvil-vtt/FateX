@@ -3,16 +3,16 @@
         <h3 class="fatex-headline__text">{{localize headline}}</h3>
     </header>
 
-    <label class="fatex__input" for="{{ fieldName }}">
-        {{#if help}}<span class="fatex__setting__help">{{localize help}}</span>{{/if}}
-
+    <label for="{{ fieldName }}">
         <input
             type="text"
-            class="fatex__setting__input fatex__input__input"
+            class="fatex-text-input"
             name="{{ fieldName }}"
             value="{{ field }}"
             {{#if placeholder }}placeholder="{{ localize placeholder}}"{{/if}}
             {{#if dtype }}data-dtype="{{ dtype }}"{{/if}}
         />
+
+        {{#if help}}<span class="fatex__setting__help">{{localize help}}</span>{{/if}}
     </label>
 </div>

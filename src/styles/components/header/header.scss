@@ -8,17 +8,6 @@
     font-size: 23px;
     color: $header-font-color;
 
-    .fatex-header__input {
-        height: 25px;
-        color: $header-font-color;
-        border: 0;
-
-        &--fp {
-            width: 40px;
-            text-align: center;
-        }
-    }
-
     &__center,
     &__name {
         display: flex;

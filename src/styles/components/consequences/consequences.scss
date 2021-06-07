@@ -1,3 +1,9 @@
+.fatex-consequence {
+    display: flex;
+    flex-direction: column-reverse;
+    position: relative;
+}
+
 div.fatex__consequence--condition {
     padding-left: 36px;
 }
@@ -8,12 +14,6 @@ div.fatex__consequence--condition {
 
 .fatex__consequence__actions {
     font-size: 18px;
-}
-
-.fatex__consequence__input {
-    border-radius: 3px;
-    border-bottom: 1px solid $primary-color;
-    padding: 3px 0;
 }
 
 .fatex__consequence__box {

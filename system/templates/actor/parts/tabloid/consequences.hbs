@@ -7,13 +7,13 @@
 
 {{#each consequences as |consequence consequenceIndex|}}
     <div
-        class="fatex__consequence fatex__input fatex__input--icon fatex-eb-sortable item{{#if consequence.isCondition}} fatex__consequence--condition{{/if}}{{#if consequence.isDisabled}} fatex__helper--is-disabled{{/if}}"
+        class="fatex-consequence fatex__input--icon fatex-eb-sortable item{{#if consequence.isCondition}} fatex__consequence--condition{{/if}}{{#if consequence.isDisabled}} fatex__helper--is-disabled{{/if}}"
         data-item-id="{{consequence._id}}"
     >
         <label class="fatex__consequence__label fatex__input__label">{{consequence.data.label}}</label>
 
         <div class="fatex__consequence__actions_wrapper">
-            <div class="fatex__consequence__input fatex__input__input" contenteditable="true" data-item-id="{{consequence._id}}">{{{consequence.data.value}}}</div>
+            <div class="fatex-eb-consequence-input fatex-text-input" contenteditable="true" data-item-id="{{consequence._id}}">{{{consequence.data.value}}}</div>
 
             {{#if consequence.isConsequence}}
                 <label class="fatex__consequence__icon fatex__input__icon">{{consequence.data.icon}}</label>

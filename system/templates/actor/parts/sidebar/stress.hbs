@@ -1,6 +1,6 @@
 <div class="u-padding-std">
     {{#each stress as |stress stressIndex|}}
-        <div class="fatex__stress__track fatex__stress__track--index-{{stressIndex}} item {{#if stress.isDisabled}}fatex__helper--is-disabled{{/if}}" data-item-id="{{stress._id}}">
+        <div class="fatex__stress__track item {{#if stress.isDisabled}}fatex__helper--is-disabled{{/if}}" data-item-id="{{stress._id}}">
             <header class="fatex-headline fatex-eb-sortable" data-item-id="{{stress._id}}">
                 <h2 class="fatex-headline__text">{{stress.name}}</h2>
                 <div class="fatex__headline__actions fatex__item__actions">

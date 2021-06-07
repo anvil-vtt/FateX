@@ -27,7 +27,7 @@ export class ConsequenceItem extends BaseItem {
         html.find(".fatex__consequence__box").click((e) => this._onToggleCondition.call(this, e, sheet));
 
         // Change consequence text
-        html.find(".fatex__consequence__input").on("blur", (e) => this._onConsequenceTextChange.call(this, e, sheet));
+        html.find(".fatex-eb-consequence-input").on("blur", (e) => this._onConsequenceTextChange.call(this, e, sheet));
     }
 
     /*************************
