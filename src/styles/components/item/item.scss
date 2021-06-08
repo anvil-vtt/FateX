@@ -14,17 +14,6 @@
     }
 }
 
-.fatex__item__collapsible {
-    display: flex;
-    align-items: center;
-
-    position: absolute;
-    height: 100%;
-    top: 0;
-    right: 20px;
-    text-shadow: 1px 1px 2px $shadow-color;
-}
-
 .fatex__item__add {
     @include fa-icon($fa-var-plus);
     cursor: pointer;
@@ -52,16 +41,6 @@
 
 .fatex__item__sortrank {
     @include fa-icon($fa-var-sort-amount-down);
-    cursor: pointer;
-}
-
-.fatex__item__collapse {
-    @include fa-icon($fa-var-chevron-down);
-    cursor: pointer;
-}
-
-.fatex__item__collapse--closed {
-    @include fa-icon($fa-var-chevron-up);
     cursor: pointer;
 }
 
