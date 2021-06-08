@@ -3,7 +3,7 @@
         <h2>{{localize "FAx.Sheet.Skills"}}</h2>
 
         <div class="fatex__item__actions">
-            <span class="fatex__item__sortrank fatex__skill__sortrank"></span>
+            <span class="fatex__item__sortrank"></span>
             <span class="fatex__item__add fatex__skill__add"></span>
         </div>
     </header>
@@ -17,29 +17,26 @@
     <div class="fatex__skills__columns fatex__skills__columns--{{actor._id}}">
         {{#each skills as |skill skillIndex|}}
             <div class="fatex__skill fatex__input--icon fatex-eb-sortable item" data-item-id="{{skill._id}}">
+                <div class="fatex-headline">
+                    <h3 class="fatex-headline__text">{{skill.name}}</h3>
 
-                <div class="fatex__skill__actions_wrapper">
-                    <div class="fatex-headline">
-                        <h3 class="fatex-headline__text">{{skill.name}}</h3>
-
-                        {{#unless skill.data.isNeutral}}
-                            <span
-                                class="fatex-headline__icon fatex-headline__icon--skill{{#if skill.data.isNegative}} fatex-headline__icon--negative{{/if}}"
-                            >
-                                {{#if skill.data.isPositive}}+{{/if}}{{skill.data.rank}}
-                            </span>
-                        {{/unless}}
-                    </div>
+                    {{#unless skill.data.isNeutral}}
+                        <span
+                            class="fatex-headline__icon fatex-headline__icon--skill{{#if skill.data.isNegative}} fatex-headline__icon--negative{{/if}}"
+                        >
+                            {{#if skill.data.isPositive}}+{{/if}}{{skill.data.rank}}
+                        </span>
+                    {{/unless}}
 
                     <div class="fatex__skill__secondary__actions">
                         <span class="fatex__skill__increment" data-item="{{skill._id}}">+</span>
                         <span class="fatex__skill__decrement" data-item="{{skill._id}}">-</span>
                     </div>
 
-                    <div class="fatex__skill__actions">
-                        <span class="fatex__skill__sort fatex__item__sort"></span>
-                        <span class="fatex__skill__settings fatex__item__settings" data-item="{{skill._id}}"></span>
-                        <span class="fatex__skill__delete fatex__item__delete" data-item="{{skill._id}}"></span>
+                    <div class="fatex-actions fatex-actions--skill">
+                        <span class="fatex-eb-item-sort fatex-actions__icon fatex-actions__icon--drag"></span>
+                        <span class="fatex-eb-skill-settings fatex-actions__icon fatex-actions__icon--settings " data-item="{{skill._id}}"></span>
+                        <span class="fatex-eb-skill-delete fatex-actions__icon fatex-actions__icon--delete" data-item="{{skill._id}}"></span>
                     </div>
                 </div>
             </div>

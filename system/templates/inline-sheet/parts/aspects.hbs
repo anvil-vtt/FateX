@@ -1,7 +1,7 @@
 <div class="u-padding-std">
     {{#each aspects as |aspect aspectIndex|}}
         <div class="fatex-aspect fatex-eb-sortable item" data-item-id="{{aspect._id}}">
-            <div class="fatex__aspect__actions_wrapper">
+            <div class="fatex-u-pos-relative">
                 <div class="fatex-eb-aspect-input fatex-text-input" data-placeholder="{{aspect.data.label}}" contenteditable="true" data-item-id="{{aspect._id}}">{{{aspect.data.value}}}</div>
             </div>
         </div>

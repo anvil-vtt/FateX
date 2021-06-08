@@ -1,0 +1,70 @@
+.fatex-actions {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 100%;
+    text-shadow: 1px 1px 2px #a0a0a0;
+    z-index: 5;
+
+    &--headline,
+    &--skill {
+        top: 0;
+        padding: 0 10px 0 50px;
+        background: linear-gradient(90deg, rgba(47, 53, 66, 0) 0%, #2f3542 33%, #2f3542 100%);
+        opacity: 0;
+        transition: opacity 0.2s;
+    }
+
+    &--skill {
+        right: 0;
+    }
+
+    &--skill-secondary {
+    }
+
+    &__icon {
+        cursor: pointer;
+
+        &--add {
+            @include fa-icon($fa-var-plus);
+        }
+
+        &--collapse {
+            @include fa-icon($fa-var-chevron-down);
+        }
+
+        &--delete {
+            transition: color 0.2s;
+            cursor: pointer;
+
+            @include fa-icon($fa-var-trash);
+
+            &:hover {
+                color: $caution-color;
+            }
+        }
+
+        &--expand {
+            @include fa-icon($fa-var-chevron-up);
+        }
+
+        &--settings {
+            @include fa-icon($fa-var-cog);
+        }
+
+        &--drag {
+            @include fa-icon($fa-var-sort);
+            cursor: move;
+        }
+
+        &--sort {
+            @include fa-icon($fa-var-sort-amount-down);
+        }
+    }
+}
+
+.fatex-eb-edit-mode .fatex-actions {
+    opacity: 1;
+    pointer-events: all;
+}

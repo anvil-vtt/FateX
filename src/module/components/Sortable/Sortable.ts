@@ -20,6 +20,10 @@ export class Sortable extends BaseComponent {
         // Only allow dragging when using the sort-handle
         html.find(".fatex__item__sort").mousedown((e) => this._onDragHandlerMouseDown.call(this, e));
         html.find(".fatex__item__sort").mouseup((e) => this._onDragHandlerMouseUp.call(this, e));
+
+        // New bindings for skills. Remove this comment once actions have been standardised.
+        html.find(".fatex-eb-item-sort").mousedown((e) => this._onDragHandlerMouseDown.call(this, e));
+        html.find(".fatex-eb-item-sort").mouseup((e) => this._onDragHandlerMouseUp.call(this, e));
     }
 
     static _onDragHandlerMouseDown(e) {

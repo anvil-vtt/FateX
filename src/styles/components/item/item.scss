@@ -8,7 +8,7 @@
     @include edit-settings($sheet-background);
     pointer-events: none;
 
-    .fatex__helper--enable-editmode & {
+    .fatex-eb-edit-mode & {
         opacity: 1;
         pointer-events: all;
     }

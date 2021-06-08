@@ -23,6 +23,12 @@ export abstract class BaseItem {
         html.find(`.fatex__${this.entityName}__settings`).click((e) => this._onItemSettings.call(this, e, sheet));
         html.find(`.fatex__${this.entityName}__delete`).click((e) => this._onItemDelete.call(this, e, sheet));
         html.find(`.fatex__${this.entityName}__sortrank`).click(() => this._onItemSortRank.call(this, sheet));
+
+        // New bindings for skills. Remove this comment once the actions have been standardised.
+        html.find(`.fatex-eb-${this.entityName}-add`).click((e) => this._onItemAdd.call(this, e, sheet));
+        html.find(`.fatex-eb-${this.entityName}-settings`).click((e) => this._onItemSettings.call(this, e, sheet));
+        html.find(`.fatex-eb-${this.entityName}-delete`).click((e) => this._onItemDelete.call(this, e, sheet));
+        html.find(`.fatex-eb-${this.entityName}-sortrank`).click(() => this._onItemSortRank.call(this, sheet));
     }
 
     /**
@@ -174,6 +180,6 @@ export abstract class BaseItem {
     protected static isEditMode(e): boolean {
         const element = jQuery(e.currentTarget);
 
-        return !!element.closest(".fatex__helper--enable-editmode").length;
+        return !!element.closest(".fatex-eb-edit-mode").length;
     }
 }

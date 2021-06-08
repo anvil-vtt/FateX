@@ -3,7 +3,7 @@
     opacity: 0;
 
     &:hover,
-    .fatex__helper--enable-editmode & {
+    .fatex-eb-edit-mode & {
         opacity: 1;
     }
 }
@@ -11,7 +11,7 @@
 .fatex__helper__editmode--vanish {
     display: none;
 
-    .fatex__helper--enable-editmode & {
+    .fatex-eb-edit-mode & {
         display: inherit;
     }
 }
