@@ -8,6 +8,10 @@
     pointer-events: none;
     z-index: 5;
 
+    &--headline {
+        right: 15px;
+    }
+
     &--headline,
     &--skill {
         top: 0;
