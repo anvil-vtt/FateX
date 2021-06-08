@@ -1,7 +1,7 @@
-<div class="fatex__extras">
-    <div class="u-padding-std">
+<section class="fatex-u-full-width">
+    <div class="fatex-u-padding-std fatex-item-grid">
         {{#each extras as |extra extraIndex|}}
-            <div class="fatex__extra item" data-item-id="{{extra._id}}">
+            <div data-item-id="{{extra._id}}">
                 <header
                     class="fatex-eb-sortable fatex-headline fatex-headline--fixed-icon"
                     data-item-id="{{extra._id}}"
@@ -18,7 +18,7 @@
 
                 {{#unless extra.data.collapsed}}
                     {{#if extra.data.description}}
-                        <div class="fatex__extra__description">
+                        <div class="fatex-item-description">
                             {{{extra.data.description}}}
                         </div>
                     {{/if}}
@@ -30,4 +30,4 @@
             <h3 class="fatex-headline__text">+</h3>
         </div>
     </div>
-</div>
+</section>

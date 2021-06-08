@@ -7,7 +7,7 @@
         </div>
     </header>
 
-    <div class="fatex-item-grid fatex-item-grid--stunts">
+    <div class="fatex-item-grid">
         {{#each stunts as |stunt stuntIndex|}}
             <div class="fatex__stunt item{{#if stunt.data.collapsed}} fatex__stunt__collapsed{{/if}}" data-item-id="{{stunt._id}}">
                 <header class="fatex-headline fatex-headline--fixed-icon fatex-eb-sortable" data-item-id="{{stunt._id}}">
@@ -23,7 +23,7 @@
 
                 {{#unless stunt.data.collapsed}}
                     {{#if stunt.data.description}}
-                        <div class="fatex__stunt__description">
+                        <div class="fatex-item-description">
                             {{#if stunt.data.markdown}}
                                 {{{stunt.data.markdown}}}
                             {{else}}
