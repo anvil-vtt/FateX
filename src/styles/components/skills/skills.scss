@@ -1,18 +1,21 @@
-.fatex__skills--columns {
-    .fatex__skills__columns {
-        display: grid;
+.fatex-skill-grid {
+    display: grid;
+    gap: $component-padding * 2;
+    width: 30%;
+    min-width: 220px;
+    padding: $component-padding $component-padding / 2 $component-padding 0;
+
+    &--two-column {
         grid-template-columns: 1fr 1fr;
-        grid-auto-flow: column;
-        grid-column-gap: $component-padding * 2;
+        width: 50%;
+        min-width: 360px;
     }
 }
 
 .fatex__skill {
     break-inside: avoid;
-    width: 100%;
-    padding: $component-padding $component-padding / 2;
+    // padding: $component-padding $component-padding / 2;
     cursor: pointer;
-    display: inline-block;
 
     .fatex-eb-edit-mode & {
         cursor: default;

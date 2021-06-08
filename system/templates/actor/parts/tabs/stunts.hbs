@@ -8,7 +8,7 @@
     </header>
 
     {{#each stunts as |stunt stuntIndex|}}
-        <div class="fatex__stunt item {{#if stunt.data.collapsed}}fatex__stunt__collapsed{{/if}}" data-item-id="{{stunt._id}}">
+        <div class="fatex__stunt item{{#if stunt.data.collapsed}} fatex__stunt__collapsed{{/if}}" data-item-id="{{stunt._id}}">
             <header class="fatex-headline fatex-headline--fixed-icon fatex-eb-sortable" data-item-id="{{stunt._id}}">
                 <h3 class="fatex-headline__text">{{stunt.name}}</h3>
 

@@ -1,20 +1,12 @@
-.fatex__tabs {
-    padding: $component-padding;
-
-    display: flex;
-    flex-direction: column;
-}
-
 .fatex__tabs__content {
     flex-grow: 1;
 
     display: flex;
     flex-direction: column;
+    padding: $component-padding;
 }
 
 .fatex__tabs__tab {
-    padding: $component-padding;
-    padding-bottom: 0;
     flex-grow: 1;
 }
 
@@ -60,20 +52,11 @@
 .fatex__tabs__tab--skills {
     .fatex__tabs__tab__content {
         display: flex;
-
-        .fatex__skills {
-            min-width: 220px;
-            width: 30%;
-        }
-
-        .fatex__skills--columns {
-            min-width: 360px;
-            width: 50%;
-        }
+        gap: 20px;
 
         .fatex__stunts {
             flex-grow: 1;
-            padding-left: $component-padding;
+            width: 100%;
         }
     }
 }

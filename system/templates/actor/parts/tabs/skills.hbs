@@ -1,4 +1,4 @@
-<section class="fatex__skills{{#if options.enableColumns}} fatex__skills--columns{{/if}}">
+<section>
     <header class="fatex-section-heading">
         <h2>{{localize "FAx.Sheet.Skills"}}</h2>
 
@@ -8,15 +8,9 @@
         </div>
     </header>
 
-    <style>
-        .fatex__skills__columns--{{actor._id}} {
-            grid-template-rows: repeat({{options.numberRows}}, auto);
-        }
-    </style>
-
-    <div class="fatex__skills__columns fatex__skills__columns--{{actor._id}}">
+    <div class="fatex-skill-grid{{#if options.enableColumns}} fatex-skill-grid--two-column{{/if}}">
         {{#each skills as |skill skillIndex|}}
-            <div class="fatex__skill fatex__input--icon fatex-eb-sortable item" data-item-id="{{skill._id}}">
+            <div class="fatex__skill fatex__input--icon fatex-eb-sortable" data-item-id="{{skill._id}}">
                 <div class="fatex-headline">
                     <h3 class="fatex-headline__text">{{skill.name}}</h3>
 
