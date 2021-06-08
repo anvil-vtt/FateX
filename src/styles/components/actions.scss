@@ -16,9 +16,7 @@
     &--skill {
         top: 0;
         padding: 0 10px 0 50px;
-        background: linear-gradient(90deg, rgba(47, 53, 66, 0) 0%, #2f3542 33%, #2f3542 100%);
-        opacity: 0;
-        transition: opacity 0.2s;
+        background: transparent;
     }
 
     &--skill {
@@ -30,6 +28,7 @@
 
     &__icon {
         cursor: pointer;
+        opacity: 0;
 
         &--add {
             @include fa-icon($fa-var-plus);
@@ -40,7 +39,8 @@
         }
 
         &--collapse,
-        &--expand {
+        &--expand,
+        &--toggle {
             opacity: 1;
             pointer-events: all;
         }
@@ -56,6 +56,11 @@
             }
         }
 
+        &--drag {
+            @include fa-icon($fa-var-sort);
+            cursor: move;
+        }
+
         &--expand {
             @include fa-icon($fa-var-chevron-up);
         }
@@ -64,18 +69,29 @@
             @include fa-icon($fa-var-cog);
         }
 
-        &--drag {
-            @include fa-icon($fa-var-sort);
-            cursor: move;
-        }
-
         &--sort {
             @include fa-icon($fa-var-sort-amount-down);
+        }
+
+        &--toggle {
+            font-size: 12px;
+            @include fa-icon($fa-var-sync);
+
+            &::before {
+                margin-right: 8px;
+            }
         }
     }
 }
 
-.fatex-eb-edit-mode .fatex-actions {
-    opacity: 1;
-    pointer-events: all;
+.fatex-eb-edit-mode {
+    .fatex-actions--headline,
+    .fatex-actions--skill {
+        background: linear-gradient(90deg, rgba(47, 53, 66, 0) 0%, #2f3542 33%, #2f3542 100%);
+    }
+
+    .fatex-actions__icon {
+        opacity: 1;
+        pointer-events: all;
+    }
 }
