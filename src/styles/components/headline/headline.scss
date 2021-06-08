@@ -37,6 +37,11 @@
         padding-right: $component-padding * 4;
     }
 
+    &--helper {
+        display: none;
+        cursor: pointer;
+    }
+
     &__icon {
         position: absolute;
         top: 0;
@@ -87,4 +92,10 @@
     @include edit-settings($headline-background);
     pointer-events: none;
     right: 10px;
+}
+
+.fatex-eb-edit-mode {
+    .fatex-headline--helper {
+        display: inherit;
+    }
 }

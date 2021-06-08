@@ -1,21 +1,3 @@
-.fatex__helper__editmode {
-    transition: all 0.2s;
-    opacity: 0;
-
-    &:hover,
-    .fatex-eb-edit-mode & {
-        opacity: 1;
-    }
-}
-
-.fatex__helper__editmode--vanish {
-    display: none;
-
-    .fatex-eb-edit-mode & {
-        display: inherit;
-    }
-}
-
 .fatex__helper--is-disabled {
     opacity: 0.3;
 }
