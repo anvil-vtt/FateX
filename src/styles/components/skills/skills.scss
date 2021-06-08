@@ -1,17 +1,3 @@
-.fatex-skill-grid {
-    display: grid;
-    gap: $component-padding * 2;
-    width: 30%;
-    min-width: 220px;
-    padding: $component-padding $component-padding / 2 $component-padding 0;
-
-    &--two-column {
-        grid-template-columns: 1fr 1fr;
-        width: 50%;
-        min-width: 360px;
-    }
-}
-
 .fatex__skill {
     break-inside: avoid;
     // padding: $component-padding $component-padding / 2;

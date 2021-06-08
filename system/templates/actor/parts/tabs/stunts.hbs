@@ -1,4 +1,4 @@
-<section class="fatex__stunts">
+<section class="fatex-u-full-width">
     <header class="fatex-section-heading">
         <h2>{{localize "FAx.Sheet.Stunts"}}</h2>
 
@@ -7,30 +7,32 @@
         </div>
     </header>
 
-    {{#each stunts as |stunt stuntIndex|}}
-        <div class="fatex__stunt item{{#if stunt.data.collapsed}} fatex__stunt__collapsed{{/if}}" data-item-id="{{stunt._id}}">
-            <header class="fatex-headline fatex-headline--fixed-icon fatex-eb-sortable" data-item-id="{{stunt._id}}">
-                <h3 class="fatex-headline__text">{{stunt.name}}</h3>
+    <div class="fatex-item-grid fatex-item-grid--stunts">
+        {{#each stunts as |stunt stuntIndex|}}
+            <div class="fatex__stunt item{{#if stunt.data.collapsed}} fatex__stunt__collapsed{{/if}}" data-item-id="{{stunt._id}}">
+                <header class="fatex-headline fatex-headline--fixed-icon fatex-eb-sortable" data-item-id="{{stunt._id}}">
+                    <h3 class="fatex-headline__text">{{stunt.name}}</h3>
 
-                <div class="fatex-actions fatex-actions--headline">
-                    <span class="fatex-eb-item-sort fatex-actions__icon fatex-actions__icon--drag"></span>
-                    <span class="fatex-eb-stunt-settings fatex-actions__icon fatex-actions__icon--settings" data-item="{{stunt._id}}"></span>
-                    <span class="fatex-eb-stunt-delete fatex-actions__icon fatex-actions__icon--delete" data-item="{{stunt._id}}"></span>
-                    <span class="fatex-eb-item-collapse fatex-actions__icon fatex-actions__icon--collapse{{#if stunt.data.collapsed}} fatex-actions__icon--expand{{/if}}" data-item="{{stunt._id}}"></span>
-                </div>
-            </header>
-
-            {{#unless stunt.data.collapsed}}
-                {{#if stunt.data.description}}
-                    <div class="fatex__stunt__description">
-                        {{#if stunt.data.markdown}}
-                            {{{stunt.data.markdown}}}
-                        {{else}}
-                            {{{stunt.data.description}}}
-                        {{/if}}
+                    <div class="fatex-actions fatex-actions--headline">
+                        <span class="fatex-eb-item-sort fatex-actions__icon fatex-actions__icon--drag"></span>
+                        <span class="fatex-eb-stunt-settings fatex-actions__icon fatex-actions__icon--settings" data-item="{{stunt._id}}"></span>
+                        <span class="fatex-eb-stunt-delete fatex-actions__icon fatex-actions__icon--delete" data-item="{{stunt._id}}"></span>
+                        <span class="fatex-eb-item-collapse fatex-actions__icon fatex-actions__icon--collapse{{#if stunt.data.collapsed}} fatex-actions__icon--expand{{/if}}" data-item="{{stunt._id}}"></span>
                     </div>
-                {{/if}}
-            {{/unless}}
-        </div>
-    {{/each}}
+                </header>
+
+                {{#unless stunt.data.collapsed}}
+                    {{#if stunt.data.description}}
+                        <div class="fatex__stunt__description">
+                            {{#if stunt.data.markdown}}
+                                {{{stunt.data.markdown}}}
+                            {{else}}
+                                {{{stunt.data.description}}}
+                            {{/if}}
+                        </div>
+                    {{/if}}
+                {{/unless}}
+            </div>
+        {{/each}}
+    </div>
 </section>
