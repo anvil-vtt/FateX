@@ -1,22 +1,18 @@
 <div class="fatex__extras">
-
-    <div class="fatex__extra__add fatex__helper__editmode fatex__helper__editmode--vanish">
-        <h2 class="fatex-headline-center">
-            <span>+</span>
-        </h2>
-    </div>
-
-    <div class="fatex__extras__wrapper">
+    <div class="u-padding-std">
         {{#each extras as |extra extraIndex|}}
-            <div class="fatex__extra item {{#if extra.data.collapsed}}fatex__extra__collapsed{{/if}}" data-item-id="{{extra._id}}">
-                <header class="fatex-headline fatex-eb-sortable" data-item-id="{{extra._id}}">
+            <div class="fatex__extra item" data-item-id="{{extra._id}}">
+                <header
+                    class="fatex-eb-sortable fatex-headline fatex-headline--fixed-icon"
+                    data-item-id="{{extra._id}}"
+                >
                     <h3 class="fatex-headline__text">{{extra.name}}</h3>
 
                     <div class="fatex-actions fatex-actions--headline">
                         <span class="fatex-eb-item-sort fatex-actions__icon fatex-actions__icon--drag"></span>
                         <span class="fatex-eb-extra-settings fatex-actions__icon fatex-actions__icon--settings" data-item="{{extra._id}}"></span>
                         <span class="fatex-eb-extra-delete fatex-actions__icon fatex-actions__icon--delete" data-item="{{extra._id}}"></span>
-                        <span class="fatex-eb-item-collapse fatex-actions__icon fatex-actions__icon--collapse{{#if stunt.data.collapsed}} fatex-actions__icon--expand{{/if}}" data-item="{{extra._id}}"></span>
+                        <span class="fatex-eb-item-collapse fatex-actions__icon fatex-actions__icon--collapse{{#if extra.data.collapsed}} fatex-actions__icon--expand{{/if}}" data-item="{{extra._id}}"></span>
                     </div>
                 </header>
 
@@ -29,5 +25,11 @@
                 {{/unless}}
             </div>
         {{/each}}
+
+        <div class="fatex__extra__add fatex__helper__editmode fatex__helper__editmode--vanish">
+            <div class="fatex-headline fatex-headline--center">
+                <h3 class="fatex-headline__text">+</h3>
+            </div>
+        </div>
     </div>
 </div>
