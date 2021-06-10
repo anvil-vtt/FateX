@@ -3,8 +3,3 @@
     height: 25px;
     font-size: 23px;
 }
-
-.fatex__item__choose {
-    @include fa-icon($fa-var-file-medical);
-    cursor: pointer;
-}
