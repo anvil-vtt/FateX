@@ -57,14 +57,14 @@
         </div>
     </div>
 
-    <div class="fatex__setting{{#if (ne 2 data.labelType)}} fatex__setting--disabled{{/if}}">
+    <div class="fatex__setting{{#if (ne 2 data.labelType)}} fatex-u-disabled{{/if}}">
         <header class="fatex-headline">
             <h3 class="fatex-headline__text">{{localize "FAx.Item.Stress.Boxes.Custom"}}</h3>
         </header>
 
         <label for="data.customLabel">
             <input type="text" class="fatex-text-input" name="data.customLabel" value="{{data.customLabel}}"/>
-            <span class="fatex__setting__help">{{localize "FAx.Item.Stress.Boxes.CustomHelp"}}</span>
+            <span class="fatex-text-input__setting-label">{{localize "FAx.Item.Stress.Boxes.CustomHelp"}}</span>
         </label>
     </div>
 

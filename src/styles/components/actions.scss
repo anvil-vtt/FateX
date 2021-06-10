@@ -19,6 +19,10 @@
         background: transparent;
     }
 
+    &--inline {
+        // Styles for item actions
+    }
+
     &--skill {
         right: 0;
     }
@@ -40,10 +44,20 @@
             @include fa-icon($fa-var-plus);
         }
 
+        &--automation,
+        &--toggle {
+            font-size: 12px;
+
+            &::before {
+                margin-right: 8px;
+            }
+        }
+
         &--collapse {
             @include fa-icon($fa-var-chevron-down);
         }
 
+        &--automation,
         &--collapse,
         &--expand,
         &--toggle {
@@ -84,12 +98,7 @@
         }
 
         &--toggle {
-            font-size: 12px;
             @include fa-icon($fa-var-sync);
-
-            &::before {
-                margin-right: 8px;
-            }
         }
     }
 }

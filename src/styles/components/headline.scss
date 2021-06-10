@@ -87,13 +87,6 @@
     }
 }
 
-.fatex__headline__actions.fatex__item__actions,
-.fatex__headline__actions {
-    @include edit-settings($headline-background);
-    pointer-events: none;
-    right: 10px;
-}
-
 .fatex-eb-edit-mode {
     .fatex-headline--helper {
         display: inherit;

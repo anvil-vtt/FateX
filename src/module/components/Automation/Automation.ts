@@ -21,8 +21,8 @@ export const TYPES = {
 
 export class Automation extends BaseComponent {
     static activateListeners(html, sheet) {
-        html.find(".fatex__skill__reference__create").on("click", (e) => this._onAddReference.call(this, e, sheet));
-        html.find(".fatex__skill__reference__create--boxes").on("click", (e) => this._onAddReference.call(this, e, sheet, TYPES.BOXES));
+        html.find(".fatex-eb-create-skill-reference").on("click", (e) => this._onAddReference.call(this, e, sheet));
+        html.find(".fatex-eb-create-skill-reference-boxes").on("click", (e) => this._onAddReference.call(this, e, sheet, TYPES.BOXES));
 
         html.find(".fatex__skill__reference__change").on("change", (e) => this._onChangeReference.call(this, e, sheet));
         html.find(".fatex__skill__reference__remove").on("click", (e) => this._onRemoveReference.call(this, e, sheet));
