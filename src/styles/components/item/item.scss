@@ -4,32 +4,7 @@
     font-size: 23px;
 }
 
-.fatex__item__actions {
-    @include edit-settings($sheet-background);
-    pointer-events: none;
-
-    .fatex-eb-edit-mode & {
-        opacity: 1;
-        pointer-events: all;
-    }
-}
-
-.fatex__item__add {
-    @include fa-icon($fa-var-plus);
-    cursor: pointer;
-}
-
-.fatex__item__settings {
-    @include fa-icon($fa-var-cog);
-    cursor: pointer;
-}
-
 .fatex__item__choose {
     @include fa-icon($fa-var-file-medical);
-    cursor: pointer;
-}
-
-.fatex__item__sortrank {
-    @include fa-icon($fa-var-sort-amount-down);
     cursor: pointer;
 }

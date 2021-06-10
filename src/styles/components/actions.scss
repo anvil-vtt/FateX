@@ -4,7 +4,7 @@
     align-items: center;
     gap: 10px;
     height: 100%;
-    text-shadow: 1px 1px 2px #a0a0a0;
+    text-shadow: 1px 1px 2px $shadow-color;
     pointer-events: none;
     z-index: 5;
 
@@ -29,8 +29,19 @@
         background: transparent;
     }
 
-    &--inline {
-        // Styles for item actions
+    &--item {
+        top: -10px;
+    }
+
+    &--item,
+    &--section-heading {
+        right: 0;
+        padding-left: 50px;
+        font-size: 18px;
+    }
+
+    &--section-heading {
+        top: 5px;
     }
 
     &--skill {
@@ -117,6 +128,11 @@
     .fatex-actions--headline,
     .fatex-actions--skill {
         background: linear-gradient(90deg, rgba(47, 53, 66, 0) 0%, #2f3542 33%, #2f3542 100%);
+    }
+
+    .fatex-actions--item,
+    .fatex-actions--section-heading {
+        background: linear-gradient(90deg, transparentize($sheet-background, 1) 0%, $sheet-background 33%, $sheet-background 100%);
     }
 
     .fatex-actions__icon {

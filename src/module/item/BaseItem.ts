@@ -20,7 +20,6 @@ export abstract class BaseItem {
 
         // Default listeners for adding, configuring and deleting embedded items
         html.find(`.fatex__${this.entityName}__settings`).click((e) => this._onItemSettings.call(this, e, sheet));
-        html.find(`.fatex__${this.entityName}__sortrank`).click(() => this._onItemSortRank.call(this, sheet));
 
         // New bindings for skills. Remove this comment once the actions have been standardised.
         html.find(`.fatex-eb-${this.entityName}-add`).click((e) => this._onItemAdd.call(this, e, sheet));

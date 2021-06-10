@@ -14,6 +14,12 @@
             <div class="fatex-u-pos-relative">
                 <div class="fatex-eb-consequence-input fatex-text-input" contenteditable="true" data-item-id="{{consequence._id}}">{{{consequence.data.value}}}</div>
 
+                 <div class="fatex-actions fatex-actions--item">
+                    <span class="fatex-eb-consequence-sort fatex-actions__icon fatex-actions__icon--drag"></span>
+                    <span class="fatex-eb-consequence-settings fatex-actions__icon fatex-actions__icon--settings" data-item="{{consequence._id}}"></span>
+                    <span class="fatex-eb-consequence-delete fatex-actions__icon fatex-actions__icon--delete" data-item="{{consequence._id}}"></span>
+                </div>
+
                 <label class="fatex-text-input__label">{{consequence.data.label}}</label>
 
                 {{#if consequence.isConsequence}}
@@ -27,12 +33,6 @@
                         <span class="fatex__consequence__box__icon"></span>
                     </label>
                 {{/if}}
-
-                <div class="fatex__consequence__actions fatex__item__actions">
-                    <span class="fatex-eb-consequence-sort fatex-actions__icon fatex-actions__icon--drag"></span>
-                    <span class="fatex-eb-consequence-settings fatex-actions__icon fatex-actions__icon--settings" data-item="{{consequence._id}}"></span>
-                    <span class="fatex-eb-consequence-delete fatex-actions__icon fatex-actions__icon--delete" data-item="{{consequence._id}}"></span>
-                </div>
             </div>
         </div>
     {{/each}}
