@@ -2,27 +2,6 @@
     padding-left: $component-padding;
 }
 
-.fatex__input__label {
-    text-transform: uppercase;
-    font-size: 8px;
-    font-weight: 500;
-    letter-spacing: 3px;
-    color: $primary-color;
-    padding-left: $component-padding / 2;
-    padding-top: 3px;
-    white-space: nowrap;
-
-    &:empty::before {
-        content: "\a0";
-    }
-}
-
-.fatex__input__textarea {
-    height: auto;
-    border-bottom: 1px solid $primary-color;
-    border-radius: 3px;
-}
-
 .fatex__input__icon {
     position: absolute;
     top: 0;
