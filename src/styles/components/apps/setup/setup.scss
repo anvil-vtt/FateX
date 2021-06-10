@@ -45,14 +45,6 @@
         &:hover {
             background-color: rgba(0, 0, 0, 0.3);
         }
-
-        &--clear-all {
-            display: flex;
-            flex-direction: column;
-            grid-area: r;
-
-            @include fa-icon($fa-var-skull-crossbones);
-        }
     }
 }
 

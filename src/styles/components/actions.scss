@@ -61,66 +61,27 @@
         cursor: pointer;
         opacity: 0;
 
-        &--add {
-            @include fa-icon($fa-var-plus);
-        }
-
-        &--automation,
-        &--toggle {
-            font-size: 12px;
-
-            &::before {
-                margin-right: 8px;
-            }
-        }
-
-        &--collapse {
-            @include fa-icon($fa-var-chevron-down);
-        }
-
-        &--automation,
-        &--collapse,
-        &--expand,
-        &--toggle {
+        &--no-hide {
             opacity: 1;
             pointer-events: all;
         }
 
-        &--delete {
-            transition: color 0.2s;
-            cursor: pointer;
-
-            @include fa-icon($fa-var-trash);
-
-            &:hover {
-                color: $caution-color;
-            }
-        }
-
-        &--drag {
-            @include fa-icon($fa-var-sort);
+        &--move {
             cursor: move;
         }
 
-        &--expand {
-            @include fa-icon($fa-var-chevron-up);
+        &--reverse {
+            transform: rotate(180deg);
+            text-shadow: -1px -1px 2px #a0a0a0;
         }
 
         &--secondary {
             font-family: "Fate Icons", sans-serif;
         }
+    }
 
-        &--settings {
-            @include fa-icon($fa-var-cog);
-        }
-
-        &--sort {
-            @include fa-icon($fa-var-sort-amount-down);
-        }
-
-        &--toggle {
-            @include fa-icon($fa-var-sync);
-        }
+    &__text {
+        font-size: 12px;
     }
 }
 

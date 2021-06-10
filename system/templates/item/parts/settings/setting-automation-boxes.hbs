@@ -2,10 +2,9 @@
     <header class="fatex-headline">
         <h3 class="fatex-headline__text">{{localize headline}}</h3>
 
-        <div class="fatex-actions fatex-actions--headline">
-            <span class="fatex-eb-create-skill-reference-boxes fatex-actions__icon fatex-actions__icon--add fatex-actions__icon--automation">
-                {{localize "FAx.Item.Automation.AddSkillRef"}}
-            </span>
+        <div class="fatex-eb-create-skill-reference-boxes fatex-actions fatex-actions--headline">
+            <i class="fatex-actions__icon fatex-actions__icon--no-hide fa fa-plus"></i>
+            <span class="fatex-actions__text">{{localize "FAx.Item.Automation.AddSkillRef"}}</span>
         </div>
     </header>
 
@@ -70,7 +69,7 @@
 
             <div class="fatex-actions fatex-actions--automation-item">
                 <div
-                    class="fatex-eb-remove-skill-reference fatex-actions__icon fatex-actions__icon--delete fatex-actions__icon--automation"
+                    class="fatex-eb-remove-skill-reference fatex-actions__icon fatex-u-delete fa fa-trash fatex-actions__icon--no-hide"
                     data-index="{{reference.index}}"></div>
             </div>
         </div>

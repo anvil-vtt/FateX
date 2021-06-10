@@ -1,7 +1,7 @@
 <header class="fatex-headline">
     <h2 class="fatex-headline__text">{{localize "FAx.Sheet.Aspects"}}</h2>
     <div class="fatex-actions fatex-actions--headline">
-        <span class="fatex-eb-aspect-add fatex-actions__icon fatex-actions__icon--add"></span>
+        <span class="fatex-eb-aspect-add fatex-actions__icon fa fa-plus"></span>
     </div>
 </header>
 
@@ -11,9 +11,9 @@
             <div class="fatex-eb-aspect-input fatex-text-input" contenteditable="true" data-item-id="{{aspect._id}}">{{{aspect.data.value}}}</div>
 
             <div class="fatex-actions fatex-actions--item">
-                <span class="fatex-eb-aspect-sort fatex-actions__icon fatex-actions__icon--drag"></span>
-                <span class="fatex-eb-aspect-settings fatex-actions__icon fatex-actions__icon--settings" data-item="{{aspect._id}}"></span>
-                <span class="fatex-eb-aspect-delete fatex-actions__icon fatex-actions__icon--delete" data-item="{{aspect._id}}"></span>
+                <span class="fatex-eb-aspect-sort fatex-actions__icon fatex-actions__icon--move fa fa-sort"></span>
+                <span class="fatex-eb-aspect-settings fatex-actions__icon fa fa-cog" data-item="{{aspect._id}}"></span>
+                <span class="fatex-eb-aspect-delete fatex-actions__icon fatex-u-delete fa fa-trash" data-item="{{aspect._id}}"></span>
             </div>
 
             <label class="fatex-text-input__label">{{aspect.data.label}}</label>

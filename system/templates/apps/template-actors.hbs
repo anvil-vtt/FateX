@@ -41,16 +41,22 @@
             </div>
 
             <div class="fatex__template__actions">
-                <span class="fatex-eb-configure-template fatex-button fatex-button--dark fatex-button--settings" data-template="{{template._id}}">
-                    {{localize "FAx.Global.Actions.Configure"}}
+                <span class="fatex-eb-configure-template fatex-button fatex-button--dark" data-template="{{template._id}}">
+                    <i class="fa fa-cog"></i>
+                    <span>{{localize "FAx.Global.Actions.Configure"}}</span>
                 </span>
 
-                <span class="fatex-eb-duplicate-template fatex-button fatex-button--dark fatex-button--delete" data-template="{{template._id}}">
-                    {{localize "FAx.Global.Actions.Duplicate"}}
+                <span class="fatex-eb-duplicate-template fatex-button fatex-button--dark" data-template="{{template._id}}">
+                    <i class="fa fa-copy"></i>
+                    <span>{{localize "FAx.Global.Actions.Duplicate"}}</span>
                 </span>
 
-                <span class="fatex-eb-delete-template fatex-button fatex-button--dark fatex-button--delete" data-template="{{template._id}}">
-                    {{localize "FAx.Global.Actions.Delete"}}
+                <span
+                    class="fatex-eb-delete-template fatex-button fatex-button--dark fatex-u-delete" 
+                    data-template="{{template._id}}"
+                >
+                    <i class="fa fa-trash"></i>
+                    <span>{{localize "FAx.Global.Actions.Delete"}}</span>
                 </span>
             </div>
         </div>

@@ -3,51 +3,12 @@
     padding: 5px;
     border-radius: 4px;
 
-    &--add {
-        display: inline-block;
-        padding: 10px;
-        font-size: 10px;
-        font-weight: bold;
-        text-transform: uppercase;
-        border-radius: 0;
-        box-shadow: 2px 2px 4px 0 #2f3542;
-
-        @include fa-icon($fa-var-plus);
-    }
-
-    &--add,
-    &--dark {
-        background: #2f3542;
-        color: white;
-        text-align: center;
-    }
-
-    &--dark:before {
-        margin-right: $component-padding;
-    }
-
-    &--delete {
-        transition: color 0.2s;
-        cursor: pointer;
-
-        @include fa-icon($fa-var-trash);
-
-        &:hover {
-            color: $caution-color;
-        }
-    }
-
-    &--duplicate {
-        @include fa-icon($fa-var-copy);
-    }
-
     &--clear-all {
         flex-direction: column;
         grid-area: r;
-
-        @include fa-icon($fa-var-skull-crossbones);
     }
 
+    &--clear-all,
     &--light {
         display: flex;
         align-items: center;
@@ -61,7 +22,34 @@
         }
     }
 
-    &--settings {
-        @include fa-icon($fa-var-cog);
+    &--dark {
+        display: flex;
+    }
+
+    &--dark,
+    &--square {
+        gap: 8px;
+        align-items: center;
+        justify-content: center;
+        background: #2f3542;
+        color: white;
+    }
+
+    &--dark:before {
+        margin-right: $component-padding;
+    }
+
+    &--square {
+        display: inline-flex;
+        padding: 10px;
+        font-size: 10px;
+        font-weight: bold;
+        text-transform: uppercase;
+        border-radius: 0;
+        box-shadow: 2px 2px 4px 0 #2f3542;
+
+        i {
+            transform: translateY(-1px);
+        }
     }
 }

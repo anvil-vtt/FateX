@@ -9,10 +9,10 @@
                     <h3 class="fatex-headline__text">{{extra.name}}</h3>
 
                     <div class="fatex-actions fatex-actions--headline">
-                        <span class="fatex-eb-item-sort fatex-actions__icon fatex-actions__icon--drag"></span>
-                        <span class="fatex-eb-extra-settings fatex-actions__icon fatex-actions__icon--settings" data-item="{{extra._id}}"></span>
-                        <span class="fatex-eb-extra-delete fatex-actions__icon fatex-actions__icon--delete" data-item="{{extra._id}}"></span>
-                        <span class="fatex-eb-item-collapse fatex-actions__icon fatex-actions__icon--collapse{{#if extra.data.collapsed}} fatex-actions__icon--expand{{/if}}" data-item="{{extra._id}}"></span>
+                        <span class="fatex-eb-item-sort fatex-actions__icon fatex-actions__icon--move fa fa-sort"></span>
+                        <span class="fatex-eb-extra-settings fatex-actions__icon fa fa-cog" data-item="{{extra._id}}"></span>
+                        <span class="fatex-eb-extra-delete fatex-actions__icon fatex-u-delete fa fa-trash" data-item="{{extra._id}}"></span>
+                        <span class="fatex-eb-item-collapse fatex-actions__icon fatex-actions__icon--no-hide fa fa-chevron-up{{#if extra.data.collapsed}} fatex-actions__icon--reverse{{/if}}" data-item="{{extra._id}}"></span>
                     </div>
                 </header>
 
