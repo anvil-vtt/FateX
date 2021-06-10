@@ -22,9 +22,20 @@
                         </span>
                     {{/unless}}
 
-                    <div class="fatex__skill__secondary__actions">
-                        <span class="fatex__skill__increment" data-item="{{skill._id}}">+</span>
-                        <span class="fatex__skill__decrement" data-item="{{skill._id}}">-</span>
+                    <div class="fatex-actions fatex-actions--skill-secondary">
+                        <span
+                            class="fatex-eb-skill-increment fatex-actions__icon fatex-actions__icon--secondary"
+                            data-item="{{skill._id}}"
+                        >
+                            +
+                        </span>
+
+                        <span
+                            class="fatex-eb-skill-decrement fatex-actions__icon fatex-actions__icon--secondary"
+                            data-item="{{skill._id}}"
+                        >
+                            -
+                        </span>
                     </div>
 
                     <div class="fatex-actions fatex-actions--skill">

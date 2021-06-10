@@ -13,8 +13,8 @@ export class SkillItem extends BaseItem {
 
         // Check or uncheck a single box
         html.find(".fatex__skill").click((e) => this._onRollSkill.call(this, e, sheet));
-        html.find(".fatex__skill__increment").click((e) => this._onSkillChangeRank.call(this, e, sheet, true));
-        html.find(".fatex__skill__decrement").click((e) => this._onSkillChangeRank.call(this, e, sheet, false));
+        html.find(".fatex-eb-skill-increment").click((e) => this._onSkillChangeRank.call(this, e, sheet, true));
+        html.find(".fatex-eb-skill-decerement").click((e) => this._onSkillChangeRank.call(this, e, sheet, false));
     }
 
     /**

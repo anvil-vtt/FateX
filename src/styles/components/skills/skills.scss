@@ -8,51 +8,6 @@
     }
 }
 
-.fatex__skill--filler {
-    opacity: 0;
-}
-
-.fatex__skill__icon {
-    transform: translate(15px, -7px);
-    color: $sheet-background;
-    -webkit-text-stroke: 2px $primary-color;
-    text-shadow: initial;
-}
-
-.fatex__skill__icon--negative {
-    color: $caution-color;
-}
-
-.fatex__skill__secondary__actions {
-    display: flex;
-    align-items: center;
-    pointer-events: none;
-    position: absolute;
-    left: 0;
-    top: 0;
-    transform: translate(-15px, 20px);
-
-    opacity: 0;
-    color: $primary-color;
-    font-size: 16px;
-    text-shadow: 1px -1px 1px $sheet-background;
-
-    .fatex-eb-edit-mode & {
-        opacity: 1;
-        pointer-events: all;
-    }
-}
-
-.fatex__skill__increment {
-    font-family: "Fate Icons", sans-serif;
-    cursor: pointer;
-}
-
-.fatex__skill__decrement {
-    font-family: "Fate Icons", sans-serif;
-    cursor: pointer;
-}
-
 .fatex__skill__add {
     margin-bottom: 0;
     cursor: pointer;

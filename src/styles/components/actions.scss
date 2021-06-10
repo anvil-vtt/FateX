@@ -24,6 +24,12 @@
     }
 
     &--skill-secondary {
+        left: -15px;
+        top: 20px;
+        gap: 0;
+        font-size: 16px;
+        color: $primary-color;
+        text-shadow: 1px -1px 1px $sheet-background;
     }
 
     &__icon {
@@ -63,6 +69,10 @@
 
         &--expand {
             @include fa-icon($fa-var-chevron-up);
+        }
+
+        &--secondary {
+            font-family: "Fate Icons", sans-serif;
         }
 
         &--settings {
