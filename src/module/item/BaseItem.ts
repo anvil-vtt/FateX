@@ -136,7 +136,7 @@ export abstract class BaseItem {
                 },
             },
             {
-                classes: ["fatex", "fatex__dialog"],
+                classes: ["fatex", "fatex-dialog"],
             }
         ).render(true);
     }

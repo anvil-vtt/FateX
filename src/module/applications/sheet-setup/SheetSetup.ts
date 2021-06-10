@@ -145,7 +145,7 @@ export class SheetSetup extends FormApplication<any, any, FateActor> {
                 },
             },
             {
-                classes: ["fatex", "fatex__dialog"],
+                classes: ["fatex", "fatex-dialog"],
             }
         ).render(true);
     }

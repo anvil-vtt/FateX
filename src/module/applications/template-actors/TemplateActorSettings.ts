@@ -93,7 +93,7 @@ export class TemplateActorSettings extends FormApplication<any, any, any> {
                 },
             },
             {
-                classes: ["fatex", "fatex__dialog"],
+                classes: ["fatex", "fatex-dialog"],
             }
         ).render(true);
     }

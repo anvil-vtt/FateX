@@ -135,7 +135,7 @@ export class Automation extends BaseComponent {
                 },
             },
             {
-                classes: ["fatex", "fatex__dialog"],
+                classes: ["fatex", "fatex-dialog"],
             }
         ).render(true);
     }
