@@ -8,6 +8,16 @@
     pointer-events: none;
     z-index: 5;
 
+    &--automation-item {
+        right: $component-padding * 2;
+        top: 50%;
+        transform: translateY(-50%);
+
+        .fatex-actions__icon {
+            font-size: 14px;
+        }
+    }
+
     &--headline {
         right: 15px;
     }

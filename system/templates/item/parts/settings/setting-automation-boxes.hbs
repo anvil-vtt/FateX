@@ -10,7 +10,7 @@
     </header>
 
     {{#each boxReferences as |reference|}}
-        <div class="fatex__skill__reference" data-index="{{reference.index}}">
+        <div class="fatex-u-pos-relative fatex__skill__reference" data-index="{{reference.index}}">
             <div class="fatex__skill__reference__condition">
                 <select
                         class="fatex__skill__reference__change fatex__skill__reference__change--argument"
@@ -68,8 +68,10 @@
                 </select>
             </div>
 
-            <div class="fatex__skill__reference__actions">
-                <div class="fatex__item__delete fatex__skill__reference__remove" data-index="{{reference.index}}"></div>
+            <div class="fatex-actions fatex-actions--automation-item">
+                <div
+                    class="fatex-eb-remove-skill-reference fatex-actions__icon fatex-actions__icon--delete fatex-actions__icon--automation"
+                    data-index="{{reference.index}}"></div>
             </div>
         </div>
     {{else}}

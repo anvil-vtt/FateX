@@ -26,6 +26,21 @@
         margin-right: $component-padding;
     }
 
+    &--delete {
+        transition: color 0.2s;
+        cursor: pointer;
+
+        @include fa-icon($fa-var-trash);
+
+        &:hover {
+            color: $caution-color;
+        }
+    }
+
+    &--duplicate {
+        @include fa-icon($fa-var-copy);
+    }
+
     &--clear-all {
         flex-direction: column;
         grid-area: r;
@@ -44,5 +59,9 @@
         &:hover {
             background-color: rgba(0, 0, 0, 0.3);
         }
+    }
+
+    &--settings {
+        @include fa-icon($fa-var-cog);
     }
 }

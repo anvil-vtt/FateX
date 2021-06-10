@@ -24,32 +24,12 @@
     cursor: pointer;
 }
 
-.fatex__item__duplicate {
-    @include fa-icon($fa-var-copy);
-    cursor: pointer;
-}
-
 .fatex__item__choose {
     @include fa-icon($fa-var-file-medical);
     cursor: pointer;
 }
 
-.fatex__item__sort {
-    @include fa-icon($fa-var-sort);
-    cursor: move;
-}
-
 .fatex__item__sortrank {
     @include fa-icon($fa-var-sort-amount-down);
     cursor: pointer;
-}
-
-.fatex__item__delete {
-    @include fa-icon($fa-var-trash);
-    transition: color 0.2s;
-    cursor: pointer;
-
-    &:hover {
-        color: $caution-color;
-    }
 }
