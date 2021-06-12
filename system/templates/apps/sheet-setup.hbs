@@ -45,9 +45,10 @@
                                         {{#each type as |group groupIndex|}}
                                             <div class="fatex__sheet_setup__group {{#if group.columns}}fatex__sheet_setup__group--columns{{/if}}">
                                                 {{#if group.label}}
-                                                    <span class="fatex__sheet_setup__group__label fatex-eb-toggle-selection">
-                                                        {{group.label}}
-                                                    </span>
+                                                    <div class="fatex__sheet_setup__group__label fatex-eb-toggle-selection">
+                                                        <i class="fa fa-sync"></i>
+                                                        <span>{{group.label}}</span>
+                                                    </div>
                                                 {{/if}}
 
                                                 <div class="fatex__sheet_setup__options {{#if group.columns}}fatex__sheet_setup__options--columns{{/if}}">

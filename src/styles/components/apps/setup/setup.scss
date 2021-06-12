@@ -2,20 +2,6 @@
     padding: $component-padding;
     min-width: 100%;
 
-    &__button {
-        display: inline-block;
-        padding: $component-padding;
-        background: $primary-color;
-        color: $headline-color;
-        font-size: 10px;
-        font-weight: bold;
-        text-transform: uppercase;
-        box-shadow: 2px 2px 4px 0 $primary-color;
-        cursor: pointer;
-
-        @include fa-icon($fa-var-plus);
-    }
-
     &__main {
         margin-top: $component-padding * 4;
     }
@@ -30,22 +16,6 @@
     grid-template: 1fr 1fr / repeat(3, 1fr);
     grid-template-areas: "x x r" "x x r";
     gap: $component-padding / 2;
-
-    &__button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: $component-padding / 2;
-        font-size: 12px;
-        border: 1px solid $primary-color;
-        border-radius: 3px;
-        cursor: pointer;
-        transition: all 0.3s;
-
-        &:hover {
-            background-color: rgba(0, 0, 0, 0.3);
-        }
-    }
 }
 
 .fatex__sheet_setup__groups {
@@ -72,8 +42,6 @@
     font-weight: bold;
     text-transform: uppercase;
     cursor: pointer;
-
-    @include fa-icon($fa-var-sync);
 }
 
 .fatex__sheet_setup__options--columns {
@@ -111,17 +79,23 @@
     top: -10000px;
 
     &:checked + .fatex__sheet_setup__option__box {
-        @include fa-icon($fa-var-check);
-
         background: $headline-background;
+
+        &:before {
+            content: "\f00c";
+            font-weight: 900;
+            font-family: "Font Awesome 5 Free";
+            display: inline-block;
+            font-style: normal;
+            font-variant: normal;
+            text-rendering: auto;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+        }
     }
 }
 
 .fatex__sheet_setup__type__actions {
     padding: $component-padding $component-padding 0;
     text-align: center;
-}
-
-.setup_action--setup-type {
-    @include fa-icon($fa-var-plus);
 }
