@@ -1,0 +1,139 @@
+{
+    "name": "Accelerated",
+    "identifier": "fae",
+    "types": {
+        "Aspekter": [
+            {
+                "label": "Grundläggande",
+                "entries": [
+                    {
+                        "name": "Övergripande koncept",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Övergripande koncept"
+                        }
+                    },
+                    {
+                        "name": "Bekymmer",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Bekymmer"
+                        }
+                    },
+                    {
+                        "name": "Annan Aspekt",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Annan"
+                        }
+                    },
+                    {
+                        "name": "Annan Aspekt",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Annan"
+                        }
+                    },
+                    {
+                        "name": "Annan Aspekt",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Annan"
+                        }
+                    }
+                ]
+            },
+            {
+                "label": "Valfria",
+                "entries": [
+                    {
+                        "name": "Relation",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Relation"
+                        }
+                    },
+                    {
+                        "name": "Blank Aspekt",
+                        "type": "aspect"
+                    }
+                ]
+            }
+        ],
+        "Konsekvenser": [
+            {
+                "entries": [
+                    {
+                        "name": "Mild konsekvens",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Mild",
+                            "icon": "2"
+                        }
+                    },
+                    {
+                        "name": "Måttlig konsekvens",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Måttlig",
+                            "icon": "4"
+                        }
+                    },
+                    {
+                        "name": "Allvarlig konsekvens",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Allvarlig",
+                            "icon": "6"
+                        }
+                    }
+                ]
+            }
+        ],
+        "Färdigheter": [
+            {
+                "columns": true,
+                "entries": [
+                    {
+                        "name": "Försiktig",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "Finurlig",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "Prålig",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "Kraftfull",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "Snabb",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "Lömsk",
+                        "type": "skill"
+                    }
+                ]
+            }
+        ],
+        "Påfrestning": [
+            {
+                "entries": [
+                    {
+                        "name": "Påfrestning",
+                        "type": "stress",
+                        "data": {
+                            "size": 3,
+                            "labelType": 0
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}
