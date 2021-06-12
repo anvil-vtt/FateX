@@ -14,7 +14,7 @@ export class SkillItem extends BaseItem {
         // Check or uncheck a single box
         html.find(".fatex__skill").click((e) => this._onRollSkill.call(this, e, sheet));
         html.find(".fatex-eb-skill-increment").click((e) => this._onSkillChangeRank.call(this, e, sheet, true));
-        html.find(".fatex-eb-skill-decerement").click((e) => this._onSkillChangeRank.call(this, e, sheet, false));
+        html.find(".fatex-eb-skill-decrement").click((e) => this._onSkillChangeRank.call(this, e, sheet, false));
     }
 
     /**
@@ -101,7 +101,7 @@ export class SkillItem extends BaseItem {
         const rank = parseInt(skill.data.rank) || 0;
         const actor = sheet.actor;
         // @ts-ignore
-        const roll = new Roll("4dF").roll({ 'async': false });
+        const roll = new Roll("4dF").roll({ async: false });
         const dice = this.getDice(roll);
         const total = this.getTotalString((roll.total || 0) + rank);
         const ladder = this.getLadderLabel((roll.total || 0) + rank);
