@@ -19,13 +19,21 @@
 
             <div class="fatex__stress__track__items fatex__stress__track__items__break">
                 {{#each stress.boxes as |box boxIndex|}}
-                    <div class="fatex__stress__track__item">
-                        <label class="fatex__stress__track__item__box" data-index="{{boxIndex}}" data-item="{{stress._id}}">
-                            <span class="fatex__stress__track__item__label">{{box.label}}</span>
-                            <input class="fatex__stress__track__item__checkbox" type="checkbox"{{#if box.isChecked}} checked="checked"{{/if}}>
-                            <span class="fatex__stress__track__item__icon fa fa-times"></span>
-                        </label>
-                    </div>
+                    <label
+                        class="fatex-eb-stess-checkbox fatex-checkbox"
+                        data-index="{{boxIndex}}"
+                        data-item="{{stress._id}}"
+                    >
+                        <span class="fatex__stress__track__item__label">{{box.label}}</span>
+
+                        <input
+                            class="fatex-checkbox__input"
+                            type="checkbox"{{#if box.isChecked}}
+                            checked="checked"{{/if}}
+                        >
+
+                        <i class="fatex-checkbox__icon fa fa-times"></i>
+                    </label>
 
                     {{#if (eq @index 3)}}
                         <div class="fatex__stress__track__break"></div>
@@ -33,7 +41,9 @@
                 {{/each}}
 
                 {{#each stress.fillers}}
-                    <div class="fatex__stress__track__filler"><div class="fatex__stress__track__item__box"></div></div>
+                    <div class="fatex__stress__track__filler">
+                        <div class="fatex-eb-stess-checkbox fatex-checkbox"></div>
+                    </div>
                 {{/each}}
             </div>
         </div>

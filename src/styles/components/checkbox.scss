@@ -1,0 +1,33 @@
+.fatex-checkbox {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    margin: 0 8px 15px;
+    font-size: 24px;
+    border: 2px solid $primary-color;
+    cursor: pointer;
+
+    &__label {
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: translate(-60%, -40%);
+        font-weight: 900;
+        color: $primary-color;
+        text-shadow: 1px 1px 1px $sheet-background;
+    }
+
+    &__icon {
+        width: 100%;
+        text-align: center;
+        opacity: 0;
+    }
+
+    &__input {
+        display: none;
+
+        &:checked + .fatex-checkbox__icon {
+            opacity: 1;
+        }
+    }
+}

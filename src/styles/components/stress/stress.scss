@@ -1,11 +1,3 @@
-.fatex__stress__track__item__checkbox {
-    display: none;
-
-    &:checked + .fatex__stress__track__item__icon {
-        opacity: 1;
-    }
-}
-
 .fatex__stress__track__items {
     display: flex;
     justify-content: space-evenly;

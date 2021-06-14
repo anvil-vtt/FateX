@@ -16,7 +16,7 @@ export class StressItem extends BaseItem {
         super.activateActorSheetListeners(html, sheet);
 
         // Check or uncheck a single box
-        html.find(".fatex__stress__track__item__box").click((e) => this._onStressBoxToggle.call(this, e, sheet));
+        html.find(".fatex-eb-stess-checkbox").click((e) => this._onStressBoxToggle.call(this, e, sheet));
     }
 
     static prepareItemData(data, item) {
