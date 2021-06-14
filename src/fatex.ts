@@ -52,9 +52,6 @@ Hooks.once("init", async () => {
         return module.id === "markdown-editor" && module.active;
     }).length;
 
-    // Preload all needed templates
-    await TemplatePreloader.preloadHandlebarsTemplates();
-
     // Register generic system settings
     FateXSettings.registerSettings();
 
@@ -111,6 +108,9 @@ Hooks.once("init", async () => {
         types: ["actorReference", "tokenReference"],
         makeDefault: true,
     });
+
+    // Preload all needed templates
+    await TemplatePreloader.preloadHandlebarsTemplates();
 });
 
 /* -------------------------------- */

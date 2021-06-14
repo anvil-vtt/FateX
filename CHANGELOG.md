@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.11.3
+* Moved template preloading to the end of the init hook to prevent ActorSheets to be registered too late
+
 ### 0.11.2
 * Changed terser settings to stop rewriting class names
 
