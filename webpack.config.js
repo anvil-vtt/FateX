@@ -3,6 +3,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const ESLintPlugin = require("eslint-webpack-plugin");
 const globImporter = require("node-sass-glob-importer");
+const TerserPlugin = require("terser-webpack-plugin");
 const path = require("path");
 const glob = require("glob");
 
@@ -35,6 +36,16 @@ module.exports = (env) => {
             filename: "system.js",
             path: path.resolve(__dirname, "dist"),
             publicPath: "/systems/fatex/",
+        },
+        optimization: {
+            minimize: true,
+            minimizer: [
+                new TerserPlugin({
+                    terserOptions: {
+                        keep_classnames: true,
+                    },
+                }),
+            ],
         },
         devServer: {
             hot: true,
