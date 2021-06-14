@@ -11,17 +11,17 @@
     }
 
     &::before {
-        top: 0;
-        left: 0;
-        border-top: 15px solid #f1f2f6;
-        border-right: 15px solid transparent;
+        top: -1px;
+        left: -1px;
+        border-top: 16px solid #f1f2f6;
+        border-right: 16px solid transparent;
     }
 
     &::after {
-        bottom: 0;
-        right: 0;
-        border-bottom: 15px solid #f1f2f6;
-        border-left: 15px solid transparent;
+        bottom: -1px;
+        right: -1px;
+        border-bottom: 16px solid #f1f2f6;
+        border-left: 16px solid transparent;
     }
 
     &--center {

@@ -41,10 +41,10 @@
         &::after {
             content: "";
             position: absolute;
-            top: 0;
-            right: 0;
-            border-top: 15px solid #f1f2f6;
-            border-left: 15px solid transparent;
+            top: -1px;
+            right: -1px;
+            border-top: 16px solid #f1f2f6;
+            border-left: 16px solid transparent;
         }
     }
 }
