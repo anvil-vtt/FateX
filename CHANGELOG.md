@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.11.2
+* Changed terser settings to stop rewriting class names
+
 ### 0.11.1
 * Fixed bug when opening the german sheet setup window
 
