@@ -7,7 +7,7 @@
 
 {{#each consequences as |consequence consequenceIndex|}}
     <div
-        class="fatex__input--icon fatex-eb-sortable item{{#if consequence.isCondition}} fatex__consequence--condition{{/if}}{{#if consequence.isDisabled}} fatex-u-disabled{{/if}}"
+        class="fatex-eb-sortable fatex-item{{#if consequence.isCondition}} fatex-item--condition{{/if}}{{#if consequence.isDisabled}} fatex-u-disabled{{/if}}"
         data-item-id="{{consequence._id}}"
     >
         <div class="fatex-u-pos-relative">
@@ -22,14 +22,23 @@
             <label class="fatex-text-input__label">{{consequence.data.label}}</label>
 
             {{#if consequence.isConsequence}}
-                <label class="fatex__consequence__icon fatex__input__icon">{{consequence.data.icon}}</label>
+                <label class="fatex__input__icon">{{consequence.data.icon}}</label>
             {{/if}}
 
             {{#if consequence.isCondition}}
-                <label class="fatex__consequence__box" data-item="{{consequence._id}}">
-                    <span class="fatex__consequence__box__label">{{consequence.data.icon}}</span>
-                    <input class="fatex__consequence__box__checkbox" type="checkbox"{{#if consequence.data.active}} checked="checked"{{/if}}>
-                    <span class="fatex__consequence__box__icon fa fa-times"></span>
+                <label
+                    class="fatex-eb-consequence-checkbox fatex-checkbox fatex-checkbox--consequence"
+                    data-item="{{consequence._id}}"
+                >
+                    <span class="fatex-checkbox__label">{{consequence.data.icon}}</span>
+
+                    <input
+                        class="fatex-checkbox__input"
+                        type="checkbox"
+                        {{#if consequence.data.active}}checked="checked"{{/if}}
+                    >
+
+                    <span class="fatex-checkbox__icon fa fa-times"></span>
                 </label>
             {{/if}}
         </div>

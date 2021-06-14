@@ -3,3 +3,11 @@
     height: 25px;
     font-size: 23px;
 }
+
+.fatex-item {
+    padding-left: $component-padding;
+
+    &--condition {
+        padding-left: 36px;
+    }
+}
