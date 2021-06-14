@@ -6,6 +6,8 @@
 
 @import "components/**/*.scss";
 
+@import "legacy/chat";
+
 @import "utils/disabled";
 @import "utils/effects";
 @import "utils/padding";
