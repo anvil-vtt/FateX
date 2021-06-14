@@ -1,6 +1,6 @@
 <section class="fatex-item-grid fatex-u-padding-std">
     {{#each stress as |stress stressIndex|}}
-        <div class="fatex__stress__track item{{#if stress.isDisabled}} fatex-u-disabled{{/if}}" data-item-id="{{stress._id}}">
+        <div class="{{#if stress.isDisabled}}fatex-u-disabled{{/if}}" data-item-id="{{stress._id}}">
             <header class="fatex-headline fatex-eb-sortable" data-item-id="{{stress._id}}">
                 <h3 class="fatex-headline__text">{{stress.name}}</h3>
 
@@ -12,38 +12,32 @@
             </header>
 
             {{#if stress.data.description}}
-                <span class="fatex__stress__track__description">
+                <span class="fatex-item-description">
                     {{stress.data.description}}
                 </span>
             {{/if}}
 
-            <div class="fatex__stress__track__items fatex__stress__track__items__break">
+            <div class="fatex-stress-track">
                 {{#each stress.boxes as |box boxIndex|}}
                     <label
                         class="fatex-eb-stess-checkbox fatex-checkbox"
                         data-index="{{boxIndex}}"
                         data-item="{{stress._id}}"
                     >
-                        <span class="fatex__stress__track__item__label">{{box.label}}</span>
+                        <span class="fatex-checkbox__label">{{box.label}}</span>
 
                         <input
                             class="fatex-checkbox__input"
-                            type="checkbox"{{#if box.isChecked}}
-                            checked="checked"{{/if}}
+                            type="checkbox"
+                            {{#if box.isChecked}}checked="checked"{{/if}}
                         >
 
                         <i class="fatex-checkbox__icon fa fa-times"></i>
                     </label>
-
-                    {{#if (eq @index 3)}}
-                        <div class="fatex__stress__track__break"></div>
-                    {{/if}}
                 {{/each}}
 
                 {{#each stress.fillers}}
-                    <div class="fatex__stress__track__filler">
-                        <div class="fatex-eb-stess-checkbox fatex-checkbox"></div>
-                    </div>
+                    <div class="fatex-eb-stess-checkbox fatex-checkbox fatex-checkbox--filler"></div>
                 {{/each}}
             </div>
         </div>
