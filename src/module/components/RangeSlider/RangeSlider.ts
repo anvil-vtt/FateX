@@ -6,14 +6,14 @@ import { BaseComponent } from "../BaseComponent";
  */
 export class RangeSlider extends BaseComponent {
     /**
-     * Adds event listeners to all fatex__setting__range components.
+     * Adds event listeners to all setting range components.
      * onChange for the input[type="text"] field and onInput for the input[type="range"].
      *
      * @param html
      */
     static activateListeners(html) {
-        html.find(".fatex__setting__range__value").on("change", (e) => this._onChangeRangeValue.call(this, e));
-        html.find(".fatex__setting__range__slider").on("input", (e) => this._onChangeRangeSlider.call(this, e));
+        html.find(".fatex-eb-setting-range-value").on("change", (e) => this._onChangeRangeValue.call(this, e));
+        html.find(".fatex-eb-setting-range-slider").on("input", (e) => this._onChangeRangeSlider.call(this, e));
     }
 
     /**
