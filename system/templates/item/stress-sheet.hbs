@@ -9,20 +9,33 @@
     }}
 
     <div class="fatex__setting">
-        <h2 class="fatex__headline">
-            <span>{{localize "FAx.Item.Stress.Size"}}</span>
-        </h2>
+        <header class="fatex-headline">
+            <h3 class="fatex-headline__text">{{localize "FAx.Item.Stress.Size"}}</h3>
+        </header>
 
-        <div class="fatex__setting__range">
-            <input type="text" class="fatex__setting__range__value" value="{{data.size}}" />
-            <input type="range" class="fatex__setting__range__slider" name="data.size" data-dtype="Number" value="{{data.size}}" min="1" max="32"/>
+        <div class="fatex-slider">
+            <input
+                class="fatex-eb-setting-range-value fatex-slider__label"
+                type="text"
+                value="{{data.size}}"
+            />
+
+            <input
+                type="range"
+                class="fatex-eb-setting-range-slider"
+                name="data.size"
+                data-dtype="Number"
+                value="{{data.size}}"
+                min="1"
+                max="32"
+            />
         </div>
     </div>
 
     <div class="fatex__setting">
-        <h2 class="fatex__headline fatex__setting__headline">
-            <span>{{localize "FAx.Item.Stress.Boxes.Label"}}</span>
-        </h2>
+        <header class="fatex-headline ">
+            <h3 class="fatex-headline__text">{{localize "FAx.Item.Stress.Boxes.Label"}}</h3>
+        </header>
 
         <div class="fatex__setting__radio__group">
             <div
@@ -57,14 +70,14 @@
         </div>
     </div>
 
-    <div class="fatex__setting{{#if (ne 2 data.labelType)}} fatex__setting--disabled{{/if}}">
-        <h2 class="fatex__headline fatex__setting__headline">
-            <span>{{localize "FAx.Item.Stress.Boxes.Custom"}}</span>
-        </h2>
+    <div class="fatex__setting{{#if (ne 2 data.labelType)}} fatex-u-disabled{{/if}}">
+        <header class="fatex-headline">
+            <h3 class="fatex-headline__text">{{localize "FAx.Item.Stress.Boxes.Custom"}}</h3>
+        </header>
 
-        <label class="fatex__input" for="data.customLabel">
-            <span class="fatex__setting__help">{{localize "FAx.Item.Stress.Boxes.CustomHelp"}}</span>
-            <input type="text" class="fatex__setting__input fatex__input__input" name="data.customLabel" value="{{data.customLabel}}"/>
+        <label for="data.customLabel">
+            <input type="text" class="fatex-text-input" name="data.customLabel" value="{{data.customLabel}}"/>
+            <span class="fatex-text-input__setting-label">{{localize "FAx.Item.Stress.Boxes.CustomHelp"}}</span>
         </label>
     </div>
 

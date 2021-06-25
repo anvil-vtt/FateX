@@ -3,9 +3,9 @@
 
         {{!--HEADER--}}
         <div class="desk__header">
-            <div class="fatex__header item__header">
-                <div class="fatex__header__name">
-                    <label class="fatex__header__label fatex__item__header__label">
+            <div class="fatex-header">
+                <div class="fatex-header__name">
+                    <label class="fatex-header__label fatex__item__header__label">
                         {{#if isOwnedBy}}
                             {{ isOwnedBy }}
                         {{else}}
@@ -13,7 +13,7 @@
                         {{/if}}
                     </label>
 
-                    <div class="fatex__header__title fatex__item__header__title">
+                    <div class="fatex-header__title fatex__item__header__title">
                         {{localize title}}
                     </div>
                 </div>
@@ -22,9 +22,7 @@
                     {{> centerPartial }}
                 {{/if}}
 
-                <div class="fatex__header__logo">
-                    <img class="fatex__header__logo__image" src="/systems/fatex/assets/logos/powered_by_fate.svg">
-                </div>
+                <img class="fatex-header__logo" src="/systems/fatex/assets/logos/powered_by_fate.svg">
             </div>
         </div>
 

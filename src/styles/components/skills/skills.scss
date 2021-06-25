@@ -1,89 +1,11 @@
-.fatex__skills {
-}
-
-.fatex__skills--columns {
-    .fatex__skills__columns {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-auto-flow: column;
-        grid-column-gap: $component-padding * 2;
-    }
-}
-
-.fatex__skills__headline {
-    position: relative;
-}
-
 .fatex__skill {
     break-inside: avoid;
-    width: 100%;
-    padding: $component-padding $component-padding / 2;
+    // padding: $component-padding $component-padding / 2;
     cursor: pointer;
-    display: inline-block;
 
-    .fatex__helper--enable-editmode & {
+    .fatex-eb-edit-mode & {
         cursor: default;
     }
-}
-
-.fatex__skill--filler {
-    opacity: 0;
-}
-
-.fatex__skill__icon {
-    transform: translate(15px, -7px);
-    color: $sheet-background;
-    -webkit-text-stroke: 2px $primary-color;
-    text-shadow: initial;
-}
-
-.fatex__skill__icon--negative {
-    color: $caution-color;
-}
-
-.fatex__skill__actions {
-    @include edit-settings($headline-background);
-    pointer-events: none;
-
-    .fatex__helper--enable-editmode & {
-        opacity: 1;
-        pointer-events: all;
-    }
-}
-
-.fatex__skill__secondary__actions {
-    display: flex;
-    align-items: center;
-    pointer-events: none;
-    position: absolute;
-    left: 0;
-    top: 0;
-    transform: translate(-15px, 20px);
-
-    opacity: 0;
-    color: $primary-color;
-    font-size: 16px;
-    text-shadow: 1px -1px 1px $sheet-background;
-
-    .fatex__helper--enable-editmode & {
-        opacity: 1;
-        pointer-events: all;
-    }
-}
-
-.fatex__skill__increment {
-    font-family: "Fate Icons", sans-serif;
-    cursor: pointer;
-}
-
-.fatex__skill__decrement {
-    font-family: "Fate Icons", sans-serif;
-    cursor: pointer;
-}
-
-.fatex__skill__actions_wrapper {
-    position: relative;
-    color: $headline-color;
 }
 
 .fatex__skill__add {

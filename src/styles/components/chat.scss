@@ -1,0 +1,35 @@
+.fatex-chat {
+    font-size: 24px;
+    text-align: center;
+}
+
+.fatex-chat__headline-container {
+    position: relative;
+    width: 70%;
+    margin: $component-padding auto;
+}
+
+.fatex-roll {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__ladder {
+        font-size: 12px;
+        font-weight: 300;
+        color: $primary-color;
+    }
+
+    &__total {
+        font-weight: 700;
+    }
+}
+
+.fatex-dice {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin-bottom: $component-padding * 2;
+    font-family: "Fate Icons", sans-serif;
+    color: $primary-color;
+}

@@ -17,7 +17,7 @@ export class StuntItem extends BaseItem {
     static activateActorSheetListeners(html, sheet) {
         super.activateActorSheetListeners(html, sheet);
 
-        html.find(".fatex__item__collapse").click((e) => this._onCollapseToggle.call(this, e, sheet));
+        html.find(".fatex-eb-item-collapse").click((e) => this._onCollapseToggle.call(this, e, sheet));
     }
 
     /*************************

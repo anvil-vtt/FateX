@@ -2,15 +2,19 @@
     title="FAx.Apps.Setup.Title"
 }}
 
-<div class="fatex__sheet_setup">
-    <div class="fatex__sheet_setup__manage">
-        <h2>{{localize "FAx.Apps.Setup.Manage"}}</h2>
+<div class="fatex-sheet-setup">
+    <section>
+        <h2 class="fatex-section-heading fatex-section-heading--no-border">
+            {{localize "FAx.Apps.Setup.Manage"}}
+        </h2>
 
         {{> "systems/fatex/templates/apps/parts/setup/actions.hbs" }}
-    </div>
+    </section>
 
-    <div class="fatex__sheet_setup__setup">
-        <h2>{{localize "FAx.Apps.Setup.Setup"}}</h2>
+    <div class="fatex-sheet-setup__main">
+        <h2 class="fatex-section-heading fatex-section-heading--no-border">
+            {{localize "FAx.Apps.Setup.Setup"}}
+        </h2>
 
         <div class="fatex__vertical_tabs">
             <nav class="fatex__vertical_tabs__navigation">
@@ -25,24 +29,26 @@
                         <div class="fatex__vertical_tabs__tab__content">
 
                             {{#each system.types as |type typeLabel|}}
-                                <div class="fatex__sheet_setup__type">
-                                    <div class="fatex__headline">
-                                        {{typeLabel}}
+                                <section class="fatex-sheet-setup__section">
+                                    <header class="fatex-headline">
+                                        <h2 class="fatex-headline__text">{{typeLabel}}</h2>
 
-                                        <div class="fatex__headline__actions">
-                                            <span class="fatex__headline__action setup_action--toggle-type">
+                                        <div class="fatex-actions fatex-actions--headline">
+                                            <i class="fatex-eb-toggle-selection fatex-actions__icon fatex-actions__icon--no-hide fa fa-sync"></i>
+                                            <span class="fatex-actions__text">
                                                 {{localize "FAx.Apps.Setup.Actions.Setup.ToggleSelection"}}
                                             </span>
                                         </div>
-                                    </div>
+                                    </header>
 
                                     <div class="fatex__sheet_setup__groups">
                                         {{#each type as |group groupIndex|}}
                                             <div class="fatex__sheet_setup__group {{#if group.columns}}fatex__sheet_setup__group--columns{{/if}}">
                                                 {{#if group.label}}
-                                                    <span class="fatex__sheet_setup__group__label setup_action--toggle-type">
-                                                        {{group.label}}
-                                                    </span>
+                                                    <div class="fatex__sheet_setup__group__label fatex-eb-toggle-selection">
+                                                        <i class="fa fa-sync"></i>
+                                                        <span>{{group.label}}</span>
+                                                    </div>
                                                 {{/if}}
 
                                                 <div class="fatex__sheet_setup__options {{#if group.columns}}fatex__sheet_setup__options--columns{{/if}}">
@@ -59,11 +65,12 @@
                                     </div>
 
                                     <div class="fatex__sheet_setup__type__actions">
-                                        <span class="fatex__sheet_setup__type__action setup_action--setup-type">
-                                            {{localize "FAx.Apps.Setup.Actions.Setup.AddToSheet"}}
-                                        </span>
+                                        <div class="fatex-eb-add-selection fatex-button fatex-button--square">
+                                            <i class="fa fa-plus"></i>
+                                            <span>{{localize "FAx.Apps.Setup.Actions.Setup.AddToSheet"}}</span>
+                                        </div>
                                     </div>
-                                </div>
+                                </section>
                             {{/each}}
                         </div>
                     </div>

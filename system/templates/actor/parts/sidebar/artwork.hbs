@@ -1,14 +1,14 @@
-<div class="fatex__artwork{{#if sheetConfig.hideArtwork}} fatex__artwork--hidden{{/if}}">
+<div class="fatex-artwork">
     <style>
-        .fatex__artwork--image--{{actor._id}} {
+        .fatex-artwork__image--{{actor._id}} {
             background-image: url("{{actor.img}}");
         }
     </style>
 
-    <h2 class="fatex__aspects__headline fatex__headline">
-        <span>{{localize "FAx.Sheet.Artwork"}}</span>
-    </h2>
+    <header class="fatex-headline">
+        <h2 class="fatex-headline__text">{{localize "FAx.Sheet.Artwork"}}</h2>
+    </header>
 
-    <div class="fatex__artwork--image fatex__artwork--image--{{actor._id}}" title="{{actor.name}}"></div>
-    <img class="fatex__artwork--handler profile" alt="{{actor.name}}" data-edit="img" src="{{actor.img}}"/>
+    <div class="fatex-artwork__image fatex-artwork__image--{{actor._id}}" title="{{actor.name}}"></div>
+    <img class="fatex-artwork__handler" alt="{{actor.name}}" data-edit="img" src="{{actor.img}}"/>
 </div>

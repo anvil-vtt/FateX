@@ -1,6 +1,3 @@
-.fatex__automation {
-}
-
 .fatex__skill__reference {
     display: flex;
     justify-content: space-between;
@@ -20,8 +17,4 @@
 
 .fatex__skill__reference + .fatex__skill__reference {
     margin-top: $component-padding;
-}
-
-.fatex__skill__references__settings {
-    margin-bottom: $component-padding;
 }

@@ -1,23 +1,22 @@
-<div class="fatex__sheet_setup__actions">
-    <span class="fatex__sheet_setup__action setup_action--clear-aspects {{#unless hasAspects}}fatex__sheet_setup__action--disabled{{/unless}}">
+<div class="fatex-setup-actions">
+    <span class="fatex-eb-clear-aspects fatex-button fatex-button--light{{#unless hasAspects}} fatex-u-disabled{{/unless}}">
         {{localize "FAx.Apps.Setup.Actions.Clear.Aspects"}}
     </span>
 
-    <span class="fatex__sheet_setup__action setup_action--clear-consequences {{#unless hasConsequences}}fatex__sheet_setup__action--disabled{{/unless}} ">
+    <span class="fatex-eb-clear-consequences fatex-button fatex-button--light{{#unless hasConsequences}} fatex-u-disabled{{/unless}}">
         {{localize "FAx.Apps.Setup.Actions.Clear.Consequences"}}
     </span>
 
-    <span class="fatex__sheet_setup__action setup_action--clear-skills {{#unless hasSkills}}fatex__sheet_setup__action--disabled{{/unless}}">
+    <span class="fatex-eb-clear fatex-button fatex-button--clear-all{{#unless hasConsequences}} fatex-u-disabled{{/unless}}">
+        <i class="fa fa-skull-crossbones"></i>
+        <span>{{localize "FAx.Apps.Setup.Actions.Clear.Everything"}}</span>
+    </span>
+
+    <span class="fatex-eb-clear-skills fatex-button fatex-button--light{{#unless hasConsequences}} fatex-u-disabled{{/unless}}">
         {{localize "FAx.Apps.Setup.Actions.Clear.Skills"}}
     </span>
 
-    <span class="fatex__sheet_setup__action setup_action--clear-stress {{#unless hasStress}}fatex__sheet_setup__action--disabled{{/unless}}">
+    <span class="fatex-eb-clear-stress fatex-button fatex-button--light{{#unless hasConsequences}} fatex-u-disabled{{/unless}}">
         {{localize "FAx.Apps.Setup.Actions.Clear.Stress"}}
-    </span>
-
-    <span class="fatex__sheet_setup__action setup_action--clear {{#unless hasAny}}fatex__sheet_setup__action--disabled{{/unless}}">
-        <div>
-            <span>{{localize "FAx.Apps.Setup.Actions.Clear.Everything"}}</span>
-        </div>
     </span>
 </div>

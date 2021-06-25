@@ -1,20 +1,40 @@
-<div class="fatex__header">
-    <div class="fatex__header__name">
-        <label class="fatex__header__label" for="name">{{#if isToken}}Token-{{/if}}{{localize "FAx.Sheet.Name"}}</label>
-        <input class="fatex__header__name__input fatex__input" name="name" type="text" value="{{actor.name}}">
+<header class="fatex-header">
+    <div class="fatex-header__name">
+        <label class="fatex-header__label" for="name">
+            {{#if isToken}}Token-{{/if}}{{localize "FAx.Sheet.Name"}}
+        </label>
+
+        <input
+            class="fatex-text-input fatex-text-input--header"
+            name="name"
+            type="text"
+            value="{{actor.name}}"
+        >
     </div>
 
-    <div class="fatex__header__fate-points">
-        <label class="fatex__header__label fatex__header__label--center" for="name">{{localize "FAx.Sheet.FatePoints"}}</label>
+    <div class="fatex-header__fate-points">
+        <label class="fatex-header__label fatex-header__label--center" for="name">
+            {{localize "FAx.Sheet.FatePoints"}}
+        </label>
 
-        <div class="fatex__header__fate-points__wrapper">
-            <input class="fatex__header__fp__input" name="data.fatepoints.current" type="text" value="{{data.fatepoints.current}}">
-            <span class="fatex__header__fatepoint_divider"> / </span>
-            <input class="fatex__header__refresh__input" name="data.fatepoints.refresh" type="text" value="{{data.fatepoints.refresh}}">
+        <div class="fatex-header__fate-points-wrapper">
+            <input
+                class="fatex-text-input fatex-text-input--fp"
+                name="data.fatepoints.current"
+                type="text"
+                value="{{data.fatepoints.current}}"
+            >
+
+            <span class="fatex-header__fatepoint-divider"> / </span>
+
+            <input
+                class="fatex-text-input fatex-text-input--fp"
+                name="data.fatepoints.refresh"
+                type="text"
+                value="{{data.fatepoints.refresh}}"
+            >
         </div>
     </div>
 
-    <div class="fatex__header__logo">
-        <img class="fatex__header__logo__image" src="/systems/fatex/assets/logos/powered_by_fate.svg">
-    </div>
-</div>
+    <img class="fatex-header__logo" src="/systems/fatex/assets/logos/powered_by_fate.svg">
+</header>

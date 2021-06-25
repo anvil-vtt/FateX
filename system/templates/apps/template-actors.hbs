@@ -1,6 +1,6 @@
 {{#*inline "centerPartial"}}
-    <div class="fatex__header__center fatex__template__header__settings fatex__template__create">
-        <span class="fatex__header__label">{{localize "FAx.Settings.Templates.App.CreateNew"}}</span>
+    <div class="fatex-header__center fatex__template__header__settings fatex__template__create">
+        <span class="fatex-header__label">{{localize "FAx.Settings.Templates.App.CreateNew"}}</span>
         <i class="fas fa-plus fatex__item__header__title"></i>
     </div>
 {{/inline}}
@@ -14,9 +14,9 @@
 <div class="fatex__templates">
     {{#each templateActors as |template templateIndex|}}
         <div class="fatex__template">
-            <div class="fatex__headline">
-                <span>{{ template.name }}</span>
-            </div>
+            <header class="fatex-headline">
+                <h3 class="fatex-headline__text">{{ template.name }}</h3>
+            </header>
 
             <style>
                 .fatex__template__image--{{template._id}} {
@@ -41,16 +41,22 @@
             </div>
 
             <div class="fatex__template__actions">
-                <span class="fatex__template__configure fatex__item__settings" data-template="{{template._id}}">
-                    {{localize "FAx.Global.Actions.Configure"}}
+                <span class="fatex-eb-configure-template fatex-button fatex-button--dark" data-template="{{template._id}}">
+                    <i class="fa fa-cog"></i>
+                    <span>{{localize "FAx.Global.Actions.Configure"}}</span>
                 </span>
 
-                <span class="fatex__template__duplicate fatex__item__duplicate" data-template="{{template._id}}">
-                    {{localize "FAx.Global.Actions.Duplicate"}}
+                <span class="fatex-eb-duplicate-template fatex-button fatex-button--dark" data-template="{{template._id}}">
+                    <i class="fa fa-copy"></i>
+                    <span>{{localize "FAx.Global.Actions.Duplicate"}}</span>
                 </span>
 
-                <span class="fatex__template__delete fatex__item__delete" data-template="{{template._id}}">
-                    {{localize "FAx.Global.Actions.Delete"}}
+                <span
+                    class="fatex-eb-delete-template fatex-button fatex-button--dark fatex-u-delete" 
+                    data-template="{{template._id}}"
+                >
+                    <i class="fa fa-trash"></i>
+                    <span>{{localize "FAx.Global.Actions.Delete"}}</span>
                 </span>
             </div>
         </div>

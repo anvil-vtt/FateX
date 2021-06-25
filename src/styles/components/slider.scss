@@ -1,0 +1,16 @@
+.fatex-slider {
+    display: flex;
+    align-items: center;
+    padding-right: $component-padding * 2;
+
+    &__label[type="text"] {
+        width: 50px;
+        font-size: 24px;
+        font-weight: 900;
+        text-align: center;
+        color: $primary-color;
+        text-shadow: 1px 1px 1px $sheet-background;
+        background: none;
+        border: none;
+    }
+}

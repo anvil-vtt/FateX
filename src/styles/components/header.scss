@@ -1,0 +1,59 @@
+.fatex-header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 10px 10px 8px 10px;
+    font-size: 23px;
+    color: $header-font-color;
+
+    &__center,
+    &__name {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    &__name {
+        width: 50%;
+    }
+
+    &__center {
+        align-items: center;
+    }
+
+    &__fate-points {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    &__label {
+        text-transform: uppercase;
+        font-size: 10px;
+        font-weight: 300;
+        letter-spacing: 3px;
+        padding-left: 2px;
+        padding-top: 3px;
+        white-space: nowrap;
+
+        &--center {
+            padding-left: 0;
+            text-align: center;
+        }
+    }
+
+    &__fate-points-wrapper {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__fatepoint-divider {
+        font-size: 25px;
+        line-height: 25px;
+        color: $header-font-color;
+    }
+
+    &__logo {
+        height: 40px;
+    }
+}

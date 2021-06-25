@@ -1,0 +1,48 @@
+.fatex-checkbox {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    font-size: 24px;
+    border: 2px solid $primary-color;
+    cursor: pointer;
+
+    &__label {
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: translate(-60%, -40%);
+        font-weight: 900;
+        font-size: 24px;
+        color: $primary-color;
+        text-shadow: 1px 1px 1px $sheet-background;
+    }
+
+    &__icon {
+        width: 100%;
+        text-align: center;
+        opacity: 0;
+    }
+
+    &__input {
+        display: none;
+
+        &:checked + .fatex-checkbox__icon {
+            opacity: 1;
+        }
+    }
+
+    &--consequence {
+        position: absolute;
+        top: 0;
+        right: 100%;
+        width: 24px;
+        height: 24px;
+        margin-right: 5px;
+        font-size: 18px;
+    }
+
+    &--filler {
+        opacity: 0;
+        pointer-events: none;
+    }
+}

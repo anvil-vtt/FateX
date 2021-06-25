@@ -55,23 +55,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
-    > span {
-        text-align: center;
-
-        color: $headline-color;
-        background: $headline-background;
-        padding: $component-padding / 2;
-        border-radius: 5px;
-
-        &:before {
-            margin-right: $component-padding;
-        }
-    }
-
-    span + span {
-        margin-top: $component-padding / 2;
-    }
+    gap: $component-padding / 2;
 }
 
 .fatex__template__image {

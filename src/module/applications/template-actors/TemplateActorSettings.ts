@@ -34,9 +34,9 @@ export class TemplateActorSettings extends FormApplication<any, any, any> {
         super.activateListeners(html);
 
         html.find(".fatex__template__create").on("click", (e) => this._createTemplate.call(this, e));
-        html.find(".fatex__template__delete").on("click", (e) => this._deleteTemplate.call(this, e));
-        html.find(".fatex__template__configure").on("click", (e) => this._configureTemplate.call(this, e));
-        html.find(".fatex__template__duplicate").on("click", (e) => this._duplicateTemplate.call(this, e));
+        html.find(".fatex-eb-delete-template").on("click", (e) => this._deleteTemplate.call(this, e));
+        html.find(".fatex-eb-configure-template").on("click", (e) => this._configureTemplate.call(this, e));
+        html.find(".fatex-eb-duplicate-template").on("click", (e) => this._duplicateTemplate.call(this, e));
     }
 
     /*************************
@@ -93,7 +93,7 @@ export class TemplateActorSettings extends FormApplication<any, any, any> {
                 },
             },
             {
-                classes: ["fatex", "fatex__dialog"],
+                classes: ["fatex", "fatex-dialog"],
             }
         ).render(true);
     }

@@ -1,17 +1,11 @@
 <div class="fatex__setting">
-    <h2 class="fatex__headline fatex__setting__headline">
-        <span>{{localize headline}}</span>
-    </h2>
+    <header class="fatex-headline ">
+        <h3 class="fatex-headline__text">{{localize headline}}</h3>
+    </header>
 
-    <label class="fatex__input fatex__setting__text" for="{{ fieldName }}">
-        {{#if help}}<span class="fatex__setting__help">{{localize help}}</span>{{/if}}
+    <label class="fatex__setting__text" for="{{ fieldName }}">
+        <div contenteditable="true" class="fatex-text-input" data-edit="{{ fieldName }}">{{{field}}}</div>
 
-        <div
-            contenteditable="true"
-            class="fatex__setting__input fatex__input__input"
-            data-edit="{{ fieldName }}"
-        >
-            {{{ field }}}
-        </div>
+        {{#if help}}<span class="fatex-text-input__setting-label">{{localize help}}</span>{{/if}}
     </label>
 </div>

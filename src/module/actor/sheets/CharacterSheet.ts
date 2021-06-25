@@ -142,7 +142,7 @@ export class CharacterSheet extends ActorSheet<ActorSheet.Data<FateActor>, FateA
 
     /**
      * OnClick handler for the previously declaried "Edit mode" button.
-     * Toggles the 'fatex__helper--enable-editmode' class for the sheet container.
+     * Toggles the 'fatex-eb-edit-mode' class for the sheet container.
      */
     _onToggleEditMode(e): void {
         e.preventDefault();
@@ -151,7 +151,7 @@ export class CharacterSheet extends ActorSheet<ActorSheet.Data<FateActor>, FateA
         const app = target.parents(".app");
         const html = app.find(".window-content");
 
-        html.toggleClass("fatex__helper--enable-editmode");
+        html.toggleClass("fatex-eb-edit-mode");
     }
 
     /**

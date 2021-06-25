@@ -1,7 +1,3 @@
-.fatex__inline_stress {
-    padding: $component-padding;
-}
-
 .fatex__inline_stress__track + .fatex__inline_stress__track {
     margin-top: $component-padding;
 }
@@ -62,8 +58,6 @@
     text-align: center;
     font-size: 25px;
     opacity: 0;
-
-    @include fa-icon($fa-var-times);
 }
 
 .fatex__inline_stress__track__filler {

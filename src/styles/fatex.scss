@@ -1,8 +1,15 @@
-@import "settings";
+@import "abstract/variables";
+@import "abstract/mixins";
 
-@import "extras/mixins";
-@import "extras/fonts";
-@import "extras/fontawesome";
-@import "extras/foundry-ui";
+@import "base/foundry-ui";
+@import "base/typography";
 
 @import "components/**/*.scss";
+
+@import "legacy/chat";
+
+@import "utils/disabled";
+@import "utils/effects";
+@import "utils/padding";
+@import "utils/position";
+@import "utils/sizing";

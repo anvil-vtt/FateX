@@ -68,15 +68,15 @@ export class SheetSetup extends FormApplication<any, any, FateActor> {
         super.activateListeners(html);
 
         // Clear actions
-        html.find(".setup_action--clear").click((e) => this._onClear.call(this, e, CLEAR.EVERYTHING));
-        html.find(".setup_action--clear-stress").click((e) => this._onClear.call(this, e, CLEAR.STRESS));
-        html.find(".setup_action--clear-skills").click((e) => this._onClear.call(this, e, CLEAR.SKILLS));
-        html.find(".setup_action--clear-consequences").click((e) => this._onClear.call(this, e, CLEAR.CONSEQUENCES));
-        html.find(".setup_action--clear-aspects").click((e) => this._onClear.call(this, e, CLEAR.ASPECTS));
+        html.find(".fatex-eb-clear").click((e) => this._onClear.call(this, e, CLEAR.EVERYTHING));
+        html.find(".fatex-eb-clear-stress").click((e) => this._onClear.call(this, e, CLEAR.STRESS));
+        html.find(".fatex-eb-clear-skills").click((e) => this._onClear.call(this, e, CLEAR.SKILLS));
+        html.find(".fatex-eb-clear-consequences").click((e) => this._onClear.call(this, e, CLEAR.CONSEQUENCES));
+        html.find(".fatex-eb-clear-aspects").click((e) => this._onClear.call(this, e, CLEAR.ASPECTS));
 
         // Setup actions
-        html.find(".setup_action--setup-type").click((e) => this._onSetupType.call(this, e));
-        html.find(".setup_action--toggle-type").click((e) => this._onToggleType.call(this, e));
+        html.find(".fatex-eb-add-selection").click((e) => this._onSetupType.call(this, e));
+        html.find(".fatex-eb-toggle-selection").click((e) => this._onToggleType.call(this, e));
     }
 
     /*************************
@@ -87,7 +87,7 @@ export class SheetSetup extends FormApplication<any, any, FateActor> {
         event.preventDefault();
 
         const button = $(event.currentTarget);
-        const type = button.parents(".fatex__sheet_setup__type").first();
+        const type = button.parents(".fatex-sheet-setup__section").first();
         const entries = type.find("input:checked");
 
         if (!entries.length) {
@@ -110,7 +110,7 @@ export class SheetSetup extends FormApplication<any, any, FateActor> {
         event.preventDefault();
 
         const button = $(event.currentTarget);
-        const type = button.parents(".fatex__sheet_setup__type, .fatex__sheet_setup__group").first();
+        const type = button.parents(".fatex-sheet-setup__section, .fatex__sheet_setup__group").first();
         const entries = type.find("input");
 
         entries.prop("checked", !entries.first().prop("checked"));
@@ -145,7 +145,7 @@ export class SheetSetup extends FormApplication<any, any, FateActor> {
                 },
             },
             {
-                classes: ["fatex", "fatex__dialog"],
+                classes: ["fatex", "fatex-dialog"],
             }
         ).render(true);
     }

@@ -1,45 +1,50 @@
-<div class="fatex__skills{{#if options.enableColumns}} fatex__skills--columns{{/if}}">
-    <h2 class="fatex__skills__headline">
-        <span>{{localize "FAx.Sheet.Skills"}}</span>
+<section>
+    <header class="fatex-section-heading">
+        <h2>{{localize "FAx.Sheet.Skills"}}</h2>
 
-        <div class="fatex__item__actions">
-            <span class="fatex__item__sortrank fatex__skill__sortrank"></span>
-            <span class="fatex__item__add fatex__skill__add"></span>
+        <div class="fatex-actions fatex-actions--section-heading">
+            <i class="fatex-eb-skill-sortrank fatex-actions__icon fatex-actions__icon--move fa fa-sort-amount-down"></i>
+            <i class="fatex-eb-skill-add fatex-actions__icon fa fa-plus"></i>
         </div>
-    </h2>
+    </header>
 
-    <style>
-        .fatex__skills__columns--{{actor._id}} {
-            grid-template-rows: repeat({{options.numberRows}}, auto);
-        }
-    </style>
-
-    <div class="fatex__skills__columns fatex__skills__columns--{{actor._id}}">
+    <div class="fatex-item-grid fatex-item-grid--skills{{#if options.enableColumns}} fatex-item-grid--two-column{{/if}}">
         {{#each skills as |skill skillIndex|}}
-            <div class="fatex__skill fatex__input fatex__input--icon fatex__sortable item" data-item-id="{{skill._id}}">
-
-                <div class="fatex__skill__actions_wrapper">
-                    <div class="fatex__skill__input fatex__headline">{{skill.name}}</div>
+            <div class="fatex__skill fatex__input--icon fatex-eb-sortable" data-item-id="{{skill._id}}">
+                <div class="fatex-headline">
+                    <h3 class="fatex-headline__text">{{skill.name}}</h3>
 
                     {{#unless skill.data.isNeutral}}
-                        <label
-                            class="fatex__skill__icon fatex__input__icon{{#if skill.data.isNegative}} fatex__skill__icon--negative{{/if}}">
+                        <span
+                            class="fatex-headline__icon fatex-headline__icon--skill{{#if skill.data.isNegative}} fatex-headline__icon--negative{{/if}}"
+                        >
                             {{#if skill.data.isPositive}}+{{/if}}{{skill.data.rank}}
-                        </label>
+                        </span>
                     {{/unless}}
 
-                    <div class="fatex__skill__secondary__actions">
-                        <span class="fatex__skill__increment" data-item="{{skill._id}}">+</span>
-                        <span class="fatex__skill__decrement" data-item="{{skill._id}}">-</span>
+                    <div class="fatex-actions fatex-actions--skill-secondary">
+                        <span
+                            class="fatex-eb-skill-increment fatex-actions__icon fatex-actions__icon--secondary"
+                            data-item="{{skill._id}}"
+                        >
+                            +
+                        </span>
+
+                        <span
+                            class="fatex-eb-skill-decrement fatex-actions__icon fatex-actions__icon--secondary"
+                            data-item="{{skill._id}}"
+                        >
+                            -
+                        </span>
                     </div>
 
-                    <div class="fatex__skill__actions">
-                        <span class="fatex__skill__sort fatex__item__sort"></span>
-                        <span class="fatex__skill__settings fatex__item__settings" data-item="{{skill._id}}"></span>
-                        <span class="fatex__skill__delete fatex__item__delete" data-item="{{skill._id}}"></span>
+                    <div class="fatex-actions fatex-actions--skill">
+                        <i class="fatex-eb-item-sort fatex-actions__icon fatex-actions__icon--move fa fa-sort"></i>
+                        <i class="fatex-eb-skill-settings fatex-actions__icon fa fa-cog" data-item="{{skill._id}}"></i>
+                        <i class="fatex-eb-skill-delete fatex-actions__icon fatex-u-delete fa fa-trash" data-item="{{skill._id}}"></i>
                     </div>
                 </div>
             </div>
         {{/each}}
     </div>
-</div>
+</section>

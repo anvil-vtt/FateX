@@ -1,20 +1,12 @@
-.fatex__tabs {
-    padding: $component-padding;
-
-    display: flex;
-    flex-direction: column;
-}
-
 .fatex__tabs__content {
     flex-grow: 1;
 
     display: flex;
     flex-direction: column;
+    padding: $component-padding;
 }
 
 .fatex__tabs__tab {
-    padding: $component-padding;
-    padding-bottom: 0;
     flex-grow: 1;
 }
 
@@ -31,9 +23,9 @@
 }
 
 .fatex__tabs__navigation__item {
-    color: $primary-color;
-
+    position: relative;
     padding: 5px 20px 5px 15px;
+    color: $primary-color;
     font-weight: bold;
     text-transform: uppercase;
     font-size: 13px;
@@ -45,27 +37,21 @@
     &:hover {
         background: $headline-background;
         color: $headline-color;
-        @include cutoff(15px, 1);
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: -1px;
+            right: -1px;
+            border-top: 16px solid #f1f2f6;
+            border-left: 16px solid transparent;
+        }
     }
 }
 
 .fatex__tabs__tab--skills {
     .fatex__tabs__tab__content {
         display: flex;
-
-        .fatex__skills {
-            min-width: 220px;
-            width: 30%;
-        }
-
-        .fatex__skills--columns {
-            min-width: 360px;
-            width: 50%;
-        }
-
-        .fatex__stunts {
-            flex-grow: 1;
-            padding-left: $component-padding;
-        }
+        gap: 20px;
     }
 }
