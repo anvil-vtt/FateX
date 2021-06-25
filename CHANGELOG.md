@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.12.0
+* Big refactoring of all style files by [Pjb518](https://github.com/Pjb518)
+* Updated compatability up to FoundryVTT 0.8.8
+
 ### 0.11.3
 * Moved template preloading to the end of the init hook to prevent ActorSheets to be registered too late
 
