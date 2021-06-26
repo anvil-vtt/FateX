@@ -28,7 +28,7 @@ export class CharacterSheet extends ActorSheet<ActorSheet.Data<FateActor>, FateA
             tabs: [
                 {
                     navSelector: ".fatex__tabs__navigation",
-                    contentSelector: ".fatex__tabs__content",
+                    contentSelector: ".fatex-eb-tab-content",
                     initial: "skills",
                 },
             ],
