@@ -28,14 +28,20 @@
 
                     {{!--Tabs--}}
                     <div class="desk__tabs fatex-u-padding-std">
-                        <nav class="fatex__tabs__navigation">
-                            <a class="fatex__tabs__navigation__item item active" data-tab="skills">{{localize "FAx.Sheet.Tabs.SkillsStunts"}}</a>
-                            <a class="fatex__tabs__navigation__item item" data-tab="extras">{{localize "FAx.Sheet.Tabs.Extras"}}</a>
-                            <a class="fatex__tabs__navigation__item item" data-tab="bio">{{localize "FAx.Sheet.Tabs.Bio"}}</a>
+                        <nav class="fatex-eb-tabs-navigation fatex-tabs-navigation">
+                            <a class="fatex-tabs-navigation__item" data-tab="skills">
+                                {{localize "FAx.Sheet.Tabs.SkillsStunts"}}
+                            </a>
+                            <a class="fatex-tabs-navigation__item" data-tab="extras">
+                                {{localize "FAx.Sheet.Tabs.Extras"}}
+                            </a>
+                            <a class="fatex-tabs-navigation__item" data-tab="bio">
+                                {{localize "FAx.Sheet.Tabs.Bio"}}
+                            </a>
                         </nav>
 
-                        {{!--Skills & Stunts--}}
                         <div class="fatex-eb-tab-content fatex-u-full-height">
+                            {{!--Skills & Stunts--}}
                             <div class="fatex-tab-content fatex-tab-content--skills tab" data-tab="skills">
                                 {{> "systems/fatex/templates/actor/parts/tabs/skills.hbs"}}
                                 {{> "systems/fatex/templates/actor/parts/tabs/stunts.hbs"}}
