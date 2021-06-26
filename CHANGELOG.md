@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.12.1
+* Fixed a bug there the character biography was not editable anymore
+
 ### 0.12.0
 * Big refactoring of all style files by [Pjb518](https://github.com/Pjb518)
 * Updated compatability up to FoundryVTT 0.8.8

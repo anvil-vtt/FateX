@@ -1,6 +1,7 @@
 .fatex__tabs__content {
     flex-grow: 1;
 
+    height: 100%;
     display: flex;
     flex-direction: column;
     padding: $component-padding;
@@ -8,6 +9,7 @@
 
 .fatex__tabs__tab {
     flex-grow: 1;
+    height: 100%;
 }
 
 .fatex__tabs__tab__content {
