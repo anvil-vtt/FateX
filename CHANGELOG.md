@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.12.2
+* Re-enabled the description field for skills
+
 ### 0.12.1
 * Fixed a bug there the character biography was not editable anymore
 
