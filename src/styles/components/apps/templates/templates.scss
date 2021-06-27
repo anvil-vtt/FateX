@@ -94,3 +94,11 @@
         }
     }
 }
+
+.fatex__template__choose {
+    display: flex;
+    align-items: center;
+    gap: 1ch;
+    margin-left: 10px;
+    cursor: pointer;
+}
