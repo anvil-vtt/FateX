@@ -24,7 +24,14 @@ export class SkillItem extends BaseItem {
     static getActorSheetData(sheetData) {
         // Render skill in two columns if necessary
         sheetData.options.enableColumns = sheetData.skills.length >= 8;
-        sheetData.options.numberRows = Math.ceil(sheetData.skills.length / 2);
+
+        if (sheetData.options.enableColumns) {
+            // @ts-ignore
+            const interleave = ([x, ...xs], ys = []) => (x === undefined ? ys : [x, ...interleave(ys, xs)]);
+            const threshold = Math.ceil(sheetData.skills.length / 2);
+
+            sheetData.skills = interleave(sheetData.skills.slice(0, threshold), sheetData.skills.slice(threshold));
+        }
 
         return sheetData;
     }
