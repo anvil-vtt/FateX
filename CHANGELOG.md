@@ -1,9 +1,11 @@
 # Changelog
 
+### 0.12.4
+* Fixed sorting for aspects and consequences
+
 ### 0.12.3
 * Updated Swedish transalation to include all character setup files (big thanks to contributor [Grottmastaren](https://github.com/Grottmastaren))
 * Bug fixes for the template picker system
-
 
 ### 0.12.2
 * Re-enabled the description field for skills
