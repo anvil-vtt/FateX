@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.13.0
+* Fixed bug which sorted skills into alternating columns
+* Added skill sorting by name and a sort reversal button
+
 ### 0.12.4
 * Fixed sorting for aspects and consequences
 
