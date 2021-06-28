@@ -15,7 +15,7 @@
 
     <div class="fatex__template">
         <header class="fatex-headline">
-            <h3 class="fatex-healing__text">{{localize "FAx.Template.Picker.Empty"}}</h3>
+            <h3 class="fatex-headline__text">{{localize "FAx.Template.Picker.Empty"}}</h3>
         </header>
 
         <style>
@@ -41,8 +41,9 @@
         </div>
 
         <div class="fatex__template__actions">
-                <span class="fatex__template__empty fatex__item__add">
-                    {{localize "FAx.Global.Actions.Create"}}
+                <span class="fatex-eb-empty-template fatex-button fatex-button--dark">
+                    <i class="fa fa-plus"></i>
+                    <span>{{localize "FAx.Global.Actions.Create"}}</span>
                 </span>
         </div>
     </div>
@@ -54,7 +55,7 @@
     {{#each templateActors as |template templateIndex|}}
         <div class="fatex__template">
             <div class="fatex-headline">
-                <span>{{ template.name }}</span>
+                <h3 class="fatex-headline__text">{{ template.name }}</h3>
             </div>
 
             <style>
@@ -81,9 +82,13 @@
             </div>
 
             <div class="fatex__template__actions">
-                <span class="fatex__template__choose fa fa-file-medical" data-template="{{template._id}}">
-                    {{localize "FAx.Global.Actions.Choose"}}
-                </span>
+                <div
+                    class="fatex-eb-choose-template fatex-button fatex-button--dark"
+                    data-template="{{template._id}}"
+                >
+                    <i class="fa fa-file-medical"></i>
+                    <span>{{localize "FAx.Global.Actions.Choose"}}</span>
+                </div>
             </div>
         </div>
     {{else}}
