@@ -1,5 +1,7 @@
 import { BaseItem } from "../BaseItem";
 
+type sortBy = "name" | "rank" | "reverse";
+
 export class SkillItem extends BaseItem {
     static get entityName() {
         return "skill";
@@ -16,8 +18,9 @@ export class SkillItem extends BaseItem {
         html.find(".fatex-eb-skill-increment").click((e) => this._onSkillChangeRank.call(this, e, sheet, true));
         html.find(".fatex-eb-skill-decrement").click((e) => this._onSkillChangeRank.call(this, e, sheet, false));
 
-        html.find(`.fatex-eb-${this.entityName}-sortrank`).click(() => this._onSkillSort.call(this, sheet));
-        html.find(`.fatex-eb-${this.entityName}-sortname`).click(() => this._onSkillSort.call(this, sheet, true));
+        html.find(`.fatex-eb-${this.entityName}-sort-rank`).click(() => this._onSkillSort.call(this, sheet, "rank"));
+        html.find(`.fatex-eb-${this.entityName}-sort-name`).click(() => this._onSkillSort.call(this, sheet, "name"));
+        html.find(`.fatex-eb-${this.entityName}-sort-reverse`).click(() => this._onSkillSort.call(this, sheet, "reverse"));
     }
 
     /**
@@ -67,13 +70,15 @@ export class SkillItem extends BaseItem {
     /**
      * Sorts all skills by rank
      */
-    static async _onSkillSort(sheet, sortByName = false) {
+    static async _onSkillSort(sheet, sortBy: sortBy) {
         const skills = sheet.actor.items.filter((item) => item.type == "skill");
 
-        if (sortByName) {
+        if (sortBy === "name") {
             skills.sort((a, b) => a.data.name.localeCompare(b.data.name));
-        } else {
+        } else if (sortBy === "rank") {
             skills.sort((a, b) => a.data.data.rank - b.data.data.rank).reverse();
+        } else if (sortBy === "reverse") {
+            skills.sort((a, b) => a.data.sort - b.data.sort).reverse();
         }
 
         let i = 0;
