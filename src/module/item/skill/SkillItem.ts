@@ -15,6 +15,9 @@ export class SkillItem extends BaseItem {
         html.find(".fatex__skill").click((e) => this._onRollSkill.call(this, e, sheet));
         html.find(".fatex-eb-skill-increment").click((e) => this._onSkillChangeRank.call(this, e, sheet, true));
         html.find(".fatex-eb-skill-decrement").click((e) => this._onSkillChangeRank.call(this, e, sheet, false));
+
+        html.find(`.fatex-eb-${this.entityName}-sortrank`).click(() => this._onSkillSort.call(this, sheet));
+        html.find(`.fatex-eb-${this.entityName}-sortname`).click(() => this._onSkillSort.call(this, sheet, true));
     }
 
     /**
@@ -60,6 +63,28 @@ export class SkillItem extends BaseItem {
     /*************************
      * EVENT HANDLER
      *************************/
+
+    /**
+     * Sorts all skills by rank
+     */
+    static async _onSkillSort(sheet, sortByName = false) {
+        const skills = sheet.actor.items.filter((item) => item.type == "skill");
+
+        if (sortByName) {
+            skills.sort((a, b) => a.data.name.localeCompare(b.data.name));
+        } else {
+            skills.sort((a, b) => a.data.data.rank - b.data.data.rank).reverse();
+        }
+
+        let i = 0;
+
+        const updates = skills.map((skill) => ({
+            _id: skill._id,
+            sort: 10000 + i++,
+        }));
+
+        sheet.actor.updateOwnedItem(updates);
+    }
 
     static async _onSkillChangeRank(e, sheet, doIncrement) {
         e.preventDefault();
