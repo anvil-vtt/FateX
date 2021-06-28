@@ -28,35 +28,36 @@
 
                     {{!--Tabs--}}
                     <div class="desk__tabs fatex-u-padding-std">
-                        <nav class="fatex__tabs__navigation">
-                            <a class="fatex__tabs__navigation__item item active" data-tab="skills">{{localize "FAx.Sheet.Tabs.SkillsStunts"}}</a>
-                            <a class="fatex__tabs__navigation__item item" data-tab="extras">{{localize "FAx.Sheet.Tabs.Extras"}}</a>
-                            <a class="fatex__tabs__navigation__item item" data-tab="bio">{{localize "FAx.Sheet.Tabs.Bio"}}</a>
+                        <nav class="fatex-eb-tabs-navigation fatex-tabs-navigation">
+                            <a class="fatex-tabs-navigation__item" data-tab="skills">
+                                {{~localize "FAx.Sheet.Tabs.SkillsStunts"~}}
+                            </a>
+                            <a class="fatex-tabs-navigation__item" data-tab="extras">
+                                {{~localize "FAx.Sheet.Tabs.Extras"~}}
+                            </a>
+                            <a class="fatex-tabs-navigation__item" data-tab="bio">
+                                {{~localize "FAx.Sheet.Tabs.Bio"~}}
+                            </a>
                         </nav>
 
-                        <div class="fatex__tabs__content">
+                        <div class="fatex-eb-tab-content fatex-u-full-height">
                             {{!--Skills & Stunts--}}
-                            <div class="fatex__tabs__tab fatex__tabs__tab--skills tab" data-tab="skills">
-                                <div class="fatex__tabs__tab__content">
-                                    {{> "systems/fatex/templates/actor/parts/tabs/skills.hbs"}}
-                                    {{> "systems/fatex/templates/actor/parts/tabs/stunts.hbs"}}
-                                </div>
+                            <div class="fatex-tab-content fatex-tab-content--skills tab" data-tab="skills">
+                                {{> "systems/fatex/templates/actor/parts/tabs/skills.hbs"}}
+                                {{> "systems/fatex/templates/actor/parts/tabs/stunts.hbs"}}
                             </div>
 
                             {{!--Extras--}}
-                            <div class="fatex__tabs__tab fatex__tabs__tab--extras tab" data-tab="extras">
-                                <div class="fatex__tabs__tab__content">
-                                    {{> "systems/fatex/templates/actor/parts/tabs/extras.hbs"}}
-                                </div>
+                            <div class="fatex-tab-content tab" data-tab="extras">
+                                {{> "systems/fatex/templates/actor/parts/tabs/extras.hbs"}}
                             </div>
 
                             {{!--Bio--}}
-                            <div class="fatex__tabs__tab fatex__tabs__tab--bio tab" data-tab="bio">
-                                <div class="fatex__tabs__tab__content">
-                                    {{> "systems/fatex/templates/actor/parts/tabs/bio.hbs"}}
-                                </div>
+                            <div class="fatex-tab-content fatex-tab-content--bio tab" data-tab="bio">
+                                {{> "systems/fatex/templates/actor/parts/tabs/bio.hbs"}}
                             </div>
                         </div>
+
                     </div>
 
                     {{> "systems/fatex/templates/actor/parts/copyright.hbs"}}

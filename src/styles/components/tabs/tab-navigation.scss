@@ -1,0 +1,30 @@
+.fatex-tabs-navigation {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    font-size: 13px;
+    font-weight: bold;
+    color: $primary-color;
+    text-transform: uppercase;
+    border-bottom: 2px solid $primary-color;
+
+    &__item {
+        position: relative;
+        padding: 5px 20px 5px 15px;
+
+        &.active,
+        &:hover {
+            background: $headline-background;
+            color: $headline-color;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: -1px;
+            right: -1px;
+            border-top: 16px solid #f1f2f6;
+            border-left: 16px solid transparent;
+        }
+    }
+}
