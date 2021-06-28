@@ -1,0 +1,270 @@
+{
+    "name": "Core",
+    "identifier": "core",
+    "types": {
+        "Aspekter": [
+            {
+                "label": "Grundläggande",
+                "entries": [
+                    {
+                        "name": "Övergripande koncept",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Övergripande koncept"
+                        }
+                    },
+                    {
+                        "name": "Bekymmer",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Bekymmer"
+                        }
+                    },
+                    {
+                        "name": "Blank Aspekt",
+                        "type": "aspect"
+                    },
+                    {
+                        "name": "Blank Aspekt",
+                        "type": "aspect"
+                    },
+                    {
+                        "name": "Blank Aspekt",
+                        "type": "aspect"
+                    }
+                ]
+            },
+            {
+                "label": "Valfria",
+                "entries": [
+                    {
+                        "name": "Relation",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Relation"
+                        }
+                    },
+                    {
+                        "name": "Annan aspekt",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Annan"
+                        }
+                    }
+                ]
+            }
+        ],
+        "Konsekvenser": [
+            {
+                "entries": [
+                    {
+                        "name": "Mild konsekvens",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Mild",
+                            "icon": "2"
+                        }
+                    },
+                    {
+                        "name": "En andra Mild konsekvens (Färdighetsbaserad regel)",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Mild",
+                            "icon": "2"
+                        },
+                        "flags": {
+                            "fatex": {
+                                "skillReferenceSettings": {
+                                    "conjunction": 0
+                                },
+                                "skillReferences": [
+                                    {
+                                        "skill": "Styrka",
+                                        "condition": 4,
+                                        "operator": 4
+                                    },
+                                    {
+                                        "skill": "Viljestyrka",
+                                        "condition": 4,
+                                        "operator": 4
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "Måttlig konsekvens",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Måttlig",
+                            "icon": "4"
+                        }
+                    },
+                    {
+                        "name": "Allvarlig konsekvens",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Allvarlig",
+                            "icon": "6"
+                        }
+                    }
+                ]
+            }
+        ],
+        "Färdigheter": [
+            {
+                "columns": true,
+                "entries": [
+                    {
+                        "name": "Rörlighet",
+                        "type": "skill",
+                        "data": {
+                            "description": "Ett mått på fysisk potential. Rörlighetsbaserade förmågor fokuserar på förflyttning, såsom att springa, hoppa, eller utföra parkour, och att undvika attacker."
+                        }
+                    },
+                    {
+                        "name": "Tjuveri",
+                        "type": "skill",
+                        "data": {
+                            "description": "Kunskap om och förmåga att förbigå säkerhetssystem, utföra ficktjuveri, och begå brott i allmänhet. Tjuveriförmågor ger bonusar till olika delar av genomförandet av ett brott, från planering till utförande och flykt."
+                        }
+                    },
+                    {
+                        "name": "Kontakter",
+                        "type": "skill",
+                        "data": {
+                            "description": "Kännedom om de rätta personerna och kontakterna för att få assistans. Kontaktförmågor ger dig allierade och informationsnätverk var du än befinner dig i världen."
+                        }
+                    },
+                    {
+                        "name": "Hantverk",
+                        "type": "skill",
+                        "data": {
+                            "description": "Färdighet i att tillverka eller förstöra maskineri, bygga grejor, och genomföra MacGyver-liknande snillrika dåd. Hantverksförmågor gör att du har prylen tillhanda, ger bonus åt att bygga och förstöra saker, och motiverar användandet av Hantverk istället för färdigheter som Tjuveri eller Lärdom under vissa omständigheter."
+                        }
+                    },
+                    {
+                        "name": "Förleda",
+                        "type": "skill",
+                        "data": {
+                            "description": "Färdighet i att ljuga och fuska på ett övertygande sätt och med självsäkerhet. Förledaförmågor kan öka din fördighet i att spinna lögner av ett särskilt slag eller hjälpa dig att skapa falska identiteter."
+                        }
+                    },
+                    {
+                        "name": "Köra",
+                        "type": "skill",
+                        "data": {
+                            "description": "Kontrollera fordon under de svåraste förhållanden, genomföra våghalsiga manövrar, och att helt enkelt få ut det yttersta av din åktur. Köraförmågor kan vara signaturmanövrar, ett särkilt eget fordon, eller ge möjlighet att använda Köra istället för färdigheter som Tjuveri eller Lärdom under vissa omständigheter."
+                        }
+                    },
+                    {
+                        "name": "Empati",
+                        "type": "skill",
+                        "data": {
+                            "description": "Färdigheten att korrekt bedöma någons humör och intentioner. Empatiförmågor kan gälla att känna av en folksamling, snappa upp lögner, eller hjälpa andra att återhämta sig från mentala konsekvenser."
+                        }
+                    },
+                    {
+                        "name": "Slåss",
+                        "type": "skill",
+                        "data": {
+                            "description": "Färdighet i att briljera i närstrid, både med vapen och nävar. Slåssförmågor innefattar signaturvapen och särskilda tekniker."
+                        }
+                    },
+                    {
+                        "name": "Undersöka",
+                        "type": "skill",
+                        "data": {
+                            "description": "Medvetet, noggrannt studerande och lösande av mysterier. Använd detta för att sammanlänka ledtrådar eller rekonstruera en brottsscen. Undersökaförmågor hjälper dig att göra briljanta slutledningar eller lägga samman information snabbare."
+                        }
+                    },
+                    {
+                        "name": "Lärdom",
+                        "type": "skill",
+                        "data": {
+                            "description": "Varje slags utbildning eller kunskap. Täcker allt från rent akademisk träning till traditioner eller det övernaturliga. Lärdomsförmågor gäller vanligen specialiserade områden, såsom Medicin, eller det praktiska tillämpandet av hemlig kunskap, såsom att kasta besvärjelser."
+                        }
+                    },
+                    {
+                        "name": "Upptäcka",
+                        "type": "skill",
+                        "data": {
+                            "description": "Färdigheten att snappa upp detaljer i stunden, se bekymmer innan det inträffar, och att vara uppmärksam i allmänhet. Det står i kontrast mot Undersöka, som är långsam, avsiktlig observation. Upptäckaförmågor skärper dina sinnen, förbättrar din reaktionstid, eller gör dig svårare att smyga sig på."
+                        }
+                    },
+                    {
+                        "name": "Styrka",
+                        "type": "skill",
+                        "data": {
+                            "description": "Råstyrka och tålighet. Styrkeförmågor låter dig utföra övermänskliga kraftprov, dominera vid brottning, och skaka av dig kroppliga konsekvenser. Dessutom ger ett högt styrkevärde att du tål mer kroppslig Påfrestning (Stress) eller gör att du kan ta extra Konsekvenser."
+                        }
+                    },
+                    {
+                        "name": "Provocera",
+                        "type": "skill",
+                        "data": {
+                            "description": "Färdighet i att förmå personer att göra så som du önskar. Det är grovt och manipulativt, och inte någon positiv interaktion. Provoceraförmågor låter dig driva motståndare till dåraktiga handlingar, dra till dig aggression, eller skrämma fiender (förutsatt att de kan känna rädsla)."
+                        }
+                    },
+                    {
+                        "name": "Anknyta",
+                        "type": "skill",
+                        "data": {
+                            "description": "Att skapa förbindelser med andra och arbeta tillsamman. Där Provocera är manipulation, är Anknyta uppriktighet, tillit och välvilja. Anknytaförmågor låter dig vända massorna, förbättra relationer, eller skapa kontakter."
+                        }
+                    },
+                    {
+                        "name": "Resurser",
+                        "type": "skill",
+                        "data": {
+                            "description": "Tillgång till materiella ting, inte bara pengar eller direkt ägarskap. Det kan avspegla din möjlighet att låna från vänner eller ta del av en organisations rustkammare. Resursförmågor låter dig använda Resurser istället för Anknyta eller Kontakter, eller ger dig extra fria Användningar (Invokes) när du betalar för det bästa."
+                        }
+                    },
+                    {
+                        "name": "Sikta",
+                        "type": "skill",
+                        "data": {
+                            "description": "All slags strid med avståndsvapen, såväl skjutvapen som kastknivar eller pil och båge. Siktaförmågor låter dig utföra prickskytte, dra snabbt, eller alltid ha ett skjutvapen redo."
+                        }
+                    },
+                    {
+                        "name": "Lönndom",
+                        "type": "skill",
+                        "data": {
+                            "description": "Förbli osedd eller ohörd och att fly när du behöver gömma dig. Lönndomsförmågor låter dig försvinna inför ögonen på folk, smälta in i folkmassor, eller röra dig osedd genom skuggor."
+                        }
+                    },
+                    {
+                        "name": "Viljestyrka",
+                        "type": "skill",
+                        "data": {
+                            "description": "Mental uthållighet och styrka, att övervinna frestelse och stå emot trauma. Viljestyrkeförmågor låter dig bortse från mentala konsekvenser, stå emot psykisk plåga från märkliga krafter, och stå fast emot fiender som provocerar dig. Dessutom gör ett högt viljestyrkevärde att du tål mer mental Påfrestning (Stress) eller gör att du kan ta extra konsekvenser."
+                        }
+                    }
+                ]
+            }
+        ],
+        "Påfrestning": [
+            {
+                "entries": [
+                    {
+                        "name": "Kroppslig påfrestning",
+                        "type": "stress",
+                        "data": {
+                            "size": 4,
+                            "labelType": 0
+                        }
+                    },
+                    {
+                        "name": "Mental påfrestning",
+                        "type": "stress",
+                        "data": {
+                            "size": 4,
+                            "labelType": 0
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}
