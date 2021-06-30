@@ -1,14 +1,10 @@
-.fatex__setting {
+.fatex-setting {
     padding: $component-padding;
     transition: opacity 0.3s;
 }
 
 .fatex__setting--min-height {
     min-height: 70px;
-}
-
-.fatex__setting__pair {
-    display: flex;
 }
 
 .fatex__setting__radio__group {
@@ -93,14 +89,5 @@
 
     > .editor {
         height: 250px;
-    }
-}
-
-.fatex__setting__actions {
-    opacity: 1;
-    pointer-events: all;
-
-    span::before {
-        margin-right: $component-padding / 2;
     }
 }
