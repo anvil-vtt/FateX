@@ -36,47 +36,47 @@
         <h3 class="fatex-headline__text">{{localize "FAx.Item.Stress.Boxes.Label"}}</h3>
     </header>
 
-    <div class="fatex__setting__radio__group">
+    <div class="fatex-radio-group">
         <div
-            class="fatex__setting__radio{{#if (eq 0 data.labelType)}} fatex__setting__radio--active{{/if}}"
+            class="fatex-eb-radio-button fatex-radio-button{{#if (eq 0 data.labelType)}} fatex-radio-button--active{{/if}}"
             data-value="0"
             data-name="data.labelType"
             data-dtype="Number"
         >
             <img
-                class="fatex__setting__radio__image"
+                class="fatex-radio-button__image"
                 alt="ascending"
                 src="systems/fatex/assets/ui/stress/label_preview_0.png"
             >
-            <span class="fatex__setting__radio__label">{{localize "FAx.Item.Stress.Type.Core"}}</span>
+            <span class="fatex-radio-button__label">{{localize "FAx.Item.Stress.Type.Core"}}</span>
         </div>
 
         <div
-            class="fatex__setting__radio{{#if (eq 1 data.labelType)}} fatex__setting__radio--active{{/if}}"
+            class="fatex-eb-radio-button fatex-radio-button{{#if (eq 1 data.labelType)}} fatex-radio-button--active{{/if}}"
             data-value="1"
             data-name="data.labelType"
             data-dtype="Number"
         >
             <img
-                class="fatex__setting__radio__image" 
+                class="fatex-radio-button__image" 
                 lt="condensed"
                 src="systems/fatex/assets/ui/stress/label_preview_1.png"
             >
-            <span class="fatex__setting__radio__label">{{localize "FAx.Item.Stress.Type.Condensed"}}</span>
+            <span class="fatex-radio-button__label">{{localize "FAx.Item.Stress.Type.Condensed"}}</span>
         </div>
 
         <div
-            class="fatex__setting__radio{{#if (eq 2 data.labelType)}} fatex__setting__radio--active{{/if}}"
+            class="fatex-eb-radio-button fatex-radio-button{{#if (eq 2 data.labelType)}} fatex-radio-button--active{{/if}}"
             data-value="2"
             data-name="data.labelType"
             data-dtype="Number"
         >
             <img
-                class="fatex__setting__radio__image"
+                class="fatex-radio-button__image"
                 alt="custom"
                 src="systems/fatex/assets/ui/stress/label_preview_2.png"
             >
-            <span class="fatex__setting__radio__label">{{localize "FAx.Item.Stress.Type.Custom"}}</span>
+            <span class="fatex-radio-button__label">{{localize "FAx.Item.Stress.Type.Custom"}}</span>
         </div>
     </div>
 </div>

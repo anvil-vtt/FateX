@@ -6,7 +6,7 @@ import { BaseComponent } from "../BaseComponent";
  */
 export class Radio extends BaseComponent {
     /**
-     * Adds a click listener to every .fatex__setting__radio element.
+     * Adds a click listener to every .fatex-eb-radio-button element.
      * The name of the field, the value of the field and more a loaded via datasets.
      *
      * @param html
@@ -16,7 +16,7 @@ export class Radio extends BaseComponent {
      *   The actor- or itemsheet to be referenced inside the handler.
      */
     static activateListeners(html, sheet) {
-        html.find(".fatex__setting__radio").click((e) => this._onSettingsRadio.call(this, e, sheet));
+        html.find(".fatex-eb-radio-button").click((e) => this._onSettingsRadio.call(this, e, sheet));
     }
 
     /**

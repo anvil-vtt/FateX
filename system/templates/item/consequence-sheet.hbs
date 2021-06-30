@@ -5,30 +5,35 @@
         <h3 class="fatex-headline__text">{{localize "FAx.Item.Consequence.Type.Label"}}</h3>
     </header>
 
-    <div class="fatex__setting__radio__group">
+    <div class="fatex-radio-group">
         <div
-            class="fatex__setting__radio{{#if (eq 0 data.type)}} fatex__setting__radio--active{{/if}}"
+            class="fatex-eb-radio-button fatex-radio-button{{#if (eq 0 data.type)}} fatex-radio-button--active{{/if}}"
             data-value="0"
             data-name="data.type"
             data-dtype="Number"
         >
-            <img class="fatex__setting__radio__image fatex__setting__radio__image--big" alt="Consequence" src="systems/fatex/assets/ui/consequence/type_consequence.png">
-            <span class="fatex__setting__radio__label">{{localize "FAx.Item.Consequence.Type.Consequence"}}</span>
+            <img
+                class="fatex-radio-button__image fatex-radio-button__image--big"
+                alt="Consequence"
+                src="systems/fatex/assets/ui/consequence/type_consequence.png"
+            >
+
+            <span class="fatex-radio-button__label">{{localize "FAx.Item.Consequence.Type.Consequence"}}</span>
         </div>
 
         <div
-            class="fatex__setting__radio{{#if (eq 1 data.type)}} fatex__setting__radio--active{{/if}}"
+            class="fatex-eb-radio-button fatex-radio-button{{#if (eq 1 data.type)}} fatex-radio-button--active{{/if}}"
             data-value="1"
             data-name="data.type"
             data-dtype="Number"
         >
             <img 
-                class="fatex__setting__radio__image fatex__setting__radio__image--big"
+                class="fatex-radio-button__image fatex-radio-button__image--big"
                 alt="Condition"
                 src="systems/fatex/assets/ui/consequence/type_condition.png"
             >
 
-            <span class="fatex__setting__radio__label">{{localize "FAx.Item.Consequence.Type.Condition"}}</span>
+            <span class="fatex-radio-button__label">{{localize "FAx.Item.Consequence.Type.Condition"}}</span>
         </div>
     </div>
 </div>
