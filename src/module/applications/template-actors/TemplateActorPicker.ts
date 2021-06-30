@@ -21,7 +21,7 @@ export class TemplateActorPicker extends TemplateActorSettings {
 
         html.find(".fatex-eb-choose-template").click((e) => this._chooseTemplate.call(this, e));
         html.find(".fatex-eb-empty-template").click((e) => this._emptyTemplate.call(this, e));
-        html.find(".fatex__template__header__settings").click(() => this._openSettings.call(this));
+        html.find(".fatex-eb-template-header-button").click(() => this._openSettings.call(this));
     }
 
     /*************************
