@@ -38,8 +38,8 @@ export class SheetSetup extends FormApplication<any, any, FateActor> {
             scrollY: [".desk__content"],
             tabs: [
                 {
-                    navSelector: ".fatex__vertical_tabs__navigation",
-                    contentSelector: ".fatex__vertical_tabs__content",
+                    navSelector: ".fatex-eb-vertical-tabs-navigation",
+                    contentSelector: ".fatex-eb-vertical-tabs-content",
                 },
             ],
         } as FormApplication.Options);
