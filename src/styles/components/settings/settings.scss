@@ -1,26 +1,23 @@
 .fatex-setting {
     padding: $component-padding;
     transition: opacity 0.3s;
-}
 
-.fatex__setting--min-height {
-    min-height: 70px;
-}
-
-.fatex__setting__text {
-    div {
-        min-height: 200px;
+    &--min-height {
+        min-height: 70px;
     }
-}
 
-.fatex__setting__editor__editor {
-    height: 250px;
-    overflow: hidden;
-
-    border-bottom: 1px solid $primary-color;
-    border-radius: 3px;
-
-    > .editor {
+    &__editor-wrapper {
         height: 250px;
+        overflow: hidden;
+        border-bottom: 1px solid $primary-color;
+        border-radius: 3px;
+
+        > .editor {
+            height: 250px;
+        }
+    }
+
+    &__text div {
+        min-height: 200px;
     }
 }
