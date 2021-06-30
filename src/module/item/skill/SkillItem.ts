@@ -14,7 +14,7 @@ export class SkillItem extends BaseItem {
         super.activateActorSheetListeners(html, sheet);
 
         // Check or uncheck a single box
-        html.find(".fatex__skill").click((e) => this._onRollSkill.call(this, e, sheet));
+        html.find(".fatex-eb-skill").click((e) => this._onRollSkill.call(this, e, sheet));
         html.find(".fatex-eb-skill-increment").click((e) => this._onSkillChangeRank.call(this, e, sheet, true));
         html.find(".fatex-eb-skill-decrement").click((e) => this._onSkillChangeRank.call(this, e, sheet, false));
 
