@@ -12,10 +12,10 @@
         <div class="fatex-u-pos-relative fatex__skill__reference" data-index="{{reference.index}}">
             <div class="fatex__skill__reference__condition">
                 <select
-                        class="fatex__skill__reference__change fatex__skill__reference__change--argument"
-                        data-index="{{reference.index}}"
-                        data-field="argument"
-                        data-dtype="Number"
+                    class="fatex__skill__reference__change fatex__skill__reference__change--argument"
+                    data-index="{{reference.index}}"
+                    data-field="argument"
+                    data-dtype="Number"
                 >
                     {{#each ../availableBoxCount as |boxCount|}}
                         <option value="{{boxCount.value}}"{{#if (eq reference.argument boxCount.value)}} selected="selected"{{/if}}>
