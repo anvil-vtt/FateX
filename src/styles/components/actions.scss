@@ -18,14 +18,12 @@
         }
     }
 
-    &--headline {
-        right: 15px;
-    }
-
     &--headline,
-    &--skill {
-        top: 0;
+    &--skill,
+    &--toggle {
+        right: 15px;
         padding: 0 10px 0 50px;
+        top: 0;
         background: transparent;
     }
 
@@ -46,6 +44,12 @@
 
     &--skill {
         right: 0;
+    }
+
+    &--toggle {
+        padding-left: 10px;
+        cursor: pointer;
+        pointer-events: initial;
     }
 
     &--skill-secondary {
