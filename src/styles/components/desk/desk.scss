@@ -26,7 +26,12 @@
         scrollbar-width: thin;
 
         &--actor-sheet {
-            display: flex;
+            display: grid;
+            grid-template-columns: 4fr 1fr;
+        }
+
+        &--reversed {
+            grid-template-columns: 1fr 4fr;
         }
     }
 
@@ -46,7 +51,6 @@
     }
 
     &__sidebar {
-        flex: 1;
         min-width: 240px;
         box-shadow: 12px 0 15px 0 $header-background;
 
@@ -56,7 +60,6 @@
     }
 
     &__tabloid {
-        flex: 4;
         min-width: 650px;
         display: grid;
         grid-template-columns: 55% 1fr;
