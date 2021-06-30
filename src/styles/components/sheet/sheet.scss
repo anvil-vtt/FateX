@@ -1,6 +1,10 @@
 .fatex-sheet {
     font-family: $primary-font;
 
+    &--item {
+        min-width: 300px;
+    }
+
     .window-header a {
         margin-left: $component-padding;
     }
@@ -18,8 +22,11 @@
         border: 0;
     }
 
-    input[type="text"] {
+    textarea {
         background: transparent;
-        padding: 0;
+        border: 0;
+        width: auto;
+        height: auto;
+        // padding: 0;
     }
 }
