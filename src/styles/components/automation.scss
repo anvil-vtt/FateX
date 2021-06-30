@@ -1,0 +1,17 @@
+.automation-list {
+    display: flex;
+    flex-direction: column;
+    gap: $component-padding;
+    padding: 0 $component-padding;
+
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: $component-padding / 2;
+    }
+
+    &__description {
+        font-size: 12px;
+        padding: 0 $component-padding;
+    }
+}

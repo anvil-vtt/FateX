@@ -8,9 +8,9 @@
         </div>
     </header>
 
-    {{#each boxReferences as |reference|}}
-        <div class="fatex-u-pos-relative fatex__skill__reference" data-index="{{reference.index}}">
-            <div class="fatex__skill__reference__condition">
+    <div class="automation-list">
+        {{#each boxReferences as |reference|}}
+            <div class="fatex-u-pos-relative automation-list__item" data-index="{{reference.index}}">
                 <select
                     class="fatex-eb-change-skill-reference"
                     data-index="{{reference.index}}"
@@ -27,7 +27,7 @@
                 <span>{{localize "FAx.Item.Automation.BoxesIf"}}</span>
 
                 <select
-                    class="fatex-eb-change-skill-reference fatex-eb-change-skill-reference--skill"
+                    class="fatex-eb-change-skill-reference"
                     data-index="{{reference.index}}"
                     data-field="skill"
                 >
@@ -65,17 +65,17 @@
                         </option>
                     {{/each}}
                 </select>
-            </div>
 
-            <div class="fatex-actions fatex-actions--automation-item">
-                <i
-                    class="fatex-eb-remove-skill-reference fatex-actions__icon fatex-u-delete fa fa-trash fatex-actions__icon--no-hide"
-                    data-index="{{reference.index}}"></i>
+                <div class="fatex-actions fatex-actions--automation-item">
+                    <i
+                        class="fatex-eb-remove-skill-reference fatex-actions__icon fatex-u-delete fa fa-trash fatex-actions__icon--no-hide"
+                        data-index="{{reference.index}}"></i>
+                </div>
             </div>
-        </div>
-    {{else}}
-        <div class="fatex__skill__reference__description">
-            {{localize "FAx.Item.Automation.Description"}}
-        </div>
-    {{/each}}
+        {{else}}
+            <div class="fatex-automation__description">
+                {{localize "FAx.Item.Automation.Description"}}
+            </div>
+        {{/each}}
+    </div>
 </div>
