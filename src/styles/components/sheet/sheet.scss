@@ -1,6 +1,10 @@
 .fatex-sheet {
     font-family: $primary-font;
 
+    &--app {
+        min-width: 500px;
+    }
+
     &--item {
         min-width: 300px;
     }
@@ -27,6 +31,5 @@
         border: 0;
         width: auto;
         height: auto;
-        // padding: 0;
     }
 }

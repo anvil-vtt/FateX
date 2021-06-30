@@ -8,7 +8,7 @@ export class TemplateActorSettings extends FormApplication<any, any, any> {
             template: "/systems/fatex/templates/apps/template-actors.hbs",
             id: "template-actors",
             resizable: true,
-            classes: ["fatex fatex__app_sheet"],
+            classes: ["fatex", "fatex-sheet", "fatex-sheet--app"],
             width: 920,
             height: 500,
         } as FormApplication.Options);

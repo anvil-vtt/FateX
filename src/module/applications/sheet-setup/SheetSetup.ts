@@ -32,7 +32,7 @@ export class SheetSetup extends FormApplication<any, any, FateActor> {
             title: game.i18n.localize("FAx.Apps.Setup.Title"),
             template: "/systems/fatex/templates/apps/sheet-setup.hbs",
             resizable: true,
-            classes: ["fatex fatex__app_sheet"],
+            classes: ["fatex", "fatex-sheet", "fatex-sheet--app"],
             width: 600,
             height: 700,
             scrollY: [".desk__content"],
