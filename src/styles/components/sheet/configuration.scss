@@ -1,3 +1,5 @@
+// TODO: Review these styles once the config.hbs file has been populated
+
 .fatex__sheet_config {
     padding: $component-padding;
     display: none;
@@ -17,9 +19,4 @@
         border: 0;
         font-weight: bold;
     }
-}
-
-.fatex__sheet__action {
-    display: block;
-    cursor: pointer;
 }
