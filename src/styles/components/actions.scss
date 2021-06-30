@@ -19,8 +19,8 @@
     }
 
     &--headline,
-    &--skill,
-    &--toggle {
+    &--setting,
+    &--skill {
         right: 15px;
         padding: 0 10px 0 50px;
         top: 0;
@@ -46,7 +46,7 @@
         right: 0;
     }
 
-    &--toggle {
+    &--setting {
         padding-left: 10px;
         cursor: pointer;
         pointer-events: initial;
