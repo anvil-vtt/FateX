@@ -32,7 +32,7 @@ export class CharacterSheet extends ActorSheet<ActorSheet.Data<FateActor>, FateA
                     initial: "skills",
                 },
             ],
-            scrollY: [".desk__content"],
+            scrollY: [".fatex-desk__content"],
             width: 900,
             type: "full",
         } as CharacterSheetOptions);

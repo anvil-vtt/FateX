@@ -1,79 +1,70 @@
-.desk {
+.fatex-desk {
     display: grid;
-    grid-template-columns: 1fr;
     grid-template-rows: min-content minmax(100px, 100%) min-content;
     grid-template-areas: "header" "content" "footer";
-
     height: 100%;
-    max-height: 100%;
-}
 
-.desk__header {
-    grid-area: header;
-    box-shadow: 0 2px 15px 0 $header-shadow-color;
-    background: $header-background;
-    z-index: 5;
-}
-
-.desk__content {
-    grid-area: content;
-    overflow-y: auto;
-    scrollbar-width: thin;
-
-    .desk__content__inner {
-        display: flex;
-        height: auto;
-        min-height: 100%;
+    &__aspects {
+        grid-area: aspects;
     }
 
-    .desk__tabloid {
+    &__aspects,
+    &__consequences {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    &__consequences {
+        grid-area: consequences;
+    }
+
+    &__content {
+        grid-area: content;
+        overflow-y: auto;
+        scrollbar-width: thin;
+
+        &--actor-sheet {
+            display: flex;
+        }
+    }
+
+    &__footer {
+        grid-area: footer;
+    }
+
+    &__header {
+        grid-area: header;
+        box-shadow: 0 2px 15px 0 $header-shadow-color;
+        background: $header-background;
+        z-index: 5;
+    }
+
+    &__messages {
+        grid-area: messages;
+    }
+
+    &__sidebar {
+        flex: 1;
+        min-width: 240px;
+        box-shadow: 12px 0 15px 0 $header-background;
+
+        &--reversed {
+            box-shadow: -12px 0 15px 0 $header-background;
+        }
+    }
+
+    &__tabloid {
         flex: 4;
         min-width: 650px;
         display: grid;
         grid-template-columns: 55% 1fr;
         grid-template-rows: min-content min-content 1fr min-content;
         grid-template-areas: "messages messages" "aspects consequences" "tabs tabs" "copyright copyright";
-
-        .desk__aspects {
-            grid-area: aspects;
-        }
-
-        .desk__consequences {
-            grid-area: consequences;
-        }
-
-        .desk__aspects,
-        .desk__consequences {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            padding: 10px;
-        }
-
-        .desk__tabs {
-            grid-area: tabs;
-        }
-
-        .desk__messages {
-            grid-area: messages;
-        }
     }
 
-    .desk__sidebar {
-        flex: 1;
-        min-width: 240px;
-        box-shadow: 12px 0 15px 0 $header-background;
+    &__tabs {
+        grid-area: tabs;
     }
-
-    .desk__content__inner--flipped {
-        flex-direction: row-reverse;
-
-        .desk__sidebar {
-            box-shadow: -10px 0 15px 0 $header-background;
-        }
-    }
-}
-
-.desk__footer {
-    grid-area: footer;
 }

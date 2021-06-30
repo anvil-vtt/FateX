@@ -2,7 +2,7 @@ export class ItemSheetFate extends ItemSheet {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
             classes: ["fatex", "fatex-sheet", "fatex-sheet--item", "sheet"],
-            scrollY: [".desk__content"],
+            scrollY: [".fatex-desk__content"],
             width: 575,
         } as BaseEntitySheet.Options);
     }

@@ -1,8 +1,9 @@
 .fatex__templates {
-    padding: $component-padding;
     display: flex;
     align-items: center;
+    height: 100%;
     min-width: 100%;
+    padding: $component-padding;
 }
 
 .fatex__template__break {

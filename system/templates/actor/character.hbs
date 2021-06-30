@@ -1,78 +1,75 @@
 <form autocomplete="off" class="fatex-u-full-height {{cssClass}}">
-    <div class="desk">
+    <div class="fatex-desk">
 
         {{!--HEADER--}}
-        <div class="desk__header">
+        <div class="fatex-desk__header">
             {{> "systems/fatex/templates/actor/parts/header.hbs"}}
         </div>
 
-        <div class="desk__content">
-            <div class="desk__content__inner{{#if sheetConfig.flipped}} desk__content__inner--flipped{{/if}}">
+        <div class="fatex-desk__content fatex-desk__content--actor-sheet{{#if sheetConfig.flipped}} fatex-u-flex-row-reverse{{/if}}">
+            <div class="fatex-desk__tabloid">
+                {{!--Messages--}}
+                <div class="fatex-desk__messages">
+                    {{> "systems/fatex/templates/actor/parts/tabloid/messages.hbs"}}
+                </div>
 
-                <div class="desk__tabloid">
-                    {{!--Messages--}}
-                    <div class="desk__messages">
-                        {{> "systems/fatex/templates/actor/parts/tabloid/messages.hbs"}}
-                    </div>
+                {{!--Aspects--}}
+                <div class="fatex-desk__aspects">
+                    {{> "systems/fatex/templates/actor/parts/tabloid/aspects.hbs"}}
+                </div>
 
-                    {{!--Aspects--}}
-                    <div class="desk__aspects">
-                        {{> "systems/fatex/templates/actor/parts/tabloid/aspects.hbs"}}
-                    </div>
+                {{!--Consequences--}}
+                <div class="fatex-desk__consequences">
+                    {{> "systems/fatex/templates/actor/parts/tabloid/consequences.hbs"}}
+                    {{> "systems/fatex/templates/actor/parts/tabloid/conditions.hbs"}}
+                </div>
 
-                    {{!--Consequences--}}
-                    <div class="desk__consequences">
-                        {{> "systems/fatex/templates/actor/parts/tabloid/consequences.hbs"}}
-                        {{> "systems/fatex/templates/actor/parts/tabloid/conditions.hbs"}}
-                    </div>
+                {{!--Tabs--}}
+                <div class="fatex-desk__tabs fatex-u-padding-std">
+                    <nav class="fatex-eb-tabs-navigation fatex-tabs-navigation">
+                        <a class="fatex-tabs-navigation__item" data-tab="skills">
+                            {{~localize "FAx.Sheet.Tabs.SkillsStunts"~}}
+                        </a>
+                        <a class="fatex-tabs-navigation__item" data-tab="extras">
+                            {{~localize "FAx.Sheet.Tabs.Extras"~}}
+                        </a>
+                        <a class="fatex-tabs-navigation__item" data-tab="bio">
+                            {{~localize "FAx.Sheet.Tabs.Bio"~}}
+                        </a>
+                    </nav>
 
-                    {{!--Tabs--}}
-                    <div class="desk__tabs fatex-u-padding-std">
-                        <nav class="fatex-eb-tabs-navigation fatex-tabs-navigation">
-                            <a class="fatex-tabs-navigation__item" data-tab="skills">
-                                {{~localize "FAx.Sheet.Tabs.SkillsStunts"~}}
-                            </a>
-                            <a class="fatex-tabs-navigation__item" data-tab="extras">
-                                {{~localize "FAx.Sheet.Tabs.Extras"~}}
-                            </a>
-                            <a class="fatex-tabs-navigation__item" data-tab="bio">
-                                {{~localize "FAx.Sheet.Tabs.Bio"~}}
-                            </a>
-                        </nav>
-
-                        <div class="fatex-eb-tab-content fatex-u-full-height">
-                            {{!--Skills & Stunts--}}
-                            <div class="fatex-tab-content fatex-tab-content--skills tab" data-tab="skills">
-                                {{> "systems/fatex/templates/actor/parts/tabs/skills.hbs"}}
-                                {{> "systems/fatex/templates/actor/parts/tabs/stunts.hbs"}}
-                            </div>
-
-                            {{!--Extras--}}
-                            <div class="fatex-tab-content tab" data-tab="extras">
-                                {{> "systems/fatex/templates/actor/parts/tabs/extras.hbs"}}
-                            </div>
-
-                            {{!--Bio--}}
-                            <div class="fatex-tab-content fatex-tab-content--bio tab" data-tab="bio">
-                                {{> "systems/fatex/templates/actor/parts/tabs/bio.hbs"}}
-                            </div>
+                    <div class="fatex-eb-tab-content fatex-u-full-height">
+                        {{!--Skills & Stunts--}}
+                        <div class="fatex-tab-content fatex-tab-content--skills tab" data-tab="skills">
+                            {{> "systems/fatex/templates/actor/parts/tabs/skills.hbs"}}
+                            {{> "systems/fatex/templates/actor/parts/tabs/stunts.hbs"}}
                         </div>
 
+                        {{!--Extras--}}
+                        <div class="fatex-tab-content tab" data-tab="extras">
+                            {{> "systems/fatex/templates/actor/parts/tabs/extras.hbs"}}
+                        </div>
+
+                        {{!--Bio--}}
+                        <div class="fatex-tab-content fatex-tab-content--bio tab" data-tab="bio">
+                            {{> "systems/fatex/templates/actor/parts/tabs/bio.hbs"}}
+                        </div>
                     </div>
 
-                    {{> "systems/fatex/templates/actor/parts/copyright.hbs"}}
                 </div>
 
-                {{!--Sidebar--}}
-                <div class="desk__sidebar">
-                    {{> "systems/fatex/templates/actor/parts/sidebar/artwork.hbs"}}
-                    {{> "systems/fatex/templates/actor/parts/sidebar/stress.hbs"}}
-                </div>
+                {{> "systems/fatex/templates/actor/parts/copyright.hbs"}}
+            </div>
+
+            {{!--Sidebar--}}
+            <div class="fatex-desk__sidebar{{#if sheetConfig.flipped}} fatex-desk__sidebar--reversed{{/if}}">
+                {{> "systems/fatex/templates/actor/parts/sidebar/artwork.hbs"}}
+                {{> "systems/fatex/templates/actor/parts/sidebar/stress.hbs"}}
             </div>
         </div>
 
         {{!--Footer--}}
-        <div class="desk__footer">
+        <div class="fatex-desk__footer">
             {{> "systems/fatex/templates/actor/parts/config.hbs"}}
         </div>
     </div>

@@ -35,7 +35,7 @@ export class SheetSetup extends FormApplication<any, any, FateActor> {
             classes: ["fatex", "fatex-sheet", "fatex-sheet--app"],
             width: 600,
             height: 700,
-            scrollY: [".desk__content"],
+            scrollY: [".fatex-desk__content"],
             tabs: [
                 {
                     navSelector: ".fatex-eb-vertical-tabs-navigation",
