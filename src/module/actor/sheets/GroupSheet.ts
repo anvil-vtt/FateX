@@ -30,7 +30,7 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
      */
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
-            classes: ["fatex fatex__sheet sheet actor_group_overview actor_group_overview--front"],
+            classes: ["fatex fatex-sheet sheet actor_group_overview actor_group_overview--front"],
             resizable: true,
             template: "/systems/fatex/templates/actor/group.hbs",
             dragDrop: [{ dropSelector: null }],

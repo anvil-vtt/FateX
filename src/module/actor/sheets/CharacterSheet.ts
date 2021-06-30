@@ -24,7 +24,7 @@ export class CharacterSheet extends ActorSheet<ActorSheet.Data<FateActor>, FateA
      */
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
-            classes: ["fatex", "fatex__sheet", "sheet"],
+            classes: ["fatex", "fatex-sheet", "sheet"],
             tabs: [
                 {
                     navSelector: ".fatex-eb-tabs-navigation",
