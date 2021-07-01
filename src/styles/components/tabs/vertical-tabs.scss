@@ -1,15 +1,9 @@
-.fatex-vertical-tabs {
-    display: flex;
-}
-
 .fatex__vertical_tabs__content {
-    flex: 3;
     border-left: 1px solid rgba(0, 0, 0, 1);
     margin-left: -1px;
 }
 
 .fatex__vertical_tabs__navigation {
-    flex: 1;
     padding: $component-padding * 2 0;
     display: flex;
     flex-direction: column;
@@ -36,8 +30,4 @@
         z-index: 1;
         box-shadow: 0 3px 0 0 $primary-color;
     }
-}
-
-.fatex__vertical_tabs__tab {
-    padding: $component-padding;
 }

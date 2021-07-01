@@ -15,7 +15,7 @@
         {{localize "FAx.Apps.Setup.Setup"}}
     </h2>
 
-    <div class="fatex-vertical-tabs">
+    <div class="fatex-desk__tabs fatex-desk__tabs--vertical">
         <nav class="fatex-eb-vertical-tabs-navigation fatex__vertical_tabs__navigation">
             {{#each systems as |system|}}
                 <a class="fatex__vertical_tabs__navigation__item item" data-tab="{{system.identifier}}">{{system.name}}</a>
@@ -24,7 +24,7 @@
 
         <div class="fatex-eb-vertical-tabs-content fatex__vertical_tabs__content">
             {{#each systems as |system|}}
-                <div class="fatex__vertical_tabs__tab tab" data-tab="{{system.identifier}}">
+                <div class="fatex-u-padding-std tab" data-tab="{{system.identifier}}">
                     {{#each system.types as |type typeLabel|}}
                         <section class="fatex-sheet-setup__section">
                             <header class="fatex-headline">
