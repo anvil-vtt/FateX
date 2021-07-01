@@ -8,18 +8,10 @@
     font-size: 23px;
     color: $header-font-color;
 
-    &__center,
     &__name {
         display: flex;
         flex-direction: column-reverse;
-    }
-
-    &__name {
         width: 50%;
-    }
-
-    &__center {
-        align-items: center;
     }
 
     &__fate-points {
@@ -55,5 +47,11 @@
 
     &__logo {
         height: 40px;
+    }
+
+    &__title {
+        color: $header-font-color;
+        height: 25px;
+        font-size: 23px;
     }
 }

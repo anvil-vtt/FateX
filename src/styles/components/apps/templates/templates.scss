@@ -1,81 +1,99 @@
-.fatex__templates {
+.fatex-templates {
     display: flex;
     align-items: center;
     height: 100%;
     min-width: 100%;
     padding: $component-padding;
+    gap: $component-padding;
 }
 
-.fatex__template__break {
-    width: 100%;
-}
-
-.fatex__template {
+.fatex-template {
     min-width: 200px;
+
+    &__actions {
+        display: flex;
+        flex-direction: column;
+        gap: $component-padding / 2;
+    }
+
+    &__help {
+        font-size: 12px;
+        text-align: center;
+    }
+
+    &__help-button {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        white-space: nowrap;
+        cursor: pointer;
+    }
+
+    &__help-text {
+        margin: $component-padding * 2;
+    }
+
+    &__image {
+        height: 125px;
+        background-position: center center;
+        background-size: cover;
+        margin: $component-padding;
+        border-radius: 5px;
+
+        &--empty {
+            background-image: url("icons/svg/mystery-man.svg");
+        }
+    }
+
+    &__information-group {
+        display: grid;
+        grid-template-columns: min-content auto;
+        grid-auto-rows: auto;
+        column-gap: 20px;
+        margin-bottom: $component-padding;
+        padding: $component-padding;
+    }
+
+    &__information-name {
+        font-weight: bold;
+        white-space: nowrap;
+
+        &::after {
+            content: ":";
+        }
+    }
+
+    &__information-value {
+        text-align: right;
+    }
+
+    &__or {
+        text-transform: uppercase;
+        padding: $component-padding * 2;
+        font-size: 30px;
+        font-weight: bold;
+    }
 }
 
-.fatex__template + .fatex__template {
-    margin-left: $component-padding;
-}
-
-.fatex__template__create {
+.fatex-template-action {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
     white-space: nowrap;
     cursor: pointer;
-}
 
-.fatex__template__information {
-    padding: $component-padding;
-    display: grid;
-    grid-template-columns: min-content auto;
-    grid-auto-rows: auto;
-    column-gap: 20px;
-    margin-bottom: $component-padding;
-}
-
-.fatex__template__information__name {
-    font-weight: bold;
-    white-space: nowrap;
-
-    &::after {
-        content: ":";
-    }
-}
-
-.fatex__template__information__value {
-    text-align: right;
-}
-
-.fatex__template__actions {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: $component-padding / 2;
-}
-
-.fatex__template__image {
-    height: 125px;
-    background-position: center center;
-    background-size: cover;
-    margin: $component-padding;
-    border-radius: 5px;
-}
-
-.fatex__template__or {
-    text-transform: uppercase;
-    padding: $component-padding * 2;
-    font-size: 30px;
-    font-weight: bold;
-}
-
-.fatex__template__help {
-    font-size: 12px;
-    text-align: center;
-
-    #template-actors & {
-        min-width: 100%;
+    &__icon {
+        height: 25px;
+        font-size: 23px;
     }
 
-    p {
-        margin: $component-padding * 2;
+    &__label {
+        text-transform: uppercase;
+        font-size: 10px;
+        font-weight: 300;
+        letter-spacing: 3px;
+        padding-left: 2px;
+        padding-top: 3px;
+        white-space: nowrap;
     }
 }

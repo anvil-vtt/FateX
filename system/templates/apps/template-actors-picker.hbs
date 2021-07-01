@@ -1,7 +1,7 @@
 {{#*inline "centerPartial"}}
-    <div class="fatex-eb-template-header-button fatex-header__center">
-        <span class="fatex-header__label">{{localize "FAx.Template.Picker.Configuration"}}</span>
-        <i class="fas fa-cogs fatex__item__header__title"></i>
+    <div class="fatex-eb-template-header-button fatex-template-action">
+        <i class="fas fa-cogs fatex-template-action__icon"></i>
+        <span class="fatex-template-action__label">{{localize "FAx.Template.Picker.Configuration"}}</span>
     </div>
 {{/inline}}
 
@@ -11,36 +11,29 @@
     centerPartial="centerPartial"
 }}
 
-<div class="fatex__templates">
-
-    <div class="fatex__template">
+<div class="fatex-templates">
+    <div class="fatex-template">
         <header class="fatex-headline">
             <h3 class="fatex-headline__text">{{localize "FAx.Template.Picker.Empty"}}</h3>
         </header>
 
-        <style>
-            .fatex__template__image--empty {
-                background-image: url("icons/svg/mystery-man.svg");
-            }
-        </style>
+        <div class="fatex-template__image fatex-template__image--empty" title=""></div>
 
-        <div class="fatex__template__image fatex__template__image--empty" title=""></div>
+        <div class="fatex-template__information-group">
+            <span class="fatex-template__information-name">{{localize "FAx.Sheet.Aspects"}}</span>
+            <span class="fatex-template__information-value">0</span>
 
-        <div class="fatex__template__information">
-            <span class="fatex__template__information__name">{{localize "FAx.Sheet.Aspects"}}</span>
-            <span class="fatex__template__information__value">0</span>
+            <span class="fatex-template__information-name">{{localize "FAx.Sheet.StressTracks"}}</span>
+            <span class="fatex-template__information-value">0</span>
 
-            <span class="fatex__template__information__name">{{localize "FAx.Sheet.StressTracks"}}</span>
-            <span class="fatex__template__information__value">0</span>
+            <span class="fatex-template__information-name">{{localize "FAx.Sheet.Skills"}}</span>
+            <span class="fatex-template__information-value">0</span>
 
-            <span class="fatex__template__information__name">{{localize "FAx.Sheet.Skills"}}</span>
-            <span class="fatex__template__information__value">0</span>
-
-            <span class="fatex__template__information__name">{{localize "FAx.Sheet.Consequences"}}</span>
-            <span class="fatex__template__information__value">0</span>
+            <span class="fatex-template__information-name">{{localize "FAx.Sheet.Consequences"}}</span>
+            <span class="fatex-template__information-value">0</span>
         </div>
 
-        <div class="fatex__template__actions">
+        <div class="fatex-template__actions">
                 <span class="fatex-eb-empty-template fatex-button fatex-button--dark">
                     <i class="fa fa-plus"></i>
                     <span>{{localize "FAx.Global.Actions.Create"}}</span>
@@ -48,40 +41,40 @@
         </div>
     </div>
 
-    <div class="fatex__template__or">
+    <div class="fatex-template__or">
         <span>{{localize "FAx.Template.Picker.Or"}}</span>
     </div>
 
     {{#each templateActors as |template templateIndex|}}
-        <div class="fatex__template">
+        <div class="fatex-template">
             <div class="fatex-headline">
                 <h3 class="fatex-headline__text">{{ template.name }}</h3>
             </div>
 
             <style>
-                .fatex__template__image--{{template._id}} {
+                .fatex-template__image--{{template._id}} {
                     background-image: url({{template.img}});
                 }
             </style>
 
-            <div class="fatex__template__image fatex__template__image--{{template._id}}"
+            <div class="fatex-template__image fatex-template__image--{{template._id}}"
                  title="{{template.name}}"></div>
 
-            <div class="fatex__template__information">
-                <span class="fatex__template__information__name">{{localize "FAx.Sheet.Aspects"}}</span>
-                <span class="fatex__template__information__value">{{template.aspects.length}}</span>
+            <div class="fatex-template__information-group">
+                <span class="fatex-template__information-name">{{localize "FAx.Sheet.Aspects"}}</span>
+                <span class="fatex-template__information-value">{{template.aspects.length}}</span>
 
-                <span class="fatex__template__information__name">{{localize "FAx.Sheet.StressTracks"}}</span>
-                <span class="fatex__template__information__value">{{template.stress.length}}</span>
+                <span class="fatex-template__information-name">{{localize "FAx.Sheet.StressTracks"}}</span>
+                <span class="fatex-template__information-value">{{template.stress.length}}</span>
 
-                <span class="fatex__template__information__name">{{localize "FAx.Sheet.Skills"}}</span>
-                <span class="fatex__template__information__value">{{template.skills.length}}</span>
+                <span class="fatex-template__information-name">{{localize "FAx.Sheet.Skills"}}</span>
+                <span class="fatex-template__information-value">{{template.skills.length}}</span>
 
-                <span class="fatex__template__information__name">{{localize "FAx.Sheet.Consequences"}}</span>
-                <span class="fatex__template__information__value">{{template.consequences.length}}</span>
+                <span class="fatex-template__information-name">{{localize "FAx.Sheet.Consequences"}}</span>
+                <span class="fatex-template__information-value">{{template.consequences.length}}</span>
             </div>
 
-            <div class="fatex__template__actions">
+            <div class="fatex-template__actions">
                 <div
                     class="fatex-eb-choose-template fatex-button fatex-button--dark"
                     data-template="{{template._id}}"
@@ -92,9 +85,9 @@
             </div>
         </div>
     {{else}}
-    <div class="fatex__template__help">
-        <p>{{{localize "FAx.Template.Picker.Explain"}}}</p>
-        <p>{{{localize "FAx.Template.Picker.Help"}}}</p>
+    <div class="fatex-template__help">
+        <p class="fatex-template__help-text">{{{localize "FAx.Template.Picker.Explain"}}}</p>
+        <p class="fatex-template__help-text">{{{localize "FAx.Template.Picker.Help"}}}</p>
 
         {{> centerPartial }}
     </div>
