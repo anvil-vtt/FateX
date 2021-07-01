@@ -28,3 +28,32 @@
         }
     }
 }
+
+.fatex-vertical-tabs-navigation {
+    display: flex;
+    flex-direction: column;
+    padding: $component-padding * 2 0;
+
+    &__item {
+        color: $primary-color;
+        padding: $component-padding;
+        text-transform: uppercase;
+        margin-bottom: $component-padding * 2;
+        font-size: 13px;
+        opacity: 0.3;
+        width: 175px;
+        border: 1px solid transparent;
+        transition: opacity 0.3s, background-color 0s;
+
+        &.active,
+        &:hover {
+            font-weight: bold;
+            background: $sheet-background;
+            border: 1px solid $primary-color;
+            border-right: 0;
+            opacity: 1;
+            z-index: 1;
+            box-shadow: 0 3px 0 0 $primary-color;
+        }
+    }
+}

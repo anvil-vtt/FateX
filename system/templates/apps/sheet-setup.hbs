@@ -16,13 +16,18 @@
     </h2>
 
     <div class="fatex-desk__tabs fatex-desk__tabs--vertical">
-        <nav class="fatex-eb-vertical-tabs-navigation fatex__vertical_tabs__navigation">
+        <nav class="fatex-eb-vertical-tabs-navigation fatex-vertical-tabs-navigation">
             {{#each systems as |system|}}
-                <a class="fatex__vertical_tabs__navigation__item item" data-tab="{{system.identifier}}">{{system.name}}</a>
+                <a
+                    class="fatex-vertical-tabs-navigation__item"
+                    data-tab="{{system.identifier}}"
+                >
+                    {{system.name}}
+                </a>
             {{/each}}
         </nav>
 
-        <div class="fatex-eb-vertical-tabs-content fatex__vertical_tabs__content">
+        <div class="fatex-eb-vertical-tabs-content fatex-vertical-tabs-content">
             {{#each systems as |system|}}
                 <div class="fatex-u-padding-std tab" data-tab="{{system.identifier}}">
                     {{#each system.types as |type typeLabel|}}
