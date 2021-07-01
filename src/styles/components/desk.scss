@@ -25,6 +25,10 @@
         overflow-y: auto;
         scrollbar-width: thin;
 
+        &--app {
+            padding: $component-padding;
+        }
+
         &--actor-sheet {
             display: grid;
             grid-template-columns: 4fr 1fr;

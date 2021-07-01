@@ -2,82 +2,78 @@
     title="FAx.Apps.Setup.Title"
 }}
 
-<div class="fatex-sheet-setup">
-    <section>
-        <h2 class="fatex-section-heading fatex-section-heading--no-border">
-            {{localize "FAx.Apps.Setup.Manage"}}
-        </h2>
+<section>
+    <h2 class="fatex-section-heading fatex-section-heading--no-border">
+        {{localize "FAx.Apps.Setup.Manage"}}
+    </h2>
 
-        {{> "systems/fatex/templates/apps/parts/setup/actions.hbs" }}
-    </section>
+    {{> "systems/fatex/templates/apps/parts/setup/actions.hbs" }}
+</section>
 
-    <div class="fatex-sheet-setup__main">
-        <h2 class="fatex-section-heading fatex-section-heading--no-border">
-            {{localize "FAx.Apps.Setup.Setup"}}
-        </h2>
+<div class="fatex-sheet-setup__main">
+    <h2 class="fatex-section-heading fatex-section-heading--no-border">
+        {{localize "FAx.Apps.Setup.Setup"}}
+    </h2>
 
-        <div class="fatex__vertical_tabs">
-            <nav class="fatex-eb-vertical-tabs-navigation fatex__vertical_tabs__navigation">
-                {{#each systems as |system|}}
-                    <a class="fatex__vertical_tabs__navigation__item item" data-tab="{{system.identifier}}">{{system.name}}</a>
-                {{/each}}
-            </nav>
+    <div class="fatex-vertical-tabs">
+        <nav class="fatex-eb-vertical-tabs-navigation fatex__vertical_tabs__navigation">
+            {{#each systems as |system|}}
+                <a class="fatex__vertical_tabs__navigation__item item" data-tab="{{system.identifier}}">{{system.name}}</a>
+            {{/each}}
+        </nav>
 
-            <div class="fatex-eb-vertical-tabs-content fatex__vertical_tabs__content">
-                {{#each systems as |system|}}
-                    <div class="fatex__vertical_tabs__tab tab" data-tab="{{system.identifier}}">
-                        <div class="fatex__vertical_tabs__tab__content">
+        <div class="fatex-eb-vertical-tabs-content fatex__vertical_tabs__content">
+            {{#each systems as |system|}}
+                <div class="fatex__vertical_tabs__tab tab" data-tab="{{system.identifier}}">
+                    {{#each system.types as |type typeLabel|}}
+                        <section class="fatex-sheet-setup__section">
+                            <header class="fatex-headline">
+                                <h2 class="fatex-headline__text">{{typeLabel}}</h2>
 
-                            {{#each system.types as |type typeLabel|}}
-                                <section class="fatex-sheet-setup__section">
-                                    <header class="fatex-headline">
-                                        <h2 class="fatex-headline__text">{{typeLabel}}</h2>
+                                <div class="fatex-eb-toggle-selection fatex-actions fatex-actions--setting">
+                                    <i class="fatex-actions__icon fatex-actions__icon--no-hide fa fa-sync"></i>
+                                    <span class="fatex-actions__text">
+                                        {{localize "FAx.Apps.Setup.Actions.Setup.ToggleSelection"}}
+                                    </span>
+                                </div>
+                            </header>
 
-                                        <div class="fatex-eb-toggle-selection fatex-actions fatex-actions--setting">
-                                            <i class="fatex-actions__icon fatex-actions__icon--no-hide fa fa-sync"></i>
-                                            <span class="fatex-actions__text">
-                                                {{localize "FAx.Apps.Setup.Actions.Setup.ToggleSelection"}}
-                                            </span>
-                                        </div>
-                                    </header>
-
-                                    <div class="fatex__sheet_setup__groups">
-                                        {{#each type as |group groupIndex|}}
-                                            <div class="fatex__sheet_setup__group {{#if group.columns}}fatex__sheet_setup__group--columns{{/if}}">
-                                                {{#if group.label}}
-                                                    <div class="fatex__sheet_setup__group__label fatex-eb-toggle-selection">
-                                                        <i class="fa fa-sync"></i>
-                                                        <span>{{group.label}}</span>
-                                                    </div>
-                                                {{/if}}
-
-                                                <div class="fatex__sheet_setup__options {{#if group.columns}}fatex__sheet_setup__options--columns{{/if}}">
-                                                    {{#each group.entries as |entry entryIndex|}}
-                                                        <label class="fatex__sheet_setup__option">
-                                                            <input class="fatex__sheet_setup__option__checkbox" type="checkbox" data-entity="{{JSONstringify entry}}">
-                                                            <span class="fatex__sheet_setup__option__box"></span>
-                                                            <span class="fatex__sheet_setup__option__label">{{entry.name}}</span>
-                                                        </label>
-                                                    {{/each}}
-                                                </div>
+                            <div class="fatex__sheet_setup__groups">
+                                {{#each type as |group groupIndex|}}
+                                    <div class="fatex__sheet_setup__group {{#if group.columns}}fatex__sheet_setup__group--columns{{/if}}">
+                                        {{#if group.label}}
+                                            <div class="fatex__sheet_setup__group__label fatex-eb-toggle-selection">
+                                                <i class="fa fa-sync"></i>
+                                                <span>{{group.label}}</span>
                                             </div>
-                                        {{/each}}
-                                    </div>
+                                        {{/if}}
 
-                                    <div class="fatex__sheet_setup__type__actions">
-                                        <div class="fatex-eb-add-selection fatex-button fatex-button--square">
-                                            <i class="fa fa-plus"></i>
-                                            <span>{{localize "FAx.Apps.Setup.Actions.Setup.AddToSheet"}}</span>
+                                        <div class="fatex__sheet_setup__options {{#if group.columns}}fatex__sheet_setup__options--columns{{/if}}">
+                                            {{#each group.entries as |entry entryIndex|}}
+                                                <label class="fatex__sheet_setup__option">
+                                                    <input class="fatex__sheet_setup__option__checkbox" type="checkbox" data-entity="{{JSONstringify entry}}">
+                                                    <span class="fatex__sheet_setup__option__box"></span>
+                                                    <span class="fatex__sheet_setup__option__label">{{entry.name}}</span>
+                                                </label>
+                                            {{/each}}
                                         </div>
                                     </div>
-                                </section>
-                            {{/each}}
-                        </div>
-                    </div>
-                {{/each}}
-            </div>
+                                {{/each}}
+                            </div>
+
+                            <div class="fatex__sheet_setup__type__actions">
+                                <div class="fatex-eb-add-selection fatex-button fatex-button--square">
+                                    <i class="fa fa-plus"></i>
+                                    <span>{{localize "FAx.Apps.Setup.Actions.Setup.AddToSheet"}}</span>
+                                </div>
+                            </div>
+                        </section>
+                    {{/each}}
+                </div>
+            {{/each}}
         </div>
     </div>
 </div>
+
 
 {{> "systems/fatex/templates/apps/parts/layout/app-footer.hbs"}}
