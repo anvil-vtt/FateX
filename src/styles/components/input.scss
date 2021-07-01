@@ -50,3 +50,14 @@ input[type="text"].fatex-text-input,
         padding-left: $component-padding / 2;
     }
 }
+
+.fatex__input--icon {
+    padding-left: $component-padding;
+}
+
+[contentEditable="true"]:empty:not(:focus):before {
+    content: attr(data-placeholder);
+    font-style: italic;
+    opacity: 0.3;
+    pointer-events: none;
+}
