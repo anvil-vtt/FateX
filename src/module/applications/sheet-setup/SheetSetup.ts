@@ -6,14 +6,14 @@ const CLEAR = {
     ASPECTS: 1,
     CONSEQUENCES: 2,
     SKILLS: 3,
-    STRESS: 4,
+    STRESS: 4
 };
 
 const TYPES = {
     1: "aspect",
     2: "consequence",
     3: "skill",
-    4: "stress",
+    4: "stress"
 };
 
 export class SheetSetup extends FormApplication<any, any, FateActor> {
@@ -39,9 +39,9 @@ export class SheetSetup extends FormApplication<any, any, FateActor> {
             tabs: [
                 {
                     navSelector: ".fatex-eb-vertical-tabs-navigation",
-                    contentSelector: ".fatex-eb-vertical-tabs-content",
-                },
-            ],
+                    contentSelector: ".fatex-eb-vertical-tabs-content"
+                }
+            ]
         } as FormApplication.Options);
     }
 
@@ -110,7 +110,7 @@ export class SheetSetup extends FormApplication<any, any, FateActor> {
         event.preventDefault();
 
         const button = $(event.currentTarget);
-        const type = button.parents(".fatex-sheet-setup__section, .fatex__sheet_setup__group").first();
+        const type = button.parents(".fatex-sheet-setup__section, .fatex-sheet-setup__group").first();
         const entries = type.find("input");
 
         entries.prop("checked", !entries.first().prop("checked"));
@@ -133,19 +133,19 @@ export class SheetSetup extends FormApplication<any, any, FateActor> {
                     cancel: {
                         icon: '<i class="fas fa-times"></i>',
                         label: game.i18n.localize("FAx.Dialog.Cancel"),
-                        callback: () => null,
+                        callback: () => null
                     },
                     submit: {
                         icon: '<i class="fas fa-check"></i>',
                         label: game.i18n.localize("FAx.Dialog.Confirm"),
                         callback: async () => {
                             await this._doClear(type);
-                        },
-                    },
-                },
+                        }
+                    }
+                }
             },
             {
-                classes: ["fatex", "fatex-dialog"],
+                classes: ["fatex", "fatex-dialog"]
             }
         ).render(true);
     }

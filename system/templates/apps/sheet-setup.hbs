@@ -43,22 +43,22 @@
                                 </div>
                             </header>
 
-                            <div class="fatex__sheet_setup__groups">
+                            <div class="fatex-sheet-setup__groups">
                                 {{#each type as |group groupIndex|}}
-                                    <div class="fatex__sheet_setup__group {{#if group.columns}}fatex__sheet_setup__group--columns{{/if}}">
+                                    <div class="fatex-sheet-setup__group {{#if group.columns}}fatex-sheet-setup__group--columns{{/if}}">
                                         {{#if group.label}}
-                                            <div class="fatex__sheet_setup__group__label fatex-eb-toggle-selection">
+                                            <div class="fatex-sheet-setup__group-label fatex-eb-toggle-selection">
                                                 <i class="fa fa-sync"></i>
                                                 <span>{{group.label}}</span>
                                             </div>
                                         {{/if}}
 
-                                        <div class="fatex__sheet_setup__options {{#if group.columns}}fatex__sheet_setup__options--columns{{/if}}">
+                                        <div class="fatex-sheet-setup__options {{#if group.columns}}fatex-sheet-setup__options--columns{{/if}}">
                                             {{#each group.entries as |entry entryIndex|}}
-                                                <label class="fatex__sheet_setup__option">
-                                                    <input class="fatex__sheet_setup__option__checkbox" type="checkbox" data-entity="{{JSONstringify entry}}">
-                                                    <span class="fatex__sheet_setup__option__box"></span>
-                                                    <span class="fatex__sheet_setup__option__label">{{entry.name}}</span>
+                                                <label class="fatex-sheet-setup__option">
+                                                    <input class="fatex-option-checkbox" type="checkbox" data-entity="{{JSONstringify entry}}">
+                                                    <span class="fatex-option-checkbox__box"></span>
+                                                    <span>{{entry.name}}</span>
                                                 </label>
                                             {{/each}}
                                         </div>
@@ -66,11 +66,9 @@
                                 {{/each}}
                             </div>
 
-                            <div class="fatex__sheet_setup__type__actions">
-                                <div class="fatex-eb-add-selection fatex-button fatex-button--square">
-                                    <i class="fa fa-plus"></i>
-                                    <span>{{localize "FAx.Apps.Setup.Actions.Setup.AddToSheet"}}</span>
-                                </div>
+                            <div class="fatex-eb-add-selection fatex-button fatex-button--square fatex-button--setup">
+                                <i class="fa fa-plus"></i>
+                                <span>{{localize "FAx.Apps.Setup.Actions.Setup.AddToSheet"}}</span>
                             </div>
                         </section>
                     {{/each}}

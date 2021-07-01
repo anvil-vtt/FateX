@@ -52,4 +52,10 @@
             transform: translateY(-1px);
         }
     }
+
+    &--setup {
+        display: flex;
+        width: fit-content;
+        margin: $component-padding auto 0 auto;
+    }
 }
