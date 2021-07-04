@@ -1,5 +1,5 @@
-input[type="text"].fatex-text-input,
-.fatex-text-input {
+.fatex-text-input,
+input[type="text"].fatex-text-input {
     display: flex;
     flex-direction: column-reverse;
     min-height: 24px;
@@ -32,6 +32,17 @@ input[type="text"].fatex-text-input,
         border: 0;
     }
 
+    &__icon {
+        position: absolute;
+        left: -15px;
+        top: 0;
+        transform: translate(-60%, -40%);
+        font-weight: 900;
+        font-size: 24px;
+        color: $primary-color;
+        text-shadow: 1px 1px 1px $sheet-background;
+    }
+
     &__label {
         padding-left: $component-padding / 2;
         font-size: 8px;
@@ -49,6 +60,20 @@ input[type="text"].fatex-text-input,
         font-size: 10px;
         padding-left: $component-padding / 2;
     }
+}
+
+input[type="number"].fatex-text-input--headline {
+    position: relative;
+    right: -25px;
+    width: initial;
+    margin: 0;
+    padding: 5px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    border: none;
 }
 
 .fatex__input--icon {

@@ -1,14 +1,7 @@
-<div class="fatex-u-padding-std">
-    <header class="fatex-headline">
-        <h2 class="fatex-headline__text">{{localize "FAx.Sheet.Consequences"}}</h2>
-        <div class="fatex-actions fatex-actions--headline">
-            <span class="fatex-eb-consequence-add fatex-actions__icon fa fa-plus"></span>
-        </div>
-    </header>
-
+<div class="fatex-desk__consequences">
     {{#each consequences as |consequence consequenceIndex|}}
         <div
-            class="fatex-eb-sortable fatex-item{{#if consequence.isCondition}} fatex-item--condition{{/if}}{{#if consequence.isDisabled}} fatex-u-disabled{{/if}}"
+            class="fatex-eb-sortable{{#if consequence.isCondition}} fatex-item--inline-condition{{/if}}{{#if consequence.isDisabled}} fatex-u-disabled{{/if}}{{#if consequence.isConsequence}} fatex-item--inline-consequence{{/if}}"
             data-item-id="{{consequence._id}}"
         >
             <div class="fatex-u-pos-relative">
@@ -23,7 +16,7 @@
                 <label class="fatex-text-input__label">{{consequence.data.label}}</label>
 
                 {{#if consequence.isConsequence}}
-                    <label class="fatex__input__icon">{{consequence.data.icon}}</label>
+                    <label class="fatex-text-input__icon">{{consequence.data.icon}}</label>
                 {{/if}}
 
                 {{#if consequence.isCondition}}

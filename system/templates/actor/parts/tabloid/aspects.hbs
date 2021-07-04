@@ -8,7 +8,13 @@
 {{#each aspects as |aspect aspectIndex|}}
     <div class="fatex-eb-sortable fatex-item" data-item-id="{{aspect._id}}">
         <div class="fatex-u-pos-relative">
-            <div class="fatex-eb-aspect-input fatex-text-input" contenteditable="true" data-item-id="{{aspect._id}}">{{{aspect.data.value}}}</div>
+            <div
+                class="fatex-eb-aspect-input fatex-text-input"
+                contenteditable="true"
+                data-item-id="{{aspect._id}}"
+            >
+                {{{aspect.data.value}}}
+            </div>
 
             <div class="fatex-actions fatex-actions--item">
                 <i class="fatex-eb-item-sort fatex-actions__icon fa fa-sort"></i>

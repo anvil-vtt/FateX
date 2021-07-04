@@ -34,7 +34,7 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
             resizable: true,
             template: "/systems/fatex/templates/actor/group.hbs",
             dragDrop: [{ dropSelector: null }],
-            scrollY: [".window-content"],
+            scrollY: [".fatex-desk__content"],
         } as CharacterSheetOptions);
     }
 
@@ -95,10 +95,10 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
      * Saves scene/encounter group order by using sortables integrated localstorage sorting
      */
     addSortableJSHandler(html) {
-        if (this.actor.data.type != "group" || !html.find(".fatex__actor_group__inlinesheets").length) return;
+        if (this.actor.data.type != "group" || !html.find(".fatex-eb-actor-group-sheets").length) return;
 
         if (this.actor.data.data.groupType == "manual") {
-            return Sortable.create(html.find(".fatex__actor_group__inlinesheets")[0], {
+            return Sortable.create(html.find(".fatex-eb-actor-group-sheets")[0], {
                 animation: 150,
                 removeOnSpill: true,
                 onEnd: (e: SortableEvent) => this.sortInlineSheets.call(this, e),
@@ -106,7 +106,7 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
             });
         }
 
-        Sortable.create(html.find(".fatex__actor_group__inlinesheets")[0], {
+        Sortable.create(html.find(".fatex-eb-actor-group-sheets")[0], {
             group: ["groupSort", this.actor.id].join("-"),
             animation: 150,
             store: {

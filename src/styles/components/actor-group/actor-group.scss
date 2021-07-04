@@ -44,6 +44,7 @@
 }
 
 .fatex__actor_group__sheet__navigation a {
+    display: inline-block;
     color: $headline-background;
     padding: $component-padding/2 $component-padding * 2 $component-padding/2 $component-padding * 2;
     position: relative;

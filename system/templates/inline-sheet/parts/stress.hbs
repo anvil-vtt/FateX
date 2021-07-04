@@ -1,8 +1,11 @@
-<div class="fatex-u-padding-std">
+<div class="fatex-item-grid fatex-u-padding-std">
     {{#each stress as |stress stressIndex|}}
-        <div class="fatex__inline_stress__track item{{#if stress.isDisabled}} fatex-u-disabled{{/if}}" data-item-id="{{stress._id}}">
+        <div
+            class="{{#if stress.isDisabled}}fatex-u-disabled{{/if}}"
+            data-item-id="{{stress._id}}"
+        >
             <header class="fatex-headline fatex-eb-sortable" data-item-id="{{stress._id}}">
-                <h3 class="fatex-headeline__text">{{stress.name}}</h3>
+                <h3 class="fatex-headline__text">{{stress.name}}</h3>
 
                 <div class="fatex-actions fatex-actions--headline">
                     <i class="fatex-eb-item-sort fatex-actions__icon fa fa-sort"></i>
@@ -12,28 +15,32 @@
             </header>
 
             {{#if stress.data.description}}
-                <span class="fatex__inline_stress__track__description">
+                <span class="fatex-item-description">
                     {{stress.data.description}}
                 </span>
             {{/if}}
 
-            <div class="fatex__inline_stress__track__items fatex__inline_stress__track__items__break">
+            <div class="fatex-stress-track">
                 {{#each stress.boxes as |box boxIndex|}}
-                    <div class="fatex__inline_stress__track__item">
-                        <label class="fatex__inline_stress__track__item__box" data-index="{{boxIndex}}" data-item="{{stress._id}}">
-                            <span class="fatex__inline_stress__track__item__label">{{box.label}}</span>
-                            <input class="fatex__inline_stress__track__item__checkbox" type="checkbox"{{#if box.isChecked}} checked="checked"{{/if}}>
-                            <span class="fatex__inline_stress__track__item__icon fa fa-times"></span>
-                        </label>
-                    </div>
+                    <label
+                        class="fatex-eb-stress-checkbox fatex-checkbox"
+                        data-index="{{boxIndex}}"
+                        data-item="{{stress._id}}"
+                    >
+                        <span class="fatex-checkbox__label">{{box.label}}</span>
 
-                    {{#if (eq @index 3)}}
-                        <div class="fatex__inline_stress__track__break"></div>
-                    {{/if}}
+                        <input
+                            class="fatex-checkbox__input"
+                            type="checkbox"
+                            {{#if box.isChecked}}checked="checked"{{/if}}
+                        >
+
+                        <span class="fatex-checkbox__icon fa fa-times"></span>
+                    </label>
                 {{/each}}
 
                 {{#each stress.fillers}}
-                    <div class="fatex__inline_stress__track__filler"><div class="fatex__inline_stress__track__item__box"></div></div>
+                    <div class="fatex-eb-stress-checkbox fatex-checkbox fatex-checkbox--filler"></div>
                 {{/each}}
             </div>
         </div>

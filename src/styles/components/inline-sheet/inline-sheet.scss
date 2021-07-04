@@ -30,27 +30,6 @@
     }
 }
 
-.fatex__inline_sheet__headline input[type="number"].fatex__inline_sheet__headline__fp {
-    color: white;
-    height: 25px;
-    font-size: 20px;
-    border: none;
-    font-weight: 600;
-    width: 10px;
-}
-
-.fatex__inline_sheet__headline__name {
-    flex-grow: 1;
-
-    display: -webkit-box;
-    text-overflow: ellipsis;
-    overflow: hidden;
-
-    -moz-box-orient: vertical;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-}
-
 .fatex__inline_sheet__content {
     display: grid;
 
@@ -59,7 +38,7 @@
     }
 
     > div {
-        visibility: hidden;
+        display: none;
         z-index: 0;
     }
 }
@@ -69,7 +48,7 @@
     grid-row: 1;
 
     .actor_group_overview--front & {
-        visibility: visible;
+        display: initial;
         z-index: 1;
     }
 }
@@ -79,7 +58,7 @@
     grid-row: 1;
 
     .actor_group_overview--back & {
-        visibility: visible;
+        display: initial;
         z-index: 1;
     }
 }

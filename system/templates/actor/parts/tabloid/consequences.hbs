@@ -7,7 +7,7 @@
 
 {{#each consequences as |consequence consequenceIndex|}}
     <div
-        class="fatex-eb-sortable fatex-item{{#if consequence.isCondition}} fatex-item--condition{{/if}}{{#if consequence.isDisabled}} fatex-u-disabled{{/if}}"
+        class="fatex-eb-sortable fatex-item{{#if consequence.isCondition}} fatex-item--condition{{/if}}{{#if consequence.isDisabled}} fatex-u-disabled{{/if}}{{#if consequence.isConsequence}} fatex-item--consequence{{/if}}"
         data-item-id="{{consequence._id}}"
     >
         <div class="fatex-u-pos-relative">
@@ -22,7 +22,7 @@
             <label class="fatex-text-input__label">{{consequence.data.label}}</label>
 
             {{#if consequence.isConsequence}}
-                <label class="fatex__input__icon">{{consequence.data.icon}}</label>
+                <label class="fatex-text-input__icon">{{consequence.data.icon}}</label>
             {{/if}}
 
             {{#if consequence.isCondition}}
