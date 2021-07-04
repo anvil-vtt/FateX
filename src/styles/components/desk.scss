@@ -4,20 +4,12 @@
     grid-template-areas: "header" "content" "footer";
     height: 100%;
 
-    &__aspects {
-        grid-area: aspects;
-    }
-
     &__aspects,
     &__consequences {
         display: flex;
         flex-direction: column;
         gap: 10px;
         padding: 10px;
-    }
-
-    &__consequences {
-        grid-area: consequences;
     }
 
     &__content {
@@ -32,10 +24,6 @@
         &--actor-sheet {
             display: grid;
             grid-template-columns: 4fr 1fr;
-        }
-
-        &--reversed {
-            grid-template-columns: 1fr 4fr;
         }
     }
 
@@ -57,10 +45,6 @@
     &__sidebar {
         min-width: 240px;
         box-shadow: 12px 0 15px 0 $header-background;
-
-        &--reversed {
-            box-shadow: -12px 0 15px 0 $header-background;
-        }
     }
 
     &__tabloid {

@@ -5,7 +5,7 @@
             {{> "systems/fatex/templates/actor/parts/header.hbs"}}
         </div>
 
-        <div class="fatex-desk__content fatex-desk__content--actor-sheet{{#if sheetConfig.flipped}} fatex-desk__content--reversed{{/if}}">
+        <div class="fatex-desk__content fatex-desk__content--actor-sheet">
             <div class="fatex-desk__tabloid">
                 {{!--Messages--}}
                 <div class="fatex-desk__messages">
@@ -60,7 +60,7 @@
             </div>
 
             {{!--Sidebar--}}
-            <div class="fatex-desk__sidebar{{#if sheetConfig.flipped}} fatex-desk__sidebar--reversed{{/if}}">
+            <div class="fatex-desk__sidebar">
                 {{> "systems/fatex/templates/actor/parts/sidebar/artwork.hbs"}}
                 {{> "systems/fatex/templates/actor/parts/sidebar/stress.hbs"}}
             </div>
