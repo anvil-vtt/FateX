@@ -1,21 +1,19 @@
 <form autocomplete="off" class="fatex-u-full-height {{cssClass}}">
     <div class="fatex-desk">
         {{!--HEADER--}}
-        <div class="fatex-desk__header">
-            <div class="fatex-header">
-                <div class="fatex-header__name">
-                    <label class="fatex-header__label">
-                        {{#if isOwnedBy}}
-                            {{ isOwnedBy }}
-                        {{else}}
-                            {{localize FAx.Gloabl.BaseItem}}
-                        {{/if}}
-                    </label>
-                    <div class="fatex-header__title">{{localize title}}</div>
-                </div>
-
-                <img class="fatex-header__logo" src="/systems/fatex/assets/logos/powered_by_fate.svg">
+        <div class="fatex-header">
+            <div class="fatex-header__name">
+                <label class="fatex-header__label">
+                    {{#if isOwnedBy}}
+                        {{ isOwnedBy }}
+                    {{else}}
+                        {{localize FAx.Gloabl.BaseItem}}
+                    {{/if}}
+                </label>
+                <div class="fatex-header__title">{{localize title}}</div>
             </div>
+
+            <img class="fatex-header__logo" src="/systems/fatex/assets/logos/powered_by_fate.svg">
         </div>
 
         <div class="fatex-desk__content">

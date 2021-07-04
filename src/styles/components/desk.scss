@@ -31,13 +31,6 @@
         grid-area: footer;
     }
 
-    &__header {
-        grid-area: header;
-        box-shadow: 0 2px 15px 0 $header-shadow-color;
-        background: $header-background;
-        z-index: 5;
-    }
-
     &__messages {
         grid-area: messages;
     }
