@@ -14,41 +14,8 @@
     .fatex__inline_sheet--defeated & {
         color: $caution-color;
     }
-
-    .actor_group_overview--settings & {
-        display: none;
-    }
 }
 
 .fatex__inline_sheet__content {
     display: grid;
-
-    .actor_group_overview--settings & {
-        display: none;
-    }
-
-    > div {
-        display: none;
-        z-index: 0;
-    }
-}
-
-.fatex__inline_sheet__front {
-    grid-column: 1;
-    grid-row: 1;
-
-    .actor_group_overview--front & {
-        display: initial;
-        z-index: 1;
-    }
-}
-
-.fatex__inline_sheet__back {
-    grid-column: 1;
-    grid-row: 1;
-
-    .actor_group_overview--back & {
-        display: initial;
-        z-index: 1;
-    }
 }

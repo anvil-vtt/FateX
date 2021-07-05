@@ -22,24 +22,11 @@
 
 .fatex__actor_group__settings {
     display: none;
-
-    .actor_group_overview--settings & {
-        display: block;
-    }
 }
 
 .actor_group_overview {
     .window-resizable-handle {
         z-index: 20;
-    }
-}
-
-.fatex__actor_group__inlinesheets {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-
-    form {
-        background: $sheet-background;
     }
 }
 

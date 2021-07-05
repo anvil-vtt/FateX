@@ -316,7 +316,7 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
         const app = target.parents(".app");
 
         // Re-set application classes to represent different group states
-        app.removeClass(["actor_group_overview--front", "actor_group_overview--back", "actor_group_overview--settings"]);
+        app.removeClass(["actor_group_overview--front", "actor_group_overview--back"]);
         app.addClass(`actor_group_overview--${e.currentTarget.dataset.show}`);
 
         // Re-set active classes on navigation
