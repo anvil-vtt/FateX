@@ -1,7 +1,7 @@
 <form autocomplete="off" class="fatex-u-full-height" data-id="{{referenceID}}">
     <div class="fatex__inline_sheet{{#if defeated}} fatex__inline_sheet--defeated{{/if}}{{#if hidden}} fatex__inline_sheet--hidden{{/if}}">
-        <h2 class="fatex__inline_sheet__headline fatex-headline">
-            <img alt="{{actor.name}}" data-edit="img" src="{{actor.img}}" />
+        <h2 class="fatex__inline_sheet__headline fatex-headline fatex-headline--inline-sheet">
+            <img class="fatex-headline__image" alt="{{actor.name}}" data-edit="img" src="{{actor.img}}" />
             <span class="fatex-headline__text">{{actor.name}}</span>
             {{#unless isToken}}
                 <input

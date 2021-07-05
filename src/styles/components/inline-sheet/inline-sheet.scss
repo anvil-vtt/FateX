@@ -11,16 +11,6 @@
     align-items: center;
     clip-path: none;
 
-    img {
-        flex: 0 0 32px;
-        height: 32px;
-        width: 32px;
-        object-fit: cover;
-        object-position: 50% 0;
-
-        margin-right: $component-padding / 2;
-    }
-
     .fatex__inline_sheet--defeated & {
         color: $caution-color;
     }

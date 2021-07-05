@@ -42,6 +42,24 @@
         cursor: pointer;
     }
 
+    &--inline-sheet {
+        border-bottom: none;
+
+        &::before {
+            content: unset;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: -1px;
+            right: -1px;
+            border: none;
+            border-top: 16px solid #f1f2f6;
+            border-left: 16px solid transparent;
+        }
+    }
+
     &__icon {
         position: absolute;
         top: 0;
@@ -64,6 +82,14 @@
         &--negative {
             color: $caution-color;
         }
+    }
+
+    &__image {
+        border-radius: 0;
+        height: 32px;
+        width: 32px;
+        object-fit: cover;
+        object-position: 0% 0;
     }
 
     &__text {
