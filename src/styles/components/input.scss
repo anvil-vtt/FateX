@@ -63,8 +63,8 @@ input[type="text"].fatex-text-input {
 }
 
 input[type="number"].fatex-text-input--headline {
-    position: relative;
-    right: -25px;
+    position: absolute;
+    right: 10px;
     width: initial;
     margin: 0;
     padding: 5px;
