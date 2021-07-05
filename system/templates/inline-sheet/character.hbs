@@ -15,8 +15,8 @@
             {{/unless}}
         </h2>
 
-        <nav class="fatex-inline-tabs">
-            <a class="fatex-inline-tabs__item fatex-inline-tabs__item--active" data-tab="aspects">
+        <nav class="fatex-eb-tabs-navigation fatex-inline-tabs">
+            <a class="fatex-inline-tabs__item" data-tab="aspects">
                 {{~localize "FAx.Sheet.Aspects"~}}
             </a>
             <a class="fatex-inline-tabs__item" data-tab="consequences">
@@ -27,22 +27,24 @@
             </a>
         </nav>
 
-        <div class="fatex__inline_sheet__content">
-            <div class="fatex__inline_sheet__front">
-                <section class="fatex-desk__aspects">
+        <div class="fatex-eb-tab-content fatex__inline_sheet__content">
+            <section class="tab" data-tab="aspects">
+                <div class="fatex-desk__aspects fatex-desk__aspects--inline">
                     {{> "systems/fatex/templates/components/aspects.hbs"}}
-                </section>
-            </div>
+                </div>
+            </section>
 
-            <div class="fatex__inline_sheet__back">
-                <section class="fatex-desk__consequences">
+            <section class="tab" data-tab="consequences">
+                <div class="fatex-desk__consequences fatex-desk__consequences--inline">
                     {{> "systems/fatex/templates/components/consequences.hbs"}}
-                </section>
+                </div>
+            </section>
 
-                <section class="fatex-item-grid fatex-u-padding-std">
+            <section class="tab" data-tab="stress">
+                <div class="fatex-item-grid fatex-u-padding-std">
                     {{> "systems/fatex/templates/components/stress.hbs"}}
-                </section>
-            </div>
+                </div>
+            </section>
         </div>
     </div>
 </form>

@@ -4,6 +4,13 @@ export class InlineActorSheetFate extends CharacterSheet {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, ({
             group: undefined,
+            tabs: [
+                {
+                    navSelector: ".fatex-eb-tabs-navigation",
+                    contentSelector: ".fatex-eb-tab-content",
+                    initial: "aspects",
+                },
+            ]
         } as unknown) as CharacterSheetOptions);
     }
 

@@ -2,6 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
+    padding: 0 5px;
     font-size: 11px;
     color: #969799;
 
@@ -11,7 +12,7 @@
         border: 1px solid #969799;
         border-radius: 3px;
 
-        &--active {
+        &.active {
             background: $primary-color;
             color: $sheet-background;
             border: none;
