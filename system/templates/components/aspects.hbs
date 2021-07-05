@@ -1,15 +1,9 @@
-<header class="fatex-headline">
-    <h2 class="fatex-headline__text">{{localize "FAx.Sheet.Aspects"}}</h2>
-    <div class="fatex-actions fatex-actions--headline">
-        <i class="fatex-eb-aspect-add fatex-actions__icon fa fa-plus"></i>
-    </div>
-</header>
-
 {{#each aspects as |aspect aspectIndex|}}
     <div class="fatex-eb-sortable fatex-item" data-item-id="{{aspect._id}}">
         <div class="fatex-u-pos-relative">
             <div
                 class="fatex-eb-aspect-input fatex-text-input"
+                data-placeholder="{{aspect.data.label}}"
                 contenteditable="true"
                 data-item-id="{{aspect._id}}"
             >
