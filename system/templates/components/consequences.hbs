@@ -1,6 +1,6 @@
 {{#each consequences as |consequence consequenceIndex|}}
     <div
-        class="fatex-eb-sortable fatex-item{{#if consequence.isCondition}} fatex-item--condition{{/if}}{{#if consequence.isDisabled}} fatex-u-disabled{{/if}}{{#if consequence.isConsequence}} fatex-item--consequence{{/if}}"
+        class="fatex-eb-sortable fatex-item{{#if consequence.isCondition}} fatex-item--condition{{/if}}{{#if consequence.isDisabled}} fatex-u-disabled{{/if}}{{#if consequence.data.icon}} fatex-item--consequence{{/if}}"
         data-item-id="{{consequence._id}}"
     >
         <div class="fatex-u-pos-relative">
