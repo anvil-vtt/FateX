@@ -1,16 +1,16 @@
-{{> "systems/fatex/templates/item/parts/layout/item-header.hbs" title="FAx.Item.Reference.EditItem" item=item}}
+{{> "systems/fatex/templates/components/item-header.hbs" title="FAx.Item.Reference.EditItem" item=item}}
 
-{{> "systems/fatex/templates/item/parts/settings/setting-input.hbs"
+{{> "systems/fatex/templates/item/settings/setting-input.hbs"
     headline = "FAx.Item.Reference.Name"
     field = item.name
     fieldName = "name"
     placeholder = "FAx.Item.Reference.Name"
 }}
 
-{{> "systems/fatex/templates/item/parts/settings/setting-input.hbs"
+{{> "systems/fatex/templates/item/settings/setting-input.hbs"
     headline = "FAx.Item.Reference.ID"
     field = data.id
     fieldName = "data.id"
 }}
 
-{{> "systems/fatex/templates/item/parts/layout/item-footer.hbs"}}
+{{> "systems/fatex/templates/components/item-footer.hbs"}}

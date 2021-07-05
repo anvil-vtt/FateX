@@ -1,13 +1,13 @@
-{{> "systems/fatex/templates/item/parts/layout/item-header.hbs" title="FAx.Item.Skill.EditItem" item=item}}
+{{> "systems/fatex/templates/components/item-header.hbs" title="FAx.Item.Skill.EditItem" item=item}}
 
-{{> "systems/fatex/templates/item/parts/settings/setting-input.hbs"
+{{> "systems/fatex/templates/item/settings/setting-input.hbs"
     headline = "FAx.Item.Skill.Name"
     field = item.name
     fieldName = "name"
     placeholder = "FAx.Item.Skill.Name"
 }}
 
-{{> "systems/fatex/templates/item/parts/settings/setting-rank.hbs"
+{{> "systems/fatex/templates/item/settings/setting-rank.hbs"
     headline = "FAx.Item.Skill.Rank"
     fieldName = "data.rank"
     field = data.rank
@@ -15,10 +15,10 @@
     radioItems = availableRanks
 }}
 
-{{> "systems/fatex/templates/item/parts/settings/setting-editor.hbs"
+{{> "systems/fatex/templates/item/settings/setting-editor.hbs"
     headline = "FAx.Item.Skill.Description"
     fieldName = "data.description"
     field = data.description
 }}
 
-{{> "systems/fatex/templates/item/parts/layout/item-footer.hbs"}}
+{{> "systems/fatex/templates/components/item-footer.hbs"}}

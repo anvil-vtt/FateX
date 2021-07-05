@@ -1,4 +1,4 @@
-{{> "systems/fatex/templates/item/parts/layout/item-header.hbs" title="FAx.Item.Consequence.EditItem" item=item}}
+{{> "systems/fatex/templates/components/item-header.hbs" title="FAx.Item.Consequence.EditItem" item=item}}
 
 <div class="fatex-setting">
     <header class="fatex-headline">
@@ -38,20 +38,20 @@
     </div>
 </div>
 
-{{> "systems/fatex/templates/item/parts/settings/setting-input.hbs"
+{{> "systems/fatex/templates/item/settings/setting-input.hbs"
     headline = "FAx.Item.Consequence.Value"
     fieldName = "data.value"
     field = data.value
 }}
 
-{{> "systems/fatex/templates/item/parts/settings/setting-input.hbs"
+{{> "systems/fatex/templates/item/settings/setting-input.hbs"
     headline = "FAx.Item.Consequence.Label"
     fieldName = "data.label"
     field = data.label
     help = "FAx.Item.Consequence.LabelHelp"
 }}
 
-{{> "systems/fatex/templates/item/parts/settings/setting-input.hbs"
+{{> "systems/fatex/templates/item/settings/setting-input.hbs"
     headline = "FAx.Item.Consequence.Icon"
     help = "FAx.Item.Consequence.IconHelp"
     fieldName = "data.icon"
@@ -59,15 +59,15 @@
 }}
 
 {{!--Description is disabled for now--}}
-{{!--{{> "systems/fatex/templates/item/parts/settings/setting-input.hbs"
+{{!--{{> "systems/fatex/templates/item/settings/setting-input.hbs"
     headline = "FAx.Item.Consequence.Description"
     help = "FAx.Item.Consequence.DescriptionHelp"
     fieldName = "data.description"
     field = data.description
 }}--}}
 
-{{> "systems/fatex/templates/item/parts/settings/setting-automation-skill-enable.hbs"
+{{> "systems/fatex/templates/item/settings/setting-automation-skill-enable.hbs"
     headline = "FAx.Item.Automation.Headline"
 }}
 
-{{> "systems/fatex/templates/item/parts/layout/item-footer.hbs"}}
+{{> "systems/fatex/templates/components/item-footer.hbs"}}
