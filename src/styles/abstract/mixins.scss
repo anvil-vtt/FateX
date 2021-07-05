@@ -1,28 +1,28 @@
-@mixin cutout-top-left {
+@mixin cutout-top-left($size: 16px) {
     content: "";
     position: absolute;
     top: -1px;
     left: -1px;
-    border-top: 16px solid #f1f2f6;
-    border-right: 16px solid transparent;
+    border-top: $size solid #f1f2f6;
+    border-right: $size solid transparent;
 }
 
-@mixin cutout-top-right {
+@mixin cutout-top-right($size: 16px) {
     content: "";
     position: absolute;
     top: -1px;
     right: -1px;
-    border-top: 16px solid #f1f2f6;
-    border-left: 16px solid transparent;
+    border-top: $size solid #f1f2f6;
+    border-left: $size solid transparent;
 }
 
-@mixin cutout-bottom-right {
+@mixin cutout-bottom-right($size: 16px) {
     content: "";
     position: absolute;
     bottom: -1px;
     right: -1px;
-    border-bottom: 16px solid #f1f2f6;
-    border-left: 16px solid transparent;
+    border-bottom: $size solid #f1f2f6;
+    border-left: $size solid transparent;
 }
 
 @mixin reset-cutouts {
