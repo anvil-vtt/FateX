@@ -1,0 +1,20 @@
+.fatex-inline-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    font-size: 11px;
+    color: #969799;
+
+    &__item {
+        padding: 2px 5px;
+        background: #cacbcf;
+        border: 1px solid #969799;
+        border-radius: 3px;
+
+        &--active {
+            background: $primary-color;
+            color: $sheet-background;
+            border: none;
+        }
+    }
+}
