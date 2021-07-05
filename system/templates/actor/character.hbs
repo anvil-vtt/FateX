@@ -11,18 +11,25 @@
                 </div>
 
                 {{!--Aspects--}}
-                <div class="fatex-desk__aspects">
+                <section class="fatex-desk__aspects">
                     {{> "systems/fatex/templates/actor/parts/tabloid/aspects.hbs"}}
-                </div>
+                </section>
 
                 {{!--Consequences--}}
-                <div class="fatex-desk__consequences">
-                    {{> "systems/fatex/templates/actor/parts/tabloid/consequences.hbs"}}
-                    {{> "systems/fatex/templates/actor/parts/tabloid/conditions.hbs"}}
-                </div>
+                <section class="fatex-desk__consequences">
+                    <header class="fatex-headline">
+                        <h2 class="fatex-headline__text">{{localize "FAx.Sheet.Consequences"}}</h2>
+                        <div class="fatex-actions fatex-actions--headline">
+                            <i class="fatex-eb-consequence-add fatex-actions__icon fa fa-plus"></i>
+                        </div>
+                    </header>
+
+                    {{> "systems/fatex/templates/components/consequences.hbs"}}
+                    {{> "systems/fatex/templates/components/conditions.hbs"}}
+                </section>
 
                 {{!--Tabs--}}
-                <div class="fatex-desk__tabs fatex-u-padding-std">
+                <section class="fatex-desk__tabs fatex-u-padding-std">
                     <nav class="fatex-eb-tabs-navigation fatex-tabs-navigation">
                         <a class="fatex-tabs-navigation__item" data-tab="skills">
                             {{~localize "FAx.Sheet.Tabs.SkillsStunts"~}}
@@ -52,13 +59,13 @@
                             {{> "systems/fatex/templates/actor/parts/tabs/bio.hbs"}}
                         </div>
                     </div>
-                </div>
+                </section>
 
                 {{> "systems/fatex/templates/actor/parts/copyright.hbs"}}
             </div>
 
             {{!--Sidebar--}}
-            <div class="fatex-desk__sidebar">
+            <section class="fatex-desk__sidebar">
                 {{> "systems/fatex/templates/components/artwork.hbs"}}
 
                 <section class="fatex-item-grid fatex-u-padding-std">
@@ -68,7 +75,7 @@
                         <h3 class="fatex-headline__text">+</h3>
                     </div>
                 </section>
-            </div>
+            </section>
         </div>
 
         {{!--Footer--}}

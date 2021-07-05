@@ -1,10 +1,3 @@
-<header class="fatex-headline">
-    <h2 class="fatex-headline__text">{{localize "FAx.Sheet.Consequences"}}</h2>
-    <div class="fatex-actions fatex-actions--headline">
-        <i class="fatex-eb-consequence-add fatex-actions__icon fa fa-plus"></i>
-    </div>
-</header>
-
 {{#each consequences as |consequence consequenceIndex|}}
     <div
         class="fatex-eb-sortable fatex-item{{#if consequence.isCondition}} fatex-item--condition{{/if}}{{#if consequence.isDisabled}} fatex-u-disabled{{/if}}{{#if consequence.isConsequence}} fatex-item--consequence{{/if}}"
