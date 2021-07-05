@@ -59,8 +59,15 @@
 
             {{!--Sidebar--}}
             <div class="fatex-desk__sidebar">
-                {{> "systems/fatex/templates/actor/parts/sidebar/artwork.hbs"}}
-                {{> "systems/fatex/templates/actor/parts/sidebar/stress.hbs"}}
+                {{> "systems/fatex/templates/components/artwork.hbs"}}
+
+                <section class="fatex-item-grid fatex-u-padding-std">
+                    {{> "systems/fatex/templates/components/stress.hbs"}}
+                    
+                    <div class="fatex-eb-stress-add fatex-headline fatex-headline--center fatex-headline--helper">
+                        <h3 class="fatex-headline__text">+</h3>
+                    </div>
+                </section>
             </div>
         </div>
 
