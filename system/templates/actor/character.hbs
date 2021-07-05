@@ -1,7 +1,7 @@
 <form autocomplete="off" class="fatex-u-full-height {{cssClass}}">
     <div class="fatex-desk">
         {{!--HEADER--}}
-        {{> "systems/fatex/templates/actor/parts/header.hbs"}}
+        {{> "systems/fatex/templates/components/header.hbs"}}
 
         <div class="fatex-desk__content fatex-desk__content--actor-sheet">
             <div class="fatex-desk__tabloid">
@@ -52,23 +52,23 @@
                     <div class="fatex-eb-tab-content fatex-u-full-height">
                         {{!--Skills & Stunts--}}
                         <div class="fatex-tab-content fatex-tab-content--skills tab" data-tab="skills">
-                            {{> "systems/fatex/templates/actor/parts/tabs/skills.hbs"}}
-                            {{> "systems/fatex/templates/actor/parts/tabs/stunts.hbs"}}
+                            {{> "systems/fatex/templates/actor/tabs/skills.hbs"}}
+                            {{> "systems/fatex/templates/actor/tabs/stunts.hbs"}}
                         </div>
 
                         {{!--Extras--}}
                         <div class="fatex-tab-content tab" data-tab="extras">
-                            {{> "systems/fatex/templates/actor/parts/tabs/extras.hbs"}}
+                            {{> "systems/fatex/templates/actor/tabs/extras.hbs"}}
                         </div>
 
                         {{!--Bio--}}
                         <div class="fatex-tab-content fatex-tab-content--bio tab" data-tab="bio">
-                            {{> "systems/fatex/templates/actor/parts/tabs/bio.hbs"}}
+                            {{> "systems/fatex/templates/actor/tabs/bio.hbs"}}
                         </div>
                     </div>
                 </section>
 
-                {{> "systems/fatex/templates/actor/parts/copyright.hbs"}}
+                {{> "systems/fatex/templates/components/copyright.hbs"}}
             </div>
 
             {{!--Sidebar--}}
@@ -87,7 +87,7 @@
 
         {{!--Footer--}}
         <div class="fatex-desk__footer">
-            {{> "systems/fatex/templates/actor/parts/config.hbs"}}
+            {{> "systems/fatex/templates/components/config.hbs"}}
         </div>
     </div>
 </form>
