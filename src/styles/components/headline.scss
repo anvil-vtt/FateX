@@ -32,6 +32,7 @@
 
     &--inline-sheet {
         border-bottom: none;
+        padding-right: 50px;
 
         &::before {
             @include reset-cutouts;
