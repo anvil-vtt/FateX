@@ -19,12 +19,7 @@
         }
 
         &::after {
-            content: "";
-            position: absolute;
-            top: -1px;
-            right: -1px;
-            border-top: 16px solid #f1f2f6;
-            border-left: 16px solid transparent;
+            @include cutout-top-right;
         }
     }
 }
