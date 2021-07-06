@@ -18,7 +18,6 @@ export abstract class BaseItem {
             throw new Error("A subclass of the BaseItem must provide an entityName field or implement their own _onItemAdd() method.");
         }
 
-        // New bindings for skills. Remove this comment once the actions have been standardised.
         html.find(`.fatex-eb-${this.entityName}-add`).click((e) => this._onItemAdd.call(this, e, sheet));
         html.find(`.fatex-eb-${this.entityName}-settings`).click((e) => this._onItemSettings.call(this, e, sheet));
         html.find(`.fatex-eb-${this.entityName}-delete`).click((e) => this._onItemDelete.call(this, e, sheet));

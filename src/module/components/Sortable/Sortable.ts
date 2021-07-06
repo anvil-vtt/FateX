@@ -17,7 +17,6 @@ export class Sortable extends BaseComponent {
             sortable.addEventListener("dragstart", (e) => sheet._onDragStart.call(sheet, e), false);
         });
 
-        // New bindings for skills. Remove this comment once actions have been standardised.
         html.find(".fatex-eb-item-sort").mousedown((e) => this._onDragHandlerMouseDown.call(this, e));
         html.find(".fatex-eb-item-sort").mouseup((e) => this._onDragHandlerMouseUp.call(this, e));
     }
