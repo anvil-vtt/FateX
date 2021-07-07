@@ -75,7 +75,7 @@
         border: 1px solid var(--primary-color, $primary-color);
         border-radius: 3px;
         margin-right: $component-padding;
-        color: $light-text-color;
+        color: var(--light-text-color, $light-text-color);
         font-size: 11px;
         text-align: center;
     }

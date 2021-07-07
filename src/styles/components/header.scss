@@ -7,7 +7,7 @@
     height: 100%;
     padding: 10px 10px 8px 10px;
     font-size: 23px;
-    color: $light-text-color;
+    color: var(--light-text-color, $light-text-color);
     background: var(--primary-color, $primary-color);
     box-shadow: 0 2px 15px 0 var(--primary-color, $primary-color);
     z-index: 5;
@@ -46,7 +46,6 @@
     &__fatepoint-divider {
         font-size: 25px;
         line-height: 25px;
-        color: $light-text-color;
     }
 
     &__logo {
@@ -54,7 +53,6 @@
     }
 
     &__title {
-        color: $light-text-color;
         height: 25px;
         font-size: 23px;
     }

@@ -1,7 +1,7 @@
 .fatex-headline {
     position: relative;
     margin-bottom: 0.5rem;
-    color: $light-text-color;
+    color: var(--light-text-color, $light-text-color);
     background: var(--primary-color, $primary-color);
 
     &::before {
