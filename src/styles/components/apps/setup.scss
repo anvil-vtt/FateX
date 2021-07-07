@@ -81,7 +81,7 @@
     }
 
     &:checked + &__box {
-        background: $headline-background;
+        background: $primary-color;
 
         &:before {
             content: "\f00c";

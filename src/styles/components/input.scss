@@ -28,7 +28,7 @@ input[type="text"].fatex-text-input {
     &--header {
         height: 25px;
         padding: 0;
-        color: $header-font-color;
+        color: $light-text-color;
         border: 0;
     }
 
@@ -70,7 +70,7 @@ input[type="number"].fatex-text-input--headline {
     padding: 5px;
     font-size: 13px;
     font-weight: bold;
-    color: #fff;
+    color: $light-text-color;
     text-transform: uppercase;
     text-align: center;
     border: none;

@@ -2,7 +2,7 @@
     position: relative;
     margin-bottom: 0.5rem;
     color: $headline-color;
-    background: $headline-background;
+    background: $primary-color;
 
     &::before {
         @include cutout-top-left;

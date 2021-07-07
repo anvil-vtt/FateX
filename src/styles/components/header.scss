@@ -7,9 +7,9 @@
     height: 100%;
     padding: 10px 10px 8px 10px;
     font-size: 23px;
-    color: $header-font-color;
-    background: $header-background;
-    box-shadow: 0 2px 15px 0 $header-shadow-color;
+    color: $light-text-color;
+    background: $primary-color;
+    box-shadow: 0 2px 15px 0 $primary-color;
     z-index: 5;
 
     &__name {
@@ -46,7 +46,7 @@
     &__fatepoint-divider {
         font-size: 25px;
         line-height: 25px;
-        color: $header-font-color;
+        color: $light-text-color;
     }
 
     &__logo {
@@ -54,7 +54,7 @@
     }
 
     &__title {
-        color: $header-font-color;
+        color: $light-text-color;
         height: 25px;
         font-size: 23px;
     }
