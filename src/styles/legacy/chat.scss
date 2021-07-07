@@ -1,6 +1,6 @@
 .fatex__headline {
-    background: var(--primary-color, $primary-color);
-    color: var(--light-text-color, $light-text-color);
+    background: var(--fatex-primary-color, $primary-color);
+    color: var(--fatex-light-text-color, $light-text-color);
     padding: $component-padding/2 $component-padding * 2 $component-padding/2 $component-padding * 2;
     position: relative;
     font-weight: bold;
@@ -34,7 +34,7 @@
     font-weight: 900;
     font-size: 24px;
     color: $sheet-background;
-    -webkit-text-stroke: 2px var(--primary-color, $primary-color);
+    -webkit-text-stroke: 2px var(--fatex-primary-color, $primary-color);
     text-shadow: initial;
 }
 
@@ -53,7 +53,7 @@
 .fatex__chat__die {
     font-family: "Fate Icons", sans-serif;
     font-size: 24px;
-    color: var(--primary-color, $primary-color);
+    color: var(--fatex-primary-color, $primary-color);
 }
 
 .fatex__chat__total {
@@ -63,7 +63,7 @@
 }
 
 .fatex__chat__ladder {
-    color: var(--primary-color, $primary-color);
+    color: var(--fatex-primary-color, $primary-color);
     font-weight: 300;
     font-size: 12px;
     display: block;

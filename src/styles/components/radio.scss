@@ -14,7 +14,7 @@
     flex-shrink: 0;
     padding: $component-padding / 2;
     text-align: center;
-    border: 1px solid var(--primary-color, $primary-color);
+    border: 1px solid var(--fatex-primary-color, $primary-color);
     border-radius: $component-padding / 2;
     opacity: 0.3;
     cursor: pointer;
@@ -41,7 +41,7 @@
 
 .fatex-radio-rank {
     border: 0;
-    color: var(--primary-color, $primary-color);
+    color: var(--fatex-primary-color, $primary-color);
     font-weight: 900;
     font-size: 24px;
     text-shadow: 1px 1px 1px $sheet-background;
@@ -52,6 +52,6 @@
 
     &--negative {
         color: $caution-color;
-        -webkit-text-stroke: 2px var(--primary-color, $primary-color);
+        -webkit-text-stroke: 2px var(--fatex-primary-color, $primary-color);
     }
 }

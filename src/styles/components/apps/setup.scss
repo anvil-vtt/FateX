@@ -72,16 +72,16 @@
         display: inline-block;
         width: 16px;
         height: 16px;
-        border: 1px solid var(--primary-color, $primary-color);
+        border: 1px solid var(--fatex-primary-color, $primary-color);
         border-radius: 3px;
         margin-right: $component-padding;
-        color: var(--light-text-color, $light-text-color);
+        color: var(--fatex-light-text-color, $light-text-color);
         font-size: 11px;
         text-align: center;
     }
 
     &:checked + &__box {
-        background: var(--primary-color, $primary-color);
+        background: var(--fatex-primary-color, $primary-color);
 
         &:before {
             content: "\f00c";
