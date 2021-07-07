@@ -3,10 +3,11 @@ $component-padding: 10px;
 
 // Colors
 $primary-color: rgba(47, 53, 66, 1);
-$primary-color-transparent: transparentize($primary-color, 0.7);
 
 $sheet-background: rgb(241, 242, 246);
+$message-background: transparentize($primary-color, 0.7);
 
+$primary-text-color: #191813;
 $light-text-color: #fff;
 
 $caution-color: rgb(242, 22, 40);

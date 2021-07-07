@@ -4,9 +4,9 @@
     justify-content: space-around;
     font-size: 13px;
     font-weight: bold;
-    color: $primary-color;
+    color: var(--primary-color, $primary-color);
     text-transform: uppercase;
-    border-bottom: 2px solid $primary-color;
+    border-bottom: 2px solid var(--primary-color, $primary-color);
 
     &__item {
         position: relative;
@@ -14,7 +14,7 @@
 
         &.active,
         &:hover {
-            background: $primary-color;
+            background: var(--primary-color, $primary-color);
             color: $light-text-color;
         }
 
@@ -30,7 +30,7 @@
     padding: $component-padding * 2 0;
 
     &__item {
-        color: $primary-color;
+        color: var(--primary-color, $primary-color);
         padding: $component-padding;
         text-transform: uppercase;
         margin-bottom: $component-padding * 2;
@@ -44,11 +44,11 @@
         &:hover {
             font-weight: bold;
             background: $sheet-background;
-            border: 1px solid $primary-color;
+            border: 1px solid var(--primary-color, $primary-color);
             border-right: 0;
             opacity: 1;
             z-index: 1;
-            box-shadow: 0 3px 0 0 $primary-color;
+            box-shadow: 0 3px 0 0 var(--primary-color, $primary-color);
         }
     }
 }

@@ -57,7 +57,7 @@
         top: 20px;
         gap: 0;
         font-size: 16px;
-        color: $primary-color;
+        color: var(--primary-color, $primary-color);
         text-shadow: 1px -1px 1px $sheet-background;
     }
 

@@ -10,17 +10,17 @@
 ::-webkit-scrollbar-thumb {
     outline: none;
     border-radius: 3px;
-    background: $primary-color !important;
+    background: var(--primary-color, $primary-color) !important;
     border: 0;
 }
 
 :root {
     scrollbar-width: thin !important;
-    scrollbar-color: $primary-color $sheet-background !important;
+    scrollbar-color: var(--primary-color, $primary-color) $sheet-background !important;
 }
 
 input[type="range"]::-webkit-slider-thumb {
-    background: $primary-color;
+    background: var(--primary-color, $primary-color);
     width: 18px;
     cursor: pointer;
     height: 25px;
@@ -28,7 +28,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 input[type="range"]::-moz-range-thumb {
-    background: $primary-color;
+    background: var(--primary-color, $primary-color);
     height: 25px;
     width: 18px;
     cursor: pointer;

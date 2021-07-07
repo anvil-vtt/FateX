@@ -8,8 +8,8 @@
     padding: 10px 10px 8px 10px;
     font-size: 23px;
     color: $light-text-color;
-    background: $primary-color;
-    box-shadow: 0 2px 15px 0 $primary-color;
+    background: var(--primary-color, $primary-color);
+    box-shadow: 0 2px 15px 0 var(--primary-color, $primary-color);
     z-index: 5;
 
     &__name {

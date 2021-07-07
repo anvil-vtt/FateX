@@ -9,7 +9,7 @@
     &__editor-wrapper {
         height: 250px;
         overflow: hidden;
-        border-bottom: 1px solid $primary-color;
+        border-bottom: 1px solid var(--primary-color, $primary-color);
         border-radius: 3px;
 
         > .editor {

@@ -16,7 +16,7 @@
         grid-area: footer;
         z-index: 10;
         padding: $component-padding / 2;
-        box-shadow: 0 -2px 15px 0 $primary-color;
+        box-shadow: 0 -2px 15px 0 var(--primary-color, $primary-color);
     }
 }
 
@@ -32,7 +32,7 @@
 
 .fatex__actor_group__sheet__navigation a {
     display: inline-block;
-    color: $primary-color;
+    color: var(--primary-color, $primary-color);
     padding: $component-padding/2 $component-padding * 2 $component-padding/2 $component-padding * 2;
     position: relative;
     font-weight: bold;
@@ -42,7 +42,7 @@
 
     &.active,
     &:hover {
-        background: $primary-color;
+        background: var(--primary-color, $primary-color);
         color: white;
     }
 }

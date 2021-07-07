@@ -9,4 +9,5 @@
 .sidebar-tab .directory-header .header-search input,
 #chat-form .cm-s-easymde {
     background: $sheet-background;
+    color: var(--primary-text-color, $primary-text-color);
 }
