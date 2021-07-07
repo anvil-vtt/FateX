@@ -15,7 +15,7 @@
         &.active,
         &:hover {
             background: $primary-color;
-            color: $headline-color;
+            color: $light-text-color;
         }
 
         &::after {
