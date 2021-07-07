@@ -2,7 +2,7 @@
     <header class="fatex-headline">
         <h3 class="fatex-headline__text">{{localize headline}}</h3>
 
-        <div class="fatex-eb-create-skill-reference fatex-actions fatex-actions--setting">
+        <div class="fatex-js-create-skill-reference fatex-actions fatex-actions--setting">
             <i class="fatex-actions__icon fatex-actions__icon--no-hide fa fa-plus"></i>
             <span class="fatex-actions__text">{{localize "FAx.Item.Automation.AddSkillRef"}}</span>
         </div>
@@ -14,7 +14,7 @@
                 <span>{{localize "FAx.Item.Automation.DisableUntil"}}</span>
 
                 <select
-                    class="fatex-eb-change-skill-reference"
+                    class="fatex-js-change-skill-reference"
                     data-index="{{reference.index}}"
                     data-field="skill"
                 >
@@ -28,7 +28,7 @@
                 </select>
 
                 <select
-                    class="fatex-eb-change-skill-reference fatex-eb-change-skill-reference--operator"
+                    class="fatex-js-change-skill-reference fatex-js-change-skill-reference--operator"
                     data-index="{{reference.index}}"
                     data-field="operator"
                     data-dtype="Number"
@@ -41,7 +41,7 @@
                 </select>
 
                 <select
-                    class="fatex-eb-change-skill-reference fatex-eb-change-skill-reference--condition"
+                    class="fatex-js-change-skill-reference fatex-js-change-skill-reference--condition"
                     data-index="{{reference.index}}"
                     data-field="condition"
                     data-dtype="Number"
@@ -55,7 +55,7 @@
 
                 <div class="fatex-actions fatex-actions--automation-item">
                     <i
-                        class="fatex-eb-remove-skill-reference fatex-actions__icon fatex-u-delete fa fa-trash fatex-actions__icon--no-hide"
+                        class="fatex-js-remove-skill-reference fatex-actions__icon fatex-u-delete fa fa-trash fatex-actions__icon--no-hide"
                         data-index="{{reference.index}}"></i>
                 </div>
             </div>

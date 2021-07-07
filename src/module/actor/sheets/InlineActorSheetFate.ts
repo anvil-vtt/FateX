@@ -6,8 +6,8 @@ export class InlineActorSheetFate extends CharacterSheet {
             group: undefined,
             tabs: [
                 {
-                    navSelector: ".fatex-eb-tabs-navigation",
-                    contentSelector: ".fatex-eb-tab-content",
+                    navSelector: ".fatex-js-tabs-navigation",
+                    contentSelector: ".fatex-js-tab-content",
                     initial: "aspects",
                 },
             ]
@@ -53,7 +53,7 @@ export class InlineActorSheetFate extends CharacterSheet {
     _injectHTML(html, options) {
         const group = options?.group ?? this.options.group;
 
-        $(`#${group.id} .fatex-eb-actor-group-sheets`).append(html);
+        $(`#${group.id} .fatex-js-actor-group-sheets`).append(html);
         this._element = html;
     }
 }

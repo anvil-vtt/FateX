@@ -14,14 +14,14 @@
 
     <div class="fatex-slider">
         <input
-            class="fatex-eb-setting-range-value fatex-slider__label"
+            class="fatex-js-setting-range-value fatex-slider__label"
             type="text"
             value="{{data.size}}"
         />
 
         <input
             type="range"
-            class="fatex-eb-setting-range-slider"
+            class="fatex-js-setting-range-slider"
             name="data.size"
             data-dtype="Number"
             value="{{data.size}}"
@@ -38,7 +38,7 @@
 
     <div class="fatex-radio-group">
         <div
-            class="fatex-eb-radio-button fatex-radio-button{{#if (eq 0 data.labelType)}} fatex-radio-button--active{{/if}}"
+            class="fatex-js-radio-button fatex-radio-button{{#if (eq 0 data.labelType)}} fatex-radio-button--active{{/if}}"
             data-value="0"
             data-name="data.labelType"
             data-dtype="Number"
@@ -52,7 +52,7 @@
         </div>
 
         <div
-            class="fatex-eb-radio-button fatex-radio-button{{#if (eq 1 data.labelType)}} fatex-radio-button--active{{/if}}"
+            class="fatex-js-radio-button fatex-radio-button{{#if (eq 1 data.labelType)}} fatex-radio-button--active{{/if}}"
             data-value="1"
             data-name="data.labelType"
             data-dtype="Number"
@@ -66,7 +66,7 @@
         </div>
 
         <div
-            class="fatex-eb-radio-button fatex-radio-button{{#if (eq 2 data.labelType)}} fatex-radio-button--active{{/if}}"
+            class="fatex-js-radio-button fatex-radio-button{{#if (eq 2 data.labelType)}} fatex-radio-button--active{{/if}}"
             data-value="2"
             data-name="data.labelType"
             data-dtype="Number"

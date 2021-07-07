@@ -38,8 +38,8 @@ export class SheetSetup extends FormApplication<any, any, FateActor> {
             scrollY: [".fatex-desk__content"],
             tabs: [
                 {
-                    navSelector: ".fatex-eb-vertical-tabs-navigation",
-                    contentSelector: ".fatex-eb-vertical-tabs-content"
+                    navSelector: ".fatex-js-vertical-tabs-navigation",
+                    contentSelector: ".fatex-js-vertical-tabs-content"
                 }
             ]
         } as FormApplication.Options);
@@ -68,15 +68,15 @@ export class SheetSetup extends FormApplication<any, any, FateActor> {
         super.activateListeners(html);
 
         // Clear actions
-        html.find(".fatex-eb-clear").click((e) => this._onClear.call(this, e, CLEAR.EVERYTHING));
-        html.find(".fatex-eb-clear-stress").click((e) => this._onClear.call(this, e, CLEAR.STRESS));
-        html.find(".fatex-eb-clear-skills").click((e) => this._onClear.call(this, e, CLEAR.SKILLS));
-        html.find(".fatex-eb-clear-consequences").click((e) => this._onClear.call(this, e, CLEAR.CONSEQUENCES));
-        html.find(".fatex-eb-clear-aspects").click((e) => this._onClear.call(this, e, CLEAR.ASPECTS));
+        html.find(".fatex-js-clear").click((e) => this._onClear.call(this, e, CLEAR.EVERYTHING));
+        html.find(".fatex-js-clear-stress").click((e) => this._onClear.call(this, e, CLEAR.STRESS));
+        html.find(".fatex-js-clear-skills").click((e) => this._onClear.call(this, e, CLEAR.SKILLS));
+        html.find(".fatex-js-clear-consequences").click((e) => this._onClear.call(this, e, CLEAR.CONSEQUENCES));
+        html.find(".fatex-js-clear-aspects").click((e) => this._onClear.call(this, e, CLEAR.ASPECTS));
 
         // Setup actions
-        html.find(".fatex-eb-add-selection").click((e) => this._onSetupType.call(this, e));
-        html.find(".fatex-eb-toggle-selection").click((e) => this._onToggleType.call(this, e));
+        html.find(".fatex-js-add-selection").click((e) => this._onSetupType.call(this, e));
+        html.find(".fatex-js-toggle-selection").click((e) => this._onToggleType.call(this, e));
     }
 
     /*************************

@@ -24,10 +24,10 @@ export class ConsequenceItem extends BaseItem {
         super.activateActorSheetListeners(html, sheet);
 
         // Check or uncheck a single box
-        html.find(".fatex-eb-consequence-checkbox").click((e) => this._onToggleCondition.call(this, e, sheet));
+        html.find(".fatex-js-consequence-checkbox").click((e) => this._onToggleCondition.call(this, e, sheet));
 
         // Change consequence text
-        html.find(".fatex-eb-consequence-input").on("blur", (e) => this._onConsequenceTextChange.call(this, e, sheet));
+        html.find(".fatex-js-consequence-input").on("blur", (e) => this._onConsequenceTextChange.call(this, e, sheet));
     }
 
     /*************************

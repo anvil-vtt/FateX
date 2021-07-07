@@ -6,7 +6,7 @@
     <div class="fatex-radio-group fatex-radio-group--ranks">
         {{#each radioItems as |radioItem radioItemIndex|}}
             <div
-                class="fatex-eb-radio-button fatex-radio-rank{{#if (eq radioItem ../field)}} fatex-radio-rank--active{{/if}}{{#if (lt radioItem 0)}} fatex-radio-rank--negative{{/if}}"
+                class="fatex-js-radio-button fatex-radio-rank{{#if (eq radioItem ../field)}} fatex-radio-rank--active{{/if}}{{#if (lt radioItem 0)}} fatex-radio-rank--negative{{/if}}"
                 data-value="{{ radioItem }}"
                 data-name="{{ ../fieldName }}"
                 data-dtype="{{ ../dtype }}"

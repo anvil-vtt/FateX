@@ -14,13 +14,13 @@ export class SkillItem extends BaseItem {
         super.activateActorSheetListeners(html, sheet);
 
         // Check or uncheck a single box
-        html.find(".fatex-eb-skill").click((e) => this._onRollSkill.call(this, e, sheet));
-        html.find(".fatex-eb-skill-increment").click((e) => this._onSkillChangeRank.call(this, e, sheet, true));
-        html.find(".fatex-eb-skill-decrement").click((e) => this._onSkillChangeRank.call(this, e, sheet, false));
+        html.find(".fatex-js-skill").click((e) => this._onRollSkill.call(this, e, sheet));
+        html.find(".fatex-js-skill-increment").click((e) => this._onSkillChangeRank.call(this, e, sheet, true));
+        html.find(".fatex-js-skill-decrement").click((e) => this._onSkillChangeRank.call(this, e, sheet, false));
 
-        html.find(`.fatex-eb-${this.entityName}-sort-rank`).click(() => this._onSkillSort.call(this, sheet, "rank"));
-        html.find(`.fatex-eb-${this.entityName}-sort-name`).click(() => this._onSkillSort.call(this, sheet, "name"));
-        html.find(`.fatex-eb-${this.entityName}-sort-reverse`).click(() => this._onSkillSort.call(this, sheet, "reverse"));
+        html.find(`.fatex-js-${this.entityName}-sort-rank`).click(() => this._onSkillSort.call(this, sheet, "rank"));
+        html.find(`.fatex-js-${this.entityName}-sort-name`).click(() => this._onSkillSort.call(this, sheet, "name"));
+        html.find(`.fatex-js-${this.entityName}-sort-reverse`).click(() => this._onSkillSort.call(this, sheet, "reverse"));
     }
 
     /**

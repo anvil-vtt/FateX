@@ -18,9 +18,9 @@ export abstract class BaseItem {
             throw new Error("A subclass of the BaseItem must provide an entityName field or implement their own _onItemAdd() method.");
         }
 
-        html.find(`.fatex-eb-${this.entityName}-add`).click((e) => this._onItemAdd.call(this, e, sheet));
-        html.find(`.fatex-eb-${this.entityName}-settings`).click((e) => this._onItemSettings.call(this, e, sheet));
-        html.find(`.fatex-eb-${this.entityName}-delete`).click((e) => this._onItemDelete.call(this, e, sheet));
+        html.find(`.fatex-js-${this.entityName}-add`).click((e) => this._onItemAdd.call(this, e, sheet));
+        html.find(`.fatex-js-${this.entityName}-settings`).click((e) => this._onItemSettings.call(this, e, sheet));
+        html.find(`.fatex-js-${this.entityName}-delete`).click((e) => this._onItemDelete.call(this, e, sheet));
     }
 
     /**
@@ -155,6 +155,6 @@ export abstract class BaseItem {
     protected static isEditMode(e): boolean {
         const element = jQuery(e.currentTarget);
 
-        return !!element.closest(".fatex-eb-edit-mode").length;
+        return !!element.closest(".fatex-js-edit-mode").length;
     }
 }
