@@ -96,6 +96,10 @@
         border: none;
         margin-bottom: $component-padding;
     }
+
+    h2 {
+        border-color: var(--fatex-primary-color, $primary-color);
+    }
 }
 
 .fatex-js-edit-mode {
