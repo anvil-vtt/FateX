@@ -9,7 +9,7 @@
     &__editor-wrapper {
         height: 250px;
         overflow: hidden;
-        border-bottom: 1px solid var(--fatex-primary-color, $primary-color);
+        border-bottom: 1px solid $fatex-primary-color;
         border-radius: 3px;
 
         > .editor {

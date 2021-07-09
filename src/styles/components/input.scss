@@ -7,10 +7,10 @@ input[type="text"].fatex-text-input {
     background: transparent;
     border-radius: 3px;
     border: none;
-    border-bottom: 1px solid var(--fatex-primary-color, $primary-color);
+    border-bottom: 1px solid $fatex-primary-color;
 
     &::placeholder {
-        color: var(--fatex-primary-color, $primary-color);
+        color: $fatex-primary-color;
         opacity: 0.3;
     }
 
@@ -39,7 +39,7 @@ input[type="text"].fatex-text-input {
         transform: translate(-60%, -40%);
         font-weight: 900;
         font-size: 24px;
-        color: var(--fatex-primary-color, $primary-color);
+        color: $fatex-primary-color;
         text-shadow: 1px 1px 1px $sheet-background;
     }
 
@@ -47,7 +47,7 @@ input[type="text"].fatex-text-input {
         padding-left: $component-padding / 2;
         font-size: 8px;
         letter-spacing: 3px;
-        color: var(--fatex-primary-color, $primary-color);
+        color: $fatex-primary-color;
         text-transform: uppercase;
         white-space: nowrap;
 

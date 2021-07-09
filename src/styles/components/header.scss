@@ -7,9 +7,9 @@
     height: 100%;
     padding: 10px 10px 8px 10px;
     font-size: 23px;
-    color: var(--fatex-light-text-color, $light-text-color);
-    background: var(--fatex-primary-color, $primary-color);
-    box-shadow: 0 2px 15px 0 var(--fatex-primary-color, $primary-color);
+    color: $fatex-header-text-color;
+    background: $fatex-header-color;
+    box-shadow: 0 2px 15px 0 $fatex-header-color;
     z-index: 5;
 
     &__name {

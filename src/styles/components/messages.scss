@@ -1,7 +1,7 @@
 .fatex-message {
     margin: $component-padding;
     padding: $component-padding / 2;
-    border: 1px solid var(--fatex-primary-color, $primary-color);
+    border: 1px solid $fatex-primary-color;
     background: $message-background;
     border-radius: 5px;
 }

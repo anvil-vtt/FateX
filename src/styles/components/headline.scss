@@ -2,7 +2,7 @@
     position: relative;
     margin-bottom: 0.5rem;
     color: var(--fatex-light-text-color, $light-text-color);
-    background: var(--fatex-primary-color, $primary-color);
+    background: $fatex-primary-color;
 
     &::before {
         @include cutout-top-left;
@@ -52,7 +52,7 @@
         transform: translate(-25px, 0px);
         font-weight: 900;
         color: $sheet-background;
-        -webkit-text-stroke: 2px var(--fatex-primary-color, $primary-color);
+        -webkit-text-stroke: 2px $fatex-primary-color;
         text-shadow: initial;
 
         &--skill {
@@ -98,7 +98,7 @@
     }
 
     h2 {
-        border-color: var(--fatex-primary-color, $primary-color);
+        border-color: $fatex-primary-color;
     }
 }
 

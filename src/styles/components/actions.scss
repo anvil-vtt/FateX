@@ -57,7 +57,7 @@
         top: 20px;
         gap: 0;
         font-size: 16px;
-        color: var(--fatex-primary-color, $primary-color);
+        color: $fatex-primary-color;
         text-shadow: 1px -1px 1px $sheet-background;
     }
 

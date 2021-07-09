@@ -15,3 +15,9 @@ $shadow-color: rgb(160, 160, 160);
 
 // Fonts
 $primary-font: "Montserrat", sans-serif;
+
+// Custom Property Hooks
+$fatex-header-color: var(--fatex-header-color, $primary-color);
+$fatex-header-text-color: var(--fatex-header-text-color, $light-text-color);
+
+$fatex-primary-color: var(--fatex-primary-color, $primary-color);
