@@ -12,7 +12,7 @@ export class FateActor extends Actor<ActorDataFate, FateItem> {
      */
     static async create(data, options = {}) {
         // Fallback for manual actor duplication
-        if (data._id || Object.prototype.hasOwnProperty.call(data, "data")) {
+        if (data._id || Object.prototype.hasOwnProperty.call(data, "data") || data?.flags?.cf !== undefined) {
             return super.create(data, options);
         }
 
