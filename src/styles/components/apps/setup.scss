@@ -1,0 +1,98 @@
+.fatex-sheet-setup {
+    padding: $component-padding;
+    min-width: 100%;
+
+    &__group {
+        width: 50%;
+        min-width: 180px;
+
+        &:only-child,
+        &--columns {
+            width: 100%;
+        }
+    }
+
+    &__group-label {
+        position: relative;
+        display: block;
+        margin-bottom: $component-padding;
+        font-size: 10px;
+        font-weight: bold;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+
+    &__groups {
+        display: flex;
+        gap: $component-padding;
+        padding: $component-padding;
+    }
+
+    &__main {
+        margin-top: $component-padding * 4;
+    }
+
+    &__option {
+        display: flex;
+        align-items: center;
+    }
+
+    &__options {
+        display: grid;
+        gap: $component-padding;
+
+        &--columns {
+            grid-template-columns: repeat(2, 1fr);
+
+            .fatex-sheet-setup__option {
+                page-break-inside: avoid;
+            }
+        }
+    }
+
+    &__section {
+        margin-bottom: $component-padding * 2;
+    }
+}
+
+.fatex-setup-actions {
+    display: grid;
+    grid-template: 1fr 1fr / repeat(3, 1fr);
+    grid-template-areas: "x x r" "x x r";
+    gap: $component-padding / 2;
+}
+
+.fatex-option-checkbox {
+    position: absolute;
+    opacity: 0;
+    left: -10000px;
+    top: -10000px;
+
+    &__box {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        border: 1px solid $fatex-primary-color;
+        border-radius: 3px;
+        margin-right: $component-padding;
+        color: var(--fatex-light-text-color, $light-text-color);
+        font-size: 11px;
+        text-align: center;
+    }
+
+    &:checked + &__box {
+        background: $fatex-primary-color;
+
+        &:before {
+            content: "\f00c";
+            font-weight: 900;
+            font-family: "Font Awesome 5 Free";
+            display: inline-block;
+            font-style: normal;
+            font-variant: normal;
+            text-rendering: auto;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+        }
+    }
+}

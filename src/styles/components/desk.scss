@@ -1,0 +1,72 @@
+.fatex-desk {
+    display: grid;
+    grid-template-rows: min-content minmax(100px, 100%) min-content;
+    grid-template-areas: "header" "content" "footer";
+    height: 100%;
+
+    &__aspects,
+    &__consequences {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+
+        &--inline {
+            padding-left: 0;
+        }
+    }
+
+    &__content {
+        grid-area: content;
+        overflow-y: auto;
+        scrollbar-width: thin;
+
+        &--app {
+            padding: $component-padding;
+        }
+
+        &--actor-sheet {
+            display: grid;
+            grid-template-columns: 4fr 1fr;
+        }
+
+        &--group {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: min-content;
+            gap: $component-padding;
+            padding: $component-padding;
+        }
+    }
+
+    &__footer {
+        grid-area: footer;
+    }
+
+    &__messages {
+        grid-area: messages;
+    }
+
+    &__sidebar {
+        min-width: 240px;
+        box-shadow: 12px 0 15px 0 $fatex-primary-color;
+    }
+
+    &__tabloid {
+        min-width: 650px;
+        display: grid;
+        grid-template-columns: 55% 1fr;
+        grid-template-rows: min-content min-content 1fr min-content;
+        grid-template-areas: "messages messages" "aspects consequences" "tabs tabs" "copyright copyright";
+    }
+
+    &__tabs {
+        grid-area: tabs;
+
+        &--vertical {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            margin-bottom: -10px;
+        }
+    }
+}

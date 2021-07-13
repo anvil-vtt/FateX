@@ -1,0 +1,57 @@
+.fatex-radio-group {
+    display: flex;
+    justify-content: space-around;
+    gap: $component-padding;
+
+    &--ranks {
+        gap: $component-padding / 2;
+        padding: 0 $component-padding;
+    }
+}
+
+.fatex-radio-rank,
+.fatex-radio-button {
+    flex-shrink: 0;
+    padding: $component-padding / 2;
+    text-align: center;
+    border: 1px solid $fatex-primary-color;
+    border-radius: $component-padding / 2;
+    opacity: 0.3;
+    cursor: pointer;
+
+    &--active {
+        background: rgba(0, 0, 0, 0.05);
+        opacity: 1;
+    }
+
+    &__image {
+        height: 24px;
+        margin: 8px;
+
+        &--big {
+            height: 40px;
+        }
+    }
+
+    &__label {
+        display: block;
+        font-size: 12px;
+    }
+}
+
+.fatex-radio-rank {
+    border: 0;
+    color: $fatex-primary-color;
+    font-weight: 900;
+    font-size: 24px;
+    text-shadow: 1px 1px 1px $sheet-background;
+
+    &--active {
+        background: none;
+    }
+
+    &--negative {
+        color: $caution-color;
+        -webkit-text-stroke: 2px $fatex-primary-color;
+    }
+}

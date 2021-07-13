@@ -1,6 +1,6 @@
 .fatex__headline {
-    background: $headline-background;
-    color: $headline-color;
+    background: $fatex-primary-color;
+    color: var(--fatex-light-text-color, $light-text-color);
     padding: $component-padding/2 $component-padding * 2 $component-padding/2 $component-padding * 2;
     position: relative;
     font-weight: bold;
@@ -9,24 +9,12 @@
     font-size: 13px;
     box-shadow: 1px 1px 1px $shadow-color;
 
-    &::before,
-    &::after {
-        content: "";
-        position: absolute;
-    }
-
     &::before {
-        top: -1px;
-        left: -1px;
-        border-top: 16px solid #f1f2f6;
-        border-right: 16px solid transparent;
+        @include cutout-top-left;
     }
 
     &::after {
-        bottom: -1px;
-        right: -1px;
-        border-bottom: 16px solid #f1f2f6;
-        border-left: 16px solid transparent;
+        @include cutout-bottom-right;
     }
 }
 
@@ -46,7 +34,7 @@
     font-weight: 900;
     font-size: 24px;
     color: $sheet-background;
-    -webkit-text-stroke: 2px $primary-color;
+    -webkit-text-stroke: 2px $fatex-primary-color;
     text-shadow: initial;
 }
 
@@ -65,7 +53,7 @@
 .fatex__chat__die {
     font-family: "Fate Icons", sans-serif;
     font-size: 24px;
-    color: $primary-color;
+    color: $fatex-primary-color;
 }
 
 .fatex__chat__total {
@@ -75,7 +63,7 @@
 }
 
 .fatex__chat__ladder {
-    color: $primary-color;
+    color: $fatex-primary-color;
     font-weight: 300;
     font-size: 12px;
     display: block;

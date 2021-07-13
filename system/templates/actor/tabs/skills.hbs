@@ -1,0 +1,55 @@
+<section>
+    <header class="fatex-section-heading">
+        <h2>{{localize "FAx.Sheet.Skills"}}</h2>
+
+        <div class="fatex-actions fatex-actions--section-heading">
+            <i class="fatex-js-skill-sort-rank fatex-actions__icon fa fa-sort-numeric-down"></i>
+            <i class="fatex-js-skill-sort-name fatex-actions__icon fa fa-sort-alpha-down"></i>
+            <i class="fatex-js-skill-sort-reverse fatex-actions__icon fa fa-random"></i>
+            <i class="fatex-js-skill-add fatex-actions__icon fa fa-plus"></i>
+        </div>
+    </header>
+
+    <div class="fatex-item-grid fatex-item-grid--skills{{#if options.enableColumns}} fatex-item-grid--two-column{{/if}}">
+        {{#each skills as |skill skillIndex|}}
+            <div
+                class="fatex-js-sortable fatex-js-skill fatex-skill fatex__input--icon"
+                data-item-id="{{skill._id}}"
+            >
+                <div class="fatex-headline">
+                    <h3 class="fatex-headline__text">{{skill.name}}</h3>
+
+                    {{#unless skill.data.isNeutral}}
+                        <span
+                            class="fatex-headline__icon fatex-headline__icon--skill{{#if skill.data.isNegative}} fatex-headline__icon--negative{{/if}}"
+                        >
+                            {{#if skill.data.isPositive}}+{{/if}}{{skill.data.rank}}
+                        </span>
+                    {{/unless}}
+
+                    <div class="fatex-actions fatex-actions--skill-secondary">
+                        <span
+                            class="fatex-js-skill-increment fatex-actions__icon fatex-actions__icon--secondary"
+                            data-item="{{skill._id}}"
+                        >
+                            +
+                        </span>
+
+                        <span
+                            class="fatex-js-skill-decrement fatex-actions__icon fatex-actions__icon--secondary"
+                            data-item="{{skill._id}}"
+                        >
+                            -
+                        </span>
+                    </div>
+
+                    <div class="fatex-actions fatex-actions--skill">
+                        <i class="fatex-js-item-sort fatex-actions__icon fa fa-sort"></i>
+                        <i class="fatex-js-skill-settings fatex-actions__icon fa fa-cog" data-item="{{skill._id}}"></i>
+                        <i class="fatex-js-skill-delete fatex-actions__icon fatex-u-delete fa fa-trash" data-item="{{skill._id}}"></i>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</section>

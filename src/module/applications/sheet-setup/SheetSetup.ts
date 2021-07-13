@@ -6,14 +6,14 @@ const CLEAR = {
     ASPECTS: 1,
     CONSEQUENCES: 2,
     SKILLS: 3,
-    STRESS: 4,
+    STRESS: 4
 };
 
 const TYPES = {
     1: "aspect",
     2: "consequence",
     3: "skill",
-    4: "stress",
+    4: "stress"
 };
 
 export class SheetSetup extends FormApplication<any, any, FateActor> {
@@ -32,16 +32,16 @@ export class SheetSetup extends FormApplication<any, any, FateActor> {
             title: game.i18n.localize("FAx.Apps.Setup.Title"),
             template: "/systems/fatex/templates/apps/sheet-setup.hbs",
             resizable: true,
-            classes: ["fatex fatex__app_sheet"],
+            classes: ["fatex", "fatex-sheet", "fatex-sheet--app"],
             width: 600,
             height: 700,
-            scrollY: [".desk__content"],
+            scrollY: [".fatex-desk__content"],
             tabs: [
                 {
-                    navSelector: ".fatex__vertical_tabs__navigation",
-                    contentSelector: ".fatex__vertical_tabs__content",
-                },
-            ],
+                    navSelector: ".fatex-js-vertical-tabs-navigation",
+                    contentSelector: ".fatex-js-vertical-tabs-content"
+                }
+            ]
         } as FormApplication.Options);
     }
 
@@ -68,15 +68,15 @@ export class SheetSetup extends FormApplication<any, any, FateActor> {
         super.activateListeners(html);
 
         // Clear actions
-        html.find(".fatex-eb-clear").click((e) => this._onClear.call(this, e, CLEAR.EVERYTHING));
-        html.find(".fatex-eb-clear-stress").click((e) => this._onClear.call(this, e, CLEAR.STRESS));
-        html.find(".fatex-eb-clear-skills").click((e) => this._onClear.call(this, e, CLEAR.SKILLS));
-        html.find(".fatex-eb-clear-consequences").click((e) => this._onClear.call(this, e, CLEAR.CONSEQUENCES));
-        html.find(".fatex-eb-clear-aspects").click((e) => this._onClear.call(this, e, CLEAR.ASPECTS));
+        html.find(".fatex-js-clear").click((e) => this._onClear.call(this, e, CLEAR.EVERYTHING));
+        html.find(".fatex-js-clear-stress").click((e) => this._onClear.call(this, e, CLEAR.STRESS));
+        html.find(".fatex-js-clear-skills").click((e) => this._onClear.call(this, e, CLEAR.SKILLS));
+        html.find(".fatex-js-clear-consequences").click((e) => this._onClear.call(this, e, CLEAR.CONSEQUENCES));
+        html.find(".fatex-js-clear-aspects").click((e) => this._onClear.call(this, e, CLEAR.ASPECTS));
 
         // Setup actions
-        html.find(".fatex-eb-add-selection").click((e) => this._onSetupType.call(this, e));
-        html.find(".fatex-eb-toggle-selection").click((e) => this._onToggleType.call(this, e));
+        html.find(".fatex-js-add-selection").click((e) => this._onSetupType.call(this, e));
+        html.find(".fatex-js-toggle-selection").click((e) => this._onToggleType.call(this, e));
     }
 
     /*************************
@@ -110,7 +110,7 @@ export class SheetSetup extends FormApplication<any, any, FateActor> {
         event.preventDefault();
 
         const button = $(event.currentTarget);
-        const type = button.parents(".fatex-sheet-setup__section, .fatex__sheet_setup__group").first();
+        const type = button.parents(".fatex-sheet-setup__section, .fatex-sheet-setup__group").first();
         const entries = type.find("input");
 
         entries.prop("checked", !entries.first().prop("checked"));
@@ -133,19 +133,19 @@ export class SheetSetup extends FormApplication<any, any, FateActor> {
                     cancel: {
                         icon: '<i class="fas fa-times"></i>',
                         label: game.i18n.localize("FAx.Dialog.Cancel"),
-                        callback: () => null,
+                        callback: () => null
                     },
                     submit: {
                         icon: '<i class="fas fa-check"></i>',
                         label: game.i18n.localize("FAx.Dialog.Confirm"),
                         callback: async () => {
                             await this._doClear(type);
-                        },
-                    },
-                },
+                        }
+                    }
+                }
             },
             {
-                classes: ["fatex", "fatex-dialog"],
+                classes: ["fatex", "fatex-dialog"]
             }
         ).render(true);
     }

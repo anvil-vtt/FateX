@@ -1,5 +1,5 @@
-input[type="text"].fatex-text-input,
-.fatex-text-input {
+.fatex-text-input,
+input[type="text"].fatex-text-input {
     display: flex;
     flex-direction: column-reverse;
     min-height: 24px;
@@ -7,10 +7,10 @@ input[type="text"].fatex-text-input,
     background: transparent;
     border-radius: 3px;
     border: none;
-    border-bottom: 1px solid $primary-color;
+    border-bottom: 1px solid $fatex-primary-color;
 
     &::placeholder {
-        color: $primary-color;
+        color: $fatex-primary-color;
         opacity: 0.3;
     }
 
@@ -28,15 +28,26 @@ input[type="text"].fatex-text-input,
     &--header {
         height: 25px;
         padding: 0;
-        color: $header-font-color;
+        color: inherit;
         border: 0;
+    }
+
+    &__icon {
+        position: absolute;
+        left: -15px;
+        top: 0;
+        transform: translate(-60%, -40%);
+        font-weight: 900;
+        font-size: 24px;
+        color: $fatex-primary-color;
+        text-shadow: 1px 1px 1px $sheet-background;
     }
 
     &__label {
         padding-left: $component-padding / 2;
         font-size: 8px;
         letter-spacing: 3px;
-        color: $primary-color;
+        color: $fatex-primary-color;
         text-transform: uppercase;
         white-space: nowrap;
 
@@ -47,5 +58,31 @@ input[type="text"].fatex-text-input,
 
     &__setting-label {
         font-size: 10px;
+        padding-left: $component-padding / 2;
     }
+}
+
+input[type="number"].fatex-text-input--headline {
+    position: absolute;
+    right: 10px;
+    width: initial;
+    margin: 0;
+    padding: 5px;
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--fatex-light-text-color, $light-text-color);
+    text-transform: uppercase;
+    text-align: center;
+    border: none;
+}
+
+.fatex__input--icon {
+    padding-left: $component-padding;
+}
+
+[contentEditable="true"]:empty:not(:focus):before {
+    content: attr(data-placeholder);
+    font-style: italic;
+    opacity: 0.3;
+    pointer-events: none;
 }

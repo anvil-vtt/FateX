@@ -7,7 +7,7 @@ export class AspectItem extends BaseItem {
         super.activateActorSheetListeners(html, sheet);
 
         // Check or uncheck a single box
-        html.find(".fatex-eb-aspect-input").on("blur", (e) => this._onAspectTextChange.call(this, e, sheet));
+        html.find(".fatex-js-aspect-input").on("blur", (e) => this._onAspectTextChange.call(this, e, sheet));
     }
 
     /*************************

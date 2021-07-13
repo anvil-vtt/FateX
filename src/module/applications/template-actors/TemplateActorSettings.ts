@@ -8,7 +8,7 @@ export class TemplateActorSettings extends FormApplication<any, any, any> {
             template: "/systems/fatex/templates/apps/template-actors.hbs",
             id: "template-actors",
             resizable: true,
-            classes: ["fatex fatex__app_sheet"],
+            classes: ["fatex", "fatex-sheet", "fatex-sheet--app"],
             width: 920,
             height: 500,
         } as FormApplication.Options);
@@ -33,10 +33,10 @@ export class TemplateActorSettings extends FormApplication<any, any, any> {
     activateListeners(html) {
         super.activateListeners(html);
 
-        html.find(".fatex__template__create").on("click", (e) => this._createTemplate.call(this, e));
-        html.find(".fatex-eb-delete-template").on("click", (e) => this._deleteTemplate.call(this, e));
-        html.find(".fatex-eb-configure-template").on("click", (e) => this._configureTemplate.call(this, e));
-        html.find(".fatex-eb-duplicate-template").on("click", (e) => this._duplicateTemplate.call(this, e));
+        html.find(".fatex-js-create-template").on("click", (e) => this._createTemplate.call(this, e));
+        html.find(".fatex-js-delete-template").on("click", (e) => this._deleteTemplate.call(this, e));
+        html.find(".fatex-js-configure-template").on("click", (e) => this._configureTemplate.call(this, e));
+        html.find(".fatex-js-duplicate-template").on("click", (e) => this._duplicateTemplate.call(this, e));
     }
 
     /*************************

@@ -7,7 +7,7 @@ import { GroupSheet } from "../actor/sheets/GroupSheet";
 import { groupType } from "../actor/ActorTypes";
 
 /**
- * Returns all references of actors or tokens to be rendered as inlineSheeds based on a given groupType
+ * Returns all references of actors or tokens to be rendered as inlineSheets based on a given groupType
  * Defaults to type "manual" which consists of manually added actors and tokens
  */
 export function getReferencesByGroupType(groupType: groupType = "manual", actor?: FateActor): DeepPartial<ReferenceItemData>[] {

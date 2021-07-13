@@ -30,11 +30,11 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
      */
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
-            classes: ["fatex fatex__sheet sheet actor_group_overview actor_group_overview--front"],
+            classes: ["fatex fatex-sheet sheet actor_group_overview actor_group_overview--front"],
             resizable: true,
             template: "/systems/fatex/templates/actor/group.hbs",
             dragDrop: [{ dropSelector: null }],
-            scrollY: [".window-content"],
+            scrollY: [".fatex-desk__content"],
         } as CharacterSheetOptions);
     }
 
@@ -95,10 +95,10 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
      * Saves scene/encounter group order by using sortables integrated localstorage sorting
      */
     addSortableJSHandler(html) {
-        if (this.actor.data.type != "group" || !html.find(".fatex__actor_group__inlinesheets").length) return;
+        if (this.actor.data.type != "group" || !html.find(".fatex-js-actor-group-sheets").length) return;
 
         if (this.actor.data.data.groupType == "manual") {
-            return Sortable.create(html.find(".fatex__actor_group__inlinesheets")[0], {
+            return Sortable.create(html.find(".fatex-js-actor-group-sheets")[0], {
                 animation: 150,
                 removeOnSpill: true,
                 onEnd: (e: SortableEvent) => this.sortInlineSheets.call(this, e),
@@ -106,7 +106,7 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
             });
         }
 
-        Sortable.create(html.find(".fatex__actor_group__inlinesheets")[0], {
+        Sortable.create(html.find(".fatex-js-actor-group-sheets")[0], {
             group: ["groupSort", this.actor.id].join("-"),
             animation: 150,
             store: {
@@ -118,7 +118,7 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
 
     async spillInlineSheet(event: SortableEvent) {
         if (event.item.dataset.id) {
-            await this.actor.deleteEmbeddedEntity("OwnedItem", event.item.dataset.id);
+            await this.actor.deleteOwnedItem(event.item.dataset.id);
         }
     }
 
@@ -177,8 +177,8 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
             }
         }
 
-        if (this.element && this._scrollPositions && this._scrollPositions[".window-content"]) {
-            this.element.find(".window-content")[0].scrollTop = this._scrollPositions[".window-content"];
+        if (this.element && this._scrollPositions && this._scrollPositions[".fatex-desk__content"]) {
+            this.element.find(".fatex-desk__content")[0].scrollTop = this._scrollPositions[".fatex-desk__content"];
         }
 
         // Add sortable handler after rendering for all sub-sheets is finished
@@ -198,7 +198,7 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
 
         const actorSheet = new InlineActorSheetFate(actor as FateActor, { referenceID: reference._id } as CharacterSheetOptions);
         // @ts-ignore
-        await actorSheet._render(true, { group: this } as Application.RenderOptions);
+        await actorSheet.render(true, { group: this } as Application.RenderOptions);
 
         this.inlineSheets.push(actorSheet);
     }
@@ -219,7 +219,7 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
 
         const tokenSheet = new InlineActorSheetFate(token.actor as FateActor, { referenceID: reference._id } as CharacterSheetOptions);
         // @ts-ignore
-        await tokenSheet._render(true, { token: token, group: this } as Application.RenderOptions);
+        await tokenSheet.render(true, { token: token, group: this } as Application.RenderOptions);
 
         this.inlineSheets.push(tokenSheet);
     }
@@ -245,7 +245,7 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
         const token = new Token(tokenData, scene);
         const tokenSheet = new InlineActorSheetFate(token.actor as FateActor, { combatant: combatant, referenceID: reference._id } as CharacterSheetOptions);
         // @ts-ignore
-        await tokenSheet._render(true, { token: token, group: this } as Application.RenderOptions);
+        await tokenSheet.render(true, { token: token, group: this } as Application.RenderOptions);
 
         this.inlineSheets.push(tokenSheet);
     }
@@ -316,7 +316,7 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
         const app = target.parents(".app");
 
         // Re-set application classes to represent different group states
-        app.removeClass(["actor_group_overview--front", "actor_group_overview--back", "actor_group_overview--settings"]);
+        app.removeClass(["actor_group_overview--front", "actor_group_overview--back"]);
         app.addClass(`actor_group_overview--${e.currentTarget.dataset.show}`);
 
         // Re-set active classes on navigation

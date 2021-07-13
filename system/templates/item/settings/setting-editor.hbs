@@ -1,0 +1,12 @@
+<div class="fatex-setting">
+    <header class="fatex-headline">
+        <h3 class="fatex-headline__text">{{localize headline}}</h3>
+    </header>
+
+    <label for="{{ fieldName }}">
+        <div class="fatex-setting__editor-wrapper">
+            {{editor content=field target=fieldName button=true owner=owner editable=editable}}
+        </div>
+        {{#if help}}<span class="fatex-text-input__setting-label">{{localize help}}</span>{{/if}}
+    </label>
+</div>

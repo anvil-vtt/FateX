@@ -1,13 +1,15 @@
-.fatex__sheet_config {
+// TODO: Review these styles once the config.hbs file has been populated
+
+.fatex-sheet-config {
     padding: $component-padding;
     display: none;
 
     box-shadow: 0 -2px 15px 0 #2f3542;
     background: #2f3542;
     z-index: 5;
-    color: $header-font-color;
+    color: var(--fatex-light-text-color, $light-text-color);
 
-    .fatex-eb-edit-mode & {
+    .fatex-js-edit-mode & {
         display: block;
     }
 
@@ -17,9 +19,4 @@
         border: 0;
         font-weight: bold;
     }
-}
-
-.fatex__sheet__action {
-    display: block;
-    cursor: pointer;
 }

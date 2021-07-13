@@ -12,8 +12,8 @@ export class RangeSlider extends BaseComponent {
      * @param html
      */
     static activateListeners(html) {
-        html.find(".fatex-eb-setting-range-value").on("change", (e) => this._onChangeRangeValue.call(this, e));
-        html.find(".fatex-eb-setting-range-slider").on("input", (e) => this._onChangeRangeSlider.call(this, e));
+        html.find(".fatex-js-setting-range-value").on("change", (e) => this._onChangeRangeValue.call(this, e));
+        html.find(".fatex-js-setting-range-slider").on("input", (e) => this._onChangeRangeSlider.call(this, e));
     }
 
     /**

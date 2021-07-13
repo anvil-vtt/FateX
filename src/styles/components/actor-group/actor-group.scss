@@ -16,16 +16,12 @@
         grid-area: footer;
         z-index: 10;
         padding: $component-padding / 2;
-        box-shadow: 0 -2px 15px 0 $header-shadow-color;
+        box-shadow: 0 -2px 15px 0 $fatex-primary-color;
     }
 }
 
 .fatex__actor_group__settings {
     display: none;
-
-    .actor_group_overview--settings & {
-        display: block;
-    }
 }
 
 .actor_group_overview {
@@ -34,17 +30,9 @@
     }
 }
 
-.fatex__actor_group__inlinesheets {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-
-    form {
-        background: $sheet-background;
-    }
-}
-
 .fatex__actor_group__sheet__navigation a {
-    color: $headline-background;
+    display: inline-block;
+    color: $fatex-primary-color;
     padding: $component-padding/2 $component-padding * 2 $component-padding/2 $component-padding * 2;
     position: relative;
     font-weight: bold;
@@ -54,7 +42,7 @@
 
     &.active,
     &:hover {
-        background: $headline-background;
+        background: $fatex-primary-color;
         color: white;
     }
 }

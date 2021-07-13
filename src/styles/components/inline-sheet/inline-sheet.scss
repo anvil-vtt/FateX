@@ -11,75 +11,11 @@
     align-items: center;
     clip-path: none;
 
-    img {
-        flex: 0 0 32px;
-        height: 32px;
-        width: 32px;
-        object-fit: cover;
-        object-position: 50% 0;
-
-        margin-right: $component-padding / 2;
-    }
-
     .fatex__inline_sheet--defeated & {
         color: $caution-color;
     }
-
-    .actor_group_overview--settings & {
-        display: none;
-    }
-}
-
-.fatex__inline_sheet__headline input[type="number"].fatex__inline_sheet__headline__fp {
-    color: white;
-    height: 25px;
-    font-size: 20px;
-    border: none;
-    font-weight: 600;
-    width: 10px;
-}
-
-.fatex__inline_sheet__headline__name {
-    flex-grow: 1;
-
-    display: -webkit-box;
-    text-overflow: ellipsis;
-    overflow: hidden;
-
-    -moz-box-orient: vertical;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
 }
 
 .fatex__inline_sheet__content {
     display: grid;
-
-    .actor_group_overview--settings & {
-        display: none;
-    }
-
-    > div {
-        visibility: hidden;
-        z-index: 0;
-    }
-}
-
-.fatex__inline_sheet__front {
-    grid-column: 1;
-    grid-row: 1;
-
-    .actor_group_overview--front & {
-        visibility: visible;
-        z-index: 1;
-    }
-}
-
-.fatex__inline_sheet__back {
-    grid-column: 1;
-    grid-row: 1;
-
-    .actor_group_overview--back & {
-        visibility: visible;
-        z-index: 1;
-    }
 }

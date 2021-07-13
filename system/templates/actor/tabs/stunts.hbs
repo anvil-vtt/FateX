@@ -1,0 +1,44 @@
+<section class="fatex-u-full-width">
+    <header class="fatex-section-heading">
+        <h2>{{localize "FAx.Sheet.Stunts"}}</h2>
+
+        <div class="fatex-actions fatex-actions--section-heading">
+            <span class="fatex-js-stunt-add fatex-actions__icon fa fa-plus"></span>
+        </div>
+    </header>
+
+    <div class="fatex-item-grid">
+        {{#each stunts as |stunt stuntIndex|}}
+            <div
+                class="fatex__stunt item{{#if stunt.data.collapsed}} fatex__stunt__collapsed{{/if}}"
+                data-item-id="{{stunt._id}}"
+            >
+                <header
+                    class="fatex-headline fatex-headline--fixed-icon fatex-js-sortable"
+                    data-item-id="{{stunt._id}}"
+                >
+                    <h3 class="fatex-headline__text">{{stunt.name}}</h3>
+
+                    <div class="fatex-actions fatex-actions--headline">
+                        <i class="fatex-js-item-sort fatex-actions__icon fa fa-sort"></i>
+                        <i class="fatex-js-stunt-settings fatex-actions__icon fa fa-cog" data-item="{{stunt._id}}"></i>
+                        <i class="fatex-js-stunt-delete fatex-actions__icon fatex-u-delete fa fa-trash" data-item="{{stunt._id}}"></i>
+                        <i class="fatex-js-item-collapse fatex-actions__icon fatex-actions__icon--no-hide fa fa-chevron-up{{#if stunt.data.collapsed}} fatex-actions__icon--reverse{{/if}}" data-item="{{stunt._id}}"></i>
+                    </div>
+                </header>
+
+                {{#unless stunt.data.collapsed}}
+                    {{#if stunt.data.description}}
+                        <div class="fatex-item-description">
+                            {{#if stunt.data.markdown}}
+                                {{{stunt.data.markdown}}}
+                            {{else}}
+                                {{{stunt.data.description}}}
+                            {{/if}}
+                        </div>
+                    {{/if}}
+                {{/unless}}
+            </div>
+        {{/each}}
+    </div>
+</section>

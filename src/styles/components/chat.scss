@@ -13,11 +13,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: $fatex-primary-color;
 
     &__ladder {
         font-size: 12px;
         font-weight: 300;
-        color: $primary-color;
     }
 
     &__total {
@@ -31,5 +31,4 @@
     width: 50%;
     margin-bottom: $component-padding * 2;
     font-family: "Fate Icons", sans-serif;
-    color: $primary-color;
 }

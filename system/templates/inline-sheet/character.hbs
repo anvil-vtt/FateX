@@ -1,22 +1,50 @@
-<form autocomplete="off" data-id="{{referenceID}}">
+<form autocomplete="off" class="fatex-u-full-height" data-id="{{referenceID}}">
     <div class="fatex__inline_sheet{{#if defeated}} fatex__inline_sheet--defeated{{/if}}{{#if hidden}} fatex__inline_sheet--hidden{{/if}}">
-        <h2 class="fatex__inline_sheet__headline fatex-headline">
-            <img alt="{{actor.name}}" data-edit="img" src="{{actor.img}}" />
-            <span class="fatex__inline_sheet__headline__name">{{actor.name}}</span>
+        <h2 class="fatex__inline_sheet__headline fatex-headline fatex-headline--inline-sheet">
+            <img class="fatex-headline__image" alt="{{actor.name}}" data-edit="img" src="{{actor.img}}" />
+            <span class="fatex-headline__text">{{actor.name}}</span>
             {{#unless isToken}}
-                <input class="fatex__inline_sheet__headline__fp" name="data.fatepoints.current" type="number" min="0" max="99" value="{{data.fatepoints.current}}">
+                <input
+                    class="fatex-text-input fatex-text-input--headline"
+                    name="data.fatepoints.current"
+                    type="number"
+                    min="0"
+                    max="99"
+                    value="{{data.fatepoints.current}}"
+                >
             {{/unless}}
         </h2>
 
-        <div class="fatex__inline_sheet__content">
-            <div class="fatex__inline_sheet__front">
-                {{> "systems/fatex/templates/inline-sheet/parts/aspects.hbs"}}
-            </div>
+        <nav class="fatex-js-tabs-navigation fatex-inline-tabs">
+            <a class="fatex-inline-tabs__item" data-tab="aspects">
+                {{~localize "FAx.Sheet.Aspects"~}}
+            </a>
+            <a class="fatex-inline-tabs__item" data-tab="consequences">
+                {{~localize "FAx.Sheet.Consequences"~}}
+            </a>
+            <a class="fatex-inline-tabs__item" data-tab="stress">
+                {{~localize "FAx.Sheet.StressTracks"~}}
+            </a>
+        </nav>
 
-            <div class="fatex__inline_sheet__back">
-                {{> "systems/fatex/templates/inline-sheet/parts/consequences.hbs"}}
-                {{> "systems/fatex/templates/inline-sheet/parts/stress.hbs"}}
-            </div>
+        <div class="fatex-js-tab-content fatex__inline_sheet__content">
+            <section class="tab" data-tab="aspects">
+                <div class="fatex-desk__aspects fatex-desk__aspects--inline">
+                    {{> "systems/fatex/templates/components/aspects.hbs"}}
+                </div>
+            </section>
+
+            <section class="tab" data-tab="consequences">
+                <div class="fatex-desk__consequences fatex-desk__consequences--inline">
+                    {{> "systems/fatex/templates/components/consequences.hbs"}}
+                </div>
+            </section>
+
+            <section class="tab" data-tab="stress">
+                <div class="fatex-item-grid fatex-u-padding-std">
+                    {{> "systems/fatex/templates/components/stress.hbs"}}
+                </div>
+            </section>
         </div>
     </div>
 </form>

@@ -24,15 +24,15 @@ export class CharacterSheet extends ActorSheet<ActorSheet.Data<FateActor>, FateA
      */
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
-            classes: ["fatex", "fatex__sheet", "sheet"],
+            classes: ["fatex", "fatex-sheet", "sheet"],
             tabs: [
                 {
-                    navSelector: ".fatex-eb-tabs-navigation",
-                    contentSelector: ".fatex-eb-tab-content",
+                    navSelector: ".fatex-js-tabs-navigation",
+                    contentSelector: ".fatex-js-tab-content",
                     initial: "skills",
                 },
             ],
-            scrollY: [".desk__content"],
+            scrollY: [".fatex-desk__content"],
             width: 900,
             type: "full",
         } as CharacterSheetOptions);
@@ -142,7 +142,7 @@ export class CharacterSheet extends ActorSheet<ActorSheet.Data<FateActor>, FateA
 
     /**
      * OnClick handler for the previously declaried "Edit mode" button.
-     * Toggles the 'fatex-eb-edit-mode' class for the sheet container.
+     * Toggles the 'fatex-js-edit-mode' class for the sheet container.
      */
     _onToggleEditMode(e): void {
         e.preventDefault();
@@ -151,7 +151,7 @@ export class CharacterSheet extends ActorSheet<ActorSheet.Data<FateActor>, FateA
         const app = target.parents(".app");
         const html = app.find(".window-content");
 
-        html.toggleClass("fatex-eb-edit-mode");
+        html.toggleClass("fatex-js-edit-mode");
     }
 
     /**

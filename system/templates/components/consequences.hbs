@@ -1,0 +1,45 @@
+{{#each consequences as |consequence consequenceIndex|}}
+    <div
+        class="fatex-js-sortable fatex-item{{#if consequence.isCondition}} fatex-item--condition{{/if}}{{#if consequence.isDisabled}} fatex-u-disabled{{/if}}{{#if consequence.data.icon}} fatex-item--consequence{{/if}}"
+        data-item-id="{{consequence._id}}"
+    >
+        <div class="fatex-u-pos-relative">
+            <div
+                class="fatex-js-consequence-input fatex-text-input"
+                contenteditable="true"
+                data-item-id="{{consequence._id}}"
+            >
+                {{{consequence.data.value}}}
+            </div>
+
+            <div class="fatex-actions fatex-actions--item">
+                <i class="fatex-js-item-sort fatex-actions__icon fa fa-sort"></i>
+                <i class="fatex-js-consequence-settings fatex-actions__icon fa fa-cog" data-item="{{consequence._id}}"></i>
+                <i class="fatex-js-consequence-delete fatex-actions__icon fatex-u-delete fa fa-trash" data-item="{{consequence._id}}"></i>
+            </div>
+
+            <label class="fatex-text-input__label">{{consequence.data.label}}</label>
+
+            {{#if consequence.isConsequence}}
+                <label class="fatex-text-input__icon">{{consequence.data.icon}}</label>
+            {{/if}}
+
+            {{#if consequence.isCondition}}
+                <label
+                    class="fatex-js-consequence-checkbox fatex-checkbox fatex-checkbox--consequence"
+                    data-item="{{consequence._id}}"
+                >
+                    <span class="fatex-checkbox__label">{{consequence.data.icon}}</span>
+
+                    <input
+                        class="fatex-checkbox__input"
+                        type="checkbox"
+                        {{#if consequence.data.active}}checked="checked"{{/if}}
+                    >
+
+                    <span class="fatex-checkbox__icon fa fa-times"></span>
+                </label>
+            {{/if}}
+        </div>
+    </div>
+{{/each}}

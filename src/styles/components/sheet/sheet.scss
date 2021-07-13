@@ -1,8 +1,12 @@
-.fatex__sheet {
+.fatex-sheet {
     font-family: $primary-font;
 
-    form {
-        max-height: 100%;
+    &--app {
+        min-width: 500px;
+    }
+
+    &--item {
+        min-width: 300px;
     }
 
     .window-header a {
@@ -12,6 +16,7 @@
     .window-content {
         padding: 0;
         background: $sheet-background;
+        overflow-y: hidden;
     }
 
     a:hover {
@@ -22,8 +27,10 @@
         border: 0;
     }
 
-    input[type="text"] {
+    textarea {
         background: transparent;
-        padding: 0;
+        border: 0;
+        width: auto;
+        height: auto;
     }
 }

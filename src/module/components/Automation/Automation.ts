@@ -21,12 +21,11 @@ export const TYPES = {
 
 export class Automation extends BaseComponent {
     static activateListeners(html, sheet) {
-        html.find(".fatex-eb-create-skill-reference").on("click", (e) => this._onAddReference.call(this, e, sheet));
-        html.find(".fatex-eb-create-skill-reference-boxes").on("click", (e) => this._onAddReference.call(this, e, sheet, TYPES.BOXES));
+        html.find(".fatex-js-create-skill-reference").on("click", (e) => this._onAddReference.call(this, e, sheet));
+        html.find(".fatex-js-create-skill-reference-boxes").on("click", (e) => this._onAddReference.call(this, e, sheet, TYPES.BOXES));
 
-        html.find(".fatex__skill__reference__change").on("change", (e) => this._onChangeReference.call(this, e, sheet));
-        html.find(".fatex-eb-remove-skill-reference").on("click", (e) => this._onRemoveReference.call(this, e, sheet));
-        html.find(".fatex__skill__reference__setting").on("change", (e) => this._onChangeSetting.call(this, e, sheet));
+        html.find(".fatex-js-change-skill-reference").on("change", (e) => this._onChangeReference.call(this, e, sheet));
+        html.find(".fatex-js-remove-skill-reference").on("click", (e) => this._onRemoveReference.call(this, e, sheet));
     }
 
     static async getSheetData(sheetData, sheet) {

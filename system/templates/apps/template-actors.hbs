@@ -1,58 +1,58 @@
 {{#*inline "centerPartial"}}
-    <div class="fatex-header__center fatex__template__header__settings fatex__template__create">
-        <span class="fatex-header__label">{{localize "FAx.Settings.Templates.App.CreateNew"}}</span>
-        <i class="fas fa-plus fatex__item__header__title"></i>
+    <div class="fatex-js-template-header-button fatex-js-create-template fatex-template-action">
+        <span class="fatex-template-action__label">{{localize "FAx.Settings.Templates.App.CreateNew"}}</span>
+        <i class="fas fa-plus fatex-template-action__icon"></i>
     </div>
 {{/inline}}
 
-{{> "systems/fatex/templates/apps/parts/layout/app-header.hbs"
+{{> "systems/fatex/templates/components/app-header.hbs"
     title="FAx.Settings.Templates.App.Title"
     label="FAx.Settings.Templates.App.Label"
     centerPartial="centerPartial"
 }}
 
-<div class="fatex__templates">
+<div class="fatex-templates">
     {{#each templateActors as |template templateIndex|}}
-        <div class="fatex__template">
+        <div class="fatex-template">
             <header class="fatex-headline">
                 <h3 class="fatex-headline__text">{{ template.name }}</h3>
             </header>
 
             <style>
-                .fatex__template__image--{{template._id}} {
+                .fatex-template__image--{{template._id}} {
                     background-image: url("{{template.img}}");
                 }
             </style>
 
-            <div class="fatex__template__image fatex__template__image--{{template._id}}" title="{{template.name}}"></div>
+            <div class="fatex-template__image fatex-template__image--{{template._id}}" title="{{template.name}}"></div>
 
-            <div class="fatex__template__information">
-                <span class="fatex__template__information__name">{{localize "FAx.Sheet.Aspects"}}</span>
-                <span class="fatex__template__information__value">{{template.aspects.length}}</span>
+            <div class="fatex-template__information-group">
+                <span class="fatex-template__information-name">{{localize "FAx.Sheet.Aspects"}}</span>
+                <span class="fatex-template__information-value">{{template.aspects.length}}</span>
 
-                <span class="fatex__template__information__name">{{localize "FAx.Sheet.StressTracks"}}</span>
-                <span class="fatex__template__information__value">{{template.stress.length}}</span>
+                <span class="fatex-template__information-name">{{localize "FAx.Sheet.StressTracks"}}</span>
+                <span class="fatex-template__information-value">{{template.stress.length}}</span>
 
-                <span class="fatex__template__information__name">{{localize "FAx.Sheet.Skills"}}</span>
-                <span class="fatex__template__information__value">{{template.skills.length}}</span>
+                <span class="fatex-template__information-name">{{localize "FAx.Sheet.Skills"}}</span>
+                <span class="fatex-template__information-value">{{template.skills.length}}</span>
 
-                <span class="fatex__template__information__name">{{localize "FAx.Sheet.Consequences"}}</span>
-                <span class="fatex__template__information__value">{{template.consequences.length}}</span>
+                <span class="fatex-template__information-name">{{localize "FAx.Sheet.Consequences"}}</span>
+                <span class="fatex-template__information-value">{{template.consequences.length}}</span>
             </div>
 
-            <div class="fatex__template__actions">
-                <span class="fatex-eb-configure-template fatex-button fatex-button--dark" data-template="{{template._id}}">
+            <div class="fatex-template__actions">
+                <span class="fatex-js-configure-template fatex-button fatex-button--dark" data-template="{{template._id}}">
                     <i class="fa fa-cog"></i>
                     <span>{{localize "FAx.Global.Actions.Configure"}}</span>
                 </span>
 
-                <span class="fatex-eb-duplicate-template fatex-button fatex-button--dark" data-template="{{template._id}}">
+                <span class="fatex-js-duplicate-template fatex-button fatex-button--dark" data-template="{{template._id}}">
                     <i class="fa fa-copy"></i>
                     <span>{{localize "FAx.Global.Actions.Duplicate"}}</span>
                 </span>
 
                 <span
-                    class="fatex-eb-delete-template fatex-button fatex-button--dark fatex-u-delete" 
+                    class="fatex-js-delete-template fatex-button fatex-button--dark fatex-u-delete" 
                     data-template="{{template._id}}"
                 >
                     <i class="fa fa-trash"></i>
@@ -61,12 +61,12 @@
             </div>
         </div>
     {{else}}
-        <div class="fatex__template__help">
-            <p>{{{localize "FAx.Settings.Templates.App.Help"}}}</p>
+        <div class="fatex-template__help fatex-u-full-width">
+            <p class="fatex-template__help-text">{{{localize "FAx.Settings.Templates.App.Help"}}}</p>
 
             {{> centerPartial }}
         </div>
     {{/each}}
 </div>
 
-{{> "systems/fatex/templates/apps/parts/layout/app-footer.hbs"}}
+{{> "systems/fatex/templates/components/app-footer.hbs"}}

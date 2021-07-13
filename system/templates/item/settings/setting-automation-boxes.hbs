@@ -1,0 +1,81 @@
+<div class="fatex-setting fatex-setting--min-height">
+    <header class="fatex-headline">
+        <h3 class="fatex-headline__text">{{localize headline}}</h3>
+
+        <div class="fatex-js-create-skill-reference-boxes fatex-actions fatex-actions--setting">
+            <i class="fatex-actions__icon fatex-actions__icon--no-hide fa fa-plus"></i>
+            <span class="fatex-actions__text">{{localize "FAx.Item.Automation.AddSkillRef"}}</span>
+        </div>
+    </header>
+
+    <div class="automation-list">
+        {{#each boxReferences as |reference|}}
+            <div class="fatex-u-pos-relative automation-list__item" data-index="{{reference.index}}">
+                <select
+                    class="fatex-js-change-skill-reference"
+                    data-index="{{reference.index}}"
+                    data-field="argument"
+                    data-dtype="Number"
+                >
+                    {{#each ../availableBoxCount as |boxCount|}}
+                        <option value="{{boxCount.value}}"{{#if (eq reference.argument boxCount.value)}} selected="selected"{{/if}}>
+                            {{boxCount.label}}
+                        </option>
+                    {{/each}}
+                </select>
+
+                <span>{{localize "FAx.Item.Automation.BoxesIf"}}</span>
+
+                <select
+                    class="fatex-js-change-skill-reference"
+                    data-index="{{reference.index}}"
+                    data-field="skill"
+                >
+                    <option value=""{{#if (eq reference.skill '')}} selected="selected"{{/if}}> -</option>
+
+                    {{#each ../availableSkills as |skill skillIndex|}}
+                        <option value="{{skill}}"{{#if (eq reference.skill skill)}} selected="selected"{{/if}}>
+                            {{skill}}
+                        </option>
+                    {{/each}}
+                </select>
+
+                <select
+                    class="fatex-js-change-skill-reference fatex-js-change-skill-reference--operator"
+                    data-index="{{reference.index}}"
+                    data-field="operator"
+                    data-dtype="Number"
+                >
+                    {{#each ../availableOperators as |operator|}}
+                        <option value="{{operator.value}}"{{#if (eq reference.operator operator.value)}} selected="selected"{{/if}}>
+                            {{operator.label}}
+                        </option>
+                    {{/each}}
+                </select>
+
+                <select
+                    class="fatex-js-change-skill-reference fatex-js-change-skill-reference--condition"
+                    data-index="{{reference.index}}"
+                    data-field="condition"
+                    data-dtype="Number"
+                >
+                    {{#each ../availableSkillLevels as |skillLevel|}}
+                        <option value="{{skillLevel.value}}"{{#if (eq reference.condition skillLevel.value)}} selected="selected"{{/if}}>
+                            {{skillLevel.label}}
+                        </option>
+                    {{/each}}
+                </select>
+
+                <div class="fatex-actions fatex-actions--automation-item">
+                    <i
+                        class="fatex-js-remove-skill-reference fatex-actions__icon fatex-u-delete fa fa-trash fatex-actions__icon--no-hide"
+                        data-index="{{reference.index}}"></i>
+                </div>
+            </div>
+        {{else}}
+            <div class="fatex-automation__description">
+                {{localize "FAx.Item.Automation.Description"}}
+            </div>
+        {{/each}}
+    </div>
+</div>

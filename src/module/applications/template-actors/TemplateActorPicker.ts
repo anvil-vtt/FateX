@@ -10,7 +10,7 @@ export class TemplateActorPicker extends TemplateActorSettings {
             template: "/systems/fatex/templates/apps/template-actors-picker.hbs",
             id: "template-actor-picker",
             resizable: true,
-            classes: ["fatex fatex__app_sheet"],
+            classes: ["fatex", "fatex-sheet", "fatex-sheet--app"],
             width: 1000,
             height: 430,
         } as FormApplication.Options);
@@ -19,9 +19,9 @@ export class TemplateActorPicker extends TemplateActorSettings {
     activateListeners(html) {
         super.activateListeners(html);
 
-        html.find(".fatex-eb-choose-template").click((e) => this._chooseTemplate.call(this, e));
-        html.find(".fatex-eb-empty-template").click((e) => this._emptyTemplate.call(this, e));
-        html.find(".fatex__template__header__settings").click(() => this._openSettings.call(this));
+        html.find(".fatex-js-choose-template").click((e) => this._chooseTemplate.call(this, e));
+        html.find(".fatex-js-empty-template").click((e) => this._emptyTemplate.call(this, e));
+        html.find(".fatex-js-template-header-button").click(() => this._openSettings.call(this));
     }
 
     /*************************

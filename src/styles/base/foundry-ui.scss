@@ -1,5 +1,5 @@
 .app {
-    color: #fff;
+    color: $light-text-color;
 }
 
 .window-app .window-content,
@@ -9,4 +9,5 @@
 .sidebar-tab .directory-header .header-search input,
 #chat-form .cm-s-easymde {
     background: $sheet-background;
+    color: var(--fatex-primary-text-color, $primary-text-color);
 }

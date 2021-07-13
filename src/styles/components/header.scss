@@ -1,25 +1,21 @@
 .fatex-header {
     position: relative;
+    grid-area: header;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 100%;
     padding: 10px 10px 8px 10px;
     font-size: 23px;
-    color: $header-font-color;
+    color: $fatex-header-text-color;
+    background: $fatex-header-color;
+    box-shadow: 0 2px 15px 0 $fatex-header-color;
+    z-index: 5;
 
-    &__center,
     &__name {
         display: flex;
         flex-direction: column-reverse;
-    }
-
-    &__name {
         width: 50%;
-    }
-
-    &__center {
-        align-items: center;
     }
 
     &__fate-points {
@@ -50,10 +46,14 @@
     &__fatepoint-divider {
         font-size: 25px;
         line-height: 25px;
-        color: $header-font-color;
     }
 
     &__logo {
         height: 40px;
+    }
+
+    &__title {
+        height: 25px;
+        font-size: 23px;
     }
 }

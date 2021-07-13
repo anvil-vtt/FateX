@@ -9,24 +9,12 @@
         background-size: cover;
         background-position: top center;
 
-        &::before,
-        &::after {
-            content: "";
-            position: absolute;
-        }
-
         &::before {
-            top: 0;
-            left: 0;
-            border-top: 25px solid #f1f2f6;
-            border-right: 25px solid transparent;
+            @include cutout-top-left(26px);
         }
 
         &::after {
-            bottom: 0;
-            right: 0;
-            border-bottom: 25px solid #f1f2f6;
-            border-left: 25px solid transparent;
+            @include cutout-bottom-right(26px);
         }
     }
 

@@ -1,79 +1,93 @@
-<form autocomplete="off" class="{{cssClass}}">
-    <div class="desk">
-
+<form autocomplete="off" class="fatex-u-full-height {{cssClass}}">
+    <div class="fatex-desk">
         {{!--HEADER--}}
-        <div class="desk__header">
-            {{> "systems/fatex/templates/actor/parts/header.hbs"}}
-        </div>
+        {{> "systems/fatex/templates/components/header.hbs"}}
 
-        <div class="desk__content">
-            <div class="desk__content__inner{{#if sheetConfig.flipped}} desk__content__inner--flipped{{/if}}">
+        <div class="fatex-desk__content fatex-desk__content--actor-sheet">
+            <div class="fatex-desk__tabloid">
+                {{!--Messages--}}
+                <div class="fatex-desk__messages">
+                    {{> "systems/fatex/templates/components/messages.hbs"}}
+                </div>
 
-                <div class="desk__tabloid">
-                    {{!--Messages--}}
-                    <div class="desk__messages">
-                        {{> "systems/fatex/templates/actor/parts/tabloid/messages.hbs"}}
-                    </div>
+                {{!--Aspects--}}
+                <section class="fatex-desk__aspects">
+                    <header class="fatex-headline">
+                        <h2 class="fatex-headline__text">{{localize "FAx.Sheet.Aspects"}}</h2>
+                        <div class="fatex-actions fatex-actions--headline">
+                            <i class="fatex-js-aspect-add fatex-actions__icon fa fa-plus"></i>
+                        </div>
+                    </header>
 
-                    {{!--Aspects--}}
-                    <div class="desk__aspects">
-                        {{> "systems/fatex/templates/actor/parts/tabloid/aspects.hbs"}}
-                    </div>
+                    {{> "systems/fatex/templates/components/aspects.hbs"}}
+                </section>
 
-                    {{!--Consequences--}}
-                    <div class="desk__consequences">
-                        {{> "systems/fatex/templates/actor/parts/tabloid/consequences.hbs"}}
-                        {{> "systems/fatex/templates/actor/parts/tabloid/conditions.hbs"}}
-                    </div>
+                {{!--Consequences--}}
+                <section class="fatex-desk__consequences">
+                    <header class="fatex-headline">
+                        <h2 class="fatex-headline__text">{{localize "FAx.Sheet.Consequences"}}</h2>
+                        <div class="fatex-actions fatex-actions--headline">
+                            <i class="fatex-js-consequence-add fatex-actions__icon fa fa-plus"></i>
+                        </div>
+                    </header>
 
-                    {{!--Tabs--}}
-                    <div class="desk__tabs fatex-u-padding-std">
-                        <nav class="fatex-eb-tabs-navigation fatex-tabs-navigation">
-                            <a class="fatex-tabs-navigation__item" data-tab="skills">
-                                {{~localize "FAx.Sheet.Tabs.SkillsStunts"~}}
-                            </a>
-                            <a class="fatex-tabs-navigation__item" data-tab="extras">
-                                {{~localize "FAx.Sheet.Tabs.Extras"~}}
-                            </a>
-                            <a class="fatex-tabs-navigation__item" data-tab="bio">
-                                {{~localize "FAx.Sheet.Tabs.Bio"~}}
-                            </a>
-                        </nav>
+                    {{> "systems/fatex/templates/components/consequences.hbs"}}
+                    {{> "systems/fatex/templates/components/conditions.hbs"}}
+                </section>
 
-                        <div class="fatex-eb-tab-content fatex-u-full-height">
-                            {{!--Skills & Stunts--}}
-                            <div class="fatex-tab-content fatex-tab-content--skills tab" data-tab="skills">
-                                {{> "systems/fatex/templates/actor/parts/tabs/skills.hbs"}}
-                                {{> "systems/fatex/templates/actor/parts/tabs/stunts.hbs"}}
-                            </div>
+                {{!--Tabs--}}
+                <section class="fatex-desk__tabs fatex-u-padding-std">
+                    <nav class="fatex-js-tabs-navigation fatex-tabs-navigation">
+                        <a class="fatex-tabs-navigation__item" data-tab="skills">
+                            {{~localize "FAx.Sheet.Tabs.SkillsStunts"~}}
+                        </a>
+                        <a class="fatex-tabs-navigation__item" data-tab="extras">
+                            {{~localize "FAx.Sheet.Tabs.Extras"~}}
+                        </a>
+                        <a class="fatex-tabs-navigation__item" data-tab="bio">
+                            {{~localize "FAx.Sheet.Tabs.Bio"~}}
+                        </a>
+                    </nav>
 
-                            {{!--Extras--}}
-                            <div class="fatex-tab-content tab" data-tab="extras">
-                                {{> "systems/fatex/templates/actor/parts/tabs/extras.hbs"}}
-                            </div>
-
-                            {{!--Bio--}}
-                            <div class="fatex-tab-content fatex-tab-content--bio tab" data-tab="bio">
-                                {{> "systems/fatex/templates/actor/parts/tabs/bio.hbs"}}
-                            </div>
+                    <div class="fatex-js-tab-content fatex-u-full-height">
+                        {{!--Skills & Stunts--}}
+                        <div class="fatex-tab-content fatex-tab-content--skills tab" data-tab="skills">
+                            {{> "systems/fatex/templates/actor/tabs/skills.hbs"}}
+                            {{> "systems/fatex/templates/actor/tabs/stunts.hbs"}}
                         </div>
 
+                        {{!--Extras--}}
+                        <div class="fatex-tab-content tab" data-tab="extras">
+                            {{> "systems/fatex/templates/actor/tabs/extras.hbs"}}
+                        </div>
+
+                        {{!--Bio--}}
+                        <div class="fatex-tab-content fatex-tab-content--bio tab" data-tab="bio">
+                            {{> "systems/fatex/templates/actor/tabs/bio.hbs"}}
+                        </div>
                     </div>
+                </section>
 
-                    {{> "systems/fatex/templates/actor/parts/copyright.hbs"}}
-                </div>
-
-                {{!--Sidebar--}}
-                <div class="desk__sidebar">
-                    {{> "systems/fatex/templates/actor/parts/sidebar/artwork.hbs"}}
-                    {{> "systems/fatex/templates/actor/parts/sidebar/stress.hbs"}}
-                </div>
+                {{> "systems/fatex/templates/components/copyright.hbs"}}
             </div>
+
+            {{!--Sidebar--}}
+            <section class="fatex-desk__sidebar">
+                {{> "systems/fatex/templates/components/artwork.hbs"}}
+
+                <section class="fatex-item-grid fatex-u-padding-std">
+                    {{> "systems/fatex/templates/components/stress.hbs"}}
+                    
+                    <div class="fatex-js-stress-add fatex-headline fatex-headline--center fatex-headline--helper">
+                        <h3 class="fatex-headline__text">+</h3>
+                    </div>
+                </section>
+            </section>
         </div>
 
         {{!--Footer--}}
-        <div class="desk__footer">
-            {{> "systems/fatex/templates/actor/parts/config.hbs"}}
+        <div class="fatex-desk__footer">
+            {{> "systems/fatex/templates/components/config.hbs"}}
         </div>
     </div>
 </form>

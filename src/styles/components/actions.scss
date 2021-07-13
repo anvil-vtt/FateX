@@ -18,14 +18,12 @@
         }
     }
 
-    &--headline {
-        right: 15px;
-    }
-
     &--headline,
+    &--setting,
     &--skill {
-        top: 0;
+        right: 15px;
         padding: 0 10px 0 50px;
+        top: 0;
         background: transparent;
     }
 
@@ -48,12 +46,18 @@
         right: 0;
     }
 
+    &--setting {
+        padding-left: 10px;
+        cursor: pointer;
+        pointer-events: initial;
+    }
+
     &--skill-secondary {
         left: -15px;
         top: 20px;
         gap: 0;
         font-size: 16px;
-        color: $primary-color;
+        color: $fatex-primary-color;
         text-shadow: 1px -1px 1px $sheet-background;
     }
 
@@ -85,7 +89,7 @@
     }
 }
 
-.fatex-eb-edit-mode {
+.fatex-js-edit-mode {
     .fatex-actions--headline,
     .fatex-actions--skill {
         background: linear-gradient(90deg, rgba(47, 53, 66, 0) 0%, #2f3542 33%, #2f3542 100%);
