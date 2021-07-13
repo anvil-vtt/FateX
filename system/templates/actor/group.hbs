@@ -1,40 +1,41 @@
 <div class="fatex-desk">
-    <header class="fatex-header">
-        <div class="fatex-header__name">
-            <label class="fatex-header__label" for="name">
-                {{#if isToken}}Token-{{/if}}{{localize "FAx.Sheet.Name"}}
-            </label>
+    <form autocomplete="off" class="fatex-u-full-height {{cssClass}}">
+        <header class="fatex-header">
+            <div class="fatex-header__name">
+                <label class="fatex-header__label" for="name">
+                    {{localize "FAx.Sheet.Name"}}
+                </label>
 
-            <input
-                class="fatex-text-input fatex-text-input--header"
-                name="name"
-                type="text"
-                value="{{actor.name}}"
-            >
-        </div>
+                <input
+                    class="fatex-text-input fatex-text-input--header"
+                    name="name"
+                    type="text"
+                    value="{{actor.name}}"
+                >
+            </div>
 
-        <img class="fatex-header__logo" src="/systems/fatex/assets/logos/powered_by_fate.svg">
-    </header>
+            <img class="fatex-header__logo" src="/systems/fatex/assets/logos/powered_by_fate.svg">
+        </header>
+    </form>
+
 
     <div class="fatex-js-actor-group-sheets fatex-desk__content fatex-desk__content--group"></div>
 
-    <form autocomplete="off" class="fatex-u-full-height {{cssClass}}">
-        <div class="fatex-js-actor_group-settings fatex__actor_group__settings">
-            <input name="name" type="text" value="{{actor.name}}" />
-            <input name="data.groupType" type="text" value="{{actor.data.groupType}}" />
+    <div class="fatex-js-actor_group-settings fatex__actor_group__settings">
+        <input name="name" type="text" value="{{actor.name}}" />
+        <input name="data.groupType" type="text" value="{{actor.data.groupType}}" />
 
-            {{#if availableTokens}}
-                <div class="fatex__actor_group__availableTokens">
-                    {{#each availableTokens}}
-                        <div class="fatex__actor_group__createToken" data-token-id="{{this._id}}">
-                            <img width="48" src="{{this.img}}" alt="" />
-                            <span>{{this.name}}</span>
-                        </div>
-                    {{/each}}
-                </div>
-            {{/if}}
-        </div>
-    </form>
+        {{#if availableTokens}}
+            <div class="fatex__actor_group__availableTokens">
+                {{#each availableTokens}}
+                    <div class="fatex__actor_group__createToken" data-token-id="{{this._id}}">
+                        <img width="48" src="{{this.img}}" alt="" />
+                        <span>{{this.name}}</span>
+                    </div>
+                {{/each}}
+            </div>
+        {{/if}}
+    </div>
 
     {{!-- This section has been temporarily removed while an appropriate UI is decided upon --}}
 

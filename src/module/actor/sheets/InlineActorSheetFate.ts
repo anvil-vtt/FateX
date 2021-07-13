@@ -2,7 +2,7 @@ import { CharacterSheet, CharacterSheetOptions } from "./CharacterSheet";
 
 export class InlineActorSheetFate extends CharacterSheet {
     static get defaultOptions() {
-        return mergeObject(super.defaultOptions, ({
+        return mergeObject(super.defaultOptions, {
             group: undefined,
             tabs: [
                 {
@@ -10,8 +10,8 @@ export class InlineActorSheetFate extends CharacterSheet {
                     contentSelector: ".fatex-js-tab-content",
                     initial: "aspects",
                 },
-            ]
-        } as unknown) as CharacterSheetOptions);
+            ],
+        } as unknown as CharacterSheetOptions);
     }
 
     getData(_options?: Application.RenderOptions) {
@@ -46,7 +46,10 @@ export class InlineActorSheetFate extends CharacterSheet {
      * to update for actors which the user has no view-permission for.
      */
     render(force = false, options = {}) {
+        this.object.apps[this.appId] = this;
+
         this._render(force, options);
+
         return this;
     }
 

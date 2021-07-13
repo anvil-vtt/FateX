@@ -118,7 +118,7 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
 
     async spillInlineSheet(event: SortableEvent) {
         if (event.item.dataset.id) {
-            await this.actor.deleteEmbeddedEntity("OwnedItem", event.item.dataset.id);
+            await this.actor.deleteOwnedItem(event.item.dataset.id);
         }
     }
 
@@ -177,8 +177,8 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
             }
         }
 
-        if (this.element && this._scrollPositions && this._scrollPositions[".window-content"]) {
-            this.element.find(".window-content")[0].scrollTop = this._scrollPositions[".window-content"];
+        if (this.element && this._scrollPositions && this._scrollPositions[".fatex-desk__content"]) {
+            this.element.find(".fatex-desk__content")[0].scrollTop = this._scrollPositions[".fatex-desk__content"];
         }
 
         // Add sortable handler after rendering for all sub-sheets is finished
@@ -198,7 +198,7 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
 
         const actorSheet = new InlineActorSheetFate(actor as FateActor, { referenceID: reference._id } as CharacterSheetOptions);
         // @ts-ignore
-        await actorSheet._render(true, { group: this } as Application.RenderOptions);
+        await actorSheet.render(true, { group: this } as Application.RenderOptions);
 
         this.inlineSheets.push(actorSheet);
     }
@@ -219,7 +219,7 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
 
         const tokenSheet = new InlineActorSheetFate(token.actor as FateActor, { referenceID: reference._id } as CharacterSheetOptions);
         // @ts-ignore
-        await tokenSheet._render(true, { token: token, group: this } as Application.RenderOptions);
+        await tokenSheet.render(true, { token: token, group: this } as Application.RenderOptions);
 
         this.inlineSheets.push(tokenSheet);
     }
@@ -245,7 +245,7 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
         const token = new Token(tokenData, scene);
         const tokenSheet = new InlineActorSheetFate(token.actor as FateActor, { combatant: combatant, referenceID: reference._id } as CharacterSheetOptions);
         // @ts-ignore
-        await tokenSheet._render(true, { token: token, group: this } as Application.RenderOptions);
+        await tokenSheet.render(true, { token: token, group: this } as Application.RenderOptions);
 
         this.inlineSheets.push(tokenSheet);
     }
