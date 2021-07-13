@@ -1,5 +1,11 @@
 # Changelog
 
+### 0.14.0
+* Another big round of style refactorings
+* Added compatibility to the compendium folders module
+* Made the actor system compatible to 0.8 again
+* Updated all npm dependencies except for FoundryVTT types
+
 ### 0.13.0
 * Fixed bug which sorted skills into alternating columns
 * Added skill sorting by name and a sort reversal button
