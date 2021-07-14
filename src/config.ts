@@ -44,7 +44,8 @@ export interface FatexConfig {
         useMarkdown: boolean;
         defaultStyles: {
             [key: string]: string;
-        }
+        };
+        customProperties: string[]
     };
 }
 
@@ -80,8 +81,15 @@ export const FateX: FatexConfig = {
             headerBackgroundColor: "#2f3542",
             headerTextColor: "#ffffff",
             primarySheetColor: "#2f3542",
-            sheetBackgroundColor: "#f1f2f6",
-            scrollbarColor: "#2f3542"
-        }
-    },
+            scrollbarColor: "#2f3542",
+            sheetBackgroundColor: "#f1f2f6"
+        },
+        customProperties: [
+            "--fatex-header-color",
+            "--fatex-header-text-color",
+            "--fatex-primary-color",
+            "--fatex-scrollbar-color",
+            "--fatex-sheet-background-color"
+        ]
+    }
 };
