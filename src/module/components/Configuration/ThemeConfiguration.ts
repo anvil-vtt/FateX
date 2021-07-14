@@ -1,6 +1,15 @@
 // @ts-nocheck
 
 export class ThemeConfig extends FormApplication {
+    currentStyles: {[key: string]: string | undefined};
+    changesSaved: boolean;
+
+    constructor() {
+        super();
+        this.currentStyles = $(":root").css(CONFIG.FateX.global.customProperties);
+        this.changesSaved = false;
+    }
+
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
             title: "Theme Configuration",
@@ -12,8 +21,12 @@ export class ThemeConfig extends FormApplication {
         } as BaseEntitySheet.Options)
     }
 
-    async _updateObject(event, formData) {
-        return;
+    async _updateObject(_: Event, formData: Record<string, unknown> | undefined): Promise<unknown> {
+        const componentNames = Object.keys(CONFIG.FateX.global.defaultStyles);
+
+        componentNames.forEach(async componentName => {
+            await game.user.setFlag('fatex', componentName, getProperty(formData, componentName))
+        })
     }
 
     activateListeners(html: JQuery<HTMLElement>) {
@@ -21,6 +34,8 @@ export class ThemeConfig extends FormApplication {
 
         html.find(`[type="color"]`).on("change", this.onChange.bind(this));
         html.find(`button[name="reset"]`).on("click", this.reset.bind(this));
+        html.find(`button[name="submit"]`).on("click", this.saveChanges.bind(this));
+        html.find(`button[name="cancel"]`).on("click", this.close.bind(this));
     }
 
     getData(options?: Application.RenderOptions): FormApplication.Data<Record<string, unknown>, FormApplication.Options> {
@@ -71,7 +86,19 @@ export class ThemeConfig extends FormApplication {
         this.render();
     }
 
+    saveChanges(_: JQuery.Event) {
+        this.changesSaved = true;
+    }
+
     async close(options?: FormApplication.CloseOptions): Promise<void> {
+        if (!this.changesSaved) {
+            // Loops over the user's original property values and undoes any changes
+            // they've made. Exiting via the save button with prevent this reset.
+            for (const [property, value] of Object.entries(this.currentStyles)) {
+                $(":root").css(property, value ?? "unset");
+            }
+        }
+
         await super.close(options);
     }
 }
