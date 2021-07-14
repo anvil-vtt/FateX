@@ -16,6 +16,11 @@ export class ThemeConfig extends FormApplication {
         return;
     }
 
+    activateListeners(html: JQuery<HTMLElement>) {
+        super.activateListeners(html);
+        html.find(`[type="color"]`).on("change", this.onChange.bind(this));
+    }
+
     getData(options?: Application.RenderOptions): FormApplication.Data<Record<string, unknown>, FormApplication.Options> {
         const customPropertyValues = Object.values($(":root").css(CONFIG.FateX.global.customProperties));
         const componentNames = Object.keys(CONFIG.FateX.global.defaultStyles);
@@ -31,7 +36,7 @@ export class ThemeConfig extends FormApplication {
         // Filter out any custom properties which are currently undefined.
         const definedCustomProperties = Object.fromEntries(
             Object.entries(customProperties).filter(([_, value]) => value !== undefined)
-        )
+        );
 
         // Create a new object where the default styles fill in any values not defined
         // by CSS custom properties.
@@ -41,6 +46,14 @@ export class ThemeConfig extends FormApplication {
         );
 
         return mergeObject(super.getData(options), currentValues);
+    }
+
+    onChange(event: JQuery.Event) {
+        const newValue = event.currentTarget.value;
+        const customProperty = $(event.currentTarget).data("property");
+
+        // Update the custom property associated with the colour selector to the chosen value.
+        $(":root").css(`--${customProperty}`, newValue);
     }
 
     async close(options?: FormApplication.CloseOptions): Promise<void> {
