@@ -1,22 +1,22 @@
-::-webkit-scrollbar {
+.fatex ::-webkit-scrollbar {
     width: 6px;
 }
 
-::-webkit-scrollbar-track {
+.fatex ::-webkit-scrollbar-track {
     box-shadow: 0 0 1px #999 inset;
     border-radius: 4px;
 }
 
-::-webkit-scrollbar-thumb {
+.fatex ::-webkit-scrollbar-thumb {
     outline: none;
     border-radius: 3px;
-    background: $primary-color !important;
+    background: $fatex-scrollbar-color !important;
     border: 0;
 }
 
-:root {
+.fatex * {
     scrollbar-width: thin !important;
-    scrollbar-color: $primary-color $fatex-sheet-background-color !important;
+    scrollbar-color: $fatex-scrollbar-color $fatex-sheet-background-color !important;
 }
 
 input[type="range"]::-webkit-slider-thumb {

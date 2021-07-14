@@ -4,10 +4,10 @@
 
 .window-app .window-content,
 #chat-log .message,
-#chat-form textarea,
 #chat-controls div.roll-type-select select,
 .sidebar-tab .directory-header .header-search input,
-#chat-form .cm-s-easymde {
+#chat-form .cm-s-easymde,
+.chat-message .message-header {
     background: $fatex-sheet-background-color;
     color: var(--fatex-primary-text-color, $primary-text-color);
 }

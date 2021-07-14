@@ -19,7 +19,6 @@
     &__content {
         grid-area: content;
         overflow-y: auto;
-        scrollbar-width: thin;
 
         &--app {
             padding: $component-padding;
