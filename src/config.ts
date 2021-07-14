@@ -42,6 +42,9 @@ export interface FatexConfig {
 
     global: {
         useMarkdown: boolean;
+        defaultStyles: {
+            [key: string]: string;
+        }
     };
 }
 
@@ -73,5 +76,12 @@ export const FateX: FatexConfig = {
     },
     global: {
         useMarkdown: false,
+        defaultStyles: {
+            headerBackgroundColor: "#2f3542",
+            headerTextColor: "#ffffff",
+            primarySheetColor: "#2f3542",
+            sheetBackgroundColor: "#f1f2f6",
+            scrollbarColor: "#2f3542"
+        }
     },
 };
