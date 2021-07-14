@@ -3,7 +3,7 @@
     position: absolute;
     top: -1px;
     left: -1px;
-    border-top: $size solid #f1f2f6;
+    border-top: $size solid $fatex-sheet-background-color;
     border-right: $size solid transparent;
 }
 
@@ -12,7 +12,7 @@
     position: absolute;
     top: -1px;
     right: -1px;
-    border-top: $size solid #f1f2f6;
+    border-top: $size solid $fatex-sheet-background-color;
     border-left: $size solid transparent;
 }
 
@@ -21,7 +21,7 @@
     position: absolute;
     bottom: -1px;
     right: -1px;
-    border-bottom: $size solid #f1f2f6;
+    border-bottom: $size solid $fatex-sheet-background-color;
     border-left: $size solid transparent;
 }
 

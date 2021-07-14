@@ -2,16 +2,16 @@
 $component-padding: 10px;
 
 // Colors
-$primary-color: rgba(47, 53, 66, 1);
+$primary-color: #2f3542;
 
-$sheet-background: rgb(241, 242, 246);
+$sheet-background: #f1f2f6;
 $message-background: transparentize($primary-color, 0.7);
 
 $primary-text-color: #191813;
 $light-text-color: #fff;
 
-$caution-color: rgb(242, 22, 40);
-$shadow-color: rgb(160, 160, 160);
+$caution-color: #f21628;
+$shadow-color: #a0a0a0;
 
 // Fonts
 $primary-font: "Montserrat", sans-serif;
@@ -21,3 +21,4 @@ $fatex-header-color: var(--fatex-header-color, $primary-color);
 $fatex-header-text-color: var(--fatex-header-text-color, $light-text-color);
 
 $fatex-primary-color: var(--fatex-primary-color, $primary-color);
+$fatex-sheet-background-color: var(--fatex-sheet-background-color, $sheet-background);
