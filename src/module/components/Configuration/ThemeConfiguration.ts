@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 export class ThemeConfig extends FormApplication {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
@@ -10,8 +12,15 @@ export class ThemeConfig extends FormApplication {
         } as BaseEntitySheet.Options)
     }
 
-    // @ts-ignore
     async _updateObject(event, formData) {
         return;
+    }
+
+    getData(options?: Application.RenderOptions): FormApplication.Data<Record<string, unknown>, FormApplication.Options> {
+        return mergeObject(super.getData(options), CONFIG.FateX.global.defaultStyles);
+    }
+
+    async close(options?: FormApplication.CloseOptions): Promise<void> {
+        await super.close(options);
     }
 }

@@ -1,37 +1,119 @@
 <form autocomplete="off">
-    <div class="form-group">
-        <label>Header Color:</label>
-        <div class="form-fields">
-            <input
-                type="text"
-                name="primaryColor"
-                value="{{primaryColor}}"
-                data-type="String"
-            >
-            <input
-                type="color"
-                name="primaryColorSelector"
-                value="#000000"
-                data-edit="primaryColor"
-            >
-        </div>
-    </div>
+    <section class="fatex-u-mb-l">
+        <h2>Header Styles</h2>
 
-    <div class="form-group">
-        <label>Primary Color:</label>
-        <div class="form-fields">
-            <input
-                type="text"
-                name="SheetBackgroundColor"
-                value="{{SheetBackgroundColor}}"
-                data-type="String"
-            >
-            <input
-                type="color"
-                name="SheetBackgroundColorSelector"
-                value="#000000"
-                data-edit="SheetBackgroundColor"
-            >
+        <div class="form-group">
+            <label>Header Background Color:</label>
+            <div class="form-fields">
+                <input
+                    type="text"
+                    name="headerBackgroundColor"
+                    value="{{headerBackgroundColor}}"
+                    data-type="String"
+                    readonly="readonly"
+                >
+                <input
+                    type="color"
+                    name="headerBackgroundColorSelector"
+                    value="{{headerBackgroundColor}}"
+                    data-edit="headerBackgroundColor"
+                >
+            </div>
         </div>
-    </div>
+
+        <div class="form-group">
+            <label>Header Text Color:</label>
+            <div class="form-fields">
+                <input
+                    type="text"
+                    name="headerTextColor"
+                    value="{{headerTextColor}}"
+                    data-type="String"
+                    readonly="readonly"
+                >
+                <input
+                    type="color"
+                    name="headerTextColorSelector"
+                    value="{{headerTextColor}}"
+                    data-edit="headerTextColor"
+                >
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Other Sheet Styles</h2>
+
+        <div class="form-group">
+            <label>Primary Sheet Color:</label>
+            <div class="form-fields">
+                <input
+                    type="text"
+                    name="primarySheetColor"
+                    value="{{primarySheetColor}}"
+                    data-type="String"
+                    readonly="readonly"
+                >
+                <input
+                    type="color"
+                    name="primarySheetColorSelector"
+                    value="{{primarySheetColor}}"
+                    data-edit="primarySheetColor"
+                >
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Sheet Background Color:</label>
+            <div class="form-fields">
+                <input
+                    type="text"
+                    name="sheetBackgroundColor"
+                    value="{{sheetBackgroundColor}}"
+                    data-type="String"
+                    readonly="readonly"
+                >
+                <input
+                    type="color"
+                    name="sheetBackgroundColorSelector"
+                    value="{{sheetBackgroundColor}}"
+                    data-edit="sheetBackgroundColor"
+                >
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Scrollbar Color:</label>
+            <div class="form-fields">
+                <input
+                    type="text"
+                    name="scrollbarColor"
+                    value="{{scrollbarColor}}"
+                    data-type="String"
+                    readonly="readonly"
+                >
+                <input
+                    type="color"
+                    name="scrollbarColorSelector"
+                    value="{{scrollbarColor}}"
+                    data-edit="scrollbarColor"
+                >
+            </div>
+        </div>
+    </section>
+
+    <footer class="sheet-footer flexrow fatex-u-mt-std">
+        <button type="submit" name="submit">
+            <i class="fa fa-save"></i>
+            <span>Save</span>
+        </button>
+        <button type="button" name="reset">
+            <i class="fa fa-undo"></i>
+            <span>Reset Defaults</span>
+        </button>
+        <button type="button" name="cancel">
+            <i class="fa fa-ban"></i>
+            <span>Cancel</span>
+        </button>
+    </footer>
 </form>
