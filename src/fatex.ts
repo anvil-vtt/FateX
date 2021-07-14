@@ -113,6 +113,18 @@ Hooks.once("init", async () => {
     await TemplatePreloader.preloadHandlebarsTemplates();
 });
 
+Hooks.once("ready", () => {
+    // Set user defined CSS custom properties
+    Object.keys(CONFIG.FateX.global.defaultStyles).forEach((component, i) => {
+        // Retrieve the value stored in a user flag is there is one.
+        const value = game?.user?.getFlag("fatex", component) as string | undefined;
+
+        // Look up the name of the custom property using its index and set its value
+        // if there is one. Set the value to "unset" otherwise.
+        $(":root").css(CONFIG.FateX.global.customProperties[i], value ?? "unset");
+    })
+})
+
 /* -------------------------------- */
 /*	Register hooks      			*/
 /* -------------------------------- */

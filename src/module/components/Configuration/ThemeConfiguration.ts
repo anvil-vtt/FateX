@@ -21,11 +21,17 @@ export class ThemeConfig extends FormApplication {
         } as BaseEntitySheet.Options)
     }
 
-    async _updateObject(_: Event, formData: Record<string, unknown> | undefined): Promise<unknown> {
-        const componentNames = Object.keys(CONFIG.FateX.global.defaultStyles);
+    async _updateObject(): Promise<unknown> {
+        const customProperties = CONFIG.FateX.global.customProperties;
+        const componentNames = Object.keys(CONFIG.FateX.global.defaultStyles)
+        const defaultStyleValues = Object.values(CONFIG.FateX.global.defaultStyles);
 
-        componentNames.forEach(async componentName => {
-            await game.user.setFlag('fatex', componentName, getProperty(formData, componentName))
+        customProperties.forEach(async (customProperty, i) => {
+            await game.user.setFlag(
+                "fatex",
+                componentNames[i],
+                $(":root").css(customProperty) ?? defaultStyleValues[i]
+            );
         })
     }
 
@@ -57,10 +63,7 @@ export class ThemeConfig extends FormApplication {
 
         // Create a new object where the default styles fill in any values not defined
         // by CSS custom properties.
-        const currentValues = mergeObject(
-            CONFIG.FateX.global.defaultStyles,
-            definedCustomProperties
-        );
+        const currentValues = {...CONFIG.FateX.global.defaultStyles, ...definedCustomProperties};
 
         return mergeObject(super.getData(options), currentValues);
     }
@@ -86,14 +89,14 @@ export class ThemeConfig extends FormApplication {
         this.render();
     }
 
-    saveChanges(_: JQuery.Event) {
+    saveChanges() {
         this.changesSaved = true;
     }
 
     async close(options?: FormApplication.CloseOptions): Promise<void> {
         if (!this.changesSaved) {
             // Loops over the user's original property values and undoes any changes
-            // they've made. Exiting via the save button with prevent this reset.
+            // they've made. Exiting via the save button will prevent this reset.
             for (const [property, value] of Object.entries(this.currentStyles)) {
                 $(":root").css(property, value ?? "unset");
             }
