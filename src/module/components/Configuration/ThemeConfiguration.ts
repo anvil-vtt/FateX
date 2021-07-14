@@ -18,7 +18,9 @@ export class ThemeConfig extends FormApplication {
 
     activateListeners(html: JQuery<HTMLElement>) {
         super.activateListeners(html);
+
         html.find(`[type="color"]`).on("change", this.onChange.bind(this));
+        html.find(`button[name="reset"]`).on("click", this.reset.bind(this));
     }
 
     getData(options?: Application.RenderOptions): FormApplication.Data<Record<string, unknown>, FormApplication.Options> {
@@ -54,6 +56,19 @@ export class ThemeConfig extends FormApplication {
 
         // Update the custom property associated with the colour selector to the chosen value.
         $(":root").css(`--${customProperty}`, newValue);
+    }
+
+    reset() {
+        // Loop over the custom properties in the config file and set each of them
+        // to "unset". This will cause the fallback values to take effect, which
+        // align with the system defaults.
+        CONFIG.FateX.global.customProperties.forEach(customProperty => {
+            $(":root").css(customProperty, "unset");
+        })
+
+        // Rerender the sheet so that the default styles will be applied due to the
+        // lack of set custom properties.
+        this.render();
     }
 
     async close(options?: FormApplication.CloseOptions): Promise<void> {
