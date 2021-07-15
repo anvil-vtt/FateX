@@ -115,13 +115,11 @@ Hooks.once("init", async () => {
 
 Hooks.once("ready", () => {
     // Set user defined CSS custom properties
-    Object.keys(CONFIG.FateX.global.defaultStyles).forEach((component, i) => {
+    CONFIG.FateX.global.styles.forEach(({ name, customProperty }) => {
         // Retrieve the value stored in a user flag is there is one.
-        const value = game?.user?.getFlag("fatex", component) as string | undefined;
+        const value = game?.user?.getFlag("fatex", name) as string | undefined;
 
-        // Look up the name of the custom property using its index and set its value
-        // if there is one. Set the value to "unset" otherwise.
-        $(":root").css(CONFIG.FateX.global.customProperties[i], value ?? "unset");
+        $(":root").css(customProperty, value ?? "unset");
     })
 })
 

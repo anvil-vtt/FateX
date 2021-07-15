@@ -6,7 +6,7 @@ export class ThemeConfig extends FormApplication {
 
     constructor() {
         super();
-        this.currentStyles = $(":root").css(CONFIG.FateX.global.customProperties);
+        this.currentStyles = $(":root").css(CONFIG.FateX.global.styles.map(x => x.customProperty));
         this.changesSaved = false;
     }
 
@@ -22,15 +22,9 @@ export class ThemeConfig extends FormApplication {
     }
 
     async _updateObject(): Promise<unknown> {
-        const customProperties = CONFIG.FateX.global.customProperties;
-        const componentNames = Object.keys(CONFIG.FateX.global.defaultStyles)
-        const defaultStyleValues = Object.values(CONFIG.FateX.global.defaultStyles);
-
-        customProperties.forEach(async (customProperty, i) => {
+        CONFIG.FateX.global.styles.forEach(async ({ name, customProperty, defaultValue }) => {
             await game.user.setFlag(
-                "fatex",
-                componentNames[i],
-                $(":root").css(customProperty) ?? defaultStyleValues[i]
+                "fatex", name, $(":root").css(customProperty) ?? defaultValue
             );
         })
     }
@@ -45,42 +39,44 @@ export class ThemeConfig extends FormApplication {
     }
 
     getData(options?: Application.RenderOptions): FormApplication.Data<Record<string, unknown>, FormApplication.Options> {
-        const customPropertyValues = Object.values($(":root").css(CONFIG.FateX.global.customProperties));
-        const componentNames = Object.keys(CONFIG.FateX.global.defaultStyles);
+        const customPropertyValues = $(":root").css(CONFIG.FateX.global.styles.map(x => x.customProperty));
 
         // Create a new object where the custom property values are assigned to keys
         // matching the component names used in the templates and default styles config.
-        const customProperties = Object.assign(
-            ...componentNames.map(
-                (componentName, i) => ({ [componentName]: customPropertyValues[i] })
-            )
-        );
+        const customProperties = Object.assign(...CONFIG.FateX.global.styles.map(
+            ({ name, customProperty }) => ({ [name]: customPropertyValues[customProperty] })
+        ));
 
         // Filter out any custom properties which are currently undefined.
         const definedCustomProperties = Object.fromEntries(
             Object.entries(customProperties).filter(([_, value]) => value !== undefined)
         );
 
+        const defaultStyles = Object.assign(...CONFIG.FateX.global.styles.map(
+            ({ name, defaultValue }) => ({ [name]: defaultValue })
+        ));
+
         // Create a new object where the default styles fill in any values not defined
         // by CSS custom properties.
-        const currentValues = {...CONFIG.FateX.global.defaultStyles, ...definedCustomProperties};
+        const currentValues = {...defaultStyles, ...definedCustomProperties};
 
         return mergeObject(super.getData(options), currentValues);
     }
 
     onChange(event: JQuery.Event) {
         const newValue = event.currentTarget.value;
-        const customProperty = $(event.currentTarget).data("property");
+        const componenetName = $(event.currentTarget).data("edit");
+        const customProperty = CONFIG.FateX.global.styles.find(x => x.name === componenetName)?.customProperty;
 
         // Update the custom property associated with the colour selector to the chosen value.
-        $(":root").css(`--${customProperty}`, newValue);
+        $(":root").css(customProperty, newValue);
     }
 
     reset() {
         // Loop over the custom properties in the config file and set each of them
         // to "unset". This will cause the fallback values to take effect, which
         // align with the system defaults.
-        CONFIG.FateX.global.customProperties.forEach(customProperty => {
+        CONFIG.FateX.global.styles.forEach(({ customProperty }) => {
             $(":root").css(customProperty, "unset");
         })
 

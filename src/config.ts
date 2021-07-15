@@ -42,10 +42,11 @@ export interface FatexConfig {
 
     global: {
         useMarkdown: boolean;
-        defaultStyles: {
-            [key: string]: string;
-        };
-        customProperties: string[]
+        styles: {
+            name: string;
+            customProperty: string;
+            defaultValue: string;
+        }[];
     };
 }
 
@@ -77,19 +78,32 @@ export const FateX: FatexConfig = {
     },
     global: {
         useMarkdown: false,
-        defaultStyles: {
-            headerBackgroundColor: "#2f3542",
-            headerTextColor: "#ffffff",
-            primarySheetColor: "#2f3542",
-            scrollbarColor: "#2f3542",
-            sheetBackgroundColor: "#f1f2f6"
-        },
-        customProperties: [
-            "--fatex-header-color",
-            "--fatex-header-text-color",
-            "--fatex-primary-color",
-            "--fatex-scrollbar-color",
-            "--fatex-sheet-background-color"
+        styles: [
+            {
+                name: "headerBackgroundColor",
+                customProperty: "--fatex-header-color",
+                defaultValue: "#2f3542"
+            },
+            {
+                name: "headerTextColor",
+                customProperty: "--fatex-header-text-color",
+                defaultValue: "#ffffff"
+            },
+            {
+                name: "primarySheetColor",
+                customProperty: "--fatex-primary-color",
+                defaultValue: "#2f3542"
+            },
+            {
+                name: "scrollbarColor",
+                customProperty: "--fatex-scrollbar-color",
+                defaultValue: "#2f3542"
+            },
+            {
+                name: "sheetBackgroundColor",
+                customProperty: "--fatex-sheet-background-color",
+                defaultValue: "#f1f2f6"
+            }
         ]
     }
 };
