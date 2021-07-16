@@ -2,15 +2,25 @@
     <div class="fatex-desk">
         {{!--HEADER--}}
         <div class="fatex-header">
-            <div class="fatex-header__name">
-                <label class="fatex-header__label">
-                    {{#if isOwnedBy}}
-                        {{ isOwnedBy }}
-                    {{else}}
-                        {{localize FAx.Gloabl.BaseItem}}
-                    {{/if}}
-                </label>
-                <div class="fatex-header__title">{{localize title}}</div>
+            <div class="fatex-header__combine">
+                {{#if isOwnedBy}}
+                    <div></div>
+                {{else}}
+                    <div class="fatex-header__image">
+                        <img alt="{{item.name}}" data-edit="img" src="{{item.img}}"/>
+                    </div>
+                {{/if}}
+
+                <div class="fatex-header__name">
+                    <label class="fatex-header__label">
+                        {{#if isOwnedBy}}
+                            {{isOwnedBy}}
+                        {{else}}
+                            {{localize "FAx.Global.BaseItem"}}
+                        {{/if}}
+                    </label>
+                    <div class="fatex-header__title">{{localize title}}</div>
+                </div>
             </div>
 
             {{> "systems/fatex/templates/components/header-logo.hbs"}}

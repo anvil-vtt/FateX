@@ -12,6 +12,22 @@
     box-shadow: 0 2px 15px 0 $fatex-header-color;
     z-index: 5;
 
+    &__combine {
+        display: flex;
+        align-items: center;
+    }
+
+    &__image {
+        height: 40px;
+        margin-right: $component-padding;
+
+        img {
+            flex: 0 0 40px;
+            height: 40px;
+            width: 40px;
+        }
+    }
+
     &__name {
         display: flex;
         flex-direction: column-reverse;
@@ -55,5 +71,6 @@
     &__title {
         height: 25px;
         font-size: 23px;
+        white-space: nowrap;
     }
 }

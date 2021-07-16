@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.14.1
+* Added the ability to change the image for unlinked items
+
 ### 0.14.0
 * Another big round of style refactorings
 * Added compatibility to the compendium folders module
