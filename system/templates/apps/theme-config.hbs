@@ -42,7 +42,7 @@
     </section>
 
     <section>
-        <h2>Other Sheet Styles</h2>
+        <h2>Core Sheet Styles</h2>
 
         <div class="form-group">
             <label>Primary Sheet Color:</label>
@@ -78,6 +78,25 @@
                     name="sheetBackgroundColorSelector"
                     value="{{sheetBackgroundColor}}"
                     data-edit="sheetBackgroundColor"
+                >
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Shadow Color:</label>
+            <div class="form-fields">
+                <input
+                    type="text"
+                    name="shadowColor"
+                    value="{{shadowColor}}"
+                    data-type="String"
+                    readonly="readonly"
+                >
+                <input
+                    type="color"
+                    name="shadowColorSelector"
+                    value="{{shadowColor}}"
+                    data-edit="shadowColor"
                 >
             </div>
         </div>
