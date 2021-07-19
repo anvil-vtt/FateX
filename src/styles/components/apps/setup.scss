@@ -75,7 +75,7 @@
         border: 1px solid $fatex-primary-color;
         border-radius: 3px;
         margin-right: $component-padding;
-        color: var(--fatex-light-text-color, $light-text-color);
+        color: $fatex-text-color-2;
         font-size: 11px;
         text-align: center;
     }

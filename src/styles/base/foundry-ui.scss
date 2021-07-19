@@ -8,5 +8,5 @@
 #chat-form .cm-s-easymde,
 .chat-message .message-header {
     background: $fatex-sheet-background-color;
-    color: var(--fatex-primary-text-color, $primary-text-color);
+    color: $fatex-text-color-1;
 }

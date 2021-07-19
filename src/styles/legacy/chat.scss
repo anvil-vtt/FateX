@@ -1,6 +1,6 @@
 .fatex__headline {
     background: $fatex-primary-color;
-    color: var(--fatex-light-text-color, $light-text-color);
+    color: $fatex-text-color-2;
     padding: $component-padding/2 $component-padding * 2 $component-padding/2 $component-padding * 2;
     position: relative;
     font-weight: bold;

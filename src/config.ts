@@ -90,11 +90,6 @@ export const FateX: FatexConfig = {
                 defaultValue: "#ffffff"
             },
             {
-                name: "shadowColor",
-                customProperty: "--fatex-shadow-color",
-                defaultValue: "#2f3542"
-            },
-            {
                 name: "primarySheetColor",
                 customProperty: "--fatex-primary-color",
                 defaultValue: "#2f3542"
@@ -105,9 +100,24 @@ export const FateX: FatexConfig = {
                 defaultValue: "#2f3542"
             },
             {
+                name: "shadowColor",
+                customProperty: "--fatex-shadow-color",
+                defaultValue: "#2f3542"
+            },
+            {
                 name: "sheetBackgroundColor",
                 customProperty: "--fatex-sheet-background-color",
                 defaultValue: "#f1f2f6"
+            },
+            {
+                name: "textColor1",
+                customProperty: "--fatex-text-color-1",
+                defaultValue: "#191813"
+            },
+            {
+                name: "textColor2",
+                customProperty: "--fatex-text-color-2",
+                defaultValue: "#ffffff"
             }
         ]
     }

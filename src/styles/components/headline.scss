@@ -1,7 +1,7 @@
 .fatex-headline {
     position: relative;
     margin-bottom: 0.5rem;
-    color: var(--fatex-light-text-color, $light-text-color);
+    color: $fatex-text-color-2;
     background: $fatex-primary-color;
 
     &::before {
@@ -90,7 +90,7 @@
 .fatex-section-heading {
     display: block;
     position: relative;
-    color: $primary-text-color;
+    color: $fatex-text-color-1;
 
     &--no-border {
         border: none;

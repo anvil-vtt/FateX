@@ -70,7 +70,7 @@ input[type="number"].fatex-text-input--headline {
     padding: 5px;
     font-size: 13px;
     font-weight: bold;
-    color: var(--fatex-light-text-color, $light-text-color);
+    color: $fatex-text-color-2;
     text-transform: uppercase;
     text-align: center;
     border: none;
