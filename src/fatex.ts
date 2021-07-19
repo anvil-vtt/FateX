@@ -27,6 +27,7 @@ import { SkillSheet } from "./module/item/skill/SkillSheet";
 import { StressSheet } from "./module/item/stress/StressSheet";
 import { StuntSheet } from "./module/item/stunt/StuntSheet";
 import { TemplateActorsFeature } from "./module/features/TemplateActorsFeature";
+import { ThemeConfigurationFeature } from "./module/features/ThemeConfigurationFeature";
 import { GroupSheet } from "./module/actor/sheets/GroupSheet";
 import { ActorGroupFeature } from "./module/features/ActorGroupFeature";
 import { ReferenceSheet } from "./module/item/references/ReferenceSheet";
@@ -113,20 +114,11 @@ Hooks.once("init", async () => {
     await TemplatePreloader.preloadHandlebarsTemplates();
 });
 
-Hooks.once("ready", () => {
-    // Set user defined CSS custom properties
-    CONFIG.FateX.global.styles.forEach(({ name, customProperty }) => {
-        // Retrieve the value stored in a user flag is there is one.
-        const value = game?.user?.getFlag("fatex", name) as string | undefined;
-
-        $(":root").css(customProperty, value ?? "unset");
-    })
-})
-
 /* -------------------------------- */
 /*	Register hooks      			*/
 /* -------------------------------- */
 TemplateActorsFeature.hooks();
+ThemeConfigurationFeature.hooks()
 ActorGroupFeature.hooks();
 
 /* -------------------------------- */
