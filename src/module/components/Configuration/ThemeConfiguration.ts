@@ -15,7 +15,7 @@ export class ThemeConfig extends FormApplication {
             title: "Theme Configuration",
             id: "themeConfig",
             template: "/systems/fatex/templates/apps/theme-config.hbs",
-            width: 500,
+            width: 600,
             height: "auto",
             closeOnSubmit: true,
         } as BaseEntitySheet.Options);

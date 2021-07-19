@@ -80,6 +80,11 @@ export const FateX: FatexConfig = {
         useMarkdown: false,
         styles: [
             {
+                name: "buttonShadowColor",
+                customProperty: "--fatex-button-shadow-color",
+                defaultValue: "#a0a0a0"
+            },
+            {
                 name: "headerBackgroundColor",
                 customProperty: "--fatex-header-color",
                 defaultValue: "#2f3542"
@@ -90,6 +95,11 @@ export const FateX: FatexConfig = {
                 defaultValue: "#ffffff"
             },
             {
+                name: "mainShadowColor",
+                customProperty: "--fatex-main-shadow-color",
+                defaultValue: "#2f3542"
+            },
+            {
                 name: "primarySheetColor",
                 customProperty: "--fatex-primary-color",
                 defaultValue: "#2f3542"
@@ -97,11 +107,6 @@ export const FateX: FatexConfig = {
             {
                 name: "scrollbarColor",
                 customProperty: "--fatex-scrollbar-color",
-                defaultValue: "#2f3542"
-            },
-            {
-                name: "shadowColor",
-                customProperty: "--fatex-shadow-color",
                 defaultValue: "#2f3542"
             },
             {

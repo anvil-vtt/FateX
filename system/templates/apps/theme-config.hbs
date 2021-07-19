@@ -123,20 +123,40 @@
         </div>
 
         <div class="form-group">
-            <label>Shadow Color:</label>
+            <label>Main Shadow Color:</label>
             <div class="form-fields">
                 <input
                     type="text"
-                    name="shadowColor"
-                    value="{{shadowColor}}"
+                    name="mainShadowColor"
+                    value="{{mainShadowColor}}"
                     data-type="String"
                     readonly="readonly"
                 >
                 <input
                     type="color"
-                    name="shadowColorSelector"
-                    value="{{shadowColor}}"
-                    data-edit="shadowColor"
+                    name="mainShadowColorSelector"
+                    value="{{mainShadowColor}}"
+                    data-edit="mainShadowColor"
+                >
+            </div>
+            <p class="notes">Controls the colour of the shadow for the header bar and the sidebar on actor sheets.</p>
+        </div>
+
+        <div class="form-group">
+            <label>Button Shadow Color:</label>
+            <div class="form-fields">
+                <input
+                    type="text"
+                    name="buttonShadowColor"
+                    value="{{buttonShadowColor}}"
+                    data-type="String"
+                    readonly="readonly"
+                >
+                <input
+                    type="color"
+                    name="buttonShadowColorSelector"
+                    value="{{buttonShadowColor}}"
+                    data-edit="buttonShadowColor"
                 >
             </div>
         </div>

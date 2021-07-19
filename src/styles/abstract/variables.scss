@@ -26,5 +26,6 @@ $fatex-sheet-background-color: var(--fatex-sheet-background-color, $sheet-backgr
 $fatex-text-color-1: var(--fatex-text-color-1, $primary-text-color);
 $fatex-text-color-2: var(--fatex-text-color-2, $light-text-color);
 
-$fatex-shadow-color: var(--fatex-shadow-color, $primary-color);
+$fatex-main-shadow-color: var(--fatex-main-shadow-color, $primary-color);
+$fatex-button-shadow-color: var(--fatex-button-shadow-color, $shadow-color);
 $fatex-scrollbar-color: var(--fatex-scrollbar-color, $primary-color);

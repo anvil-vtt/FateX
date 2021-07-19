@@ -7,7 +7,7 @@
     text-transform: uppercase;
     text-align: center;
     font-size: 13px;
-    box-shadow: 1px 1px 1px $shadow-color;
+    box-shadow: 1px 1px 1px $fatex-button-shadow-color;
 
     &::before {
         @include cutout-top-left;
