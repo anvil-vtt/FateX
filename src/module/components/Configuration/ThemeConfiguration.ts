@@ -22,16 +22,14 @@ export class ThemeConfig extends FormApplication {
     }
 
     async _updateObject() {
-        const reducer = (themes, style) => {
+        const updates = CONFIG.FateX.global.styles.reduce((properties, style) => {
             const key = `flags.fatex.${style.name}`;
-            themes[key] = $(":root").css(style.customProperty) ?? style.defaultValue;
+            properties[key] = $(":root").css(style.customProperty) ?? style.defaultValue;
 
-            return themes;
-        };
+            return properties;
+        }, {});
 
-        const update = CONFIG.FateX.global.styles.reduce(reducer, {});
-
-        return game.user.update(update);
+        return game.user.update(updates);
     }
 
     activateListeners(html: JQuery<HTMLElement>) {
