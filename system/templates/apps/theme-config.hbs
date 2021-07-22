@@ -1,0 +1,198 @@
+<form autocomplete="off">
+    <section class="fatex-u-mb-l">
+        <h2>Header Styles</h2>
+
+        <div class="form-group">
+            <label>Header Background Color:</label>
+            <div class="form-fields">
+                <input
+                    type="text"
+                    name="headerBackgroundColor"
+                    value="{{headerBackgroundColor}}"
+                    data-type="String"
+                    readonly="readonly"
+                >
+                <input
+                    type="color"
+                    name="headerBackgroundColorSelector"
+                    value="{{headerBackgroundColor}}"
+                    data-edit="headerBackgroundColor"
+                >
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Header Text Color:</label>
+            <div class="form-fields">
+                <input
+                    type="text"
+                    name="headerTextColor"
+                    value="{{headerTextColor}}"
+                    data-type="String"
+                    readonly="readonly"
+                >
+                <input
+                    type="color"
+                    name="headerTextColorSelector"
+                    value="{{headerTextColor}}"
+                    data-edit="headerTextColor"
+                >
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Core Sheet Styles</h2>
+
+        <div class="form-group">
+            <label>Primary Sheet Color:</label>
+            <div class="form-fields">
+                <input
+                    type="text"
+                    name="primarySheetColor"
+                    value="{{primarySheetColor}}"
+                    data-type="String"
+                    readonly="readonly"
+                >
+                <input
+                    type="color"
+                    name="primarySheetColorSelector"
+                    value="{{primarySheetColor}}"
+                    data-edit="primarySheetColor"
+                >
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Sheet Background Color:</label>
+            <div class="form-fields">
+                <input
+                    type="text"
+                    name="sheetBackgroundColor"
+                    value="{{sheetBackgroundColor}}"
+                    data-type="String"
+                    readonly="readonly"
+                >
+                <input
+                    type="color"
+                    name="sheetBackgroundColorSelector"
+                    value="{{sheetBackgroundColor}}"
+                    data-edit="sheetBackgroundColor"
+                >
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Text Color 1:</label>
+            <div class="form-fields">
+                <input
+                    type="text"
+                    name="textColor1"
+                    value="{{textColor1}}"
+                    data-type="String"
+                    readonly="readonly"
+                >
+                <input
+                    type="color"
+                    name="textColor1Selector"
+                    value="{{textColor1}}"
+                    data-edit="textColor1"
+                >
+            </div>
+            <p class="notes">This should contrast the sheet background.</p>
+        </div>
+
+        <div class="form-group">
+            <label>Text Color 2:</label>
+            <div class="form-fields">
+                <input
+                    type="text"
+                    name="textColor2"
+                    value="{{textColor2}}"
+                    data-type="String"
+                    readonly="readonly"
+                >
+                <input
+                    type="color"
+                    name="textColor2Selector"
+                    value="{{textColor2}}"
+                    data-edit="textColor2"
+                >
+            </div>
+            <p class="notes">This should contrast the primary sheet color.</p>
+        </div>
+
+        <div class="form-group">
+            <label>Main Shadow Color:</label>
+            <div class="form-fields">
+                <input
+                    type="text"
+                    name="mainShadowColor"
+                    value="{{mainShadowColor}}"
+                    data-type="String"
+                    readonly="readonly"
+                >
+                <input
+                    type="color"
+                    name="mainShadowColorSelector"
+                    value="{{mainShadowColor}}"
+                    data-edit="mainShadowColor"
+                >
+            </div>
+            <p class="notes">Controls the colour of the shadow for the header bar and the sidebar on actor sheets.</p>
+        </div>
+
+        <div class="form-group">
+            <label>Button Shadow Color:</label>
+            <div class="form-fields">
+                <input
+                    type="text"
+                    name="buttonShadowColor"
+                    value="{{buttonShadowColor}}"
+                    data-type="String"
+                    readonly="readonly"
+                >
+                <input
+                    type="color"
+                    name="buttonShadowColorSelector"
+                    value="{{buttonShadowColor}}"
+                    data-edit="buttonShadowColor"
+                >
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Scrollbar Color:</label>
+            <div class="form-fields">
+                <input
+                    type="text"
+                    name="scrollbarColor"
+                    value="{{scrollbarColor}}"
+                    data-type="String"
+                    readonly="readonly"
+                >
+                <input
+                    type="color"
+                    name="scrollbarColorSelector"
+                    value="{{scrollbarColor}}"
+                    data-edit="scrollbarColor"
+                >
+            </div>
+        </div>
+    </section>
+
+    <footer class="sheet-footer flexrow fatex-u-mt-std">
+        <button type="submit" name="submit">
+            <i class="far fa-save"></i>
+            <span>Save</span>
+        </button>
+        <button type="button" name="reset">
+            <i class="fa fa-undo"></i>
+            <span>Reset Defaults</span>
+        </button>
+        <button type="button" name="cancel">
+            <i class="fa fa-ban"></i>
+            <span>Cancel</span>
+        </button>
+    </footer>
+</form>

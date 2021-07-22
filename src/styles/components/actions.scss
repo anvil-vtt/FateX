@@ -4,7 +4,7 @@
     align-items: center;
     gap: 10px;
     height: 100%;
-    text-shadow: 1px 1px 2px $shadow-color;
+    text-shadow: 1px 1px 2px $fatex-button-shadow-color;
     pointer-events: none;
     z-index: 4;
 
@@ -58,7 +58,7 @@
         gap: 0;
         font-size: 16px;
         color: $fatex-primary-color;
-        text-shadow: 1px -1px 1px $sheet-background;
+        text-shadow: 1px -1px 1px $fatex-sheet-background-color;
     }
 
     &__icon {
@@ -92,12 +92,12 @@
 .fatex-js-edit-mode {
     .fatex-actions--headline,
     .fatex-actions--skill {
-        background: linear-gradient(90deg, rgba(47, 53, 66, 0) 0%, #2f3542 33%, #2f3542 100%);
+        background: linear-gradient(90deg, transparent, $fatex-primary-color 33%, $fatex-primary-color 100%);
     }
 
     .fatex-actions--item,
     .fatex-actions--section-heading {
-        background: linear-gradient(90deg, transparentize($sheet-background, 1) 0%, $sheet-background 33%, $sheet-background 100%);
+        background: linear-gradient(90deg, transparent 0%, $fatex-sheet-background-color 33%, $fatex-sheet-background-color 100%);
     }
 
     .fatex-actions__icon {

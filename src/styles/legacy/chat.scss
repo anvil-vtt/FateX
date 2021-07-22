@@ -1,13 +1,13 @@
 .fatex__headline {
     background: $fatex-primary-color;
-    color: var(--fatex-light-text-color, $light-text-color);
+    color: $fatex-text-color-2;
     padding: $component-padding/2 $component-padding * 2 $component-padding/2 $component-padding * 2;
     position: relative;
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
     font-size: 13px;
-    box-shadow: 1px 1px 1px $shadow-color;
+    box-shadow: 1px 1px 1px $fatex-button-shadow-color;
 
     &::before {
         @include cutout-top-left;
@@ -33,7 +33,7 @@
     transform: translate(-25px, 0px);
     font-weight: 900;
     font-size: 24px;
-    color: $sheet-background;
+    color: $fatex-sheet-background-color;
     -webkit-text-stroke: 2px $fatex-primary-color;
     text-shadow: initial;
 }

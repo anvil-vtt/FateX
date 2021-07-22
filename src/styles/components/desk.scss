@@ -19,7 +19,6 @@
     &__content {
         grid-area: content;
         overflow-y: auto;
-        scrollbar-width: thin;
 
         &--app {
             padding: $component-padding;
@@ -49,7 +48,7 @@
 
     &__sidebar {
         min-width: 240px;
-        box-shadow: 12px 0 15px 0 $fatex-primary-color;
+        box-shadow: 12px 0 15px 0 $fatex-main-shadow-color;
     }
 
     &__tabloid {
