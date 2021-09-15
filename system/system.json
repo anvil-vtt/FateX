@@ -46,6 +46,11 @@
             "lang": "sv",
             "name": "Swedish",
             "path": "languages/sv.json"
+        },
+        {
+            "lang": "pt-BR",
+            "name": "Português (Brasil)",
+            "path": "languages/pt-BR.json"
         }
     ],
     "minimumCoreVersion": "0.5.2",
