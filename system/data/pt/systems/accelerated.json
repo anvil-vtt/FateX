@@ -1,0 +1,139 @@
+{
+    "name": "Acelerado",
+    "identifier": "fae",
+    "types": {
+        "Aspects": [
+            {
+                "label": "Padrão",
+                "entries": [
+                    {
+                        "name": "Conceito",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Conceito"
+                        }
+                    },
+                    {
+                        "name": "Dificuldade",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Dificuldade"
+                        }
+                    },
+                    {
+                        "name": "Outro aspecto",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Outro"
+                        }
+                    },
+                    {
+                        "name": "Outro aspecto",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Outro"
+                        }
+                    },
+                    {
+                        "name": "Outro aspecto",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Outro"
+                        }
+                    }
+                ]
+            },
+            {
+                "label": "Opcional",
+                "entries": [
+                    {
+                        "name": "Relacionamento",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Relacionamento"
+                        }
+                    },
+                    {
+                        "name": "Aspecto em Branco",
+                        "type": "aspect"
+                    }
+                ]
+            }
+        ],
+        "Consequences": [
+            {
+                "entries": [
+                    {
+                        "name": "Consequência suave",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Suave",
+                            "icon": "2"
+                        }
+                    },
+                    {
+                        "name": "Consequência moderada",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Moderada",
+                            "icon": "4"
+                        }
+                    },
+                    {
+                        "name": "Consequência severa",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Severa",
+                            "icon": "6"
+                        }
+                    }
+                ]
+            }
+        ],
+        "Skills": [
+            {
+                "columns": true,
+                "entries": [
+                    {
+                        "name": "Cuidadoso",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "Esperto",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "Estiloso",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "Poderoso",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "Ágil",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "Sorrateiro",
+                        "type": "skill"
+                    }
+                ]
+            }
+        ],
+        "Stress": [
+            {
+                "entries": [
+                    {
+                        "name": "Estresse",
+                        "type": "stress",
+                        "data": {
+                            "size": 3,
+                            "labelType": 0
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

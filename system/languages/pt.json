@@ -1,0 +1,229 @@
+{
+    "FateX": "FateX",
+    "FAx": {
+        "name": "FateX",
+        "Global": {
+            "Ladder": {
+                "+8": "Lendário",
+                "+7": "Épico",
+                "+6": "Fantástico",
+                "+5": "Excepcional",
+                "+4": "Ótimo",
+                "+3": "Bom",
+                "+2": "Razoável",
+                "+1": "Regular",
+                "+0": "Medíocre",
+                "-1": "Ruim",
+                "-2": "Terrível",
+                "-3": "Catastrófico",
+                "-4": "Horripilante"
+            },
+            "Actions": {
+                "Configure": "Configurar",
+                "Delete": "Excluir",
+                "Duplicate": "Duplicar",
+                "Sort": "Organizar",
+                "Create": "Criar ator em branco",
+                "Choose": "Escolher modelo"
+            },
+            "BaseItem": "Item base"
+        },
+        "Sheet": {
+            "Name": "Nome",
+            "Description": "Descrição",
+            "FatePoints": "Pontos de Destino",
+            "Aspects": "Aspectos",
+            "Consequences": "Consequência",
+            "Skills": "Perícias",
+            "Stunts": "Façanhas",
+            "Extras": "Extras",
+            "Bio": "Biografia",
+            "Artwork": "Arte",
+            "StressTracks": "Barras de estresse",
+            "Tabs": {
+                "SkillsStunts": "Perícias & Façanhas",
+                "Skills": "Perícias",
+                "Stunts": "Façanhas",
+                "Extras": "Extras",
+                "Bio": "Biografia"
+            },
+            "Buttons": {
+                "EditMode": "Modo de Edição",
+                "SheetSetup": "Configuração da Ficha"
+            },
+            "Stress": {
+                "Add": "Adicionar barra de estresse"
+            },
+            "Messages": {
+                "EmptyActor": "Parece que seu personagem ainda não tem nenhum conteúdo. Você pode alterar isso no <strong>Modo de Edição</strong> ou na <strong>Configuração da Ficha</strong>. Os botões para ativar o modo de edição e abrir a configuração da ficha estão na barra de título."
+            }
+        },
+        "Item": {
+            "Stress": {
+                "Name": "Rótulo da barra de estresse",
+                "EditItem": "Editar Barra de Estresse",
+                "Size": "Número de caixas",
+                "Description": "Descrição",
+                "DescriptionHelp": "A descrição será exibida dentro da área da caixa de estresse.",
+                "Boxes": {
+                    "Label": "Estilo dos rótulos das caixas",
+                    "Custom": "Rótulos de caixas de personalizados",
+                    "CustomHelp": "Digite uma lista separada por espaços de caracteres unicode. Ex.: \"2 4 6 ☀\"."
+                },
+                "Type": {
+                    "Core": "Básico",
+                    "Condensed": "Condensado",
+                    "Custom": "Em branco / Personalizado"
+                }
+            },
+            "Aspect": {
+                "EditItem": "Editar Aspecto",
+                "Value": "Texto",
+                "Description": "Descrição",
+                "DescriptionHelp": "Só é mostrada quando enviada para o chat",
+                "Label": "Rótulo"
+            },
+            "Consequence": {
+                "EditItem": "Editar Consequência",
+                "Value": "Texto",
+                "Description": "Descrição",
+                "DescriptionHelp": "Só é mostrada quando enviada para o chat",
+                "Label": "Rótulo",
+                "LabelHelp": "Um rótulo para descrever a seriedade, como \"Suave\" ou \"Severa\".",
+                "Icon": "Ícone",
+                "IconHelp": "Normalmente um número como 2, 4, 6 ou 8. Exibido à esquerda.",
+                "Type": {
+                    "Label": "Variante",
+                    "Condition": "Condição",
+                    "Consequence": "Consequência"
+                }
+            },
+            "Skill": {
+                "Name": "Nome da perícia",
+                "EditItem": "Editar Perícia",
+                "Rank": "Nível",
+                "Description": "Descrição",
+                "DescriptionHelp": "Só é mostrada quando enviada para o chat"
+            },
+            "Stunt": {
+                "Name": "Título da façanha",
+                "EditItem": "Editar Façanha",
+                "Description": "Descrição",
+                "DescriptionHelp": "Descrição longa para esta façanha",
+                "ShortDescription": "Descrição Curta",
+                "ShortDescriptionHelp": "Descrição curta para esta stunt"
+            },
+            "Extra": {
+                "Name": "Título do extra",
+                "EditItem": "Editar Extra",
+                "Description": "Descrição",
+                "DescriptionHelp": "Descrição longa para este extra",
+                "ShortDescription": "Descrição Curta",
+                "ShortDescriptionHelp": "Descrição curta para esta extra"
+            },
+            "Reference": {
+                "EditItem": "Editar Referência",
+                "Name": "Nome da referência",
+                "ID": "ID",
+                "Scene": "Cena"
+            },
+            "Automation": {
+                "Headline": "Automação",
+                "BoxesHeadline": "Automação de Caixa",
+                "Description": "Ainda não há condições de perícia definidas. Por favor, adicione uma ou mais condições para habilitar os recursos de automação.",
+                "AddSkillRef": "Adicionar condição de perícia",
+                "DisableUntil": "Desativado até",
+                "BoxesIf": "caixa(s) se",
+                "MultipleConditions": "Habilitar automação se",
+                "MultipleConditionsMatches": "condição for cumprida",
+                "Actions": {
+                    "Box": {
+                        "ADD": "Adicionar",
+                        "REMOVE": "Remover"
+                    }
+                },
+                "Conjunctions": {
+                    "AND": "toda",
+                    "OR": "qualquer"
+                },
+                "Operators": {
+                    "OPERATOR_EQUALS": "é igual",
+                    "OPERATOR_NOT_EQUALS": "não é igual",
+                    "OPERATOR_GT": "é maior que",
+                    "OPERATOR_LT": "é menor que",
+                    "OPERATOR_GTE": "é maior que ou igual",
+                    "OPERATOR_LTE": "é menor que ou igual"
+                }
+            }
+        },
+        "Dialog": {
+            "ReferenceRemove": "Remover referência",
+            "ReferenceRemoveText": "Você realmente quer remover <strong>permanentemente</strong> esta referência?",
+            "EntityDelete": "Excluir",
+            "EntityDeleteText": "Você realmente quer excluir <strong>permanentemente</strong> esta entidade?",
+            "ActorClear": "Limpar componente",
+            "ActorClearText": "Você realmente quer excluir <strong>permanentemente</strong> todos os components deste ator <strong>e seus conteúdos</strong> do tipo escolhido?",
+            "Confirm": "Confirmar",
+            "Cancel": "Cancelar"
+        },
+        "Apps": {
+            "Setup": {
+                "Title": "Configuração da Ficha",
+                "Manage": "Gerenciamento",
+                "Setup": "Configuração (Predefinições)",
+                "Actions": {
+                    "Clear": {
+                        "Aspects": "Apagar aspectos",
+                        "Consequences": "Apagar consequências",
+                        "Skills": "Apagar perícias",
+                        "Stress": "Apagar faixas de estresse",
+                        "Everything": "Apagar tudo"
+                    },
+                    "Setup": {
+                        "AddToSheet": "Adicionar seleção à ficha",
+                        "ToggleSelection": "Alternar seleção"
+                    }
+                }
+            }
+        },
+        "Settings": {
+            "Templates": {
+                "Title": "Modelos de ficha de personagem",
+                "Hint": "Permite que você escolha a aparência das fichas de personagem para novos personagens.",
+                "Button": "Modelos FateX",
+                "New": "Novo modelo",
+                "Copy": "Copiar",
+                "App": {
+                    "Title": "Configurar Modelos",
+                    "Label": "Configurações",
+                    "CreateNew": "Criar novo modelo",
+                    "Help": "Ainda não há modelos configurados.<br />Para adicionar um novo modelo, clique no botão <strong>Criar novo modelo</strong> (também disponível na barra de cabeçalho)."
+                }
+            },
+            "System": {
+                "Alpha": {
+                    "Name": "Ativar recursos alfa",
+                    "Hint": "Esta configuração habilita recursos experimentais do FateX alfa. Os recursos alfa estão sujeitos a mudanças."
+                }
+            }
+        },
+        "Template": {
+            "Picker": {
+                "Title": "Escolher Modelo",
+                "Label": "Modelos",
+                "Configuration": "Configuração",
+                "Empty": "Ator em branco",
+                "CreateEmpty": "Ator em branco",
+                "Or": "ou",
+                "Help": "Para adicionar novos modelos, clique sobre o botão <strong>Configuração</strong> abaixo (também disponível na barra de cabeçalho).",
+                "Explain": "Os modelos são uma ótima maneira de ter fichas diferentes para diferentes tipos de atores. Sugerimos usar <strong>modelos diferentes</strong> para PJs, PdNs e Capangas, já que todos eles possuem <strong>requisitos de fichas diferentes</strong>."
+            }
+        },
+        "ActorGroups": {
+            "New": "Novo grupo",
+            "Notifications": {
+                "ManualOnly": "Este grupo de atores é gerenciado automaticamente. Se você quer adicionar atores manualmente, altere o tipo do grupo para \"manual\"."
+            }
+        }
+    }
+}
