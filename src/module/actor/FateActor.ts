@@ -4,7 +4,6 @@
  */
 import { getImageFromReference, getReferencesByGroupType } from "../helper/ActorGroupHelper";
 import { ActorDataFate } from "./ActorTypes";
-import { FateItem } from "../item/FateItem";
 
 export class FateActor extends Actor {
     /**
@@ -99,7 +98,7 @@ export class FateActor extends Actor {
     }
 
     get images(): string[] {
-        if (this.data.type != "group") {
+        if (this.data.type !== "group") {
             return [];
         }
 
@@ -107,7 +106,7 @@ export class FateActor extends Actor {
         const actorReferences = getReferencesByGroupType(this.data.data.groupType, this);
 
         for (let i = 0; i < 4; i++) {
-            images.push(actorReferences[i] ? getImageFromReference(actorReferences[i]) : DEFAULT_TOKEN);
+            images.push(actorReferences[i] ? getImageFromReference(actorReferences[i]) : CONST.DEFAULT_TOKEN);
         }
 
         return images;
@@ -119,11 +118,22 @@ export class FateActor extends Actor {
      *
      * Also rerenders the actor group panel if necessary
      */
-    _onModifyEmbeddedEntity(embeddedName, changes, options, userId, context = {}) {
-        super._onModifyEmbeddedEntity(embeddedName, changes, options, userId, context);
+    _onModifyEmbeddedEntity(embeddedName, _changes, _options, _userId, _context = {}) {
+        //Todo: Change to new method
+        //super._onModifyEmbeddedEntity(embeddedName, changes, options, userId, context);
 
         if (embeddedName === "OwnedItem") {
             this.items.forEach((item) => item.prepareData());
         }
+    }
+}
+
+declare global {
+    interface DocumentClassConfig {
+        Actor: typeof FateActor;
+    }
+
+    interface DataConfig {
+        Actor: ActorDataFate;
     }
 }

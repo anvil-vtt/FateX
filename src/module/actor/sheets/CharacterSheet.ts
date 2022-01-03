@@ -3,19 +3,17 @@
  * Defines what information on the actorsheet may be rendered.
  */
 import { SheetSetup } from "../../applications/sheet-setup/SheetSetup";
-import { FateActor } from "../FateActor";
-import { ExtraItemData } from "../../item/ItemTypes";
-import Combatant = Combat.Combatant;
 import { GroupSheet } from "./GroupSheet";
+import { ItemDataProperties } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/data.mjs/itemData";
 
-export interface CharacterSheetOptions extends BaseEntitySheet.Options {
+export interface CharacterSheetOptions extends ActorSheet.Options {
     type?: string;
     combatant?: Combatant;
     referenceID?: string;
     group?: GroupSheet;
 }
 
-export class CharacterSheet extends ActorSheet<ActorSheet.Data<FateActor>, FateActor, CharacterSheetOptions> {
+export class CharacterSheet extends ActorSheet<CharacterSheetOptions, ActorSheet.Data<CharacterSheetOptions>> {
     /**
      * Defines the default options for all FateX actor sheets.
      * This consists of things like css classes, the template to load and the tab configuration.
@@ -35,7 +33,7 @@ export class CharacterSheet extends ActorSheet<ActorSheet.Data<FateActor>, FateA
             scrollY: [".fatex-desk__content"],
             width: 900,
             type: "full",
-        } as CharacterSheetOptions);
+        });
     }
 
     get template(): string {
@@ -78,7 +76,7 @@ export class CharacterSheet extends ActorSheet<ActorSheet.Data<FateActor>, FateA
     getData() {
         // Basic fields and flags
         let data: any = {
-            owner: this.actor.owner,
+            owner: this.actor.isOwner,
             options: this.options,
             editable: this.isEditable,
             isTemplateActor: this.actor.isTemplateActor,
@@ -119,7 +117,7 @@ export class CharacterSheet extends ActorSheet<ActorSheet.Data<FateActor>, FateA
         const buttons = super._getHeaderButtons();
 
         // Edit mode button to toggle which interactive elements are visible on the sheet.
-        const canConfigure = game.user?.isGM || this.actor.owner;
+        const canConfigure = game.user?.isGM || this.actor.isOwner;
         if (this.options.editable && canConfigure) {
             buttons.unshift(
                 {
@@ -186,14 +184,14 @@ export class CharacterSheet extends ActorSheet<ActorSheet.Data<FateActor>, FateA
         const entry = await JournalEntry.fromDropData(data);
         const actor = this.actor;
 
-        const extraData: Partial<ExtraItemData> = {
+        const extraData: Partial<ItemDataProperties> = {
             type: "extra",
-            name: entry.data.name,
+            name: entry?.data.name,
             data: {
-                description: entry.data.content,
+                description: entry?.data.content || "",
             },
         };
 
-        return await actor.createOwnedItem(extraData);
+        return await actor.createEmbeddedDocuments("Item", [extraData]);
     }
 }

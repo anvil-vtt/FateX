@@ -69,7 +69,7 @@ export class ActorGroupFeature {
     }
 
     static styleGroupEntries(html: JQuery<HTMLElement>) {
-        const groupActors = game.actors?.filter((actor) => (actor as FateActor).data.type === "group") || [];
+        const groupActors = game.actors?.filter((actor) => actor.data.type === "group") || [];
 
         groupActors.forEach((actor) => {
             // Add small group icon infront of each group name
@@ -104,7 +104,8 @@ export class ActorGroupFeature {
         };
 
         const newGroup = await FateActor._create(actorData, { renderSheet: true });
-        const sheet = newGroup?.sheet as GroupSheet;
+
+        const sheet = newGroup?.sheet as unknown as GroupSheet;
 
         if (target.dataset.folder) {
             sheet._createActorReferencesFromFolder(target.dataset.folder);

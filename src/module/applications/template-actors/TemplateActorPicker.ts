@@ -1,7 +1,8 @@
 import { FateActor } from "../../actor/FateActor";
 import { SheetSetup } from "../sheet-setup/SheetSetup";
 import { TemplateActorSettings } from "./TemplateActorSettings";
-import { ActorDataFate } from "../../actor/ActorTypes";
+
+import { ActorDataProperties } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/data.mjs/actorData";
 
 export class TemplateActorPicker extends TemplateActorSettings {
     static get defaultOptions() {
@@ -36,7 +37,7 @@ export class TemplateActorPicker extends TemplateActorSettings {
         e.preventDefault();
         e.stopPropagation();
 
-        const data: Partial<ActorDataFate> = {
+        const data: Partial<ActorDataProperties> = {
             name: game.i18n.localize("FAx.Template.Picker.Empty"),
             type: "character",
         };
@@ -60,17 +61,19 @@ export class TemplateActorPicker extends TemplateActorSettings {
         e.stopPropagation();
 
         const data = e.currentTarget.dataset;
-        const template = duplicate(game.actors?.get(data.template)) as Partial<Actor.Data>;
+        const template = duplicate(game.actors?.get(data.template));
         const fatexFlags = template.flags?.fatex as Record<string, unknown>;
 
         // Add current template as a flag for later use
         fatexFlags.templateActor = template._id;
 
         // Delete id, specific flags and the actors image
+        // @ts-ignore
         delete template._id;
 
         delete fatexFlags.isTemplateActor;
 
+        // @ts-ignore
         delete template.img;
 
         if (this.options.folder) {

@@ -22,10 +22,10 @@ export class Sortable extends BaseComponent {
     }
 
     static _onDragHandlerMouseDown(e) {
-        $(e.currentTarget).parents(".fatex-js-sortable").get(0).setAttribute("draggable", "true");
+        $(e.currentTarget).parents(".fatex-js-sortable").get(0)?.setAttribute("draggable", "true");
     }
 
     static _onDragHandlerMouseUp(e) {
-        $(e.currentTarget).parents(".fatex-js-sortable").get(0).setAttribute("draggable", "false");
+        $(e.currentTarget).parents(".fatex-js-sortable").get(0)?.setAttribute("draggable", "false");
     }
 }

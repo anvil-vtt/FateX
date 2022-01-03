@@ -1,6 +1,6 @@
 import { FateItemData } from "./ItemTypes";
 
-export class FateItem extends Item<FateItemData> {
+export class FateItem extends Item {
     prepareData() {
         super.prepareData();
 
@@ -10,5 +10,15 @@ export class FateItem extends Item<FateItemData> {
                 CONFIG.FateX.itemClasses[this.data.type].prepareItemData(this.data, this);
             }
         }
+    }
+}
+
+declare global {
+    interface DocumentClassConfig {
+        Item: typeof FateItem;
+    }
+
+    interface DataConfig {
+        Item: FateItemData;
     }
 }

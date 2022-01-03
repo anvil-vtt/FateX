@@ -2,15 +2,16 @@ import { InlineActorSheetFate } from "./InlineActorSheetFate";
 import { getReferencesByGroupType } from "../../helper/ActorGroupHelper";
 import { CharacterSheetOptions } from "./CharacterSheet";
 import { FateActor } from "../FateActor";
-import { ActorReferenceItemData, CombatantReferenceItemData, TokenReferenceItemData } from "../../item/ItemTypes";
+import { CombatantReferenceItemData, ReferenceItemData, TokenReferenceItemData } from "../../item/ItemTypes";
 import { FateItem } from "../../item/FateItem";
 import { SortableEvent } from "sortablejs";
 import Sortable from "sortablejs/modular/sortable.complete.esm.js";
+import { ItemDataBaseProperties, ItemDataProperties } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/data.mjs/itemData";
 
 /**
  * Represents a single actor group
  */
-export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
+export class GroupSheet extends ActorSheet {
     public inlineSheets: InlineActorSheetFate[];
 
     /**
@@ -35,13 +36,13 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
             template: "/systems/fatex/templates/actor/group.hbs",
             dragDrop: [{ dropSelector: null }],
             scrollY: [".fatex-desk__content"],
-        } as CharacterSheetOptions);
+        });
     }
 
     getData() {
         // Basic fields and flags
         const data: any = {
-            owner: this.actor.owner,
+            owner: this.actor.isOwner,
             options: this.options,
             editable: this.isEditable,
             isTemplateActor: this.actor.isTemplateActor,
@@ -58,13 +59,13 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
 
         // Create list of available tokens in the current scene for manual groups
         if (this.actor.data.type == "group" && this.actor.data.data.groupType == "manual") {
-            const usedTokenReferences = this.actor.items.filter((i) => i.data.type === "tokenReference" && i.data.data.scene === game.scenes?.active.id);
+            const usedTokenReferences = this.actor.items.filter((i) => i.data.type === "tokenReference" && i.data.data.scene === game.scenes?.active?.id);
             const usedTokenReferencesMap: string[] = usedTokenReferences.map((token: FateItem) => {
                 return token.data.type === "tokenReference" ? token.data.data.id : "";
             });
 
-            if (canvas instanceof Canvas && canvas.scene) {
-                data.availableTokens = canvas.scene.data.tokens.filter((token) => !token.actorLink && !usedTokenReferencesMap.includes(token._id));
+            if (canvas.scene) {
+                data.availableTokens = canvas.scene.data.tokens.filter((token) => !token.isLinked && !usedTokenReferencesMap.includes(token.id || ""));
             }
         }
 
@@ -118,7 +119,7 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
 
     async spillInlineSheet(event: SortableEvent) {
         if (event.item.dataset.id) {
-            await this.actor.deleteOwnedItem(event.item.dataset.id);
+            await this.actor.deleteEmbeddedDocuments("Item", [event.item.dataset.id]);
         }
     }
 
@@ -130,7 +131,7 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
             sort: 100000 + index,
         }));
 
-        await this.actor.updateOwnedItem(updateData);
+        await this.actor.updateEmbeddedDocuments("Item", updateData);
     }
 
     /**
@@ -189,14 +190,14 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
      * Creates and renders a new InlineActorSheet based on an actor reference.
      * An actor is referenced by his actor id
      */
-    async renderInlineActor(reference: DeepPartial<ActorReferenceItemData>) {
+    async renderInlineActor(reference: ReferenceItemData) {
         const actor = game.actors?.find((actor) => actor.id === reference.data?.id && (actor as FateActor).isVisibleByPermission);
 
         if (!actor) {
             return;
         }
 
-        const actorSheet = new InlineActorSheetFate(actor as FateActor, { referenceID: reference._id } as CharacterSheetOptions);
+        const actorSheet = new InlineActorSheetFate(actor as FateActor, { referenceID: reference.data.id } as CharacterSheetOptions);
         // @ts-ignore
         await actorSheet.render(true, { group: this } as Application.RenderOptions);
 
@@ -207,7 +208,7 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
      * Creates and renders a new InlineActorSheet based on a token reference.
      * A token is referenced by a combination of the scene where its placed and its token id
      */
-    async renderInlineToken(reference: DeepPartial<TokenReferenceItemData>) {
+    async renderInlineToken(reference: Partial<ItemDataBaseProperties & TokenReferenceItemData>) {
         const scene: any = game.scenes?.find((scene) => scene.id === reference.data?.scene);
         const tokenData = scene?.data.tokens.find((token) => token._id === reference.data?.id);
 
@@ -215,9 +216,10 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
             return;
         }
 
-        const token = new Token(tokenData, scene);
+        tokenData.parent = scene;
+        const token = new Token(tokenData);
 
-        const tokenSheet = new InlineActorSheetFate(token.actor as FateActor, { referenceID: reference._id } as CharacterSheetOptions);
+        const tokenSheet = new InlineActorSheetFate(token.actor as FateActor, { referenceID: reference.data?.id } as CharacterSheetOptions);
         // @ts-ignore
         await tokenSheet.render(true, { token: token, group: this } as Application.RenderOptions);
 
@@ -227,23 +229,29 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
     /**
      * Creates and renders a new InlineActorSheet based on a combatant reference.
      */
-    async renderInlineCombatant(reference: DeepPartial<CombatantReferenceItemData>) {
+    async renderInlineCombatant(reference: Partial<ItemDataBaseProperties & CombatantReferenceItemData>) {
         if (!game.combats || !game.combats.active) {
             return;
         }
 
         const scene: any = game.scenes?.find((scene) => scene.id === game.combats?.active?.data.scene);
-        const combatant = game.combats.active.combatants.find((combatant) => combatant._id === reference.data?.id);
-        const tokenData = scene?.data.tokens.find((token) => token._id === combatant?.tokenId);
+        const combatant = game.combats.active.combatants.find((combatant) => combatant.data._id === reference.data?.id);
+        const tokenData = scene?.data.tokens.find((token) => token._id === combatant?.token?.id);
 
         if (!tokenData || !combatant || !combatant.visible) {
             return;
         }
 
+        // @ts-ignore
         delete combatant.actor;
 
-        const token = new Token(tokenData, scene);
-        const tokenSheet = new InlineActorSheetFate(token.actor as FateActor, { combatant: combatant, referenceID: reference._id } as CharacterSheetOptions);
+        tokenData.parent = scene;
+        const token = new Token(tokenData);
+
+        const tokenSheet = new InlineActorSheetFate(
+            token.actor as FateActor,
+            { combatant: combatant, referenceID: reference.data?.id } as CharacterSheetOptions
+        );
         // @ts-ignore
         await tokenSheet.render(true, { token: token, group: this } as Application.RenderOptions);
 
@@ -265,7 +273,7 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
             return;
         }
 
-        const itemData: Partial<ActorReferenceItemData> = {
+        const itemData: Partial<ItemDataProperties> = {
             name: ["actorReference", actorID].join("-"),
             type: "actorReference",
             data: {
@@ -273,14 +281,14 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
             },
         };
 
-        return this.actor.createOwnedItem(itemData);
+        return this.actor.createEmbeddedDocuments("Item", [itemData]);
     }
 
     _createActorReferencesFromFolder(folder: string) {
-        const actors = game.folders?.get(folder)?.entities.filter((actor) => actor.data.type === "character") || [];
+        const actors = game.folders?.get(folder)?.entities.filter((actor) => actor instanceof FateActor && actor.data.type === "character") || [];
 
         actors.forEach((actor) => {
-            this._createActorReference(actor.id);
+            this._createActorReference(actor.id || "");
         });
     }
 
@@ -292,7 +300,7 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
             return;
         }
 
-        const itemData: Partial<TokenReferenceItemData> = {
+        const itemData: Partial<ItemDataProperties> = {
             name: ["tokenReference", sceneID, tokenID].join("-"),
             type: "tokenReference",
             data: {
@@ -301,7 +309,7 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
             },
         };
 
-        this.entity.createOwnedItem(itemData);
+        this.actor.createEmbeddedDocuments("Item", [itemData]);
     }
 
     /*************************
@@ -335,14 +343,14 @@ export class GroupSheet extends ActorSheet<ActorSheet.Data<FateActor>> {
         }
 
         const tokens = game.actors.tokens;
-        const tokenActor = Object.values(tokens).find((t) => t.token?.id === dataset.tokenId);
+        const tokenActor = Object.values(tokens).find((t) => t?.token?.id === dataset.tokenId);
 
         if (!tokenActor) {
             return;
         }
 
         if (game.scenes) {
-            this._createTokenReference(dataset.tokenId, game.scenes.active.id);
+            this._createTokenReference(dataset.tokenId, game.scenes?.active?.id || "");
         }
     }
 

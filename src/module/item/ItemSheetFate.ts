@@ -4,7 +4,7 @@ export class ItemSheetFate extends ItemSheet {
             classes: ["fatex", "fatex-sheet", "fatex-sheet--item", "sheet"],
             scrollY: [".fatex-desk__content"],
             width: 575,
-        } as BaseEntitySheet.Options);
+        });
     }
 
     getData() {
