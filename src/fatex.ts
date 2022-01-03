@@ -43,10 +43,10 @@ Hooks.once("init", async () => {
     // Initialise config
     CONFIG.FateX = FateX;
 
-    CONFIG.Actor.entityClass = FateActor;
-    CONFIG.Item.entityClass = FateItem;
-    CONFIG.Scene.entityClass = FateScene;
-    CONFIG.Combat.entityClass = FateCombat;
+    CONFIG.Actor.documentClass = FateActor;
+    CONFIG.Item.documentClass = FateItem;
+    CONFIG.Scene.documentClass = FateScene;
+    CONFIG.Combat.documentClass = FateCombat;
 
     CONFIG.FateX.global.useMarkdown = !![...game.modules.values()].filter((module) => {
         return module.id === "markdown-editor" && module.active;

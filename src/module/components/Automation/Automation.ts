@@ -229,7 +229,11 @@ export class Automation extends BaseComponent {
 
         // Sort alphabetically
         if (sort) {
-            skills.sort(function (a, b) {
+            skills.sort((a, b) => {
+                if (!a || !b) {
+                    return 0;
+                }
+
                 return a.toLowerCase().localeCompare(b.toLowerCase());
             });
         }

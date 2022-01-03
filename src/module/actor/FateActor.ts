@@ -6,7 +6,7 @@ import { getImageFromReference, getReferencesByGroupType } from "../helper/Actor
 import { ActorDataFate } from "./ActorTypes";
 import { FateItem } from "../item/FateItem";
 
-export class FateActor extends Actor<ActorDataFate, FateItem> {
+export class FateActor extends Actor {
     /**
      * Open template picker instead of directly creating a new actor
      */

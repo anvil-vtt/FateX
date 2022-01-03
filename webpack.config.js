@@ -49,7 +49,7 @@ module.exports = (env) => {
         },
         devServer: {
             hot: true,
-            firewall: false,
+            allowedHosts: "all",
             proxy: [
                 {
                     context: (pathname, req) => {

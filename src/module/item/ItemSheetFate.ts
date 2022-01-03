@@ -20,7 +20,7 @@ export class ItemSheetFate extends ItemSheet {
         // Let every item type manipulate its own sheet data
         data = CONFIG.FateX.itemClasses[this.item.type]?.getSheetData(data, this) || data;
 
-        // Let every component manipulate an items sheet data
+        // Let every component manipulate an items' sheet data
         for (const sheetComponent in CONFIG.FateX.sheetComponents.item) {
             if (Object.prototype.hasOwnProperty.call(CONFIG.FateX.sheetComponents.item, sheetComponent)) {
                 data = CONFIG.FateX.sheetComponents.item[sheetComponent].getSheetData(data, this);
