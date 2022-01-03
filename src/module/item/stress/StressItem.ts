@@ -8,7 +8,7 @@ const STRESS_LABEL_TYPES = {
 };
 
 export class StressItem extends BaseItem {
-    static get entityName() {
+    static get documentName() {
         return "stress";
     }
 

@@ -1,11 +1,11 @@
 export abstract class BaseItem {
-    static entityName = "";
+    static documentName = "";
 
     /**
      * Allows each item to prepare its data before its rendered.
      * This can be used to add additional information right before rendering.
      */
-    static prepareItemData(itemData, _itemEntity) {
+    static prepareItemData(itemData, _itemDocument) {
         return itemData;
     }
 
@@ -14,13 +14,13 @@ export abstract class BaseItem {
      * Implements base listeners for adding, configuring and deleting embedded items.
      */
     static activateActorSheetListeners(html, sheet) {
-        if (!this.entityName) {
-            throw new Error("A subclass of the BaseItem must provide an entityName field or implement their own _onItemAdd() method.");
+        if (!this.documentName) {
+            throw new Error("A subclass of the BaseItem must provide an documentName field or implement their own _onItemAdd() method.");
         }
 
-        html.find(`.fatex-js-${this.entityName}-add`).click((e) => this._onItemAdd.call(this, e, sheet));
-        html.find(`.fatex-js-${this.entityName}-settings`).click((e) => this._onItemSettings.call(this, e, sheet));
-        html.find(`.fatex-js-${this.entityName}-delete`).click((e) => this._onItemDelete.call(this, e, sheet));
+        html.find(`.fatex-js-${this.documentName}-add`).click((e) => this._onItemAdd.call(this, e, sheet));
+        html.find(`.fatex-js-${this.documentName}-settings`).click((e) => this._onItemSettings.call(this, e, sheet));
+        html.find(`.fatex-js-${this.documentName}-delete`).click((e) => this._onItemDelete.call(this, e, sheet));
     }
 
     /**
@@ -55,13 +55,13 @@ export abstract class BaseItem {
         e.preventDefault();
         e.stopPropagation();
 
-        if (!this.entityName) {
-            throw new Error("A subclass of the BaseItem must provide an entityName field or implement their own _onItemAdd() method.");
+        if (!this.documentName) {
+            throw new Error("A subclass of the BaseItem must provide an documentName field or implement their own _onItemAdd() method.");
         }
 
         const itemData = {
             name: this.defaultName,
-            type: this.entityName,
+            type: this.documentName,
             sort: 9000000,
         };
 
@@ -95,8 +95,8 @@ export abstract class BaseItem {
 
         new Dialog(
             {
-                title: `${game.i18n.localize("FAx.Dialog.EntityDelete")} ${item.name}`,
-                content: game.i18n.localize("FAx.Dialog.EntityDeleteText"),
+                title: `${game.i18n.localize("FAx.Dialog.DocumentDelete")} ${item.name}`,
+                content: game.i18n.localize("FAx.Dialog.DocumentDeleteText"),
                 default: "submit",
                 buttons: {
                     cancel: {
@@ -146,10 +146,10 @@ export abstract class BaseItem {
 
     /**
      * Helper function to determine a new items name.
-     * Defaults to the entityName with the first letter capitalized.
+     * Defaults to the documentName with the first letter capitalized.
      */
     static get defaultName() {
-        return this.entityName.charAt(0).toUpperCase() + this.entityName.slice(1);
+        return this.documentName.charAt(0).toUpperCase() + this.documentName.slice(1);
     }
 
     protected static isEditMode(e): boolean {

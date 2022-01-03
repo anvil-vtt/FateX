@@ -1,7 +1,7 @@
 import { BaseItem } from "../BaseItem";
 
 export class TokenReferenceItem extends BaseItem {
-    static get entityName() {
+    static get documentName() {
         return "tokenReference";
     }
 }

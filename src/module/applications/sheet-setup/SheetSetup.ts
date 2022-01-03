@@ -96,11 +96,11 @@ export class SheetSetup extends FormApplication<any, any, FateActor> {
         }
 
         const itemData: Partial<ItemDataProperties>[] = entries.toArray().map((item) => {
-            if (!item.dataset.entity) {
+            if (!item.dataset.document) {
                 return {};
             }
 
-            return JSON.parse(item.dataset.entity);
+            return JSON.parse(item.dataset.document);
         });
 
         await this.actor.createEmbeddedDocuments("Item", itemData);

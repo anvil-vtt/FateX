@@ -1,7 +1,7 @@
 import { StuntItem } from "../stunt/StuntItem";
 
 export class ExtraItem extends StuntItem {
-    static get entityName() {
+    static get documentName() {
         return "extra";
     }
 }

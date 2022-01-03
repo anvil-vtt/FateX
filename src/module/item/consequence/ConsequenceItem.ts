@@ -7,7 +7,7 @@ export const CONSEQUENCE_TYPES = {
 };
 
 export class ConsequenceItem extends BaseItem {
-    static entityName = "consequence";
+    static documentName = "consequence";
 
     static prepareItemData(data, item) {
         data.isConsequence = data.data.type === CONSEQUENCE_TYPES.CONSEQUENCE;

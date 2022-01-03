@@ -2,7 +2,7 @@ import { BaseItem } from "../BaseItem";
 import { marked } from "marked";
 
 export class StuntItem extends BaseItem {
-    static entityName = "stunt";
+    static documentName = "stunt";
 
     static getActorSheetData(sheetData) {
         if (CONFIG.FateX.global.useMarkdown) {

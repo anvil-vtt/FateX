@@ -12,7 +12,7 @@ export class ItemSheetFate extends ItemSheet {
         let data: any = super.getData();
 
         // enforce data to ensure compatability between 0.7 and 0.8
-        data.data = this.entity.data.data;
+        data.data = this.object.data.data;
 
         // Set owner name if possible
         data.isOwnedBy = this.actor ? this.actor.name : false;

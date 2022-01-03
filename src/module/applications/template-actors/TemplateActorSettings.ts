@@ -17,11 +17,11 @@ export class TemplateActorSettings extends FormApplication<any, any, any> {
     getData() {
         const filteredActors = duplicate(game.actors?.filter((actor) => (actor as FateActor).isTemplateActor) as Record<any, any>[]);
 
-        filteredActors.forEach((actorEntity) => {
-            actorEntity.stress = actorEntity.items.filter((item) => item.type === "stress");
-            actorEntity.aspects = actorEntity.items.filter((item) => item.type === "aspect");
-            actorEntity.skills = actorEntity.items.filter((item) => item.type === "skill");
-            actorEntity.consequences = actorEntity.items.filter((item) => item.type === "consequence");
+        filteredActors.forEach((actorDocument) => {
+            actorDocument.stress = actorDocument.items.filter((item) => item.type === "stress");
+            actorDocument.aspects = actorDocument.items.filter((item) => item.type === "aspect");
+            actorDocument.skills = actorDocument.items.filter((item) => item.type === "skill");
+            actorDocument.consequences = actorDocument.items.filter((item) => item.type === "consequence");
         });
 
         return {
@@ -70,8 +70,8 @@ export class TemplateActorSettings extends FormApplication<any, any, any> {
 
         new Dialog(
             {
-                title: `${game.i18n.localize("FAx.Dialog.EntityDelete")} ${template.name}`,
-                content: game.i18n.localize("FAx.Dialog.EntityDeleteText"),
+                title: `${game.i18n.localize("FAx.Dialog.DocumentDelete")} ${template.name}`,
+                content: game.i18n.localize("FAx.Dialog.DocumentDeleteText"),
                 default: "submit",
                 buttons: {
                     cancel: {

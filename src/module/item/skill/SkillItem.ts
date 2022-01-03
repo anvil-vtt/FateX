@@ -3,7 +3,7 @@ import { BaseItem } from "../BaseItem";
 type sortBy = "name" | "rank" | "reverse";
 
 export class SkillItem extends BaseItem {
-    static get entityName() {
+    static get documentName() {
         return "skill";
     }
 
@@ -18,9 +18,9 @@ export class SkillItem extends BaseItem {
         html.find(".fatex-js-skill-increment").click((e) => this._onSkillChangeRank.call(this, e, sheet, true));
         html.find(".fatex-js-skill-decrement").click((e) => this._onSkillChangeRank.call(this, e, sheet, false));
 
-        html.find(`.fatex-js-${this.entityName}-sort-rank`).click(() => this._onSkillSort.call(this, sheet, "rank"));
-        html.find(`.fatex-js-${this.entityName}-sort-name`).click(() => this._onSkillSort.call(this, sheet, "name"));
-        html.find(`.fatex-js-${this.entityName}-sort-reverse`).click(() => this._onSkillSort.call(this, sheet, "reverse"));
+        html.find(`.fatex-js-${this.documentName}-sort-rank`).click(() => this._onSkillSort.call(this, sheet, "rank"));
+        html.find(`.fatex-js-${this.documentName}-sort-name`).click(() => this._onSkillSort.call(this, sheet, "name"));
+        html.find(`.fatex-js-${this.documentName}-sort-reverse`).click(() => this._onSkillSort.call(this, sheet, "reverse"));
     }
 
     /**
@@ -164,12 +164,11 @@ export class SkillItem extends BaseItem {
     }
 
     static getDice(roll) {
-        const useOldRollApi = isNewerVersion("0.7.0", game.data.version as string);
-        const rolls = useOldRollApi ? roll.parts[0].rolls : roll.terms[0].results;
+        const rolls = roll.terms[0].results;
 
         return rolls.map((rolledDie) => ({
             value: rolledDie.roll,
-            face: this.getDieFace(useOldRollApi ? rolledDie.roll : rolledDie.result),
+            face: this.getDieFace(rolledDie.result),
         }));
     }
 

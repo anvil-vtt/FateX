@@ -7,7 +7,7 @@ import { ActorDataProperties } from "@league-of-foundry-developers/foundry-vtt-t
 export class TemplateActorPicker extends TemplateActorSettings {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
-            title: game.i18n.localize("ACTOR.Create"),
+            title: game.i18n.format("SIDEBAR.Create", { type: game.i18n.localize("DOCUMENT.Actor") }),
             template: "/systems/fatex/templates/apps/template-actors-picker.hbs",
             id: "template-actor-picker",
             resizable: true,
@@ -15,6 +15,15 @@ export class TemplateActorPicker extends TemplateActorSettings {
             width: 1000,
             height: 430,
         } as FormApplication.Options);
+    }
+
+    getData() {
+        const data = super.getData();
+
+        // @ts-ignore
+        data.AppTitle = game.i18n.format("SIDEBAR.Create", { type: game.i18n.localize("DOCUMENT.Actor") });
+
+        return data;
     }
 
     activateListeners(html) {

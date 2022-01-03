@@ -21,7 +21,7 @@ export class Radio extends BaseComponent {
 
     /**
      * OnClick-Handler for radio setting components.
-     * Updates the sheets referenced entity with a given name and value (via dataset).
+     * Updates the sheets referenced document with a given name and value (via dataset).
      *
      * @param event
      *   The event that was fired on the sheet.
@@ -34,7 +34,7 @@ export class Radio extends BaseComponent {
 
         const dataset = event.currentTarget.dataset;
         const dataKey = dataset.name;
-        const sheetEntity = sheet.entity;
+        const sheetDocument = sheet.document;
 
         // Sane default
         let value: number | string = "";
@@ -46,7 +46,7 @@ export class Radio extends BaseComponent {
             value = dataset.value;
         }
 
-        sheetEntity.update({
+        sheetDocument.update({
             [dataKey]: value,
         });
     }

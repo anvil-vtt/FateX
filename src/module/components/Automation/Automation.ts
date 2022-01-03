@@ -29,7 +29,7 @@ export class Automation extends BaseComponent {
     }
 
     static async getSheetData(sheetData, sheet) {
-        const skillReferences = this.getSkillReferences(sheet.entity).map((ref, index) => {
+        const skillReferences = this.getSkillReferences(sheet.document).map((ref, index) => {
             ref.index = index;
             return ref;
         });
@@ -37,7 +37,7 @@ export class Automation extends BaseComponent {
         sheetData.statusReferences = skillReferences.filter((ref) => ref.type === TYPES.STATUS || ref.type === undefined);
         sheetData.boxReferences = skillReferences.filter((ref) => ref.type === TYPES.BOXES);
 
-        sheetData.skillReferenceSettings = this.getSkillReferenceSettings(sheet.entity);
+        sheetData.skillReferenceSettings = this.getSkillReferenceSettings(sheet.document);
         sheetData.availableSkillLevels = this.getAvailableSkillLevels();
         sheetData.availableOperators = this.getAvailableOperators();
         sheetData.availableConjunctions = this.getAvailableConjunctions();
@@ -54,8 +54,8 @@ export class Automation extends BaseComponent {
     static async _onAddReference(e, sheet, type = TYPES.STATUS) {
         e.preventDefault();
 
-        const entity = sheet.entity;
-        await this.addSkillReference(entity, type);
+        const document = sheet.document;
+        await this.addSkillReference(document, type);
     }
 
     static async _onChangeReference(e, sheet) {
@@ -63,7 +63,7 @@ export class Automation extends BaseComponent {
 
         let value = e.currentTarget.value;
         const dataset = e.currentTarget.dataset;
-        const entity = sheet.entity;
+        const document = sheet.document;
         const index = dataset.index;
         const field = dataset.field;
 
@@ -77,7 +77,7 @@ export class Automation extends BaseComponent {
             return;
         }
 
-        await this.changeSkillReference(entity, index, field, value);
+        await this.changeSkillReference(document, index, field, value);
     }
 
     static async _onChangeSetting(e, sheet) {
@@ -85,7 +85,7 @@ export class Automation extends BaseComponent {
 
         let value = e.currentTarget.value;
         const dataset = e.currentTarget.dataset;
-        const entity = sheet.entity;
+        const document = sheet.document;
         const setting = dataset.setting;
 
         // Check for numbers as only strings are passed
@@ -98,14 +98,14 @@ export class Automation extends BaseComponent {
             return;
         }
 
-        await this.setReferenceSetting(entity, setting, value);
+        await this.setReferenceSetting(document, setting, value);
     }
 
     static async _onRemoveReference(e, sheet) {
         e.preventDefault();
 
         const dataset = e.currentTarget.dataset;
-        const entity = sheet.entity;
+        const document = sheet.document;
         const index = dataset.index;
 
         // Return early of no index was provided
@@ -128,7 +128,7 @@ export class Automation extends BaseComponent {
                         icon: '<i class="fas fa-check"></i>',
                         label: game.i18n.localize("FAx.Dialog.Confirm"),
                         callback: async () => {
-                            await this.removeSkillReference(entity, index);
+                            await this.removeSkillReference(document, index);
                         },
                     },
                 },
@@ -144,16 +144,16 @@ export class Automation extends BaseComponent {
      *************************/
 
     /**
-     * Adds a new skill reference to a given entity
+     * Adds a new skill reference to a given document
      *
-     * @param entity
-     *  The entity for the skill reference to be added
+     * @param document
+     *  The document for the skill reference to be added
      *
      * @param type
      *  Optional type of the skillReference
      */
-    static async addSkillReference(entity, type = TYPES.STATUS) {
-        const currentReferences = this.getSkillReferences(entity);
+    static async addSkillReference(document, type = TYPES.STATUS) {
+        const currentReferences = this.getSkillReferences(document);
         const references = duplicate(currentReferences);
 
         references.push({
@@ -168,11 +168,11 @@ export class Automation extends BaseComponent {
             argument3: 0,
         });
 
-        await entity.setFlag("fatex", "skillReferences", references);
+        await document.setFlag("fatex", "skillReferences", references);
     }
 
-    static async changeSkillReference(entity, index, field, value) {
-        const currentReferences = this.getSkillReferences(entity);
+    static async changeSkillReference(document, index, field, value) {
+        const currentReferences = this.getSkillReferences(document);
         const references = duplicate(currentReferences);
         const reference = references[index];
 
@@ -182,25 +182,25 @@ export class Automation extends BaseComponent {
         // Replace one reference at the provided index
         references.splice(index, 1, reference);
 
-        await entity.setFlag("fatex", "skillReferences", references);
+        await document.setFlag("fatex", "skillReferences", references);
     }
 
-    static async removeSkillReference(entity, index) {
-        const currentReferences = this.getSkillReferences(entity);
+    static async removeSkillReference(document, index) {
+        const currentReferences = this.getSkillReferences(document);
         const references = duplicate(currentReferences);
 
         // Remove one reference at the provided index
         references.splice(index, 1);
 
-        await entity.setFlag("fatex", "skillReferences", references);
+        await document.setFlag("fatex", "skillReferences", references);
     }
 
-    static async setReferenceSetting(entity, setting, value) {
-        await entity.setFlag("fatex", `skillReferenceSettings.${setting}`, value);
+    static async setReferenceSetting(document, setting, value) {
+        await document.setFlag("fatex", `skillReferenceSettings.${setting}`, value);
     }
 
-    static getReferenceSetting(entity, setting, defaultValue) {
-        const flag = entity.getFlag("fatex", `skillReferenceSettings.${setting}`);
+    static getReferenceSetting(document, setting, defaultValue) {
+        const flag = document?.getFlag("fatex", `skillReferenceSettings.${setting}`);
 
         if (flag === undefined) {
             return defaultValue;
@@ -209,8 +209,8 @@ export class Automation extends BaseComponent {
         return flag;
     }
 
-    static getSkillReferences(entity) {
-        return entity.getFlag("fatex", "skillReferences") || [];
+    static getSkillReferences(object) {
+        return object.getFlag("fatex", "skillReferences") || [];
     }
 
     static getAllAvailableSkills(sort = true) {
@@ -304,9 +304,9 @@ export class Automation extends BaseComponent {
         return false;
     }
 
-    static getSkillReferenceSettings(entity) {
+    static getSkillReferenceSettings(document) {
         return {
-            conjunction: this.getReferenceSetting(entity, "conjunction", CONJUNCTIONS.OR),
+            conjunction: this.getReferenceSetting(document, "conjunction", CONJUNCTIONS.OR),
         };
     }
 

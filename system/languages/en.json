@@ -224,6 +224,9 @@
             "Notifications": {
                 "ManualOnly": "This groups actors are managed automatically. If you want to manually add actors, change the groups type to \"manual\"."
             }
+        },
+        "Sheets": {
+            "Reference": "Reference Sheet"
         }
     }
 }

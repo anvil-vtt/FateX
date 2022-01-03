@@ -1,7 +1,7 @@
 import { BaseItem } from "../BaseItem";
 
 export class AspectItem extends BaseItem {
-    static entityName = "aspect";
+    static documentName = "aspect";
 
     static activateActorSheetListeners(html, sheet) {
         super.activateActorSheetListeners(html, sheet);

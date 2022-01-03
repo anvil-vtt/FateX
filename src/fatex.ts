@@ -107,6 +107,7 @@ Hooks.once("init", async () => {
     Items.registerSheet("FateX", ReferenceSheet, {
         types: ["actorReference", "tokenReference"],
         makeDefault: true,
+        label: "FAx.Sheets.Reference",
     });
 
     // Preload all needed templates
