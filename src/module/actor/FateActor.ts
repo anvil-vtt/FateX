@@ -111,21 +111,6 @@ export class FateActor extends Actor {
 
         return images;
     }
-
-    /**
-     * Re-prepare the data for all owned items when owned items are deleted.
-     * This ensures, that items that reference the deleted item get updated.
-     *
-     * Also rerenders the actor group panel if necessary
-     */
-    _onModifyEmbeddedEntity(embeddedName, _changes, _options, _userId, _context = {}) {
-        //Todo: Change to new method
-        //super._onModifyEmbeddedEntity(embeddedName, changes, options, userId, context);
-
-        if (embeddedName === "OwnedItem") {
-            this.items.forEach((item) => item.prepareData());
-        }
-    }
 }
 
 declare global {

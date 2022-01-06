@@ -1,8 +1,11 @@
 .fatex-item {
-    padding-left: $component-padding;
+    //padding-left: $component-padding;
 
-    &--condition,
     &--consequence {
+        padding-left: 14px;
+    }
+
+    &--condition {
         padding-left: 36px;
     }
 

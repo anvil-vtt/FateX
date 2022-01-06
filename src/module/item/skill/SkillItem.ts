@@ -84,11 +84,11 @@ export class SkillItem extends BaseItem {
         let i = 0;
 
         const updates = skills.map((skill) => ({
-            _id: skill._id,
+            _id: skill.id,
             sort: 10000 + i++,
         }));
 
-        sheet.actor.updateOwnedItem(updates);
+        sheet.actor.updateEmbeddedDocuments("Item", updates);
     }
 
     static async _onSkillChangeRank(e, sheet, doIncrement) {

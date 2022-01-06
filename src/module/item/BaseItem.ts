@@ -125,23 +125,11 @@ export abstract class BaseItem {
 
     /**
      * Helper function to create a new item.
-     * Render parameter determines if the items sheet should be rendered.
+     * renderSheet parameter determines if the items' sheet should be rendered.
      */
-    static async createNewItem(itemData, sheet, render = true) {
+    static async createNewItem(itemData, sheet: ActorSheet, renderSheet = true) {
         // Create item and render sheet afterwards
-        let newItem = await sheet.actor.createOwnedItem(itemData);
-
-        // Tokens don't return the new item
-        if (!render || sheet.actor.isToken) return;
-
-        if (newItem instanceof Array) {
-            newItem = newItem[0];
-        }
-
-        // We have to reload the item for it to have a sheet
-        // Todo: Fix to use renderSheet option on creation
-        const createdItem = sheet.actor.getOwnedItem(newItem._id);
-        createdItem.sheet.render(true);
+        await sheet.actor.createEmbeddedDocuments("Item", [itemData], { renderSheet: renderSheet });
     }
 
     /**

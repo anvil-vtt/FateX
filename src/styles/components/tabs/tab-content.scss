@@ -2,7 +2,7 @@
     flex-grow: 1;
     flex-direction: column;
     height: 100%;
-    padding: $component-padding;
+    padding: $component-padding 0;
 
     &--bio {
         .editor {
