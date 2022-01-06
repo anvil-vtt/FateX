@@ -2,7 +2,7 @@
     "name": "fatex",
     "title": "FateX - Fate Extended (EN/DE/FR/ES/GL/IT/CN/KO/SV)",
     "description": "An extended implementation of Fate and its derivative systems",
-    "version": "0.14.1",
+    "version": "0.15.0",
     "author": "Patrick Bauer (Daddi#2333)",
     "scripts": ["system.js"],
     "styles": [],
@@ -48,8 +48,8 @@
             "path": "languages/sv.json"
         }
     ],
-    "minimumCoreVersion": "0.5.2",
-    "compatibleCoreVersion": "0.8.8",
+    "minimumCoreVersion": "0.8.6",
+    "compatibleCoreVersion": "9",
     "socket": true,
     "url": "https://github.com/anvil-vtt/FateX",
     "manifest": "https://github.com/anvil-vtt/FateX/releases/latest/download/system.json",

@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.15.0
+* Added compatibility to FoundryVTT v9
+
 ### 0.14.1
 * Added the ability to change the image for unlinked items
 
