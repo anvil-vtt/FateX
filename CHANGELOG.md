@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.15.1
+* Allow skill ranks to go beyond +9
+
 ### 0.15.0
 * Added compatibility to FoundryVTT v9
 

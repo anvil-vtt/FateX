@@ -100,17 +100,10 @@ export class SkillItem extends BaseItem {
 
         if (skill) {
             const rank = skill.data.data.rank;
-            let newRank;
-
-            if (doIncrement) {
-                newRank = rank >= 9 ? 9 : rank + 1;
-            } else {
-                newRank = rank <= -9 ? -9 : rank - 1;
-            }
 
             await skill.update(
                 {
-                    "data.rank": newRank,
+                    "data.rank": doIncrement ? rank + 1 : rank - 1,
                 },
                 {}
             );
