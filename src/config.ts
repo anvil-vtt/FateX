@@ -15,6 +15,7 @@ import { TemplateActorPicker } from "./module/applications/template-actors/Templ
 import { TemplateActorSettings } from "./module/applications/template-actors/TemplateActorSettings";
 import { TokenReferenceItem } from "./module/item/references/TokenReferenceItem";
 import { ActorReferenceItem } from "./module/item/references/ActorReferenceItem";
+import { SubItems } from "./module/components/SubItems/SubItems";
 
 export interface FatexConfig {
     itemClasses: {
@@ -60,11 +61,13 @@ export const FateX: FatexConfig = {
         actor: {
             sortable: Sortable,
             configuration: Configuration,
+            subItems: SubItems,
         },
         item: {
             radio: Radio,
             rangeSlider: RangeSlider,
             automation: Automation,
+            subItems: SubItems,
         },
     },
     applications: {

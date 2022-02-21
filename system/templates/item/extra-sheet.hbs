@@ -1,5 +1,17 @@
 {{> "systems/fatex/templates/components/item-header.hbs" title="FAx.Item.Extra.EditItem" item=item}}
 
+<button id="create-sub-item">Create sub item</button>
+
+Subitems:
+
+<ul>
+    {{log this}}
+{{#each subItems as |subItem subItemIndex|}}
+    <li class="fatex-js-subitem-delete" data-item="{{subItem.id}}">{{subItem.id}}</li>
+{{/each}}
+</ul>
+
+
 {{> "systems/fatex/templates/item/settings/setting-input.hbs"
     headline = "FAx.Item.Extra.Name"
     field = item.name

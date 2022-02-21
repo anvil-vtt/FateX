@@ -24,6 +24,9 @@
             "base": {
                 "disabled": false,
                 "description": ""
+            },
+            "subItem": {
+                "parentID": ""
             }
         },
         "stress": {
@@ -59,7 +62,7 @@
             "collapsed": false
         },
         "extra": {
-            "templates": ["base"],
+            "templates": ["base", "subItem"],
             "shortDescription": "",
             "collapsed": false
         },

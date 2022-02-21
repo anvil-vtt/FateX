@@ -184,7 +184,7 @@ export class CharacterSheet extends ActorSheet<CharacterSheetOptions, ActorSheet
         const entry = await JournalEntry.fromDropData(data);
         const actor = this.actor;
 
-        const extraData: Partial<ItemDataProperties> = {
+        const extraData: DeepPartial<ItemDataProperties> = {
             type: "extra",
             name: entry?.data.name,
             data: {

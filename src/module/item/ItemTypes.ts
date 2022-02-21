@@ -56,6 +56,7 @@ export interface ActorReferenceItemData {
 
 interface ExtraData {
     description: string;
+    parentID: string;
 }
 
 export interface ExtraItemData {

@@ -142,3 +142,7 @@ if (module.hot) {
         });
     }
 }
+
+Hooks.once("ready", async () => {
+    globalThis.ownedItem = game.actors?.getName("Bjorn Battleborn")?.items.contents.filter((item) => item.type === "extra")[0];
+});

@@ -28,7 +28,7 @@ export class Automation extends BaseComponent {
         html.find(".fatex-js-remove-skill-reference").on("click", (e) => this._onRemoveReference.call(this, e, sheet));
     }
 
-    static async getSheetData(sheetData, sheet) {
+    static getSheetData(sheetData, sheet) {
         const skillReferences = this.getSkillReferences(sheet.document).map((ref, index) => {
             ref.index = index;
             return ref;

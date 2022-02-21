@@ -11,6 +11,24 @@ export class FateItem extends Item {
             }
         }
     }
+
+    get visible(): boolean {
+        if (this.isSubitem()) {
+            return false;
+        }
+
+        return super.visible;
+    }
+
+    private isSubitem() {
+        console.log("Item data", this.data);
+
+        if (this.data.type === "extra") {
+            return this.data.data.parentID !== "";
+        }
+
+        return false;
+    }
 }
 
 declare global {
