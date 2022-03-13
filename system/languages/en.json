@@ -159,8 +159,8 @@
         "Dialog": {
             "ReferenceRemove": "Remove reference",
             "ReferenceRemoveText": "Do you really want to <strong>permanently</strong> remove this reference?",
-            "EntityDelete": "Delete",
-            "EntityDeleteText": "Do you really want to <strong>permanently</strong> delete this entity?",
+            "DocumentDelete": "Delete",
+            "DocumentDeleteText": "Do you really want to <strong>permanently</strong> delete this entity?",
             "ActorClear": "Clear component",
             "ActorClearText": "Do you really want to <strong>permanently</strong> delete all this actors components <strong>and their content</strong> of the chosen type?",
             "Confirm": "Confirm",

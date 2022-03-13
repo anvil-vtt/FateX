@@ -54,6 +54,7 @@
         color: $sheet-background;
         -webkit-text-stroke: 2px $fatex-primary-color;
         text-shadow: initial;
+        white-space: nowrap;
 
         &--skill {
             left: initial;

@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.15.3
+* Fixed text wrapping of headline icons (e.g. +2)
+* Fixed wrongly associated language keys
+
 ### 0.15.2
 * Enrich the output of stunts and extras with entity links
 
