@@ -11,6 +11,10 @@ export class StuntItem extends BaseItem {
             }
         }
 
+        for (const stunt of sheetData.stunts) {
+            stunt.data.description = TextEditor.enrichHTML(stunt.data.description, {});
+        }
+
         return sheetData;
     }
 

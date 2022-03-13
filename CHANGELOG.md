@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.15.2
+* Enrich the output of stunts and extras with entity links
+
 ### 0.15.1
 * Allow skill ranks to go beyond +9
 
