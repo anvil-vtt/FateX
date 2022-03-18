@@ -14,7 +14,7 @@ export class TemplateActorPicker extends TemplateActorSettings {
             classes: ["fatex", "fatex-sheet", "fatex-sheet--app"],
             width: 1000,
             height: 430,
-        } as FormApplication.Options);
+        });
     }
 
     getData() {

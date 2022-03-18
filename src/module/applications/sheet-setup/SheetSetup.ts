@@ -43,7 +43,7 @@ export class SheetSetup extends FormApplication<any, any, FateActor> {
                     contentSelector: ".fatex-js-vertical-tabs-content",
                 },
             ],
-        } as FormApplication.Options);
+        });
     }
 
     async getData() {

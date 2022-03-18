@@ -11,7 +11,7 @@ export class TemplateActorSettings extends FormApplication<any, any, any> {
             classes: ["fatex", "fatex-sheet", "fatex-sheet--app"],
             width: 920,
             height: 500,
-        } as FormApplication.Options);
+        });
     }
 
     getData() {
