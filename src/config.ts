@@ -43,6 +43,11 @@ export interface FatexConfig {
 
     global: {
         useMarkdown: boolean;
+        styles: {
+            name: string;
+            customProperty: string;
+            defaultValue: string;
+        }[];
     };
 }
 
@@ -76,5 +81,52 @@ export const FateX: FatexConfig = {
     },
     global: {
         useMarkdown: false,
-    },
+        styles: [
+            {
+                name: "buttonShadowColor",
+                customProperty: "--fatex-button-shadow-color",
+                defaultValue: "#a0a0a0"
+            },
+            {
+                name: "headerBackgroundColor",
+                customProperty: "--fatex-header-color",
+                defaultValue: "#2f3542"
+            },
+            {
+                name: "headerTextColor",
+                customProperty: "--fatex-header-text-color",
+                defaultValue: "#ffffff"
+            },
+            {
+                name: "mainShadowColor",
+                customProperty: "--fatex-main-shadow-color",
+                defaultValue: "#2f3542"
+            },
+            {
+                name: "primarySheetColor",
+                customProperty: "--fatex-primary-color",
+                defaultValue: "#2f3542"
+            },
+            {
+                name: "scrollbarColor",
+                customProperty: "--fatex-scrollbar-color",
+                defaultValue: "#2f3542"
+            },
+            {
+                name: "sheetBackgroundColor",
+                customProperty: "--fatex-sheet-background-color",
+                defaultValue: "#f1f2f6"
+            },
+            {
+                name: "textColor1",
+                customProperty: "--fatex-text-color-1",
+                defaultValue: "#191813"
+            },
+            {
+                name: "textColor2",
+                customProperty: "--fatex-text-color-2",
+                defaultValue: "#ffffff"
+            }
+        ]
+    }
 };

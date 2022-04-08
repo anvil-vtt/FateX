@@ -1,7 +1,7 @@
 .fatex-headline {
     position: relative;
     margin-bottom: 0.5rem;
-    color: var(--fatex-light-text-color, $light-text-color);
+    color: $fatex-text-color-2;
     background: $fatex-primary-color;
 
     &::before {
@@ -51,7 +51,7 @@
         z-index: 100;
         transform: translate(-25px, 0px);
         font-weight: 900;
-        color: $sheet-background;
+        color: $fatex-sheet-background-color;
         -webkit-text-stroke: 2px $fatex-primary-color;
         text-shadow: initial;
         white-space: nowrap;
@@ -60,7 +60,7 @@
             left: initial;
             right: 100%;
             font-size: 24px;
-            text-shadow: 1px 1px 1px $sheet-background;
+            text-shadow: 1px 1px 1px $fatex-sheet-background-color;
             transform: translate(15px, -7px);
         }
 
@@ -91,7 +91,7 @@
 .fatex-section-heading {
     display: block;
     position: relative;
-    color: $primary-text-color;
+    color: $fatex-text-color-1;
 
     &--no-border {
         border: none;
