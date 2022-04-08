@@ -54,7 +54,7 @@ export class InlineActorSheetFate extends CharacterSheet {
         return this;
     }
 
-    _injectHTML(html, options: { group?: GroupSheet } = {}) {
+    _injectHTML(html: JQuery, options: { group?: GroupSheet } = {}) {
         const group = options?.group ?? this.options.group;
 
         $(`#${group?.id} .fatex-js-actor-group-sheets`).append(html);

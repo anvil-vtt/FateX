@@ -4,14 +4,17 @@
  */
 import { getImageFromReference, getReferencesByGroupType } from "../helper/ActorGroupHelper";
 import { ActorDataFate } from "./ActorTypes";
+import { ActorDataConstructorData } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/data.mjs/actorData";
+import { ConstructorDataType } from "@league-of-foundry-developers/foundry-vtt-types/src/types/helperTypes";
 
 export class FateActor extends Actor {
     /**
      * Open template picker instead of directly creating a new actor
      */
-    static async create(data, options = {}) {
+    static async create(data: ConstructorDataType<FateActor["data"]>, options = {}) {
+        //static async create(data: ActorDataConstructorData, options = {}) {
         // Fallback for manual actor duplication
-        if (data._id || Object.prototype.hasOwnProperty.call(data, "data") || data?.flags?.cf !== undefined) {
+        if (data._id || Object.prototype.hasOwnProperty.call(data, "data") || data.flags?.cf !== undefined) {
             return super.create(data, options);
         }
 
@@ -21,9 +24,9 @@ export class FateActor extends Actor {
     /**
      * Open template picker instead of showing creation dialog
      */
-    static async createDialog(data, _options = {}): Promise<any> {
+    static async createDialog(data?: DeepPartial<ActorDataConstructorData>, _options = {}): Promise<any> {
         if (CONFIG.FateX.applications.templatePicker) {
-            CONFIG.FateX.applications.templatePicker.options.folder = data.folder;
+            CONFIG.FateX.applications.templatePicker.options.folder = data?.folder;
         }
 
         return CONFIG.FateX.applications.templatePicker?.render(true);
@@ -33,7 +36,7 @@ export class FateActor extends Actor {
      * Provide basic token configuration for newly created actors.
      * Automatically links new tokens to the actor.
      */
-    static async _create(data, options = {}) {
+    static async _create(data: any, options = {}) {
         data.token = data.token || {};
 
         // Set basic token data for newly created actors.
@@ -64,7 +67,7 @@ export class FateActor extends Actor {
     /**
      * Re-render all open FateX applications as soon a single actor is updated (used for TemplateActorSettings and TemplateActorPicker)
      */
-    render(force = false, options) {
+    render(force = false, options: Application.RenderOptions) {
         super.render(force, options);
 
         for (const app in CONFIG.FateX.applications) {

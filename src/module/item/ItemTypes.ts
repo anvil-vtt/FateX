@@ -56,7 +56,7 @@ export interface ActorReferenceItemData {
 
 interface ExtraData {
     description: string;
-    parentID: string;
+    parentID?: string;
 }
 
 export interface ExtraItemData {
@@ -73,6 +73,15 @@ interface SkillData {
 export interface SkillItemData {
     type: "skill";
     data: SkillData;
+}
+
+///////////////////////////////
+
+interface StuntData {}
+
+export interface StuntItemData {
+    type: "stunt";
+    data: StuntData;
 }
 
 ///////////////////////////////
@@ -96,4 +105,5 @@ export type FateItemData =
     | ActorReferenceItemData
     | ExtraItemData
     | SkillItemData
+    | StuntItemData
     | ConsequenceItemData;

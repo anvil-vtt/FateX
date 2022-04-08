@@ -4,9 +4,9 @@ import { CharacterSheetOptions } from "./CharacterSheet";
 import { FateActor } from "../FateActor";
 import { CombatantReferenceItemData, ReferenceItemData, TokenReferenceItemData } from "../../item/ItemTypes";
 import { FateItem } from "../../item/FateItem";
-import { SortableEvent } from "sortablejs";
-import Sortable from "sortablejs/modular/sortable.complete.esm.js";
-import { ItemDataBaseProperties, ItemDataProperties } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/data.mjs/itemData";
+import { ItemData } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/data.mjs/itemData";
+import Sortable, { SortableEvent } from "sortablejs";
+import { TokenData } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/data.mjs";
 
 /**
  * Represents a single actor group
@@ -17,7 +17,7 @@ export class GroupSheet extends ActorSheet {
     /**
      * Initialize inlineSheets as an empty array of sheets
      */
-    constructor(object, options) {
+    constructor(object: FateActor, options: ActorSheet.Options) {
         super(object, options);
 
         /**
@@ -55,7 +55,7 @@ export class GroupSheet extends ActorSheet {
         data.actor = duplicate(this.actor.data);
         data.data = data.actor.data;
         data.items = this.actor.items.map((i) => i.data);
-        data.items.sort((a, b) => (a.sort || 0) - (b.sort || 0));
+        data.items.sort((a: ItemData, b: ItemData) => (a.sort || 0) - (b.sort || 0));
 
         // Create list of available tokens in the current scene for manual groups
         if (this.actor.data.type == "group" && this.actor.data.data.groupType == "manual") {
@@ -72,11 +72,11 @@ export class GroupSheet extends ActorSheet {
         return data;
     }
 
-    activateListeners(html) {
+    activateListeners(html: JQuery) {
         super.activateListeners(html);
 
-        html.find(`.fatex__actor_group__createToken`).on("click", (e) => this._onCreateTokenReference.call(this, e));
-        html.find(`.fatex__actor_group__sheet__navigation a`).on("click", (e) => this._onChangeGroupNavigation.call(this, e));
+        html.find(`.fatex__actor_group__createToken`).on("click", (e: JQuery.ClickEvent) => this._onCreateTokenReference.call(this, e));
+        html.find(`.fatex__actor_group__sheet__navigation a`).on("click", (e: JQuery.ClickEvent) => this._onChangeGroupNavigation.call(this, e));
 
         // Custom sheet listeners for every ItemType
         for (const itemType in CONFIG.FateX.itemClasses) {
@@ -95,11 +95,11 @@ export class GroupSheet extends ActorSheet {
      * Saves manual group order by sorting embedded entities.
      * Saves scene/encounter group order by using sortables integrated localstorage sorting
      */
-    addSortableJSHandler(html) {
+    addSortableJSHandler(html: JQuery) {
         if (this.actor.data.type != "group" || !html.find(".fatex-js-actor-group-sheets").length) return;
 
         if (this.actor.data.data.groupType == "manual") {
-            return Sortable.create(html.find(".fatex-js-actor-group-sheets")[0], {
+            Sortable.create(html.find(".fatex-js-actor-group-sheets")[0], {
                 animation: 150,
                 removeOnSpill: true,
                 onEnd: (e: SortableEvent) => this.sortInlineSheets.call(this, e),
@@ -110,10 +110,6 @@ export class GroupSheet extends ActorSheet {
         Sortable.create(html.find(".fatex-js-actor-group-sheets")[0], {
             group: ["groupSort", this.actor.id].join("-"),
             animation: 150,
-            store: {
-                get: (sortable) => (localStorage.getItem(sortable.options.group.name) ? localStorage.getItem(sortable.options.group.name)?.split("|") : []),
-                set: (sortable) => localStorage.setItem(sortable.options.group.name, sortable.toArray().join("|")),
-            },
         });
     }
 
@@ -208,9 +204,9 @@ export class GroupSheet extends ActorSheet {
      * Creates and renders a new InlineActorSheet based on a token reference.
      * A token is referenced by a combination of the scene where its placed and its token id
      */
-    async renderInlineToken(reference: Partial<ItemDataBaseProperties & TokenReferenceItemData>) {
+    async renderInlineToken(reference: Partial<ItemData & TokenReferenceItemData>) {
         const scene: any = game.scenes?.find((scene) => scene.id === reference.data?.scene);
-        const tokenData = scene?.data.tokens.find((token) => token._id === reference.data?.id);
+        const tokenData = scene.data.tokens.find((token: TokenData) => token._id === reference.data?.id);
 
         if (!tokenData) {
             return;
@@ -229,14 +225,14 @@ export class GroupSheet extends ActorSheet {
     /**
      * Creates and renders a new InlineActorSheet based on a combatant reference.
      */
-    async renderInlineCombatant(reference: Partial<ItemDataBaseProperties & CombatantReferenceItemData>) {
+    async renderInlineCombatant(reference: CombatantReferenceItemData) {
         if (!game.combats || !game.combats.active) {
             return;
         }
 
         const scene: any = game.scenes?.find((scene) => scene.id === game.combats?.active?.data.scene);
         const combatant = game.combats.active.combatants.find((combatant) => combatant.data._id === reference.data?.id);
-        const tokenData = scene?.data.tokens.find((token) => token._id === combatant?.token?.id);
+        const tokenData = scene.data.tokens.find((token: TokenData) => token._id === combatant?.token?.id);
 
         if (!tokenData || !combatant || !combatant.visible) {
             return;
@@ -250,7 +246,7 @@ export class GroupSheet extends ActorSheet {
 
         const tokenSheet = new InlineActorSheetFate(
             token.actor as FateActor,
-            { combatant: combatant, referenceID: reference.data?.id } as CharacterSheetOptions
+            { combatant: combatant, referenceID: reference.data.id } as CharacterSheetOptions
         );
         // @ts-ignore
         await tokenSheet.render(true, { token: token, group: this } as Application.RenderOptions);
@@ -273,7 +269,7 @@ export class GroupSheet extends ActorSheet {
             return;
         }
 
-        const itemData: Partial<ItemDataProperties> = {
+        const itemData: Partial<ItemData> = {
             name: ["actorReference", actorID].join("-"),
             type: "actorReference",
             data: {
@@ -300,7 +296,7 @@ export class GroupSheet extends ActorSheet {
             return;
         }
 
-        const itemData: Partial<ItemDataProperties> = {
+        const itemData: Partial<ItemData> = {
             name: ["tokenReference", sceneID, tokenID].join("-"),
             type: "tokenReference",
             data: {
@@ -316,7 +312,7 @@ export class GroupSheet extends ActorSheet {
      * EVENT HANDLER
      *************************/
 
-    _onChangeGroupNavigation(e) {
+    _onChangeGroupNavigation(e: JQuery.ClickEvent) {
         e.preventDefault();
         e.stopPropagation();
 
@@ -332,7 +328,7 @@ export class GroupSheet extends ActorSheet {
         app.find(`.fatex__actor_group__sheet__navigation--${e.currentTarget.dataset.show}`).addClass("active");
     }
 
-    _onCreateTokenReference(e) {
+    _onCreateTokenReference(e: JQuery.ClickEvent) {
         e.preventDefault();
         e.stopPropagation();
 
@@ -359,11 +355,11 @@ export class GroupSheet extends ActorSheet {
      * Handles the ability to drop actors from the sidebar into an actor group
      */
     // @ts-ignore
-    async _onDrop(event) {
+    async _onDrop(event: DragEvent) {
         let data;
 
         try {
-            data = JSON.parse(event.dataTransfer.getData("text/plain"));
+            data = JSON.parse(event.dataTransfer?.getData("text/plain") ?? "{}");
         } catch (err) {
             return false;
         }

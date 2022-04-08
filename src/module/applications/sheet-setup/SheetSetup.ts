@@ -18,7 +18,7 @@ const TYPES = {
 };
 
 export class SheetSetup extends FormApplication<any, any, FateActor> {
-    constructor(object, options) {
+    constructor(object: any, options) {
         super(object, options);
 
         this.actor.apps[this.appId] = this;

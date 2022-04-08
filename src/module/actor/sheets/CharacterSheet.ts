@@ -1,10 +1,11 @@
 /**
  * FateX base class for all actor sheets.
- * Defines what information on the actorsheet may be rendered.
+ * Defines what information on the actor's sheet may be rendered.
  */
 import { SheetSetup } from "../../applications/sheet-setup/SheetSetup";
 import { GroupSheet } from "./GroupSheet";
-import { ItemDataProperties } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/data.mjs/itemData";
+import { ItemData } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/data.mjs/itemData";
+import { DropData } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/foundry.js/clientDocumentMixin";
 
 export interface CharacterSheetOptions extends ActorSheet.Options {
     type?: string;
@@ -13,15 +14,13 @@ export interface CharacterSheetOptions extends ActorSheet.Options {
     group?: GroupSheet;
 }
 
-export class CharacterSheet extends ActorSheet<CharacterSheetOptions, ActorSheet.Data<CharacterSheetOptions>> {
+export class CharacterSheet extends ActorSheet<CharacterSheetOptions> {
     /**
      * Defines the default options for all FateX actor sheets.
-     * This consists of things like css classes, the template to load and the tab configuration.
-     *
-     * @returns {Object}
+     * This consists of things like css classes, the sheet type and the tab configuration.
      */
     static get defaultOptions() {
-        return mergeObject(super.defaultOptions, {
+        const sheetOptions: Partial<CharacterSheetOptions> = {
             classes: ["fatex", "fatex-sheet", "sheet"],
             tabs: [
                 {
@@ -33,7 +32,9 @@ export class CharacterSheet extends ActorSheet<CharacterSheetOptions, ActorSheet
             scrollY: [".fatex-desk__content"],
             width: 900,
             type: "full",
-        });
+        };
+
+        return mergeObject(super.defaultOptions, sheetOptions);
     }
 
     get template(): string {
@@ -51,7 +52,7 @@ export class CharacterSheet extends ActorSheet<CharacterSheetOptions, ActorSheet
      * @param html
      *  The rendered html content of the created actor sheet.
      */
-    activateListeners(html) {
+    activateListeners(html: JQuery) {
         super.activateListeners(html);
 
         // Custom sheet listeners for every ItemType
@@ -89,17 +90,17 @@ export class CharacterSheet extends ActorSheet<CharacterSheetOptions, ActorSheet
         data.actor = duplicate(this.actor.data);
         data.data = data.actor.data;
         data.items = this.actor.items.map((i) => i.data);
-        data.items.sort((a, b) => (a.sort || 0) - (b.sort || 0));
+        data.items.sort((a: ItemData, b: ItemData) => (a.sort || 0) - (b.sort || 0));
 
         // Add filtered item lists for easier access
-        data.stress = data.items.filter((item) => item.type === "stress");
-        data.aspects = data.items.filter((item) => item.type === "aspect");
-        data.skills = data.items.filter((item) => item.type === "skill");
-        data.stunts = data.items.filter((item) => item.type === "stunt");
-        data.extras = data.items.filter((item) => item.type === "extra");
-        data.consequences = data.items.filter((item) => item.type === "consequence");
+        data.stress = data.items.filter((item: ItemData) => item.type === "stress");
+        data.aspects = data.items.filter((item: ItemData) => item.type === "aspect");
+        data.skills = data.items.filter((item: ItemData) => item.type === "skill");
+        data.stunts = data.items.filter((item: ItemData) => item.type === "stunt");
+        data.extras = data.items.filter((item: ItemData) => item.type === "extra");
+        data.consequences = data.items.filter((item: ItemData) => item.type === "consequence");
 
-        // Allow every itemtype to add data to the actorsheet
+        // Allow every item type to add data to the actorsheet
         for (const itemType in CONFIG.FateX.itemClasses) {
             data = CONFIG.FateX.itemClasses[itemType].getActorSheetData(data, this);
         }
@@ -110,7 +111,7 @@ export class CharacterSheet extends ActorSheet<CharacterSheetOptions, ActorSheet
     /**
      * Adds FateX specific buttons to the sheets header bar.
      *
-     * @returns {*}
+     * @returns Application.HeaderButton[]
      *   A list of buttons to be rendered.
      */
     _getHeaderButtons() {
@@ -118,7 +119,9 @@ export class CharacterSheet extends ActorSheet<CharacterSheetOptions, ActorSheet
 
         // Edit mode button to toggle which interactive elements are visible on the sheet.
         const canConfigure = game.user?.isGM || this.actor.isOwner;
+
         if (this.options.editable && canConfigure) {
+            // noinspection JSUnusedGlobalSymbols
             buttons.unshift(
                 {
                     class: "fatex-toggle-edit-mode",
@@ -142,7 +145,7 @@ export class CharacterSheet extends ActorSheet<CharacterSheetOptions, ActorSheet
      * OnClick handler for the previously declaried "Edit mode" button.
      * Toggles the 'fatex-js-edit-mode' class for the sheet container.
      */
-    _onToggleEditMode(e): void {
+    _onToggleEditMode(e: JQuery.ClickEvent): void {
         e.preventDefault();
 
         const target = $(e.currentTarget);
@@ -156,7 +159,7 @@ export class CharacterSheet extends ActorSheet<CharacterSheetOptions, ActorSheet
      * OnClick handler for the previously declaried "Sheet setup" button.
      * Opens a new sheet setup instance for this sheet.
      */
-    _onOpenSheetSetup(e): void {
+    _onOpenSheetSetup(e: JQuery.ClickEvent): void {
         e.preventDefault();
 
         const sheetSetup = new SheetSetup(this.actor, {});
@@ -164,11 +167,11 @@ export class CharacterSheet extends ActorSheet<CharacterSheetOptions, ActorSheet
     }
 
     /** @override */
-    async _onDrop(event) {
+    async _onDrop(event: DragEvent) {
         let data;
 
         try {
-            data = JSON.parse(event.dataTransfer.getData("text/plain"));
+            data = JSON.parse(event.dataTransfer?.getData("text/plain") ?? "");
         } catch (err) {
             return;
         }
@@ -180,13 +183,14 @@ export class CharacterSheet extends ActorSheet<CharacterSheetOptions, ActorSheet
         return super._onDrop(event);
     }
 
-    async _onDropJournalEntry(data: JournalEntry) {
+    async _onDropJournalEntry(data: DropData<JournalEntry>) {
         const entry = await JournalEntry.fromDropData(data);
         const actor = this.actor;
 
-        const extraData: DeepPartial<ItemDataProperties> = {
+        const extraData: DeepPartial<ItemData> = {
             type: "extra",
-            name: entry?.data.name,
+            document: null,
+            name: entry?.data.name ?? "",
             data: {
                 description: entry?.data.content || "",
             },

@@ -17,10 +17,10 @@ export class DataManager {
     async getSystems() {
         const { lang, availableSystems } = await this.getAvailableSystems();
 
-        return Promise.all(availableSystems.map(async (systemName) => await this.fetchSystemByName(lang, systemName)));
+        return Promise.all(availableSystems.map(async (systemName: string) => await this.fetchSystemByName(lang, systemName)));
     }
 
-    async fetchSystemByName(lang, systemName) {
+    async fetchSystemByName(lang: string, systemName: string) {
         const response = await fetch(`systems/fatex/data/${lang}/systems/${systemName}.json`);
         return response.status === 200 ? await response.json() : {};
     }
