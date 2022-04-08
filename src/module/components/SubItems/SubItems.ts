@@ -3,8 +3,6 @@ import { FateItem } from "../../item/FateItem";
 
 export class SubItems extends BaseComponent {
     static activateListeners(html, _sheet) {
-        console.log("Sub item component activated", _sheet);
-
         html.find("#create-sub-item").click((e) => this._onCreateSubItem.call(this, e, _sheet));
         html.find(".fatex-js-subitem-delete").click((e) => this._onItemDelete.call(this, e, _sheet));
     }

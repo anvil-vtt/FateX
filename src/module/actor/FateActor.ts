@@ -5,22 +5,8 @@
 import { getImageFromReference, getReferencesByGroupType } from "../helper/ActorGroupHelper";
 import { ActorDataFate } from "./ActorTypes";
 import { ActorDataConstructorData } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/data.mjs/actorData";
-import { ConstructorDataType } from "@league-of-foundry-developers/foundry-vtt-types/src/types/helperTypes";
 
 export class FateActor extends Actor {
-    /**
-     * Open template picker instead of directly creating a new actor
-     */
-    static async create(data: ConstructorDataType<FateActor["data"]>, options = {}) {
-        //static async create(data: ActorDataConstructorData, options = {}) {
-        // Fallback for manual actor duplication
-        if (data._id || Object.prototype.hasOwnProperty.call(data, "data") || data.flags?.cf !== undefined) {
-            return super.create(data, options);
-        }
-
-        return CONFIG.FateX.applications.templatePicker?.render(true);
-    }
-
     /**
      * Open template picker instead of showing creation dialog
      */

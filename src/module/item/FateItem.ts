@@ -21,8 +21,6 @@ export class FateItem extends Item {
     }
 
     private isSubitem() {
-        console.log("Item data", this.data);
-
         if (this.data.type === "extra") {
             return this.data.data.parentID !== "";
         }
