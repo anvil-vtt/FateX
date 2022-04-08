@@ -1,5 +1,5 @@
 {
-    "name": "Kompakt",
+    "name": "Condensed",
     "identifier": "condensed",
     "types": {
         "Aspects": [
@@ -259,7 +259,7 @@
         ],
         "Stress": [
             {
-                 "entries": [
+                "entries": [
                     {
                         "name": "körperlicher Stress",
                         "type": "stress",

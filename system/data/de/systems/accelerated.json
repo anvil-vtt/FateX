@@ -1,44 +1,44 @@
 {
-    "name": "Accelerated",
-    "identifier": "fae",
+    "name": "Turbo Fate",
+    "identifier": "accelerated",
     "types": {
         "Aspects": [
             {
-                "label": "Basic",
+                "label": "Basis",
                 "entries": [
                     {
-                        "name": "High Concept",
+                        "name": "Konzept",
                         "type": "aspect",
                         "data": {
-                            "label": "High Concept"
+                            "label": "Konzept"
                         }
                     },
                     {
-                        "name": "Trouble",
+                        "name": "Dilemma",
                         "type": "aspect",
                         "data": {
-                            "label": "Trouble"
+                            "label": "Dilemma"
                         }
                     },
                     {
-                        "name": "Other aspect",
+                        "name": "Beziehung",
                         "type": "aspect",
                         "data": {
-                            "label": "Other"
+                            "label": "Beziehung"
                         }
                     },
                     {
-                        "name": "Other aspect",
+                        "name": "weiterer Aspekt",
                         "type": "aspect",
                         "data": {
-                            "label": "Other"
+                            "label": "weiterer Aspekt"
                         }
                     },
                     {
-                        "name": "Other aspect",
+                        "name": "weiterer Aspekt",
                         "type": "aspect",
                         "data": {
-                            "label": "Other"
+                            "label": "weiterer Aspekt"
                         }
                     }
                 ]
@@ -47,14 +47,14 @@
                 "label": "Optional",
                 "entries": [
                     {
-                        "name": "Relationship",
+                        "name": "Beziehung",
                         "type": "aspect",
                         "data": {
-                            "label": "Relationship"
+                            "label": "Beziehung"
                         }
                     },
                     {
-                        "name": "Empty Aspect",
+                        "name": "leerer Aspekt",
                         "type": "aspect"
                     }
                 ]
@@ -64,26 +64,53 @@
             {
                 "entries": [
                     {
-                        "name": "Mild consequence",
+                        "name": "leichte Konsequenz",
                         "type": "consequence",
                         "data": {
-                            "label": "Mild",
+                            "label": "Leicht",
                             "icon": "2"
                         }
                     },
                     {
-                        "name": "Moderate consequence",
+                        "name": "2te leichte Konsequenz (durch Fertigkeit)",
                         "type": "consequence",
                         "data": {
-                            "label": "Moderate",
+                            "label": "Leicht",
+                            "icon": "2"
+                        },
+                        "flags": {
+                            "fatex": {
+                                "skillReferenceSettings": {
+                                    "conjunction": 0
+                                },
+                                "skillReferences": [
+                                    {
+                                        "skill": "Kraft",
+                                        "condition": 4,
+                                        "operator": 4
+                                    },
+                                    {
+                                        "skill": "Wille",
+                                        "condition": 4,
+                                        "operator": 4
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "mittlere Konsequenz",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Mittel",
                             "icon": "4"
                         }
                     },
                     {
-                        "name": "Severe consequence",
+                        "name": "schwere Konsequenz",
                         "type": "consequence",
                         "data": {
-                            "label": "Severe",
+                            "label": "Schwer",
                             "icon": "6"
                         }
                     }
@@ -95,27 +122,27 @@
                 "columns": true,
                 "entries": [
                     {
-                        "name": "Careful",
+                        "name": "Sorgfältig",
                         "type": "skill"
                     },
                     {
-                        "name": "Clever",
+                        "name": "Scharfsinnig",
                         "type": "skill"
                     },
                     {
-                        "name": "Flashy",
+                        "name": "Tollkühn",
                         "type": "skill"
                     },
                     {
-                        "name": "Forceful",
+                        "name": "Kraftvoll",
                         "type": "skill"
                     },
                     {
-                        "name": "Quick",
+                        "name": "Flink",
                         "type": "skill"
                     },
                     {
-                        "name": "Sneaky",
+                        "name": "Tückisch",
                         "type": "skill"
                     }
                 ]
