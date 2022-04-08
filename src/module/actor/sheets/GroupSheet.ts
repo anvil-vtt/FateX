@@ -281,7 +281,7 @@ export class GroupSheet extends ActorSheet {
     }
 
     _createActorReferencesFromFolder(folder: string) {
-        const actors = game.folders?.get(folder)?.entities.filter((actor) => actor instanceof FateActor && actor.data.type === "character") || [];
+        const actors = game.folders?.get(folder)?.contents.filter((actor) => actor instanceof FateActor && actor.data.type === "character") || [];
 
         actors.forEach((actor) => {
             this._createActorReference(actor.id || "");
