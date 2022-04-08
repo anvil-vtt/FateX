@@ -1,0 +1,270 @@
+{
+    "name": "Básico",
+    "identifier": "core",
+    "types": {
+        "Aspects": [
+            {
+                "label": "Padrão",
+                "entries": [
+                    {
+                        "name": "Conceito",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Conceito"
+                        }
+                    },
+                    {
+                        "name": "Dificuldade",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Dificuldade"
+                        }
+                    },
+                    {
+                        "name": "Aspecto em Branco",
+                        "type": "aspect"
+                    },
+                    {
+                        "name": "Aspecto em Branco",
+                        "type": "aspect"
+                    },
+                    {
+                        "name": "Aspecto em Branco",
+                        "type": "aspect"
+                    }
+                ]
+            },
+            {
+                "label": "Opcional",
+                "entries": [
+                    {
+                        "name": "Relacionamento",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Relacionamento"
+                        }
+                    },
+                    {
+                        "name": "Outro aspecto",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Outro"
+                        }
+                    }
+                ]
+            }
+        ],
+        "Consequences": [
+            {
+                "entries": [
+                    {
+                        "name": "Consequência suave",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Suave",
+                            "icon": "2"
+                        }
+                    },
+                    {
+                        "name": "2ª Consequência suave (condicional à perícia)",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Suave",
+                            "icon": "2"
+                        },
+                        "flags": {
+                            "fatex": {
+                                "skillReferenceSettings": {
+                                    "conjunction": 0
+                                },
+                                "skillReferences": [
+                                    {
+                                        "skill": "Vigor",
+                                        "condition": 4,
+                                        "operator": 4
+                                    },
+                                    {
+                                        "skill": "Vontade",
+                                        "condition": 4,
+                                        "operator": 4
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "Consequência moderada",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Moderada",
+                            "icon": "4"
+                        }
+                    },
+                    {
+                        "name": "Consequência severa",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Severa",
+                            "icon": "6"
+                        }
+                    }
+                ]
+            }
+        ],
+        "Skills": [
+            {
+                "columns": true,
+                "entries": [
+                    {
+                        "name": "Atletismo",
+                        "type": "skill",
+                        "data": {
+                            "description": "Uma medida do potencial físico. Façanhas de Atletismo se concentram na movimentação (como correr, saltar, parkour) e em desviar de ataques."
+                        }
+                    },
+                    {
+                        "name": "Roubo",
+                        "type": "skill",
+                        "data": {
+                            "description": "Conhecimento e capacidade de burlar sistemas de segurança, bater carteiras e cometer crimes em geral. Façanhas de Roubo dão bônus aos vários estágios de um crime, desde o planejamento até a execução e fuga."
+                        }
+                    },
+                    {
+                        "name": "Contatos",
+                        "type": "skill",
+                        "data": {
+                            "description": "Conhecimento das pessoas certas e conexões que podem ajudá-lo. Façanhas de Contatos fornecem aliados dispostos a ajudar e uma rede de informações em qualquer lugar do mundo."
+                        }
+                    },
+                    {
+                        "name": "Ofícios",
+                        "type": "skill",
+                        "data": {
+                            "description": "Capacidade de criar ou destruir maquinários, construir engenhocas e realizar proezas inventivas ao estilo MacGyver. Façanhas de Ofícios permitem que você tenha gambiarras à disposição, dão bônus para construir ou quebrar coisas, e justificam o uso de Ofícios no lugar de perícias como Roubo ou Conhecimento sob certas circunstâncias."
+                        }
+                    },
+                    {
+                        "name": "Enganar",
+                        "type": "skill",
+                        "data": {
+                            "description": "Habilidade de mentir e trapacear de forma convincente e serena. Façanhas de Enganar podem aprimorar a capacidade de contar um tipo específico de mentira ou ajudar a criar identidades falsas."
+                        }
+                    },
+                    {
+                        "name": "Condução",
+                        "type": "skill",
+                        "data": {
+                            "description": "Controlar veículos nas circunstâncias mais difíceis, fazer manobras radicais, ou simplesmente obter o máximo do seu veículo. Façanhas de Condução podem ser manobras exclusivas, um veículo especial de sua propriedade ou a capacidade de usar Condução no lugar de Perícias como Roubo ou Conhecimento sob certas circunstâncias."
+                        }
+                    },
+                    {
+                        "name": "Empatia",
+                        "type": "skill",
+                        "data": {
+                            "description": "Capacidade de julgar precisamente o ânimo e as intenções de alguém. Façanhas de Empatia podem ser sobre avaliar o humor de uma multidão, identificar mentiras ou ajudar outras pessoas a se recuperarem de consequências mentais."
+                        }
+                    },
+                    {
+                        "name": "Lutar",
+                        "type": "skill",
+                        "data": {
+                            "description": "Maestria em combate corpo a corpo, seja com armas ou punhos. Façanhas de Lutar incluem armas exclusivas e técnicas especiais."
+                        }
+                    },
+                    {
+                        "name": "Investigar",
+                        "type": "skill",
+                        "data": {
+                            "description": "Análise deliberada e cuidadosa, e resolução de mistérios. Esta perícia é utilizada para reunir pistas ou reconstruir uma cena de crime. Façanhas de Investigar ajudam a formar deduções brilhantes ou reunir informações rapidamente."
+                        }
+                    },
+                    {
+                        "name": "Conhecimentos",
+                        "type": "skill",
+                        "data": {
+                            "description": "Qualquer tipo de educação formal ou conhecimento, abrangendo desde a formação puramente acadêmica até as tradições ou o sobrenatural. As façanhas de Conhecimentos costumam se referir a áreas de especialização como Medicina ou a aplicação prática do conhecimento arcano, como o lançamento de feitiços."
+                        }
+                    },
+                    {
+                        "name": "Percepção",
+                        "type": "skill",
+                        "data": {
+                            "description": "Habilidade de captar detalhes rapidamente, identificar problemas antes que aconteçam, e ser perceptivo, de maneira geral. Ela contrasta com Investigar, que é usada para uma observação lenta e deliberada. Façanhas de Percepção aguçam seus sentidos, melhoram seu tempo de reação ou dificultam que você seja surpreendido."
+                        }
+                    },
+                    {
+                        "name": "Vigor",
+                        "type": "skill",
+                        "data": {
+                            "description": "Força bruta e resistência física. Façanhas de Vigor permitem que você execute proezas de força sobre-humana, como usar seu peso a seu favor durante uma luta, e mitigue consequências físicas. Além disso, um nível alto em Vigor concede mais caixas de estresse físico ou caixas de consequências físicas."
+                        }
+                    },
+                    {
+                        "name": "Provocar",
+                        "type": "skill",
+                        "data": {
+                            "description": "Capacidade de incitar as pessoas a agirem da maneira que você deseja. Não é uma interação positiva, mas sim manipulativa e rude. Façanhas de Provocar permitem incitar oponentes a agir de forma imprudente, atrair agressões para si ou assustar inimigos (desde de que eles possam sentir medo)."
+                        }
+                    },
+                    {
+                        "name": "Comunicação",
+                        "type": "skill",
+                        "data": {
+                            "description": "Habilidade de criar conexões com outras pessoas e trabalhar em equipe. Enquanto a perícia Provocar está relacionada com a manipulação, a Comunicação possibilita interações sinceras, de confiança e boa vontade. Façanhas de Comunicação permitem influenciar multidões, melhorar relacionamentos ou fazer contatos."
+                        }
+                    },
+                    {
+                        "name": "Recursos",
+                        "type": "skill",
+                        "data": {
+                            "description": "Acesso a coisas materiais, não apenas dinheiro ou propriedade direta. Ele pode refletir sua capacidade de pedir emprestado de amigos ou mergulhar em um arsenal de organização. Recursos impressionantes deixam você usar Recursos no lugar de Rapport ou Contatos ou te dar faturas extras gratuitas quando você paga pelo melhor."
+                        }
+                    },
+                    {
+                        "name": "Atirar",
+                        "type": "skill",
+                        "data": {
+                            "description": "Habilidade com todas as formas de combate à distância, sejam armas de fogo, facas de arremesso ou arco e flecha. Façanhas de Atirar permitem ataques de precisão, saques rápidos ou sempre ter uma arma à disposição."
+                        }
+                    },
+                    {
+                        "name": "Furtividade",
+                        "type": "skill",
+                        "data": {
+                            "description": "Ficar oculto ou passar despercebido, e escapar quando precisar se esconder. Façanhas de Furtividade permitem que você desapareça à plena vista, se misture na multidão ou avance despercebido pelas sombras."
+                        }
+                    },
+                    {
+                        "name": "Vontade",
+                        "type": "skill",
+                        "data": {
+                            "description": "Resistência mental. Capacidade de resistir uma tentação ou de permanecer lúcido durante um evento traumático. Façanhas de vontade permitem que você ignore consequências mentais, resista à agonia mental provocada por poderes estranhos e mantenha-se firme ante a inimigos que tentem provocá-lo. Além disso, um nível alto de Vontade concede mais caixas de estresse mental ou caixas de consequências mentais."
+                        }
+                    }
+                ]
+            }
+        ],
+        "Stress": [
+            {
+                "entries": [
+                    {
+                        "name": "Estresse físico",
+                        "type": "stress",
+                        "data": {
+                            "size": 4,
+                            "labelType": 0
+                        }
+                    },
+                    {
+                        "name": "Estresse mental",
+                        "type": "stress",
+                        "data": {
+                            "size": 4,
+                            "labelType": 0
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

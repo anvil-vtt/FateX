@@ -1,6 +1,6 @@
 {
     "name": "fatex",
-    "title": "FateX - Fate Extended (EN/DE/FR/ES/GL/IT/CN/KO/SV)",
+    "title": "FateX - Fate Extended (EN/DE/FR/ES/GL/IT/CN/KO/SV/PT)",
     "description": "An extended implementation of Fate and its derivative systems",
     "version": "0.15.3",
     "author": "Patrick Bauer (Daddi#2333)",
@@ -46,6 +46,11 @@
             "lang": "sv",
             "name": "Swedish",
             "path": "languages/sv.json"
+        },
+        {
+            "lang": "pt-BR",
+            "name": "Português (Brasil)",
+            "path": "languages/pt-BR.json"
         }
     ],
     "minimumCoreVersion": "0.8.6",
