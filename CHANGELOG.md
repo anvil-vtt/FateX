@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.16.1
+* Allow artwork of all sized to be fully shown
+* Fixed focus loss on sheet re-render
+
 ### 0.16.0
 * Updated all npm dependencies to newest versions
 * Added new translations

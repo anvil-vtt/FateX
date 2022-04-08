@@ -198,4 +198,32 @@ export class CharacterSheet extends ActorSheet<CharacterSheetOptions> {
 
         return await actor.createEmbeddedDocuments("Item", [extraData]);
     }
+
+    /**
+     * Saves and restores the focus of a child element
+     * This is needed because FVTT only handles this for inputs that belong to the form itself
+     *
+     * @param force
+     * @param options
+     */
+    async _render(force, options) {
+        // Identify the focused element and save its caret position
+        const focusedElement: string = this.element.find(":focus").data("focus-id");
+        const selection = window.getSelection();
+        const position = selection?.focusOffset ?? 0;
+
+        // Render the application
+        await super._render(force, options);
+
+        // Restore focus and caret position
+        if (focusedElement) {
+            const element = this.element.find(`[data-focus-id=${focusedElement}]`)[0];
+            const range = document.createRange();
+            range.setStart(element.childNodes[0], position);
+            range.collapse(true);
+            selection?.removeAllRanges();
+            selection?.addRange(range);
+            element.focus();
+        }
+    }
 }
