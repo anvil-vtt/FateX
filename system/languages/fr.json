@@ -7,16 +7,16 @@
                 "+8": "Légendaire",
                 "+7": "Épique",
                 "+6": "Fantastique",
-                "+5": "Superbe",
+                "+5": "Formidable",
                 "+4": "Excellente",
                 "+3": "Bonne",
                 "+2": "Passable",
                 "+1": "Moyenne",
                 "+0": "Médiocre",
-                "-1": "Mauvais",
+                "-1": "Mauvaise",
                 "-2": "Atroce",
                 "-3": "Catastrophique",
-                "-4": "Horrifiante"
+                "-4": "Épouvantable"
             },
             "Actions": {
                 "Configure": "Configurer",
@@ -48,11 +48,11 @@
                 "Bio": "Bio"
             },
             "Buttons": {
-                "EditMode": "Edition",
+                "EditMode": "Édition",
                 "SheetSetup": "Paramètres"
             },
             "Stress": {
-                "Add": "Ajouter une piste de stress"
+                "Add": "Ajouter une jauge de stress"
             },
             "Messages": {
                 "EmptyActor": "Il semblerait que votre personnage soit encore vide. Vous pouvez le modifier à l'aide du menu <strong>édition</strong> ou <strong>paramètres</strong>. Les boutons pour déclencher le mode édition ou paramètre se situent dans la barre de titre"
@@ -60,11 +60,11 @@
         },
         "Item": {
             "Stress": {
-                "Name": "Label de la piste de stress",
-                "EditItem": "Éditer la piste de stress",
+                "Name": "Label de la jauge de stress",
+                "EditItem": "Éditer la jauge de stress",
                 "Size": "Nombre de cases",
                 "Description": "Description",
-                "DescriptionHelp": "La description sera visible sur la piste de stress.",
+                "DescriptionHelp": "La description sera visible sur la jauge de stress.",
                 "Boxes": {
                     "Label": "Modèle du label des cases",
                     "Custom": "Label personnalisé des cases",
@@ -117,13 +117,14 @@
                 "Name": "Titre de l'Extra",
                 "EditItem": "Éditer un Extra",
                 "Description": "Description",
-                "DescriptionHelp": "Une description complète de cette extra",
+                "DescriptionHelp": "Une description complète de cet extra",
                 "ShortDescription": "Description succinte",
-                "ShortDescriptionHelp": "Une description succinte de cette extra"
+                "ShortDescriptionHelp": "Une description succinte de cet extra"
             },
             "Automation": {
                 "Headline": "Automatisation",
-                "Description": "Aucune condition liée à compétence n'est définie. Veuillez ajouter une ou plusieurs conditions liée à une compétence pour activer l'automatisation.",
+                "BoxesHeadline": "Automatisation des cases",
+                "Description": "Aucune condition liée à une compétence n'est définie. Veuillez ajouter une ou plusieurs conditions liée à une compétence pour activer l'automatisation.",
                 "AddSkillRef": "Ajouter une condition",
                 "DisableUntil": "Désactiver jusqu'à",
                 "MultipleConditions": "Activer l'automatisation si",
@@ -148,7 +149,7 @@
             "EntityDelete": "Effacer",
             "EntityDeleteText": "Voulez-vous vraiment effacer de manière <strong>permanente</strong> cette entité ?",
             "ActorClear": "Enlever ses éléments",
-            "ActorClearText": "Voulez-vous vraiment enlever de cette acteur tout ses éléments <strong>et leur contenu</strong> de manière <strong>permanente</strong> ?",
+            "ActorClearText": "Voulez-vous vraiment enlever de cet acteur tout ses éléments <strong>et leur contenu</strong> de manière <strong>permanente</strong> ?",
             "Confirm": "Confirmer",
             "Cancel": "Annuler"
         },
@@ -162,7 +163,7 @@
                         "Aspects": "Effacer les aspects",
                         "Consequences": "Effacer les conséquences",
                         "Skills": "Effacer les compétences",
-                        "Stress": "Effacer les pistes de stress",
+                        "Stress": "Effacer les jauges de stress",
                         "Everything": "Effacer tout"
                     },
                     "Setup": {
