@@ -30,7 +30,7 @@ For manual installation, use the provided manifest URL in the "*Install System*"
 ## Translations
 
 #### German:
-* System translation provided by E1Camino#4300 and hauke#9245
+* System translation provided by E1Camino#4300, hauke#9245 and [em-squared](https://github.com/em-squared) 
 * German Fate translation by Uhrwerk Verlag
 
 > Deutsche Ausgabe Fate Core und Turbo Fate:
@@ -55,7 +55,7 @@ For manual installation, use the provided manifest URL in the "*Install System*"
 
 
 #### French
-* System translation provided by Cougy#6185 (supported by orome#4359)
+* System translation provided by Cougy#6185 (supported by orome#4359 and [ianw12345](https://github.com/ianw12345))
 
 > Le Fate Core System, Fate System Toolkit et Fate Accelerated Edition (que vous pouvez retrouver sur http://www.faterpg.com), produits de Evil Hat Productions, LLC, développés, écrits et édités par Leonard  Balsera, Brian Engard, Jeremy Keller, Ryan Macklin, Mike Olson, Clark Valentine, Amanda Valentine, Fred Hicks et Rob Donoghue sont sous licence d’utilisation Creative Commons Attribution 3.0 Unported. 
 > Le SRD français est lui-même sous licence Creative Commons Attribution 3.0 non transposé (http://creativecommons.org/licenses/by/3.0/deed.fr), par Philippe Marichal, Alain Dutech, Jean-Christophe Cubertafon, Geoffrey Sanchez, “Casque Noir”, Maxime Moraine, Thomas Pereira, Mickael Houet, Gabriel Ollier et François Enders. 
@@ -88,6 +88,10 @@ For manual installation, use the provided manifest URL in the "*Install System*"
 
 #### Swedish
 * System translation provided by [Grottmastaren](https://github.com/Grottmastaren)
+
+
+#### Portuguese (Brazil)
+* Portuguese (Brazil) translation provided by [luizbgomide](https://github.com/luizbgomide))
 
 ---
 

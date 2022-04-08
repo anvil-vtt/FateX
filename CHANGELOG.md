@@ -1,5 +1,14 @@
 # Changelog
 
+### 0.16.0
+* Updated all npm dependencies to newest versions
+* Added new translations
+  * Portuguese (Brazil) (big thanks to contributor [luizbgomide](https://github.com/luizbgomide))
+* Updated existing translations
+  * German (big thanks to contributor [ianw12345](https://github.com/ianw12345))
+  * French (big thanks to contributor [em-squared](https://github.com/em-squared))
+* Added compatibility to Baileywikis maps modules 
+
 ### 0.15.3
 * Fixed text wrapping of headline icons (e.g. +2)
 * Fixed wrongly associated language keys
