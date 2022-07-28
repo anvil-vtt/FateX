@@ -12,8 +12,7 @@ export class TemplateActorPicker extends TemplateActorSettings {
             id: "template-actor-picker",
             resizable: true,
             classes: ["fatex", "fatex-sheet", "fatex-sheet--app"],
-            width: 1000,
-            height: 430,
+            width: 860,
         });
     }
 

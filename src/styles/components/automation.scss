@@ -7,7 +7,7 @@
     &__item {
         display: flex;
         align-items: center;
-        gap: $component-padding / 2;
+        gap: $component-padding * 0.5;
     }
 
     &__description {

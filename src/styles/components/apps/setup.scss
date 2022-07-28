@@ -1,3 +1,5 @@
+@use "sass:math";
+
 .fatex-sheet-setup {
     padding: $component-padding;
     min-width: 100%;
@@ -57,9 +59,9 @@
 
 .fatex-setup-actions {
     display: grid;
-    grid-template: 1fr 1fr / repeat(3, 1fr);
+    grid-template: 1fr math.div(1fr, repeat(3, 1fr));
     grid-template-areas: "x x r" "x x r";
-    gap: $component-padding / 2;
+    gap: $component-padding * 0.5;
 }
 
 .fatex-option-checkbox {

@@ -3,7 +3,7 @@ input[type="text"].fatex-text-input {
     display: flex;
     flex-direction: column-reverse;
     min-height: 24px;
-    padding: 3px 0 3px $component-padding / 2;
+    padding: 3px 0 3px $component-padding * 0.5;
     background: transparent;
     border-radius: 3px;
     border: none;
@@ -44,7 +44,7 @@ input[type="text"].fatex-text-input {
     }
 
     &__label {
-        padding-left: $component-padding / 2;
+        padding-left: $component-padding * 0.5;
         font-size: 8px;
         letter-spacing: 3px;
         color: $fatex-primary-color;
@@ -58,7 +58,7 @@ input[type="text"].fatex-text-input {
 
     &__setting-label {
         font-size: 10px;
-        padding-left: $component-padding / 2;
+        padding-left: $component-padding * 0.5;
     }
 }
 

@@ -80,7 +80,7 @@
     &__text {
         position: relative;
         margin: 0;
-        padding: $component-padding / 2 $component-padding * 2;
+        padding: $component-padding * 0.5 $component-padding * 2;
         border: none;
         font-size: 13px;
         font-weight: bold;

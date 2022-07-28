@@ -41,9 +41,11 @@
         </div>
     </div>
 
-    <div class="fatex-template__or">
-        <span>{{localize "FAx.Template.Picker.Or"}}</span>
-    </div>
+    {{#if (lte templateActors.length 2)}}
+        <div class="fatex-template__or">
+            <span>{{localize "FAx.Template.Picker.Or"}}</span>
+        </div>
+    {{/if}}
 
     {{#each templateActors as |template templateIndex|}}
         <div class="fatex-template">

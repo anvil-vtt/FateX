@@ -15,7 +15,7 @@
     .fatex__actor_group__sheet__navigation {
         grid-area: footer;
         z-index: 10;
-        padding: $component-padding / 2;
+        padding: $component-padding * 0.5;
         box-shadow: 0 -2px 15px 0 $fatex-primary-color;
     }
 }
@@ -33,7 +33,7 @@
 .fatex__actor_group__sheet__navigation a {
     display: inline-block;
     color: $fatex-primary-color;
-    padding: $component-padding/2 $component-padding * 2 $component-padding/2 $component-padding * 2;
+    padding: $component-padding*0.5 $component-padding * 2 $component-padding*0.5 $component-padding * 2;
     position: relative;
     font-weight: bold;
     text-transform: uppercase;

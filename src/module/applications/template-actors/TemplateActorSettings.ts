@@ -9,8 +9,7 @@ export class TemplateActorSettings extends FormApplication<any, any, any> {
             id: "template-actors",
             resizable: true,
             classes: ["fatex", "fatex-sheet", "fatex-sheet--app"],
-            width: 920,
-            height: 500,
+            width: 860,
         });
     }
 

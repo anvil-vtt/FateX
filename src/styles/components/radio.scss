@@ -4,7 +4,7 @@
     gap: $component-padding;
 
     &--ranks {
-        gap: $component-padding / 2;
+        gap: $component-padding * 0.5;
         padding: 0 $component-padding;
     }
 }
@@ -12,10 +12,10 @@
 .fatex-radio-rank,
 .fatex-radio-button {
     flex-shrink: 0;
-    padding: $component-padding / 2;
+    padding: $component-padding * 0.5;
     text-align: center;
     border: 1px solid $fatex-primary-color;
-    border-radius: $component-padding / 2;
+    border-radius: $component-padding * 0.5;
     opacity: 0.3;
     cursor: pointer;
 
