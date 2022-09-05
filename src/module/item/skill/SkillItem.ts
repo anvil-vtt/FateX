@@ -43,9 +43,9 @@ export class SkillItem extends BaseItem {
     }
 
     static prepareItemData(data, _item) {
-        data.data.isNegative = data.data.rank < 0;
-        data.data.isPositive = data.data.rank >= 0;
-        data.data.isNeutral = data.data.rank === 0;
+        data.system.isNegative = data.system.rank < 0;
+        data.system.isPositive = data.system.rank >= 0;
+        data.system.isNeutral = data.system.rank === 0;
 
         return data;
     }
@@ -74,11 +74,11 @@ export class SkillItem extends BaseItem {
         const skills = sheet.actor.items.filter((item) => item.type == "skill");
 
         if (sortBy === "name") {
-            skills.sort((a, b) => a.data.name.localeCompare(b.data.name));
+            skills.sort((a, b) => a.name.localeCompare(b.name));
         } else if (sortBy === "rank") {
-            skills.sort((a, b) => a.data.data.rank - b.data.data.rank).reverse();
+            skills.sort((a, b) => a.system.rank - b.system.rank).reverse();
         } else if (sortBy === "reverse") {
-            skills.sort((a, b) => a.data.sort - b.data.sort).reverse();
+            skills.sort((a, b) => a.sort - b.sort).reverse();
         }
 
         let i = 0;
@@ -99,7 +99,7 @@ export class SkillItem extends BaseItem {
         const skill = sheet.actor.items.get(dataset.item);
 
         if (skill) {
-            const rank = skill.data.data.rank;
+            const rank = skill.system.rank;
 
             await skill.update(
                 {
@@ -126,9 +126,9 @@ export class SkillItem extends BaseItem {
     }
 
     static async rollSkill(sheet, item) {
-        const skill = this.prepareItemData(duplicate(item.data), item);
+        const skill = this.prepareItemData(duplicate(item), item);
         const template = "systems/fatex/templates/chat/roll-skill.hbs";
-        const rank = parseInt(skill.data.rank) || 0;
+        const rank = parseInt(skill.system.rank) || 0;
         const actor = sheet.actor;
         // @ts-ignore
         const roll = new Roll("4dF").roll({ async: false });

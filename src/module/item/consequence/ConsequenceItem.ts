@@ -10,8 +10,8 @@ export class ConsequenceItem extends BaseItem {
     static documentName = "consequence";
 
     static prepareItemData(data, item) {
-        data.isConsequence = data.data.type === CONSEQUENCE_TYPES.CONSEQUENCE;
-        data.isCondition = data.data.type === CONSEQUENCE_TYPES.CONDITION;
+        data.isConsequence = data.system.type === CONSEQUENCE_TYPES.CONSEQUENCE;
+        data.isCondition = data.system.type === CONSEQUENCE_TYPES.CONDITION;
 
         if (item.isOwned) {
             data.isDisabled = Automation.getDisabledState(item);
@@ -43,7 +43,7 @@ export class ConsequenceItem extends BaseItem {
         if (item) {
             item.update(
                 {
-                    "data.active": !item.data.data.active,
+                    "data.active": !item.system.active,
                 },
                 {}
             );
@@ -58,7 +58,7 @@ export class ConsequenceItem extends BaseItem {
         const input = $(e.currentTarget).html();
 
         // Check if the value of the input field changed
-        if (item.data.data.value === input) {
+        if (item.system.value === input) {
             return;
         }
 

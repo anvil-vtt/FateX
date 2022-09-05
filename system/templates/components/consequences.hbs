@@ -1,6 +1,6 @@
 {{#each consequences as |consequence consequenceIndex|}}
     <div
-        class="fatex-js-sortable fatex-item{{#if consequence.isCondition}} fatex-item--condition{{/if}}{{#if consequence.isDisabled}} fatex-u-disabled{{/if}}{{#if consequence.data.icon}} fatex-item--consequence{{/if}}"
+        class="fatex-js-sortable fatex-item{{#if consequence.isCondition}} fatex-item--condition{{/if}}{{#if consequence.isDisabled}} fatex-u-disabled{{/if}}{{#if consequence.system.icon}} fatex-item--consequence{{/if}}"
         data-item-id="{{consequence._id}}"
     >
         <div class="fatex-u-pos-relative">
@@ -10,7 +10,7 @@
                 data-item-id="{{consequence._id}}"
                 data-focus-id="consequence-name-{{consequence._id}}"
             >
-                {{{consequence.data.value}}}
+                {{{consequence.system.value}}}
             </div>
 
             <div class="fatex-actions fatex-actions--item">
@@ -19,10 +19,10 @@
                 <i class="fatex-js-consequence-delete fatex-actions__icon fatex-u-delete fa fa-trash" data-item="{{consequence._id}}"></i>
             </div>
 
-            <label class="fatex-text-input__label">{{consequence.data.label}}</label>
+            <label class="fatex-text-input__label">{{consequence.system.label}}</label>
 
             {{#if consequence.isConsequence}}
-                <label class="fatex-text-input__icon">{{consequence.data.icon}}</label>
+                <label class="fatex-text-input__icon">{{consequence.system.icon}}</label>
             {{/if}}
 
             {{#if consequence.isCondition}}
@@ -30,12 +30,12 @@
                     class="fatex-js-consequence-checkbox fatex-checkbox fatex-checkbox--consequence"
                     data-item="{{consequence._id}}"
                 >
-                    <span class="fatex-checkbox__label">{{consequence.data.icon}}</span>
+                    <span class="fatex-checkbox__label">{{consequence.system.icon}}</span>
 
                     <input
                         class="fatex-checkbox__input"
                         type="checkbox"
-                        {{#if consequence.data.active}}checked="checked"{{/if}}
+                        {{#if consequence.system.active}}checked="checked"{{/if}}
                     >
 
                     <span class="fatex-checkbox__icon fa fa-times"></span>

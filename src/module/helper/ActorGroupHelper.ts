@@ -91,11 +91,12 @@ export function renderGroupSheetsByGroupType(groupType: groupType) {
     const openGroupSheets = Object.values(ui.windows).filter<GroupSheet>((app): app is GroupSheet => app instanceof GroupSheet);
 
     for (const groupSheet of openGroupSheets) {
-        if (groupSheet.actor.data.type != "group") {
+        if (groupSheet.actor.type != "group") {
             continue;
         }
 
-        if (groupSheet.actor.data.data.groupType == groupType) {
+        // @ts-ignore
+        if (groupSheet.actor.system.groupType == groupType) {
             groupSheet.render();
         }
     }

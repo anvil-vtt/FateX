@@ -11,7 +11,7 @@
     centerPartial="centerPartial"
 }}
 
-<div class="fatex-templates">
+<div class="fatex-templates {{#unless (gte templateActors.length 1)}}fatex-templates--min{{/unless}}">
     {{#each templateActors as |template templateIndex|}}
         <div class="fatex-template">
             <header class="fatex-headline">

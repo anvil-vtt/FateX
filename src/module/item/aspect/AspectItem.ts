@@ -22,7 +22,7 @@ export class AspectItem extends BaseItem {
         const input = $(e.currentTarget).html();
 
         // Check if the value of the input field changed
-        if (item.data.data.value === input) {
+        if (item.system.value === input) {
             return;
         }
 

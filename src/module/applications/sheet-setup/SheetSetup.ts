@@ -155,9 +155,9 @@ export class SheetSetup extends FormApplication<any, any, FateActor> {
         let items;
 
         if (type > 0) {
-            items = this.actor.data.items.filter((i) => i.type === TYPES[type]);
+            items = this.actor.items.filter((i) => i.type === TYPES[type]);
         } else {
-            items = this.actor.data.items;
+            items = this.actor.items;
         }
 
         const deletions = items.map((i) => i.id || "");

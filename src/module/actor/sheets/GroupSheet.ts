@@ -52,16 +52,19 @@ export class GroupSheet extends ActorSheet {
         };
 
         // Add actor, actor data and item
-        data.actor = duplicate(this.actor.data);
-        data.data = data.actor.data;
-        data.items = this.actor.items.map((i) => i.data);
+        data.actor = duplicate(this.actor);
+        data.data = data.actor;
+        data.items = this.actor.items.map((i) => foundry.utils.duplicate(i));
         data.items.sort((a: ItemData, b: ItemData) => (a.sort || 0) - (b.sort || 0));
 
         // Create list of available tokens in the current scene for manual groups
-        if (this.actor.data.type == "group" && this.actor.data.data.groupType == "manual") {
-            const usedTokenReferences = this.actor.items.filter((i) => i.data.type === "tokenReference" && i.data.data.scene === game.scenes?.active?.id);
+        // @ts-ignore
+        if (this.actor.type == "group" && this.actor.system.groupType == "manual") {
+            // @ts-ignore
+            const usedTokenReferences = this.actor.items.filter((i) => i.type === "tokenReference" && i.system.scene === game.scenes?.active?.id);
             const usedTokenReferencesMap: string[] = usedTokenReferences.map((token: FateItem) => {
-                return token.data.type === "tokenReference" ? token.data.data.id : "";
+                // @ts-ignore
+                return token.data.type === "tokenReference" ? token.system.id : "";
             });
 
             if (canvas.scene) {
@@ -96,9 +99,10 @@ export class GroupSheet extends ActorSheet {
      * Saves scene/encounter group order by using sortables integrated localstorage sorting
      */
     addSortableJSHandler(html: JQuery) {
-        if (this.actor.data.type != "group" || !html.find(".fatex-js-actor-group-sheets").length) return;
+        if (this.actor.type != "group" || !html.find(".fatex-js-actor-group-sheets").length) return;
 
-        if (this.actor.data.data.groupType == "manual") {
+        // @ts-ignore
+        if (this.actor.system.groupType == "manual") {
             Sortable.create(html.find(".fatex-js-actor-group-sheets")[0], {
                 animation: 150,
                 removeOnSpill: true,
@@ -158,11 +162,12 @@ export class GroupSheet extends ActorSheet {
     async _render(force = false, options = {}) {
         await super._render(force, options);
 
-        if (this.actor.data.type !== "group") {
+        if (this.actor.type !== "group") {
             return;
         }
 
-        const references = getReferencesByGroupType(this.actor.data.data.groupType, this.actor);
+        // @ts-ignore
+        const references = getReferencesByGroupType(this.actor.system.groupType, this.actor);
 
         for (const reference of references) {
             if (reference.type === "actorReference") {
@@ -260,7 +265,8 @@ export class GroupSheet extends ActorSheet {
      */
     _createActorReference(actorID: string) {
         // Check if character is already present
-        if (this.actor.items.find((i) => i.data.type === "actorReference" && i.data.data.id === actorID)) {
+        // @ts-ignore
+        if (this.actor.items.find((i) => i.data.type === "actorReference" && i.system.id === actorID)) {
             return;
         }
 
@@ -281,7 +287,7 @@ export class GroupSheet extends ActorSheet {
     }
 
     _createActorReferencesFromFolder(folder: string) {
-        const actors = game.folders?.get(folder)?.contents.filter((actor) => actor instanceof FateActor && actor.data.type === "character") || [];
+        const actors = game.folders?.get(folder)?.contents.filter((actor) => actor instanceof FateActor && actor.type === "character") || [];
 
         actors.forEach((actor) => {
             this._createActorReference(actor.id || "");
@@ -292,7 +298,8 @@ export class GroupSheet extends ActorSheet {
      * Create a new ownedItem of type tokenReference based on a given sceneID and tokenID
      */
     _createTokenReference(tokenID: string, sceneID: string): void {
-        if (this.actor.items.find((i) => i.data.type === "tokenReference" && i.data.data.id === tokenID && i.data.data.scene === sceneID)) {
+        // @ts-ignore
+        if (this.actor.items.find((i) => i.type === "tokenReference" && i.system.id === tokenID && i.system.scene === sceneID)) {
             return;
         }
 
@@ -364,7 +371,8 @@ export class GroupSheet extends ActorSheet {
             return false;
         }
 
-        if (this.actor.data.type != "group" || this.actor.data.data.groupType != "manual") {
+        // @ts-ignore
+        if (this.actor.type != "group" || this.actor.system.groupType != "manual") {
             ui.notifications?.error(game.i18n.localize("FAx.ActorGroups.Notifications.ManualOnly"));
             return false;
         }

@@ -284,7 +284,7 @@ export class Automation extends BaseComponent {
     }
 
     static checkSkillCondition(skill, condition, operator = OPERATORS.OPERATOR_GTE) {
-        const rank = skill.data.rank;
+        const rank = skill.system.rank;
 
         switch (operator) {
             case OPERATORS.OPERATOR_EQUALS:

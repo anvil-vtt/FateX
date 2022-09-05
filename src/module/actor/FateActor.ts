@@ -92,7 +92,8 @@ export class FateActor extends Actor {
         }
 
         const images: string[] = [];
-        const actorReferences = getReferencesByGroupType(this.data.data.groupType, this);
+        // @ts-ignore
+        const actorReferences = getReferencesByGroupType(this.system.groupType, this);
 
         for (let i = 0; i < 4; i++) {
             images.push(actorReferences[i] ? getImageFromReference(actorReferences[i]) : CONST.DEFAULT_TOKEN);

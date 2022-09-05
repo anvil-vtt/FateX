@@ -12,7 +12,8 @@ export class ItemSheetFate extends ItemSheet {
         let data: any = super.getData();
 
         // enforce data to ensure compatability between 0.7 and 0.8
-        data.data = this.object.data.data;
+        // @ts-ignore
+        data.data = this.object.system;
 
         // Set owner name if possible
         data.isOwnedBy = this.actor ? this.actor.name : false;
@@ -31,7 +32,7 @@ export class ItemSheetFate extends ItemSheet {
     }
 
     get template() {
-        return `systems/fatex/templates/item/${this.item.data.type}-sheet.hbs`;
+        return `systems/fatex/templates/item/${this.item.type}-sheet.hbs`;
     }
 
     activateListeners(html) {

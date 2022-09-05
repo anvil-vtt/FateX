@@ -3,12 +3,12 @@
         <div class="fatex-u-pos-relative">
             <div
                 class="fatex-js-aspect-input fatex-text-input"
-                data-placeholder="{{aspect.data.label}}"
+                data-placeholder="{{aspect.system.label}}"
                 contenteditable="true"
                 data-item-id="{{aspect._id}}"
                 data-focus-id="aspect-name-{{aspect._id}}"
             >
-                {{{aspect.data.value}}}
+                {{{aspect.system.value}}}
             </div>
 
             <div class="fatex-actions fatex-actions--item">
@@ -17,7 +17,7 @@
                 <i class="fatex-js-aspect-delete fatex-actions__icon fatex-u-delete fa fa-trash" data-item="{{aspect._id}}"></i>
             </div>
 
-            <label class="fatex-text-input__label">{{aspect.data.label}}</label>
+            <label class="fatex-text-input__label">{{aspect.system.label}}</label>
         </div>
     </div>
 {{/each}}

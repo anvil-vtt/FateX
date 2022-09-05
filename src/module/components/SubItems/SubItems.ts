@@ -23,7 +23,8 @@ export class SubItems extends BaseComponent {
     }
 
     static getSheetData(sheetData, _sheet) {
-        sheetData.subItems = game.items?.contents.filter((item) => item.data.type == "extra" && item.data.data.parentID == _sheet.document.id);
+        // @ts-ignore
+        sheetData.subItems = game.items?.contents.filter((item) => item.data.type == "extra" && item.system.parentID == _sheet.document.id);
         console.log(sheetData);
         return sheetData;
     }

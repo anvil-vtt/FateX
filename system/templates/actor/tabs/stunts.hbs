@@ -10,7 +10,7 @@
     <div class="fatex-item-grid">
         {{#each stunts as |stunt stuntIndex|}}
             <div
-                class="fatex__stunt item{{#if stunt.data.collapsed}} fatex__stunt__collapsed{{/if}}"
+                class="fatex__stunt item{{#if stunt.system.collapsed}} fatex__stunt__collapsed{{/if}}"
                 data-item-id="{{stunt._id}}"
             >
                 <header
@@ -23,17 +23,17 @@
                         <i class="fatex-js-item-sort fatex-actions__icon fa fa-sort"></i>
                         <i class="fatex-js-stunt-settings fatex-actions__icon fa fa-cog" data-item="{{stunt._id}}"></i>
                         <i class="fatex-js-stunt-delete fatex-actions__icon fatex-u-delete fa fa-trash" data-item="{{stunt._id}}"></i>
-                        <i class="fatex-js-item-collapse fatex-actions__icon fatex-actions__icon--no-hide fa fa-chevron-up{{#if stunt.data.collapsed}} fatex-actions__icon--reverse{{/if}}" data-item="{{stunt._id}}"></i>
+                        <i class="fatex-js-item-collapse fatex-actions__icon fatex-actions__icon--no-hide fa fa-chevron-up{{#if stunt.system.collapsed}} fatex-actions__icon--reverse{{/if}}" data-item="{{stunt._id}}"></i>
                     </div>
                 </header>
 
-                {{#unless stunt.data.collapsed}}
-                    {{#if stunt.data.description}}
+                {{#unless stunt.system.collapsed}}
+                    {{#if stunt.system.description}}
                         <div class="fatex-item-description">
-                            {{#if stunt.data.markdown}}
-                                {{{stunt.data.markdown}}}
+                            {{#if stunt.system.markdown}}
+                                {{{stunt.system.markdown}}}
                             {{else}}
-                                {{{stunt.data.description}}}
+                                {{{stunt.system.description}}}
                             {{/if}}
                         </div>
                     {{/if}}

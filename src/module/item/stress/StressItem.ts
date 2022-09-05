@@ -20,7 +20,7 @@ export class StressItem extends BaseItem {
     }
 
     static prepareItemData(data, item) {
-        let numberOfBoxes = parseInt(data.data.size) + Automation.getBoxAmountModifier(item);
+        let numberOfBoxes = parseInt(data.system.size) + Automation.getBoxAmountModifier(item);
 
         // Negative number of boxes is not allowed
         if (numberOfBoxes < 0) {
@@ -29,7 +29,7 @@ export class StressItem extends BaseItem {
 
         // Add boxes with prepared data
         data.boxes = [...Array(numberOfBoxes).keys()].map((i) => ({
-            isChecked: data.data.value & (2 ** i),
+            isChecked: data.system.value & (2 ** i),
             label: this._getBoxLabel(data, i),
         }));
 
@@ -44,12 +44,12 @@ export class StressItem extends BaseItem {
     }
 
     static _getBoxLabel(item, i) {
-        if (item.data.labelType === STRESS_LABEL_TYPES.CONDENSED) {
+        if (item.system.labelType === STRESS_LABEL_TYPES.CONDENSED) {
             return "1";
         }
 
-        if (item.data.labelType === STRESS_LABEL_TYPES.CUSTOM) {
-            return item.data.customLabel.split(" ")[i];
+        if (item.system.labelType === STRESS_LABEL_TYPES.CUSTOM) {
+            return item.system.customLabel.split(" ")[i];
         }
 
         return i + 1;
@@ -71,11 +71,11 @@ export class StressItem extends BaseItem {
         const index = dataset.index;
 
         if (item) {
-            const newValue = StressItem._getToggledStressValue(item.data.data.value, index);
+            const newValue = StressItem._getToggledStressValue(item.system.value, index);
 
             item.update(
                 {
-                    "data.value": newValue,
+                    "system.value": newValue,
                 },
                 {}
             );

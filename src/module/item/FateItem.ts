@@ -5,9 +5,11 @@ export class FateItem extends Item {
         super.prepareData();
 
         // Let every itemType prepare itself
-        if (this.actor?.data) {
-            if (CONFIG.FateX.itemClasses[this.data.type]) {
-                CONFIG.FateX.itemClasses[this.data.type].prepareItemData(this.data, this);
+
+        // @ts-ignore
+        if (this.actor?.system) {
+            if (CONFIG.FateX.itemClasses[this.type]) {
+                CONFIG.FateX.itemClasses[this.type].prepareItemData(this, this);
             }
         }
     }
@@ -21,8 +23,9 @@ export class FateItem extends Item {
     }
 
     private isSubitem() {
-        if (this.data.type === "extra") {
-            return this.data.data.parentID !== "";
+        if (this.type === "extra") {
+            // @ts-ignore
+            return this.system.parentID !== "";
         }
 
         return false;

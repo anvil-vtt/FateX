@@ -69,7 +69,7 @@ export class ActorGroupFeature {
     }
 
     static styleGroupEntries(html: JQuery<HTMLElement>) {
-        const groupActors = game.actors?.filter((actor) => actor.data.type === "group") || [];
+        const groupActors = game.actors?.filter((actor) => actor.type === "group") || [];
 
         groupActors.forEach((actor) => {
             // Add small group icon infront of each group name

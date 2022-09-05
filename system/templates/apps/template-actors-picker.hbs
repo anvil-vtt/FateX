@@ -11,7 +11,7 @@
     centerPartial="centerPartial"
 }}
 
-<div class="fatex-templates">
+<div class="fatex-templates {{#unless (gte templateActors.length 1)}}fatex-templates--empty{{/unless}}">
     <div class="fatex-template">
         <header class="fatex-headline">
             <h3 class="fatex-headline__text">{{localize "FAx.Template.Picker.Empty"}}</h3>

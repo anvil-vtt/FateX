@@ -12,7 +12,7 @@ export class StuntItem extends BaseItem {
         }
 
         for (const stunt of sheetData.stunts) {
-            stunt.data.description = TextEditor.enrichHTML(stunt.data.description, {});
+            stunt.system.description = TextEditor.enrichHTML(stunt.system.description, {});
         }
 
         return sheetData;
@@ -37,7 +37,7 @@ export class StuntItem extends BaseItem {
         if (item) {
             await item.update(
                 {
-                    "data.collapsed": !item.data.data.collapsed,
+                    "data.collapsed": !item.system.collapsed,
                 },
                 {}
             );

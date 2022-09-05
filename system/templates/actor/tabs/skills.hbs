@@ -18,12 +18,11 @@
             >
                 <div class="fatex-headline">
                     <h3 class="fatex-headline__text">{{skill.name}}</h3>
-
-                    {{#unless skill.data.isNeutral}}
+                    {{#unless skill.system.isNeutral}}
                         <span
-                            class="fatex-headline__icon fatex-headline__icon--skill{{#if skill.data.isNegative}} fatex-headline__icon--negative{{/if}}"
+                            class="fatex-headline__icon fatex-headline__icon--skill{{#if skill.system.isNegative}} fatex-headline__icon--negative{{/if}}"
                         >
-                            {{#if skill.data.isPositive}}+{{/if}}{{skill.data.rank}}
+                            {{#if skill.system.isPositive}}+{{/if}}{{skill.system.rank}}
                         </span>
                     {{/unless}}
 

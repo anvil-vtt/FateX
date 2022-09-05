@@ -87,9 +87,10 @@ export class CharacterSheet extends ActorSheet<CharacterSheetOptions> {
         };
 
         // Add actor, actor data and item
-        data.actor = duplicate(this.actor.data);
-        data.data = data.actor.data;
-        data.items = data.actor.items;
+        // @ts-ignore
+        data.actor = duplicate(this.actor);
+        data.data = data.actor.system;
+        data.items = this.actor.items.map((item) => item);
         data.items.sort((a: ItemData, b: ItemData) => (a.sort || 0) - (b.sort || 0));
 
         // Add filtered item lists for easier access

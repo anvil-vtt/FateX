@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.0
+* Initial 1.0 release!
+* Added support for Foundry v10
+
 ### 0.16.1
 * Wrap actor template inside picker and settings menu instead of using a horizontal scroll bar
 
