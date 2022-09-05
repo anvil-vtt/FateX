@@ -18,7 +18,8 @@ export function getReferencesByGroupType(groupType: groupType = "manual", actor?
         case "encounter":
             return []; //getReferencesFromCurrentEncounter();
         default: {
-            const items = actor?.items.filter((i) => ["actorReference", "tokenReference"].includes(i.type)).map((i) => i.data) as (ItemDataBaseProperties &
+            // @ts-ignore
+            const items = actor.items.filter((i) => ["actorReference", "tokenReference"].includes(i.type)).map((i) => i.data) as (ItemDataBaseProperties &
                 ReferenceItemData)[];
             return items.sort((a, b) => (a.sort || 0) - (b.sort || 0));
         }
@@ -79,7 +80,7 @@ export function getImageFromReference(reference: DeepPartial<ReferenceItemData>)
 
     if (reference.type === "tokenReference") {
         const scene = game.scenes?.find((scene) => scene.id === reference.data?.scene);
-        const tokenData = scene?.data?.tokens.find((token) => token.id === reference.data?.id);
+        const tokenData = scene?.tokens.find((token) => token.id === reference.data?.id);
 
         return tokenData?.data.img ?? CONST.DEFAULT_TOKEN;
     }

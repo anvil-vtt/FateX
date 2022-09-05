@@ -68,7 +68,7 @@ export class GroupSheet extends ActorSheet {
             });
 
             if (canvas.scene) {
-                data.availableTokens = canvas.scene.data.tokens.filter((token) => !token.isLinked && !usedTokenReferencesMap.includes(token.id || ""));
+                data.availableTokens = canvas.scene.tokens.filter((token) => !token.isLinked && !usedTokenReferencesMap.includes(token.id || ""));
             }
         }
 
@@ -198,7 +198,8 @@ export class GroupSheet extends ActorSheet {
             return;
         }
 
-        const actorSheet = new InlineActorSheetFate(actor as FateActor, { referenceID: reference.data.id } as CharacterSheetOptions);
+        // @ts-ignore
+        const actorSheet = new InlineActorSheetFate(actor as FateActor, { referenceID: reference._id } as CharacterSheetOptions);
         // @ts-ignore
         await actorSheet.render(true, { group: this } as Application.RenderOptions);
 
@@ -263,34 +264,38 @@ export class GroupSheet extends ActorSheet {
      * Create a new ownedItem of type ActorReference based on a given actorID
      * @param actorID
      */
-    _createActorReference(actorID: string) {
+    _createActorReference(actorUUID: string) {
+        // @ts-ignore
+        const actor = fromUuidSync(actorUUID) as FateActor;
+
         // Check if character is already present
         // @ts-ignore
-        if (this.actor.items.find((i) => i.data.type === "actorReference" && i.system.id === actorID)) {
+        if (this.actor.items.find((i) => i.type === "actorReference" && i.system.id === actor.id)) {
             return;
         }
 
         // Only allow character-type actors to be referenced
-        if (game.actors?.get(actorID)?.data.type !== "character") {
+        if (actor.type !== "character") {
             return;
         }
 
         const itemData: Partial<ItemData> = {
-            name: ["actorReference", actorID].join("-"),
+            name: ["actorReference", actor.id].join("-"),
             type: "actorReference",
             data: {
-                id: actorID,
+                id: actor.id ?? "",
             },
         };
 
-        return this.actor.createEmbeddedDocuments("Item", [itemData]);
+        this.actor.createEmbeddedDocuments("Item", [itemData]);
     }
 
-    _createActorReferencesFromFolder(folder: string) {
-        const actors = game.folders?.get(folder)?.contents.filter((actor) => actor instanceof FateActor && actor.type === "character") || [];
+    _createActorReferencesFromFolder(folderUUID: string) {
+        // @ts-ignore
+        const actors = fromUuidSync(folderUUID).contents.filter((actor) => actor instanceof FateActor && actor.type === "character") || [];
 
         actors.forEach((actor) => {
-            this._createActorReference(actor.id || "");
+            this._createActorReference(`Actor.${actor.id}` || "");
         });
     }
 
@@ -366,7 +371,8 @@ export class GroupSheet extends ActorSheet {
         let data;
 
         try {
-            data = JSON.parse(event.dataTransfer?.getData("text/plain") ?? "{}");
+            // @ts-ignore
+            data = TextEditor.getDragEventData(event);
         } catch (err) {
             return false;
         }
@@ -379,9 +385,9 @@ export class GroupSheet extends ActorSheet {
 
         switch (data.type) {
             case "Actor":
-                return this._createActorReference(data.id);
+                return this._createActorReference(data.uuid);
             case "Folder":
-                return this._createActorReferencesFromFolder(data.id);
+                return this._createActorReferencesFromFolder(data.uuid);
             case "Item":
                 return this._onDropItem(event, data);
         }

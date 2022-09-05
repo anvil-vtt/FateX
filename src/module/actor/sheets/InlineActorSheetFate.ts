@@ -5,6 +5,8 @@ export class InlineActorSheetFate extends CharacterSheet {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
             group: undefined,
+            width: "auto",
+            height: "auto",
             tabs: [
                 {
                     navSelector: ".fatex-js-tabs-navigation",

@@ -1,6 +1,11 @@
 # Changelog
 
-### 1.0
+
+### 1.0.1
+* Fixed inline character sheet size (group view)
+* 
+
+### 1.0.0
 * Initial 1.0 release!
 * Added support for Foundry v10
 
