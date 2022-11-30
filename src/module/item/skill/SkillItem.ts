@@ -121,17 +121,19 @@ export class SkillItem extends BaseItem {
         const skill = sheet.actor.items.get(dataset.itemId);
 
         if (skill) {
-            await this.rollSkill(sheet, skill);
+            await this.rollSkill(sheet, skill, e);
         }
     }
 
-    static async rollSkill(sheet, item) {
+    static async rollSkill(sheet, item, event) {
         const skill = this.prepareItemData(duplicate(item), item);
         const template = "systems/fatex/templates/chat/roll-skill.hbs";
         const rank = parseInt(skill.system.rank) || 0;
         const actor = sheet.actor;
+        const mod = event.shiftKey ? "m" : "";
+
         // @ts-ignore
-        const roll = new Roll("4dF").roll({ async: false });
+        const roll = new Roll(`4dF${mod}`).roll({ async: false });
         const dice = this.getDice(roll);
         const total = this.getTotalString((roll.total || 0) + rank);
         const ladder = this.getLadderLabel((roll.total || 0) + rank);

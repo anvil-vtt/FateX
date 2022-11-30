@@ -58,6 +58,11 @@ Hooks.once("init", async () => {
     // Register HandlebarsHelpers
     HandlebarsHelpers.registerHelpers();
 
+    // Register Fate die modifier
+    FateDie.MODIFIERS["m"] = function magicModifier(_modifier) {
+        this.results = this.results.map((result) => ({ ...result, count: result.result === 1 ? 2 : result.result }));
+    };
+
     // Unregister Core sheets
     Actors.unregisterSheet("core", ActorSheet);
     Items.unregisterSheet("core", ItemSheet);
@@ -128,16 +133,14 @@ if (module.hot) {
 
     if (module.hot.status() === "apply") {
         for (const template in _templateCache) {
-            if (Object.prototype.hasOwnProperty.call(_templateCache, template)) {
+            if (template in _templateCache) {
                 delete _templateCache[template];
             }
         }
 
         TemplatePreloader.preloadHandlebarsTemplates().then(() => {
             for (const application in ui.windows) {
-                if (Object.prototype.hasOwnProperty.call(ui.windows, application)) {
-                    ui.windows[application].render(true);
-                }
+                ui.windows[application].render(true);
             }
         });
     }
