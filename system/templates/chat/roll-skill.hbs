@@ -2,8 +2,8 @@
     <header class="fatex-headline fatex-headline--chat">
         <h3 class="fatex-headline__text">{{ skill.name }}</h3>
 
-        <span class="fatex-headline__icon{{#if skill.data.isNegative}} fatex-headline__icon--negative{{/if}}">
-            {{#if skill.data.isPositive}}+{{/if}}{{ rank }}
+        <span class="fatex-headline__icon{{#if skill.system.isNegative}} fatex-headline__icon--negative{{/if}}">
+            {{#if skill.system.isPositive}}+{{/if}}{{ rank }}
         </span>
     </header>
 
