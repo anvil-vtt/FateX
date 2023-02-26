@@ -1,4 +1,5 @@
 @use "sass:math";
+@use "sass:list";
 
 .fatex-sheet-setup {
     padding: $component-padding;
@@ -59,7 +60,7 @@
 
 .fatex-setup-actions {
     display: grid;
-    grid-template: 1fr math.div(1fr, repeat(3, 1fr));
+    grid-template: list.slash(1fr 1fr, repeat(3, 1fr));
     grid-template-areas: "x x r" "x x r";
     gap: $component-padding * 0.5;
 }

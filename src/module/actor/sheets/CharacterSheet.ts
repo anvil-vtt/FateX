@@ -5,7 +5,7 @@
 import { SheetSetup } from "../../applications/sheet-setup/SheetSetup";
 import { GroupSheet } from "./GroupSheet";
 import { ItemData } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/data.mjs/itemData";
-import { DropData } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/foundry.js/clientDocumentMixin";
+import { DropData } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/client/data/abstract/client-document";
 
 export interface CharacterSheetOptions extends ActorSheet.Options {
     type?: string;
@@ -34,6 +34,7 @@ export class CharacterSheet extends ActorSheet<CharacterSheetOptions> {
             type: "full",
         };
 
+        // @ts-ignore
         return mergeObject(super.defaultOptions, sheetOptions);
     }
 
@@ -74,7 +75,7 @@ export class CharacterSheet extends ActorSheet<CharacterSheetOptions> {
      *
      * returns {Object}
      */
-    getData() {
+    async getData() {
         // Basic fields and flags
         let data: any = {
             owner: this.actor.isOwner,
@@ -100,6 +101,9 @@ export class CharacterSheet extends ActorSheet<CharacterSheetOptions> {
         data.stunts = data.items.filter((item: ItemData) => item.type === "stunt");
         data.extras = data.items.filter((item: ItemData) => item.type === "extra");
         data.consequences = data.items.filter((item: ItemData) => item.type === "consequence");
+
+        // @ts-ignore
+        data.enrichedBiography = await TextEditor.enrichHTML(this.object.system.biography.value, { async: true });
 
         // Allow every item type to add data to the actorsheet
         for (const itemType in CONFIG.FateX.itemClasses) {

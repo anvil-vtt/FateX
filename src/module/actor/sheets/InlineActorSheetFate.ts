@@ -21,11 +21,14 @@ export class InlineActorSheetFate extends CharacterSheet {
         const data = super.getData();
 
         if (this.options.referenceID) {
+            // @ts-ignore
             data.referenceID = this.options.referenceID;
         }
 
         if (this.options.combatant) {
+            // @ts-ignore
             data.defeated = this.options.combatant.data.defeated;
+            // @ts-ignore
             data.hidden = this.options.combatant.data.hidden;
         }
 

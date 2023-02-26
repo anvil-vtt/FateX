@@ -1,11 +1,14 @@
 # Changelog
 
+### 1.1.0
+* Fixed skill modifier display in chat messages
+* Updated all npm dependencies to newest versions
+
 ### 1.0.2
 * Roll 4dFm while holding shift - a modifier which counts pluses double
 
 ### 1.0.1
 * Fixed inline character sheet size (group view)
-
 
 ### 1.0.0
 * Initial 1.0 release!
