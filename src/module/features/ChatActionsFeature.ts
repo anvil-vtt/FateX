@@ -1,5 +1,5 @@
 import { SkillItem } from "../item/skill/SkillItem";
-import { FateChatCardModel, FateRollDataModel } from "../data/FateRollDataModel";
+import { FateChatCardModel, FateRoll } from "../data/FateRollDataModel";
 
 export class ChatActionsFeature {
     static hooks() {
@@ -41,12 +41,9 @@ export class ChatActionsFeature {
             console.log("existing data", data);
             data.rolls[0].test2 = foundry.utils.randomID();
 
-            data.rolls.push(
-                // @ts-ignore
-                new FateRollDataModel({
-                    test2: foundry.utils.randomID(),
-                })
-            );
+            const newRoll = FateRoll.create("4dF");
+
+            data.rolls.push(newRoll);
         } else {
             // @ts-ignore
             data = new FateChatCardModel({
