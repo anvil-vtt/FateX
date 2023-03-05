@@ -7,7 +7,7 @@
         </span>
     </header>
 
-    <div class="fatex-roll">
+    <div class="fatex-roll" data-token-id="{{token.id}}">
         <div class="fatex-dice">
             {{#each dice as |die dieIndex|}}
                 <div>{{ die.face }}</div>
@@ -16,5 +16,9 @@
 
         <span class="fatex-roll__total">{{ total }}</span>
         <span class="fatex-roll__ladder">{{ ladder }}</span>
+
+        <div class="fatex-roll-actions">
+            <button data-action="action!">Action!</button>
+        </div>
     </div>
 </div>

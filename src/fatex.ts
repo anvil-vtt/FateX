@@ -33,6 +33,7 @@ import { ReferenceSheet } from "./module/item/references/ReferenceSheet";
 import { FateScene } from "./module/scene/FateScene";
 import { FateCombat } from "./module/combat/FateCombat";
 import { FateXSettings } from "./module/helper/Settings";
+import { ChatActionsFeature } from "./module/features/ChatActionsFeature";
 
 /* -------------------------------- */
 /*	System initialization			*/
@@ -124,6 +125,7 @@ Hooks.once("init", async () => {
 /* -------------------------------- */
 TemplateActorsFeature.hooks();
 ActorGroupFeature.hooks();
+ChatActionsFeature.hooks();
 
 /* -------------------------------- */
 /*	Webpack HMR                     */

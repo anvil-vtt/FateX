@@ -127,19 +127,14 @@ export class SkillItem extends BaseItem {
 
     static async rollSkill(sheet, item, event) {
         const skill = this.prepareItemData(duplicate(item), item);
-        const template = "systems/fatex/templates/chat/roll-skill.hbs";
         const rank = parseInt(skill.system.rank) || 0;
         const actor = sheet.actor;
         const mod = event.shiftKey ? "m" : "";
 
         // @ts-ignore
         const roll = new Roll(`4dF${mod}`).roll({ async: false });
-        const dice = this.getDice(roll);
-        const total = this.getTotalString((roll.total || 0) + rank);
-        const ladder = this.getLadderLabel((roll.total || 0) + rank);
 
-        // Prepare skill item
-        const templateData = { skill, rank, dice, total, ladder };
+        const skillCard = await this.renderSkillMessage(skill, rank, roll);
 
         const chatData = {
             user: game.user?.id,
@@ -148,14 +143,23 @@ export class SkillItem extends BaseItem {
             sound: CONFIG.sounds.dice,
             roll: roll,
             rollMode: game.settings.get("core", "rollMode") as string,
-            content: await renderTemplate(template, templateData),
-
-            flags: {
-                templateVariables: templateData,
-            },
+            content: skillCard,
+            flags: {},
         };
 
         await ChatMessage.create(chatData);
+    }
+
+    static async renderSkillMessage(skill, rank, roll) {
+        const template = "systems/fatex/templates/chat/roll-skill.hbs";
+        const dice = this.getDice(roll);
+        const total = this.getTotalString((roll.total || 0) + rank);
+        const ladder = this.getLadderLabel((roll.total || 0) + rank);
+
+        // Prepare skill item
+        const templateData = { skill, rank, dice, total, ladder };
+
+        return await renderTemplate(template, templateData);
     }
 
     static getDice(roll) {
