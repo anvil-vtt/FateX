@@ -1,0 +1,25 @@
+<div class="fatex-rollWrapper">
+    <header class="fatex-headline fatex-headline--chat">
+        <h3 class="fatex-headline__text">{{ name }}</h3>
+
+        <span class="fatex-headline__icon{{#if (eq rankStatus "negative")}} fatex-headline__icon--negative{{/if}}">
+                {{#if (eq rankStatus "positive")}}+{{/if}}{{ rank }}
+            </span>
+    </header>
+
+    <div class="fatex-roll" data-token-id="{{token.id}}">
+        <div class="fatex-dice">
+            {{#each symbols as |symbol|}}
+                <div>{{symbol}}</div>
+            {{/each}}
+        </div>
+
+        <span class="fatex-roll__total">{{ totalString }}</span>
+        <span class="fatex-roll__ladder">{{ ladder }}</span>
+
+        <div class="fatex-roll-actions">
+            <button data-action="reroll">Reroll</button>
+            <button data-action="increase">+2</button>
+        </div>
+    </div>
+</div>

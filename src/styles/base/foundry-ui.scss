@@ -11,3 +11,7 @@
     background: $sheet-background;
     color: var(--fatex-primary-text-color, $primary-text-color);
 }
+
+#chat-log .message.whisper {
+    opacity: 0.8;
+}

@@ -58,6 +58,9 @@
                 "EmptyActor": "It looks like your character doesn't have any content yet. You can change this in the <strong>Edit Mode</strong> or the <strong>Sheet Setup</strong>. The buttons to toggle the edit mode or open the setup can be found in the header bar."
             }
         },
+        "ChatCard": {
+            "MessageNotFound": "Message not found - can't update the chosen message."
+        },
         "Item": {
             "Stress": {
                 "Name": "Stress track label",

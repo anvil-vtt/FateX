@@ -83,7 +83,8 @@ export class CharacterSheet extends ActorSheet<CharacterSheetOptions> {
             editable: this.isEditable,
             isTemplateActor: this.actor.isTemplateActor,
             isEmptyActor: !this.actor.items.size,
-            isToken: this.token && !this.token.data.actorLink,
+            // @ts-ignore
+            isToken: this.token && !this.token.actorLink,
             config: CONFIG.FateX,
         };
 

@@ -1,4 +1,5 @@
 import { BaseItem } from "../BaseItem";
+import { FateChatCard, FateRoll } from "../../chat/FateChat";
 
 type sortBy = "name" | "rank" | "reverse";
 
@@ -20,7 +21,9 @@ export class SkillItem extends BaseItem {
 
         html.find(`.fatex-js-${this.documentName}-sort-rank`).click(() => this._onSkillSort.call(this, sheet, "rank"));
         html.find(`.fatex-js-${this.documentName}-sort-name`).click(() => this._onSkillSort.call(this, sheet, "name"));
-        html.find(`.fatex-js-${this.documentName}-sort-reverse`).click(() => this._onSkillSort.call(this, sheet, "reverse"));
+        html.find(`.fatex-js-${this.documentName}-sort-reverse`).click(() =>
+            this._onSkillSort.call(this, sheet, "reverse")
+        );
     }
 
     /**
@@ -127,71 +130,11 @@ export class SkillItem extends BaseItem {
 
     static async rollSkill(sheet, item, event) {
         const skill = this.prepareItemData(duplicate(item), item);
-        const rank = parseInt(skill.system.rank) || 0;
         const actor = sheet.actor;
-        const mod = event.shiftKey ? "m" : "";
 
-        // @ts-ignore
-        const roll = new Roll(`4dF${mod}`).roll({ async: false });
+        const fateRoll = await FateRoll.createFromSkill(skill, { magic: event.shiftKey }).roll();
+        const fateChatCard = FateChatCard.create(actor, [fateRoll]);
 
-        const skillCard = await this.renderSkillMessage(skill, rank, roll);
-
-        const chatData = {
-            user: game.user?.id,
-            speaker: ChatMessage.getSpeaker({ actor: actor }),
-            type: CONST.CHAT_MESSAGE_TYPES.ROLL,
-            sound: CONFIG.sounds.dice,
-            roll: roll,
-            rollMode: game.settings.get("core", "rollMode") as string,
-            content: skillCard,
-            flags: {},
-        };
-
-        await ChatMessage.create(chatData);
-    }
-
-    static async renderSkillMessage(skill, rank, roll) {
-        const template = "systems/fatex/templates/chat/roll-skill.hbs";
-        const dice = this.getDice(roll);
-        const total = this.getTotalString((roll.total || 0) + rank);
-        const ladder = this.getLadderLabel((roll.total || 0) + rank);
-
-        // Prepare skill item
-        const templateData = { skill, rank, dice, total, ladder };
-
-        return await renderTemplate(template, templateData);
-    }
-
-    static getDice(roll) {
-        const rolls = roll.terms[0].results;
-
-        return rolls.map((rolledDie) => ({
-            value: rolledDie.roll,
-            face: this.getDieFace(rolledDie.result),
-        }));
-    }
-
-    static getDieFace(die) {
-        if (die > 0) return "+";
-        if (die < 0) return "-";
-
-        return "0";
-    }
-
-    static getLadderLabel(value) {
-        if (value > 8) value = 8;
-        if (value < -4) value = -4;
-
-        return game.i18n.localize("FAx.Global.Ladder." + this.getTotalString(value));
-    }
-
-    static getLadderPrefix(value) {
-        if (value < 0) return "-";
-
-        return "+";
-    }
-
-    static getTotalString(total) {
-        return this.getLadderPrefix(total).concat(Math.abs(total).toString());
+        await fateChatCard.sendToChat();
     }
 }
