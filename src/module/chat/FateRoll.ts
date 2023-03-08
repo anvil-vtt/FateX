@@ -1,11 +1,11 @@
 // @ts-nocheck
 
-import { FateChatCardModel, FateRollDataModel, FateRollHistoryDataModel } from "../data/FateRollDataModel";
-import { FateActor } from "../actor/FateActor";
+import { FateRollDataModel } from "../data/FateRollDataModel";
 import { SkillItemData } from "../item/ItemTypes";
+import { ItemDataProperties } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/data.mjs/itemData";
 
 export class FateRoll extends FateRollDataModel {
-    static createFromSkill(skill: SkillItemData, { magic = false } = {}) {
+    static createFromSkill(skill: SkillItemData & ItemDataProperties, { magic = false } = {}) {
         const options = { magic };
 
         return new FateRoll({
@@ -74,64 +74,5 @@ export class FateRoll extends FateRollDataModel {
         const template = "systems/fatex/templates/chat/roll.hbs";
 
         return await renderTemplate(template, this);
-    }
-}
-
-export class FateRollHistory extends FateRollHistoryDataModel {}
-
-export class FateChatCard extends FateChatCardModel {
-    static create(actor: FateActor, rolls: FateRoll[], options = {}) {
-        const speaker = ChatMessage.getSpeaker({ actor });
-
-        return new FateChatCard({
-            speaker,
-            rolls,
-            options,
-        });
-    }
-
-    async sendToChat() {
-        const content = await this.render();
-
-        const chatData = {
-            user: game.user?.id,
-            speaker: this.speaker,
-            type: CONST.CHAT_MESSAGE_TYPES.ROLL,
-            rollMode: game.settings.get("core", "rollMode"),
-            content: content,
-            flags: {
-                fatex: {
-                    chatCard: this.toObject(false),
-                },
-            },
-        };
-
-        const message = await ChatMessage.create(chatData);
-
-        this.updateSource({ messageId: message.id });
-        await this.updateMessage();
-    }
-
-    async updateMessage() {
-        const message = this.getMessage();
-
-        if (!message) {
-            ui.notifications.warn(game.i18n.localize("FAx.ChatCard.MessageNotFound"));
-            return;
-        }
-
-        const content = await this.render();
-        return await message.update({ content, flags: { fatex: { chatCard: this.toObject(false) } } });
-    }
-
-    private getMessage() {
-        return game.messages?.get(this.messageId);
-    }
-
-    async render() {
-        const template = "systems/fatex/templates/chat/chat-card.hbs";
-        const rolls = await Promise.all(this.rolls.map((roll) => roll.render()));
-
-        return await renderTemplate(template, { rolls });
     }
 }

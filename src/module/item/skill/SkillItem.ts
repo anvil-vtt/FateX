@@ -1,5 +1,6 @@
 import { BaseItem } from "../BaseItem";
-import { FateChatCard, FateRoll } from "../../chat/FateChat";
+import { FateChatCard } from "../../chat/FateChatCard";
+import { FateRoll } from "../../chat/FateRoll";
 
 type sortBy = "name" | "rank" | "reverse";
 

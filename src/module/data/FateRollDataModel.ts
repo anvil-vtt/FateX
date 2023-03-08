@@ -1,5 +1,6 @@
 // @ts-nocheck
-import { FateRoll } from "../chat/FateChat";
+
+import { FateRollHistoryDataModel } from "./FateRollHistoryDataModel";
 
 export class FateRollDataModel extends foundry.abstract.DataModel {
     static defineSchema() {
@@ -29,71 +30,4 @@ export class FateRollDataModel extends foundry.abstract.DataModel {
 
         return super.migrateData(source);
     }*/
-}
-
-export class FateRollHistoryDataModel extends foundry.abstract.DataModel {
-    static defineSchema() {
-        return {
-            type: new foundry.data.fields.StringField({
-                required: true,
-                blank: false,
-                choices: ["reroll", "increase"],
-            }),
-        };
-    }
-}
-
-export class FateRollsArrayField extends foundry.data.fields.ArrayField {
-    _validateSpecial(value) {
-        super._validateSpecial(value);
-
-        if (value.length === 0) {
-            throw new Error("Rolls array must contain at least one roll");
-        }
-    }
-}
-
-export class FateChatCardModel extends foundry.abstract.DataModel {
-    static defineSchema() {
-        return {
-            messageId: new foundry.data.fields.StringField({ required: false, blank: true }),
-            speaker: new foundry.data.fields.ObjectField({ required: true, blank: false }),
-            rolls: new FateRollsArrayField(
-                new foundry.data.fields.EmbeddedDataField(FateRoll, {
-                    required: true,
-                    nullable: false,
-                }),
-                {
-                    required: true,
-                    blank: false,
-                    nullable: false,
-                }
-            ),
-            options: new foundry.data.fields.ObjectField({
-                required: false,
-                nullable: true,
-            }),
-        };
-    }
-
-    static migrateData(source) {
-        const schema = this.schema;
-
-        for (const [name, value] of Object.entries(source)) {
-            const field = schema.get(name);
-
-            if (!field) continue;
-
-            if (field instanceof foundry.data.fields.EmbeddedDataField) {
-                source[name] = field.model.migrateDataSafe(value || {});
-            } else if (
-                field instanceof foundry.data.fields.ArrayField &&
-                field.element instanceof foundry.data.fields.EmbeddedDataField
-            ) {
-                (value || []).forEach((d) => field.element.model.migrateDataSafe(d));
-            }
-        }
-
-        return source;
-    }
 }
