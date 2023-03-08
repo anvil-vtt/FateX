@@ -28,10 +28,10 @@ export class FateRoll extends FateRollDataModel {
     }
 
     async reroll(_options = {}) {
-        await this.roll();
-
         const history = foundry.utils.deepClone(this.history);
-        history.push({ type: "reroll" });
+        history.push({ type: "reroll", user: game.user.name, previousRoll: this.faces });
+
+        await this.roll();
 
         this.updateSource({ history: history });
 
@@ -40,7 +40,7 @@ export class FateRoll extends FateRollDataModel {
 
     increase(_options = {}) {
         const history = foundry.utils.deepClone(this.history);
-        history.push({ type: "increase" });
+        history.push({ type: "increase", user: game.user.name });
 
         this.updateSource({ bonus: this.bonus + 2, history: history });
 
