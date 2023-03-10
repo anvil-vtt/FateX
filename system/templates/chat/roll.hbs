@@ -14,8 +14,19 @@
             {{/each}}
         </div>
 
-        <span class="fatex-roll__total">{{ totalString }}</span>
-        <span class="fatex-roll__ladder">{{ ladder }}</span>
+        <div class="fatex-result">
+            <span class="fatex-roll__total">{{ totalString }}</span>
+            <span class="fatex-roll__ladder">{{ ladder }}</span>
+            {{#if history}}
+                <div class="fatex-roll__history">
+                    {{#each history as |historyEntry|}}
+                        <div class="fatex-roll__history__entry">
+                            {{historyEntry.user}} {{historyEntry.message}}
+                        </div>
+                    {{/each}}
+                </div>
+            {{/if}}
+        </div>
 
         <div class="fatex-roll-actions">
             <button data-action="reroll"><i class="fas fa-arrows-rotate"></i></button>

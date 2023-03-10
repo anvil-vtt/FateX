@@ -16,35 +16,42 @@ export class FateRoll extends FateRollDataModel {
         });
     }
 
-    async roll(_options = {}) {
+    async roll(userId = "") {
         const roll = new Roll(`4dF${this.options.magic && "m"}`).roll({ async: false });
-        this.updateSource({ faces: roll.terms[0].results.map((r) => r.result) });
+        this.updateSource({ faces: roll.terms[0].results.map((r) => r.count ?? r.result) });
 
         if (game.modules.get("dice-so-nice")?.active) {
-            await game.dice3d.showForRoll(roll, game.user, true);
+            const user = userId ? game.users.get(userId) : game.user;
+            await game.dice3d.showForRoll(roll, user, true);
         }
 
         return this;
     }
 
-    async reroll(_options = {}) {
-        const history = foundry.utils.deepClone(this.history);
-        history.push({ type: "reroll", user: game.user.name, previousRoll: this.faces });
-
-        await this.roll();
+    async reroll(userId = "") {
+        const history = this.addHistoryEntry(userId, { type: "reroll", previousRoll: this.faces });
+        await this.roll(userId);
 
         this.updateSource({ history: history });
 
         return this;
     }
 
-    increase(_options = {}) {
-        const history = foundry.utils.deepClone(this.history);
-        history.push({ type: "increase", user: game.user.name });
+    increase(userId = "") {
+        const history = this.addHistoryEntry(userId, { type: "increase" });
 
         this.updateSource({ bonus: this.bonus + 2, history: history });
 
         return this;
+    }
+
+    private addHistoryEntry(userId: string, data) {
+        const history = foundry.utils.deepClone(this.history);
+        const user = userId ? game.users.get(userId) : game.user;
+        const entry = { user: user.name, ...data };
+
+        history.push(entry);
+        return history;
     }
 
     get total() {
@@ -70,7 +77,7 @@ export class FateRoll extends FateRollDataModel {
         return this.rank >= 0 ? "positive" : "negative";
     }
 
-    async render(_options = {}) {
+    async render() {
         const template = "systems/fatex/templates/chat/roll.hbs";
 
         return await renderTemplate(template, this);

@@ -59,7 +59,12 @@
             }
         },
         "ChatCard": {
-            "MessageNotFound": "Message not found - can't update the chosen message."
+            "MessageNotFound": "Message not found - can't update the chosen message.",
+            "NoGMConnected": "A GM must be connected to the game to update the chosen message.",
+            "History": {
+                "Reroll": "rerolled (was {previous})",
+                "Increase": "added +2"
+            }
         },
         "Item": {
             "Stress": {

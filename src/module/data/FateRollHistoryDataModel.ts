@@ -15,4 +15,18 @@ export class FateRollHistoryDataModel extends foundry.abstract.DataModel {
             ),
         };
     }
+
+    get previousRollTotal() {
+        const total = this.previousRoll.reduce((a, b) => a + b, 0);
+        return total >= 0 ? `+${total}` : total;
+    }
+
+    get message() {
+        switch (this.type) {
+            case "reroll":
+                return game.i18n.format("FAx.ChatCard.History.Reroll", { previous: this.previousRollTotal });
+            case "increase":
+                return game.i18n.localize("FAx.ChatCard.History.Increase");
+        }
+    }
 }

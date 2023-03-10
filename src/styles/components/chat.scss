@@ -18,10 +18,19 @@
         transform: scale(1);
     }
     50% {
-        transform: scale(1.2);
+        transform: scale(1.3);
     }
     100% {
         transform: scale(1);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
     }
 }
 
@@ -31,12 +40,55 @@
     align-items: center;
     color: $fatex-primary-color;
 
-    .fatex-chat__roll--increased & {
+    .fatex-result {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+
+        &:hover {
+            .fatex-roll__history {
+                display: block;
+            }
+        }
+    }
+
+    &__history {
+        display: none;
+        position: absolute;
+        bottom: 100%;
+        text-align: left;
+        padding-bottom: $component-padding;
+        font-size: 10px;
+        color: white;
+        z-index: 200;
+
+        &:hover {
+            display: block;
+        }
+
+        div {
+            white-space: nowrap;
+            padding: 5px 10px;
+            background: rgba(0, 0, 0, 0.9);
+        }
+    }
+
+    .fatex-chat__roll--totalChanged & {
         &__total {
             animation-name: grow-shrink;
             animation-duration: 1s;
             animation-iteration-count: 1;
             animation-timing-function: ease-in-out;
+        }
+    }
+
+    .fatex-chat__roll--reroll & {
+        .fatex-dice div {
+            animation-name: spin;
+            animation-duration: 1s;
+            animation-iteration-count: 5;
+            animation-timing-function: linear;
         }
     }
 
@@ -52,12 +104,8 @@
 
 .fatex-roll-actions {
     display: flex;
-    position: absolute;
-    left: 3px;
-    top: 50%;
-    transform: translateY(-50%);
-    flex-direction: column;
     gap: $component-padding;
+    margin: $component-padding;
     text-align: center;
 
     button {
@@ -81,6 +129,10 @@
         &[data-action="increase"] {
             text-indent: -2px;
         }
+
+        &:disabled {
+            opacity: 0.5;
+        }
     }
 }
 
@@ -90,4 +142,10 @@
     width: 50%;
     margin-bottom: $component-padding * 2;
     font-family: "Fate Icons", sans-serif;
+
+    div {
+        width: 24px;
+        height: 24px;
+        text-align: center;
+    }
 }
