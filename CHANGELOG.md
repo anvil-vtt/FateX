@@ -3,6 +3,7 @@
 ### 1.1.0
 * Fixed skill modifier display in chat messages
 * Updated all npm dependencies to newest versions
+* Added action buttons to new chat messages (+2 and reroll)
 
 ### 1.0.2
 * Roll 4dFm while holding shift - a modifier which counts pluses double
