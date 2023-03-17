@@ -16,14 +16,16 @@ export class MagicSystem {
                 type: Boolean,
             });
 
-            CONFIG.Dice.terms["m"] = MagicDie;
+            if (game.settings.get("fatex", "guildCodexMagicSystemEnabled")) {
+                CONFIG.Dice.terms["m"] = MagicDie;
 
-            FateDie.MODIFIERS["e"] = function magicModifier(_modifier) {
-                this.results = this.results.map((result) => ({
-                    ...result,
-                    count: result.result === 1 ? 2 : result.result,
-                }));
-            };
+                FateDie.MODIFIERS["e"] = function magicModifier(_modifier) {
+                    this.results = this.results.map((result) => ({
+                        ...result,
+                        count: result.result === 1 ? 2 : result.result,
+                    }));
+                };
+            }
         });
 
         Hooks.once("diceSoNiceReady", (dice3d) => {
