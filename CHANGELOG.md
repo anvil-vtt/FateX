@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.1.1
+* Automatically updates the prototype token name when an actors name is changed (if both were identical). Can be disabled in the system settings.
+
 ### 1.1.0
 * Fixed skill modifier display in chat messages
 * Updated all npm dependencies to newest versions

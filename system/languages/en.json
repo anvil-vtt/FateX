@@ -215,8 +215,8 @@
                 }
             },
             "autoUpdateTokenName": {
-                "Name": "Auto Update Token Name",
-                "Hint": "Automatically update prototype token name when the actor name is changed"
+                "Name": "Automatically update prototype token name",
+                "Hint": "Automatically updates the prototype token name when an actors name is changed (if both were identical)."
             }
         },
         "Template": {
