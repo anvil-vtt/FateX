@@ -115,7 +115,7 @@
                 "Options": {
                     "Headline": "Options",
                     "IsMagicSkill": "Magic Skill",
-                    "IsMagicSkillHelp": "If checked, this skills rank will be used to determine the number of magic dice to roll."
+                    "IsMagicSkillHelp": "If checked, this skills rank will be used to determine the number of magic dice to roll. Hold shift while rolling a skill to activate this feature."
                 },
                 "Roll": {
                     "MultipleMagicSkills": "Multiple magic skills found ({skills}). Using the first one to roll.",

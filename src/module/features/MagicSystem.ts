@@ -9,7 +9,7 @@ export class MagicSystem {
                 scope: "world",
                 config: true,
                 default: false,
-                reload: true,
+                requiresReload: true,
                 type: Boolean,
             });
         });
