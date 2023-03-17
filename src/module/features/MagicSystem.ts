@@ -32,7 +32,7 @@ export class MagicSystem {
             dice3d.addDicePreset(
                 {
                     type: "dm",
-                    labels: ["−", " ", "+"],
+                    labels: ["−", " ", "+", "−", " ", "+"],
                     values: { min: -1, max: 1 },
                     fontScale: 2,
                     system: "standard",
