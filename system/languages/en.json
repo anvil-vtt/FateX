@@ -213,6 +213,10 @@
                     "Name": "Enable alpha features",
                     "Hint": "This setting enables experimental FateX alpha features. Alpha features are subject to change."
                 }
+            },
+            "autoUpdateTokenName": {
+                "Name": "Auto Update Token Name",
+                "Hint": "Automatically update prototype token name when the actor name is changed"
             }
         },
         "Template": {
