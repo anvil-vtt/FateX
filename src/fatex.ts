@@ -35,6 +35,7 @@ import { FateCombat } from "./module/combat/FateCombat";
 import { FateXSettings } from "./module/helper/Settings";
 import { ChatActionsFeature } from "./module/features/ChatActionsFeature";
 import { PrototypeTokenNameSyncFeature } from "./module/features/PrototypeTokenNameSyncFeature";
+import { MagicSystem } from "./module/features/MagicSystem";
 
 /* -------------------------------- */
 /*	System initialization			*/
@@ -128,6 +129,7 @@ TemplateActorsFeature.hooks();
 ActorGroupFeature.hooks();
 ChatActionsFeature.hooks();
 PrototypeTokenNameSyncFeature.hooks();
+MagicSystem.hooks();
 
 /* -------------------------------- */
 /*	Webpack HMR                     */

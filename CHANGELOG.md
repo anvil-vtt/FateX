@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.2.0
+* Added support for the Guild Codex magic system (disabled by default)
+
 ### 1.1.1
 * Automatically updates the prototype token name when an actors name is changed (if both were identical). Can be disabled in the system settings.
 

@@ -14,6 +14,7 @@ export class ItemSheetFate extends ItemSheet {
         // enforce data to ensure compatability between 0.7 and 0.8
         // @ts-ignore
         data.data = this.object.system;
+        data.system = data.data;
 
         // Set owner name if possible
         data.isOwnedBy = this.actor ? this.actor.name : false;

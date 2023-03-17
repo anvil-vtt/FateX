@@ -147,5 +147,9 @@
         width: 24px;
         height: 24px;
         text-align: center;
+
+        &.fatex-dice__magic_die {
+            color: $magic-color;
+        }
     }
 }

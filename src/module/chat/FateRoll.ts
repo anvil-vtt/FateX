@@ -8,6 +8,14 @@ export class FateRoll extends FateRollDataModel {
     static createFromSkill(skill: SkillItemData & ItemDataProperties, { magic = false } = {}) {
         const options = { magic };
 
+        if (game.settings.get("fatex", "guildCodexMagicSystemEnabled") && magic) {
+            options["magicCount"] = this.determineMagicCount(skill);
+
+            if (options["magicCount"] === false) {
+                return false;
+            }
+        }
+
         return new FateRoll({
             _id: foundry.utils.randomID(),
             name: skill.name,
@@ -17,12 +25,44 @@ export class FateRoll extends FateRollDataModel {
     }
 
     async roll(userId = "") {
-        const roll = new Roll(`4dF${this.options.magic && "m"}`).roll({ async: false });
+        if (game.settings.get("fatex", "guildCodexMagicSystemEnabled")) {
+            if (this.options.magic && this.options.magicCount > 0) {
+                return this.rollMagic(userId, this.options.magicCount);
+            }
+        }
+
+        const roll = new Roll(`4dF`).roll({ async: false });
         this.updateSource({ faces: roll.terms[0].results.map((r) => r.count ?? r.result) });
 
         if (game.modules.get("dice-so-nice")?.active) {
             const user = userId ? game.users.get(userId) : game.user;
             await game.dice3d.showForRoll(roll, user, true);
+        }
+
+        return this;
+    }
+
+    async rollMagic(userId = "", magicCount: number) {
+        const normalCount = 4 - magicCount;
+
+        const magicRoll = new Roll(`${this.options.magicCount}dFm`).roll({ async: false });
+        const normalRoll = new Roll(`${normalCount}dF`).roll({ async: false });
+
+        this.updateSource({
+            faces: [...magicRoll.terms[0].results, ...normalRoll.terms[0].results].map((r) => r.count ?? r.result),
+        });
+
+        magicRoll.terms[0].options.sfx = {
+            specialEffect: "PlayAnimationParticleSparkles",
+        };
+
+        if (game.modules.get("dice-so-nice")?.active) {
+            const user = userId ? game.users.get(userId) : game.user;
+
+            await Promise.all([
+                game.dice3d.showForRoll(magicRoll, user, true),
+                game.dice3d.showForRoll(normalRoll, user, true),
+            ]);
         }
 
         return this;
@@ -81,5 +121,31 @@ export class FateRoll extends FateRollDataModel {
         const template = "systems/fatex/templates/chat/roll.hbs";
 
         return await renderTemplate(template, this);
+    }
+
+    static determineMagicCount(skill: SkillItemData & ItemDataProperties) {
+        const magicSkills = skill.parent.items.filter((i) => i.type === "skill" && i.system.options.isMagicSkill);
+
+        if (magicSkills.length === 0) {
+            ui.notifications.error(game.i18n.localize("FAx.Item.Skill.Roll.NoMagicSkills"));
+            return false;
+        }
+
+        if (magicSkills.length > 1) {
+            ui.notifications.warn(
+                game.i18n.format("FAx.Item.Skill.Roll.MultipleMagicSkills", {
+                    skills: magicSkills.map((s) => s.name).join(", "),
+                })
+            );
+        }
+
+        const magicRank = Math.clamped(Number(magicSkills[0].system.rank ?? 0), 0, 4);
+
+        if (magicRank < 1) {
+            ui.notifications.error(game.i18n.localize("FAx.Item.Skill.Roll.MagicSkillTooLow"));
+            return false;
+        }
+
+        return magicRank;
     }
 }

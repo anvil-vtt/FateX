@@ -129,13 +129,20 @@ export class SkillItem extends BaseItem {
         }
     }
 
-    static async rollSkill(sheet, item, event) {
-        const skill = this.prepareItemData(duplicate(item), item);
+    static async rollSkill(sheet, skill, event) {
         const actor = sheet.actor;
 
-        const fateRoll = await FateRoll.createFromSkill(skill, { magic: event.shiftKey }).roll();
-        const fateChatCard = FateChatCard.create(actor, [fateRoll]);
+        const fateRoll = FateRoll.createFromSkill(skill, {
+            magic: event.shiftKey,
+        });
 
+        if (!fateRoll) {
+            return;
+        }
+
+        await fateRoll.roll();
+
+        const fateChatCard = FateChatCard.create(actor, [fateRoll]);
         await fateChatCard.sendToChat();
     }
 }

@@ -111,7 +111,17 @@
                 "EditItem": "Edit Skill",
                 "Rank": "Rank",
                 "Description": "Description",
-                "DescriptionHelp": "Is only displayed when sending to chat"
+                "DescriptionHelp": "Is only displayed when sending to chat",
+                "Options": {
+                    "Headline": "Options",
+                    "IsMagicSkill": "Magic Skill",
+                    "IsMagicSkillHelp": "If checked, this skills rank will be used to determine the number of magic dice to roll."
+                },
+                "Roll": {
+                    "MultipleMagicSkills": "Multiple magic skills found ({skills}). Using the first one to roll.",
+                    "NoMagicSkills": "No magic skill found. Please add a magic skill to your character sheet and roll again.",
+                    "MagicSkillTooLow": "The magic skill rank is zero or less. Please increase the rank to roll magic dice."
+                }
             },
             "Stunt": {
                 "Name": "Stunt title",
@@ -217,6 +227,10 @@
             "autoUpdateTokenName": {
                 "Name": "Automatically update prototype token name",
                 "Hint": "Automatically updates the prototype token name when an actors name is changed (if both were identical)."
+            },
+            "magicSystemEnabled": {
+                "Name": "Enable the magic system from Guild Codex",
+                "Hint": "This will add a magic skill to the character sheet and allow you to use magic dice."
             }
         },
         "Template": {

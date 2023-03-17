@@ -6,6 +6,27 @@
         min-height: 70px;
     }
 
+    &__checkbox {
+        label {
+            display: flex;
+            gap: calc($component-padding / 2);
+
+            div {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+
+        &__name {
+            font-weight: bold;
+            padding: 5px 0;
+        }
+
+        &__help {
+            font-size: 12px;
+        }
+    }
+
     &__editor-wrapper {
         height: 250px;
         overflow: hidden;

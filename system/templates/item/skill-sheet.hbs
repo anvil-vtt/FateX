@@ -15,6 +15,24 @@
     radioItems = availableRanks
 }}
 
+{{#if magicSystemEnabled}}
+    <div class="fatex-setting">
+        <header class="fatex-headline">
+            <h3 class="fatex-headline__text">{{localize "FAx.Item.Skill.Options.Headline"}}</h3>
+        </header>
+
+        <div class="fatex-setting__checkbox">
+            <label>
+                <input type="checkbox" data-dtype="Boolean" name="system.options.isMagicSkill" {{checked system.options.isMagicSkill}}/>
+                <div>
+                    <span class="fatex-setting__checkbox__name">{{localize "FAx.Item.Skill.Options.IsMagicSkill"}}</span>
+                    <span class="fatex-setting__checkbox__help">{{localize "FAx.Item.Skill.Options.IsMagicSkillHelp"}}</span>
+                </div>
+            </label>
+        </div>
+    </div>
+{{/if}}
+
 {{> "systems/fatex/templates/item/settings/setting-editor.hbs"
     headline = "FAx.Item.Skill.Description"
     fieldName = "data.description"

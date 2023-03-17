@@ -54,7 +54,10 @@
         },
         "skill": {
             "templates": ["base"],
-            "rank": 0
+            "rank": 0,
+            "options": {
+                "isMagicSkill": false
+            }
         },
         "stunt": {
             "templates": ["base"],
