@@ -1,5 +1,4 @@
 // @ts-nocheck
-
 export class FateRollsArrayField extends foundry.data.fields.ArrayField {
     _validateSpecial(value) {
         super._validateSpecial(value);

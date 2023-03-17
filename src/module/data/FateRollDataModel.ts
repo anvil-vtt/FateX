@@ -1,5 +1,4 @@
 // @ts-nocheck
-
 import { FateRollHistoryDataModel } from "./FateRollHistoryDataModel";
 
 export class FateRollDataModel extends foundry.abstract.DataModel {

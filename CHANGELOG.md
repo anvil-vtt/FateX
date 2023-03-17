@@ -1,7 +1,13 @@
 # Changelog
 
+### 1.2.2
+* Added option to change the color for magic dice
+
+### 1.2.1
+* Fixed some wording and added a reload button after changing specific system settings
+
 ### 1.2.0
-* Added support for the Guild Codex magic system (disabled by default)
+* Added support for the GuildCodex magic system (disabled by default)
 
 ### 1.1.1
 * Automatically updates the prototype token name when an actors name is changed (if both were identical). Can be disabled in the system settings.

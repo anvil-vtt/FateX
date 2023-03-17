@@ -1,5 +1,4 @@
 // @ts-nocheck
-
 import { FateActor } from "../actor/FateActor";
 import { FateRoll } from "./FateRoll";
 import { FateChatCardDataModel } from "../data/FateChatCardDataModel";

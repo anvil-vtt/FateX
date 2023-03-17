@@ -1,5 +1,4 @@
 // @ts-nocheck
-
 export class PrototypeTokenNameSyncFeature {
     static hooks() {
         Hooks.once("init", () => {

@@ -1,5 +1,4 @@
 // @ts-nocheck
-
 import { FateRollsArrayField } from "./fields/FateRollsArrayField";
 import { FateRoll } from "../chat/FateRoll";
 

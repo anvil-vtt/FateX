@@ -229,7 +229,7 @@
                 "Hint": "Automatically updates the prototype token name when an actors name is changed (if both were identical)."
             },
             "magicSystemEnabled": {
-                "Name": "Enable the magic system from Guild Codex",
+                "Name": "Enable the magic system from GuildCodex",
                 "Hint": "This will add a magic skill to the character sheet and allow you to use magic dice."
             }
         },

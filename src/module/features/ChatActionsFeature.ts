@@ -1,5 +1,4 @@
 // @ts-nocheck
-
 import { FateChatCard } from "../chat/FateChatCard";
 
 export class ChatActionsFeature {

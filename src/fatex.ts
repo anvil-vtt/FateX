@@ -61,11 +61,6 @@ Hooks.once("init", async () => {
     // Register HandlebarsHelpers
     HandlebarsHelpers.registerHelpers();
 
-    // Register Fate die modifier
-    FateDie.MODIFIERS["m"] = function magicModifier(_modifier) {
-        this.results = this.results.map((result) => ({ ...result, count: result.result === 1 ? 2 : result.result }));
-    };
-
     // Unregister Core sheets
     Actors.unregisterSheet("core", ActorSheet);
     Items.unregisterSheet("core", ItemSheet);

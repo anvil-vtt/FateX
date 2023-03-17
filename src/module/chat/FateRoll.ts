@@ -1,5 +1,4 @@
 // @ts-nocheck
-
 import { FateRollDataModel } from "../data/FateRollDataModel";
 import { SkillItemData } from "../item/ItemTypes";
 import { ItemDataProperties } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/data.mjs/itemData";
@@ -43,10 +42,8 @@ export class FateRoll extends FateRollDataModel {
     }
 
     async rollMagic(userId = "", magicCount: number) {
-        const normalCount = 4 - magicCount;
-
-        const magicRoll = new Roll(`${this.options.magicCount}dFm`).roll({ async: false });
-        const normalRoll = new Roll(`${normalCount}dF`).roll({ async: false });
+        const magicRoll = new Roll(`${magicCount}dMe`).roll({ async: false });
+        const normalRoll = new Roll(`${4 - magicCount}dF`).roll({ async: false });
 
         this.updateSource({
             faces: [...magicRoll.terms[0].results, ...normalRoll.terms[0].results].map((r) => r.count ?? r.result),

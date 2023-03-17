@@ -2,7 +2,7 @@
     "id": "fatex",
     "title": "FateX - Fate Extended",
     "description": "An extended implementation of Fate and its derivative systems",
-    "version": "1.2.1",
+    "version": "1.2.2",
     "authors": [
         {
             "name": "Patrick Bauer",
