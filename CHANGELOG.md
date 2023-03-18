@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.2.4
+* Allow magic and normal dice to be rolled at the same time
+
 ### 1.2.2
 * Added option to change the color for magic dice
 

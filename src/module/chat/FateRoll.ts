@@ -42,24 +42,19 @@ export class FateRoll extends FateRollDataModel {
     }
 
     async rollMagic(userId = "", magicCount: number) {
-        const magicRoll = new Roll(`${magicCount}dMe`).roll({ async: false });
-        const normalRoll = new Roll(`${4 - magicCount}dF`).roll({ async: false });
+        const roll = new Roll(`${magicCount}dMe + ${4 - magicCount}dF`).roll({ async: false });
 
         this.updateSource({
-            faces: [...magicRoll.terms[0].results, ...normalRoll.terms[0].results].map((r) => r.count ?? r.result),
+            faces: [...roll.terms[0].results, ...roll.terms[2].results].map((r) => r.count ?? r.result),
         });
 
-        magicRoll.terms[0].options.sfx = {
+        roll.terms[0].options.sfx = {
             specialEffect: "PlayAnimationParticleSparkles",
         };
 
         if (game.modules.get("dice-so-nice")?.active) {
             const user = userId ? game.users.get(userId) : game.user;
-
-            await Promise.all([
-                game.dice3d.showForRoll(magicRoll, user, true),
-                game.dice3d.showForRoll(normalRoll, user, true),
-            ]);
+            await game.dice3d.showForRoll(roll, user, true);
         }
 
         return this;
