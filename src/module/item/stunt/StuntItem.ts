@@ -12,7 +12,8 @@ export class StuntItem extends BaseItem {
         }
 
         for (const stunt of sheetData.stunts) {
-            stunt.system.description = TextEditor.enrichHTML(stunt.system.description, {});
+            // @ts-ignore
+            stunt.system.description = TextEditor.enrichHTML(stunt.system.description, {"async":false});
         }
 
         return sheetData;
@@ -23,7 +24,7 @@ export class StuntItem extends BaseItem {
 
         html.find(".fatex-js-item-collapse").click((e) => this._onCollapseToggle.call(this, e, sheet));
         //For some reason this event bindes twice. So .unbind is a workaround.
-        html.find(".fatex-js-stunt-chat").unbind().click((e) => this._stunt2chat.call(this, e, sheet));
+        html.find(".fatex-js-send-to-chat").unbind().click((e) => this._send2chat.call(this, e, sheet));
     }
 
     /*************************
@@ -46,7 +47,7 @@ export class StuntItem extends BaseItem {
         }
     }
 
-    static async _stunt2chat(e, sheet){
+    static async _send2chat(e, sheet) : Promise<any> {
         e.preventDefault();
         e.stopPropagation();
         const stunt = sheet.actor.items.get(e.currentTarget.dataset.item);
@@ -60,6 +61,6 @@ export class StuntItem extends BaseItem {
             type: CONST.CHAT_MESSAGE_TYPES.IC,
             content: content
         };
-        await ChatMessage.create(chatData);
+        return await ChatMessage.create(chatData);
     }
 }
