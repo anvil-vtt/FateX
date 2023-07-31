@@ -7,15 +7,21 @@ export class StuntItem extends BaseItem {
     static getActorSheetData(sheetData) {
         if (CONFIG.FateX.global.useMarkdown) {
             for (const stunt of sheetData.stunts) {
-                stunt.data.markdown = marked(stunt.data.description);
+                stunt.system.markdown = marked(stunt.data.description);
             }
         }
 
         for (const stunt of sheetData.stunts) {
-            stunt.system.description = TextEditor.enrichHTML(stunt.system.description, {});
+            // @ts-ignore
+            stunt.system.description = TextEditor.enrichHTML(stunt.system.description, { async: false });
         }
 
         return sheetData;
+    }
+
+    static getSheetData(sheetData) {
+        // @ts-ignore
+        sheetData.enrichedDescription = TextEditor.enrichHTML(sheetData.system.description, { async: false });
     }
 
     static activateActorSheetListeners(html, sheet) {
@@ -37,9 +43,9 @@ export class StuntItem extends BaseItem {
         if (item) {
             await item.update(
                 {
-                    "data.collapsed": !item.system.collapsed,
+                    "system.collapsed": !item.system.collapsed,
                 },
-                {}
+                {},
             );
         }
     }
