@@ -64,7 +64,8 @@
             "History": {
                 "Reroll": "rerolled (was {previous})",
                 "Increase": "added +2"
-            }
+            },
+            "Select": "Select"
         },
         "Item": {
             "Stress": {

@@ -1,7 +1,11 @@
 <div class="fatex-chat">
-   {{#each rolls as |roll rollIndex|}}
-       <div class="fatex-chat__roll" data-roll-index="{{rollIndex}}">
-         {{{roll}}}
-       </div>
-   {{/each}}
+    {{#each rolls as |roll rollIndex|}}
+        <div class="fatex-chat__roll" data-roll-index="{{rollIndex}}">
+            {{{roll}}}
+        </div>
+    {{/each}}
+
+    <div class="fatex-chat__actions">
+        <button class="fatex-chat__actions--select" data-action="select"><i class="fa-solid fa-check"></i></button>
+    </div>
 </div>

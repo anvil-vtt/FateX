@@ -1,12 +1,51 @@
 .fatex-chat {
     font-size: 24px;
+    position: relative;
     text-align: center;
 }
 
+.fatex-chat__message--selected {
+    //filter: grayscale(100%);
+    box-shadow: inset 0 0 20px 3px rgba(0, 0, 0, 0.5);
+
+    .fatex-roll {
+    }
+}
+
+.fatex-chat__actions {
+    display: flex;
+    flex-direction: column;
+    inset: 0 0 0 auto;
+    position: absolute;
+
+    button {
+        align-items: center;
+        background-color: transparent;
+        border: 2px solid $fatex-primary-color;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        font-size: 10px;
+        height: 20px;
+        justify-content: center;
+        line-height: 1;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        white-space: nowrap;
+        width: 20px;
+
+        i {
+            margin: 0;
+            padding: 0;
+        }
+    }
+}
+
 .fatex-chat__headline-container {
+    margin: $component-padding auto;
     position: relative;
     width: 70%;
-    margin: $component-padding auto;
 }
 
 .fatex-rollWrapper {
@@ -35,15 +74,15 @@
 }
 
 .fatex-roll {
-    display: flex;
-    flex-direction: column;
     align-items: center;
     color: $fatex-primary-color;
+    display: flex;
+    flex-direction: column;
 
     .fatex-result {
+        align-items: center;
         display: flex;
         flex-direction: column;
-        align-items: center;
         position: relative;
 
         &:hover {
@@ -54,13 +93,13 @@
     }
 
     &__history {
-        display: none;
-        position: absolute;
         bottom: 100%;
-        text-align: left;
-        padding-bottom: $component-padding;
-        font-size: 10px;
         color: white;
+        display: none;
+        font-size: 10px;
+        padding-bottom: $component-padding;
+        position: absolute;
+        text-align: left;
         z-index: 200;
 
         &:hover {
@@ -68,26 +107,26 @@
         }
 
         div {
-            white-space: nowrap;
-            padding: 5px 10px;
             background: rgba(0, 0, 0, 0.9);
+            padding: 5px 10px;
+            white-space: nowrap;
         }
     }
 
     .fatex-chat__roll--totalChanged & {
         &__total {
-            animation-name: grow-shrink;
             animation-duration: 1s;
             animation-iteration-count: 1;
+            animation-name: grow-shrink;
             animation-timing-function: ease-in-out;
         }
     }
 
     .fatex-chat__roll--reroll & {
         .fatex-dice div {
-            animation-name: spin;
             animation-duration: 1s;
             animation-iteration-count: 5;
+            animation-name: spin;
             animation-timing-function: linear;
         }
     }
@@ -109,22 +148,22 @@
     text-align: center;
 
     button {
-        i {
-            padding: 0;
-            margin: 0;
-        }
+        background-color: transparent;
 
-        text-align: center;
+        border: 2px solid $fatex-primary-color;
         border-radius: 5px;
-        width: 30px;
+        font-family: $primary-font;
+        font-size: 14px;
+        font-weight: bold;
         height: 30px;
         line-height: 1;
-        background-color: transparent;
-        font-family: $primary-font;
-        font-weight: bold;
-        font-size: 14px;
+        text-align: center;
         white-space: nowrap;
-        border: 2px solid $fatex-primary-color;
+        width: 30px;
+        i {
+            margin: 0;
+            padding: 0;
+        }
 
         &[data-action="increase"] {
             text-indent: -2px;

@@ -4,7 +4,6 @@ import { FateChatCard } from "../chat/FateChatCard";
 export class ChatActionsFeature {
     static hooks() {
         Hooks.on("renderChatLog", (_app, html, _data) => this.chatListeners(html));
-        Hooks.on("renderChatPopout", (_app, html, _data) => this.chatListeners(html));
 
         Hooks.once("init", () => {
             game.socket.on("system.fatex", (data) => {
@@ -25,7 +24,7 @@ export class ChatActionsFeature {
                     if (!isResponsibleGM) return;
 
                     const { action, messageId, rollIndex, userId } = data;
-                    this.handleChatAction(action, messageId, rollIndex, userId);
+                    this.handleRollAction(action, messageId, rollIndex, userId);
                 }
             });
         });
@@ -43,10 +42,41 @@ export class ChatActionsFeature {
     }
 
     static chatListeners(html) {
-        html.on("click", ".fatex-roll-actions button[data-action]", this._onChatCardAction.bind(this));
+        this.createChatLogActionBar(html);
+
+        html.on("click", ".fatex-roll-actions button[data-action]", this._onChatCardRollAction.bind(this));
+        html.on("click", ".fatex-chat__actions button[data-action]", this._onChatCardAction.bind(this));
     }
 
     static async _onChatCardAction(event) {
+        event.preventDefault();
+
+        const button = event.currentTarget;
+        const action = button.dataset.action;
+        const messageId = button.closest(".message").dataset.messageId;
+
+        return await this.handleChatCardAction(action, messageId);
+    }
+
+    static async handleChatCardAction(action, messageId, _userId = game.user.id) {
+        const messageElement = $("#chat-log").find(`.message[data-message-id="${messageId}"]`);
+        if (!messageElement.length) return;
+
+        if (action === "select") {
+            messageElement.toggleClass("fatex-chat__message--selected");
+            this.updateChatLogActionBar();
+        }
+    }
+
+    static createChatLogActionBar(html) {
+        $(html).find("#chat-log").after(`<div style="flex-shrink: 1;">Hallo</div>`);
+    }
+
+    static updateChatLogActionBar() {
+        //
+    }
+
+    static async _onChatCardRollAction(event) {
         event.preventDefault();
 
         const button = event.currentTarget;
@@ -68,10 +98,10 @@ export class ChatActionsFeature {
             });
         }
 
-        return await this.handleChatAction(action, messageId, rollIndex);
+        return await this.handleRollAction(action, messageId, rollIndex);
     }
 
-    static async handleChatAction(action, messageId, rollIndex, userId = game.user.id) {
+    static async handleRollAction(action, messageId, rollIndex, userId = game.user.id) {
         const message = game.messages?.get(messageId);
 
         const chatCardFlag = message?.getFlag("fatex", "chatCard") ?? false;
