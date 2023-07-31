@@ -8,6 +8,10 @@
         min-width: 220px;
     }
 
+    .item {
+        overflow-x: hidden;
+    }
+
     &--two-column {
         grid-template-columns: 1fr 1fr;
         width: 50%;

@@ -1,4 +1,8 @@
 .fatex-item-description {
     padding: 0 $component-padding;
     font-size: 12px;
+
+    overflow-wrap: anywhere;
+    max-width: 100%;
+    overflow-x: scroll;
 }
