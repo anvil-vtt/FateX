@@ -10,7 +10,7 @@ export class ExtraItem extends StuntItem {
 
         for (const extra of sheetData.extras) {
             //@ts-ignore
-            extra.system.description = TextEditor.enrichHTML(extra.system.description, {async:false});
+            extra.system.description = TextEditor.enrichHTML(extra.system.description, { async: false });
         }
 
         return sheetData;
