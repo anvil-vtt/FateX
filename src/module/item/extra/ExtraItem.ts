@@ -9,7 +9,7 @@ export class ExtraItem extends StuntItem {
         sheetData = StuntItem.getActorSheetData(sheetData);
 
         for (const extra of sheetData.extras) {
-            //@ts-ignore
+            // @ts-ignore
             extra.system.description = TextEditor.enrichHTML(extra.system.description, { async: false });
         }
 
