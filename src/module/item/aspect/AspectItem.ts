@@ -28,7 +28,7 @@ export class AspectItem extends BaseItem {
 
         if (item) {
             item.update({
-                "data.value": input,
+                "system.value": input,
             });
         }
     }

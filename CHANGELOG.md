@@ -1,5 +1,12 @@
 # Changelog
 
+### 1.3.1
+* Prevented stunt boxes from overflowing into the rest of the layout
+
+### 1.3.0
+* Updated all NPM dependencies
+* Added support for Foundry v11
+
 ### 1.2.4
 * Allow magic and normal dice to be rolled at the same time
 

@@ -2,11 +2,11 @@
     "id": "fatex",
     "title": "FateX - Fate Extended",
     "description": "An extended implementation of Fate and its derivative systems",
-    "version": "1.2.4",
+    "version": "1.3.1",
     "authors": [
         {
             "name": "Patrick Bauer",
-            "discord": "Daddi#2333"
+            "discord": "Daddi_"
         }
     ],
     "scripts": ["system.js"],
@@ -60,7 +60,7 @@
     ],
     "compatibility": {
         "minimum": "10",
-        "verified": "10"
+        "verified": "11"
     },
     "socket": true,
     "url": "https://github.com/anvil-vtt/FateX",

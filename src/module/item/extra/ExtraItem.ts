@@ -15,4 +15,9 @@ export class ExtraItem extends StuntItem {
 
         return sheetData;
     }
+
+    static getSheetData(sheetData) {
+        // @ts-ignore
+        sheetData.enrichedDescription = TextEditor.enrichHTML(sheetData.system.description, { async: false });
+    }
 }

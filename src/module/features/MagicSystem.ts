@@ -1,6 +1,18 @@
 // @ts-nocheck
 export class MagicDie extends FateDie {
     static DENOMINATION = "m";
+
+    roll({ minimize = false, maximize = false } = {}) {
+        const roll = { result: undefined, active: true };
+        if (minimize) roll.result = -1;
+        else if (maximize) roll.result = 1;
+        else roll.result = Math.ceil(CONFIG.Dice.randomUniform() * this.faces - 2);
+        if (roll.result === -1) roll.failure = true;
+        if (roll.result === 1) roll.success = true;
+        roll.count = roll.result === 1 ? 2 : roll.result;
+        this.results.push(roll);
+        return roll;
+    }
 }
 
 export class MagicSystem {
@@ -18,13 +30,6 @@ export class MagicSystem {
 
             if (game.settings.get("fatex", "guildCodexMagicSystemEnabled")) {
                 CONFIG.Dice.terms["m"] = MagicDie;
-
-                FateDie.MODIFIERS["e"] = function magicModifier(_modifier) {
-                    this.results = this.results.map((result) => ({
-                        ...result,
-                        count: result.result === 1 ? 2 : result.result,
-                    }));
-                };
             }
         });
 
@@ -39,7 +44,7 @@ export class MagicSystem {
                     fontScale: 2,
                     system: "standard",
                 },
-                "d6"
+                "d6",
             );
         });
     }

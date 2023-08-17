@@ -16,7 +16,7 @@ export class FateRoll extends FateRollDataModel {
         }
 
         return new FateRoll({
-            _id: foundry.utils.randomID(),
+            id: foundry.utils.randomID(),
             name: skill.name,
             rank: skill.system.rank,
             options,
@@ -42,15 +42,11 @@ export class FateRoll extends FateRollDataModel {
     }
 
     async rollMagic(userId = "", magicCount: number) {
-        const roll = new Roll(`${magicCount}dMe + ${4 - magicCount}dF`).roll({ async: false });
+        const roll = new Roll(`${magicCount}dM + ${4 - magicCount}dF`).roll({ async: false });
 
         this.updateSource({
             faces: [...roll.terms[0].results, ...roll.terms[2].results].map((r) => r.count ?? r.result),
         });
-
-        roll.terms[0].options.sfx = {
-            specialEffect: "PlayAnimationParticleSparkles",
-        };
 
         if (game.modules.get("dice-so-nice")?.active) {
             const user = userId ? game.users.get(userId) : game.user;
@@ -127,7 +123,7 @@ export class FateRoll extends FateRollDataModel {
             ui.notifications.warn(
                 game.i18n.format("FAx.Item.Skill.Roll.MultipleMagicSkills", {
                     skills: magicSkills.map((s) => s.name).join(", "),
-                })
+                }),
             );
         }
 
