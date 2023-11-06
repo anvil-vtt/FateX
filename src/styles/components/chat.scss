@@ -143,6 +143,29 @@
     margin-bottom: $component-padding * 2;
     font-family: "Fate Icons", sans-serif;
 
+    &--2d6-roll {
+        font-family: $primary-font;
+        width: 25%;
+
+        div {
+            display: block;
+            width: 24px;
+            height: 24px;
+            background: $fatex-primary-color;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 24px;
+        }
+
+        label {
+            line-height: 24px;
+            width: 24px;
+            height: 24px;
+        }
+    }
+
     div {
         width: 24px;
         height: 24px;

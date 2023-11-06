@@ -36,6 +36,7 @@ import { FateXSettings } from "./module/helper/Settings";
 import { ChatActionsFeature } from "./module/features/ChatActionsFeature";
 import { PrototypeTokenNameSyncFeature } from "./module/features/PrototypeTokenNameSyncFeature";
 import { MagicSystem } from "./module/features/MagicSystem";
+import { Roll2d6Feature } from "./module/features/Roll2d6Feature";
 
 /* -------------------------------- */
 /*	System initialization			*/
@@ -125,6 +126,7 @@ ActorGroupFeature.hooks();
 ChatActionsFeature.hooks();
 PrototypeTokenNameSyncFeature.hooks();
 MagicSystem.hooks();
+Roll2d6Feature.hooks();
 
 /* -------------------------------- */
 /*	Webpack HMR                     */

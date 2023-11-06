@@ -16,7 +16,8 @@
                 "-1": "Poor",
                 "-2": "Terrible",
                 "-3": "Catastrophic",
-                "-4": "Horrifying"
+                "-4": "Horrifying",
+                "-5": "Pathetic"
             },
             "Actions": {
                 "Configure": "Configure",
@@ -231,6 +232,10 @@
             "magicSystemEnabled": {
                 "Name": "Enable the magic system from GuildCodex",
                 "Hint": "This will add a magic skill to the character sheet and allow you to use magic dice."
+            },
+            "enable2d6RollMode": {
+                "Name": "Enable 2d6 roll mode",
+                "Hint": "This will enable the 2d6 (1d6 - 1d6) roll mode for all future rolls."
             }
         },
         "Template": {

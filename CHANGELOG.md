@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.3.2
+* Added the optional 2d6 based roll mode (disabled by default)
+
 ### 1.3.1
 * Prevented stunt boxes from overflowing into the rest of the layout
 

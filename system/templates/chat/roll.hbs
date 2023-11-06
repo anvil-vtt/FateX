@@ -8,9 +8,10 @@
     </header>
 
     <div class="fatex-roll" data-token-id="{{token.id}}">
-        <div class="fatex-dice">
+        <div class="fatex-dice {{#if is2d6Roll}}fatex-dice--2d6-roll{{/if}}">
             {{#each symbols as |symbol symbolIndex|}}
                 <div {{#if (lt symbolIndex ../options.magicCount)}}class="fatex-dice__magic_die"{{/if}}>{{symbol}}</div>
+                {{#if (and (eq symbolIndex 0) ../is2d6Roll)}}<label>-</label>{{/if}}
             {{/each}}
         </div>
 

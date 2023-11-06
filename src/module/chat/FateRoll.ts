@@ -3,6 +3,11 @@ import { FateRollDataModel } from "../data/FateRollDataModel";
 import { SkillItemData } from "../item/ItemTypes";
 import { ItemDataProperties } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/data.mjs/itemData";
 
+export const ROLL_MODES = {
+    "4dF": "4dF",
+    "2d6": "1d6-1d6",
+};
+
 export class FateRoll extends FateRollDataModel {
     static createFromSkill(skill: SkillItemData & ItemDataProperties, { magic = false } = {}) {
         const options = { magic };
@@ -13,6 +18,10 @@ export class FateRoll extends FateRollDataModel {
             if (options["magicCount"] === false) {
                 return false;
             }
+        }
+
+        if (game.settings.get("fatex", "enable2d6RollMode") && !magic) {
+            options["rollmode"] = ROLL_MODES["2d6"];
         }
 
         return new FateRoll({
@@ -30,8 +39,16 @@ export class FateRoll extends FateRollDataModel {
             }
         }
 
-        const roll = new Roll(`4dF`).roll({ async: false });
-        this.updateSource({ faces: roll.terms[0].results.map((r) => r.count ?? r.result) });
+        const rollMode = this.options.rollmode ?? ROLL_MODES["4dF"];
+        const roll = new Roll(rollMode).roll({ async: false });
+
+        if (this.is2d6Roll) {
+            this.updateSource({
+                faces: [...roll.terms[0].results, ...roll.terms[2].results].map((r) => r.count ?? r.result),
+            });
+        } else {
+            this.updateSource({ faces: roll.terms[0].results.map((r) => r.count ?? r.result) });
+        }
 
         if (game.modules.get("dice-so-nice")?.active) {
             const user = userId ? game.users.get(userId) : game.user;
@@ -83,6 +100,10 @@ export class FateRoll extends FateRollDataModel {
     }
 
     get total() {
+        if (this.is2d6Roll) {
+            return this.faces[0] - this.faces[1] + this.rank + this.bonus;
+        }
+
         return this.faces.reduce((a, b) => a + b, 0) + this.rank + this.bonus;
     }
 
@@ -98,7 +119,15 @@ export class FateRoll extends FateRollDataModel {
     }
 
     get symbols() {
+        if (this.is2d6Roll) {
+            return this.faces;
+        }
+
         return this.faces.map((f) => (f > 0 ? "+" : f < 0 ? "-" : "0"));
+    }
+
+    get is2d6Roll() {
+        return this.options.rollmode === ROLL_MODES["2d6"];
     }
 
     get rankStatus() {
