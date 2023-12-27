@@ -28,6 +28,8 @@ export class StuntItem extends BaseItem {
         super.activateActorSheetListeners(html, sheet);
 
         html.find(".fatex-js-item-collapse").click((e) => this._onCollapseToggle.call(this, e, sheet));
+        //For some reason this event bindes twice. So .unbind is a workaround.
+        html.find(".fatex-js-send-to-chat").unbind().click((e) => this._send2chat.call(this, e, sheet));
     }
 
     /*************************
@@ -48,5 +50,21 @@ export class StuntItem extends BaseItem {
                 {},
             );
         }
+    }
+
+    static async _send2chat(e, sheet) : Promise<any> {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const stunt = sheet.actor.items.get(e.currentTarget.dataset.item);
+        const content = await renderTemplate("systems/fatex/templates/chat/stunt.hbs", {stunt});
+        
+        const chatData = {
+            speaker: {"actor" : sheet.actor._id},
+            type: CONST.CHAT_MESSAGE_TYPES.IC,
+            content: content
+        };
+        
+        return await ChatMessage.create(chatData);
     }
 }
