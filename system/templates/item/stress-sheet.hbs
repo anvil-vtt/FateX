@@ -16,15 +16,15 @@
         <input
             class="fatex-js-setting-range-value fatex-slider__label"
             type="text"
-            value="{{data.size}}"
+            value="{{system.size}}"
         />
 
         <input
             type="range"
             class="fatex-js-setting-range-slider"
-            name="data.size"
+            name="system.size"
             data-dtype="Number"
-            value="{{data.size}}"
+            value="{{system.size}}"
             min="1"
             max="32"
         />
@@ -38,9 +38,9 @@
 
     <div class="fatex-radio-group">
         <div
-            class="fatex-js-radio-button fatex-radio-button{{#if (eq 0 data.labelType)}} fatex-radio-button--active{{/if}}"
+            class="fatex-js-radio-button fatex-radio-button{{#if (eq 0 system.labelType)}} fatex-radio-button--active{{/if}}"
             data-value="0"
-            data-name="data.labelType"
+            data-name="system.labelType"
             data-dtype="Number"
         >
             <img
@@ -52,9 +52,9 @@
         </div>
 
         <div
-            class="fatex-js-radio-button fatex-radio-button{{#if (eq 1 data.labelType)}} fatex-radio-button--active{{/if}}"
+            class="fatex-js-radio-button fatex-radio-button{{#if (eq 1 system.labelType)}} fatex-radio-button--active{{/if}}"
             data-value="1"
-            data-name="data.labelType"
+            data-name="system.labelType"
             data-dtype="Number"
         >
             <img
@@ -66,9 +66,9 @@
         </div>
 
         <div
-            class="fatex-js-radio-button fatex-radio-button{{#if (eq 2 data.labelType)}} fatex-radio-button--active{{/if}}"
+            class="fatex-js-radio-button fatex-radio-button{{#if (eq 2 system.labelType)}} fatex-radio-button--active{{/if}}"
             data-value="2"
-            data-name="data.labelType"
+            data-name="system.labelType"
             data-dtype="Number"
         >
             <img
@@ -81,13 +81,13 @@
     </div>
 </div>
 
-<div class="fatex-setting{{#if (ne 2 data.labelType)}} fatex-u-disabled{{/if}}">
+<div class="fatex-setting{{#if (ne 2 system.labelType)}} fatex-u-disabled{{/if}}">
     <header class="fatex-headline">
         <h3 class="fatex-headline__text">{{localize "FAx.Item.Stress.Boxes.Custom"}}</h3>
     </header>
 
-    <label for="data.customLabel">
-        <input type="text" class="fatex-text-input" name="data.customLabel" value="{{data.customLabel}}"/>
+    <label for="system.customLabel">
+        <input type="text" class="fatex-text-input" name="system.customLabel" value="{{system.customLabel}}"/>
         <span class="fatex-text-input__setting-label">{{localize "FAx.Item.Stress.Boxes.CustomHelp"}}</span>
     </label>
 </div>
@@ -95,8 +95,8 @@
 {{> "systems/fatex/templates/item/settings/setting-input.hbs"
     headline = "FAx.Item.Stress.Description"
     help = "FAx.Item.Stress.DescriptionHelp"
-    fieldName = "data.description"
-    field = data.description
+    fieldName = "system.description"
+    field = system.description
 }}
 
 {{> "systems/fatex/templates/item/settings/setting-automation-skill-enable.hbs"

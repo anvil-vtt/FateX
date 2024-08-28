@@ -3,7 +3,7 @@ import { GroupSheet } from "./GroupSheet";
 
 export class InlineActorSheetFate extends CharacterSheet {
     static get defaultOptions() {
-        return mergeObject(super.defaultOptions, {
+        return foundry.utils.mergeObject(super.defaultOptions, {
             group: undefined,
             width: "auto",
             height: "auto",
@@ -17,8 +17,8 @@ export class InlineActorSheetFate extends CharacterSheet {
         });
     }
 
-    getData(_options?: Application.RenderOptions) {
-        const data = super.getData();
+    async getData(_options?: Application.RenderOptions) {
+        const data = await super.getData();
 
         if (this.options.referenceID) {
             // @ts-ignore

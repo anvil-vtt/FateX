@@ -31,7 +31,7 @@ export class SkillItem extends BaseItem {
      * Adds skill specific actorsheet data
      * Determines if a filler-skill should be rendered.
      */
-    static getActorSheetData(sheetData) {
+    static async getActorSheetData(sheetData) {
         // Render skill in two columns if necessary
         sheetData.options.enableColumns = sheetData.skills.length >= 8;
 
@@ -57,7 +57,7 @@ export class SkillItem extends BaseItem {
     /**
      * Add a list of available ranks to the sheet
      */
-    static getSheetData(sheetData, _item) {
+    static async getSheetData(sheetData, _item) {
         sheetData.availableRanks = [];
 
         for (let i = -2; i <= 7; i++) {
@@ -107,7 +107,7 @@ export class SkillItem extends BaseItem {
 
             await skill.update(
                 {
-                    "data.rank": doIncrement ? rank + 1 : rank - 1,
+                    "system.rank": doIncrement ? rank + 1 : rank - 1,
                 },
                 {}
             );
@@ -140,7 +140,7 @@ export class SkillItem extends BaseItem {
             return;
         }
 
-        await fateRoll.roll();
+        fateRoll.roll();
 
         const fateChatCard = FateChatCard.create(actor, [fateRoll]);
         await fateChatCard.sendToChat();

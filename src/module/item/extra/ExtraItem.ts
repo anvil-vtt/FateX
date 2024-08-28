@@ -5,19 +5,20 @@ export class ExtraItem extends StuntItem {
         return "extra";
     }
 
-    static getActorSheetData(sheetData) {
-        sheetData = StuntItem.getActorSheetData(sheetData);
+    static async getActorSheetData(sheetData) {
+        sheetData = await StuntItem.getActorSheetData(sheetData);
 
         for (const extra of sheetData.extras) {
             // @ts-ignore
-            extra.system.description = TextEditor.enrichHTML(extra.system.description, { async: false });
+            extra.system.description = await TextEditor.enrichHTML(extra.system.description, { async: true });
         }
 
         return sheetData;
     }
 
-    static getSheetData(sheetData) {
+    static async getSheetData(sheetData) {
         // @ts-ignore
-        sheetData.enrichedDescription = TextEditor.enrichHTML(sheetData.system.description, { async: false });
+        sheetData.enrichedDescription = await TextEditor.enrichHTML(sheetData.system.description, { async: true });
     }
+    
 }

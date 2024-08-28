@@ -29,7 +29,7 @@ export class SheetSetup extends FormApplication<any, any, FateActor> {
     }
 
     static get defaultOptions() {
-        return mergeObject(super.defaultOptions, {
+        return foundry.utils.mergeObject(super.defaultOptions, {
             title: game.i18n.localize("FAx.Apps.Setup.Title"),
             template: "/systems/fatex/templates/apps/sheet-setup.hbs",
             resizable: true,

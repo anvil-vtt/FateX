@@ -7,9 +7,9 @@
 
     <div class="fatex-radio-group">
         <div
-            class="fatex-js-radio-button fatex-radio-button{{#if (eq 0 data.type)}} fatex-radio-button--active{{/if}}"
+            class="fatex-js-radio-button fatex-radio-button{{#if (eq 0 system.type)}} fatex-radio-button--active{{/if}}"
             data-value="0"
-            data-name="data.type"
+            data-name="system.type"
             data-dtype="Number"
         >
             <img
@@ -22,9 +22,9 @@
         </div>
 
         <div
-            class="fatex-js-radio-button fatex-radio-button{{#if (eq 1 data.type)}} fatex-radio-button--active{{/if}}"
+            class="fatex-js-radio-button fatex-radio-button{{#if (eq 1 system.type)}} fatex-radio-button--active{{/if}}"
             data-value="1"
-            data-name="data.type"
+            data-name="system.type"
             data-dtype="Number"
         >
             <img 
@@ -40,22 +40,22 @@
 
 {{> "systems/fatex/templates/item/settings/setting-input.hbs"
     headline = "FAx.Item.Consequence.Value"
-    fieldName = "data.value"
-    field = data.value
+    fieldName = "system.value"
+    field = system.value
 }}
 
 {{> "systems/fatex/templates/item/settings/setting-input.hbs"
     headline = "FAx.Item.Consequence.Label"
-    fieldName = "data.label"
-    field = data.label
+    fieldName = "system.label"
+    field = system.label
     help = "FAx.Item.Consequence.LabelHelp"
 }}
 
 {{> "systems/fatex/templates/item/settings/setting-input.hbs"
     headline = "FAx.Item.Consequence.Icon"
     help = "FAx.Item.Consequence.IconHelp"
-    fieldName = "data.icon"
-    field = data.icon
+    fieldName = "system.icon"
+    field = system.icon
 }}
 
 {{!--Description is disabled for now--}}
