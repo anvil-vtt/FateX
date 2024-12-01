@@ -35,7 +35,7 @@ export class CharacterSheet extends ActorSheet<CharacterSheetOptions> {
         };
 
         // @ts-ignore
-        return mergeObject(super.defaultOptions, sheetOptions);
+        return foundry.utils.mergeObject(super.defaultOptions, sheetOptions);
     }
 
     get template(): string {
@@ -90,7 +90,7 @@ export class CharacterSheet extends ActorSheet<CharacterSheetOptions> {
 
         // Add actor, actor data and item
         // @ts-ignore
-        data.actor = duplicate(this.actor);
+        data.actor = foundry.utils.duplicate(this.actor);
         data.data = data.actor.system;
         data.items = this.actor.items.map((item) => item);
         data.items.sort((a: ItemData, b: ItemData) => (a.sort || 0) - (b.sort || 0));
@@ -108,7 +108,7 @@ export class CharacterSheet extends ActorSheet<CharacterSheetOptions> {
 
         // Allow every item type to add data to the actorsheet
         for (const itemType in CONFIG.FateX.itemClasses) {
-            data = CONFIG.FateX.itemClasses[itemType].getActorSheetData(data, this);
+            data = await CONFIG.FateX.itemClasses[itemType].getActorSheetData(data, this);
         }
 
         return data;

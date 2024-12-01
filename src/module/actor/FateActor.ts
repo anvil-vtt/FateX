@@ -26,7 +26,7 @@ export class FateActor extends Actor {
         data.token = data.token || {};
 
         // Set basic token data for newly created actors.
-        mergeObject(
+        foundry.utils.mergeObject(
             data.token,
             {
                 vision: true,
@@ -39,7 +39,7 @@ export class FateActor extends Actor {
         );
 
         // Overwrite specific token data (used for template actors)
-        mergeObject(
+        foundry.utils.mergeObject(
             data.token,
             {
                 img: CONST.DEFAULT_TOKEN,

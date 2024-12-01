@@ -4,7 +4,7 @@ import { marked } from "marked";
 export class StuntItem extends BaseItem {
     static documentName = "stunt";
 
-    static getActorSheetData(sheetData) {
+    static async getActorSheetData(sheetData) {
         if (CONFIG.FateX.global.useMarkdown) {
             for (const stunt of sheetData.stunts) {
                 stunt.system.markdown = marked(stunt.data.description);
@@ -13,15 +13,15 @@ export class StuntItem extends BaseItem {
 
         for (const stunt of sheetData.stunts) {
             // @ts-ignore
-            stunt.system.description = TextEditor.enrichHTML(stunt.system.description, { async: false });
+            stunt.system.description = await TextEditor.enrichHTML(stunt.system.description, { async: true });
         }
 
         return sheetData;
     }
 
-    static getSheetData(sheetData) {
+    static async getSheetData(sheetData) {
         // @ts-ignore
-        sheetData.enrichedDescription = TextEditor.enrichHTML(sheetData.system.description, { async: false });
+        sheetData.enrichedDescription = await TextEditor.enrichHTML(sheetData.system.description, { async: true });
     }
 
     static activateActorSheetListeners(html, sheet) {

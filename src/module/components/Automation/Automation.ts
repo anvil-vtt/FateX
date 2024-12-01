@@ -28,7 +28,7 @@ export class Automation extends BaseComponent {
         html.find(".fatex-js-remove-skill-reference").on("click", (e) => this._onRemoveReference.call(this, e, sheet));
     }
 
-    static getSheetData(sheetData, sheet) {
+    static async getSheetData(sheetData, sheet) {
         const skillReferences = this.getSkillReferences(sheet.document).map((ref, index) => {
             ref.index = index;
             return ref;
@@ -154,7 +154,7 @@ export class Automation extends BaseComponent {
      */
     static async addSkillReference(document, type = TYPES.STATUS) {
         const currentReferences = this.getSkillReferences(document);
-        const references = duplicate(currentReferences);
+        const references = foundry.utils.duplicate(currentReferences);
 
         references.push({
             type: type,
@@ -173,7 +173,7 @@ export class Automation extends BaseComponent {
 
     static async changeSkillReference(document, index, field, value) {
         const currentReferences = this.getSkillReferences(document);
-        const references = duplicate(currentReferences);
+        const references = foundry.utils.duplicate(currentReferences);
         const reference = references[index];
 
         // Change field on reference to new value
@@ -242,7 +242,7 @@ export class Automation extends BaseComponent {
     }
 
     static getActorSkillByName(actor, skillId) {
-        const actorData = duplicate(actor);
+        const actorData = foundry.utils.duplicate(actor);
         const items = actorData.items;
 
         // Filter single actors skills by id

@@ -30,7 +30,7 @@ export class GroupSheet extends ActorSheet {
      * Sets the default options for every actor group sheet
      */
     static get defaultOptions() {
-        return mergeObject(super.defaultOptions, {
+        return foundry.utils.mergeObject(super.defaultOptions, {
             classes: ["fatex fatex-sheet sheet actor_group_overview actor_group_overview--front"],
             resizable: true,
             template: "/systems/fatex/templates/actor/group.hbs",
@@ -39,7 +39,7 @@ export class GroupSheet extends ActorSheet {
         });
     }
 
-    getData() {
+    async getData() {
         // Basic fields and flags
         const data: any = {
             owner: this.actor.isOwner,
@@ -52,7 +52,7 @@ export class GroupSheet extends ActorSheet {
         };
 
         // Add actor, actor data and item
-        data.actor = duplicate(this.actor);
+        data.actor = foundry.utils.duplicate(this.actor);
         data.data = data.actor;
         data.items = this.actor.items.map((i) => foundry.utils.duplicate(i));
         data.items.sort((a: ItemData, b: ItemData) => (a.sort || 0) - (b.sort || 0));

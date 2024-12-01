@@ -43,7 +43,7 @@ export class ConsequenceItem extends BaseItem {
         if (item) {
             item.update(
                 {
-                    "data.active": !item.system.active,
+                    "system.active": !item.system.active,
                 },
                 {}
             );
@@ -65,7 +65,7 @@ export class ConsequenceItem extends BaseItem {
         if (item) {
             item.update(
                 {
-                    "data.value": input,
+                    "system.value": input,
                 },
                 {}
             );

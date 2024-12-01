@@ -40,7 +40,8 @@ export class FateRoll extends FateRollDataModel {
         }
 
         const rollMode = this.options.rollmode ?? ROLL_MODES["4dF"];
-        const roll = new Roll(rollMode).roll({ async: false });
+        const rollThrough = new Roll(rollMode);
+        const roll = await rollThrough.evaluate();
 
         if (this.is2d6Roll) {
             this.updateSource({
@@ -59,7 +60,8 @@ export class FateRoll extends FateRollDataModel {
     }
 
     async rollMagic(userId = "", magicCount: number) {
-        const roll = new Roll(`${magicCount}dM + ${4 - magicCount}dF`).roll({ async: false });
+        const rollThrough = new Roll(`${magicCount}dM + ${4 - magicCount}dF`);
+        const roll = await rollThrough.evaluate();     
 
         this.updateSource({
             faces: [...roll.terms[0].results, ...roll.terms[2].results].map((r) => r.count ?? r.result),
@@ -108,7 +110,7 @@ export class FateRoll extends FateRollDataModel {
     }
 
     get ladder() {
-        const total = Math.clamped(this.total, -4, 8);
+        const total = Math.clamp(this.total, -4, 8);
         const totalString = (total < 0 ? "-" : "+").concat(Math.abs(total).toString());
 
         return game.i18n.localize(`FAx.Global.Ladder.${totalString}`);

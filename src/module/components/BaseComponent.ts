@@ -10,7 +10,7 @@ export class BaseComponent {
     /**
      * Allows each component to add data to sheets.
      */
-    static getSheetData(sheetData, _sheet) {
+    static async getSheetData(sheetData, _sheet) {
         return sheetData;
     }
 }

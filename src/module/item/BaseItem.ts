@@ -26,14 +26,14 @@ export abstract class BaseItem {
     /**
      * Allows each item to add data to its own sheet.
      */
-    static getSheetData(sheetData, _item) {
+    static async getSheetData(sheetData, _item) {
         return sheetData;
     }
 
     /**
      * Allows each item to add data to its owners actorsheet.
      */
-    static getActorSheetData(sheetData, _actor) {
+    static async getActorSheetData(sheetData, _actor) {
         return sheetData;
     }
 
@@ -76,6 +76,9 @@ export abstract class BaseItem {
         e.stopPropagation();
 
         const data = e.currentTarget.dataset;
+        sheet.actor.items.map((item) => {
+            console.log("SHEET ITEMS" + item)
+        })
         const item = sheet.actor.items.get(data.item);
 
         if (item) {

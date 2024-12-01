@@ -6,7 +6,7 @@ import { ActorDataProperties } from "@league-of-foundry-developers/foundry-vtt-t
 
 export class TemplateActorPicker extends TemplateActorSettings {
     static get defaultOptions() {
-        return mergeObject(super.defaultOptions, {
+        return foundry.utils.mergeObject(super.defaultOptions, {
             title: game.i18n.format("SIDEBAR.Create", { type: game.i18n.localize("DOCUMENT.Actor") }),
             template: "/systems/fatex/templates/apps/template-actors-picker.hbs",
             id: "template-actor-picker",
@@ -16,8 +16,8 @@ export class TemplateActorPicker extends TemplateActorSettings {
         });
     }
 
-    getData() {
-        const data = super.getData();
+    async getData() {
+        const data = await super.getData();
 
         // @ts-ignore
         data.AppTitle = game.i18n.format("SIDEBAR.Create", { type: game.i18n.localize("DOCUMENT.Actor") });
@@ -69,7 +69,7 @@ export class TemplateActorPicker extends TemplateActorSettings {
         e.stopPropagation();
 
         const data = e.currentTarget.dataset;
-        const template = duplicate(game.actors?.get(data.template));
+        const template = foundry.utils.duplicate(game.actors?.get(data.template));
         const fatexFlags = template.flags?.fatex as Record<string, unknown>;
 
         // Add current template as a flag for later use

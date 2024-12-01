@@ -1,10 +1,10 @@
 import { ItemSheetFate } from "../ItemSheetFate";
 
 export class SkillSheet extends ItemSheetFate {
-    getData(): any {
-        const data = super.getData();
-
-        data.magicSystemEnabled = game.settings.get("fatex", "guildCodexMagicSystemEnabled");
+    async getData(): Promise<any> {
+        const data = await super.getData();
+        const magicSystem = game.settings.get("fatex", "guildCodexMagicSystemEnabled");
+        data.magicSystemEnabled = magicSystem
 
         return data;
     }
