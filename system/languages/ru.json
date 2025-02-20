@@ -39,7 +39,7 @@
             "Stunts": "Трюки",
             "Extras": "Дополнения",
             "Bio": "Биография",
-            "Artwork": "Artwork TODO",
+            "Artwork": "Изображение",
             "StressTracks": "Счётчики стресса",
             "Tabs": {
                 "SkillsStunts": "Навыки и Трюки",
@@ -73,7 +73,7 @@
                 "EditItem": "Редактировать Счётчик Стресса",
                 "Size": "Количество маркеров",
                 "Description": "Описание",
-                "DescriptionHelp": "The description will be shown inside the stress track area. TODO",
+                "DescriptionHelp": "Описание будет отображаться над маркерами стресса.",
                 "Boxes": {
                     "Label": "Стиль заголовка маркера",
                     "Custom": "Пользовательские заголовки маркеров",
@@ -82,7 +82,7 @@
                 "Type": {
                     "Core": "Core",
                     "Condensed": "Condensed",
-                    "Custom": "Blank / Custom"
+                    "Custom": "Пользовательский"
                 }
             },
             "Aspect": {
@@ -90,20 +90,20 @@
                 "Value": "Текст",
                 "Description": "Описание",
                 "DescriptionHelp": "Отображается только при отправке в чат",
-                "Label": "Название"
+                "Label": "Название строки"
             },
             "Consequence": {
                 "EditItem": "Редактировать Последствие",
                 "Value": "Текст",
                 "Description": "Описание",
                 "DescriptionHelp": "Отображается только при отправке в чат",
-                "Label": "Название",
+                "Label": "Название строки",
                 "LabelHelp": "Название для описания тяжести, например \"Среднее\" или \"Тяжелое\".",
                 "Icon": "Иконка",
                 "IconHelp": "Обычно число по типу 2, 4, 6 или 8. Отображается слева.",
                 "Type": {
-                    "Label": "Variant TODO",
-                    "Condition": "Condition TODO",
+                    "Label": "Тип",
+                    "Condition": "Состояние",
                     "Consequence": "Последствие"
                 }
             },
@@ -114,14 +114,14 @@
                 "Description": "Описание",
                 "DescriptionHelp": "Отображается только при отправке в чат",
                 "Options": {
-                    "Headline": "Options TODO",
-                    "IsMagicSkill": "Magic Skill TODO",
-                    "IsMagicSkillHelp": "If checked, this skills rank will be used to determine the number of magic dice to roll. Hold shift while rolling a skill to activate this feature. TODO"
+                    "Headline": "Опции",
+                    "IsMagicSkill": "Навык Магии",
+                    "IsMagicSkillHelp": "Если выбрано, ранг этого навыка будет использован для определения количества магических костей для броска. Зажмите Shift, когда совершаете бросок, чтобы активировать эту функцию."
                 },
                 "Roll": {
-                    "MultipleMagicSkills": "Multiple magic skills found ({skills}). Using the first one to roll. TODO",
-                    "NoMagicSkills": "No magic skill found. Please add a magic skill to your character sheet and roll again. TODO",
-                    "MagicSkillTooLow": "The magic skill rank is zero or less. Please increase the rank to roll magic dice. TODO"
+                    "MultipleMagicSkills": "Найдено несколько навыков Магии ({skills}). Для броска используется первый.",
+                    "NoMagicSkills": "Не найден навык Магии. Пожалуйста, добавьте навыки Магии на ваш лист персонажа и повторите бросок.",
+                    "MagicSkillTooLow": "Ранг навыка Магии равен или меньше 0. Пожалуйста, увеличьте ранг, чтобы бросать магические кости."
                 }
             },
             "Stunt": {
@@ -151,10 +151,10 @@
                 "BoxesHeadline": "Автоматизация Маркеров",
                 "Description": "Пока что не выбрано ни одного условия навыка. Пожалуйста, добавьте одно или несколько условий навыков, чтобы включить возможности автоматизации.",
                 "AddSkillRef": "Добавить условие навыка",
-                "DisableUntil": "Disable until TODO",
-                "BoxesIf": "box(es) if TODO",
-                "MultipleConditions": "Enable automation if TODO",
-                "MultipleConditionsMatches": "condition matches TODO",
+                "DisableUntil": "Включить, если",
+                "BoxesIf": "маркер(ов) если",
+                "MultipleConditions": "Включить автоматизацию, если TODO",
+                "MultipleConditionsMatches": "условие соответствует TODO",
                 "Actions": {
                     "Box": {
                         "ADD": "Добавить",
@@ -162,16 +162,16 @@
                     }
                 },
                 "Conjunctions": {
-                    "AND": "every TODO",
-                    "OR": "any TODO"
+                    "AND": "каждый TODO",
+                    "OR": "любой TODO"
                 },
                 "Operators": {
-                    "OPERATOR_EQUALS": "equals TODO",
-                    "OPERATOR_NOT_EQUALS": "doesn't equal TODO",
-                    "OPERATOR_GT": "is greater than TODO",
-                    "OPERATOR_LT": "is less than TODO",
-                    "OPERATOR_GTE": "is greater than or equals TODO",
-                    "OPERATOR_LTE": "is less than or equals TODO"
+                    "OPERATOR_EQUALS": "равняется",
+                    "OPERATOR_NOT_EQUALS": "не равняется",
+                    "OPERATOR_GT": "больше чем",
+                    "OPERATOR_LT": "меньше чем",
+                    "OPERATOR_GTE": "больше чем или равняется",
+                    "OPERATOR_LTE": "меньше чем или равняется"
                 }
             }
         },
@@ -179,17 +179,17 @@
             "ReferenceRemove": "Remove reference TODO",
             "ReferenceRemoveText": "Do you really want to <strong>permanently</strong> remove this reference? TODO",
             "DocumentDelete": "Удалить",
-            "DocumentDeleteText": "Do you really want to <strong>permanently</strong> delete this entity?  TODO",
-            "ActorClear": "Clear component TODO",
-            "ActorClearText": "Do you really want to <strong>permanently</strong> delete all this actors components <strong>and their content</strong> of the chosen type? TODO",
+            "DocumentDeleteText": "Вы действительно хотите <strong>безвозвратно</strong> удалить этот компонент?",
+            "ActorClear": "Удалить компоненты",
+            "ActorClearText": "Вы действительно хотите <strong>безвозвратно</strong> удалить все компоненты выбранного типа <strong>и их содержимое</strong> у этого актёра?",
             "Confirm": "Подтвердить",
             "Cancel": "Отмена"
         },
         "Apps": {
             "Setup": {
                 "Title": "Настройка Листа",
-                "Manage": "Manage TODO",
-                "Setup": "Setup (Presets) TODO",
+                "Manage": "Управлять",
+                "Setup": "Пресеты",
                 "Actions": {
                     "Clear": {
                         "Aspects": "Удалить все аспекты",
@@ -200,7 +200,7 @@
                     },
                     "Setup": {
                         "AddToSheet": "Добавить выбранное на лист",
-                        "ToggleSelection": "Инвертировать выбор TODO"
+                        "ToggleSelection": "Выбрать всё/ничего"
                     }
                 }
             }
@@ -230,8 +230,8 @@
                 "Hint": "Автоматически обновляет имя прототипа токена, когда меняется имя актёра (если они совпадали до этого)."
             },
             "magicSystemEnabled": {
-                "Name": "Enable the magic system from GuildCodex TODO",
-                "Hint": "This will add a magic skill to the character sheet and allow you to use magic dice. TODO"
+                "Name": "Включить систему магии из GuildCodex",
+                "Hint": "Эта опция добавит навык магии на лист персонажа и позволит вам использовать магические кости."
             },
             "enable2d6RollMode": {
                 "Name": "Включить режим бросков 2d6",
