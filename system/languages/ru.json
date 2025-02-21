@@ -27,7 +27,7 @@
                 "Create": "Создать пустого актера",
                 "Choose": "Выбрать шаблон"
             },
-            "BaseItem": "Base item TODO"
+            "BaseItem": "Base item"
         },
         "Sheet": {
             "Name": "Имя",
@@ -141,8 +141,8 @@
                 "ShortDescriptionHelp": "Сокращенное описание этого дополнения"
             },
             "Reference": {
-                "EditItem": "Edit Reference TODO",
-                "Name": "Reference name TODO",
+                "EditItem": "Редактировать Ссылку",
+                "Name": "Название Ссылки",
                 "ID": "ID",
                 "Scene": "Сцена"
             },
@@ -153,8 +153,8 @@
                 "AddSkillRef": "Добавить условие навыка",
                 "DisableUntil": "Включить, если",
                 "BoxesIf": "маркер(ов) если",
-                "MultipleConditions": "Включить автоматизацию, если TODO",
-                "MultipleConditionsMatches": "условие соответствует TODO",
+                "MultipleConditions": "Включить автоматизацию, если",
+                "MultipleConditionsMatches": "условие соответствует",
                 "Actions": {
                     "Box": {
                         "ADD": "Добавить",
@@ -162,8 +162,8 @@
                     }
                 },
                 "Conjunctions": {
-                    "AND": "каждый TODO",
-                    "OR": "любой TODO"
+                    "AND": "каждый",
+                    "OR": "любой"
                 },
                 "Operators": {
                     "OPERATOR_EQUALS": "равняется",
@@ -176,8 +176,8 @@
             }
         },
         "Dialog": {
-            "ReferenceRemove": "Remove reference TODO",
-            "ReferenceRemoveText": "Do you really want to <strong>permanently</strong> remove this reference? TODO",
+            "ReferenceRemove": "Удалить ссылку",
+            "ReferenceRemoveText": "Вы действительно хотите <strong>безвозвратно</strong> удалить эту ссылку?",
             "DocumentDelete": "Удалить",
             "DocumentDeleteText": "Вы действительно хотите <strong>безвозвратно</strong> удалить этот компонент?",
             "ActorClear": "Удалить компоненты",
@@ -257,7 +257,7 @@
             }
         },
         "Sheets": {
-            "Reference": "Reference Sheet TODO"
+            "Reference": "Лист Ссылок"
         }
     }
 }
