@@ -1,0 +1,139 @@
+{
+    "name": "Accelerated",
+    "identifier": "accelerated",
+    "types": {
+        "Aspects": [
+            {
+                "label": "Базовое",
+                "entries": [
+                    {
+                        "name": "Концепция",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Концепция"
+                        }
+                    },
+                    {
+                        "name": "Проблема",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Проблема"
+                        }
+                    },
+                    {
+                        "name": "Другой аспект",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Другое"
+                        }
+                    },
+                    {
+                        "name": "Другой аспект",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Другое"
+                        }
+                    },
+                    {
+                        "name": "Другой аспект",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Другое"
+                        }
+                    }
+                ]
+            },
+            {
+                "label": "Опциональное",
+                "entries": [
+                    {
+                        "name": "Отношения",
+                        "type": "aspect",
+                        "data": {
+                            "label": "Отношения"
+                        }
+                    },
+                    {
+                        "name": "Аспект без описания",
+                        "type": "aspect"
+                    }
+                ]
+            }
+        ],
+        "Consequences": [
+            {
+                "entries": [
+                    {
+                        "name": "Лёгкое последствие",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Лёгкое",
+                            "icon": "2"
+                        }
+                    },
+                    {
+                        "name": "Среднее последствие",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Среднее",
+                            "icon": "4"
+                        }
+                    },
+                    {
+                        "name": "Серьёзное последствие",
+                        "type": "consequence",
+                        "data": {
+                            "label": "Серьёзное",
+                            "icon": "6"
+                        }
+                    }
+                ]
+            }
+        ],
+        "Skills": [
+            {
+                "columns": true,
+                "entries": [
+                    {
+                        "name": "Аккуратный",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "Умный",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "Эффектный",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "Сильный",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "Проворный",
+                        "type": "skill"
+                    },
+                    {
+                        "name": "Хитрый",
+                        "type": "skill"
+                    }
+                ]
+            }
+        ],
+        "Stress": [
+            {
+                "entries": [
+                    {
+                        "name": "Стресс",
+                        "type": "stress",
+                        "data": {
+                            "size": 3,
+                            "labelType": 0
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

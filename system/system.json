@@ -56,6 +56,11 @@
             "lang": "pt-BR",
             "name": "Português (Brasil)",
             "path": "languages/pt-BR.json"
+        },
+        {
+            "lang": "ru",
+            "name": "Russian",
+            "path": "languages/ru.json"
         }
     ],
     "compatibility": {
