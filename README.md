@@ -89,9 +89,11 @@ For manual installation, use the provided manifest URL in the "*Install System*"
 #### Swedish
 * System translation provided by [Grottmastaren](https://github.com/Grottmastaren)
 
-
 #### Portuguese (Brazil)
-* Portuguese (Brazil) translation provided by [luizbgomide](https://github.com/luizbgomide))
+* Portuguese (Brazil) translation provided by [luizbgomide](https://github.com/luizbgomide)
+
+#### Russian
+* Russian translation provided by [awhitefox](https://github.com/awhitefox)
 
 ---
 
