@@ -56,12 +56,14 @@ export class FateRoll extends FateRollDataModel {
             await game.dice3d.showForRoll(roll, user, true);
         }
 
+        Hooks.callAll("fatex.roll", this);
+
         return this;
     }
 
     async rollMagic(userId = "", magicCount: number) {
         const rollThrough = new Roll(`${magicCount}dM + ${4 - magicCount}dF`);
-        const roll = await rollThrough.evaluate();     
+        const roll = await rollThrough.evaluate();
 
         this.updateSource({
             faces: [...roll.terms[0].results, ...roll.terms[2].results].map((r) => r.count ?? r.result),
@@ -71,6 +73,8 @@ export class FateRoll extends FateRollDataModel {
             const user = userId ? game.users.get(userId) : game.user;
             await game.dice3d.showForRoll(roll, user, true);
         }
+
+        Hooks.callAll("fatex.rollMagic", this);
 
         return this;
     }
