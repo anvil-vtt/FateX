@@ -10,7 +10,7 @@ export const ROLL_MODES = {
 
 export class FateRoll extends FateRollDataModel {
     static createFromSkill(skill: SkillItemData & ItemDataProperties, { magic = false } = {}) {
-        const options = { magic };
+        const options = { magic, actor: skill.actor };
 
         if (game.settings.get("fatex", "guildCodexMagicSystemEnabled") && magic) {
             options["magicCount"] = this.determineMagicCount(skill);
