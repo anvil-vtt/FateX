@@ -85,6 +85,8 @@ export class FateRoll extends FateRollDataModel {
 
         this.updateSource({ history: history });
 
+        Hooks.callAll("fatex.reroll", this);
+
         return this;
     }
 
@@ -92,6 +94,8 @@ export class FateRoll extends FateRollDataModel {
         const history = this.addHistoryEntry(userId, { type: "increase" });
 
         this.updateSource({ bonus: this.bonus + 2, history: history });
+
+        Hooks.callAll("fatex.increase", this);
 
         return this;
     }
