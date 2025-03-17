@@ -2,7 +2,7 @@
     "name": "Core",
     "identifier": "core",
     "types": {
-        "Aspects": [
+        "Аспекты": [
             {
                 "label": "Базовое",
                 "entries": [
@@ -54,7 +54,7 @@
                 ]
             }
         ],
-        "Consequences": [
+        "Последствия": [
             {
                 "entries": [
                     {
@@ -111,7 +111,7 @@
                 ]
             }
         ],
-        "Skills": [
+        "Навыки": [
             {
                 "columns": true,
                 "entries": [
@@ -244,7 +244,7 @@
                 ]
             }
         ],
-        "Stress": [
+        "Стресс": [
             {
                 "entries": [
                     {
