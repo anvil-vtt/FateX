@@ -2,7 +2,7 @@
     "name": "Condensed",
     "identifier": "condensed",
     "types": {
-        "Aspects": [
+        "Аспекты": [
             {
                 "label": "Базовое",
                 "entries": [
@@ -60,7 +60,7 @@
                 ]
             }
         ],
-        "Consequences": [
+        "Последствия": [
             {
                 "entries": [
                     {
@@ -117,7 +117,7 @@
                 ]
             }
         ],
-        "Skills": [
+        "Навыки": [
             {
                 "columns": true,
                 "entries": [
@@ -257,7 +257,7 @@
                 ]
             }
         ],
-        "Stress": [
+        "Стресс": [
             {
                 "label": "В стиле Fate Core",
                 "entries": [
