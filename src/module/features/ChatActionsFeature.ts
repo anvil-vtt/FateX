@@ -24,8 +24,8 @@ export class ChatActionsFeature {
                     const isResponsibleGM = !connectedGMs.some((other) => other.id < game.user.id);
                     if (!isResponsibleGM) return;
 
-                    const { action, messageId, rollIndex, userId } = data;
-                    this.handleChatAction(action, messageId, rollIndex, userId);
+                    const { action, messageId, rollIndex, shiftKey, userId } = data;
+                    this.handleChatAction(action, messageId, rollIndex, shiftKey, userId);
                 }
             });
         });
@@ -64,14 +64,15 @@ export class ChatActionsFeature {
                 action,
                 messageId,
                 rollIndex,
+                shiftKey: event.shiftKey,
                 userId: game.user.id,
             });
         }
 
-        return await this.handleChatAction(event, action, messageId, rollIndex);
+        return await this.handleChatAction(action, messageId, rollIndex, event.shiftKey);
     }
 
-    static async handleChatAction(event, action, messageId, rollIndex, userId = game.user.id) {
+    static async handleChatAction(action, messageId, rollIndex, shiftKey, userId = game.user.id) {
         const message = game.messages?.get(messageId);
 
         const chatCardFlag = message?.getFlag("fatex", "chatCard") ?? false;
@@ -83,13 +84,13 @@ export class ChatActionsFeature {
 
         if (action === "reroll") {
             this.triggerRerollAnimation(messageId, rollIndex);
-            await chatCard.rolls[rollIndex].reroll(userId, { event });
+            await chatCard.rolls[rollIndex].reroll(userId, { shiftKey });
             await chatCard.updateMessage();
             this.triggerTotalChangedAnimation(messageId, rollIndex);
         }
 
         if (action === "increase") {
-            await chatCard.rolls[rollIndex].increase(userId, { event });
+            await chatCard.rolls[rollIndex].increase(userId, { shiftKey });
             await chatCard.updateMessage();
             this.triggerTotalChangedAnimation(messageId, rollIndex);
         }
