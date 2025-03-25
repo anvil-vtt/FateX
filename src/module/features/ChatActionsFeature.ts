@@ -68,10 +68,10 @@ export class ChatActionsFeature {
             });
         }
 
-        return await this.handleChatAction(action, messageId, rollIndex);
+        return await this.handleChatAction(event, action, messageId, rollIndex);
     }
 
-    static async handleChatAction(action, messageId, rollIndex, userId = game.user.id) {
+    static async handleChatAction(event, action, messageId, rollIndex, userId = game.user.id) {
         const message = game.messages?.get(messageId);
 
         const chatCardFlag = message?.getFlag("fatex", "chatCard") ?? false;
@@ -83,13 +83,13 @@ export class ChatActionsFeature {
 
         if (action === "reroll") {
             this.triggerRerollAnimation(messageId, rollIndex);
-            await chatCard.rolls[rollIndex].reroll(userId);
+            await chatCard.rolls[rollIndex].reroll(userId, { event });
             await chatCard.updateMessage();
             this.triggerTotalChangedAnimation(messageId, rollIndex);
         }
 
         if (action === "increase") {
-            await chatCard.rolls[rollIndex].increase(userId);
+            await chatCard.rolls[rollIndex].increase(userId, { event });
             await chatCard.updateMessage();
             this.triggerTotalChangedAnimation(messageId, rollIndex);
         }
