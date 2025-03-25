@@ -2,7 +2,7 @@
     "name": "Accelerated",
     "identifier": "accelerated",
     "types": {
-        "Aspects": [
+        "Аспекты": [
             {
                 "label": "Базовое",
                 "entries": [
@@ -60,7 +60,7 @@
                 ]
             }
         ],
-        "Consequences": [
+        "Последствия": [
             {
                 "entries": [
                     {
@@ -90,7 +90,7 @@
                 ]
             }
         ],
-        "Skills": [
+        "Подходы": [
             {
                 "columns": true,
                 "entries": [
@@ -121,7 +121,7 @@
                 ]
             }
         ],
-        "Stress": [
+        "Стресс": [
             {
                 "entries": [
                     {
