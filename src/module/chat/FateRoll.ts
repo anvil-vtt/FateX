@@ -79,23 +79,23 @@ export class FateRoll extends FateRollDataModel {
         return this;
     }
 
-    async reroll(userId = "") {
+    async reroll(userId = "", { event }: { event: Event }) {
         const history = this.addHistoryEntry(userId, { type: "reroll", previousRoll: this.faces });
         await this.roll(userId);
 
         this.updateSource({ history: history });
 
-        Hooks.callAll("fatex.reroll", this);
+        Hooks.callAll("fatex.reroll", this, event);
 
         return this;
     }
 
-    increase(userId = "") {
+    increase(userId = "", { event }: { event: Event }) {
         const history = this.addHistoryEntry(userId, { type: "increase" });
 
         this.updateSource({ bonus: this.bonus + 2, history: history });
 
-        Hooks.callAll("fatex.increase", this);
+        Hooks.callAll("fatex.increase", this, event);
 
         return this;
     }
