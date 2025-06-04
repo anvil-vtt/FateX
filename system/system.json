@@ -2,7 +2,7 @@
     "id": "fatex",
     "title": "FateX - Fate Extended",
     "description": "An extended implementation of Fate and its derivative systems",
-    "version": "1.4.5",
+    "version": "1.5.0",
     "authors": [
         {
             "name": "Patrick Bauer",
@@ -64,8 +64,8 @@
         }
     ],
     "compatibility": {
-        "minimum": "12",
-        "verified": "12"
+        "minimum": "13",
+        "verified": "13"
     },
     "socket": true,
     "url": "https://github.com/anvil-vtt/FateX",
