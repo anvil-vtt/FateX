@@ -10,7 +10,7 @@ const glob = require("glob");
 const allTemplates = () => {
     return glob
         .sync("**/*.hbs", { cwd: path.join(__dirname, "system/templates") })
-        .map((file) => `"systems/fatex/templates/${file}"`)
+        .map((file) => `"systems/fatex/templates/${file.replace(/\\/g, "/")}"`) // Replace backslashes
         .join(", ");
 };
 
