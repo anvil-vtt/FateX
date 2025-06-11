@@ -100,7 +100,10 @@ export class SheetSetup extends FormApplication<any, any, FateActor> {
                 return {};
             }
 
-            return JSON.parse(item.dataset.document);
+            const itemData = JSON.parse(item.dataset.document);
+            // @ts-ignore
+            itemData.system = itemData.data;
+            return itemData;
         });
 
         await this.actor.createEmbeddedDocuments("Item", itemData);
@@ -147,7 +150,7 @@ export class SheetSetup extends FormApplication<any, any, FateActor> {
             },
             {
                 classes: ["fatex", "fatex-dialog"],
-            }
+            },
         ).render(true);
     }
 
