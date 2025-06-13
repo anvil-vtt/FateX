@@ -43,7 +43,7 @@ export class ChatActionsFeature {
     }
 
     static chatListeners(html) {
-        html.on("click", ".fatex-roll-actions button[data-action]", this._onChatCardAction.bind(this));
+        $(html).on("click", ".fatex-roll-actions button[data-action]", this._onChatCardAction.bind(this));
     }
 
     static async _onChatCardAction(event) {
