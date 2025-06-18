@@ -11,11 +11,13 @@ export class TemplateActorsFeature {
 
         // Add extra button to foundrys settings menu
         Hooks.on("renderSidebarTab", (app, html) => {
+            console.log("DEREK: renderSidebarTab " + html);
+            const $html = $(html);
             if (!(app instanceof Settings) || !game.user?.isGM) {
                 return;
             }
 
-            const configureButton = html.find('button[data-action="configure"]');
+            const configureButton = $html.find('button[data-action="configure"]');
 
             configureButton.before(`
                 <button data-fatex="templates">
@@ -23,7 +25,7 @@ export class TemplateActorsFeature {
                 </button>
             `);
 
-            html.on("click", 'button[data-fatex="templates"]', () => {
+            $html.on("click", 'button[data-fatex="templates"]', () => {
                 return CONFIG.FateX.applications.templateSettings?.render(true);
             });
         });

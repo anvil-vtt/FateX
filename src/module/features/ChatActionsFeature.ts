@@ -3,8 +3,8 @@ import { FateChatCard } from "../chat/FateChatCard";
 
 export class ChatActionsFeature {
     static hooks() {
-        Hooks.on("renderChatLog", (_app, html, _data) => this.chatListeners(html));
-        Hooks.on("renderChatPopout", (_app, html, _data) => this.chatListeners(html));
+        Hooks.on("renderChatLog", (_app, html, _data) => this.chatListeners($(html)));
+        Hooks.on("renderChatPopout", (_app, html, _data) => this.chatListeners($(html)));
 
         Hooks.once("init", () => {
             game.socket.on("system.fatex", (data) => {
@@ -42,8 +42,8 @@ export class ChatActionsFeature {
         }
     }
 
-    static chatListeners(html) {
-        $(html).on("click", ".fatex-roll-actions button[data-action]", this._onChatCardAction.bind(this));
+    static chatListeners(html: JQuery<HTMLElement>) {
+        html.on("click", ".fatex-roll-actions button[data-action]", this._onChatCardAction.bind(this));
     }
 
     static async _onChatCardAction(event) {

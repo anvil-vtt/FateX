@@ -101,7 +101,7 @@ export class FateRoll extends FateRollDataModel {
     }
 
     private addHistoryEntry(userId: string, data) {
-        const history = foundry.utils.deepClone(this.history);
+        const history = foundry.utils.deepClone(this.history ?? []);
         const user = userId ? game.users.get(userId) : game.user;
         const entry = { user: user.name, ...data };
 

@@ -10,8 +10,8 @@ export class ActorGroupFeature {
     static hooks() {
         Hooks.on("renderActorDirectory", (_app, html) => {
             if (game.settings.get("fatex", "enableAlphaFeatures")) {
-                this.addCreateGroupButton(html);
-                this.styleGroupEntries(html);
+                this.addCreateGroupButton($(html));
+                this.styleGroupEntries($(html));
             }
         });
 
@@ -20,10 +20,14 @@ export class ActorGroupFeature {
          */
         Hooks.on("updateActor", (entity, _data, _options, _userId) => {
             if (game.settings.get("fatex", "enableAlphaFeatures")) {
-                const openGroupSheets = Object.values(ui.windows).filter<GroupSheet>((app): app is GroupSheet => app instanceof GroupSheet);
+                const openGroupSheets = Object.values(ui.windows).filter<GroupSheet>(
+                    (app): app is GroupSheet => app instanceof GroupSheet,
+                );
 
                 for (const groupSheet of openGroupSheets) {
-                    const inlineSheetsOfUpdatedActor = groupSheet.inlineSheets.filter((sheet) => sheet.actor.id === entity.id);
+                    const inlineSheetsOfUpdatedActor = groupSheet.inlineSheets.filter(
+                        (sheet) => sheet.actor.id === entity.id,
+                    );
 
                     for (const inlineSheet of inlineSheetsOfUpdatedActor) {
                         inlineSheet.render();
@@ -42,7 +46,7 @@ export class ActorGroupFeature {
         });
     }
 
-    static addCreateGroupButton(html) {
+    static addCreateGroupButton(html: JQuery<HTMLElement>) {
         if (!game.user?.isGM || html.find(".fatex-header-actions").length) {
             return;
         }
@@ -50,7 +54,9 @@ export class ActorGroupFeature {
         // Add "Create Group" button
         html.find(".header-actions").after(`
                 <div class="fatex-header-actions header-actions action-buttons flexrow">
-                    <button class="create-actor-group"><i class="fas fa-users"></i> ${game.i18n.localize("FAx.ActorGroups.New")}</button>
+                    <button class="create-actor-group"><i class="fas fa-users"></i> ${game.i18n.localize(
+                        "FAx.ActorGroups.New",
+                    )}</button>
                 </div>
         `);
 
@@ -61,11 +67,15 @@ export class ActorGroupFeature {
             $(element)
                 .find(".folder-header")
                 .first()
-                .append(`<a class="create-folder-group" data-folder="${folder}" data-groupname="${name}"> <i class="fas fa-user-friends fa-fw"></i></a>`);
+                .append(
+                    `<a class="create-folder-group" data-folder="${folder}" data-groupname="${name}"> <i class="fas fa-user-friends fa-fw"></i></a>`,
+                );
         });
 
         // Bind click event listener
-        html.find("button.create-actor-group, a.create-folder-group").on("click", (e: MouseEvent) => this._onClickCreateGroup.call(this, e));
+        html.find("button.create-actor-group, a.create-folder-group").on("click", (e: Event) =>
+            this._onClickCreateGroup.call(this, e as MouseEvent),
+        );
     }
 
     static styleGroupEntries(html: JQuery<HTMLElement>) {
