@@ -192,14 +192,14 @@ export class GroupSheet extends ActorSheet {
      * An actor is referenced by his actor id
      */
     async renderInlineActor(reference: ReferenceItemData) {
-        const actor = game.actors?.find((actor) => actor.id === reference.data?.id && (actor as FateActor).isVisibleByPermission);
+        const actor = game.actors?.find((actor) => actor.id === (reference as any).system.id && (actor as FateActor).isVisibleByPermission);
 
         if (!actor) {
             return;
         }
 
         // @ts-ignore
-        const actorSheet = new InlineActorSheetFate(actor as FateActor, { referenceID: reference._id } as CharacterSheetOptions);
+        const actorSheet = new InlineActorSheetFate(actor as FateActor, { referenceID: (reference as any)._id } as CharacterSheetOptions);
         // @ts-ignore
         await actorSheet.render(true, { group: this } as Application.RenderOptions);
 
@@ -264,30 +264,41 @@ export class GroupSheet extends ActorSheet {
      * Create a new ownedItem of type ActorReference based on a given actorID
      * @param actorID
      */
-    _createActorReference(actorUUID: string) {
-        // @ts-ignore
-        const actor = fromUuidSync(actorUUID) as FateActor;
+    async _createActorReference(actorUUID: string) {
+        
+        const actor = await fromUuid(actorUUID) as FateActor;
+
+        if (!actor) {
+            console.error("FateX | DEBUG: No actor found for this UUID. Aborting.");
+            return;
+        }
 
         // Check if character is already present
         // @ts-ignore
         if (this.actor.items.find((i) => i.type === "actorReference" && i.system.id === actor.id)) {
+            console.log("FateX | DEBUG: The actor is already referenced in this group. Aborting.");
             return;
         }
 
         // Only allow character-type actors to be referenced
         if (actor.type !== "character") {
+            console.log("FateX | DEBUG: The actor is not of type 'character'. Aborting.");
             return;
         }
 
-        const itemData: Partial<ItemData> = {
+        const itemData = {
             name: ["actorReference", actor.id].join("-"),
             type: "actorReference",
-            data: {
+            system: {
                 id: actor.id ?? "",
             },
-        };
+        } as any;
 
-        this.actor.createEmbeddedDocuments("Item", [itemData]);
+        try {
+            await this.actor.createEmbeddedDocuments("Item", [itemData]);
+        } catch(e) {
+            console.error("FateX | DEBUG: An error occurred while creating the embedded document:", e);
+        }
     }
 
     _createActorReferencesFromFolder(folderUUID: string) {
@@ -372,8 +383,9 @@ export class GroupSheet extends ActorSheet {
 
         try {
             // @ts-ignore
-            data = TextEditor.getDragEventData(event);
+            data = foundry.applications.ux.TextEditor.implementation.getDragEventData(event);
         } catch (err) {
+            console.error("FateX | DEBUG: Error while retrieving drag-and-drop data.", err);
             return false;
         }
 
@@ -385,7 +397,7 @@ export class GroupSheet extends ActorSheet {
 
         switch (data.type) {
             case "Actor":
-                return this._createActorReference(data.uuid);
+                return await this._createActorReference(data.uuid);
             case "Folder":
                 return this._createActorReferencesFromFolder(data.uuid);
             case "Item":
