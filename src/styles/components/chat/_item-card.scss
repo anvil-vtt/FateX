@@ -1,0 +1,29 @@
+.fatex-item-card {
+    font-family: var(--fatex-primary-font, "Montserrat", sans-serif);
+    background: var(--sheet-background, rgb(241, 242, 246));
+    color: var(--fatex-primary-text-color, #191813);
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid var(--fatex-primary-color, rgba(47, 53, 66, 1));
+
+    .fatex-headline {
+        margin-bottom: 8px;
+    }
+
+    &__content {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 5px;
+        font-size: 14px;
+    }
+
+    &__description {
+        flex: 1;
+        min-width: 0;
+        p {
+            margin: 0;
+        }
+    }
+
+}

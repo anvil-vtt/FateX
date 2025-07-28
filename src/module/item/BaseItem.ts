@@ -1,3 +1,5 @@
+import { FateItem } from "./FateItem";
+
 export abstract class BaseItem {
     static documentName = "";
 
@@ -122,6 +124,22 @@ export abstract class BaseItem {
         ).render(true);
     }
 
+    /**
+     * Handler to send an object to chat.
+     * @protected
+     */
+    static _onItemSendToChat(e, sheet) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const data = e.currentTarget.dataset;
+        const item = sheet.actor.items.get(data.item);
+
+        if (item) {
+            this.sendToChat(item);
+        }
+    }
+
     /*************************
      * HELPER FUNCTIONS
      *************************/
@@ -148,4 +166,47 @@ export abstract class BaseItem {
 
         return !!element.closest(".fatex-js-edit-mode").length;
     }
+/**
+ * Create a card in the chat for a given object.
+ * @param {FateItem} item The item to display.
+ * @private
+ */
+static async sendToChat(item: FateItem) {
+    if (!item.actor) {
+        ui.notifications.warn("Impossible to send a non-owned item to chat.");
+        return;
+    }
+
+    const itemAsAny = item as any;
+
+    let descriptionSource = "";
+
+    if (item.type === 'aspect') {
+        descriptionSource = itemAsAny.system.value || "";
+    } else {
+        descriptionSource = itemAsAny.system.description || "";
+    }
+    
+    // @ts-ignore
+    const enrichedDescription = await TextEditor.enrichHTML(descriptionSource, { async: true });
+
+    const templateData = {
+        item: {
+            name: item.name,
+            img: item.img,
+            system: {
+                enrichedDescription: enrichedDescription
+            }
+        },
+        speaker: ChatMessage.getSpeaker({ actor: item.actor ?? undefined }),
+    };
+
+    const content = await renderTemplate("systems/fatex/templates/chat/item-card.hbs", templateData);
+
+    await ChatMessage.create({
+        speaker: templateData.speaker,
+        content: content,
+        user: game.user?.id,
+    });
+}
 }
