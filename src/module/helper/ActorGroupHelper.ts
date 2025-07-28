@@ -19,7 +19,7 @@ export function getReferencesByGroupType(groupType: groupType = "manual", actor?
             return []; //getReferencesFromCurrentEncounter();
         default: {
             // @ts-ignore
-            const items = actor.items.filter((i) => ["actorReference", "tokenReference"].includes(i.type)).map((i) => i.data) as (ItemDataBaseProperties &
+            const items = actor.items.filter((i) => ["actorReference", "tokenReference"].includes(i.type)) as (ItemDataBaseProperties &
                 ReferenceItemData)[];
             return items.sort((a, b) => (a.sort || 0) - (b.sort || 0));
         }
