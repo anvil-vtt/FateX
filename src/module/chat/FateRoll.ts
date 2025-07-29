@@ -147,7 +147,7 @@ export class FateRoll extends FateRollDataModel {
     async render() {
         const template = "systems/fatex/templates/chat/roll.hbs";
 
-        return await renderTemplate(template, this);
+        return await foundry.applications.handlebars.renderTemplate(template, this);
     }
 
     static determineMagicCount(skill: SkillItemData & ItemDataProperties) {
