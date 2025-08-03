@@ -45,6 +45,16 @@ li.chat-message {
     background: $sheet-background;
     padding: 5px;
     border-radius: 3px;
+    
+    .fatex-headline__icon {
+        -webkit-text-stroke: 3px black;
+        -webkit-text-fill-color: #ffffff;
+        paint-order: stroke fill;
+
+        &--negative {
+            -webkit-text-fill-color: $caution-color;
+        }
+    }
 }
 
 .fatex-chat__headline-container {
