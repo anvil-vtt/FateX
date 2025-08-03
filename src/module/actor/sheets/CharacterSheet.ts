@@ -6,6 +6,7 @@ import { SheetSetup } from "../../applications/sheet-setup/SheetSetup";
 import { GroupSheet } from "./GroupSheet";
 import { ItemData } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/data.mjs/itemData";
 import { DropData } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/client/data/abstract/client-document";
+import { BaseItem } from "../../item/BaseItem";
 
 export interface CharacterSheetOptions extends ActorSheet.Options {
     type?: string;
@@ -65,6 +66,10 @@ export class CharacterSheet extends ActorSheet<CharacterSheetOptions> {
         for (const sheetComponent in CONFIG.FateX.sheetComponents.actor) {
             CONFIG.FateX.sheetComponents.actor[sheetComponent].activateListeners(html, this);
         }
+
+        html.find('.fatex-js-item-to-chat').click((e) => {
+        BaseItem._onItemSendToChat(e, this);
+    });
     }
 
     /**
@@ -104,7 +109,7 @@ export class CharacterSheet extends ActorSheet<CharacterSheetOptions> {
         data.consequences = data.items.filter((item: ItemData) => item.type === "consequence");
 
         // @ts-ignore
-        data.enrichedBiography = await TextEditor.enrichHTML(this.object.system.biography.value, { async: true });
+        data.enrichedBiography = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.object.system.biography.value, { async: true });
 
         // Allow every item type to add data to the actorsheet
         for (const itemType in CONFIG.FateX.itemClasses) {
