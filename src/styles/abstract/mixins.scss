@@ -39,8 +39,15 @@
     font-weight: 900;
     font-size: $font-size;
     color: $sheet-background;
-    -webkit-text-stroke: 2px $fatex-primary-color;
-    text-shadow: initial;
+    text-shadow: 
+        -2px -2px 0 $fatex-primary-color,
+        2px -2px 0 $fatex-primary-color,
+        -2px 2px 0 $fatex-primary-color,
+        2px 2px 0 $fatex-primary-color,
+        -2px 0 0 $fatex-primary-color,
+        2px 0 0 $fatex-primary-color,
+        0 -2px 0 $fatex-primary-color,
+        0 2px 0 $fatex-primary-color;
     
     &--negative {
         color: $caution-color;

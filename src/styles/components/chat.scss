@@ -48,13 +48,6 @@ li.chat-message {
     
     .fatex-headline__icon {
         @include fatex-rank-indicator(24px);
-        -webkit-text-stroke: 3px black;
-        -webkit-text-fill-color: $light-text-color;
-        paint-order: stroke fill;
-
-        &--negative {
-            -webkit-text-fill-color: $caution-color;
-        }
     }
 }
 
