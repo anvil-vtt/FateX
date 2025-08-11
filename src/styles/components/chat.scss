@@ -47,6 +47,7 @@ li.chat-message {
     border-radius: 3px;
     
     .fatex-headline__icon {
+        @include fatex-rank-indicator(24px);
         -webkit-text-stroke: 3px black;
         -webkit-text-fill-color: $light-text-color;
         paint-order: stroke fill;

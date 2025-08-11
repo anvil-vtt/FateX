@@ -30,3 +30,19 @@
     bottom: initial;
     right: initial;
 }
+
+@mixin fatex-rank-indicator($font-size: 24px) {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    transform: translate(-25px, 0px);
+    font-weight: 900;
+    font-size: $font-size;
+    color: $sheet-background;
+    -webkit-text-stroke: 2px $fatex-primary-color;
+    text-shadow: initial;
+    
+    &--negative {
+        color: $caution-color;
+    }
+}
