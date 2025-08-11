@@ -10,7 +10,7 @@ export class ExtraItem extends StuntItem {
 
         for (const extra of sheetData.extras) {
             // @ts-ignore
-            extra.system.description = await TextEditor.enrichHTML(extra.system.description, { async: true });
+            extra.system.description = await foundry.applications.ux.TextEditor.implementation.enrichHTML(extra.system.description, { async: true });
         }
 
         return sheetData;
@@ -18,7 +18,7 @@ export class ExtraItem extends StuntItem {
 
     static async getSheetData(sheetData) {
         // @ts-ignore
-        sheetData.enrichedDescription = await TextEditor.enrichHTML(sheetData.system.description, { async: true });
+        sheetData.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(sheetData.system.description, { async: true });
     }
     
 }
