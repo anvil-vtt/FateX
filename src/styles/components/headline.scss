@@ -45,27 +45,15 @@
     }
 
     &__icon {
-        position: absolute;
-        top: 0;
-        left: 100%;
+        @include fatex-rank-indicator();
         z-index: 100;
-        transform: translate(-25px, 0px);
-        font-weight: 900;
-        color: $sheet-background;
-        -webkit-text-stroke: 2px $fatex-primary-color;
-        text-shadow: initial;
         white-space: nowrap;
 
         &--skill {
             left: initial;
             right: 100%;
             font-size: 24px;
-            text-shadow: 1px 1px 1px $sheet-background;
             transform: translate(15px, -7px);
-        }
-
-        &--negative {
-            color: $caution-color;
         }
     }
 
@@ -86,6 +74,10 @@
         font-weight: bold;
         text-transform: uppercase;
     }
+}
+
+.fatex-headline--chat .fatex-headline__text {
+    color: $light-text-color;
 }
 
 .fatex-section-heading {

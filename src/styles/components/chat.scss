@@ -1,6 +1,54 @@
+#chat-log,
+.chat-log,
+.chat-sidebar {
+    background: transparent !important;
+}
+
+.chat-message,
+li.chat-message {
+    background: $sheet-background !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    border-radius: 5px !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    margin: 10px 6px !important;
+    padding: 0 !important;
+    
+    &:first-child { margin-top: 6px !important; }
+    &:last-child { margin-bottom: 6px !important; }
+    
+    .message-header,
+    .message-content {
+        background: transparent !important;
+        border: none !important;
+    }
+    
+    &.whisper {
+        opacity: 0.8;
+        background: rgba($sheet-background, 0.95) !important;
+        border-color: rgba(128, 0, 128, 0.2) !important;
+        box-shadow: 0 1px 3px rgba(128, 0, 128, 0.1) !important;
+        
+        .message-header {
+            opacity: 0.9;
+        }
+    }
+}
+
+.chat-message::before,
+.chat-message::after {
+    display: none !important;
+}
+
 .fatex-chat {
     font-size: 24px;
     text-align: center;
+    background: $sheet-background;
+    padding: 5px;
+    border-radius: 3px;
+    
+    .fatex-headline__icon {
+        @include fatex-rank-indicator(24px);
+    }
 }
 
 .fatex-chat__headline-container {

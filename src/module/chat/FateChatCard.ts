@@ -56,6 +56,6 @@ export class FateChatCard extends FateChatCardDataModel {
         const template = "systems/fatex/templates/chat/chat-card.hbs";
         const rolls = await Promise.all(this.rolls.map((roll) => roll.render()));
 
-        return await renderTemplate(template, { rolls });
+        return await foundry.applications.handlebars.renderTemplate(template, { rolls });
     }
 }
