@@ -13,7 +13,7 @@ export class StuntItem extends BaseItem {
 
         for (const stunt of sheetData.stunts) {
             // @ts-ignore
-            stunt.system.description = await foundry.applications.ux.TextEditor.implementation.enrichHTML(stunt.system.description, { async: true });
+            stunt.system.description = await TextEditor.enrichHTML(stunt.system.description, { async: true });
         }
 
         return sheetData;
@@ -21,7 +21,7 @@ export class StuntItem extends BaseItem {
 
     static async getSheetData(sheetData) {
         // @ts-ignore
-        sheetData.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(sheetData.system.description, { async: true });
+        sheetData.enrichedDescription = await TextEditor.enrichHTML(sheetData.system.description, { async: true });
     }
 
     static activateActorSheetListeners(html, sheet) {

@@ -188,7 +188,7 @@ static async sendToChat(item: FateItem) {
     }
     
     // @ts-ignore
-    const enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(descriptionSource, { async: true });
+    const enrichedDescription = await TextEditor.enrichHTML(descriptionSource, { async: true });
 
     const templateData = {
         item: {
@@ -202,7 +202,7 @@ static async sendToChat(item: FateItem) {
     };
 
     // @ts-ignore
-    const content = await foundry.applications.handlebars.renderTemplate("systems/fatex/templates/chat/item-card.hbs", templateData);
+    const content = await renderTemplate("systems/fatex/templates/chat/item-card.hbs", templateData);
 
     await ChatMessage.create({
         speaker: templateData.speaker,

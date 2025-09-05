@@ -109,7 +109,7 @@ export class CharacterSheet extends ActorSheet<CharacterSheetOptions> {
         data.consequences = data.items.filter((item: ItemData) => item.type === "consequence");
 
         // @ts-ignore
-        data.enrichedBiography = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.object.system.biography.value, { async: true });
+        data.enrichedBiography = await TextEditor.enrichHTML(this.object.system.biography.value, { async: true });
 
         // Allow every item type to add data to the actorsheet
         for (const itemType in CONFIG.FateX.itemClasses) {
