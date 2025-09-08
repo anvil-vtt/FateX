@@ -179,20 +179,26 @@ static async sendToChat(item: FateItem) {
 
     const itemAsAny = item as any;
 
+    let nameSource = "";
     let descriptionSource = "";
 
     if (item.type === 'aspect') {
+        nameSource = itemAsAny.system.label || "Aspect";
         descriptionSource = itemAsAny.system.value || "";
     } else {
+        nameSource = item.name ?? "Unnamed Item";
         descriptionSource = itemAsAny.system.description || "";
     }
-    
+
+
+    // @ts-ignore
+    const enrichedName = await TextEditor.enrichHTML(nameSource, { async: true });
     // @ts-ignore
     const enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(descriptionSource, { async: true });
 
     const templateData = {
         item: {
-            name: item.name,
+            name: enrichedName,
             img: item.img,
             system: {
                 enrichedDescription: enrichedDescription
