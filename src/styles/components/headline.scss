@@ -73,6 +73,15 @@
         font-size: 13px;
         font-weight: bold;
         text-transform: uppercase;
+
+        &--clickable {
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+
+            &:hover {
+                opacity: 0.7;
+            }
+        }
     }
 }
 
