@@ -16,7 +16,8 @@
                 "-1": "부실",
                 "-2": "엉망",
                 "-3": "재앙적",
-                "-4": "끔찍함"
+                "-4": "끔찍함",
+                "-5": "한심함"
             },
             "Actions": {
                 "Configure": "설정",
@@ -56,6 +57,14 @@
             },
             "Messages": {
                 "EmptyActor": "캐릭터가 아무런 항목도 가지고 있지 않은 것 같습니다. <strong>수정 모드</strong> 나 <strong>시트 설정</strong>에 진입하여 시트를 수정할 수 있습니다. 수정 모드와 설정 버튼은 헤더 바에서 찾을 수 있습니다."
+            }
+        },
+        "ChatCard": {
+            "MessageNotFound": "메시지를 찾을 수 없음 - 해당 메시지를 업데이트할 수 없습니다.",
+            "NoGMConnected": "해당 메시지를 업데이트하려면 GM이 게임에 접속해 있어야 합니다.",
+            "History": {
+                "Reroll": "재굴림 (원래 {previous})",
+                "Increase": "+2 추가됨"
             }
         },
         "Item": {
@@ -103,7 +112,17 @@
                 "EditItem": "기능 수정",
                 "Rank": "수준",
                 "Description": "설명",
-                "DescriptionHelp": "채팅에서만 표시됩니다."
+                "DescriptionHelp": "채팅에서만 표시됩니다.",
+                "Options": {
+                    "Headline": "옵션",
+                    "IsMagicSkill": "마법 기능",
+                    "IsMagicSkillHelp": "체크하면 이 기능 수준은 마법 굴림에 사용됩니다. shift 키를 누른 채로 굴림을 할 때 이 기능이 사용됩니다."
+                },
+                "Roll": {
+                    "MultipleMagicSkills": "다수의 마법 기능이 존재합니다 ({skills}). 첫 번째 기능으로 굴림합니다.",
+                    "NoMagicSkills": "마법 기능을 찾을 수 없습니다. 캐릭터 시트에 마법 기능을 추가하고 다시 굴리세요.",
+                    "MagicSkillTooLow": "마법 기능 수준이 0 이하입니다. 마법 주사위를 굴리려면 수준을 올려야 합니다."
+                }
             },
             "Stunt": {
                 "Name": "특기명",
@@ -120,6 +139,12 @@
                 "DescriptionHelp": "해당 특수항목에 대한 자세한 설명",
                 "ShortDescription": "요약",
                 "ShortDescriptionHelp": "해당 특수항목에 대한 자세한 설명"
+            },
+            "Reference": {
+                "EditItem": "참조 수정",
+                "Name": "참조명",
+                "ID": "ID",
+                "Scene": "장면"
             },
             "Automation": {
                 "Headline": "자동화",
@@ -193,6 +218,24 @@
                     "CreateNew": "새 템플릿 생성",
                     "Help": "지정된 템플릿이 없습니다.<br />새 템플릿을 만들려면 <strong>새 템플릿 생성</strong> 버튼을 클릭하십시오. (헤더 바에서도 찾을 수 있습니다)."
                 }
+            },
+            "System": {
+                "Alpha": {
+                    "Name": "알파 기능 활성화",
+                    "Hint": "이 설정은 실험적인 FateX 알파 기능을 활성화합니다. 알파 기능은 변경될 수 있습니다."
+                }
+            },
+            "autoUpdateTokenName": {
+                "Name": "프로토타입 토큰명 자동 업데이트",
+                "Hint": "액터 이름이 변경될 때 (두 이름이 동일한 경우) 프로토타입 토큰 이름을 자동으로 업데이트합니다."
+            },
+            "magicSystemEnabled": {
+                "Name": "Fate Core Unleashed의 마법 시스템 활성화",
+                "Hint": "캐릭터 시트에 마법 기술이 추가되고 마법 주사위를 사용할 수 있게 됩니다."
+            },
+            "enable2d6RollMode": {
+                "Name": "2d6 굴림 모드 활성화",
+                "Hint": "향후 모든 굴림에 2d6 (1d6 - 1d6) 굴림 모드를 사용합니다."
             }
         },
         "Template": {
@@ -206,6 +249,15 @@
                 "Help": "새 템플릿을 추가하려면, 하단의 <strong>설정</strong> 버튼을 클릭하십시오. (헤더 바에서도 찾을 수 있습니다).",
                 "Explain": "템플릿은 각 캐릭터가 다른 종류의 시트를 가지게 할 수 있는 좋은 방법입니다. PC, NPC, 또는 여러 아이템마다 <strong>다른 시트 항목</strong>들을 채워넣기 위해 <strong>다른 템플릿</strong>을 사용하십시오."
             }
+        },
+        "ActorGroups": {
+            "New": "새 그룹",
+            "Notifications": {
+                "ManualOnly": "이 그룹의 액터는 자동으로 관리됩니다. 액터를 수동으로 추가하려면 그룹 유형을 \"수동\"으로 변경하세요."
+            }
+        },
+        "Sheets": {
+            "Reference": "참조 시트"
         }
     }
 }
