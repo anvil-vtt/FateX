@@ -14,7 +14,7 @@ export class TemplateActorSettings extends FormApplication<any, any, any> {
     }
 
     async getData() {
-        const filteredActors = duplicate(game.actors?.filter((actor) => (actor as FateActor).isTemplateActor) as Record<any, any>[]);
+        const filteredActors = foundry.utils.duplicate(game.actors?.filter((actor) => (actor as FateActor).isTemplateActor) as Record<any, any>[]);
 
         filteredActors.forEach((actorDocument) => {
             actorDocument.stress = actorDocument.items.filter((item) => item.type === "stress");
@@ -126,7 +126,7 @@ export class TemplateActorSettings extends FormApplication<any, any, any> {
         e.stopPropagation();
 
         const data = e.currentTarget.dataset;
-        const template = duplicate(game.actors?.get(data.template));
+        const template = foundry.utils.duplicate(game.actors?.get(data.template));
 
         if (!template) {
             return;

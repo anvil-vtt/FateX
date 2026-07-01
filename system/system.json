@@ -65,7 +65,7 @@
     ],
     "compatibility": {
         "minimum": "13",
-        "verified": "13"
+        "verified": "14"
     },
     "socket": true,
     "url": "https://github.com/anvil-vtt/FateX",

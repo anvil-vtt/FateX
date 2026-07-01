@@ -187,7 +187,7 @@ export class Automation extends BaseComponent {
 
     static async removeSkillReference(document, index) {
         const currentReferences = this.getSkillReferences(document);
-        const references = duplicate(currentReferences);
+        const references = foundry.utils.duplicate(currentReferences);
 
         // Remove one reference at the provided index
         references.splice(index, 1);
