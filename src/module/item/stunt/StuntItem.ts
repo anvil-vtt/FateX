@@ -1,5 +1,6 @@
 import { BaseItem } from "../BaseItem";
 import { marked } from "marked";
+import { enrichHTML } from "../../applications/ApplicationV2";
 
 export class StuntItem extends BaseItem {
     static documentName = "stunt";
@@ -12,16 +13,14 @@ export class StuntItem extends BaseItem {
         }
 
         for (const stunt of sheetData.stunts) {
-            // @ts-ignore
-            stunt.system.description = await TextEditor.enrichHTML(stunt.system.description, { async: true });
+            stunt.system.description = await enrichHTML(stunt.system.description);
         }
 
         return sheetData;
     }
 
     static async getSheetData(sheetData) {
-        // @ts-ignore
-        sheetData.enrichedDescription = await TextEditor.enrichHTML(sheetData.system.description, { async: true });
+        sheetData.enrichedDescription = await enrichHTML(sheetData.system.description);
     }
 
     static activateActorSheetListeners(html, sheet) {

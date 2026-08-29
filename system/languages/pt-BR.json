@@ -1,5 +1,21 @@
 {
     "FateX": "FateX",
+    "TYPES": {
+        "Actor": {
+            "character": "Personagem",
+            "group": "Grupo"
+        },
+        "Item": {
+            "stress": "Barra de estresse",
+            "aspect": "Aspecto",
+            "consequence": "Consequência",
+            "skill": "Perícia",
+            "stunt": "Façanha",
+            "extra": "Extra",
+            "actorReference": "Referência a ator",
+            "tokenReference": "Referência a token"
+        }
+    },
     "FAx": {
         "name": "FateX",
         "Global": {
@@ -221,6 +237,9 @@
         },
         "ActorGroups": {
             "New": "Novo grupo",
+            "Remove": "Remover do grupo",
+            "RemoveTitle": "Remover ator do grupo?",
+            "RemoveConfirmation": "Apenas a referência neste grupo será removida. O ator e seus tokens nas cenas não serão excluídos.",
             "Notifications": {
                 "ManualOnly": "Este grupo de atores é gerenciado automaticamente. Se você quer adicionar atores manualmente, altere o tipo do grupo para \"manual\"."
             }

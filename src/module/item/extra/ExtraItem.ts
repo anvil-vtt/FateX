@@ -1,4 +1,5 @@
 import { StuntItem } from "../stunt/StuntItem";
+import { enrichHTML } from "../../applications/ApplicationV2";
 
 export class ExtraItem extends StuntItem {
     static get documentName() {
@@ -9,16 +10,13 @@ export class ExtraItem extends StuntItem {
         sheetData = await StuntItem.getActorSheetData(sheetData);
 
         for (const extra of sheetData.extras) {
-            // @ts-ignore
-            extra.system.description = await TextEditor.enrichHTML(extra.system.description, { async: true });
+            extra.system.description = await enrichHTML(extra.system.description);
         }
 
         return sheetData;
     }
 
     static async getSheetData(sheetData) {
-        // @ts-ignore
-        sheetData.enrichedDescription = await TextEditor.enrichHTML(sheetData.system.description, { async: true });
+        sheetData.enrichedDescription = await enrichHTML(sheetData.system.description);
     }
-    
 }

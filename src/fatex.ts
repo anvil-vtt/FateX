@@ -13,6 +13,7 @@
  */
 
 import "./styles/fatex.scss";
+import { applications } from "./module/applications/ApplicationV2";
 
 import { FateX } from "./config";
 import { FateActor } from "./module/actor/FateActor";
@@ -62,53 +63,53 @@ Hooks.once("init", async () => {
     // Register HandlebarsHelpers
     HandlebarsHelpers.registerHelpers();
 
-    // Unregister Core sheets
-    Actors.unregisterSheet("core", ActorSheet);
-    Items.unregisterSheet("core", ItemSheet);
+    // Keep existing sheet IDs so saved sheet selections continue to resolve.
+    const sheetConfig = applications.apps.DocumentSheetConfig;
 
     // Register FateX actor sheets
-    Actors.registerSheet("FateX", CharacterSheet, {
+    sheetConfig.registerSheet(Actor, "FateX", CharacterSheet, {
         types: ["character"],
         makeDefault: true,
     });
 
-    Actors.registerSheet("FateX", GroupSheet, {
+    sheetConfig.registerSheet(Actor, "FateX", GroupSheet, {
         types: ["group"],
         makeDefault: true,
+        label: "TYPES.Actor.group",
     });
 
     // Register FateX item sheets
-    Items.registerSheet("FateX", StressSheet, {
+    sheetConfig.registerSheet(Item, "FateX", StressSheet, {
         types: ["stress"],
         makeDefault: true,
     });
 
-    Items.registerSheet("FateX", AspectSheet, {
+    sheetConfig.registerSheet(Item, "FateX", AspectSheet, {
         types: ["aspect"],
         makeDefault: true,
     });
 
-    Items.registerSheet("FateX", ConsequenceSheet, {
+    sheetConfig.registerSheet(Item, "FateX", ConsequenceSheet, {
         types: ["consequence"],
         makeDefault: true,
     });
 
-    Items.registerSheet("FateX", SkillSheet, {
+    sheetConfig.registerSheet(Item, "FateX", SkillSheet, {
         types: ["skill"],
         makeDefault: true,
     });
 
-    Items.registerSheet("FateX", StuntSheet, {
+    sheetConfig.registerSheet(Item, "FateX", StuntSheet, {
         types: ["stunt"],
         makeDefault: true,
     });
 
-    Items.registerSheet("FateX", ExtraSheet, {
+    sheetConfig.registerSheet(Item, "FateX", ExtraSheet, {
         types: ["extra"],
         makeDefault: true,
     });
 
-    Items.registerSheet("FateX", ReferenceSheet, {
+    sheetConfig.registerSheet(Item, "FateX", ReferenceSheet, {
         types: ["actorReference", "tokenReference"],
         makeDefault: true,
         label: "FAx.Sheets.Reference",
@@ -135,15 +136,13 @@ if (module.hot) {
     module.hot.accept();
 
     if (module.hot.status() === "apply") {
-        for (const template in _templateCache) {
-            if (template in _templateCache) {
-                delete _templateCache[template];
-            }
+        for (const template of Object.keys(Handlebars.partials)) {
+            if (template.startsWith("systems/fatex/")) delete Handlebars.partials[template];
         }
 
         TemplatePreloader.preloadHandlebarsTemplates().then(() => {
-            for (const application in ui.windows) {
-                ui.windows[application].render(true);
+            for (const application of applications.instances.values()) {
+                if (application.options.classes.includes("fatex")) application.render({ force: true });
             }
         });
     }

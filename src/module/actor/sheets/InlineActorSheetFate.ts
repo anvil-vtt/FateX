@@ -1,68 +1,70 @@
 import { CharacterSheet } from "./CharacterSheet";
-import { GroupSheet } from "./GroupSheet";
 
 export class InlineActorSheetFate extends CharacterSheet {
-    static get defaultOptions() {
-        return foundry.utils.mergeObject(super.defaultOptions, {
-            group: undefined,
-            width: "auto",
-            height: "auto",
-            tabs: [
-                {
-                    navSelector: ".fatex-js-tabs-navigation",
-                    contentSelector: ".fatex-js-tab-content",
-                    initial: "aspects",
-                },
-            ],
-        });
+    static DEFAULT_OPTIONS: any = {
+        classes: ["fatex-inline-application"],
+        window: { frame: false, positioned: false },
+        position: { width: "auto", height: "auto" },
+        actions: {
+            removeFromGroup: function (this: InlineActorSheetFate) {
+                return this.options.group.removeReference(this.options.referenceID);
+            },
+        },
+    };
+    static PARTS = {
+        sheet: {
+            template: "systems/fatex/templates/inline-sheet/character.hbs",
+            scrollable: [".fatex__inline_sheet__content"],
+        },
+    };
+    static TABS = {
+        primary: {
+            initial: "aspects",
+            tabs: [{ id: "aspects" }, { id: "consequences" }, { id: "stress" }],
+        },
+    };
+
+    combatant: any;
+
+    get canRemoveFromGroup(): boolean {
+        return this.options.group.canRemoveReference(this.options.referenceID);
     }
 
-    async getData(_options?: Application.RenderOptions) {
-        const data = await super.getData();
+    _initializeApplicationOptions(options) {
+        const configured = super._initializeApplicationOptions(options);
+        configured.uniqueId += `-${options.group.id}-${options.referenceID}`;
+        return configured;
+    }
 
-        if (this.options.referenceID) {
-            // @ts-ignore
-            data.referenceID = this.options.referenceID;
-        }
-
-        if (this.options.combatant) {
-            // @ts-ignore
-            data.defeated = this.options.combatant.data.defeated;
-            // @ts-ignore
-            data.hidden = this.options.combatant.data.hidden;
-        }
-
+    async _prepareContext(options) {
+        const data = await super._prepareContext(options);
+        data.referenceID = this.options.referenceID;
+        data.canRemoveFromGroup = this.canRemoveFromGroup;
+        data.defeated = this.combatant?.defeated ?? false;
+        data.hidden = this.combatant?.hidden ?? false;
         return data;
     }
 
-    get id() {
-        return this.options.id ? this.options.id : `inline-app-${this.appId}`;
+    async _onRender(context, options) {
+        await super._onRender(context, options);
+        const button = this.element.querySelector('[data-action="removeFromGroup"]') as HTMLButtonElement | null;
+        // Membership belongs to the group, not to the displayed actor's form.
+        if (button) button.disabled = !this.canRemoveFromGroup;
     }
 
-    get popOut() {
-        return false;
+    _insertElement(element: HTMLElement) {
+        const host = this.options.group.element.querySelector(".fatex-js-actor-group-sheets");
+        if (!host) throw new Error("FateX | Inline sheet has no group container.");
+        element.dataset.id = this.options.referenceID;
+        host.append(element);
     }
 
-    get template() {
-        return "systems/fatex/templates/inline-sheet/character.hbs";
-    }
-
-    /**
-     * Circumvent BaseEntitySheet::render() as it wouldn't allow InlineActorSheets
-     * to update for actors which the user has no view-permission for.
-     */
-    render(force = false, options = {}) {
-        this.object.apps[this.appId] = this;
-
-        this._render(force, options);
-
-        return this;
-    }
-
-    _injectHTML(html: JQuery, options: { group?: GroupSheet } = {}) {
-        const group = options?.group ?? this.options.group;
-
-        $(`#${group?.id} .fatex-js-actor-group-sheets`).append(html);
-        this._element = html;
+    _attachFrameListeners() {
+        super._attachFrameListeners();
+        // A child is an independent document form. Its actions must never update
+        // the group document or another actor rendered in the same group.
+        for (const type of ["click", "contextmenu", "change", "submit", "drop", "dragstart"]) {
+            this.element.addEventListener(type, (event) => event.stopPropagation());
+        }
     }
 }

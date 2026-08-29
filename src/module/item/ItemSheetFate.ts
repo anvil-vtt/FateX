@@ -1,51 +1,43 @@
-export class ItemSheetFate extends ItemSheet {
-    static get defaultOptions() {
-        return foundry.utils.mergeObject(super.defaultOptions, {
-            classes: ["fatex", "fatex-sheet", "fatex-sheet--item", "sheet"],
-            scrollY: [".fatex-desk__content"],
-            width: 575,
-        });
+import { enrichHTML, FateSheetMixin, ItemSheetV2 } from "../applications/ApplicationV2";
+
+export class ItemSheetFate extends FateSheetMixin(ItemSheetV2) {
+    static DEFAULT_OPTIONS = {
+        tag: "form",
+        classes: ["fatex", "fatex-sheet", "fatex-sheet--item"],
+        position: { width: 575, height: 650 },
+        window: { resizable: true },
+        form: { submitOnChange: true, closeOnSubmit: false },
+    };
+
+    static PARTS = { sheet: { template: "", scrollable: [".fatex-desk__content"] } };
+
+    _configureRenderParts(options) {
+        const parts = super._configureRenderParts(options);
+        parts.sheet.template = `systems/fatex/templates/item/${this.item.type}-sheet.hbs`;
+        return parts;
     }
 
-    async getData() {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        let data: any = super.getData();
-
-        // enforce data to ensure compatability between 0.7 and 0.8
-        // @ts-ignore
-        data.data = this.object.system;
-        data.system = data.data;
-
-        // Set owner name if possible
-        data.isOwnedBy = this.actor ? this.actor.name : false;
-
-        // Let every item type manipulate its own sheet data
-        data = await CONFIG.FateX.itemClasses[this.item.type]?.getSheetData(data, this) || data;
-
-        // Let every component manipulate an items' sheet data
-        for (const sheetComponent in CONFIG.FateX.sheetComponents.item) {
-            if (Object.prototype.hasOwnProperty.call(CONFIG.FateX.sheetComponents.item, sheetComponent)) {
-                data = await CONFIG.FateX.sheetComponents.item[sheetComponent].getSheetData(data, this);
-            }
+    async _prepareContext(options) {
+        let data = await super._prepareContext(options);
+        Object.assign(data, {
+            item: this.item.toObject(false),
+            system: foundry.utils.deepClone(this.item.system),
+            isOwnedBy: this.actor?.name ?? false,
+            enrichedDescription: await enrichHTML(this.item.system.description, this.item),
+        });
+        data = (await CONFIG.FateX.itemClasses[this.item.type]?.getSheetData(data, this)) ?? data;
+        for (const component of Object.values(CONFIG.FateX.sheetComponents.item)) {
+            data = await component.getSheetData(data, this);
         }
-
         return data;
     }
 
-    get template() {
-        return `systems/fatex/templates/item/${this.item.type}-sheet.hbs`;
-    }
-
-    activateListeners(html) {
-        super.activateListeners(html);
-
-        for (const sheetComponent in CONFIG.FateX.sheetComponents.item) {
-            if (Object.prototype.hasOwnProperty.call(CONFIG.FateX.sheetComponents.item, sheetComponent)) {
-                CONFIG.FateX.sheetComponents.item[sheetComponent].activateListeners(html, this);
-            }
-        }
-
-        // Let every item type add its own sheet listeners
+    async _onRender(context, options) {
+        await super._onRender(context, options);
+        if (!this.isEditable) return;
+        const html = $(this.element);
+        for (const component of Object.values(CONFIG.FateX.sheetComponents.item))
+            component.activateListeners(html, this);
         CONFIG.FateX.itemClasses[this.item.type]?.activateListeners(html, this);
     }
 }

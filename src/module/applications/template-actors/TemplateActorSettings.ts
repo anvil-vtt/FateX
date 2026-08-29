@@ -1,153 +1,109 @@
 import { FateActor } from "../../actor/FateActor";
 import { SheetSetup } from "../sheet-setup/SheetSetup";
+import { ApplicationV2, confirmDeletion, HandlebarsApplicationMixin } from "../ApplicationV2";
 
-export class TemplateActorSettings extends FormApplication<any, any, any> {
-    static get defaultOptions() {
-        return foundry.utils.mergeObject(super.defaultOptions, {
-            title: game.i18n.localize("FAx.Settings.Templates.App.Title"),
-            template: "/systems/fatex/templates/apps/template-actors.hbs",
-            id: "template-actors",
-            resizable: true,
-            classes: ["fatex", "fatex-sheet", "fatex-sheet--app"],
-            width: 860,
-        });
-    }
-
-    async getData() {
-        const filteredActors = duplicate(game.actors?.filter((actor) => (actor as FateActor).isTemplateActor) as Record<any, any>[]);
-
-        filteredActors.forEach((actorDocument) => {
-            actorDocument.stress = actorDocument.items.filter((item) => item.type === "stress");
-            actorDocument.aspects = actorDocument.items.filter((item) => item.type === "aspect");
-            actorDocument.skills = actorDocument.items.filter((item) => item.type === "skill");
-            actorDocument.consequences = actorDocument.items.filter((item) => item.type === "consequence");
-        });
-
-        return {
-            options: this.options,
-            templateActors: filteredActors,
-        };
-    }
-
-    activateListeners(html) {
-        super.activateListeners(html);
-
-        html.find(".fatex-js-create-template").on("click", (e) => this._createTemplate.call(this, e));
-        html.find(".fatex-js-delete-template").on("click", (e) => this._deleteTemplate.call(this, e));
-        html.find(".fatex-js-configure-template").on("click", (e) => this._configureTemplate.call(this, e));
-        html.find(".fatex-js-duplicate-template").on("click", (e) => this._duplicateTemplate.call(this, e));
-    }
-
-    /*************************
-     * EVENT HANDLER
-     *************************/
-
-    async _configureTemplate(e) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        const data = e.currentTarget.dataset;
-        const template = game.actors?.get(data.template);
-
-        if (!template) {
-            return;
-        }
-
-        template.sheet?.render(true);
-    }
-
-    async _deleteTemplate(e) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        const data = e.currentTarget.dataset;
-        const template = game.actors?.get(data.template);
-
-        if (!template) {
-            return;
-        }
-
-        new Dialog(
-            {
-                title: `${game.i18n.localize("FAx.Dialog.DocumentDelete")} ${template.name}`,
-                content: game.i18n.localize("FAx.Dialog.DocumentDeleteText"),
-                default: "submit",
-                buttons: {
-                    cancel: {
-                        icon: '<i class="fas fa-times"></i>',
-                        label: game.i18n.localize("FAx.Dialog.Cancel"),
-                        callback: () => null,
-                    },
-                    submit: {
-                        icon: '<i class="fas fa-check"></i>',
-                        label: game.i18n.localize("FAx.Dialog.Confirm"),
-                        callback: async () => {
-                            await template.delete();
-
-                            // Re-render this settings window and the picker if open
-                            this.render(true);
-                            CONFIG.FateX.applications.templatePicker?.render();
-                        },
-                    },
-                },
+export class TemplateActorSettings extends HandlebarsApplicationMixin(ApplicationV2) {
+    static DEFAULT_OPTIONS: any = {
+        id: "template-actors",
+        classes: ["fatex", "fatex-sheet", "fatex-sheet--app"],
+        position: { width: 860, height: 700 },
+        window: { title: "FAx.Settings.Templates.App.Title", resizable: true },
+        actions: {
+            createTemplate: function (this: TemplateActorSettings) {
+                return this._createTemplate();
             },
-            {
-                classes: ["fatex", "fatex-dialog"],
-            }
-        ).render(true);
-    }
-
-    async _createTemplate(e) {
-        e.preventDefault();
-
-        const createData = {
-            name: game.i18n.localize("FAx.Settings.Templates.New"),
-            type: "character",
-            flags: {
-                fatex: {
-                    isTemplateActor: true,
-                },
+            deleteTemplate: function (this: TemplateActorSettings, _event, target) {
+                return this._deleteTemplate(target.dataset.template);
             },
-        };
+            configureTemplate: function (this: TemplateActorSettings, _event, target) {
+                return this._configureTemplate(target.dataset.template);
+            },
+            duplicateTemplate: function (this: TemplateActorSettings, _event, target) {
+                return this._duplicateTemplate(target.dataset.template);
+            },
+        },
+    };
+    static PARTS = {
+        sheet: {
+            template: "systems/fatex/templates/apps/template-actors.hbs",
+            scrollable: [".fatex-desk__content"],
+        },
+    };
 
-        const newTemplateActor = await FateActor._create(createData, { renderSheet: true });
-
-        // Open sheet setup by default for new templates
-        const sheetSetup = new SheetSetup(newTemplateActor, {});
-        sheetSetup.render(true);
-
-        // Re-render this settings window and the picker if open
-        this.render(true);
-        CONFIG.FateX.applications.templatePicker?.render();
+    constructor(options = {}) {
+        super(options);
     }
 
-    async _duplicateTemplate(e) {
-        e.preventDefault();
-        e.stopPropagation();
+    _canRender(options) {
+        super._canRender(options);
+        if (!game.user?.isGM) throw new Error(game.i18n.localize("ERROR.NoPermission"));
+    }
 
-        const data = e.currentTarget.dataset;
-        const template = duplicate(game.actors?.get(data.template));
+    async _prepareContext(options) {
+        const context = await super._prepareContext(options);
+        const templateActors = (game.actors?.filter((actor) => (actor as FateActor).isTemplateActor) ?? []).map(
+            (actor) => {
+                const view = actor.toObject() as any;
+                for (const [key, type] of Object.entries({
+                    stress: "stress",
+                    aspects: "aspect",
+                    skills: "skill",
+                    consequences: "consequence",
+                })) {
+                    view[key] = view.items.filter((item) => item.type === type);
+                }
+                return view;
+            },
+        );
+        return Object.assign(context, { options: this.options, templateActors });
+    }
 
-        if (!template) {
+    _configureTemplate(id: string) {
+        if (game.user?.isGM) return (game.actors?.get(id)?.sheet as any)?.render({ force: true });
+    }
+
+    async _deleteTemplate(id: string) {
+        if (!game.user?.isGM) return;
+        const template = game.actors?.get(id);
+        if (!template || !(template as FateActor).isTemplateActor) return;
+        if (
+            !(await confirmDeletion(
+                `${game.i18n.localize("FAx.Dialog.DocumentDelete")} ${template.name}`,
+                game.i18n.localize("FAx.Dialog.DocumentDeleteText"),
+            ))
+        )
             return;
-        }
+        await template.delete();
+        this.refreshApplications();
+    }
 
-        // Delete id
-        // @ts-ignore
+    async _createTemplate() {
+        if (!game.user?.isGM) return;
+        const actor = await FateActor._create(
+            {
+                name: game.i18n.localize("FAx.Settings.Templates.New"),
+                type: "character",
+                flags: { fatex: { isTemplateActor: true } },
+            },
+            { renderSheet: true },
+        );
+        if (actor) new SheetSetup({ document: actor }).render({ force: true });
+        this.refreshApplications();
+    }
+
+    async _duplicateTemplate(id: string) {
+        if (!game.user?.isGM) return;
+        const source = game.actors?.get(id);
+        if (!source || !(source as FateActor).isTemplateActor) return;
+        const template = source.toObject() as any;
         delete template._id;
-
-        // Change name
-        template.name = template.name + ` (${game.i18n.localize("FAx.Settings.Templates.Copy")})`;
-
-        // Create new duplicate
-        await Actor.create(template, { renderSheet: true });
-
-        // Re-render this settings window and the picker if open
-        this.render(true);
-        CONFIG.FateX.applications.templatePicker?.render();
+        template.name += ` (${game.i18n.localize("FAx.Settings.Templates.Copy")})`;
+        await FateActor._create(template, { renderSheet: true });
+        this.refreshApplications();
     }
 
-    async _updateObject() {
-        // No update necessary.
+    protected refreshApplications() {
+        void this.render();
+        void CONFIG.FateX.applications.templatePicker?.render();
     }
 }

@@ -1,5 +1,21 @@
 {
     "FateX": "FateX",
+    "TYPES": {
+        "Actor": {
+            "character": "Charakter",
+            "group": "Gruppe"
+        },
+        "Item": {
+            "stress": "Stress-Track",
+            "aspect": "Aspekt",
+            "consequence": "Konsequenz",
+            "skill": "Fertigkeit",
+            "stunt": "Stunt",
+            "extra": "Extra",
+            "actorReference": "Akteurreferenz",
+            "tokenReference": "Tokenreferenz"
+        }
+    },
     "FAx": {
         "Global": {
             "Ladder": {
@@ -205,6 +221,11 @@
                 "Help": "Klicke den <strong>Einstellungen</strong> Button unten (auch in der Titelleiste verfügbar), um eine neue Vorlage hinzuzufügen.",
                 "Explain": "Vorlagen erlauben angepasste Charakterblätter für verschiedene Sorten von Charakteren. Wir empfehlen <strong>unterschiedliche Vorlagen</strong> für PCs, NPCs, und Mobs, da sie jeweils <strong>andere Anforderungen</strong> an ein Charakterblatt besitzen."
             }
+        },
+        "ActorGroups": {
+            "Remove": "Aus Gruppe entfernen",
+            "RemoveTitle": "Akteur aus Gruppe entfernen?",
+            "RemoveConfirmation": "Es wird nur die Verknüpfung in dieser Gruppe entfernt. Der Akteur und seine Token in den Szenen werden nicht gelöscht."
         }
     }
 }

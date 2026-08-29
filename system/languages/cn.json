@@ -1,5 +1,21 @@
 {
     "FateX": "FateX",
+    "TYPES": {
+        "Actor": {
+            "character": "角色",
+            "group": "群组"
+        },
+        "Item": {
+            "stress": "压力轨",
+            "aspect": "特征",
+            "consequence": "伤痕",
+            "skill": "技能",
+            "stunt": "特技",
+            "extra": "额外要素",
+            "actorReference": "角色引用",
+            "tokenReference": "指示物引用"
+        }
+    },
     "FAx": {
         "name": "FateX",
         "Global": {
@@ -206,6 +222,11 @@
                 "Help": "要添加新模板，请单击下面的“配置”按钮（也可在标题栏中找到）。",
                 "Explain": "模板可以便捷地为不同类型的角色提供不同的角色表。我们建议你对PC、NPC和敌人使用<strong>不同的模板</strong>，因为他们的角色卡<strong>需求各有不同<strong>。"
             }
+        },
+        "ActorGroups": {
+            "Remove": "从群组中移除",
+            "RemoveTitle": "从群组中移除此角色？",
+            "RemoveConfirmation": "只会移除此群组中的引用。角色及其在场景中的指示物不会被删除。"
         }
     }
 }

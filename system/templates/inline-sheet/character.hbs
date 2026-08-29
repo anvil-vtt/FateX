@@ -1,7 +1,7 @@
-<form autocomplete="off" class="fatex-u-full-height" data-id="{{referenceID}}">
+<div class="fatex-u-full-height" data-id="{{referenceID}}">
     <div class="fatex__inline_sheet{{#if defeated}} fatex__inline_sheet--defeated{{/if}}{{#if hidden}} fatex__inline_sheet--hidden{{/if}}">
         <h2 class="fatex__inline_sheet__headline fatex-headline fatex-headline--inline-sheet">
-            <img class="fatex-headline__image" alt="{{actor.name}}" data-edit="img" src="{{actor.img}}" />
+            <img class="fatex-headline__image" alt="{{actor.name}}" data-action="editImage" data-edit="img" src="{{actor.img}}"/>
             <span class="fatex-headline__text">{{actor.name}}</span>
             {{#unless isToken}}
                 <input
@@ -13,38 +13,44 @@
                     value="{{actor.system.fatepoints.current}}"
                 >
             {{/unless}}
+            {{#if canRemoveFromGroup}}
+                <button type="button" class="fatex-group-remove" data-action="removeFromGroup"
+                        title="{{localize "FAx.ActorGroups.Remove"}}" aria-label="{{localize "FAx.ActorGroups.Remove"}}">
+                    <i class="fas fa-user-minus" aria-hidden="true"></i>
+                </button>
+            {{/if}}
         </h2>
 
-        <nav class="fatex-js-tabs-navigation fatex-inline-tabs">
-            <a class="fatex-inline-tabs__item" data-tab="aspects">
+        <nav class="fatex-js-tabs-navigation fatex-inline-tabs tabs">
+            <a class="fatex-inline-tabs__item {{tabs.aspects.cssClass}}" data-action="tab" data-group="primary" data-tab="aspects">
                 {{~localize "FAx.Sheet.Aspects"~}}
             </a>
-            <a class="fatex-inline-tabs__item" data-tab="consequences">
+            <a class="fatex-inline-tabs__item {{tabs.consequences.cssClass}}" data-action="tab" data-group="primary" data-tab="consequences">
                 {{~localize "FAx.Sheet.Consequences"~}}
             </a>
-            <a class="fatex-inline-tabs__item" data-tab="stress">
+            <a class="fatex-inline-tabs__item {{tabs.stress.cssClass}}" data-action="tab" data-group="primary" data-tab="stress">
                 {{~localize "FAx.Sheet.StressTracks"~}}
             </a>
         </nav>
 
         <div class="fatex-js-tab-content fatex__inline_sheet__content">
-            <section class="tab" data-tab="aspects">
+            <section class="tab {{tabs.aspects.cssClass}}" data-group="primary" data-tab="aspects">
                 <div class="fatex-desk__aspects fatex-desk__aspects--inline">
                     {{> "systems/fatex/templates/components/aspects.hbs"}}
                 </div>
             </section>
 
-            <section class="tab" data-tab="consequences">
+            <section class="tab {{tabs.consequences.cssClass}}" data-group="primary" data-tab="consequences">
                 <div class="fatex-desk__consequences fatex-desk__consequences--inline">
                     {{> "systems/fatex/templates/components/consequences.hbs"}}
                 </div>
             </section>
 
-            <section class="tab" data-tab="stress">
+            <section class="tab {{tabs.stress.cssClass}}" data-group="primary" data-tab="stress">
                 <div class="fatex-item-grid fatex-u-padding-std">
                     {{> "systems/fatex/templates/components/stress.hbs"}}
                 </div>
             </section>
         </div>
     </div>
-</form>
+</div>

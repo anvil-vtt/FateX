@@ -1,1 +1,2 @@
-{{editor enrichedBiography target="system.biography.value" button=true editable=editable engine="prosemirror"}}
+<prose-mirror name="system.biography.value" value="{{system.biography.value}}" toggled
+              {{#unless editable}}disabled{{/unless}}>{{{enrichedBiography}}}</prose-mirror>

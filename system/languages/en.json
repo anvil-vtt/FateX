@@ -1,5 +1,21 @@
 {
     "FateX": "FateX",
+    "TYPES": {
+        "Actor": {
+            "character": "Character",
+            "group": "Group"
+        },
+        "Item": {
+            "stress": "Stress Track",
+            "aspect": "Aspect",
+            "consequence": "Consequence",
+            "skill": "Skill",
+            "stunt": "Stunt",
+            "extra": "Extra",
+            "actorReference": "Actor Reference",
+            "tokenReference": "Token Reference"
+        }
+    },
     "FAx": {
         "name": "FateX",
         "Global": {
@@ -252,6 +268,9 @@
         },
         "ActorGroups": {
             "New": "New group",
+            "Remove": "Remove from group",
+            "RemoveTitle": "Remove actor from group?",
+            "RemoveConfirmation": "Only the reference in this group will be removed. The actor and any scene tokens will not be deleted.",
             "Notifications": {
                 "ManualOnly": "This groups actors are managed automatically. If you want to manually add actors, change the groups type to \"manual\"."
             }

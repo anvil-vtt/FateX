@@ -1,4 +1,5 @@
 // @ts-nocheck
+import { renderTemplate } from "../applications/ApplicationV2";
 import { FateActor } from "../actor/FateActor";
 import { FateRoll } from "./FateRoll";
 import { FateChatCardDataModel } from "../data/FateChatCardDataModel";
@@ -29,7 +30,7 @@ export class FateChatCard extends FateChatCardDataModel {
             },
         };
 
-        ChatMessage.applyRollMode(chatData, game.settings.get("core", "rollMode"))
+        ChatMessage.applyRollMode(chatData, game.settings.get("core", "rollMode"));
         const message = await ChatMessage.create(chatData);
 
         this.updateSource({ messageId: message.id });

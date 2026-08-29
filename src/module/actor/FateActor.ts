@@ -1,53 +1,49 @@
-/**
- * FateActor is the default entity class for actors inside the FateX system.
- * Adds custom features based on the system.
- */
 import { getImageFromReference, getReferencesByGroupType } from "../helper/ActorGroupHelper";
 import { ActorDataFate } from "./ActorTypes";
 import { ActorDataConstructorData } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/data.mjs/actorData";
 
 export class FateActor extends Actor {
+    get images(): string[] {
+        if (this.type !== "group") {
+            return [];
+        }
+
+        const images: string[] = [];
+        // @ts-ignore
+        const actorReferences = getReferencesByGroupType(this.system.groupType, this);
+
+        for (let i = 0; i < 4; i++) {
+            images.push(actorReferences[i] ? getImageFromReference(actorReferences[i]) : CONST.DEFAULT_TOKEN);
+        }
+
+        return images;
+    }
+
     /**
      * Open template picker instead of showing creation dialog
      */
     static async createDialog(data?: DeepPartial<ActorDataConstructorData>, _options = {}): Promise<any> {
+        if (data?.type === "group") return this.createGroup(data);
+
         if (CONFIG.FateX.applications.templatePicker) {
-            CONFIG.FateX.applications.templatePicker.options.folder = data?.folder;
+            CONFIG.FateX.applications.templatePicker.creationData = foundry.utils.deepClone(data ?? {});
         }
 
-        return CONFIG.FateX.applications.templatePicker?.render(true);
+        return CONFIG.FateX.applications.templatePicker?.render({ force: true });
     }
 
-    /**
-     * Provide basic token configuration for newly created actors.
-     * Automatically links new tokens to the actor.
-     */
-    static async _create(data: any, options = {}) {
-        data.token = data.token || {};
-
-        // Set basic token data for newly created actors.
-        foundry.utils.mergeObject(
-            data.token,
+    /** Create a group without showing the character template or setup dialogs. */
+    static async createGroup(data: Record<string, any> = {}) {
+        if (!game.user?.isGM || !this.canUserCreate(game.user)) return;
+        return this._create(
             {
-                vision: true,
-                dimSight: 30,
-                brightSight: 0,
-                actorLink: true,
-                disposition: 1,
+                ...data,
+                name: data.name ?? game.i18n.localize("FAx.ActorGroups.New"),
+                type: "group",
+                img: data.img ?? "systems/fatex/assets/icons/group.svg",
             },
-            { overwrite: false }
+            { renderSheet: true },
         );
-
-        // Overwrite specific token data (used for template actors)
-        foundry.utils.mergeObject(
-            data.token,
-            {
-                img: CONST.DEFAULT_TOKEN,
-            },
-            { overwrite: true }
-        );
-
-        return super.create(data, options);
     }
 
     /**
@@ -86,20 +82,26 @@ export class FateActor extends Actor {
         return super.visible;
     }
 
-    get images(): string[] {
-        if (this.data.type !== "group") {
-            return [];
-        }
-
-        const images: string[] = [];
-        // @ts-ignore
-        const actorReferences = getReferencesByGroupType(this.system.groupType, this);
-
-        for (let i = 0; i < 4; i++) {
-            images.push(actorReferences[i] ? getImageFromReference(actorReferences[i]) : CONST.DEFAULT_TOKEN);
-        }
-
-        return images;
+    /**
+     * Provide basic token configuration for newly created actors.
+     * Automatically links new tokens to the actor.
+     */
+    static async _create(data: any, options = {}) {
+        const actorData = foundry.utils.deepClone(data);
+        actorData.prototypeToken ??= {};
+        foundry.utils.mergeObject(
+            actorData.prototypeToken,
+            {
+                sight: { enabled: true, range: 30 },
+                actorLink: true,
+                disposition: 1,
+            },
+            { overwrite: false },
+        );
+        // Preserve the original default-token behavior for templates and new actors.
+        actorData.prototypeToken.texture ??= {};
+        actorData.prototypeToken.texture.src = CONST.DEFAULT_TOKEN;
+        return super.create(actorData, options);
     }
 }
 

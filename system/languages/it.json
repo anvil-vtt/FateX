@@ -1,5 +1,21 @@
 {
     "FateX": "FateX",
+    "TYPES": {
+        "Actor": {
+            "character": "Personaggio",
+            "group": "Gruppo"
+        },
+        "Item": {
+            "stress": "Caselle Stress",
+            "aspect": "Aspetto",
+            "consequence": "Conseguenza",
+            "skill": "Abilità",
+            "stunt": "Talento",
+            "extra": "Elemento Accessorio",
+            "actorReference": "Riferimento all'attore",
+            "tokenReference": "Riferimento al token"
+        }
+    },
     "FAx": {
         "name": "FateX",
         "Global": {
@@ -206,6 +222,11 @@
                 "Help": "Per aggiungere un nuovo modello, clicca su <strong>Configurazione</strong> (si trova anche nella sezione in alto della scheda).",
                 "Explain": "I Modelli sono un ottimo modo per avere diverse schede per diversi tipi di personaggi. Noi conisgliamo di usare <strong>modelli differenti</strong> per PG, PNG e Mostri.Templates are a great way to have different sheets for different kinds of actors."
             }
+        },
+        "ActorGroups": {
+            "Remove": "Rimuovi dal gruppo",
+            "RemoveTitle": "Rimuovere l'attore dal gruppo?",
+            "RemoveConfirmation": "Verrà rimosso solo il riferimento in questo gruppo. L'attore e i suoi token nelle scene non verranno eliminati."
         }
     }
 }

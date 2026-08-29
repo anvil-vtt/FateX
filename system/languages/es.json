@@ -1,5 +1,21 @@
 {
     "FateX": "FateX",
+    "TYPES": {
+        "Actor": {
+            "character": "Personaje",
+            "group": "Grupo"
+        },
+        "Item": {
+            "stress": "Medidor de estrés",
+            "aspect": "Aspecto",
+            "consequence": "Consecuencia",
+            "skill": "Habilidad",
+            "stunt": "Proeza",
+            "extra": "Extra",
+            "actorReference": "Referencia a un actor",
+            "tokenReference": "Referencia a un token"
+        }
+    },
     "FAx": {
         "name": "FateX",
         "Global": {
@@ -206,6 +222,11 @@
                 "Help": "Para añadir nuevas plantillas, haz click en el botón <strong>Configuración</strong> que se encuentra debajo (también lo puedes encontrar en la barra superior).",
                 "Explain": "Las plantillas son una excelente manera de tener diferentes hojas de personaje para distintos tipos de actores. Puedes usar <strong>plantillas diferentes</strong> para PJs, PNJs principales y PNJs secundarios ya que cada uno tiene diferentes <strong>requerimientos</strong>."
             }
+        },
+        "ActorGroups": {
+            "Remove": "Quitar del grupo",
+            "RemoveTitle": "¿Quitar al actor del grupo?",
+            "RemoveConfirmation": "Solo se quitará la referencia en este grupo. El actor y sus tokens en las escenas no se eliminarán."
         }
     }
 }

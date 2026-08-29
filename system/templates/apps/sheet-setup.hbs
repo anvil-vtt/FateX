@@ -16,11 +16,11 @@
     </h2>
 
     <div class="fatex-desk__tabs fatex-desk__tabs--vertical">
-        <nav class="fatex-js-vertical-tabs-navigation fatex-vertical-tabs-navigation">
+        <nav class="fatex-js-vertical-tabs-navigation fatex-vertical-tabs-navigation tabs">
             {{#each systems as |system|}}
                 <a
                     class="fatex-vertical-tabs-navigation__item"
-                    data-tab="{{system.identifier}}"
+                    data-action="tab" data-group="setup" data-tab="{{system.identifier}}"
                 >
                     {{system.name}}
                 </a>
@@ -29,13 +29,13 @@
 
         <div class="fatex-js-vertical-tabs-content fatex-vertical-tabs-content">
             {{#each systems as |system|}}
-                <div class="fatex-u-padding-std tab" data-tab="{{system.identifier}}">
+                <div class="fatex-u-padding-std tab" data-group="setup" data-tab="{{system.identifier}}">
                     {{#each system.types as |type typeLabel|}}
                         <section class="fatex-sheet-setup__section">
                             <header class="fatex-headline">
                                 <h2 class="fatex-headline__text">{{typeLabel}}</h2>
 
-                                <div class="fatex-js-toggle-selection fatex-actions fatex-actions--setting">
+                                <div class="fatex-js-toggle-selection fatex-actions fatex-actions--setting" data-action="toggleSelection">
                                     <i class="fatex-actions__icon fatex-actions__icon--no-hide fa fa-sync"></i>
                                     <span class="fatex-actions__text">
                                         {{localize "FAx.Apps.Setup.Actions.Setup.ToggleSelection"}}
@@ -47,7 +47,7 @@
                                 {{#each type as |group groupIndex|}}
                                     <div class="fatex-sheet-setup__group {{#if group.columns}}fatex-sheet-setup__group--columns{{/if}}">
                                         {{#if group.label}}
-                                            <div class="fatex-sheet-setup__group-label fatex-js-toggle-selection">
+                                            <div class="fatex-sheet-setup__group-label fatex-js-toggle-selection" data-action="toggleSelection">
                                                 <i class="fa fa-sync"></i>
                                                 <span>{{group.label}}</span>
                                             </div>
@@ -66,7 +66,7 @@
                                 {{/each}}
                             </div>
 
-                            <div class="fatex-js-add-selection fatex-button fatex-button--square fatex-button--setup">
+                            <div class="fatex-js-add-selection fatex-button fatex-button--square fatex-button--setup" data-action="addSelection">
                                 <i class="fa fa-plus"></i>
                                 <span>{{localize "FAx.Apps.Setup.Actions.Setup.AddToSheet"}}</span>
                             </div>

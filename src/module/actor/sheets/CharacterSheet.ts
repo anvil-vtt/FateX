@@ -1,240 +1,142 @@
-/**
- * FateX base class for all actor sheets.
- * Defines what information on the actor's sheet may be rendered.
- */
 import { SheetSetup } from "../../applications/sheet-setup/SheetSetup";
-import { GroupSheet } from "./GroupSheet";
-import { ItemData } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/data.mjs/itemData";
-import { DropData } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/client/data/abstract/client-document";
 import { BaseItem } from "../../item/BaseItem";
+import { ActorSheetV2, enrichHTML, FateSheetMixin } from "../../applications/ApplicationV2";
 
-export interface CharacterSheetOptions extends ActorSheet.Options {
-    type?: string;
-    combatant?: Combatant;
-    referenceID?: string;
-    group?: GroupSheet;
-}
+export class CharacterSheet extends FateSheetMixin(ActorSheetV2) {
+    static DEFAULT_OPTIONS: any = {
+        tag: "form",
+        classes: ["fatex", "fatex-sheet"],
+        position: { width: 905, height: 800 },
+        window: { resizable: true },
+        form: { submitOnChange: true, closeOnSubmit: false },
+        actions: {
+            toggleEditMode: CharacterSheet.onToggleEditMode,
+            sheetSetup: CharacterSheet.onOpenSheetSetup,
+        },
+    };
 
-export class CharacterSheet extends ActorSheet<CharacterSheetOptions> {
-    /**
-     * Defines the default options for all FateX actor sheets.
-     * This consists of things like css classes, the sheet type and the tab configuration.
-     */
-    static get defaultOptions() {
-        const sheetOptions: Partial<CharacterSheetOptions> = {
-            classes: ["fatex", "fatex-sheet", "sheet"],
-            tabs: [
-                {
-                    navSelector: ".fatex-js-tabs-navigation",
-                    contentSelector: ".fatex-js-tab-content",
-                    initial: "skills",
-                },
-            ],
-            scrollY: [".fatex-desk__content"],
-            width: 900,
-            type: "full",
-        };
+    static PARTS = {
+        sheet: { template: "systems/fatex/templates/actor/character.hbs", scrollable: [".fatex-desk__content"] },
+    };
 
-        // @ts-ignore
-        return foundry.utils.mergeObject(super.defaultOptions, sheetOptions);
+    static TABS = {
+        primary: {
+            initial: "skills",
+            tabs: [{ id: "skills" }, { id: "extras" }, { id: "bio" }],
+        },
+    };
+
+    private editMode = false;
+
+    static onToggleEditMode(this: CharacterSheet) {
+        if (!this.isEditable) return;
+        this.editMode = !this.editMode;
+        this.element.classList.toggle("fatex-js-edit-mode", this.editMode);
     }
 
-    get template(): string {
+    static onOpenSheetSetup(this: CharacterSheet) {
+        if (this.isEditable) new SheetSetup({ document: this.actor }).render({ force: true });
+    }
+
+    _configureRenderParts(options) {
+        const parts = super._configureRenderParts(options);
         if (!game.user?.isGM && this.actor.limited) {
-            return "systems/fatex/templates/actor/limited.hbs";
+            parts.sheet.template = "systems/fatex/templates/actor/limited.hbs";
         }
-
-        return "systems/fatex/templates/actor/character.hbs";
+        return parts;
     }
 
-    /**
-     * Activates DOM-listeners on elements to react to different events like "click" or "change".
-     * ItemTypes and sheet components can activate their own listeners and receive the sheet as a reference.
-     *
-     * @param html
-     *  The rendered html content of the created actor sheet.
-     */
-    activateListeners(html: JQuery) {
-        super.activateListeners(html);
+    async _prepareContext(options) {
+        let data = await super._prepareContext(options);
+        const items = this.actor.items
+            .map((item) => {
+                const view = item.toObject(false);
+                return CONFIG.FateX.itemClasses[item.type]?.prepareItemData(view, item) ?? view;
+            })
+            .sort((a, b) => (a.sort || 0) - (b.sort || 0));
 
-        // Custom sheet listeners for every ItemType
-        for (const itemType in CONFIG.FateX.itemClasses) {
-            CONFIG.FateX.itemClasses[itemType]?.activateActorSheetListeners(html, this);
-        }
-
-        // Custom sheet listeners for every SheetComponent
-        for (const sheetComponent in CONFIG.FateX.sheetComponents.actor) {
-            CONFIG.FateX.sheetComponents.actor[sheetComponent].activateListeners(html, this);
-        }
-
-        html.find('.fatex-js-item-to-chat').click((e) => {
-        BaseItem._onItemSendToChat(e, this);
-    });
-    }
-
-    /**
-     * Returns all data that is needed to render the sheet.
-     * All variables are available inside the handelbar templates.
-     *
-     * Items are split into their categories for easier access.
-     *
-     * returns {Object}
-     */
-    async getData() {
-        // Basic fields and flags
-        let data: any = {
+        Object.assign(data, {
             owner: this.actor.isOwner,
-            options: this.options,
-            editable: this.isEditable,
+            options: { ...this.options },
+            actor: this.actor.toObject(false),
+            system: foundry.utils.deepClone(this.actor.system),
             isTemplateActor: this.actor.isTemplateActor,
             isEmptyActor: !this.actor.items.size,
-            // @ts-ignore
-            isToken: this.token && !this.token.actorLink,
+            isToken: !!this.token && !this.token.actorLink,
             config: CONFIG.FateX,
-        };
-
-        // Add actor, actor data and item
-        // @ts-ignore
-        data.actor = foundry.utils.duplicate(this.actor);
-        data.data = data.actor.system;
-        data.items = this.actor.items.map((item) => item);
-        data.items.sort((a: ItemData, b: ItemData) => (a.sort || 0) - (b.sort || 0));
-
-        // Add filtered item lists for easier access
-        data.stress = data.items.filter((item: ItemData) => item.type === "stress");
-        data.aspects = data.items.filter((item: ItemData) => item.type === "aspect");
-        data.skills = data.items.filter((item: ItemData) => item.type === "skill");
-        data.stunts = data.items.filter((item: ItemData) => item.type === "stunt");
-        data.extras = data.items.filter((item: ItemData) => item.type === "extra");
-        data.consequences = data.items.filter((item: ItemData) => item.type === "consequence");
-
-        // @ts-ignore
-        data.enrichedBiography = await TextEditor.enrichHTML(this.object.system.biography.value, { async: true });
-
-        // Allow every item type to add data to the actorsheet
-        for (const itemType in CONFIG.FateX.itemClasses) {
-            data = await CONFIG.FateX.itemClasses[itemType].getActorSheetData(data, this);
+            items,
+            enrichedBiography: await enrichHTML(this.actor.system.biography?.value, this.actor),
+        });
+        for (const [key, type] of Object.entries({
+            stress: "stress",
+            aspects: "aspect",
+            skills: "skill",
+            stunts: "stunt",
+            extras: "extra",
+            consequences: "consequence",
+        })) {
+            data[key] = items.filter((item) => item.type === type);
         }
-
+        for (const itemType of Object.values(CONFIG.FateX.itemClasses)) {
+            data = await itemType.getActorSheetData(data, this);
+        }
         return data;
     }
 
-    /**
-     * Adds FateX specific buttons to the sheets header bar.
-     *
-     * @returns Application.HeaderButton[]
-     *   A list of buttons to be rendered.
-     */
-    _getHeaderButtons() {
-        const buttons = super._getHeaderButtons();
+    async _onRender(context, options) {
+        await super._onRender(context, options);
+        const html = $(this.element);
+        for (const itemType of Object.values(CONFIG.FateX.itemClasses)) {
+            itemType.activateActorSheetListeners(html, this);
+        }
+        for (const component of Object.values(CONFIG.FateX.sheetComponents.actor)) {
+            if (this.isEditable) component.activateListeners(html, this);
+        }
+        html.find(".fatex-js-item-to-chat").on("click", (event) => BaseItem._onItemSendToChat(event, this));
+        this.element.classList.toggle("fatex-js-edit-mode", this.editMode && this.isEditable);
+    }
 
-        // Edit mode button to toggle which interactive elements are visible on the sheet.
-        const canConfigure = game.user?.isGM || this.actor.isOwner;
-
-        if (this.options.editable && canConfigure) {
-            // noinspection JSUnusedGlobalSymbols
-            buttons.unshift(
-                {
-                    class: "fatex-toggle-edit-mode",
-                    label: game.i18n.localize("FAx.Sheet.Buttons.EditMode"),
-                    icon: "fas fa-edit",
-                    onclick: (e: JQuery.ClickEvent) => this._onToggleEditMode(e),
-                },
-                {
-                    class: "fatex-open-sheet-manager",
-                    label: game.i18n.localize("FAx.Sheet.Buttons.SheetSetup"),
-                    icon: "fas fa-tools",
-                    onclick: (e: JQuery.ClickEvent) => this._onOpenSheetSetup(e),
-                }
+    _getHeaderControls() {
+        const controls = super._getHeaderControls();
+        if (this.isEditable)
+            controls.unshift(
+                { action: "toggleEditMode", label: "FAx.Sheet.Buttons.EditMode", icon: "fas fa-edit" },
+                { action: "sheetSetup", label: "FAx.Sheet.Buttons.SheetSetup", icon: "fas fa-tools" },
             );
+        return controls;
+    }
+
+    async _onDropDocument(event, document) {
+        if (!this.isEditable) return null;
+        if (document.documentName === "JournalEntry" || document.documentName === "JournalEntryPage") {
+            return this._onDropJournalEntry(document);
         }
-
-        return buttons;
+        return super._onDropDocument(event, document);
     }
 
-    /**
-     * OnClick handler for the previously declaried "Edit mode" button.
-     * Toggles the 'fatex-js-edit-mode' class for the sheet container.
-     */
-    _onToggleEditMode(e: JQuery.ClickEvent): void {
-        e.preventDefault();
-
-        const target = $(e.currentTarget);
-        const app = target.parents(".app");
-        const html = app.find(".window-content");
-
-        html.toggleClass("fatex-js-edit-mode");
-    }
-
-    /**
-     * OnClick handler for the previously declaried "Sheet setup" button.
-     * Opens a new sheet setup instance for this sheet.
-     */
-    _onOpenSheetSetup(e: JQuery.ClickEvent): void {
-        e.preventDefault();
-
-        const sheetSetup = new SheetSetup(this.actor, {});
-        sheetSetup.render(true);
-    }
-
-    /** @override */
-    async _onDrop(event: DragEvent) {
-        let data;
-
-        try {
-            data = JSON.parse(event.dataTransfer?.getData("text/plain") ?? "");
-        } catch (err) {
-            return;
-        }
-
-        if (data.type === "JournalEntry") {
-            return this._onDropJournalEntry(data);
-        }
-
-        return super._onDrop(event);
-    }
-
-    async _onDropJournalEntry(data: DropData<JournalEntry>) {
-        const entry = await JournalEntry.fromDropData(data);
-        const actor = this.actor;
-
-        const extraData: DeepPartial<ItemData> = {
-            type: "extra",
-            document: null,
-            name: entry?.data.name ?? "",
-            data: {
-                description: entry?.data.content || "",
+    async _onDropJournalEntry(entry) {
+        if (!this.isEditable) return null;
+        const pages = entry.documentName === "JournalEntryPage" ? [entry] : entry.pages.contents;
+        const description = pages
+            .filter((page) => page.type === "text" && page.testUserPermission(game.user, "OBSERVER"))
+            .map((page) => page.text.content ?? "")
+            .join("\n");
+        return this.actor.createEmbeddedDocuments("Item", [
+            {
+                type: "extra",
+                name: entry.name,
+                system: { description },
             },
-        };
-
-        return await actor.createEmbeddedDocuments("Item", [extraData]);
+        ]);
     }
 
-    /**
-     * Saves and restores the focus of a child element
-     * This is needed because FVTT only handles this for inputs that belong to the form itself
-     *
-     * @param force
-     * @param options
-     */
-    async _render(force, options) {
-        // Identify the focused element and save its caret position
-        const focusedElement: string = this.element.find(":focus").data("focus-id");
-        const selection = window.getSelection();
-        const position = selection?.focusOffset ?? 0;
-
-        // Render the application
-        await super._render(force, options);
-
-        // Restore focus and caret position
-        if (focusedElement) {
-            const element = this.element.find(`[data-focus-id=${focusedElement}]`)[0];
-            const range = document.createRange();
-            range.setStart(element.childNodes[0], position);
-            range.collapse(true);
-            selection?.removeAllRanges();
-            selection?.addRange(range);
-            element.focus();
-        }
+    async _onDropFolder(_event, folder) {
+        if (!this.isEditable || folder.type !== "Item") return null;
+        const documents = await Promise.all(
+            folder.contents.map(async (entry) => (entry.toObject ? entry : fromUuid(entry.uuid))),
+        );
+        const items = documents.filter((entry) => entry?.documentName === "Item").map((entry) => entry.toObject());
+        await this.actor.createEmbeddedDocuments("Item", items);
+        return folder;
     }
 }

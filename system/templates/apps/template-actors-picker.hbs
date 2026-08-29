@@ -1,5 +1,5 @@
 {{#*inline "centerPartial"}}
-    <div class="fatex-js-template-header-button fatex-template-action">
+    <div class="fatex-js-template-header-button fatex-template-action" data-action="templateSettings">
         <span class="fatex-template-action__label">{{localize "FAx.Template.Picker.Configuration"}}</span>
         <i class="fas fa-cogs fatex-template-action__icon"></i>
     </div>
@@ -34,10 +34,16 @@
         </div>
 
         <div class="fatex-template__actions">
-            <span class="fatex-js-empty-template fatex-button fatex-button--dark">
+            <span class="fatex-js-empty-template fatex-button fatex-button--dark" data-action="emptyTemplate">
                 <i class="fa fa-plus"></i>
                 <span>{{localize "FAx.Global.Actions.Create"}}</span>
             </span>
+            {{#if canCreateGroup}}
+                <button type="button" class="fatex-button fatex-button--dark" data-action="createGroup">
+                    <i class="fas fa-users"></i>
+                    <span>{{localize "FAx.ActorGroups.New"}}</span>
+                </button>
+            {{/if}}
         </div>
     </div>
 
@@ -78,7 +84,7 @@
 
             <div class="fatex-template__actions">
                 <div
-                    class="fatex-js-choose-template fatex-button fatex-button--dark"
+                    class="fatex-js-choose-template fatex-button fatex-button--dark" data-action="chooseTemplate"
                     data-template="{{template._id}}"
                 >
                     <i class="fa fa-file-medical"></i>

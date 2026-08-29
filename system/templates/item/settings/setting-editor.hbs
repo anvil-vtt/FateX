@@ -5,7 +5,7 @@
 
     <label for="{{ fieldName }}">
         <div class="fatex-setting__editor-wrapper">
-            {{editor field target=fieldName button=true editable=editable engine="prosemirror"}}
+            <prose-mirror name="{{fieldName}}" value="{{system.description}}" toggled {{#unless editable}}disabled{{/unless}}>{{{enrichedDescription}}}</prose-mirror>
         </div>
         {{#if help}}<span class="fatex-text-input__setting-label">{{localize help}}</span>{{/if}}
     </label>

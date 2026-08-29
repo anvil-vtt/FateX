@@ -37,8 +37,8 @@ export interface FatexConfig {
     applications: {
         templatePicker: TemplateActorPicker | null;
         templateSettings: TemplateActorSettings | null;
-        [key: string]: Application | null;
-        [key: number]: Application | null;
+        [key: string]: TemplateActorSettings | null;
+        [key: number]: TemplateActorSettings | null;
     };
 
     global: {
@@ -54,7 +54,7 @@ export const FateX: FatexConfig = {
         skill: SkillItem,
         stunt: StuntItem,
         extra: ExtraItem,
-        tokenRefernce: TokenReferenceItem,
+        tokenReference: TokenReferenceItem,
         actorReference: ActorReferenceItem,
     },
     sheetComponents: {
