@@ -4,6 +4,6 @@
     </header>
 
     <div class="fatex-artwork__wrapper">
-        <img class="fatex-artwork__image" alt="{{actor.name}}" data-edit="img" src="{{actor.img}}" title="{{actor.name}}" />
+        <img class="fatex-artwork__image" alt="{{actor.name}}" {{#if editable}}data-action="editImage" {{/if}}data-edit="img" src="{{actor.img}}" title="{{actor.name}}" />
     </div>
 </div>

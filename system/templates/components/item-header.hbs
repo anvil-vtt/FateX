@@ -7,7 +7,7 @@
                     <div></div>
                 {{else}}
                     <div class="fatex-header__image">
-                        <img alt="{{item.name}}" data-edit="img" src="{{item.img}}"/>
+                        <img alt="{{item.name}}" {{#if editable}}data-action="editImage" {{/if}}data-edit="img" src="{{item.img}}"/>
                     </div>
                 {{/if}}
 
