@@ -7,7 +7,6 @@ export const { ActorSheetV2, ItemSheetV2 } = applications.sheets;
 export const renderTemplate = (path: string, context: any) => applications.handlebars.renderTemplate(path, context);
 export const enrichHTML = (content: string, document?: any) =>
     applications.ux.TextEditor.implementation.enrichHTML(content ?? "", {
-        async: true,
         relativeTo: document,
         secrets: document?.isOwner ?? false,
     });

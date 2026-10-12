@@ -52,8 +52,6 @@ Hooks.once("init", async () => {
         return module.id === "markdown-editor" && module.active;
     }).length;
 
-    // Register generic system settings
-
     // Register HandlebarsHelpers
     HandlebarsHelpers.registerHelpers();
 
