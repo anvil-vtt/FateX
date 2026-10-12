@@ -55,8 +55,8 @@ export function getImageFromReference(reference: GroupReference): string {
     return resolved.actor.img ?? CONST.DEFAULT_TOKEN;
 }
 
-export function renderGroupSheetsByGroupType(type: groupType) {
+export function renderGroupSheetsByGroupType(...types: groupType[]) {
     for (const sheet of GroupSheet.openSheets) {
-        if (sheet.actor.system.groupType === type) void sheet.render();
+        if (types.includes(sheet.actor.system.groupType)) void sheet.render();
     }
 }

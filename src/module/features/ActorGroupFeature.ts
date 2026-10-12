@@ -31,12 +31,8 @@ export class ActorGroupFeature {
             }
         });
 
-        /**
-         * Rerender groupsheets of type scene whenever the viewed scene changes to another scene
-         */
-        Hooks.on("canvasReady", (_entity, _data, _options, _userId) => {
-            renderGroupSheetsByGroupType("scene");
-        });
+        // Scene groups show the tokens of the viewed scene, manual groups offer its unlinked tokens.
+        Hooks.on("canvasReady", () => renderGroupSheetsByGroupType("scene", "manual"));
 
         for (const event of [
             "createCombat",
@@ -48,22 +44,15 @@ export class ActorGroupFeature {
         ]) {
             Hooks.on(event, () => renderGroupSheetsByGroupType("encounter"));
         }
-        Hooks.on("createToken", () => renderGroupSheetsByGroupType("scene"));
-        for (const event of ["updateToken", "deleteToken"]) {
-            Hooks.on(event, (token, changes) => {
+        for (const event of ["createToken", "updateToken", "deleteToken"]) {
+            Hooks.on(event, (_token, changes) => {
                 // Movement does not change a group, only what its inline sheets show.
                 const shown = ["name", "hidden", "texture", "actorId", "actorLink"];
                 if (event === "updateToken" && !shown.some((key) => key in changes)) return;
-                renderGroupSheetsByGroupType("scene");
-                // Manual groups only change if they reference the token.
-                for (const sheet of GroupSheet.openSheets) {
-                    const referencesToken = sheet.actor.items.some(
-                        (item) => item.type === "tokenReference" && item.system.id === token.id,
-                    );
-                    if (sheet.actor.system.groupType === "manual" && referencesToken) void sheet.render();
-                }
+                renderGroupSheetsByGroupType("scene", "manual");
             });
         }
+
         Hooks.on("deleteActor", () => {
             for (const sheet of GroupSheet.openSheets) void sheet.render();
         });

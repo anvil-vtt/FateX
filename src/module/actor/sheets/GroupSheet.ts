@@ -55,7 +55,13 @@ export class GroupSheet extends FateSheetMixin(ActorSheetV2) {
             availableTokens:
                 this.isEditable && this.actor.system.groupType === "manual"
                     ? canvas.scene?.tokens
-                          .filter((token) => !token.isLinked && !!token.actor && !used.includes(token.id))
+                          .filter(
+                              (token) =>
+                                  !token.isLinked &&
+                                  !!token.actor &&
+                                  !used.includes(token.id) &&
+                                  (game.user?.isGM || (!token.hidden && token.actor.testUserPermission(game.user!, "LIMITED"))),
+                          )
                           .map((token) => ({
                               _id: token.id,
                               name: token.name,
@@ -89,7 +95,7 @@ export class GroupSheet extends FateSheetMixin(ActorSheetV2) {
         await super._onRender(context, options);
         // The group has a part form, rather than a top-level form.
         if (!this.isEditable) {
-            for (const input of this.element.querySelectorAll(".fatex-group-form input")) input.disabled = true;
+            for (const input of this.element.querySelectorAll(".fatex-group-form :is(input, select)")) input.disabled = true;
         }
     }
 
@@ -249,7 +255,7 @@ export class GroupSheet extends FateSheetMixin(ActorSheetV2) {
         });
     }
 
-    async _onDropDocument(event, document) {
+    async _onDropDocument(_event, document) {
         if (!this.isEditable) return null;
         if (this.actor.system.groupType !== "manual") {
             ui.notifications?.error(game.i18n.localize("FAx.ActorGroups.Notifications.ManualOnly"));
@@ -258,6 +264,7 @@ export class GroupSheet extends FateSheetMixin(ActorSheetV2) {
         if (document.documentName === "Actor") return this._createActorReference(document.uuid);
         if (document.documentName === "Folder") return this._createActorReferencesFromFolder(document.uuid);
         if (document.documentName === "Token") return this._createTokenReference(document.id, document.parent.id);
-        return super._onDropDocument(event, document);
+        // Groups only hold references; items belong on the members' sheets.
+        return null;
     }
 }
