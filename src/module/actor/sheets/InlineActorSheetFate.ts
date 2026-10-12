@@ -48,6 +48,8 @@ export class InlineActorSheetFate extends CharacterSheet {
         data.canRemoveFromGroup = this.canRemoveFromGroup;
         data.defeated = this.combatant?.defeated ?? false;
         data.hidden = this.combatant?.hidden ?? false;
+        // Like the limited character sheet, players with limited permission only see name and portrait.
+        data.limitedView = !game.user?.isGM && this.actor.limited;
         return data;
     }
 

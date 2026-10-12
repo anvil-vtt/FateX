@@ -3,7 +3,7 @@
         <h2 class="fatex__inline_sheet__headline fatex-headline fatex-headline--inline-sheet">
             <img class="fatex-headline__image" alt="{{actor.name}}" {{#if editable}}data-action="editImage" {{/if}}data-edit="img" src="{{actor.img}}"/>
             <span class="fatex-headline__text">{{actor.name}}</span>
-            {{#unless isToken}}
+            {{#unless (or isToken limitedView)}}
                 <input
                     class="fatex-text-input fatex-text-input--headline"
                     name="system.fatepoints.current"
@@ -21,6 +21,7 @@
             {{/if}}
         </h2>
 
+        {{#unless limitedView}}
         <nav class="fatex-js-tabs-navigation fatex-inline-tabs tabs">
             <a class="fatex-inline-tabs__item {{tabs.aspects.cssClass}}" data-action="tab" data-group="primary" data-tab="aspects">
                 {{~localize "FAx.Sheet.Aspects"~}}
@@ -52,5 +53,6 @@
                 </div>
             </section>
         </div>
+        {{/unless}}
     </div>
 </div>
