@@ -125,7 +125,7 @@ export class CharacterSheet extends FateSheetMixin(ActorSheetV2) {
         const pages = entry.documentName === "JournalEntryPage" ? [entry] : entry.pages.contents;
         const description = pages
             .filter((page) => page.type === "text" && page.testUserPermission(game.user, "OBSERVER"))
-            .map((page) => page.text.content ?? "")
+            .map((page) => CharacterSheet.withoutHiddenSecrets(page))
             .join("\n");
         return this.actor.createEmbeddedDocuments("Item", [
             {
@@ -134,6 +134,16 @@ export class CharacterSheet extends FateSheetMixin(ActorSheetV2) {
                 system: { description },
             },
         ]);
+    }
+
+    /** The page text without the secrets its owner has not revealed to this user. */
+    static withoutHiddenSecrets(page): string {
+        const content = page.text.content ?? "";
+        if (page.isOwner) return content;
+        const template = document.createElement("template");
+        template.innerHTML = content;
+        template.content.querySelectorAll("section.secret:not(.revealed)").forEach((secret) => secret.remove());
+        return template.innerHTML;
     }
 
     async _onDropFolder(_event, folder) {
