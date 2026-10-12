@@ -33,7 +33,7 @@ export class ChatActionsFeature {
 
     private static triggerChatAnimation(type, messageId, rollIndex, disable = false) {
         // A message can be shown several times, e.g. in the log and as a notification.
-        const messages = document.querySelectorAll(`.chat-message[data-message-id="${messageId}"]`);
+        const messages = document.querySelectorAll(`.chat-message[data-message-id="${CSS.escape(messageId)}"]`);
         for (const message of messages) {
             message
                 .querySelector(`.fatex-chat__roll[data-roll-index="${rollIndex}"]`)
@@ -80,6 +80,9 @@ export class ChatActionsFeature {
 
     static async handleChatAction(action, messageId, rollIndex, shiftKey, userId = game.user.id) {
         const message = game.messages?.get(messageId);
+        // Players may only change rolls of messages they own.
+        const user = game.users.get(userId);
+        if (!user || !message?.testUserPermission(user, "OWNER")) return;
 
         const chatCardFlag = message?.getFlag("fatex", "chatCard") ?? false;
         if (!chatCardFlag) {
