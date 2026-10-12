@@ -22,7 +22,9 @@ export class FateActor extends Actor {
     /**
      * Open template picker instead of showing creation dialog
      */
-    static async createDialog(data?: DeepPartial<ActorDataConstructorData>, _options = {}): Promise<any> {
+    static async createDialog(data?: DeepPartial<ActorDataConstructorData>, createOptions: any = {}, ...rest: any[]): Promise<any> {
+        // The template picker creates world actors, so compendiums keep Foundry's dialog.
+        if (createOptions?.pack) return (super.createDialog as any)(data, createOptions, ...rest);
         if (data?.type === "group") return this.createGroup(data);
 
         if (CONFIG.FateX.applications.templatePicker) {
