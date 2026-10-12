@@ -36,7 +36,7 @@ export class CharacterSheet extends FateSheetMixin(ActorSheetV2) {
     }
 
     static onOpenSheetSetup(this: CharacterSheet) {
-        if (this.isEditable) new SheetSetup({ document: this.actor }).render({ force: true });
+        if (this.isEditable) SheetSetup.open(this.actor);
     }
 
     _configureRenderParts(options) {
@@ -136,10 +136,9 @@ export class CharacterSheet extends FateSheetMixin(ActorSheetV2) {
         ]);
     }
 
-    /** The page text without the secrets its owner has not revealed to this user. */
+    /** The page text without unrevealed secrets: the actor's owners would see them in the extra. */
     static withoutHiddenSecrets(page): string {
         const content = page.text.content ?? "";
-        if (page.isOwner) return content;
         const template = document.createElement("template");
         template.innerHTML = content;
         template.content.querySelectorAll("section.secret:not(.revealed)").forEach((secret) => secret.remove());
