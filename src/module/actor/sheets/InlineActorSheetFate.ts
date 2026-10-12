@@ -10,6 +10,12 @@ export class InlineActorSheetFate extends CharacterSheet {
             removeFromGroup: function (this: InlineActorSheetFate) {
                 return this.options.group.removeReference(this.options.referenceID);
             },
+            editImage: function (this: InlineActorSheetFate, event, target) {
+                // Inline sheets have no position of their own, so the file picker opens next to the group.
+                const { top, left } = this.options.group.position;
+                Object.assign(this.position, { top, left });
+                return applications.api.DocumentSheetV2.DEFAULT_OPTIONS.actions.editImage.call(this, event, target);
+            },
         },
     };
     static PARTS = {
