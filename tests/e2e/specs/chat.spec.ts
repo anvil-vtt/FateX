@@ -90,6 +90,19 @@ test.describe("skill rolls", () => {
         await player.resetDice();
     });
 
+    test("players cannot change rolls of others", async ({ gm, player }) => {
+        const actor = await createCharacter(gm, "E2E Roller");
+        await createItems(gm, actor.id, [{ name: "Fight", type: "skill", system: { rank: 1 } }]);
+        await rollFromSheet(gm, actor.uuid, "Fight");
+        const { id } = await lastCard(gm);
+
+        await showChat(player);
+        const card = player.page.locator(`#chat .chat-log .chat-message[data-message-id="${id}"]`);
+        await card.locator('button[data-action="increase"]').click();
+        await player.page.waitForTimeout(1000);
+        expect((await lastCard(gm)).card.rolls[0].bonus).toBe(0);
+    });
+
     test("work from the chat notifications while the sidebar is collapsed", async ({ gm }) => {
         const actor = await createCharacter(gm, "E2E Roller");
         await createItems(gm, actor.id, [{ name: "Fight", type: "skill", system: { rank: 0 } }]);

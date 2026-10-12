@@ -13,7 +13,7 @@ function itemNames(foundry: Foundry, actorId: string, type?: string) {
     return getItems(foundry, actorId, type).then((items) => items.map((item: any) => item.name).sort());
 }
 
-function templateActors(foundry: Foundry) {
+function templateActors(foundry: Foundry): Promise<{ id: string; name: string; items: number }[]> {
     return foundry.eval(() =>
         window.game.actors
             .filter((actor: any) => actor.getFlag("fatex", "isTemplateActor"))
@@ -198,6 +198,30 @@ test.describe("templates", () => {
         await expect.poll(() => gm.eval(() => window.game.actors.getName("New group")?.type)).toBe("group");
     });
 
+    test("actors in compendiums are created with Foundry's dialog", async ({ gm }) => {
+        const pack = await gm.eval(async () => {
+            const { CompendiumCollection } = window.foundry.documents.collections;
+            // A failed earlier run may have left the pack behind.
+            await window.game.packs.get("world.e2e-pack")?.deleteCompendium();
+            const pack = await CompendiumCollection.createCompendium({ type: "Actor", label: "E2E Pack", name: "e2e-pack" });
+            return pack.collection as string;
+        });
+        try {
+            // The dialog resolves only once it is submitted, so do not wait for it here.
+            await gm.eval((pack) => void window.Actor.implementation.createDialog({}, { pack }), pack);
+            await expect(gm.page.locator("#template-actor-picker")).toHaveCount(0);
+            const create = gm.page.locator('.application:has(select[name="type"])');
+            await create.locator('input[name="name"]').fill("E2E Packed");
+            await create.locator('button[type="submit"]').click();
+            await expect
+                .poll(() => gm.eval((pack) => window.game.packs.get(pack).getIndex().then((i: any) => i.map((e: any) => e.name)), pack))
+                .toEqual(["E2E Packed"]);
+            expect(await gm.eval(() => window.game.actors.getName("E2E Packed") ?? null)).toBeNull();
+        } finally {
+            await gm.eval((pack) => window.game.packs.get(pack)?.deleteCompendium(), pack);
+        }
+    });
+
     test("players without permission to create actors cannot open them", async ({ gm, player }) => {
         const canCreate = await gm.eval(() => window.game.settings.get("core", "permissions").ACTOR_CREATE);
         expect(canCreate).not.toContain(1);
@@ -290,5 +314,5 @@ test.describe("combat", () => {
 
 // Shown last so a failed dialog does not block other tests.
 test.afterEach(async ({ gm }) => {
-    if (await dialog(gm).count()) await confirmDialog(gm, false);
+    if (await dialog(gm).locator('button[data-action="no"]').count()) await confirmDialog(gm, false);
 });

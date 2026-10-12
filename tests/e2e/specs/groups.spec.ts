@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { expect, test, type Foundry } from "../fixtures";
+import { expect, Foundry, test } from "../fixtures";
 import {
     confirmDialog,
     createCharacter,
@@ -11,7 +11,9 @@ import {
     type DocumentRef,
 } from "../helpers";
 
-function references(foundry: Foundry, groupId: string) {
+type Reference = { id: string; type: string; target: string; sort: number };
+
+function references(foundry: Foundry, groupId: string): Promise<Reference[]> {
     return foundry.eval(
         (id) =>
             window.game.actors
@@ -195,6 +197,7 @@ test.describe("groups for players", () => {
         const sheet = await openSheet(player, group.uuid);
         await expect.poll(() => inlineNames(player, group.id)).toEqual(["E2E Owned", "E2E Limited"]);
         await expect(sheet.locator('[data-action="removeFromGroup"]:enabled')).toHaveCount(0);
+        await expect(sheet.locator('select[name="system.groupType"]')).toBeDisabled();
 
         // The owner can mark stress on their own character without permission errors.
         await createItems(gm, members[0].id, [{ name: "E2E Physical", type: "stress", system: { size: 3 } }]);
@@ -278,5 +281,45 @@ test.describe("group settings", () => {
         // Renaming in the token's own sheet changes its synthetic actor.
         await gm.eval((uuid) => window.foundry.utils.fromUuidSync(uuid).actor.update({ name: "E2E Renamed Token" }), token.uuid);
         await expect.poll(() => inlineNames(gm, group.id)).toEqual(["E2E Renamed Token"]);
+    });
+
+    test("the token list follows the scene and hides hidden tokens from players", async ({ gm, browser, playerUser }) => {
+        const goblin = await createCharacter(gm, "E2E Goblin", {
+            prototypeToken: { actorLink: false },
+            ownership: { default: 1 },
+        });
+        const group = await createGroup(gm, "E2E Group", { ownership: { default: 3 } });
+        const scene = await viewNewScene(gm, "E2E Scene");
+        const [visible] = await placeTokens(gm, [goblin.id], { name: "E2E Visible" });
+        const [hidden] = await placeTokens(gm, [goblin.id], { name: "E2E Hidden", hidden: true });
+        const offered = (sheet: ReturnType<Foundry["page"]["locator"]>) =>
+            sheet.locator('[data-action="createTokenReference"]');
+
+        const sheet = await openSheet(gm, group.uuid);
+        await expect(offered(sheet)).toHaveCount(2);
+        // New and deleted tokens update an open group.
+        const [later] = await placeTokens(gm, [goblin.id], { name: "E2E Later" });
+        await expect(offered(sheet)).toHaveCount(3);
+        await gm.eval(({ s, t }) => window.game.scenes.get(s).tokens.get(t).delete(), { s: scene.id, t: later.id });
+        await expect(offered(sheet)).toHaveCount(2);
+
+        // Players see only the tokens they could see on the canvas. The player joins once the scene is active,
+        // because Foundry fails to draw tokens when a scene is activated while the canvas is still empty.
+        await gm.eval((id) => window.game.scenes.get(id).activate(), scene.id);
+        const player = await Foundry.open(browser, playerUser);
+        try {
+            await expect.poll(() => player.eval(() => window.canvas.ready && window.canvas.scene?.id)).toBe(scene.id);
+            const playerSheet = await openSheet(player, group.uuid);
+            await expect(offered(playerSheet)).toHaveCount(1);
+            await expect(playerSheet.locator(`[data-token-id="${visible.id}"]`)).toHaveCount(1);
+            await expect(playerSheet.locator(`[data-token-id="${hidden.id}"]`)).toHaveCount(0);
+            expect(player.errors, "player errors").toEqual([]);
+        } finally {
+            await player.page.context().close();
+        }
+
+        // Another scene offers its own tokens.
+        await viewNewScene(gm, "E2E Empty Scene");
+        await expect(offered(sheet)).toHaveCount(0);
     });
 });

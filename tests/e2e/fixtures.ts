@@ -13,6 +13,10 @@ declare global {
         CONFIG: any;
         CONST: any;
         Hooks: any;
+        canvas: any;
+        Actor: any;
+        Combat: any;
+        Folder: any;
         __e2eTrack: (uuid: string) => void;
     }
 }
@@ -209,9 +213,12 @@ export const test = base.extend<TestFixtures, WorkerFixtures>({
     // A fresh player session per test, so permissions from the test apply.
     player: async ({ browser, playerUser }, use) => {
         const player = await Foundry.open(browser, playerUser);
-        await use(player);
-        expect(player.errors, "player errors").toEqual([]);
-        await player.page.context().close();
+        try {
+            await use(player);
+            expect(player.errors, "player errors").toEqual([]);
+        } finally {
+            await player.page.context().close();
+        }
     },
 
     // Fails a test on uncaught errors or FateX deprecation warnings, and removes what it created.

@@ -16,6 +16,7 @@ The README section "Development" describes the setup. These are the points that 
 
 ```bash
 npx tsc --noEmit
+npx tsc -p tests/e2e
 npx eslint src tests --ext .ts
 npm run build:production
 npm run test:e2e
