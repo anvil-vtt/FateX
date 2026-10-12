@@ -30,13 +30,12 @@ export class TemplateActorSettings extends HandlebarsApplicationMixin(Applicatio
         },
     };
 
-    constructor(options = {}) {
-        super(options);
-    }
-
     _canRender(options) {
-        super._canRender(options);
-        if (!game.user?.isGM) throw new Error(game.i18n.localize("ERROR.NoPermission"));
+        if (super._canRender(options) === false) return false;
+        if (game.user?.isGM) return;
+        // Only warn when the user opened the window. Background re-renders (see FateActor.render) stay silent.
+        if (options.force) throw new Error(game.i18n.localize("FAx.Settings.Templates.NoPermission"));
+        return false;
     }
 
     async _prepareContext(options) {
@@ -98,7 +97,8 @@ export class TemplateActorSettings extends HandlebarsApplicationMixin(Applicatio
         const template = source.toObject() as any;
         delete template._id;
         template.name += ` (${game.i18n.localize("FAx.Settings.Templates.Copy")})`;
-        await FateActor._create(template, { renderSheet: true });
+        // A copy keeps the prototype token of its source template.
+        await FateActor.create(template, { renderSheet: true });
         this.refreshApplications();
     }
 

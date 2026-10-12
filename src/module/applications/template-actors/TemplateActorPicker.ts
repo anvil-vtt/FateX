@@ -35,8 +35,10 @@ export class TemplateActorPicker extends TemplateActorSettings {
     }
 
     _canRender(options) {
-        ApplicationV2.prototype._canRender.call(this, options);
-        if (!FateActor.canUserCreate(game.user!)) throw new Error(game.i18n.localize("ERROR.NoPermission"));
+        if (ApplicationV2.prototype._canRender.call(this, options) === false) return false;
+        if (FateActor.canUserCreate(game.user!)) return;
+        if (options.force) throw new Error(game.i18n.localize("FAx.Settings.Templates.NoPermission"));
+        return false;
     }
 
     async _prepareContext(options) {

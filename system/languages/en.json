@@ -228,6 +228,7 @@
                 "Button": "FateX Templates",
                 "New": "New template",
                 "Copy": "Copy",
+                "NoPermission": "You do not have permission to manage character templates.",
                 "App": {
                     "Title": "Configure Templates",
                     "Label": "Settings",

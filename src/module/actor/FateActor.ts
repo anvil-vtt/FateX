@@ -52,8 +52,8 @@ export class FateActor extends Actor {
     render(force = false, options: Application.RenderOptions) {
         super.render(force, options);
 
-        for (const app in CONFIG.FateX.applications) {
-            CONFIG.FateX.applications[app]?.render();
+        for (const app of Object.values(CONFIG.FateX.applications) as any[]) {
+            if (app?.rendered) app.render();
         }
     }
 
