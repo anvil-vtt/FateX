@@ -370,6 +370,38 @@ test.describe("character sheet permissions", () => {
         ]);
     });
 
+    test("journal drops keep the secrets a player was not shown", async ({ gm, player }) => {
+        const actor = await createCharacter(gm, "E2E Own Hero", {
+            ownership: { [await gm.eval((name) => window.game.users.getName(name).id, player.user)]: 3 },
+        });
+        const journal = await gm.eval(async () => {
+            const { foundry } = window as any;
+            const content =
+                '<p>Public part</p><section class="secret" id="secret-a1"><p>GM only</p></section>' +
+                '<section class="secret revealed" id="secret-b2"><p>Revealed part</p></section>';
+            const entry = await foundry.documents.JournalEntry.create({
+                name: "E2E Rumors",
+                ownership: { default: 2 },
+                pages: [{ name: "Page", type: "text", text: { content } }],
+            });
+            return entry.uuid as string;
+        });
+
+        const sheet = await openSheet(player, actor.uuid);
+        await sheet.evaluate((element, uuid) => {
+            const dataTransfer = new DataTransfer();
+            dataTransfer.setData("text/plain", JSON.stringify({ type: "JournalEntry", uuid }));
+            element
+                .querySelector(".fatex-desk__content")!
+                .dispatchEvent(new DragEvent("drop", { bubbles: true, cancelable: true, dataTransfer }));
+        }, journal);
+        await expect.poll(() => getItems(gm, actor.id, "extra").then((items) => items.length)).toBe(1);
+        const description = (await getItems(gm, actor.id, "extra"))[0].system.description;
+        expect(description).toContain("Public part");
+        expect(description).toContain("Revealed part");
+        expect(description).not.toContain("GM only");
+    });
+
     test("players with limited permission see the limited sheet", async ({ gm, player }) => {
         const actor = await createCharacter(gm, "E2E Stranger", { system: { biography: { value: "<p>Mysterious.</p>" } } });
         await createItems(gm, actor.id, [{ name: "Secret", type: "aspect", system: { value: "Secret aspect" } }]);

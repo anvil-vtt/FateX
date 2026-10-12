@@ -256,6 +256,16 @@ test.describe("scene and encounter groups", () => {
         await gm.eval((id) => window.game.scenes.get(id).view(), scene.id);
         await expect.poll(() => inlineNames(gm, group.id)).toEqual(["E2E Fighter"]);
 
+        // The member follows its token's actor when Link Actor Data changes.
+        const memberIsToken = () =>
+            gm.eval((id) => window.game.actors.get(id).sheet.inlineSheets[0]?.actor.isToken ?? null, group.id);
+        expect(await memberIsToken()).toBe(true);
+        await gm.eval(({ s, t }) => window.game.scenes.get(s).tokens.get(t).update({ actorLink: true }), {
+            s: scene.id,
+            t: token.id,
+        });
+        await expect.poll(memberIsToken).toBe(false);
+
         await gm.eval((id) => window.game.combats.get(id).delete(), combatId);
         await expect.poll(() => inlineNames(gm, group.id)).toEqual([]);
     });
