@@ -31,8 +31,9 @@ export class ActorGroupFeature {
             }
         });
 
-        // Scene groups show the tokens of the viewed scene, manual groups offer its unlinked tokens.
-        Hooks.on("canvasReady", () => renderGroupSheetsByGroupType("scene", "manual"));
+        // Scene groups show the tokens of the viewed scene, manual groups offer its unlinked tokens,
+        // and the active combat depends on the viewed scene.
+        Hooks.on("canvasReady", () => renderGroupSheetsByGroupType("scene", "manual", "encounter"));
 
         for (const event of [
             "createCombat",
