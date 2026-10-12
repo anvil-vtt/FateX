@@ -68,6 +68,7 @@
         "verified": "14"
     },
     "socket": true,
+    "initiative": "4dF",
     "url": "https://github.com/anvil-vtt/FateX",
     "manifest": "https://github.com/anvil-vtt/FateX/releases/latest/download/system.json",
     "download": "https://github.com/anvil-vtt/FateX/releases/latest/download/fatex.zip"
