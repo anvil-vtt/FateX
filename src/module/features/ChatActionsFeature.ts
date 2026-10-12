@@ -39,7 +39,7 @@ export class ChatActionsFeature {
                 .querySelector(`.fatex-chat__roll[data-roll-index="${rollIndex}"]`)
                 ?.classList.add(`fatex-chat__roll--${type}`);
             if (disable) {
-                for (const button of message.querySelectorAll(".fatex-roll-actions button[data-action]")) {
+                for (const button of message.querySelectorAll<HTMLButtonElement>(".fatex-roll-actions button[data-action]")) {
                     button.disabled = true;
                 }
             }
