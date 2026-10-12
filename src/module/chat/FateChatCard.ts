@@ -19,7 +19,7 @@ export class FateChatCard extends FateChatCardDataModel {
         const content = await this.render();
 
         const chatData = {
-            user: game.user?.id,
+            author: game.user?.id,
             speaker: this.speaker,
             content: content,
             flags: {

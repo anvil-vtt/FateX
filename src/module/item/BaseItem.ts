@@ -174,12 +174,12 @@ export abstract class BaseItem {
             descriptionSource = itemAsAny.system.description || "";
         }
 
-        const enrichedName = await enrichHTML(nameSource);
         const enrichedDescription = await enrichHTML(descriptionSource);
 
         const templateData = {
             item: {
-                name: enrichedName,
+                // The card template escapes the name, so it stays plain text.
+                name: nameSource,
                 img: item.img,
                 system: {
                     enrichedDescription: enrichedDescription,
@@ -193,7 +193,7 @@ export abstract class BaseItem {
         await ChatMessage.create({
             speaker: templateData.speaker,
             content: content,
-            user: game.user?.id,
+            author: game.user?.id,
         });
     }
 }
