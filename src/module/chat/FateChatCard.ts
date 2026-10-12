@@ -21,7 +21,6 @@ export class FateChatCard extends FateChatCardDataModel {
         const chatData = {
             user: game.user?.id,
             speaker: this.speaker,
-            rollMode: game.settings.get("core", "rollMode"),
             content: content,
             flags: {
                 fatex: {
@@ -30,7 +29,10 @@ export class FateChatCard extends FateChatCardDataModel {
             },
         };
 
-        ChatMessage.applyRollMode(chatData, game.settings.get("core", "rollMode"));
+        // V14 replaced roll modes with message modes; V13 only knows roll modes.
+        const ChatMessageClass: any = ChatMessage;
+        if (typeof ChatMessageClass.applyMode === "function") ChatMessageClass.applyMode(chatData);
+        else ChatMessageClass.applyRollMode(chatData, game.settings.get("core", "rollMode"));
         const message = await ChatMessage.create(chatData);
 
         this.updateSource({ messageId: message.id });

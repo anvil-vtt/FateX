@@ -1,5 +1,5 @@
 import { FateItem } from "./FateItem";
-import { enrichHTML } from "../applications/ApplicationV2";
+import { confirmDeletion, enrichHTML, renderTemplate } from "../applications/ApplicationV2";
 
 export abstract class BaseItem {
     static documentName = "";
@@ -83,9 +83,6 @@ export abstract class BaseItem {
         e.stopPropagation();
 
         const data = e.currentTarget.dataset;
-        sheet.actor.items.map((item) => {
-            console.log("SHEET ITEMS" + item);
-        });
         const item = sheet.actor.items.get(data.item);
 
         if (item) {
@@ -96,37 +93,19 @@ export abstract class BaseItem {
     /**
      * Itemtype agnostic handler for deleting an item via event.
      */
-    static _onItemDelete(e, sheet) {
+    static async _onItemDelete(e, sheet) {
         e.preventDefault();
         e.stopPropagation();
 
         const data = e.currentTarget.dataset;
         const item = sheet.actor.items.get(data.item);
+        if (!item) return;
 
-        new Dialog(
-            {
-                title: `${game.i18n.localize("FAx.Dialog.DocumentDelete")} ${item.name}`,
-                content: game.i18n.localize("FAx.Dialog.DocumentDeleteText"),
-                default: "submit",
-                buttons: {
-                    cancel: {
-                        icon: '<i class="fas fa-times"></i>',
-                        label: game.i18n.localize("FAx.Dialog.Cancel"),
-                        callback: () => null,
-                    },
-                    submit: {
-                        icon: '<i class="fas fa-check"></i>',
-                        label: game.i18n.localize("FAx.Dialog.Confirm"),
-                        callback: async () => {
-                            item.delete();
-                        },
-                    },
-                },
-            },
-            {
-                classes: ["fatex", "fatex-dialog"],
-            },
-        ).render(true);
+        const confirmed = await confirmDeletion(
+            `${game.i18n.localize("FAx.Dialog.DocumentDelete")} ${item.name}`,
+            game.i18n.localize("FAx.Dialog.DocumentDeleteText"),
+        );
+        if (confirmed) await item.delete();
     }
 
     /**
@@ -209,7 +188,6 @@ export abstract class BaseItem {
             speaker: ChatMessage.getSpeaker({ actor: item.actor ?? undefined }),
         };
 
-        // @ts-ignore
         const content = await renderTemplate("systems/fatex/templates/chat/item-card.hbs", templateData);
 
         await ChatMessage.create({

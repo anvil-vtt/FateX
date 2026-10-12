@@ -25,7 +25,6 @@ export class SubItems extends BaseComponent {
     static async getSheetData(sheetData, _sheet) {
         // @ts-ignore
         sheetData.subItems = game.items?.contents.filter((item) => item.system.type == "extra" && item.system.parentID == _sheet.document.id);
-        console.log(sheetData);
         return sheetData;
     }
 
@@ -38,8 +37,6 @@ export class SubItems extends BaseComponent {
                 parentID: sheet.document.id,
             },
         };
-
-        console.log("Create new sub item");
 
         FateItem.create(extraData).then(() => sheet.render());
     }

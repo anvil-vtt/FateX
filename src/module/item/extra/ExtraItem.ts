@@ -6,17 +6,11 @@ export class ExtraItem extends StuntItem {
         return "extra";
     }
 
-    static async getActorSheetData(sheetData) {
-        sheetData = await StuntItem.getActorSheetData(sheetData);
-
+    static async getActorSheetData(sheetData, sheet) {
         for (const extra of sheetData.extras) {
-            extra.system.description = await enrichHTML(extra.system.description);
+            extra.system.description = await enrichHTML(extra.system.description, sheet?.actor);
         }
 
         return sheetData;
-    }
-
-    static async getSheetData(sheetData) {
-        sheetData.enrichedDescription = await enrichHTML(sheetData.system.description);
     }
 }

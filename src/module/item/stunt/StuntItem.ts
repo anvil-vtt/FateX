@@ -5,22 +5,18 @@ import { enrichHTML } from "../../applications/ApplicationV2";
 export class StuntItem extends BaseItem {
     static documentName = "stunt";
 
-    static async getActorSheetData(sheetData) {
+    static async getActorSheetData(sheetData, sheet) {
         if (CONFIG.FateX.global.useMarkdown) {
             for (const stunt of sheetData.stunts) {
-                stunt.system.markdown = marked(stunt.data.description);
+                stunt.system.markdown = marked(stunt.system.description);
             }
         }
 
         for (const stunt of sheetData.stunts) {
-            stunt.system.description = await enrichHTML(stunt.system.description);
+            stunt.system.description = await enrichHTML(stunt.system.description, sheet?.actor);
         }
 
         return sheetData;
-    }
-
-    static async getSheetData(sheetData) {
-        sheetData.enrichedDescription = await enrichHTML(sheetData.system.description);
     }
 
     static activateActorSheetListeners(html, sheet) {
