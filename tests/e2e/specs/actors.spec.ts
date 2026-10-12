@@ -33,6 +33,16 @@ test.describe("sheet setup", () => {
     test("adds the selected entries of a preset", async ({ gm }) => {
         const actor = await createCharacter(gm, "E2E Setup");
         const setup = await openSetup(gm, actor.uuid);
+        // Opening it again brings the same window to the front.
+        await gm.eval((id) => {
+            const sheet = window.game.actors.get(id).sheet;
+            return sheet.constructor.onOpenSheetSetup.call(sheet);
+        }, actor.id);
+        const setups = await gm.eval(
+            () => [...window.foundry.applications.instances.values()].filter((a: any) => a.constructor.name === "SheetSetup").length,
+        );
+        expect(setups).toBe(1);
+        await expect(gm.page.locator(".fatex-sheet--app", { hasText: "Sheet Setup" })).toHaveCount(1);
 
         await expect(setup.locator(".fatex-vertical-tabs-navigation__item")).toHaveText(["Core", "Accelerated", "Condensed"]);
         const core = setup.locator('.tab[data-tab="core"]');
@@ -234,6 +244,19 @@ test.describe("templates", () => {
             await expect(player.page.locator("#template-actor-picker, #template-actors")).toHaveCount(0);
         }
         player.takeErrors(/permission/i);
+    });
+
+    test("players who may create actors get the picker without configuration", async ({ gm, player }) => {
+        const permissions = await gm.eval(() => window.game.settings.get("core", "permissions"));
+        await gm.setSetting("core.permissions", { ...permissions, ACTOR_CREATE: [1, 2, 3, 4] });
+        await expect.poll(() => player.eval(() => window.game.user.can("ACTOR_CREATE"))).toBe(true);
+
+        await player.eval(() => window.CONFIG.FateX.applications.templatePicker.render({ force: true }));
+        const picker = player.page.locator("#template-actor-picker");
+        await expect(picker.locator('[data-action="emptyTemplate"]')).toBeVisible();
+        await expect(picker.locator('[data-action="templateSettings"]')).toHaveCount(0);
+        await expect(picker.locator('[data-action="createGroup"]')).toHaveCount(0);
+        await player.eval(() => window.CONFIG.FateX.applications.templatePicker.close());
     });
 });
 

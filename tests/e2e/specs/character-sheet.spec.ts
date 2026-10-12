@@ -246,7 +246,13 @@ test.describe("character sheet", () => {
             const { foundry, game } = window as any;
             const journal = await foundry.documents.JournalEntry.create({
                 name: "E2E Starship",
-                pages: [{ name: "Page", type: "text", text: { content: "<p>A fast ship.</p>" } }],
+                pages: [
+                    {
+                        name: "Page",
+                        type: "text",
+                        text: { content: '<p>A fast ship.</p><section class="secret" id="secret-c3"><p>Stolen</p></section>' },
+                    },
+                ],
             });
             const folder = await foundry.documents.Folder.create({ name: "E2E Item Folder", type: "Item" });
             await game.items.documentClass.createDocuments([
@@ -274,6 +280,8 @@ test.describe("character sheet", () => {
             .toEqual(["aspect:E2E Folder Aspect", "extra:E2E Starship", "skill:E2E Folder Skill", "stunt:E2E World Stunt"]);
         const extra = (await getItems(gm, actor.id, "extra"))[0];
         expect(extra.system.description).toContain("A fast ship.");
+        // The players owning the actor would see the secret in the extra, so the GM's drop leaves it out too.
+        expect(extra.system.description).not.toContain("Stolen");
     });
 
     test("items can be reordered with their sort handle", async ({ gm }) => {
