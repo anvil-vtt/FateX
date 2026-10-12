@@ -117,7 +117,7 @@ export class Foundry {
         if (!this.settings.size) return;
         let reload = false;
         for (const [key, value] of this.settings) {
-            reload ||= await this.eval(
+            const needsReload = await this.eval(
                 ([k, v]) => {
                     const [namespace, name] = (k as string).split(".");
                     const config = window.game.settings.settings.get(k);
@@ -126,6 +126,8 @@ export class Foundry {
                 },
                 [key, value] as const,
             );
+            // Restore every setting, also after one that needs a reload.
+            reload = reload || needsReload;
         }
         this.settings.clear();
         if (reload) await this.reload();

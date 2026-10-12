@@ -244,6 +244,12 @@ test.describe("scene and encounter groups", () => {
         );
         await expect.poll(() => inlineNames(gm, group.id)).toEqual(["E2E Fighter"]);
 
+        // The combat belongs to its scene, so another scene has no active combat.
+        await viewNewScene(gm, "E2E Quiet Scene");
+        await expect.poll(() => inlineNames(gm, group.id)).toEqual([]);
+        await gm.eval((id) => window.game.scenes.get(id).view(), scene.id);
+        await expect.poll(() => inlineNames(gm, group.id)).toEqual(["E2E Fighter"]);
+
         await gm.eval((id) => window.game.combats.get(id).delete(), combatId);
         await expect.poll(() => inlineNames(gm, group.id)).toEqual([]);
     });
