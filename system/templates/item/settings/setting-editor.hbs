@@ -1,11 +1,12 @@
+{{!-- Edits the description of the item. --}}
 <div class="fatex-setting">
     <header class="fatex-headline">
         <h3 class="fatex-headline__text">{{localize headline}}</h3>
     </header>
 
-    <label for="{{ fieldName }}">
+    <label for="system.description">
         <div class="fatex-setting__editor-wrapper">
-            <prose-mirror name="{{fieldName}}" value="{{system.description}}" toggled {{#unless editable}}disabled{{/unless}}>{{{enrichedDescription}}}</prose-mirror>
+            <prose-mirror name="system.description" value="{{system.description}}" toggled {{#unless editable}}disabled{{/unless}}>{{{enrichedDescription}}}</prose-mirror>
         </div>
         {{#if help}}<span class="fatex-text-input__setting-label">{{localize help}}</span>{{/if}}
     </label>
