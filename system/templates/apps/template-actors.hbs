@@ -1,5 +1,5 @@
 {{#*inline "centerPartial"}}
-    <div class="fatex-js-template-header-button fatex-js-create-template fatex-template-action">
+    <div class="fatex-js-template-header-button fatex-js-create-template fatex-template-action" data-action="createTemplate">
         <span class="fatex-template-action__label">{{localize "FAx.Settings.Templates.App.CreateNew"}}</span>
         <i class="fas fa-plus fatex-template-action__icon"></i>
     </div>
@@ -41,18 +41,18 @@
             </div>
 
             <div class="fatex-template__actions">
-                <span class="fatex-js-configure-template fatex-button fatex-button--dark" data-template="{{template._id}}">
+                <span class="fatex-js-configure-template fatex-button fatex-button--dark" data-action="configureTemplate" data-template="{{template._id}}">
                     <i class="fa fa-cog"></i>
                     <span>{{localize "FAx.Global.Actions.Configure"}}</span>
                 </span>
 
-                <span class="fatex-js-duplicate-template fatex-button fatex-button--dark" data-template="{{template._id}}">
+                <span class="fatex-js-duplicate-template fatex-button fatex-button--dark" data-action="duplicateTemplate" data-template="{{template._id}}">
                     <i class="fa fa-copy"></i>
                     <span>{{localize "FAx.Global.Actions.Duplicate"}}</span>
                 </span>
 
                 <span
-                    class="fatex-js-delete-template fatex-button fatex-button--dark fatex-u-delete" 
+                    class="fatex-js-delete-template fatex-button fatex-button--dark fatex-u-delete" data-action="deleteTemplate"
                     data-template="{{template._id}}"
                 >
                     <i class="fa fa-trash"></i>

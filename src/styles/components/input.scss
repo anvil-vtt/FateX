@@ -5,6 +5,8 @@ input[type="text"].fatex-text-input {
     min-height: 24px;
     padding: 3px 0 3px $component-padding * 0.5;
     background: transparent;
+    color: inherit;
+    font-family: inherit;
     border-radius: 3px;
     border: none;
     border-bottom: 1px solid $fatex-primary-color;

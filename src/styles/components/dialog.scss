@@ -1,7 +1,8 @@
 .fatex-dialog {
     font-family: $primary-font;
 
-    button {
+    // Header controls are icon buttons and need the Font Awesome font.
+    .window-content button {
         font-family: $primary-font;
     }
 
@@ -10,11 +11,15 @@
         background: $sheet-background;
     }
 
-    .dialog-buttons {
+    .dialog-buttons,
+    .form-footer {
         display: flex;
         margin-top: $component-padding;
 
         button {
+            // The dialog surface stays light, also with Foundry's dark theme.
+            --button-text-color: #{$primary-text-color};
+            --button-hover-text-color: #{$primary-text-color};
             background: rgba(0, 0, 0, 0.1);
             border: 2px groove #f0f0e0;
         }

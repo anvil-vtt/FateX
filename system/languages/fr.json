@@ -1,5 +1,21 @@
 {
     "FateX": "FateX",
+    "TYPES": {
+        "Actor": {
+            "character": "Personnage",
+            "group": "Groupe"
+        },
+        "Item": {
+            "stress": "Jauge de stress",
+            "aspect": "Aspect",
+            "consequence": "Conséquence",
+            "skill": "Compétence",
+            "stunt": "Prouesse",
+            "extra": "Extra",
+            "actorReference": "Référence à un acteur",
+            "tokenReference": "Référence à un pion"
+        }
+    },
     "FAx": {
         "name": "FateX",
         "Global": {
@@ -199,6 +215,11 @@
                 "Help": "Pour ajouter un nouveau modèle, cliquer sur le bouton <strong>Configuration</strong> ci-dessous (disponible aussi dans la barre de titre).",
                 "Explain": "Les modèles sont une élégante manière d'avoir différents types de feuille de personnage pour différents acteurs. Nous vous suggérons d'utiliser <strong>différents modèles</strong> pour les PJs, PNJs mineurs, secondaires et majeurs, qui ont tous des <strong>particularités différentes</strong> sur leur feuille."
             }
+        },
+        "ActorGroups": {
+            "Remove": "Retirer du groupe",
+            "RemoveTitle": "Retirer l'acteur du groupe ?",
+            "RemoveConfirmation": "Seule la référence dans ce groupe sera supprimée. L'acteur et ses pions sur les scènes ne seront pas supprimés."
         }
     }
 }

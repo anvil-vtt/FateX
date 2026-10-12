@@ -15,7 +15,6 @@ import { TemplateActorPicker } from "./module/applications/template-actors/Templ
 import { TemplateActorSettings } from "./module/applications/template-actors/TemplateActorSettings";
 import { TokenReferenceItem } from "./module/item/references/TokenReferenceItem";
 import { ActorReferenceItem } from "./module/item/references/ActorReferenceItem";
-import { SubItems } from "./module/components/SubItems/SubItems";
 
 export interface FatexConfig {
     itemClasses: {
@@ -37,8 +36,8 @@ export interface FatexConfig {
     applications: {
         templatePicker: TemplateActorPicker | null;
         templateSettings: TemplateActorSettings | null;
-        [key: string]: Application | null;
-        [key: number]: Application | null;
+        [key: string]: TemplateActorSettings | null;
+        [key: number]: TemplateActorSettings | null;
     };
 
     global: {
@@ -54,20 +53,18 @@ export const FateX: FatexConfig = {
         skill: SkillItem,
         stunt: StuntItem,
         extra: ExtraItem,
-        tokenRefernce: TokenReferenceItem,
+        tokenReference: TokenReferenceItem,
         actorReference: ActorReferenceItem,
     },
     sheetComponents: {
         actor: {
             sortable: Sortable,
             configuration: Configuration,
-            subItems: SubItems,
         },
         item: {
             radio: Radio,
             rangeSlider: RangeSlider,
             automation: Automation,
-            subItems: SubItems,
         },
     },
     applications: {

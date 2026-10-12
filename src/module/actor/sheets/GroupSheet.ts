@@ -1,407 +1,270 @@
 import { InlineActorSheetFate } from "./InlineActorSheetFate";
-import { getReferencesByGroupType } from "../../helper/ActorGroupHelper";
-import { CharacterSheetOptions } from "./CharacterSheet";
-import { FateActor } from "../FateActor";
-import { CombatantReferenceItemData, ReferenceItemData, TokenReferenceItemData } from "../../item/ItemTypes";
-import { FateItem } from "../../item/FateItem";
-import { ItemData } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/data.mjs/itemData";
+import { getReferencesByGroupType, resolveReference } from "../../helper/ActorGroupHelper";
+import { ActorSheetV2, confirmDeletion, FateSheetMixin } from "../../applications/ApplicationV2";
 import Sortable, { SortableEvent } from "sortablejs";
-import { TokenData } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/data.mjs";
 
-/**
- * Represents a single actor group
- */
-export class GroupSheet extends ActorSheet {
-    public inlineSheets: InlineActorSheetFate[];
+export class GroupSheet extends FateSheetMixin(ActorSheetV2) {
+    static openSheets = new Set<GroupSheet>();
+    static DEFAULT_OPTIONS = {
+        tag: "div",
+        classes: ["fatex", "fatex-sheet", "actor_group_overview", "actor_group_overview--front"],
+        position: { width: 1000, height: 700 },
+        window: { resizable: true },
+        sheetConfig: false,
+        form: { submitOnChange: true, closeOnSubmit: false },
+        actions: {
+            createTokenReference: function (this: GroupSheet, _event, target) {
+                return this._createTokenReference(target.dataset.tokenId, canvas.scene?.id ?? "");
+            },
+        },
+    };
+    static PARTS = {
+        sheet: {
+            template: "systems/fatex/templates/actor/group.hbs",
+            scrollable: [".fatex-desk__content"],
+        },
+    };
 
-    /**
-     * Initialize inlineSheets as an empty array of sheets
-     */
-    constructor(object: FateActor, options: ActorSheet.Options) {
-        super(object, options);
+    inlineSheets: InlineActorSheetFate[] = [];
+    private sortable: Sortable | null = null;
+    private groupScrollTop = 0;
+    private removingReferences = new Set<string>();
+    private addingReferences = new Set<string>();
 
-        /**
-         * Inline sheets that are rendered by this actor group instance
-         */
-        this.inlineSheets = [];
+    _configureRenderParts(options) {
+        const parts = super._configureRenderParts(options);
+        // The group form and the child actor forms are siblings, never nested.
+        parts.sheet.forms = { ".fatex-group-form": this.options.form };
+        return parts;
     }
 
-    /**
-     * Sets the default options for every actor group sheet
-     */
-    static get defaultOptions() {
-        return foundry.utils.mergeObject(super.defaultOptions, {
-            classes: ["fatex fatex-sheet sheet actor_group_overview actor_group_overview--front"],
-            resizable: true,
-            template: "/systems/fatex/templates/actor/group.hbs",
-            dragDrop: [{ dropSelector: null }],
-            scrollY: [".fatex-desk__content"],
+    async _prepareContext(options) {
+        const data = await super._prepareContext(options);
+        const used = this.actor.items
+            .filter((item) => item.type === "tokenReference" && item.system.scene === canvas.scene?.id)
+            .map((item) => item.system.id);
+        return Object.assign(data, {
+            actor: this.actor.toObject(false),
+            system: foundry.utils.deepClone(this.actor.system),
+            groupTypes: {
+                manual: "FAx.ActorGroups.Type.Manual",
+                scene: "FAx.ActorGroups.Type.Scene",
+                encounter: "FAx.ActorGroups.Type.Encounter",
+            },
+            // Unlinked tokens of the viewed scene can be added to manual groups with a click.
+            availableTokens:
+                this.isEditable && this.actor.system.groupType === "manual"
+                    ? canvas.scene?.tokens
+                          .filter(
+                              (token) =>
+                                  !token.isLinked &&
+                                  !!token.actor &&
+                                  !used.includes(token.id) &&
+                                  (game.user?.isGM || (!token.hidden && token.actor.testUserPermission(game.user!, "LIMITED"))),
+                          )
+                          .map((token) => ({
+                              _id: token.id,
+                              name: token.name,
+                              img: (token as any).texture.src,
+                          })) ?? []
+                    : [],
         });
     }
 
-    async getData() {
-        // Basic fields and flags
-        const data: any = {
-            owner: this.actor.isOwner,
-            options: this.options,
-            editable: this.isEditable,
-            isTemplateActor: this.actor.isTemplateActor,
-            isEmptyActor: !this.actor.items.size,
-            isToken: this.token && !this.token.data.actorLink,
-            config: CONFIG.FateX,
-        };
-
-        // Add actor, actor data and item
-        data.actor = foundry.utils.duplicate(this.actor);
-        data.data = data.actor;
-        data.items = this.actor.items.map((i) => foundry.utils.duplicate(i));
-        data.items.sort((a: ItemData, b: ItemData) => (a.sort || 0) - (b.sort || 0));
-
-        // Create list of available tokens in the current scene for manual groups
-        // @ts-ignore
-        if (this.actor.type == "group" && this.actor.system.groupType == "manual") {
-            // @ts-ignore
-            const usedTokenReferences = this.actor.items.filter((i) => i.type === "tokenReference" && i.system.scene === game.scenes?.active?.id);
-            const usedTokenReferencesMap: string[] = usedTokenReferences.map((token: FateItem) => {
-                // @ts-ignore
-                return token.data.type === "tokenReference" ? token.system.id : "";
-            });
-
-            if (canvas.scene) {
-                data.availableTokens = canvas.scene.tokens.filter((token) => !token.isLinked && !usedTokenReferencesMap.includes(token.id || ""));
-            }
-        }
-
-        return data;
+    _getHeaderControls() {
+        return super
+            ._getHeaderControls()
+            .filter(
+                (control) => !["configureToken", "configurePrototypeToken", "configureSheet"].includes(control.action),
+            );
     }
 
-    activateListeners(html: JQuery) {
-        super.activateListeners(html);
+    async _onFirstRender(context, options) {
+        await super._onFirstRender(context, options);
+        GroupSheet.openSheets.add(this);
+    }
 
-        html.find(`.fatex__actor_group__createToken`).on("click", (e: JQuery.ClickEvent) => this._onCreateTokenReference.call(this, e));
-        html.find(`.fatex__actor_group__sheet__navigation a`).on("click", (e: JQuery.ClickEvent) => this._onChangeGroupNavigation.call(this, e));
+    async _preRender(context, options) {
+        this.groupScrollTop = this.element?.querySelector(".fatex-desk__content")?.scrollTop ?? 0;
+        this.sortable?.destroy();
+        this.sortable = null;
+        await super._preRender(context, options);
+    }
 
-        // Custom sheet listeners for every ItemType
-        for (const itemType in CONFIG.FateX.itemClasses) {
-            CONFIG.FateX.itemClasses[itemType]?.activateActorSheetListeners(html, this);
-        }
-
-        // Custom sheet listeners for every SheetComponent
-        for (const sheetComponent in CONFIG.FateX.sheetComponents.actor) {
-            CONFIG.FateX.sheetComponents.actor[sheetComponent].activateListeners(html, this);
+    async _onRender(context, options) {
+        await super._onRender(context, options);
+        // The group has a part form, rather than a top-level form.
+        if (!this.isEditable) {
+            for (const input of this.element.querySelectorAll(".fatex-group-form :is(input, select)")) input.disabled = true;
         }
     }
 
-    /**
-     * Adds sortableJS handlers to groups.
-     *
-     * Saves manual group order by sorting embedded entities.
-     * Saves scene/encounter group order by using sortables integrated localstorage sorting
-     */
-    addSortableJSHandler(html: JQuery) {
-        if (this.actor.type != "group" || !html.find(".fatex-js-actor-group-sheets").length) return;
-
-        // @ts-ignore
-        if (this.actor.system.groupType == "manual") {
-            Sortable.create(html.find(".fatex-js-actor-group-sheets")[0], {
+    async _postRender(context, options) {
+        await super._postRender(context, options);
+        await this.syncInlineSheets();
+        const host = this.element.querySelector(".fatex-js-actor-group-sheets");
+        host.scrollTop = this.groupScrollTop;
+        if (this.actor.system.groupType === "manual" && this.isEditable) {
+            this.sortable = Sortable.create(host, {
                 animation: 150,
                 removeOnSpill: true,
-                onEnd: (e: SortableEvent) => this.sortInlineSheets.call(this, e),
-                onSpill: (e: SortableEvent) => this.spillInlineSheet.call(this, e),
+                onSpill: (event) => {
+                    void this.spillInlineSheet(event);
+                },
+                handle: ".fatex__inline_sheet__headline",
+                filter: "input, button, a",
+                preventOnFilter: false,
+                onEnd: (event) => {
+                    void this.sortInlineSheets(event);
+                },
             });
         }
-
-        Sortable.create(html.find(".fatex-js-actor-group-sheets")[0], {
-            group: ["groupSort", this.actor.id].join("-"),
-            animation: 150,
-        });
     }
 
-    async spillInlineSheet(event: SortableEvent) {
-        if (event.item.dataset.id) {
-            await this.actor.deleteEmbeddedDocuments("Item", [event.item.dataset.id]);
+    async syncInlineSheets() {
+        const previous = new Map(this.inlineSheets.map((sheet) => [sheet.options.referenceID, sheet]));
+        const next: InlineActorSheetFate[] = [];
+        const host = this.element.querySelector(".fatex-js-actor-group-sheets");
+        for (const reference of getReferencesByGroupType(this.actor.system.groupType, this.actor)) {
+            const resolved = resolveReference(reference);
+            if (!resolved?.actor || !resolved.actor.testUserPermission(game.user, "LIMITED")) continue;
+            if (resolved.combatant && !resolved.combatant.visible) continue;
+            const referenceID = reference._id;
+            let sheet = previous.get(referenceID);
+            if (sheet && sheet.actor.uuid !== resolved.actor.uuid) {
+                await sheet.close();
+                sheet = undefined;
+            }
+            previous.delete(referenceID);
+            if (!sheet) sheet = new InlineActorSheetFate({ document: resolved.actor, referenceID, group: this });
+            sheet.combatant = resolved.combatant;
+            if (sheet.element) host.append(sheet.element);
+            await sheet.render({ force: true });
+            next.push(sheet);
         }
+        for (const sheet of previous.values()) await sheet.close();
+        this.inlineSheets = next;
+    }
+
+    async _preClose(options) {
+        await super._preClose(options);
+        this.sortable?.destroy();
+        this.sortable = null;
+        const inlineSheets = this.inlineSheets;
+        this.inlineSheets = [];
+        // Inline sheets belong to this group rather than to separate windows. Close
+        // them together without animation so every member cannot delay the group.
+        await Promise.all(inlineSheets.map((sheet) => sheet.close({ animate: false })));
+    }
+
+    _onClose(options) {
+        GroupSheet.openSheets.delete(this);
+        super._onClose(options);
     }
 
     async sortInlineSheets(event: SortableEvent) {
-        const itemIDs: string[] = Array.from(event.to.children).map((e) => (e as HTMLElement).dataset.id ?? "");
-
-        const updateData = itemIDs.map((id, index) => ({
-            _id: id,
-            sort: 100000 + index,
-        }));
-
-        await this.actor.updateEmbeddedDocuments("Item", updateData);
-    }
-
-    /**
-     * Remove some of the default header buttons for group sheets
-     */
-    _getHeaderButtons() {
-        const buttons = super._getHeaderButtons();
-
-        return buttons.filter((b) => !["configure-token", "configure-sheet"].includes(b.class));
-    }
-
-    /**
-     * Delete all inline sheets that were created by this instance before closing the window
-     */
-    async close(options = {}) {
-        for (const inlineSheet of this.inlineSheets) {
-            delete inlineSheet.actor.apps[inlineSheet.appId];
-        }
-
-        return super.close(options);
-    }
-
-    /**
-     * Render InlineActorSheets after
-     * @param force
-     * @param options
-     */
-    async _render(force = false, options = {}) {
-        await super._render(force, options);
-
-        if (this.actor.type !== "group") {
-            return;
-        }
-
-        // @ts-ignore
-        const references = getReferencesByGroupType(this.actor.system.groupType, this.actor);
-
-        for (const reference of references) {
-            if (reference.type === "actorReference") {
-                await this.renderInlineActor(reference);
-            } else if (reference.type === "tokenReference") {
-                await this.renderInlineToken(reference);
-            } else if (reference.type === "combatantReference") {
-                await this.renderInlineCombatant(reference);
-            }
-        }
-
-        if (this.element && this._scrollPositions && this._scrollPositions[".fatex-desk__content"]) {
-            this.element.find(".fatex-desk__content")[0].scrollTop = this._scrollPositions[".fatex-desk__content"];
-        }
-
-        // Add sortable handler after rendering for all sub-sheets is finished
-        this.addSortableJSHandler(this.element.find(".window-content"));
-    }
-
-    /**
-     * Creates and renders a new InlineActorSheet based on an actor reference.
-     * An actor is referenced by his actor id
-     */
-    async renderInlineActor(reference: ReferenceItemData) {
-        const actor = game.actors?.find((actor) => actor.id === (reference as any).system.id && (actor as FateActor).isVisibleByPermission);
-
-        if (!actor) {
-            return;
-        }
-
-        // @ts-ignore
-        const actorSheet = new InlineActorSheetFate(actor as FateActor, { referenceID: (reference as any)._id } as CharacterSheetOptions);
-        // @ts-ignore
-        await actorSheet.render(true, { group: this } as Application.RenderOptions);
-
-        this.inlineSheets.push(actorSheet);
-    }
-
-    /**
-     * Creates and renders a new InlineActorSheet based on a token reference.
-     * A token is referenced by a combination of the scene where its placed and its token id
-     */
-    async renderInlineToken(reference: Partial<ItemData & TokenReferenceItemData>) {
-        const scene: any = game.scenes?.find((scene) => scene.id === reference.data?.scene);
-        const tokenData = scene.data.tokens.find((token: TokenData) => token._id === reference.data?.id);
-
-        if (!tokenData) {
-            return;
-        }
-
-        tokenData.parent = scene;
-        const token = new Token(tokenData);
-
-        const tokenSheet = new InlineActorSheetFate(token.actor as FateActor, { referenceID: reference.data?.id } as CharacterSheetOptions);
-        // @ts-ignore
-        await tokenSheet.render(true, { token: token, group: this } as Application.RenderOptions);
-
-        this.inlineSheets.push(tokenSheet);
-    }
-
-    /**
-     * Creates and renders a new InlineActorSheet based on a combatant reference.
-     */
-    async renderInlineCombatant(reference: CombatantReferenceItemData) {
-        if (!game.combats || !game.combats.active) {
-            return;
-        }
-
-        const scene: any = game.scenes?.find((scene) => scene.id === game.combats?.active?.data.scene);
-        const combatant = game.combats.active.combatants.find((combatant) => combatant.data._id === reference.data?.id);
-        const tokenData = scene.data.tokens.find((token: TokenData) => token._id === combatant?.token?.id);
-
-        if (!tokenData || !combatant || !combatant.visible) {
-            return;
-        }
-
-        // @ts-ignore
-        delete combatant.actor;
-
-        tokenData.parent = scene;
-        const token = new Token(tokenData);
-
-        const tokenSheet = new InlineActorSheetFate(
-            token.actor as FateActor,
-            { combatant: combatant, referenceID: reference.data.id } as CharacterSheetOptions
+        if (!this.isEditable || this.actor.system.groupType !== "manual") return;
+        const ids = Array.from(event.to.children)
+            .map((element) => (element as HTMLElement).dataset.id)
+            .filter((id): id is string => !!id && this.actor.items.has(id));
+        await this.actor.updateEmbeddedDocuments(
+            "Item",
+            ids.map((_id, index) => ({ _id, sort: 100000 + index })),
         );
-        // @ts-ignore
-        await tokenSheet.render(true, { token: token, group: this } as Application.RenderOptions);
-
-        this.inlineSheets.push(tokenSheet);
     }
 
-    /**
-     * Create a new ownedItem of type ActorReference based on a given actorID
-     * @param actorID
-     */
-    async _createActorReference(actorUUID: string) {
-        
-        const actor = await fromUuid(actorUUID) as FateActor;
+    canRemoveReference(referenceID: string): boolean {
+        if (!this.isEditable || this.actor.system.groupType !== "manual") return false;
+        const reference = this.actor.items.get(referenceID);
+        return !!reference && ["actorReference", "tokenReference"].includes(reference.type);
+    }
 
-        if (!actor) {
-            console.error("FateX | DEBUG: No actor found for this UUID. Aborting.");
-            return;
-        }
-
-        // Check if character is already present
-        // @ts-ignore
-        if (this.actor.items.find((i) => i.type === "actorReference" && i.system.id === actor.id)) {
-            console.log("FateX | DEBUG: The actor is already referenced in this group. Aborting.");
-            return;
-        }
-
-        // Only allow character-type actors to be referenced
-        if (actor.type !== "character") {
-            console.log("FateX | DEBUG: The actor is not of type 'character'. Aborting.");
-            return;
-        }
-
-        const itemData = {
-            name: ["actorReference", actor.id].join("-"),
-            type: "actorReference",
-            system: {
-                id: actor.id ?? "",
-            },
-        } as any;
-
+    async removeReference(referenceID: string): Promise<boolean> {
+        if (!this.canRemoveReference(referenceID) || this.removingReferences.has(referenceID)) return false;
+        const reference = this.actor.items.get(referenceID)!;
+        this.removingReferences.add(referenceID);
         try {
-            await this.actor.createEmbeddedDocuments("Item", [itemData]);
-        } catch(e) {
-            console.error("FateX | DEBUG: An error occurred while creating the embedded document:", e);
+            const confirmed = await confirmDeletion(
+                game.i18n.localize("FAx.ActorGroups.RemoveTitle"),
+                game.i18n.localize("FAx.ActorGroups.RemoveConfirmation"),
+            );
+            // The group can change while the confirmation is open.
+            if (!confirmed || !this.canRemoveReference(referenceID) || this.actor.items.get(referenceID) !== reference)
+                return false;
+            // Delete only the group's reference, never the world Actor or scene Token.
+            // Deleting the embedded item re-renders this sheet through actor.apps.
+            await reference.delete();
+            return true;
+        } finally {
+            this.removingReferences.delete(referenceID);
         }
     }
 
-    _createActorReferencesFromFolder(folderUUID: string) {
-        // @ts-ignore
-        const actors = fromUuidSync(folderUUID).contents.filter((actor) => actor instanceof FateActor && actor.type === "character") || [];
+    async spillInlineSheet(event: SortableEvent) {
+        const referenceID = event.item.dataset.id;
+        if (!referenceID) return;
+        if (!(await this.removeReference(referenceID))) await this.render();
+    }
 
-        actors.forEach((actor) => {
-            this._createActorReference(`Actor.${actor.id}` || "");
+    /** New members are added after the existing ones. */
+    nextReferenceSort(): number {
+        const sorts = getReferencesByGroupType("manual", this.actor).map((reference) => reference.sort ?? 0);
+        return Math.max(100000, ...sorts) + 1;
+    }
+
+    async _createActorReference(actorUUID: string) {
+        if (!this.isEditable) return;
+        const actor: any = await fromUuid(actorUUID);
+        if (!actor || actor.documentName !== "Actor" || actor.type !== "character" || actor.pack) return;
+        const exists = this.actor.items.some((item) => item.type === "actorReference" && item.system.id === actor.id);
+        await this.addReference(exists, { name: `actorReference-${actor.id}`, type: "actorReference", system: { id: actor.id } });
+    }
+
+    /** Adds a reference once, also when the same document is dropped again before the first drop is saved. */
+    private async addReference(exists: boolean, data: { name: string; type: string; system: Record<string, string> }) {
+        if (exists || this.addingReferences.has(data.name)) return;
+        this.addingReferences.add(data.name);
+        try {
+            await this.actor.createEmbeddedDocuments("Item", [{ ...data, sort: this.nextReferenceSort() }]);
+        } finally {
+            this.addingReferences.delete(data.name);
+        }
+    }
+
+    async _createActorReferencesFromFolder(folderUUID: string) {
+        if (!this.isEditable) return;
+        const folder: any = await fromUuid(folderUUID.startsWith("Folder.") ? folderUUID : `Folder.${folderUUID}`);
+        if (folder?.documentName !== "Folder" || folder.type !== "Actor") return;
+        // Sequential creation also prevents duplicate references on document updates.
+        for (const actor of folder.contents) {
+            if (actor.type === "character") await this._createActorReference(actor.uuid);
+        }
+    }
+
+    async _createTokenReference(tokenID: string, sceneID: string) {
+        if (!this.isEditable) return;
+        const token = game.scenes?.get(sceneID)?.tokens.get(tokenID);
+        if (!token?.actor) return;
+        const exists = this.actor.items.some(
+            (item) => item.type === "tokenReference" && item.system.id === tokenID && item.system.scene === sceneID,
+        );
+        await this.addReference(exists, {
+            name: `tokenReference-${sceneID}-${tokenID}`,
+            type: "tokenReference",
+            system: { id: tokenID, scene: sceneID },
         });
     }
 
-    /**
-     * Create a new ownedItem of type tokenReference based on a given sceneID and tokenID
-     */
-    _createTokenReference(tokenID: string, sceneID: string): void {
-        // @ts-ignore
-        if (this.actor.items.find((i) => i.type === "tokenReference" && i.system.id === tokenID && i.system.scene === sceneID)) {
-            return;
-        }
-
-        const itemData: Partial<ItemData> = {
-            name: ["tokenReference", sceneID, tokenID].join("-"),
-            type: "tokenReference",
-            data: {
-                id: tokenID,
-                scene: sceneID,
-            },
-        };
-
-        this.actor.createEmbeddedDocuments("Item", [itemData]);
-    }
-
-    /*************************
-     * EVENT HANDLER
-     *************************/
-
-    _onChangeGroupNavigation(e: JQuery.ClickEvent) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        const target = $(e.currentTarget);
-        const app = target.parents(".app");
-
-        // Re-set application classes to represent different group states
-        app.removeClass(["actor_group_overview--front", "actor_group_overview--back"]);
-        app.addClass(`actor_group_overview--${e.currentTarget.dataset.show}`);
-
-        // Re-set active classes on navigation
-        app.find(".fatex__actor_group__sheet__navigation a").removeClass("active");
-        app.find(`.fatex__actor_group__sheet__navigation--${e.currentTarget.dataset.show}`).addClass("active");
-    }
-
-    _onCreateTokenReference(e: JQuery.ClickEvent) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        const dataset = e.currentTarget.dataset;
-
-        if (!game.actors) {
-            return;
-        }
-
-        const tokens = game.actors.tokens;
-        const tokenActor = Object.values(tokens).find((t) => t?.token?.id === dataset.tokenId);
-
-        if (!tokenActor) {
-            return;
-        }
-
-        if (game.scenes) {
-            this._createTokenReference(dataset.tokenId, game.scenes?.active?.id || "");
-        }
-    }
-
-    /**
-     * Override of the default drop handler.
-     * Handles the ability to drop actors from the sidebar into an actor group
-     */
-    // @ts-ignore
-    async _onDrop(event: DragEvent) {
-        let data;
-
-        try {
-            // @ts-ignore
-            data = foundry.applications.ux.TextEditor.implementation.getDragEventData(event);
-        } catch (err) {
-            console.error("FateX | DEBUG: Error while retrieving drag-and-drop data.", err);
-            return false;
-        }
-
-        // @ts-ignore
-        if (this.actor.type != "group" || this.actor.system.groupType != "manual") {
+    async _onDropDocument(_event, document) {
+        if (!this.isEditable) return null;
+        if (this.actor.system.groupType !== "manual") {
             ui.notifications?.error(game.i18n.localize("FAx.ActorGroups.Notifications.ManualOnly"));
-            return false;
+            return null;
         }
-
-        switch (data.type) {
-            case "Actor":
-                return await this._createActorReference(data.uuid);
-            case "Folder":
-                return this._createActorReferencesFromFolder(data.uuid);
-            case "Item":
-                return this._onDropItem(event, data);
-        }
+        if (document.documentName === "Actor") return this._createActorReference(document.uuid);
+        if (document.documentName === "Folder") return this._createActorReferencesFromFolder(document.uuid);
+        if (document.documentName === "Token") return this._createTokenReference(document.id, document.parent.id);
+        // Groups only hold references; items belong on the members' sheets.
+        return null;
     }
 }
