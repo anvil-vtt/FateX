@@ -31,6 +31,12 @@ export class InlineActorSheetFate extends CharacterSheet {
         return this.options.group.canRemoveReference(this.options.referenceID);
     }
 
+    _canRender(options) {
+        // A member the user may no longer see leaves with the next group render, without a permission warning.
+        if (!this.actor.testUserPermission(game.user!, "LIMITED")) return false;
+        return super._canRender(options);
+    }
+
     _configureRenderParts(_options) {
         // Inline sheets always use the compact layout, also for limited actors.
         return foundry.utils.deepClone((this.constructor as typeof InlineActorSheetFate).PARTS);

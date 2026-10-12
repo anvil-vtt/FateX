@@ -13,14 +13,15 @@ export class ActorGroupFeature {
             this.styleGroupEntries($(html));
         });
 
-        /**
-         * Rerender all inline-sheets of updated actor (needed for synthetic actor token to circumvent patching the _onUpdateBaseActor method)
-         * Synthetic token actors share the id of their base actor. The updated document itself re-renders through actor.apps.
-         */
-        Hooks.on("updateActor", (entity, _data, _options, _userId) => {
-            const openGroupSheets = GroupSheet.openSheets;
-
-            for (const groupSheet of openGroupSheets) {
+        // Synthetic token actors share the id of their base actor, so their inline sheets re-render here.
+        // The updated document itself re-renders through actor.apps.
+        Hooks.on("updateActor", (entity, changes) => {
+            for (const groupSheet of GroupSheet.openSheets) {
+                // Permissions decide which members a group shows.
+                if ("ownership" in changes) {
+                    void groupSheet.render();
+                    continue;
+                }
                 const inlineSheetsOfUpdatedActor = groupSheet.inlineSheets.filter(
                     (sheet) => sheet.actor.id === entity.id && sheet.actor !== entity,
                 );
