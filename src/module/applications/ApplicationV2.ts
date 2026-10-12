@@ -16,7 +16,8 @@ export async function confirmDeletion(title: string, content: string): Promise<b
     return (
         (await DialogV2.confirm({
             window: { title },
-            content,
+            // The dialog content is a flex column, so inline markup needs a wrapping paragraph.
+            content: `<p>${content}</p>`,
             classes: ["fatex", "fatex-dialog"],
             yes: { label: game.i18n.localize("FAx.Dialog.Confirm") },
             no: { label: game.i18n.localize("FAx.Dialog.Cancel"), default: true },

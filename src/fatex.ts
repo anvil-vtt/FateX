@@ -142,7 +142,8 @@ if (module.hot) {
 
         TemplatePreloader.preloadHandlebarsTemplates().then(() => {
             for (const application of applications.instances.values()) {
-                if (application.options.classes.includes("fatex")) application.render({ force: true });
+                // A forced render would bring every window to the front, also above open dialogs.
+                if (application.rendered && application.options.classes.includes("fatex")) application.render();
             }
         });
     }
