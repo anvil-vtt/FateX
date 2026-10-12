@@ -42,6 +42,13 @@ export class Foundry {
         });
     }
 
+    /** Removes expected errors, e.g. from an error notification, and returns them. */
+    takeErrors(pattern: RegExp) {
+        const taken = this.errors.filter((error) => pattern.test(error));
+        this.errors.splice(0, this.errors.length, ...this.errors.filter((error) => !pattern.test(error)));
+        return taken;
+    }
+
     static async open(browser: Browser, user: string) {
         const context = await browser.newContext();
         const page = await context.newPage();
@@ -120,6 +127,27 @@ export class Foundry {
         if (reload) await this.reload();
     }
 
+    /**
+     * Makes dice results predictable. Each die takes the next value, between 0 and 1.
+     * For Fate dice 0.99 rolls +, 0.5 rolls 0 and 0.01 rolls -.
+     */
+    async fixDice(values: number[]) {
+        await this.eval((values) => {
+            const w = window as any;
+            w.__e2eRandom ??= w.CONFIG.Dice.randomUniform;
+            let index = 0;
+            w.CONFIG.Dice.randomUniform = () => values[index++ % values.length];
+        }, values);
+    }
+
+    async resetDice() {
+        await this.eval(() => {
+            const w = window as any;
+            if (w.__e2eRandom) w.CONFIG.Dice.randomUniform = w.__e2eRandom;
+            delete w.__e2eRandom;
+        });
+    }
+
     /** Closes every document sheet, dialog and FateX window. */
     async closeWindows() {
         await this.eval(async () => {
@@ -191,6 +219,7 @@ export const test = base.extend<TestFixtures, WorkerFixtures>({
             await use();
             const errors = [...gm.errors];
             await gm.closeWindows();
+            await gm.resetDice();
             await gm.deleteCreated();
             await gm.restoreSettings();
             expect(errors, "GM errors").toEqual([]);
