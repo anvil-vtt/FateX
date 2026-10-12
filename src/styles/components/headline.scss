@@ -92,14 +92,22 @@
         font-family: $primary-font;
     }
 
+    // AppV1 windows got these from Foundry's legacy .app h2 rules, AppV2 windows do not.
+    h2,
+    &:where(h2) {
+        margin: 0 0 0.5rem;
+        padding: 0;
+        font-size: 1.5em;
+        font-weight: normal;
+        line-height: normal;
+        border-bottom: 1px solid $fatex-primary-color;
+    }
+
     &--no-border {
         border: none;
         margin-bottom: $component-padding;
     }
 
-    h2 {
-        border-color: $fatex-primary-color;
-    }
 }
 
 .fatex-js-edit-mode {
