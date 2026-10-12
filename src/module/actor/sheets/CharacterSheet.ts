@@ -1,5 +1,6 @@
 import { SheetSetup } from "../../applications/sheet-setup/SheetSetup";
 import { BaseItem } from "../../item/BaseItem";
+import { SkillItem } from "../../item/skill/SkillItem";
 import { ActorSheetV2, enrichHTML, FateSheetMixin } from "../../applications/ApplicationV2";
 
 export class CharacterSheet extends FateSheetMixin(ActorSheetV2) {
@@ -86,11 +87,16 @@ export class CharacterSheet extends FateSheetMixin(ActorSheetV2) {
     async _onRender(context, options) {
         await super._onRender(context, options);
         const html = $(this.element);
-        for (const itemType of Object.values(CONFIG.FateX.itemClasses)) {
-            itemType.activateActorSheetListeners(html, this);
-        }
-        for (const component of Object.values(CONFIG.FateX.sheetComponents.actor)) {
-            if (this.isEditable) component.activateListeners(html, this);
+        if (this.isEditable) {
+            for (const itemType of Object.values(CONFIG.FateX.itemClasses)) {
+                itemType.activateActorSheetListeners(html, this);
+            }
+            for (const component of Object.values(CONFIG.FateX.sheetComponents.actor)) {
+                component.activateListeners(html, this);
+            }
+        } else {
+            // Observers may roll, but not change the actor.
+            html.find(".fatex-js-skill").on("click", (event) => SkillItem._onRollSkill(event, this));
         }
         html.find(".fatex-js-item-to-chat").on("click", (event) => BaseItem._onItemSendToChat(event, this));
         this.element.classList.toggle("fatex-js-edit-mode", this.editMode && this.isEditable);
