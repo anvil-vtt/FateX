@@ -29,6 +29,7 @@ export class GroupSheet extends FateSheetMixin(ActorSheetV2) {
     private sortable: Sortable | null = null;
     private groupScrollTop = 0;
     private removingReferences = new Set<string>();
+    private addingReferences = new Set<string>();
 
     _configureRenderParts(options) {
         const parts = super._configureRenderParts(options);
@@ -209,15 +210,19 @@ export class GroupSheet extends FateSheetMixin(ActorSheetV2) {
         if (!this.isEditable) return;
         const actor: any = await fromUuid(actorUUID);
         if (!actor || actor.documentName !== "Actor" || actor.type !== "character" || actor.pack) return;
-        if (this.actor.items.some((item) => item.type === "actorReference" && item.system.id === actor.id)) return;
-        await this.actor.createEmbeddedDocuments("Item", [
-            {
-                name: `actorReference-${actor.id}`,
-                type: "actorReference",
-                system: { id: actor.id },
-                sort: this.nextReferenceSort(),
-            },
-        ]);
+        const exists = this.actor.items.some((item) => item.type === "actorReference" && item.system.id === actor.id);
+        await this.addReference(exists, { name: `actorReference-${actor.id}`, type: "actorReference", system: { id: actor.id } });
+    }
+
+    /** Adds a reference once, also when the same document is dropped again before the first drop is saved. */
+    private async addReference(exists: boolean, data: { name: string; type: string; system: Record<string, string> }) {
+        if (exists || this.addingReferences.has(data.name)) return;
+        this.addingReferences.add(data.name);
+        try {
+            await this.actor.createEmbeddedDocuments("Item", [{ ...data, sort: this.nextReferenceSort() }]);
+        } finally {
+            this.addingReferences.delete(data.name);
+        }
     }
 
     async _createActorReferencesFromFolder(folderUUID: string) {
@@ -234,20 +239,14 @@ export class GroupSheet extends FateSheetMixin(ActorSheetV2) {
         if (!this.isEditable) return;
         const token = game.scenes?.get(sceneID)?.tokens.get(tokenID);
         if (!token?.actor) return;
-        if (
-            this.actor.items.some(
-                (item) => item.type === "tokenReference" && item.system.id === tokenID && item.system.scene === sceneID,
-            )
-        )
-            return;
-        await this.actor.createEmbeddedDocuments("Item", [
-            {
-                name: `tokenReference-${sceneID}-${tokenID}`,
-                type: "tokenReference",
-                system: { id: tokenID, scene: sceneID },
-                sort: this.nextReferenceSort(),
-            },
-        ]);
+        const exists = this.actor.items.some(
+            (item) => item.type === "tokenReference" && item.system.id === tokenID && item.system.scene === sceneID,
+        );
+        await this.addReference(exists, {
+            name: `tokenReference-${sceneID}-${tokenID}`,
+            type: "tokenReference",
+            system: { id: tokenID, scene: sceneID },
+        });
     }
 
     async _onDropDocument(event, document) {
