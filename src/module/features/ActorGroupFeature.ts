@@ -50,7 +50,8 @@ export class ActorGroupFeature {
                 // Movement does not change a group, only what its inline sheets show.
                 const shown = ["name", "hidden", "texture", "actorId", "actorLink"];
                 if (event === "updateToken" && !shown.some((key) => key in changes)) return;
-                renderGroupSheetsByGroupType("scene", "manual");
+                // Encounter members follow their token's actor, e.g. when Link Actor Data changes.
+                renderGroupSheetsByGroupType("scene", "manual", "encounter");
             });
         }
 
