@@ -268,7 +268,10 @@ test.describe("group settings", () => {
 
         await sheet.locator(`[data-action="createTokenReference"][data-token-id="${token.id}"]`).click();
         await expect.poll(() => references(gm, group.id).then((r) => r.map((x) => x.type))).toEqual(["tokenReference"]);
-        await expect.poll(() => inlineNames(gm, group.id)).toEqual(["E2E Goblin Token"]);
+        // V14 names the synthetic actor of an unlinked token after the token, V13 after the base actor.
+        const shown = await gm.eval((uuid) => window.foundry.utils.fromUuidSync(uuid).actor.name, token.uuid);
+        expect(["E2E Goblin Token", "E2E Goblin"]).toContain(shown);
+        await expect.poll(() => inlineNames(gm, group.id)).toEqual([shown]);
         // A referenced token is no longer offered.
         await expect(sheet.locator('[data-action="createTokenReference"]')).toHaveCount(0);
 
