@@ -73,13 +73,14 @@ export class TemplateActorPicker extends TemplateActorSettings {
         const source = game.actors?.get(id);
         if (!source || !(source as FateActor).isTemplateActor) return;
         const template = source.toObject() as any;
+        delete template._id;
+        delete template.img;
+        foundry.utils.mergeObject(template, this.creationData);
+        // Set after the creation data, so its flags cannot drop the link to the template.
         template.flags ??= {};
         template.flags.fatex ??= {};
-        template.flags.fatex.templateActor = template._id;
-        delete template._id;
+        template.flags.fatex.templateActor = source.id;
         delete template.flags.fatex.isTemplateActor;
-        delete template.img;
-        Object.assign(template, this.creationData);
         await FateActor._create(template, { renderSheet: true });
         await this.close();
     }
