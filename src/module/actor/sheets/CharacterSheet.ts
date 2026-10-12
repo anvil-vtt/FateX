@@ -141,7 +141,9 @@ export class CharacterSheet extends FateSheetMixin(ActorSheetV2) {
         const documents = await Promise.all(
             folder.contents.map(async (entry) => (entry.toObject ? entry : fromUuid(entry.uuid))),
         );
-        const items = documents.filter((entry) => entry?.documentName === "Item").map((entry) => entry.toObject());
+        const items = documents
+            .filter((entry) => entry?.documentName === "Item" && entry.testUserPermission(game.user, "OBSERVER"))
+            .map((entry) => entry.toObject());
         await this.actor.createEmbeddedDocuments("Item", items);
         return folder;
     }
