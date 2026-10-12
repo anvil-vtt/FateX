@@ -6,7 +6,8 @@
     "scripts": {
         "build": "webpack",
         "build:production": "webpack --env mode=production",
-        "start": "webpack serve"
+        "start": "webpack serve",
+        "test:e2e": "playwright test -c tests/e2e"
     },
     "repository": {
         "type": "git",
@@ -16,6 +17,7 @@
     "license": "MIT",
     "devDependencies": {
         "@league-of-foundry-developers/foundry-vtt-types": "^9.280.0",
+        "@playwright/test": "^1.64.0",
         "@types/marked": "^5.0.1",
         "@types/webpack-env": "^1.18.1",
         "@typescript-eslint/eslint-plugin": "^6.2.0",

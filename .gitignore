@@ -12,3 +12,7 @@ system/fatex.css.map
 dist
 .DS_Store
 foundry8.js
+
+# Playwright
+playwright-report
+test-results
