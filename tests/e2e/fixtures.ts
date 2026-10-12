@@ -81,6 +81,8 @@ export class Foundry {
                 });
             }
             window.foundry.nue.Tour.activeTour?.exit();
+            // Headless browsers have no GPU; the warning about it would cover window headers.
+            window.ui.notifications.clear?.();
         }, TRACKED);
     }
 

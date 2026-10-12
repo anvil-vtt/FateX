@@ -245,3 +245,35 @@ test.describe("scene and encounter groups", () => {
         await expect.poll(() => inlineNames(gm, group.id)).toEqual([]);
     });
 });
+
+test.describe("group settings", () => {
+    test("the group type can be changed in the header", async ({ gm }) => {
+        const actor = await createCharacter(gm, "E2E Token Actor");
+        const group = await createGroup(gm, "E2E Group");
+        await viewNewScene(gm, "E2E Scene");
+        await placeTokens(gm, [actor.id]);
+        const sheet = await openSheet(gm, group.uuid);
+
+        await sheet.locator('select[name="system.groupType"]').selectOption("scene");
+        await expect.poll(() => gm.eval((id) => window.game.actors.get(id).system.groupType, group.id)).toBe("scene");
+        await expect.poll(() => inlineNames(gm, group.id)).toEqual(["E2E Token Actor"]);
+    });
+
+    test("unlinked tokens of the scene can be added to a manual group", async ({ gm }) => {
+        const actor = await createCharacter(gm, "E2E Goblin", { prototypeToken: { actorLink: false } });
+        const group = await createGroup(gm, "E2E Group");
+        await viewNewScene(gm, "E2E Scene");
+        const [token] = await placeTokens(gm, [actor.id], { name: "E2E Goblin Token" });
+        const sheet = await openSheet(gm, group.uuid);
+
+        await sheet.locator(`[data-action="createTokenReference"][data-token-id="${token.id}"]`).click();
+        await expect.poll(() => references(gm, group.id).then((r) => r.map((x) => x.type))).toEqual(["tokenReference"]);
+        await expect.poll(() => inlineNames(gm, group.id)).toEqual(["E2E Goblin Token"]);
+        // A referenced token is no longer offered.
+        await expect(sheet.locator('[data-action="createTokenReference"]')).toHaveCount(0);
+
+        // Renaming in the token's own sheet changes its synthetic actor.
+        await gm.eval((uuid) => window.foundry.utils.fromUuidSync(uuid).actor.update({ name: "E2E Renamed Token" }), token.uuid);
+        await expect.poll(() => inlineNames(gm, group.id)).toEqual(["E2E Renamed Token"]);
+    });
+});

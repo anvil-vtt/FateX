@@ -32,7 +32,11 @@ export async function createItems(foundry: Foundry, actorId: string | null, item
             const created = actorId
                 ? await game.actors.get(actorId).createEmbeddedDocuments("Item", items)
                 : await game.items.documentClass.createDocuments(items);
-            return created.map((item: any) => ({ id: item.id, uuid: item.uuid, name: item.name })) as DocumentRef[];
+            // The server does not keep the order of the request, so return the items in input order.
+            return items.map((data: any) => {
+                const item = created.find((c: any) => c.name === data.name);
+                return { id: item.id, uuid: item.uuid, name: item.name };
+            }) as DocumentRef[];
         },
         { actorId, items },
     );
@@ -63,9 +67,9 @@ export function dialog(foundry: Foundry) {
 }
 
 export async function confirmDialog(foundry: Foundry, confirm = true) {
-    const window = dialog(foundry);
-    await window.locator(`button[data-action="${confirm ? "yes" : "no"}"]`).click();
-    await window.waitFor({ state: "detached" });
+    const frame = dialog(foundry);
+    await frame.locator(`button[data-action="${confirm ? "yes" : "no"}"]`).click();
+    await frame.waitFor({ state: "detached" });
 }
 
 /** Reads document data from the client. */
@@ -134,4 +138,29 @@ export async function placeTokens(foundry: Foundry, actorIds: string[], data: Re
         },
         { actorIds, data },
     );
+}
+
+/** Uses a control from the window header menu, as a user would. */
+export async function headerControl(foundry: Foundry, frame: Locator, action: string) {
+    const label = await foundry.eval(
+        ({ id, action }) => {
+            const app = window.foundry.applications.instances.get(id);
+            const control = app._getHeaderControls().find((c: any) => c.action === action);
+            return window.game.i18n.localize(control?.label ?? action);
+        },
+        { id: (await frame.getAttribute("id"))!, action },
+    );
+    await frame.locator('.window-header [data-action="toggleControls"]').click();
+    // V13 shows a dropdown inside the window, V14 a context menu.
+    const item = foundry.page
+        .locator(`menu.controls-dropdown [data-action="${action}"], #context-menu li`)
+        .filter({ hasText: label })
+        .first();
+    await item.click();
+}
+
+/** Turns on edit mode of a character sheet. */
+export async function enterEditMode(foundry: Foundry, sheet: Locator) {
+    await headerControl(foundry, sheet, "toggleEditMode");
+    await foundry.page.locator(`[id="${await sheet.getAttribute("id")}"].fatex-js-edit-mode`).waitFor();
 }
