@@ -164,6 +164,8 @@ export class Foundry {
     async deleteCreated() {
         const uuids = [...this.created];
         this.created.clear();
+        // Foundry animates new chat notifications and fails if their message is deleted meanwhile.
+        if (uuids.some((uuid) => uuid.startsWith("ChatMessage."))) await this.page.waitForTimeout(500);
         await this.eval(async (list) => {
             // Delete combats first, they reference scenes and actors.
             const ordered = list.sort((a) => (a.startsWith("Combat.") ? -1 : 0));
@@ -217,12 +219,12 @@ export const test = base.extend<TestFixtures, WorkerFixtures>({
         async ({ gm }, use) => {
             gm.errors.length = 0;
             await use();
-            const errors = [...gm.errors];
             await gm.closeWindows();
             await gm.resetDice();
             await gm.deleteCreated();
             await gm.restoreSettings();
-            expect(errors, "GM errors").toEqual([]);
+            // Errors from cleaning up count for this test, not the next one.
+            expect([...gm.errors], "GM errors").toEqual([]);
         },
         { auto: true },
     ],

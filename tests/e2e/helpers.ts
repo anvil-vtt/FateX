@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { Locator } from "@playwright/test";
+import { expect, type Locator } from "@playwright/test";
 import type { Foundry } from "./fixtures";
 
 export type DocumentRef = { id: string; uuid: string; name: string };
@@ -150,13 +150,16 @@ export async function headerControl(foundry: Foundry, frame: Locator, action: st
         },
         { id: (await frame.getAttribute("id"))!, action },
     );
-    await frame.locator('.window-header [data-action="toggleControls"]').click();
     // V13 shows a dropdown inside the window, V14 a context menu.
     const item = foundry.page
         .locator(`menu.controls-dropdown [data-action="${action}"], #context-menu li`)
         .filter({ hasText: label })
         .first();
-    await item.click();
+    // A sheet that renders again while the menu is open closes it, so open it again until the click lands.
+    await expect(async () => {
+        if (!(await item.isVisible())) await frame.locator('.window-header [data-action="toggleControls"]').click();
+        await item.click({ timeout: 2000 });
+    }).toPass({ timeout: 15000 });
 }
 
 /** Turns on edit mode of a character sheet. */
