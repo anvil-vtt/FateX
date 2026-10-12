@@ -182,6 +182,7 @@ test.describe("manual groups", () => {
 test.describe("groups for players", () => {
     test("show members by permission and allow no membership changes", async ({ gm, player }) => {
         const { group, members } = await groupWithMembers(gm, ["E2E Owned", "E2E Limited", "E2E Hidden"]);
+        await createItems(gm, members[1].id, [{ name: "Secret", type: "aspect", system: { value: "Secret aspect" } }]);
         await gm.eval(
             async ({ groupId, owned, limited, user }) => {
                 const { game, CONST } = window;
@@ -198,6 +199,11 @@ test.describe("groups for players", () => {
         await expect.poll(() => inlineNames(player, group.id)).toEqual(["E2E Owned", "E2E Limited"]);
         await expect(sheet.locator('[data-action="removeFromGroup"]:enabled')).toHaveCount(0);
         await expect(sheet.locator('select[name="system.groupType"]')).toBeDisabled();
+        // Like the limited character sheet, a limited member shows only name and portrait.
+        const limited = sheet.locator(".fatex__inline_sheet", { hasText: "E2E Limited" });
+        await expect(limited.locator(".fatex-inline-tabs")).toHaveCount(0);
+        await expect(sheet).not.toContainText("Secret aspect");
+        await expect(sheet.locator(".fatex__inline_sheet", { hasText: "E2E Owned" }).locator(".fatex-inline-tabs")).toHaveCount(1);
 
         // The owner can mark stress on their own character without permission errors.
         await createItems(gm, members[0].id, [{ name: "E2E Physical", type: "stress", system: { size: 3 } }]);

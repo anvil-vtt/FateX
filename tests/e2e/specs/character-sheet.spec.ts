@@ -338,6 +338,38 @@ test.describe("character sheet permissions", () => {
         await expect.poll(() => messageCount(gm)).toBe(before + 1);
     });
 
+    test("players only copy the items of a dropped folder they can see", async ({ gm, player }) => {
+        const actor = await createCharacter(gm, "E2E Own Hero");
+        await gm.eval(
+            ({ id, user }) =>
+                window.game.actors.get(id).update({
+                    [`ownership.${window.game.users.getName(user).id}`]: window.CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER,
+                }),
+            { id: actor.id, user: player.user },
+        );
+        const folder = await gm.eval(async () => {
+            const { foundry, game } = window as any;
+            const folder = await foundry.documents.Folder.create({ name: "E2E Loot", type: "Item" });
+            await game.items.documentClass.createDocuments([
+                { name: "E2E Visible Loot", type: "extra", folder: folder.id, ownership: { default: 2 } },
+                { name: "E2E Secret Loot", type: "extra", folder: folder.id, ownership: { default: 0 } },
+            ]);
+            return folder.uuid as string;
+        });
+
+        const sheet = await openSheet(player, actor.uuid);
+        await sheet.evaluate((element, uuid) => {
+            const dataTransfer = new DataTransfer();
+            dataTransfer.setData("text/plain", JSON.stringify({ type: "Folder", uuid }));
+            element
+                .querySelector(".fatex-desk__content")!
+                .dispatchEvent(new DragEvent("drop", { bubbles: true, cancelable: true, dataTransfer }));
+        }, folder);
+        await expect.poll(() => getItems(gm, actor.id).then((items) => items.map((i: any) => i.name))).toEqual([
+            "E2E Visible Loot",
+        ]);
+    });
+
     test("players with limited permission see the limited sheet", async ({ gm, player }) => {
         const actor = await createCharacter(gm, "E2E Stranger", { system: { biography: { value: "<p>Mysterious.</p>" } } });
         await createItems(gm, actor.id, [{ name: "Secret", type: "aspect", system: { value: "Secret aspect" } }]);

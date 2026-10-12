@@ -51,6 +51,7 @@ They create a world `fatex-e2e` on first use and clean up everything they create
 The tests start the dev server themselves. Set `FOUNDRY_MAIN` (path to Foundry's `main.js`) and `FOUNDRY_DATA` (its data folder) to let them start Foundry as well.
 `FOUNDRY_URL` changes the address (default `http://localhost:8080`) and `FOUNDRY_WORLD` the world.
 The GM user of the world must be called "Gamemaster" and have no password, which is what a new world has.
+Foundry must not have an admin password, because the tests create and launch the world through the setup screen.
 
 ## Translations
 

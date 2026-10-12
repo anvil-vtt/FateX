@@ -174,7 +174,8 @@ export class Foundry {
         if (uuids.some((uuid) => uuid.startsWith("ChatMessage."))) await this.page.waitForTimeout(500);
         await this.eval(async (list) => {
             // Delete combats first, they reference scenes and actors.
-            const ordered = list.sort((a) => (a.startsWith("Combat.") ? -1 : 0));
+            const isCombat = (uuid: string) => uuid.startsWith("Combat.");
+            const ordered = [...list.filter(isCombat), ...list.filter((uuid) => !isCombat(uuid))];
             for (const uuid of ordered) {
                 const document = window.foundry.utils.fromUuidSync(uuid);
                 if (document && document.name !== "E2E Player") await document.delete();

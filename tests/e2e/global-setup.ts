@@ -19,9 +19,12 @@ async function post(baseURL: string, route: string, body: Record<string, unknown
     });
     const text = await response.text();
     try {
+        // Foundry answers with JSON, also for errors such as an existing world.
         return JSON.parse(text);
     } catch {
-        return { status: response.status, text };
+        if (response.status === 404) return { status: 404, text };
+        // Foundry is not reachable through the dev server, or an admin password protects the setup.
+        throw new Error(`POST ${route} failed with ${response.status}: ${text.slice(0, 200)}`);
     }
 }
 
