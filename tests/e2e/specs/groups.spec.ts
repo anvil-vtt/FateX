@@ -80,6 +80,21 @@ test.describe("manual groups", () => {
         expect(controls).not.toContain("configureSheet");
     });
 
+    test("opens the portrait file picker of a member next to the group", async ({ gm }) => {
+        const { group } = await groupWithMembers(gm, ["E2E Alpha"]);
+        const sheet = await openSheet(gm, group.uuid);
+        await sheet.locator('.fatex__inline_sheet img[data-action="editImage"]').click();
+        const picker = gm.page.locator("#file-picker");
+        await expect(picker).toBeVisible();
+        const position = await gm.eval(() => {
+            const app: any = [...window.foundry.applications.instances.values()].find((app: any) => app.id === "file-picker");
+            return { top: app.position.top, left: app.position.left };
+        });
+        expect(Number.isFinite(position.top) && Number.isFinite(position.left)).toBe(true);
+        // Closing the picker while its search is pending trips a Foundry error.
+        await gm.page.waitForTimeout(500);
+    });
+
     test("adds actors and folders dropped on the group, once", async ({ gm }) => {
         const { group } = await groupWithMembers(gm, ["E2E Alpha"]);
         const extra = await createCharacter(gm, "E2E Gamma");
@@ -214,6 +229,29 @@ test.describe("groups for players", () => {
             .poll(() => gm.eval((id) => window.game.actors.get(id).items.getName("E2E Physical").system.value, members[0].id))
             .not.toBe(0);
         await expect(player.page.locator("#notifications .notification.error")).toHaveCount(0);
+    });
+
+    test("follow permission changes while the group is open", async ({ gm, player }) => {
+        const { group, members } = await groupWithMembers(gm, ["E2E Shared", "E2E Revoked"]);
+        const setOwnership = (actorId: string, level: "NONE" | "OBSERVER") =>
+            gm.eval(
+                async ({ actorId, level, user }) => {
+                    const id = window.game.users.getName(user).id;
+                    await window.game.actors.get(actorId).update({ [`ownership.${id}`]: window.CONST.DOCUMENT_OWNERSHIP_LEVELS[level] });
+                },
+                { actorId, level, user: player.user },
+            );
+        await setOwnership(group.id, "OBSERVER");
+        await setOwnership(members[1].id, "OBSERVER");
+
+        await openSheet(player, group.uuid);
+        await expect.poll(() => inlineNames(player, group.id)).toEqual(["E2E Revoked"]);
+
+        await setOwnership(members[0].id, "OBSERVER");
+        await expect.poll(() => inlineNames(player, group.id)).toEqual(["E2E Shared", "E2E Revoked"]);
+        await setOwnership(members[1].id, "NONE");
+        await expect.poll(() => inlineNames(player, group.id)).toEqual(["E2E Shared"]);
+        await expect(player.page.locator("#notifications .notification")).toHaveCount(0);
     });
 });
 
