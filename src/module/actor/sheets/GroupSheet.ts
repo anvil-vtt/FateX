@@ -193,6 +193,12 @@ export class GroupSheet extends FateSheetMixin(ActorSheetV2) {
         if (!(await this.removeReference(referenceID))) await this.render();
     }
 
+    /** New members are added after the existing ones. */
+    nextReferenceSort(): number {
+        const sorts = getReferencesByGroupType("manual", this.actor).map((reference) => reference.sort ?? 0);
+        return Math.max(100000, ...sorts) + 1;
+    }
+
     async _createActorReference(actorUUID: string) {
         if (!this.isEditable) return;
         const actor: any = await fromUuid(actorUUID);
@@ -203,6 +209,7 @@ export class GroupSheet extends FateSheetMixin(ActorSheetV2) {
                 name: `actorReference-${actor.id}`,
                 type: "actorReference",
                 system: { id: actor.id },
+                sort: this.nextReferenceSort(),
             },
         ]);
     }
@@ -232,6 +239,7 @@ export class GroupSheet extends FateSheetMixin(ActorSheetV2) {
                 name: `tokenReference-${sceneID}-${tokenID}`,
                 type: "tokenReference",
                 system: { id: tokenID, scene: sceneID },
+                sort: this.nextReferenceSort(),
             },
         ]);
     }

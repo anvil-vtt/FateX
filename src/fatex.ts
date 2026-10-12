@@ -31,9 +31,6 @@ import { TemplateActorsFeature } from "./module/features/TemplateActorsFeature";
 import { GroupSheet } from "./module/actor/sheets/GroupSheet";
 import { ActorGroupFeature } from "./module/features/ActorGroupFeature";
 import { ReferenceSheet } from "./module/item/references/ReferenceSheet";
-import { FateScene } from "./module/scene/FateScene";
-import { FateCombat } from "./module/combat/FateCombat";
-import { FateXSettings } from "./module/helper/Settings";
 import { ChatActionsFeature } from "./module/features/ChatActionsFeature";
 import { PrototypeTokenNameSyncFeature } from "./module/features/PrototypeTokenNameSyncFeature";
 import { MagicSystem } from "./module/features/MagicSystem";
@@ -50,15 +47,12 @@ Hooks.once("init", async () => {
 
     CONFIG.Actor.documentClass = FateActor;
     CONFIG.Item.documentClass = FateItem;
-    CONFIG.Scene.documentClass = FateScene;
-    CONFIG.Combat.documentClass = FateCombat;
 
     CONFIG.FateX.global.useMarkdown = !![...game.modules.values()].filter((module) => {
         return module.id === "markdown-editor" && module.active;
     }).length;
 
     // Register generic system settings
-    FateXSettings.registerSettings();
 
     // Register HandlebarsHelpers
     HandlebarsHelpers.registerHelpers();

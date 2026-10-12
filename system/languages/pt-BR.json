@@ -215,12 +215,6 @@
                     "CreateNew": "Criar novo modelo",
                     "Help": "Ainda não há modelos configurados.<br />Para adicionar um novo modelo, clique no botão <strong>Criar novo modelo</strong> (também disponível na barra de cabeçalho)."
                 }
-            },
-            "System": {
-                "Alpha": {
-                    "Name": "Ativar recursos alfa",
-                    "Hint": "Esta configuração habilita recursos experimentais do FateX alfa. Os recursos alfa estão sujeitos a mudanças."
-                }
             }
         },
         "Template": {

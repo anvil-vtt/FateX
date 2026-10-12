@@ -38,20 +38,32 @@ export class ActorGroupFeature {
             renderGroupSheetsByGroupType("scene");
         });
 
-        for (const event of ["updateCombat", "createCombatant", "updateCombatant", "deleteCombatant"]) {
+        for (const event of [
+            "createCombat",
+            "updateCombat",
+            "deleteCombat",
+            "createCombatant",
+            "updateCombatant",
+            "deleteCombatant",
+        ]) {
             Hooks.on(event, () => renderGroupSheetsByGroupType("encounter"));
         }
         Hooks.on("createToken", () => renderGroupSheetsByGroupType("scene"));
-        Hooks.on("deleteToken", (token) => {
-            renderGroupSheetsByGroupType("scene");
-            // Manual groups only change if they reference the deleted token.
-            for (const sheet of GroupSheet.openSheets) {
-                const referencesToken = sheet.actor.items.some(
-                    (item) => item.type === "tokenReference" && item.system.id === token.id,
-                );
-                if (sheet.actor.system.groupType === "manual" && referencesToken) void sheet.render();
-            }
-        });
+        for (const event of ["updateToken", "deleteToken"]) {
+            Hooks.on(event, (token, changes) => {
+                // Movement does not change a group, only what its inline sheets show.
+                const shown = ["name", "hidden", "texture", "actorId", "actorLink"];
+                if (event === "updateToken" && !shown.some((key) => key in changes)) return;
+                renderGroupSheetsByGroupType("scene");
+                // Manual groups only change if they reference the token.
+                for (const sheet of GroupSheet.openSheets) {
+                    const referencesToken = sheet.actor.items.some(
+                        (item) => item.type === "tokenReference" && item.system.id === token.id,
+                    );
+                    if (sheet.actor.system.groupType === "manual" && referencesToken) void sheet.render();
+                }
+            });
+        }
         Hooks.on("deleteActor", () => {
             for (const sheet of GroupSheet.openSheets) void sheet.render();
         });

@@ -236,12 +236,6 @@
                     "Help": "There are no configured templates yet.<br />To add a new template, click on the <strong>Create new template</strong> button (also available in the header bar)."
                 }
             },
-            "System": {
-                "Alpha": {
-                    "Name": "Enable alpha features",
-                    "Hint": "This setting enables experimental FateX alpha features. Alpha features are subject to change."
-                }
-            },
             "autoUpdateTokenName": {
                 "Name": "Automatically update prototype token name",
                 "Hint": "Automatically updates the prototype token name when an actors name is changed (if both were identical)."
