@@ -90,6 +90,12 @@
 
     .fatex-group-form {
         grid-area: header;
+        display: flex;
+        flex-direction: column;
+
+        .fatex-header {
+            height: auto;
+        }
     }
 }
 

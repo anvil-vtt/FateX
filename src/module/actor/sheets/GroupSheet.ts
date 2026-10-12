@@ -45,8 +45,14 @@ export class GroupSheet extends FateSheetMixin(ActorSheetV2) {
         return Object.assign(data, {
             actor: this.actor.toObject(false),
             system: foundry.utils.deepClone(this.actor.system),
+            groupTypes: {
+                manual: "FAx.ActorGroups.Type.Manual",
+                scene: "FAx.ActorGroups.Type.Scene",
+                encounter: "FAx.ActorGroups.Type.Encounter",
+            },
+            // Unlinked tokens of the viewed scene can be added to manual groups with a click.
             availableTokens:
-                this.actor.system.groupType === "manual"
+                this.isEditable && this.actor.system.groupType === "manual"
                     ? canvas.scene?.tokens
                           .filter((token) => !token.isLinked && !!token.actor && !used.includes(token.id))
                           .map((token) => ({

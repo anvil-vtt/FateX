@@ -268,7 +268,14 @@
             "RemoveConfirmation": "Only the reference in this group will be removed. The actor and any scene tokens will not be deleted.",
             "Notifications": {
                 "ManualOnly": "This groups actors are managed automatically. If you want to manually add actors, change the groups type to \"manual\"."
-            }
+            },
+            "Type": {
+                "Label": "Group type",
+                "Manual": "Manual",
+                "Scene": "Current scene",
+                "Encounter": "Active encounter"
+            },
+            "AvailableTokens": "Add tokens of this scene"
         },
         "Sheets": {
             "Reference": "Reference Sheet"

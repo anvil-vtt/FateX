@@ -226,7 +226,14 @@
         "ActorGroups": {
             "Remove": "Aus Gruppe entfernen",
             "RemoveTitle": "Akteur aus Gruppe entfernen?",
-            "RemoveConfirmation": "Es wird nur die Verknüpfung in dieser Gruppe entfernt. Der Akteur und seine Token in den Szenen werden nicht gelöscht."
+            "RemoveConfirmation": "Es wird nur die Verknüpfung in dieser Gruppe entfernt. Der Akteur und seine Token in den Szenen werden nicht gelöscht.",
+            "Type": {
+                "Label": "Gruppentyp",
+                "Manual": "Manuell",
+                "Scene": "Aktuelle Szene",
+                "Encounter": "Aktive Begegnung"
+            },
+            "AvailableTokens": "Token dieser Szene hinzufügen"
         }
     }
 }

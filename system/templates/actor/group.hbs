@@ -5,21 +5,27 @@
                 <label class="fatex-header__label">{{localize "FAx.Sheet.Name"}}</label>
                 <input class="fatex-text-input fatex-text-input--header" name="name" type="text" value="{{actor.name}}">
             </div>
+            <div class="fatex-header__group-type">
+                <label class="fatex-header__label">{{localize "FAx.ActorGroups.Type.Label"}}</label>
+                <select class="fatex-header__select" name="system.groupType">
+                    {{selectOptions groupTypes selected=system.groupType localize=true}}
+                </select>
+            </div>
             <img class="fatex-header__logo" src="systems/fatex/assets/logos/powered_by_fate.svg" alt="">
         </header>
-        <div class="fatex-js-actor_group-settings fatex__actor_group__settings">
-            <input name="system.groupType" type="text" value="{{system.groupType}}">
-            {{#if availableTokens}}
+        {{#if availableTokens}}
+            <div class="fatex__actor_group__settings">
+                <span class="fatex__actor_group__settings-label">{{localize "FAx.ActorGroups.AvailableTokens"}}</span>
                 <div class="fatex__actor_group__availableTokens">
                     {{#each availableTokens}}
-                        <div class="fatex__actor_group__createToken" data-action="createTokenReference" data-token-id="{{this._id}}">
-                            <img width="48" src="{{this.img}}" alt="">
+                        <button type="button" class="fatex__actor_group__createToken" data-action="createTokenReference" data-token-id="{{this._id}}">
+                            <img width="32" height="32" src="{{this.img}}" alt="">
                             <span>{{this.name}}</span>
-                        </div>
+                        </button>
                     {{/each}}
                 </div>
-            {{/if}}
-        </div>
+            </div>
+        {{/if}}
     </form>
     <div class="fatex-js-actor-group-sheets fatex-desk__content fatex-desk__content--group"></div>
 </div>
