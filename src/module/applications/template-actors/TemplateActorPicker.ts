@@ -45,6 +45,7 @@ export class TemplateActorPicker extends TemplateActorSettings {
         const data = await super._prepareContext(options);
         data.AppTitle = this.title;
         data.canCreateGroup = !!game.user?.isGM && FateActor.canUserCreate(game.user);
+        data.canConfigure = !!game.user?.isGM;
         return data;
     }
 
@@ -64,7 +65,7 @@ export class TemplateActorPicker extends TemplateActorSettings {
             { renderSheet: true },
         );
         if (!actor) return;
-        new SheetSetup({ document: actor }).render({ force: true });
+        SheetSetup.open(actor);
         await this.close();
     }
 

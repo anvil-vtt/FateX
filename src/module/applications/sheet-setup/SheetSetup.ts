@@ -44,6 +44,14 @@ export class SheetSetup extends FateSheetMixin(applications.api.DocumentSheetV2)
     };
     tabGroups: Record<string, string | null> = { setup: null };
 
+    /** Opens the sheet setup of an actor, or brings its open one to the front. */
+    static open(actor) {
+        const open = [...applications.instances.values()].find(
+            (app: any) => app instanceof SheetSetup && app.document === actor,
+        );
+        return (open ?? new SheetSetup({ document: actor })).render({ force: true });
+    }
+
     get actor() {
         return this.document;
     }

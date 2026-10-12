@@ -1,8 +1,10 @@
 {{#*inline "centerPartial"}}
+    {{#if canConfigure}}
     <div class="fatex-js-template-header-button fatex-template-action" data-action="templateSettings">
         <span class="fatex-template-action__label">{{localize "FAx.Template.Picker.Configuration"}}</span>
         <i class="fas fa-cogs fatex-template-action__icon"></i>
     </div>
+    {{/if}}
 {{/inline}}
 
 {{> "systems/fatex/templates/components/app-header.hbs"
@@ -95,7 +97,9 @@
     {{else}}
     <div class="fatex-template__help">
         <p class="fatex-template__help-text">{{{localize "FAx.Template.Picker.Explain"}}}</p>
+        {{#if canConfigure}}
         <p class="fatex-template__help-text">{{{localize "FAx.Template.Picker.Help"}}}</p>
+        {{/if}}
 
         {{> centerPartial }}
     </div>
