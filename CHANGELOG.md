@@ -10,6 +10,13 @@
 * Fixed magic rolls and removing automation references on Foundry V14
 * Fixed the limited character sheet
 * Moved the "FateX Templates" button into the system settings (Configure Settings > FateX)
+* Groups can switch between manual, scene and encounter in their header, and manual groups can add unlinked tokens of the current scene
+* Scene and encounter groups update when tokens or combats change, and new members are added at the end
+* Observers see character sheets read-only and can still roll skills
+* Reroll and +2 also work in the chat notifications and popouts
+* Rolling initiative uses Fate dice (4dF) instead of failing
+* Restored the look of the Skills and Stunts headings
+* Added end-to-end tests that run against Foundry V13 and V14
 
 ### 1.3.2
 * Added the optional 2d6 based roll mode (disabled by default)
