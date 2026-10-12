@@ -240,7 +240,7 @@ test.describe("actor directory", () => {
                 ),
             )
             .toEqual(members.map((m) => m.id).sort());
-        expect(await gm.eval((folder) => window.game.actors.getName("E2E Party").folder?.id, folder)).toBe(folder);
+        expect(await gm.eval(() => window.game.actors.getName("E2E Party").folder?.id)).toBe(folder);
     });
 
     test("new actors get a linked token with sight", async ({ gm }) => {

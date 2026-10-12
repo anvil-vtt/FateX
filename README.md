@@ -27,6 +27,31 @@ It's possible to use **different mechanics** for different character types. For 
 
 For manual installation, use the provided manifest URL in the "*Install System*" popup window while managing game systems.
 
+## Development
+FateX is written in TypeScript, Handlebars and SCSS and is bundled with webpack. You need Node.js 20 or newer and a Foundry VTT installation (V13 or V14).
+
+1. Install the dependencies with `npm ci`.
+2. Link the `system` folder into your Foundry data folder as `Data/systems/fatex`, for example
+   `ln -s "$PWD/system" <foundry data>/Data/systems/fatex`. The checked-in `system/system.js` is intentionally empty, it only lets Foundry find the system.
+3. Start Foundry on port 30000, e.g. `node main.js --dataPath=<foundry data> --port=30000`.
+4. Run `npm start` and open Foundry at `http://localhost:8080`, not on port 30000.
+   The dev server serves the bundle, templates and languages of FateX from memory and passes everything else to Foundry.
+   Styles reload live, TypeScript and template changes re-render the open windows.
+
+`npm run build:production` writes a release build to `dist`.
+
+### End-to-end tests
+The tests in `tests/e2e` drive a real Foundry with Playwright, as a GM and as a player.
+They create a world `fatex-e2e` on first use and clean up everything they create.
+
+1. Install the browser once with `npx playwright install chromium`.
+2. Return Foundry to the setup screen, or have the `fatex-e2e` world running. Another active world stops the tests.
+3. Run `npm run test:e2e`. Use `npm run test:e2e -- groups` to run one spec file.
+
+The tests start the dev server themselves. Set `FOUNDRY_MAIN` (path to Foundry's `main.js`) and `FOUNDRY_DATA` (its data folder) to let them start Foundry as well.
+`FOUNDRY_URL` changes the address (default `http://localhost:8080`) and `FOUNDRY_WORLD` the world.
+The GM user of the world must be called "Gamemaster" and have no password, which is what a new world has.
+
 ## Translations
 
 #### German:
