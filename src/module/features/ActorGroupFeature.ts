@@ -15,13 +15,14 @@ export class ActorGroupFeature {
 
         /**
          * Rerender all inline-sheets of updated actor (needed for synthetic actor token to circumvent patching the _onUpdateBaseActor method)
+         * Synthetic token actors share the id of their base actor. The updated document itself re-renders through actor.apps.
          */
         Hooks.on("updateActor", (entity, _data, _options, _userId) => {
             const openGroupSheets = GroupSheet.openSheets;
 
             for (const groupSheet of openGroupSheets) {
                 const inlineSheetsOfUpdatedActor = groupSheet.inlineSheets.filter(
-                    (sheet) => sheet.actor.uuid === entity.uuid,
+                    (sheet) => sheet.actor.id === entity.id && sheet.actor !== entity,
                 );
 
                 for (const inlineSheet of inlineSheetsOfUpdatedActor) {
@@ -40,12 +41,17 @@ export class ActorGroupFeature {
         for (const event of ["updateCombat", "createCombatant", "updateCombatant", "deleteCombatant"]) {
             Hooks.on(event, () => renderGroupSheetsByGroupType("encounter"));
         }
-        for (const event of ["createToken", "deleteToken"]) {
-            Hooks.on(event, () => {
-                renderGroupSheetsByGroupType("scene");
-                renderGroupSheetsByGroupType("manual");
-            });
-        }
+        Hooks.on("createToken", () => renderGroupSheetsByGroupType("scene"));
+        Hooks.on("deleteToken", (token) => {
+            renderGroupSheetsByGroupType("scene");
+            // Manual groups only change if they reference the deleted token.
+            for (const sheet of GroupSheet.openSheets) {
+                const referencesToken = sheet.actor.items.some(
+                    (item) => item.type === "tokenReference" && item.system.id === token.id,
+                );
+                if (sheet.actor.system.groupType === "manual" && referencesToken) void sheet.render();
+            }
+        });
         Hooks.on("deleteActor", () => {
             for (const sheet of GroupSheet.openSheets) void sheet.render();
         });

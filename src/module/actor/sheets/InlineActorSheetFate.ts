@@ -1,4 +1,5 @@
 import { CharacterSheet } from "./CharacterSheet";
+import { applications } from "../../applications/ApplicationV2";
 
 export class InlineActorSheetFate extends CharacterSheet {
     static DEFAULT_OPTIONS: any = {
@@ -28,6 +29,11 @@ export class InlineActorSheetFate extends CharacterSheet {
 
     get canRemoveFromGroup(): boolean {
         return this.options.group.canRemoveReference(this.options.referenceID);
+    }
+
+    _configureRenderParts(_options) {
+        // Inline sheets always use the compact layout, also for limited actors.
+        return foundry.utils.deepClone((this.constructor as typeof InlineActorSheetFate).PARTS);
     }
 
     _initializeApplicationOptions(options) {
@@ -63,8 +69,21 @@ export class InlineActorSheetFate extends CharacterSheet {
         super._attachFrameListeners();
         // A child is an independent document form. Its actions must never update
         // the group document or another actor rendered in the same group.
-        for (const type of ["click", "contextmenu", "change", "submit", "drop", "dragstart"]) {
+        for (const type of ["click", "contextmenu", "change", "submit"]) {
             this.element.addEventListener(type, (event) => event.stopPropagation());
         }
+        // Group membership drops (actors, actor folders, tokens) belong to the group.
+        // Everything else, e.g. items, belongs to the displayed actor only.
+        this.element.addEventListener("drop", (event) => {
+            if (!InlineActorSheetFate.isMembershipDrop(event)) event.stopPropagation();
+        });
+    }
+
+    static isMembershipDrop(event: DragEvent): boolean {
+        const data: any = applications.ux.TextEditor.implementation.getDragEventData(event);
+        return (
+            ["Actor", "Token"].includes(data?.type) ||
+            (data?.type === "Folder" && (data.documentName ?? (foundry.utils as any).fromUuidSync(data.uuid)?.type) === "Actor")
+        );
     }
 }

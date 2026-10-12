@@ -16,13 +16,6 @@ export class GroupSheet extends FateSheetMixin(ActorSheetV2) {
             createTokenReference: function (this: GroupSheet, _event, target) {
                 return this._createTokenReference(target.dataset.tokenId, canvas.scene?.id ?? "");
             },
-            groupNavigation: function (this: GroupSheet, _event, target) {
-                this.element.classList.remove("actor_group_overview--front", "actor_group_overview--back");
-                this.element.classList.add(`actor_group_overview--${target.dataset.show}`);
-                for (const link of this.element.querySelectorAll(".fatex__actor_group__sheet__navigation a")) {
-                    link.classList.toggle("active", link === target);
-                }
-            },
         },
     };
     static PARTS = {
@@ -69,7 +62,7 @@ export class GroupSheet extends FateSheetMixin(ActorSheetV2) {
         return super
             ._getHeaderControls()
             .filter(
-                (control) => !["configureToken", "configurePrototypeToken", "configureSheet"].includes(control.acti),
+                (control) => !["configureToken", "configurePrototypeToken", "configureSheet"].includes(control.action),
             );
     }
 
@@ -186,8 +179,8 @@ export class GroupSheet extends FateSheetMixin(ActorSheetV2) {
             if (!confirmed || !this.canRemoveReference(referenceID) || this.actor.items.get(referenceID) !== reference)
                 return false;
             // Delete only the group's reference, never the world Actor or scene Token.
+            // Deleting the embedded item re-renders this sheet through actor.apps.
             await reference.delete();
-            await this.render();
             return true;
         } finally {
             this.removingReferences.delete(referenceID);
