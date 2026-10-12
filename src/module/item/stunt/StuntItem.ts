@@ -6,14 +6,12 @@ export class StuntItem extends BaseItem {
     static documentName = "stunt";
 
     static async getActorSheetData(sheetData, sheet) {
-        if (CONFIG.FateX.global.useMarkdown) {
-            for (const stunt of sheetData.stunts) {
-                stunt.system.markdown = marked(stunt.system.description);
-            }
-        }
-
         for (const stunt of sheetData.stunts) {
-            stunt.system.description = await enrichHTML(stunt.system.description, sheet?.actor);
+            // Markdown is enriched like HTML, so secrets and links behave the same.
+            const description = CONFIG.FateX.global.useMarkdown
+                ? marked(stunt.system.description ?? "")
+                : stunt.system.description;
+            stunt.system.description = await enrichHTML(description, sheet?.actor);
         }
 
         return sheetData;
