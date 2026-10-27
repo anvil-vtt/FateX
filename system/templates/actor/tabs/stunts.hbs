@@ -17,11 +17,10 @@
                     class="fatex-headline fatex-headline--fixed-icon fatex-js-sortable"
                     data-item-id="{{stunt._id}}"
                 >
-                    <h3 class="fatex-headline__text">{{stunt.name}}</h3>
+                    <h3 class="fatex-js-item-to-chat fatex-headline__text fatex-headline__text--clickable" data-item="{{stunt._id}}">{{stunt.name}}</h3>
 
                     <div class="fatex-actions fatex-actions--headline">
                         <i class="fatex-js-item-sort fatex-actions__icon fa fa-sort"></i>
-                        <i class="fatex-js-item-to-chat fatex-actions__icon fatex-actions__icon--no-hide fa fa-comment" data-item="{{stunt._id}}"></i>
                         <i class="fatex-js-stunt-settings fatex-actions__icon fa fa-cog" data-item="{{stunt._id}}"></i>
                         <i class="fatex-js-stunt-delete fatex-actions__icon fatex-u-delete fa fa-trash" data-item="{{stunt._id}}"></i>
                         <i class="fatex-js-item-collapse fatex-actions__icon fatex-actions__icon--no-hide fa fa-chevron-up{{#if stunt.system.collapsed}} fatex-actions__icon--reverse{{/if}}" data-item="{{stunt._id}}"></i>
