@@ -1,4 +1,5 @@
 import "../../../system/templates/**/*.hbs";
+import { applications } from "../applications/ApplicationV2";
 
 export class TemplatePreloader {
     /**
@@ -7,6 +8,6 @@ export class TemplatePreloader {
     static async preloadHandlebarsTemplates() {
         const templatePaths = ["__ALL_TEMPLATES__"];
 
-        return loadTemplates(templatePaths);
+        return applications.handlebars.loadTemplates(templatePaths);
     }
 }

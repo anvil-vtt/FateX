@@ -5,7 +5,7 @@
     padding: $component-padding 0;
 
     &--bio {
-        .editor {
+        > prose-mirror {
             height: 100%;
         }
     }

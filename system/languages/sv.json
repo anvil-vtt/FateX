@@ -1,5 +1,21 @@
 {
     "FateX": "FateX",
+    "TYPES": {
+        "Actor": {
+            "character": "Karaktär",
+            "group": "Grupp"
+        },
+        "Item": {
+            "stress": "Påfrestningsrutor",
+            "aspect": "Aspekt",
+            "consequence": "Konsekvens",
+            "skill": "Färdighet",
+            "stunt": "Förmåga",
+            "extra": "Tillägg",
+            "actorReference": "Aktörsreferens",
+            "tokenReference": "Tokenreferens"
+        }
+    },
     "FAx": {
         "name": "FateX",
         "Global": {
@@ -206,6 +222,11 @@
                 "Help": "För att lägga till nya mallar, klicka på knappen <strong>Inställningar</strong> nedan (även tillgänglig i rubrikraden).",
                 "Explain": "Mallar är ett utmärkt sätt att ha olika formulär för olika typer av aktörer. Vi föreslår att <strong>olika mallar</strong> används för spelarkaraktärer, spelledarkaraktärer, och hejdukar, då dessa har <strong>olika behov av formuläruppställning</strong>."
             }
+        },
+        "ActorGroups": {
+            "Remove": "Ta bort från gruppen",
+            "RemoveTitle": "Ta bort aktören från gruppen?",
+            "RemoveConfirmation": "Endast referensen i den här gruppen tas bort. Aktören och dess token på scenerna raderas inte."
         }
     }
 }

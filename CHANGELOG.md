@@ -1,5 +1,23 @@
 # Changelog
 
+### 1.6.0
+* Migrated all sheets and applications to Foundry's ApplicationV2 (character, group, inline, item, sheet setup, templates). Existing worlds keep their data and sheet settings.
+* Replaced the remaining dialogs with DialogV2 and the rich text editors with ProseMirror
+* Verified compatibility with Foundry V14
+* Actor groups no longer require the alpha features setting. Members can be removed from a group, and the template picker can create new groups.
+* Added translations for the actor and item type names
+* Fixed changing actor names, token references in groups and dropping journal entries onto character sheets
+* Fixed magic rolls and removing automation references on Foundry V14
+* Fixed the limited character sheet
+* Moved the "FateX Templates" button into the system settings (Configure Settings > FateX)
+* Groups can switch between manual, scene and encounter in their header, and manual groups can add unlinked tokens of the current scene
+* Scene and encounter groups update when tokens or combats change, and new members are added at the end
+* Observers see character sheets read-only and can still roll skills
+* Reroll and +2 also work in the chat notifications and popouts
+* Rolling initiative uses Fate dice (4dF) instead of failing
+* Restored the look of the Skills and Stunts headings
+* Added end-to-end tests that run against Foundry V13 and V14
+
 ### 1.3.2
 * Added the optional 2d6 based roll mode (disabled by default)
 

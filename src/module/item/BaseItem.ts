@@ -1,4 +1,5 @@
 import { FateItem } from "./FateItem";
+import { confirmDeletion, enrichHTML, renderTemplate } from "../applications/ApplicationV2";
 
 export abstract class BaseItem {
     static documentName = "";
@@ -17,7 +18,9 @@ export abstract class BaseItem {
      */
     static activateActorSheetListeners(html, sheet) {
         if (!this.documentName) {
-            throw new Error("A subclass of the BaseItem must provide an documentName field or implement their own _onItemAdd() method.");
+            throw new Error(
+                "A subclass of the BaseItem must provide an documentName field or implement their own _onItemAdd() method.",
+            );
         }
 
         html.find(`.fatex-js-${this.documentName}-add`).click((e) => this._onItemAdd.call(this, e, sheet));
@@ -58,7 +61,9 @@ export abstract class BaseItem {
         e.stopPropagation();
 
         if (!this.documentName) {
-            throw new Error("A subclass of the BaseItem must provide an documentName field or implement their own _onItemAdd() method.");
+            throw new Error(
+                "A subclass of the BaseItem must provide an documentName field or implement their own _onItemAdd() method.",
+            );
         }
 
         const itemData = {
@@ -78,9 +83,6 @@ export abstract class BaseItem {
         e.stopPropagation();
 
         const data = e.currentTarget.dataset;
-        sheet.actor.items.map((item) => {
-            console.log("SHEET ITEMS" + item)
-        })
         const item = sheet.actor.items.get(data.item);
 
         if (item) {
@@ -91,37 +93,19 @@ export abstract class BaseItem {
     /**
      * Itemtype agnostic handler for deleting an item via event.
      */
-    static _onItemDelete(e, sheet) {
+    static async _onItemDelete(e, sheet) {
         e.preventDefault();
         e.stopPropagation();
 
         const data = e.currentTarget.dataset;
         const item = sheet.actor.items.get(data.item);
+        if (!item) return;
 
-        new Dialog(
-            {
-                title: `${game.i18n.localize("FAx.Dialog.DocumentDelete")} ${item.name}`,
-                content: game.i18n.localize("FAx.Dialog.DocumentDeleteText"),
-                default: "submit",
-                buttons: {
-                    cancel: {
-                        icon: '<i class="fas fa-times"></i>',
-                        label: game.i18n.localize("FAx.Dialog.Cancel"),
-                        callback: () => null,
-                    },
-                    submit: {
-                        icon: '<i class="fas fa-check"></i>',
-                        label: game.i18n.localize("FAx.Dialog.Confirm"),
-                        callback: async () => {
-                            item.delete();
-                        },
-                    },
-                },
-            },
-            {
-                classes: ["fatex", "fatex-dialog"],
-            }
-        ).render(true);
+        const confirmed = await confirmDeletion(
+            `${game.i18n.localize("FAx.Dialog.DocumentDelete")} ${item.name}`,
+            game.i18n.localize("FAx.Dialog.DocumentDeleteText"),
+        );
+        if (confirmed) await item.delete();
     }
 
     /**
@@ -166,54 +150,50 @@ export abstract class BaseItem {
 
         return !!element.closest(".fatex-js-edit-mode").length;
     }
-/**
- * Create a card in the chat for a given object.
- * @param {FateItem} item The item to display.
- * @private
- */
-static async sendToChat(item: FateItem) {
-    if (!item.actor) {
-        ui.notifications.warn("Impossible to send a non-owned item to chat.");
-        return;
+    /**
+     * Create a card in the chat for a given object.
+     * @param {FateItem} item The item to display.
+     * @private
+     */
+    static async sendToChat(item: FateItem) {
+        if (!item.actor) {
+            ui.notifications.warn("Impossible to send a non-owned item to chat.");
+            return;
+        }
+
+        const itemAsAny = item as any;
+
+        let nameSource = "";
+        let descriptionSource = "";
+
+        if (item.type === "aspect") {
+            nameSource = itemAsAny.system.label || "Aspect";
+            descriptionSource = itemAsAny.system.value || "";
+        } else {
+            nameSource = item.name ?? "Unnamed Item";
+            descriptionSource = itemAsAny.system.description || "";
+        }
+
+        const enrichedDescription = await enrichHTML(descriptionSource);
+
+        const templateData = {
+            item: {
+                // The card template escapes the name, so it stays plain text.
+                name: nameSource,
+                img: item.img,
+                system: {
+                    enrichedDescription: enrichedDescription,
+                },
+            },
+            speaker: ChatMessage.getSpeaker({ actor: item.actor ?? undefined }),
+        };
+
+        const content = await renderTemplate("systems/fatex/templates/chat/item-card.hbs", templateData);
+
+        await ChatMessage.create({
+            speaker: templateData.speaker,
+            content: content,
+            author: game.user?.id,
+        });
     }
-
-    const itemAsAny = item as any;
-
-    let nameSource = "";
-    let descriptionSource = "";
-
-    if (item.type === 'aspect') {
-        nameSource = itemAsAny.system.label || "Aspect";
-        descriptionSource = itemAsAny.system.value || "";
-    } else {
-        nameSource = item.name ?? "Unnamed Item";
-        descriptionSource = itemAsAny.system.description || "";
-    }
-
-
-    // @ts-ignore
-    const enrichedName = await TextEditor.enrichHTML(nameSource, { async: true });
-    // @ts-ignore
-    const enrichedDescription = await TextEditor.enrichHTML(descriptionSource, { async: true });
-
-    const templateData = {
-        item: {
-            name: enrichedName,
-            img: item.img,
-            system: {
-                enrichedDescription: enrichedDescription
-            }
-        },
-        speaker: ChatMessage.getSpeaker({ actor: item.actor ?? undefined }),
-    };
-
-    // @ts-ignore
-    const content = await renderTemplate("systems/fatex/templates/chat/item-card.hbs", templateData);
-
-    await ChatMessage.create({
-        speaker: templateData.speaker,
-        content: content,
-        user: game.user?.id,
-    });
-}
 }

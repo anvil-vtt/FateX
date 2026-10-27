@@ -1,5 +1,21 @@
 {
     "FateX": "FateX",
+    "TYPES": {
+        "Actor": {
+            "character": "캐릭터",
+            "group": "그룹"
+        },
+        "Item": {
+            "stress": "스트레스 칸",
+            "aspect": "면모",
+            "consequence": "타격",
+            "skill": "기능",
+            "stunt": "특기",
+            "extra": "특수항목",
+            "actorReference": "액터 참조",
+            "tokenReference": "토큰 참조"
+        }
+    },
     "FAx": {
         "name": "페이트 X",
         "Global": {
@@ -254,7 +270,10 @@
             "New": "새 그룹",
             "Notifications": {
                 "ManualOnly": "이 그룹의 액터는 자동으로 관리됩니다. 액터를 수동으로 추가하려면 그룹 유형을 \"수동\"으로 변경하세요."
-            }
+            },
+            "Remove": "그룹에서 제거",
+            "RemoveTitle": "그룹에서 액터를 제거하시겠습니까?",
+            "RemoveConfirmation": "이 그룹의 참조만 제거됩니다. 액터와 장면에 있는 해당 액터의 토큰은 삭제되지 않습니다."
         },
         "Sheets": {
             "Reference": "참조 시트"

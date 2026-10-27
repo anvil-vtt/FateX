@@ -53,7 +53,8 @@
     src: url("/systems/fatex/assets/fonts/fate_icons.ttf");
 }
 
-#chat-log {
+.chat-log,
+#chat-notifications {
     font-family: $primary-font;
 }
 

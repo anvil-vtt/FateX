@@ -7,7 +7,7 @@ export class FateRollDataModel extends foundry.abstract.DataModel {
             id: new foundry.data.fields.StringField({ required: true, blank: false }),
             name: new foundry.data.fields.StringField({ required: true, blank: false }),
             rank: new foundry.data.fields.NumberField({ required: true, blank: false }),
-            bonus: new foundry.data.fields.NumberField({ required: true, blank: false, default: 0 }),
+            bonus: new foundry.data.fields.NumberField({ required: true, nullable: false, initial: 0 }),
             faces: new foundry.data.fields.ArrayField(
                 new foundry.data.fields.NumberField({ required: true, blank: false }),
                 { required: true, blank: false },

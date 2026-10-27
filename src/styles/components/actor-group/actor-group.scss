@@ -21,7 +21,50 @@
 }
 
 .fatex__actor_group__settings {
-    display: none;
+    display: flex;
+    align-items: center;
+    gap: $component-padding;
+    padding: $component-padding * 0.5 $component-padding;
+    border-bottom: 1px solid rgba($fatex-primary-color, 0.2);
+
+    &-label {
+        flex: 0 0 auto;
+        font-size: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: $fatex-primary-color;
+    }
+}
+
+.fatex__actor_group__availableTokens {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $component-padding * 0.5;
+}
+
+.fatex__actor_group__createToken {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    width: auto;
+    height: auto;
+    padding: 2px 8px 2px 2px;
+    font-family: inherit;
+    color: $fatex-primary-color;
+    background: rgba($fatex-primary-color, 0.05);
+    border: 1px solid rgba($fatex-primary-color, 0.3);
+    border-radius: 3px;
+    cursor: pointer;
+
+    img {
+        width: 32px;
+        height: 32px;
+        border: 0;
+    }
+
+    &:hover {
+        background: rgba($fatex-primary-color, 0.15);
+    }
 }
 
 .actor_group_overview {

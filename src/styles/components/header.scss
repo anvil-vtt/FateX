@@ -64,6 +64,27 @@
         line-height: 25px;
     }
 
+    &__group-type {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    &__select {
+        height: 25px;
+        padding: 0 4px;
+        font-family: inherit;
+        font-size: 14px;
+        color: inherit;
+        background: transparent;
+        border: 1px solid currentColor;
+        border-radius: 3px;
+
+        option {
+            color: $primary-text-color;
+            background: $sheet-background;
+        }
+    }
+
     &__logo {
         height: 40px;
     }

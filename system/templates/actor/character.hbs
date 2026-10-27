@@ -1,4 +1,4 @@
-<form autocomplete="off" class="fatex-u-full-height {{cssClass}}">
+<div class="fatex-u-full-height {{cssClass}}">
     <div class="fatex-desk">
         {{!--HEADER--}}
         {{> "systems/fatex/templates/components/header.hbs"}}
@@ -37,32 +37,32 @@
 
                 {{!--Tabs--}}
                 <section class="fatex-desk__tabs fatex-u-padding-std">
-                    <nav class="fatex-js-tabs-navigation fatex-tabs-navigation">
-                        <a class="fatex-tabs-navigation__item" data-tab="skills">
+                    <nav class="fatex-js-tabs-navigation fatex-tabs-navigation tabs">
+                        <a class="fatex-tabs-navigation__item {{tabs.skills.cssClass}}" data-action="tab" data-group="primary" data-tab="skills">
                             {{~localize "FAx.Sheet.Tabs.SkillsStunts"~}}
                         </a>
-                        <a class="fatex-tabs-navigation__item" data-tab="extras">
+                        <a class="fatex-tabs-navigation__item {{tabs.extras.cssClass}}" data-action="tab" data-group="primary" data-tab="extras">
                             {{~localize "FAx.Sheet.Tabs.Extras"~}}
                         </a>
-                        <a class="fatex-tabs-navigation__item" data-tab="bio">
+                        <a class="fatex-tabs-navigation__item {{tabs.bio.cssClass}}" data-action="tab" data-group="primary" data-tab="bio">
                             {{~localize "FAx.Sheet.Tabs.Bio"~}}
                         </a>
                     </nav>
 
                     <div class="fatex-js-tab-content fatex-u-full-height">
                         {{!--Skills & Stunts--}}
-                        <div class="fatex-tab-content fatex-tab-content--skills tab" data-tab="skills">
+                        <div class="fatex-tab-content fatex-tab-content--skills tab {{tabs.skills.cssClass}}" data-group="primary" data-tab="skills">
                             {{> "systems/fatex/templates/actor/tabs/skills.hbs"}}
                             {{> "systems/fatex/templates/actor/tabs/stunts.hbs"}}
                         </div>
 
                         {{!--Extras--}}
-                        <div class="fatex-tab-content tab" data-tab="extras">
+                        <div class="fatex-tab-content tab {{tabs.extras.cssClass}}" data-group="primary" data-tab="extras">
                             {{> "systems/fatex/templates/actor/tabs/extras.hbs"}}
                         </div>
 
                         {{!--Bio--}}
-                        <div class="fatex-tab-content fatex-tab-content--bio tab" data-tab="bio">
+                        <div class="fatex-tab-content fatex-tab-content--bio tab {{tabs.bio.cssClass}}" data-group="primary" data-tab="bio">
                             {{> "systems/fatex/templates/actor/tabs/bio.hbs"}}
                         </div>
                     </div>
@@ -90,4 +90,4 @@
             {{> "systems/fatex/templates/components/config.hbs"}}
         </div>
     </div>
-</form>
+</div>

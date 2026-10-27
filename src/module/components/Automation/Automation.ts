@@ -1,4 +1,5 @@
 import { BaseComponent } from "../BaseComponent";
+import { confirmDeletion } from "../../applications/ApplicationV2";
 
 export const OPERATORS = {
     OPERATOR_EQUALS: 0,
@@ -113,30 +114,11 @@ export class Automation extends BaseComponent {
             return;
         }
 
-        new Dialog(
-            {
-                title: game.i18n.localize("FAx.Dialog.ReferenceRemove"),
-                content: game.i18n.localize("FAx.Dialog.ReferenceRemoveText"),
-                default: "submit",
-                buttons: {
-                    cancel: {
-                        icon: '<i class="fas fa-times"></i>',
-                        label: game.i18n.localize("FAx.Dialog.Cancel"),
-                        callback: () => null,
-                    },
-                    submit: {
-                        icon: '<i class="fas fa-check"></i>',
-                        label: game.i18n.localize("FAx.Dialog.Confirm"),
-                        callback: async () => {
-                            await this.removeSkillReference(document, index);
-                        },
-                    },
-                },
-            },
-            {
-                classes: ["fatex", "fatex-dialog"],
-            }
-        ).render(true);
+        const confirmed = await confirmDeletion(
+            game.i18n.localize("FAx.Dialog.ReferenceRemove"),
+            game.i18n.localize("FAx.Dialog.ReferenceRemoveText"),
+        );
+        if (confirmed) await this.removeSkillReference(document, index);
     }
 
     /*************************
@@ -187,7 +169,7 @@ export class Automation extends BaseComponent {
 
     static async removeSkillReference(document, index) {
         const currentReferences = this.getSkillReferences(document);
-        const references = duplicate(currentReferences);
+        const references = foundry.utils.duplicate(currentReferences);
 
         // Remove one reference at the provided index
         references.splice(index, 1);

@@ -9,73 +9,91 @@ import { renderGroupSheetsByGroupType } from "../helper/ActorGroupHelper";
 export class ActorGroupFeature {
     static hooks() {
         Hooks.on("renderActorDirectory", (_app, html) => {
-            if (game.settings.get("fatex", "enableAlphaFeatures")) {
-                this.addCreateGroupButton($(html));
-                this.styleGroupEntries($(html));
-            }
+            this.addCreateGroupButton($(html));
+            this.styleGroupEntries($(html));
         });
 
-        /**
-         * Rerender all inline-sheets of updated actor (needed for synthetic actor token to circumvent patching the _onUpdateBaseActor method)
-         */
-        Hooks.on("updateActor", (entity, _data, _options, _userId) => {
-            if (game.settings.get("fatex", "enableAlphaFeatures")) {
-                const openGroupSheets = Object.values(ui.windows).filter<GroupSheet>(
-                    (app): app is GroupSheet => app instanceof GroupSheet,
+        // Synthetic token actors share the id of their base actor, so their inline sheets re-render here.
+        // The updated document itself re-renders through actor.apps.
+        Hooks.on("updateActor", (entity, changes) => {
+            for (const groupSheet of GroupSheet.openSheets) {
+                // Permissions decide which members a group shows.
+                if ("ownership" in changes) {
+                    void groupSheet.render();
+                    continue;
+                }
+                const inlineSheetsOfUpdatedActor = groupSheet.inlineSheets.filter(
+                    (sheet) => sheet.actor.id === entity.id && sheet.actor !== entity,
                 );
 
-                for (const groupSheet of openGroupSheets) {
-                    const inlineSheetsOfUpdatedActor = groupSheet.inlineSheets.filter(
-                        (sheet) => sheet.actor.id === entity.id,
-                    );
-
-                    for (const inlineSheet of inlineSheetsOfUpdatedActor) {
-                        inlineSheet.render();
-                    }
+                for (const inlineSheet of inlineSheetsOfUpdatedActor) {
+                    inlineSheet.render();
                 }
             }
         });
 
-        /**
-         * Rerender groupsheets of type scene whenever the viewed scene changes to another scene
-         */
-        Hooks.on("canvasReady", (_entity, _data, _options, _userId) => {
-            if (game.settings.get("fatex", "enableAlphaFeatures")) {
-                renderGroupSheetsByGroupType("scene");
-            }
+        // Scene groups show the tokens of the viewed scene, manual groups offer its unlinked tokens,
+        // and the active combat depends on the viewed scene.
+        Hooks.on("canvasReady", () => renderGroupSheetsByGroupType("scene", "manual", "encounter"));
+
+        for (const event of [
+            "createCombat",
+            "updateCombat",
+            "deleteCombat",
+            "createCombatant",
+            "updateCombatant",
+            "deleteCombatant",
+        ]) {
+            Hooks.on(event, () => renderGroupSheetsByGroupType("encounter"));
+        }
+        for (const event of ["createToken", "updateToken", "deleteToken"]) {
+            Hooks.on(event, (_token, changes) => {
+                // Movement does not change a group, only what its inline sheets show.
+                const shown = ["name", "hidden", "texture", "actorId", "actorLink"];
+                if (event === "updateToken" && !shown.some((key) => key in changes)) return;
+                // Encounter members follow their token's actor, e.g. when Link Actor Data changes.
+                renderGroupSheetsByGroupType("scene", "manual", "encounter");
+            });
+        }
+
+        Hooks.on("deleteActor", () => {
+            for (const sheet of GroupSheet.openSheets) void sheet.render();
         });
     }
 
     static addCreateGroupButton(html: JQuery<HTMLElement>) {
-        if (!game.user?.isGM || html.find(".fatex-header-actions").length) {
+        if (!game.user?.isGM || !FateActor.canUserCreate(game.user)) {
             return;
         }
 
         // Add "Create Group" button
-        html.find(".header-actions").after(`
-                <div class="fatex-header-actions header-actions action-buttons flexrow">
-                    <button class="create-actor-group"><i class="fas fa-users"></i> ${game.i18n.localize(
-                        "FAx.ActorGroups.New",
-                    )}</button>
-                </div>
-        `);
+        const label = game.i18n.localize("FAx.ActorGroups.New");
+        if (!html.find(".fatex-header-actions").length) {
+            const button = $(
+                '<button type="button" class="create-actor-group"><i class="fas fa-users" inert></i></button>',
+            );
+            button.append(document.createTextNode(` ${label}`));
+            button.on("click", (event) => this._onClickCreateGroup(event as unknown as MouseEvent));
+            html.find(".header-actions")
+                .first()
+                .after(
+                    $('<div class="fatex-header-actions header-actions action-buttons flexrow"></div>').append(button),
+                );
+        }
 
         html.find(".folder").each((_i, element) => {
-            const folder = $(element).data("folder-id");
-            const name = $(element).find("h3").first().text();
-
-            $(element)
-                .find(".folder-header")
-                .first()
-                .append(
-                    `<a class="create-folder-group" data-folder="${folder}" data-groupname="${name}"> <i class="fas fa-user-friends fa-fw"></i></a>`,
-                );
+            const header = $(element).children(".folder-header");
+            if (header.find(".create-folder-group").length) return;
+            const button = $('<a class="create-folder-group"><i class="fas fa-user-friends fa-fw" inert></i></a>');
+            button.attr({
+                "data-folder": element.dataset.folderId,
+                "data-groupname": header.find(".folder-name, h3").first().text(),
+                "aria-label": label,
+                title: label,
+            });
+            button.on("click", (event) => this._onClickCreateGroup(event as unknown as MouseEvent));
+            header.append(button);
         });
-
-        // Bind click event listener
-        html.find("button.create-actor-group, a.create-folder-group").on("click", (e: Event) =>
-            this._onClickCreateGroup.call(this, e as MouseEvent),
-        );
     }
 
     static styleGroupEntries(html: JQuery<HTMLElement>) {
@@ -83,8 +101,11 @@ export class ActorGroupFeature {
 
         groupActors.forEach((actor) => {
             // Add small group icon infront of each group name
-            const group = html.find(`.entity[data-entity-id=${actor.id}]`);
-            group.addClass("fatex__actorDirectory__entry").find(".entity-name").after(`<i class="fas fa-users"></i> `);
+            const group = html.find(`.directory-item[data-entry-id="${actor.id}"], .directory-item[data-document-id="${actor.id}"]`);
+            group.addClass("fatex__actorDirectory__entry");
+            if (!group.find(".fatex-group-icon").length) {
+                group.find(".entry-name").after("<i class=\"fas fa-users fatex-group-icon\" inert></i>");
+            }
 
             // Add tiled images instead of actor img
             /*group.find("img").replaceWith(`<div class="actor_group_panel__group__images"></div>`);
@@ -102,23 +123,21 @@ export class ActorGroupFeature {
      * Creates a new group actor and renders it immediately (inside the group panel)
      */
     static async _onClickCreateGroup(event: MouseEvent) {
+        event.preventDefault();
         event.stopPropagation();
 
         const target = event.currentTarget as HTMLElement;
 
-        const actorData: any = {
+        const newGroup = await FateActor.createGroup({
             name: target.dataset.groupname ?? game.i18n.localize("FAx.ActorGroups.New"),
-            type: "group",
-            img: "/systems/fatex/assets/icons/group.svg",
             folder: target.dataset.folder ?? undefined,
-        };
-
-        const newGroup = await FateActor._create(actorData, { renderSheet: true });
+        });
+        if (!newGroup) return;
 
         const sheet = newGroup?.sheet as unknown as GroupSheet;
 
         if (target.dataset.folder) {
-            sheet._createActorReferencesFromFolder(target.dataset.folder);
+            await sheet._createActorReferencesFromFolder(target.dataset.folder);
         }
     }
 }

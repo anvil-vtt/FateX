@@ -2,15 +2,20 @@
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-around;
+    gap: 0;
+    line-height: 1.25;
     font-size: 13px;
     font-weight: bold;
     color: $fatex-primary-color;
     text-transform: uppercase;
+    border-top: none;
     border-bottom: 2px solid $fatex-primary-color;
 
     &__item {
         position: relative;
         padding: 5px 20px 5px 15px;
+        color: $fatex-primary-color;
+        text-shadow: none;
 
         &.active,
         &:hover {
@@ -27,10 +32,16 @@
 .fatex-vertical-tabs-navigation {
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 0;
+    line-height: 1.25;
+    border: none;
     padding: $component-padding * 2 0;
 
     &__item {
         color: $fatex-primary-color;
+        text-shadow: none;
         padding: $component-padding;
         text-transform: uppercase;
         margin-bottom: $component-padding * 2;
