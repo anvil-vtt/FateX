@@ -16,7 +16,7 @@
     "author": "Patrick Bauer (Daddi#2333)",
     "license": "MIT",
     "devDependencies": {
-        "@league-of-foundry-developers/foundry-vtt-types": "^9.280.0",
+        "@league-of-foundry-developers/foundry-vtt-types": "^13.346.0-beta.20250812191140",
         "@playwright/test": "^1.64.0",
         "@types/marked": "^5.0.1",
         "@types/webpack-env": "^1.18.1",
