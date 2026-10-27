@@ -1,6 +1,6 @@
 # Changelog
 
-### Unreleased
+### 1.6.0
 * Migrated all sheets and applications to Foundry's ApplicationV2 (character, group, inline, item, sheet setup, templates). Existing worlds keep their data and sheet settings.
 * Replaced the remaining dialogs with DialogV2 and the rich text editors with ProseMirror
 * Verified compatibility with Foundry V14

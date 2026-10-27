@@ -1,6 +1,6 @@
 name: FateX CI
 
-on: 
+on:
   push:
     tags:
     - '0.*'
@@ -12,12 +12,26 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-      - name: Get Version
-        shell: bash
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Check version
         id: get-version
-        run: echo "::set-output name=version::$(node ./.github/workflows/get-version.js)"
+        shell: bash
+        run: |
+          version=$(node ./.github/workflows/get-version.js)
+          download=$(node -p "require('./system/system.json').download")
+          if [ "$version" != "$GITHUB_REF_NAME" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match version $version in system/system.json"; exit 1
+          fi
+          if [[ "$download" != *"/releases/download/$version/"* ]]; then
+            echo "::error::download in system/system.json must point to releases/download/$version/, not $download"; exit 1
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
 
       - name: Install dependencies and run webpack
         run: |
@@ -27,10 +41,20 @@ jobs:
       - name: Create installable system zip file
         run: cd dist && zip -r ../fatex.zip *
 
+      - name: Extract release notes from the changelog
+        run: |
+          awk -v v="### ${{ steps.get-version.outputs.version }}" '$0 == v {found=1; next} found && /^### / {exit} found' CHANGELOG.md > release-notes.md
+          [ -s release-notes.md ] || echo "See CHANGELOG.md" > release-notes.md
+
       - name: Create release
-        id: create_versioned_release
         uses: ncipollo/release-action@v1
         with:
           name: ${{ steps.get-version.outputs.version }}
           token: ${{ secrets.GITHUB_TOKEN }}
+          bodyFile: release-notes.md
           artifacts: './system/system.json,./fatex.zip'
+
+      - name: Publish the version on foundryvtt.com
+        env:
+          FOUNDRY_PACKAGE_TOKEN: ${{ secrets.FOUNDRY_PACKAGE_TOKEN }}
+        run: node scripts/foundry-release.mjs ${{ steps.get-version.outputs.version }}
