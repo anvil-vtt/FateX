@@ -74,8 +74,11 @@ test.describe("character sheet", () => {
         await expect(gm.page.locator(".fatex-sheet--item")).toBeVisible();
         await closeItemSheets(gm);
 
+        // An aspect without a label still shows its chat trigger.
+        const toChat = sheet.locator(`.fatex-js-item-to-chat[data-item="${aspect._id}"]`);
+        await expect(toChat).toHaveText("Aspect");
         const before = await messageCount(gm);
-        await sheet.locator(`.fatex-js-item-to-chat[data-item="${aspect._id}"]`).click();
+        await toChat.click();
         await expect.poll(() => messageCount(gm)).toBe(before + 1);
         await expect(gm.page.locator(".chat-message .fatex-item-card").last()).toContainText("Captain of the Gallant");
 

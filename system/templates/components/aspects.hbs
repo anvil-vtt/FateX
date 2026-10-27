@@ -20,7 +20,7 @@
                 ></i>
             </div>
 
-            <span class="fatex-js-item-to-chat fatex-text-input__label fatex-text-input__label--clickable" data-item="{{aspect._id}}">{{aspect.system.label}}</span>
+            <span class="fatex-js-item-to-chat fatex-text-input__label fatex-text-input__label--clickable" data-item="{{aspect._id}}">{{#if aspect.system.label}}{{aspect.system.label}}{{else}}{{localize "TYPES.Item.aspect"}}{{/if}}</span>
         </div>
     </div>
 {{/each}}
