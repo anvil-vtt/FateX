@@ -8,7 +8,7 @@
 // The version must already exist as a GitHub release with its system.json asset. Compatibility is taken
 // from that manifest, so the package page always matches what Foundry checks on install.
 // The token is read from FOUNDRY_PACKAGE_TOKEN (repository secret) and never printed.
-// Without it the payload is only shown.
+// Without it the payload is only shown locally; in GitHub Actions that fails the run.
 
 const REPO = "anvil-vtt/FateX";
 const API = "https://foundryvtt.com/_api/packages/release_version/";
@@ -57,10 +57,11 @@ const body = {
 const token = process.env.FOUNDRY_PACKAGE_TOKEN;
 if (!token) {
     const note = "FOUNDRY_PACKAGE_TOKEN is not set, nothing was sent.";
-    console.log(process.env.GITHUB_ACTIONS ? `::warning::${note}` : note);
+    console.log(process.env.GITHUB_ACTIONS ? `::error::${note}` : note);
     console.log("Payload:");
     console.log(JSON.stringify(body, null, 2));
-    process.exit(0);
+    // In CI a missing token must fail the run, otherwise the release looks published when it is not.
+    process.exit(process.env.GITHUB_ACTIONS ? 1 : 0);
 }
 
 const result = await fetch(API, {
