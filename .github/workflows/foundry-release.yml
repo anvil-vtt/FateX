@@ -1,0 +1,32 @@
+name: Foundry release
+
+# Registers an existing GitHub release on foundryvtt.com, e.g. to add older versions to the package page
+# or to repeat a failed publish. New tags are published by the FateX CI workflow.
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Version of an existing GitHub release, e.g. 1.6.0
+        required: true
+      dry-run:
+        description: Only validate, save nothing on foundryvtt.com
+        type: boolean
+        default: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Publish the version on foundryvtt.com
+        env:
+          FOUNDRY_PACKAGE_TOKEN: ${{ secrets.FOUNDRY_PACKAGE_TOKEN }}
+          VERSION: ${{ inputs.version }}
+          DRY_RUN: ${{ inputs.dry-run && '--dry-run' || '' }}
+        run: node scripts/foundry-release.mjs "$VERSION" $DRY_RUN

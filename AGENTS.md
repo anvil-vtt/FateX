@@ -33,6 +33,21 @@ because the proxy target is fixed to port 30000 in `webpack.config.js`.
 - `template.json` is deprecated in V14 and removed in V16. Moving to DataModels is still open.
 - Use `renderChatMessageHTML` for chat cards, so buttons also work in chat notifications and popouts.
 
+## Releases
+
+1. Set `version` in `system/system.json` and pin `download` to `.../releases/download/<version>/fatex.zip`.
+   `manifest` stays on `releases/latest`. Rename the "Unreleased" section in `CHANGELOG.md` to `### <version>`.
+2. Commit, then push a tag named exactly like the version. The "FateX CI" workflow checks both points of step 1,
+   builds `fatex.zip`, creates the GitHub release with the changelog section as notes and registers the version
+   on foundryvtt.com through the Package Release API (`scripts/foundry-release.mjs`).
+3. To add an older release to the package page or to repeat a failed publish, run the "Foundry release" workflow:
+   `gh workflow run foundry-release.yml -f version=<version> -f dry-run=true`, check the run, then again with
+   `dry-run=false`. The release's `system.json` asset must already have a pinned `download`.
+
+Compatibility on the package page always comes from the released `system.json`, so set `compatibility` there.
+The API token is the repository secret `FOUNDRY_PACKAGE_TOKEN` ("Package Release Token" on the package's edit page
+on foundryvtt.com). Without it the publish step only prints the payload and warns.
+
 ## Conventions
 
 - Commits follow Conventional Commits (`fix(groups): …`, `test: …`).
