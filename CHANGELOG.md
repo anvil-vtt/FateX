@@ -1,5 +1,11 @@
 # Changelog
 
+### 1.6.1
+* Click an aspect's label or the name of a stunt or extra to post it to chat. This replaces the chat icons (thanks to Alexandre-nk-Perdereau)
+* Updated the Korean translation (thanks to MaronKB)
+* German: conditions are called "Zustand"
+* Updated dependencies
+
 ### 1.6.0
 * Migrated all sheets and applications to Foundry's ApplicationV2 (character, group, inline, item, sheet setup, templates). Existing worlds keep their data and sheet settings.
 * Replaced the remaining dialogs with DialogV2 and the rich text editors with ProseMirror
