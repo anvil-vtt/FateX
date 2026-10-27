@@ -43,10 +43,14 @@ because the proxy target is fixed to port 30000 in `webpack.config.js`.
 3. To add an older release to the package page or to repeat a failed publish, run the "Foundry release" workflow:
    `gh workflow run foundry-release.yml -f version=<version> -f dry-run=true`, check the run, then again with
    `dry-run=false`. The release's `system.json` asset must already have a pinned `download`.
+   Releases before 1.6.0 were built with `download` on `releases/latest`; pin it first by uploading a fixed manifest:
+   `gh release download <version> -p system.json`, change `download` to `.../releases/download/<version>/fatex.zip`,
+   then `gh release upload <version> system.json --clobber`. Done on 2026-10-27 for 1.5.0, 1.4.5, 1.4.0, 1.3.2, 1.3.0,
+   0.16.2 and 0.14.1. The API allows one release per package every 60 seconds.
 
 Compatibility on the package page always comes from the released `system.json`, so set `compatibility` there.
 The API token is the repository secret `FOUNDRY_PACKAGE_TOKEN` ("Package Release Token" on the package's edit page
-on foundryvtt.com). Without it the publish step only prints the payload and warns.
+on foundryvtt.com). Without it the publish step prints the payload and fails.
 
 ## Conventions
 
