@@ -24,7 +24,7 @@
         "@typescript-eslint/parser": "^6.2.0",
         "autoprefixer": "^10.4.14",
         "clean-webpack-plugin": "^4.0.0",
-        "copy-webpack-plugin": "^11.0.0",
+        "copy-webpack-plugin": "^14.0.0",
         "css-loader": "^6.8.1",
         "eslint": "^8.46.0",
         "eslint-config-prettier": "^8.9.0",
