@@ -109,7 +109,7 @@
                 "IconHelp": "Normalerweise eine Nummer wie 2, 4, 6 or 8. Wird links angezeigt.",
                 "Type": {
                     "Label": "Variante",
-                    "Condition": "Bedingung",
+                    "Condition": "Zustand",
                     "Consequence": "Konsequenz"
                 }
             },
