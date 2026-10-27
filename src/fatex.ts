@@ -13,6 +13,7 @@
  */
 
 import "./styles/fatex.scss";
+import { applications } from "./module/applications/ApplicationV2";
 
 import { FateX } from "./config";
 import { FateActor } from "./module/actor/FateActor";
@@ -30,9 +31,6 @@ import { TemplateActorsFeature } from "./module/features/TemplateActorsFeature";
 import { GroupSheet } from "./module/actor/sheets/GroupSheet";
 import { ActorGroupFeature } from "./module/features/ActorGroupFeature";
 import { ReferenceSheet } from "./module/item/references/ReferenceSheet";
-import { FateScene } from "./module/scene/FateScene";
-import { FateCombat } from "./module/combat/FateCombat";
-import { FateXSettings } from "./module/helper/Settings";
 import { ChatActionsFeature } from "./module/features/ChatActionsFeature";
 import { PrototypeTokenNameSyncFeature } from "./module/features/PrototypeTokenNameSyncFeature";
 import { MagicSystem } from "./module/features/MagicSystem";
@@ -49,66 +47,61 @@ Hooks.once("init", async () => {
 
     CONFIG.Actor.documentClass = FateActor;
     CONFIG.Item.documentClass = FateItem;
-    CONFIG.Scene.documentClass = FateScene;
-    CONFIG.Combat.documentClass = FateCombat;
 
     CONFIG.FateX.global.useMarkdown = !![...game.modules.values()].filter((module) => {
         return module.id === "markdown-editor" && module.active;
     }).length;
 
-    // Register generic system settings
-    FateXSettings.registerSettings();
-
     // Register HandlebarsHelpers
     HandlebarsHelpers.registerHelpers();
 
-    // Unregister Core sheets
-    Actors.unregisterSheet("core", ActorSheet);
-    Items.unregisterSheet("core", ItemSheet);
+    // Keep existing sheet IDs so saved sheet selections continue to resolve.
+    const sheetConfig = applications.apps.DocumentSheetConfig;
 
     // Register FateX actor sheets
-    Actors.registerSheet("FateX", CharacterSheet, {
+    sheetConfig.registerSheet(Actor, "FateX", CharacterSheet, {
         types: ["character"],
         makeDefault: true,
     });
 
-    Actors.registerSheet("FateX", GroupSheet, {
+    sheetConfig.registerSheet(Actor, "FateX", GroupSheet, {
         types: ["group"],
         makeDefault: true,
+        label: "TYPES.Actor.group",
     });
 
     // Register FateX item sheets
-    Items.registerSheet("FateX", StressSheet, {
+    sheetConfig.registerSheet(Item, "FateX", StressSheet, {
         types: ["stress"],
         makeDefault: true,
     });
 
-    Items.registerSheet("FateX", AspectSheet, {
+    sheetConfig.registerSheet(Item, "FateX", AspectSheet, {
         types: ["aspect"],
         makeDefault: true,
     });
 
-    Items.registerSheet("FateX", ConsequenceSheet, {
+    sheetConfig.registerSheet(Item, "FateX", ConsequenceSheet, {
         types: ["consequence"],
         makeDefault: true,
     });
 
-    Items.registerSheet("FateX", SkillSheet, {
+    sheetConfig.registerSheet(Item, "FateX", SkillSheet, {
         types: ["skill"],
         makeDefault: true,
     });
 
-    Items.registerSheet("FateX", StuntSheet, {
+    sheetConfig.registerSheet(Item, "FateX", StuntSheet, {
         types: ["stunt"],
         makeDefault: true,
     });
 
-    Items.registerSheet("FateX", ExtraSheet, {
+    sheetConfig.registerSheet(Item, "FateX", ExtraSheet, {
         types: ["extra"],
         makeDefault: true,
     });
 
-    Items.registerSheet("FateX", ReferenceSheet, {
+    sheetConfig.registerSheet(Item, "FateX", ReferenceSheet, {
         types: ["actorReference", "tokenReference"],
         makeDefault: true,
         label: "FAx.Sheets.Reference",
@@ -135,15 +128,14 @@ if (module.hot) {
     module.hot.accept();
 
     if (module.hot.status() === "apply") {
-        for (const template in _templateCache) {
-            if (template in _templateCache) {
-                delete _templateCache[template];
-            }
+        for (const template of Object.keys(Handlebars.partials)) {
+            if (template.startsWith("systems/fatex/")) delete Handlebars.partials[template];
         }
 
         TemplatePreloader.preloadHandlebarsTemplates().then(() => {
-            for (const application in ui.windows) {
-                ui.windows[application].render(true);
+            for (const application of applications.instances.values()) {
+                // A forced render would bring every window to the front, also above open dialogs.
+                if (application.rendered && application.options.classes.includes("fatex")) application.render();
             }
         });
     }

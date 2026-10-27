@@ -1,4 +1,5 @@
 // @ts-nocheck
+import { renderTemplate } from "../applications/ApplicationV2";
 import { FateRollDataModel } from "../data/FateRollDataModel";
 import { SkillItemData } from "../item/ItemTypes";
 import { ItemDataProperties } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/data.mjs/itemData";
@@ -166,7 +167,7 @@ export class FateRoll extends FateRollDataModel {
             );
         }
 
-        const magicRank = Math.clamped(Number(magicSkills[0].system.rank ?? 0), 0, 4);
+        const magicRank = Math.clamp(Number(magicSkills[0].system.rank ?? 0), 0, 4);
 
         if (magicRank < 1) {
             ui.notifications.error(game.i18n.localize("FAx.Item.Skill.Roll.MagicSkillTooLow"));

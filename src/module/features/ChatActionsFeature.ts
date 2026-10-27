@@ -3,8 +3,8 @@ import { FateChatCard } from "../chat/FateChatCard";
 
 export class ChatActionsFeature {
     static hooks() {
-        Hooks.on("renderChatLog", (_app, html, _data) => this.chatListeners($(html)));
-        Hooks.on("renderChatPopout", (_app, html, _data) => this.chatListeners($(html)));
+        // Each rendered message gets its own listeners, in the log, popouts and notifications alike.
+        Hooks.on("renderChatMessageHTML", (_message, html: HTMLElement) => this.chatListeners(html));
 
         Hooks.once("init", () => {
             game.socket.on("system.fatex", (data) => {
@@ -32,18 +32,24 @@ export class ChatActionsFeature {
     }
 
     private static triggerChatAnimation(type, messageId, rollIndex, disable = false) {
-        $("#chat-log")
-            .find(`.message[data-message-id="${messageId}"]`)
-            .find(`.fatex-chat__roll[data-roll-index="${rollIndex}"]`)
-            .addClass(`fatex-chat__roll--${type}`);
-
-        if (disable) {
-            $("#chat-log").find(`.message[data-message-id="${messageId}"] button[data-action]`).prop("disabled", true);
+        // A message can be shown several times, e.g. in the log and as a notification.
+        const messages = document.querySelectorAll(`.chat-message[data-message-id="${CSS.escape(messageId)}"]`);
+        for (const message of messages) {
+            message
+                .querySelector(`.fatex-chat__roll[data-roll-index="${rollIndex}"]`)
+                ?.classList.add(`fatex-chat__roll--${type}`);
+            if (disable) {
+                for (const button of message.querySelectorAll<HTMLButtonElement>(".fatex-roll-actions button[data-action]")) {
+                    button.disabled = true;
+                }
+            }
         }
     }
 
-    static chatListeners(html: JQuery<HTMLElement>) {
-        html.on("click", ".fatex-roll-actions button[data-action]", this._onChatCardAction.bind(this));
+    static chatListeners(html: HTMLElement) {
+        for (const button of html.querySelectorAll(".fatex-roll-actions button[data-action]")) {
+            button.addEventListener("click", (event) => this._onChatCardAction(event));
+        }
     }
 
     static async _onChatCardAction(event) {
@@ -51,7 +57,7 @@ export class ChatActionsFeature {
 
         const button = event.currentTarget;
         const action = button.dataset.action;
-        const messageId = button.closest(".message").dataset.messageId;
+        const messageId = button.closest("[data-message-id]").dataset.messageId;
         const rollIndex = button.closest(".fatex-chat__roll").dataset.rollIndex;
 
         if (!game.user.isGM) {
@@ -74,6 +80,9 @@ export class ChatActionsFeature {
 
     static async handleChatAction(action, messageId, rollIndex, shiftKey, userId = game.user.id) {
         const message = game.messages?.get(messageId);
+        // Players may only change rolls of messages they own.
+        const user = game.users.get(userId);
+        if (!user || !message?.testUserPermission(user, "OWNER")) return;
 
         const chatCardFlag = message?.getFlag("fatex", "chatCard") ?? false;
         if (!chatCardFlag) {
@@ -105,7 +114,7 @@ export class ChatActionsFeature {
     }
 
     static triggerRerollAnimation(messageId: string, rollIndex: string, sync = true, disable = true) {
-        this.triggerChatAnimation("reroll", messageId, rollIndex, disable, disable);
+        this.triggerChatAnimation("reroll", messageId, rollIndex, disable);
 
         if (sync) {
             game.socket.emit("system.fatex", { type: "reroll", messageId, rollIndex });

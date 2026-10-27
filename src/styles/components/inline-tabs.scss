@@ -1,13 +1,18 @@
 .fatex-inline-tabs {
     display: flex;
     flex-wrap: wrap;
+    justify-content: flex-start;
     gap: 5px;
+    line-height: 1.25;
+    border: none;
     padding: 0 5px;
     font-size: 11px;
     color: #969799;
 
     &__item {
         padding: 2px 5px;
+        color: $fatex-primary-color;
+        text-shadow: none;
         background: #cacbcf;
         border: 1px solid #969799;
         border-radius: 3px;

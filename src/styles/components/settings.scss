@@ -33,8 +33,8 @@
         border-bottom: 1px solid $fatex-primary-color;
         border-radius: 3px;
 
-        > .editor {
-            height: 250px;
+        > prose-mirror {
+            height: 100%;
         }
     }
 

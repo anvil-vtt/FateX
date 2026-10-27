@@ -7,9 +7,26 @@
 }
 
 .fatex__inline_sheet__headline {
-    display: flex;
+    display: grid;
+    grid-template-columns: 32px minmax(0, 1fr);
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
     align-items: center;
+    column-gap: $component-padding * 0.5;
+    padding-right: $component-padding;
     clip-path: none;
+
+    .fatex-headline__text {
+        min-width: 0;
+        padding: $component-padding * 0.5 0;
+        overflow-wrap: anywhere;
+    }
+
+    input[type="number"].fatex-text-input--headline {
+        position: static;
+        width: 48px;
+        min-width: 0;
+    }
 
     .fatex__inline_sheet--defeated & {
         color: $caution-color;
@@ -18,4 +35,22 @@
 
 .fatex__inline_sheet__content {
     display: grid;
+}
+
+.fatex-inline-application .fatex-group-remove {
+    --button-text-color: #{$light-text-color};
+    --button-hover-text-color: #{$light-text-color};
+    --button-background-color: transparent;
+    --button-hover-background-color: #{rgba($light-text-color, 0.15)};
+    width: 26px;
+    height: 26px;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 13px;
+
+    i {
+        margin: 0;
+    }
 }

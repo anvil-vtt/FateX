@@ -1,99 +1,88 @@
 import { FateActor } from "../../actor/FateActor";
 import { SheetSetup } from "../sheet-setup/SheetSetup";
 import { TemplateActorSettings } from "./TemplateActorSettings";
-
-import { ActorDataProperties } from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/data.mjs/actorData";
+import { ApplicationV2 } from "../ApplicationV2";
 
 export class TemplateActorPicker extends TemplateActorSettings {
-    static get defaultOptions() {
-        return foundry.utils.mergeObject(super.defaultOptions, {
-            title: game.i18n.format("SIDEBAR.Create", { type: game.i18n.localize("DOCUMENT.Actor") }),
-            template: "/systems/fatex/templates/apps/template-actors-picker.hbs",
-            id: "template-actor-picker",
-            resizable: true,
-            classes: ["fatex", "fatex-sheet", "fatex-sheet--app"],
-            width: 860,
-        });
+    static DEFAULT_OPTIONS = {
+        id: "template-actor-picker",
+        actions: {
+            chooseTemplate: function (this: TemplateActorPicker, _event, target) {
+                return this._chooseTemplate(target.dataset.template);
+            },
+            emptyTemplate: function (this: TemplateActorPicker) {
+                return this._emptyTemplate();
+            },
+            createGroup: function (this: TemplateActorPicker) {
+                return this._createGroup();
+            },
+            templateSettings: function () {
+                if (game.user?.isGM) CONFIG.FateX.applications.templateSettings?.render({ force: true });
+            },
+        },
+    };
+
+    static PARTS = {
+        sheet: {
+            template: "systems/fatex/templates/apps/template-actors-picker.hbs",
+            scrollable: [".fatex-desk__content"],
+        },
+    };
+    creationData: Record<string, any> = {};
+
+    get title() {
+        return game.i18n.format("SIDEBAR.Create", { type: game.i18n.localize("DOCUMENT.Actor") });
     }
 
-    async getData() {
-        const data = await super.getData();
+    _canRender(options) {
+        if (ApplicationV2.prototype._canRender.call(this, options) === false) return false;
+        if (FateActor.canUserCreate(game.user!)) return;
+        if (options.force) throw new Error(game.i18n.localize("FAx.Settings.Templates.NoPermission"));
+        return false;
+    }
 
-        // @ts-ignore
-        data.AppTitle = game.i18n.format("SIDEBAR.Create", { type: game.i18n.localize("DOCUMENT.Actor") });
-
+    async _prepareContext(options) {
+        const data = await super._prepareContext(options);
+        data.AppTitle = this.title;
+        data.canCreateGroup = !!game.user?.isGM && FateActor.canUserCreate(game.user);
+        data.canConfigure = !!game.user?.isGM;
         return data;
     }
 
-    activateListeners(html) {
-        super.activateListeners(html);
-
-        html.find(".fatex-js-choose-template").click((e) => this._chooseTemplate.call(this, e));
-        html.find(".fatex-js-empty-template").click((e) => this._emptyTemplate.call(this, e));
-        html.find(".fatex-js-template-header-button").click(() => this._openSettings.call(this));
+    async _createGroup() {
+        const group = await FateActor.createGroup(this.creationData);
+        if (group) await this.close();
     }
 
-    /*************************
-     * EVENT HANDLER
-     *************************/
-
-    async _openSettings() {
-        CONFIG.FateX.applications.templateSettings?.render(true);
-    }
-
-    async _emptyTemplate(e) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        const data: Partial<ActorDataProperties> = {
-            name: game.i18n.localize("FAx.Template.Picker.Empty"),
-            type: "character",
-        };
-
-        if (this.options.folder) {
-            data.folder = this.options.folder;
-        }
-
-        // Create actor without template data
-        const newActor = await FateActor._create(data, { renderSheet: true });
-
-        // Open sheet setup by default for new empty actors
-        const sheetSetup = new SheetSetup(newActor, {});
-        sheetSetup.render(true);
-
+    async _emptyTemplate() {
+        if (!FateActor.canUserCreate(game.user!)) return;
+        const actor = await FateActor._create(
+            {
+                ...this.creationData,
+                name: this.creationData.name ?? game.i18n.localize("FAx.Template.Picker.Empty"),
+                type: "character",
+            },
+            { renderSheet: true },
+        );
+        if (!actor) return;
+        SheetSetup.open(actor);
         await this.close();
     }
 
-    async _chooseTemplate(e) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        const data = e.currentTarget.dataset;
-        const template = foundry.utils.duplicate(game.actors?.get(data.template));
-        const fatexFlags = template.flags?.fatex as Record<string, unknown>;
-
-        // Add current template as a flag for later use
-        fatexFlags.templateActor = template._id;
-
-        // Delete id, specific flags and the actors image
-        // @ts-ignore
+    async _chooseTemplate(id: string) {
+        if (!FateActor.canUserCreate(game.user!)) return;
+        const source = game.actors?.get(id);
+        if (!source || !(source as FateActor).isTemplateActor) return;
+        const template = source.toObject() as any;
         delete template._id;
-
-        delete fatexFlags.isTemplateActor;
-
-        // @ts-ignore
         delete template.img;
-
-        if (this.options.folder) {
-            template.folder = this.options.folder;
-        }
-
-        // Create the real actor
+        foundry.utils.mergeObject(template, this.creationData);
+        // Set after the creation data, so its flags cannot drop the link to the template.
+        template.flags ??= {};
+        template.flags.fatex ??= {};
+        template.flags.fatex.templateActor = source.id;
+        delete template.flags.fatex.isTemplateActor;
         await FateActor._create(template, { renderSheet: true });
         await this.close();
-    }
-
-    async _updateObject() {
-        // No update necessary
     }
 }

@@ -1,5 +1,6 @@
 .fatex-sheet {
-    font-family: $primary-font;
+    --font-body: #{$primary-font};
+    font-family: var(--font-body);
 
     &--app {
         min-width: 500px;
@@ -33,4 +34,97 @@
         width: auto;
         height: auto;
     }
+}
+
+// ApplicationV2 owns the outer form and scroll frame.
+.fatex-sheet.application {
+    .window-content {
+        min-height: 0;
+    }
+
+    .window-content > .fatex-u-full-height,
+    .window-content > .fatex-desk {
+        flex: 1;
+        min-height: 0;
+    }
+
+    .window-content :is(input, select, textarea) {
+        --input-background-color: #{rgba($primary-color, 0.05)};
+        --input-border-color: #{$fatex-primary-color};
+        --input-text-color: var(--fatex-primary-text-color, #{$primary-text-color});
+        --input-focus-text-color: var(--fatex-primary-text-color, #{$primary-text-color});
+        --input-focus-outline-color: #{$fatex-primary-color};
+        --input-placeholder-color: #{rgba($primary-color, 0.5)};
+    }
+
+    prose-mirror {
+        // Keep Foundry's flex layout: its menu and editable area depend on it.
+        --min-height: 160px;
+        --menu-background: #{mix($primary-color, $sheet-background, 10%)};
+        --dropdown-background: #{$sheet-background};
+        --dropdown-border: #{$fatex-primary-color};
+        --dialog-background: #{$sheet-background};
+        --dialog-border: #{$fatex-primary-color};
+        --color-control-hover: #{rgba($primary-color, 0.15)};
+        --color-form-label-hover: #{$fatex-primary-color};
+        flex: 1;
+        min-width: 0;
+
+        button {
+            --button-text-color: #{$fatex-primary-color};
+            --button-hover-text-color: #{$fatex-primary-color};
+        }
+
+        button.toggle {
+            // Foundry shows this control as a block, so flex centering does not apply.
+            padding: 0;
+            text-align: center;
+
+            > i {
+                width: 100%;
+                margin: 0;
+                text-align: center;
+            }
+        }
+    }
+
+    .fatex-group-form {
+        grid-area: header;
+        display: flex;
+        flex-direction: column;
+
+        .fatex-header {
+            height: auto;
+        }
+    }
+}
+
+// FateX uses a light sheet surface even when Foundry's chrome uses the dark theme.
+// Define the V2 tokens on that surface, without changing other systems or windows.
+.fatex-sheet.application .window-content,
+.fatex-inline-application,
+.fatex-dialog.application .window-content {
+    --color-text-emphatic: #{$fatex-primary-color};
+    --color-text-primary: var(--fatex-primary-text-color, #{$primary-text-color});
+    --color-text-secondary: #{$fatex-primary-color};
+    --color-text-subtle: #{$fatex-primary-color};
+    --color-form-label: #{$fatex-primary-color};
+    --color-form-label-hover: #{$fatex-primary-color};
+    --font-body: #{$primary-font};
+    --font-h1: #{$primary-font};
+    --font-h2: #{$primary-font};
+    --font-h3: #{$primary-font};
+    --font-h4: #{$primary-font};
+    --font-h5: #{$primary-font};
+    --font-h6: #{$primary-font};
+    font-family: var(--font-body);
+    color: var(--fatex-primary-text-color, #{$primary-text-color});
+}
+
+.fatex-inline-application {
+    position: static;
+    height: auto;
+    min-height: 0;
+    margin: 0;
+    box-shadow: none;
 }

@@ -17,7 +17,9 @@ export class FateRollHistoryDataModel extends foundry.abstract.DataModel {
     }
 
     get previousRollTotal() {
-        const total = this.previousRoll.reduce((a, b) => a + b, 0);
+        // A 2d6 roll stores both dice and subtracts the second, Fate dice add up.
+        const [first, second] = this.previousRoll;
+        const total = this.previousRoll.length === 2 ? first - second : this.previousRoll.reduce((a, b) => a + b, 0);
         return total >= 0 ? `+${total}` : total;
     }
 

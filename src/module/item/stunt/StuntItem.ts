@@ -1,27 +1,20 @@
 import { BaseItem } from "../BaseItem";
 import { marked } from "marked";
+import { enrichHTML } from "../../applications/ApplicationV2";
 
 export class StuntItem extends BaseItem {
     static documentName = "stunt";
 
-    static async getActorSheetData(sheetData) {
-        if (CONFIG.FateX.global.useMarkdown) {
-            for (const stunt of sheetData.stunts) {
-                stunt.system.markdown = marked(stunt.data.description);
-            }
-        }
-
+    static async getActorSheetData(sheetData, sheet) {
         for (const stunt of sheetData.stunts) {
-            // @ts-ignore
-            stunt.system.description = await TextEditor.enrichHTML(stunt.system.description, { async: true });
+            // Markdown is enriched like HTML, so secrets and links behave the same.
+            const description = CONFIG.FateX.global.useMarkdown
+                ? marked(stunt.system.description ?? "")
+                : stunt.system.description;
+            stunt.system.description = await enrichHTML(description, sheet?.actor);
         }
 
         return sheetData;
-    }
-
-    static async getSheetData(sheetData) {
-        // @ts-ignore
-        sheetData.enrichedDescription = await TextEditor.enrichHTML(sheetData.system.description, { async: true });
     }
 
     static activateActorSheetListeners(html, sheet) {
