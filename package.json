@@ -29,7 +29,7 @@
         "eslint": "^8.46.0",
         "eslint-config-prettier": "^8.9.0",
         "eslint-webpack-plugin": "^4.0.1",
-        "glob": "^11.1.0",
+        "glob": "^14.0.6",
         "marked": "^5.1.2",
         "node-sass-glob-importer": "^5.3.3",
         "null-loader": "^4.0.1",
